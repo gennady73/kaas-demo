@@ -1,0 +1,141 @@
+{
+  "case_contract_version": "0.1",
+  "status": "offline_expected_cases_not_execution_evidence",
+  "algorithm": "sha256-hex-ascii-v1",
+  "run_id": "dev-smoke-offline-20261119",
+  "seed": 20261119,
+  "client_wall_clock_limit_seconds": 300,
+  "total_original_value_bytes": 12849152,
+  "records": [
+    {
+      "id": "dev-smoke-offline-20261119:kaas-dev-smoke-01:0",
+      "topic": "kaas-dev-smoke-01",
+      "sequence": 0,
+      "value_bytes": 1024,
+      "sha256": "e55e6f22209d62c48874bd0bc36acdf1c5d52b89381db0d08018c20f6e4d4b2c",
+      "consumer_group": "kaas-dev-smoke-01-dev-smoke-offline-20261119"
+    },
+    {
+      "id": "dev-smoke-offline-20261119:kaas-dev-smoke-01:1",
+      "topic": "kaas-dev-smoke-01",
+      "sequence": 1,
+      "value_bytes": 65536,
+      "sha256": "f295aa488e13934efdf023ee99b6fef3cd8fd6dba7f0b555a270de22855efcfb",
+      "consumer_group": "kaas-dev-smoke-01-dev-smoke-offline-20261119"
+    },
+    {
+      "id": "dev-smoke-offline-20261119:kaas-dev-smoke-01:2",
+      "topic": "kaas-dev-smoke-01",
+      "sequence": 2,
+      "value_bytes": 1048576,
+      "sha256": "6329c93922967abf99cb4e502716bb78125c96a2e3c846ed01166204b018e772",
+      "consumer_group": "kaas-dev-smoke-01-dev-smoke-offline-20261119"
+    },
+    {
+      "id": "dev-smoke-offline-20261119:kaas-dev-smoke-01:3",
+      "topic": "kaas-dev-smoke-01",
+      "sequence": 3,
+      "value_bytes": 2097152,
+      "sha256": "7b69a2a1f92cb4b418464bc319e36990ce98261236a749c0313ca6078b5ad94f",
+      "consumer_group": "kaas-dev-smoke-01-dev-smoke-offline-20261119"
+    },
+    {
+      "id": "dev-smoke-offline-20261119:kaas-dev-smoke-02:0",
+      "topic": "kaas-dev-smoke-02",
+      "sequence": 0,
+      "value_bytes": 1024,
+      "sha256": "716e0153fc9a87c751d8b5d13b967a0567e457b7064b57e7baccf022e59530d5",
+      "consumer_group": "kaas-dev-smoke-02-dev-smoke-offline-20261119"
+    },
+    {
+      "id": "dev-smoke-offline-20261119:kaas-dev-smoke-02:1",
+      "topic": "kaas-dev-smoke-02",
+      "sequence": 1,
+      "value_bytes": 65536,
+      "sha256": "f831e8a9840fa23d1c46ea7eb59b4720e33402b4925fc9702936c26d5aaaf9c1",
+      "consumer_group": "kaas-dev-smoke-02-dev-smoke-offline-20261119"
+    },
+    {
+      "id": "dev-smoke-offline-20261119:kaas-dev-smoke-02:2",
+      "topic": "kaas-dev-smoke-02",
+      "sequence": 2,
+      "value_bytes": 1048576,
+      "sha256": "f8c3f14b6bc4646a6aa2ce3b0b7b4cb2bd10394a767588818a0c51ba0ec64843",
+      "consumer_group": "kaas-dev-smoke-02-dev-smoke-offline-20261119"
+    },
+    {
+      "id": "dev-smoke-offline-20261119:kaas-dev-smoke-02:3",
+      "topic": "kaas-dev-smoke-02",
+      "sequence": 3,
+      "value_bytes": 2097152,
+      "sha256": "7f96936c7d67ac7ab334544d48e1e8d185679f00296285ab2c5386515b108596",
+      "consumer_group": "kaas-dev-smoke-02-dev-smoke-offline-20261119"
+    },
+    {
+      "id": "dev-smoke-offline-20261119:kaas-dev-smoke-03:0",
+      "topic": "kaas-dev-smoke-03",
+      "sequence": 0,
+      "value_bytes": 1024,
+      "sha256": "62b3ff27a491533f3381a8984a3fb3d5d8eca41fb0d07b70f75a9a723570098f",
+      "consumer_group": "kaas-dev-smoke-03-dev-smoke-offline-20261119"
+    },
+    {
+      "id": "dev-smoke-offline-20261119:kaas-dev-smoke-03:1",
+      "topic": "kaas-dev-smoke-03",
+      "sequence": 1,
+      "value_bytes": 65536,
+      "sha256": "9af8370d41792f383cb61bdf6e8233a3a9eda7c8d2b846b81db26d49908292a2",
+      "consumer_group": "kaas-dev-smoke-03-dev-smoke-offline-20261119"
+    },
+    {
+      "id": "dev-smoke-offline-20261119:kaas-dev-smoke-03:2",
+      "topic": "kaas-dev-smoke-03",
+      "sequence": 2,
+      "value_bytes": 1048576,
+      "sha256": "e9464d7dd08339a1cd452e229f97bd2d7aa4df9b223c1387a31ccaa12172b5cf",
+      "consumer_group": "kaas-dev-smoke-03-dev-smoke-offline-20261119"
+    },
+    {
+      "id": "dev-smoke-offline-20261119:kaas-dev-smoke-03:3",
+      "topic": "kaas-dev-smoke-03",
+      "sequence": 3,
+      "value_bytes": 2097152,
+      "sha256": "399da416481f64bee15614f3a7ff7fd1399380afcccb9e9aae773a8cdc58db76",
+      "consumer_group": "kaas-dev-smoke-03-dev-smoke-offline-20261119"
+    },
+    {
+      "id": "dev-smoke-offline-20261119:kaas-dev-smoke-04:0",
+      "topic": "kaas-dev-smoke-04",
+      "sequence": 0,
+      "value_bytes": 1024,
+      "sha256": "af7cc291f5a55b343ba8865eca60bd7266d3caf6ce5d0e1240d76c06a8b6e9cb",
+      "consumer_group": "kaas-dev-smoke-04-dev-smoke-offline-20261119"
+    },
+    {
+      "id": "dev-smoke-offline-20261119:kaas-dev-smoke-04:1",
+      "topic": "kaas-dev-smoke-04",
+      "sequence": 1,
+      "value_bytes": 65536,
+      "sha256": "d9b54a1f4daa172fc5a3dec95438b4a22c27ff1efa24ec3b4347e46a11221705",
+      "consumer_group": "kaas-dev-smoke-04-dev-smoke-offline-20261119"
+    },
+    {
+      "id": "dev-smoke-offline-20261119:kaas-dev-smoke-04:2",
+      "topic": "kaas-dev-smoke-04",
+      "sequence": 2,
+      "value_bytes": 1048576,
+      "sha256": "70f57a8f77ba3510a2f232ef6d7a6513066aa8f2e6edb291dc9024fb01451a5a",
+      "consumer_group": "kaas-dev-smoke-04-dev-smoke-offline-20261119"
+    },
+    {
+      "id": "dev-smoke-offline-20261119:kaas-dev-smoke-04:3",
+      "topic": "kaas-dev-smoke-04",
+      "sequence": 3,
+      "value_bytes": 2097152,
+      "sha256": "1537b399a0ccd1358e7bcdb6cec95ec55080e0892031ee5910d903041882fad9",
+      "consumer_group": "kaas-dev-smoke-04-dev-smoke-offline-20261119"
+    }
+  ],
+  "execution_ready": false,
+  "runtime_mapping_needed": "Map exact cases to selected xk6 build; verify deadlines, retries, acks, security and durable evidence. This is not a C2 planner input."
+}

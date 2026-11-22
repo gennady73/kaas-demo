@@ -1,0 +1,129 @@
+{
+  "contract_version": "0.1",
+  "status": "proposed_design_inputs_not_runnable",
+  "profile_id": "DEV-SMOKE-01",
+  "recorded_date": "2026-11-18",
+  "srs_revision": "0.9",
+  "user_confirmed": {
+    "topic_count": 4,
+    "maximum_test_runtime_seconds": 300,
+    "maximum_value_payload_bytes": 2097152,
+    "operator_build": "3.2.1-10",
+    "openshift_range": "4.20.18 through 4.21.x",
+    "test_namespace": "kaas-demo"
+  },
+  "proposed": {
+    "namespace": "kaas-demo",
+    "topic_replication_factor": 2,
+    "topic_retention_ms": 21600000,
+    "partitions_per_topic": 1,
+    "producer_acknowledgements": "all",
+    "minimum_in_sync_replicas": null,
+    "compression": "none",
+    "records_per_topic": 4,
+    "value_payload_sizes_bytes_per_topic": [
+      1024,
+      65536,
+      1048576,
+      2097152
+    ],
+    "total_original_value_payload_bytes": 12849152,
+    "maximum_send_attempts_per_record": 2,
+    "maximum_attempt_value_payload_bytes": 25698304,
+    "logical_producers": 4,
+    "logical_consumers": 4,
+    "timeline": {
+      "wall_clock_limit_seconds": 300,
+      "producer_stop_no_later_than_seconds": 180,
+      "consumer_stop_no_later_than_seconds": 270,
+      "shutdown_reserve_seconds": 30,
+      "includes_startup_connection_retry_drain_and_shutdown": true,
+      "offline_reconciliation_outside_client_runtime": true
+    },
+    "topics": [
+      {
+        "name": "kaas-dev-smoke-01",
+        "consumer_group_prefix": "kaas-dev-smoke-01",
+        "payload_sizes_bytes": [
+          1024,
+          65536,
+          1048576,
+          2097152
+        ]
+      },
+      {
+        "name": "kaas-dev-smoke-02",
+        "consumer_group_prefix": "kaas-dev-smoke-02",
+        "payload_sizes_bytes": [
+          1024,
+          65536,
+          1048576,
+          2097152
+        ]
+      },
+      {
+        "name": "kaas-dev-smoke-03",
+        "consumer_group_prefix": "kaas-dev-smoke-03",
+        "payload_sizes_bytes": [
+          1024,
+          65536,
+          1048576,
+          2097152
+        ]
+      },
+      {
+        "name": "kaas-dev-smoke-04",
+        "consumer_group_prefix": "kaas-dev-smoke-04",
+        "payload_sizes_bytes": [
+          1024,
+          65536,
+          1048576,
+          2097152
+        ]
+      }
+    ],
+    "record_identity": "unique run ID plus topic plus sequence; reuse ID for retry",
+    "group_policy": "fresh group per topic and run; earliest; consumers active before production",
+    "payload_content": "seeded synthetic ASCII, exact UTF-8 byte length",
+    "worker_job_active_deadline_seconds": 300,
+    "worker_job_backoff_limit": 0,
+    "transport_record_batch_limit_candidate_bytes": 3145728
+  },
+  "execution_inputs": {
+    "run_id": null,
+    "random_seed": null,
+    "kafka_cluster_reference": null,
+    "bootstrap_endpoints": [],
+    "operator_bundle_image_digest": null,
+    "kafka_broker_version": null,
+    "broker_image_digest": null,
+    "gitops_repository_url": "https://github.com/gennady73/kaas-demo.git",
+    "gitops_path": "environments/dev",
+    "gitops_commit": null,
+    "argocd_application": null,
+    "security_profile_reference": null,
+    "test_image_digest": null,
+    "resource_and_storage_budget_reference": null,
+    "effective_payload_limit_evidence": null,
+    "hard_deadline_evidence": null,
+    "client_retry_and_acks_evidence": null,
+    "durable_evidence_reference": null,
+    "kafka_namespace": "kaas-kafka",
+    "kafka_operator_namespace": "kafka-operator",
+    "argocd_namespace": "openshift-gitops"
+  },
+  "acceptance": {
+    "expected_unique_acknowledged_records": 16,
+    "expected_unique_records_per_group": 4,
+    "checksum_mismatches_allowed": 0,
+    "missing_acknowledged_records_allowed": 0,
+    "unresolved_producer_outcomes_allowed_for_pass": 0,
+    "missing_evidence_result": "INCONCLUSIVE",
+    "deadline_expiry_result": "INCOMPLETE unless complete data and clean shutdown independently evidenced"
+  },
+  "limitations": [
+    "Not a direct C2 planner input; fixed-size boundary cases and hard runtime require adapter mapping/review.",
+    "No run, deployment, GitHub connection or GitOps sync performed.",
+    "No 24h volume, sustained capacity, retention expiry, or restart recovery acceptance."
+  ]
+}
