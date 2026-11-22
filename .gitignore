@@ -1,0 +1,17 @@
+# Credentials and local access state
+.env
+.env.*
+!.env.example
+.kube/
+kubeconfig
+kubeconfig.*
+*token*
+*.key
+*.p12
+*.pfx
+
+# Generated test output and local caches
+results/
+artifacts/
+__pycache__/
+*.pyc
