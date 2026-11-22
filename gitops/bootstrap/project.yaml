@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: kaas-demo
+  namespace: openshift-gitops
+spec:
+  description: KaaS sandbox operator installation; manually synchronized
+  sourceRepos:
+  - https://github.com/gennady73/kaas-demo.git
+  destinations:
+  - namespace: kafka-operator
+    server: https://kubernetes.default.svc
+  - namespace: kaas-kafka
+    server: https://kubernetes.default.svc
+  clusterResourceWhitelist: []
+  namespaceResourceWhitelist:
+  - group: operators.coreos.com
+    kind: OperatorGroup
+  - group: operators.coreos.com
+    kind: Subscription

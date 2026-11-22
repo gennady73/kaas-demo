@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kaas-demo-operator
+  namespace: openshift-gitops
+  labels:
+    app.kubernetes.io/part-of: kaas-demo
+spec:
+  project: kaas-demo
+  source:
+    repoURL: https://github.com/gennady73/kaas-demo.git
+    targetRevision: ${GIT_REVISION}
+    path: environments/dev/operator
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: kafka-operator
+  syncPolicy:
+    syncOptions:
+    - FailOnSharedResource=true

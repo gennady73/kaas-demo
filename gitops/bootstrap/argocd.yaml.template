@@ -1,0 +1,8 @@
+# Set ARGOCD_NAMESPACE to the selected ArgoCD instance namespace (distinct from the operator install role).
+# Requires the ArgoCD operator/CRD; not an Application or repository connection.
+apiVersion: argoproj.io/v1alpha1
+kind: ArgoCD
+metadata:
+  name: kaas-demo
+  namespace: ${ARGOCD_NAMESPACE}
+spec: {}

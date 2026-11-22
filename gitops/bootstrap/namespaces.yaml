@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: kafka-operator
+  labels:
+    app.kubernetes.io/part-of: kaas-demo
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: kaas-kafka
+  labels:
+    app.kubernetes.io/part-of: kaas-demo
