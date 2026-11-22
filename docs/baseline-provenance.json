@@ -1,0 +1,39 @@
+{
+  "recorded_date": "2026-11-19",
+  "status": "local_operator_stage_and_offline_cases_publication_waiting_for_user_access",
+  "repository_url": "https://github.com/gennady73/kaas-demo.git",
+  "architecture_workspace": "kaas-solution",
+  "sources": [
+    {
+      "workspace_relative_path": "docs/kaas-system-requirements-specification.md",
+      "declared_revision": "0.9",
+      "sha256": "e438dd18b7426aa242ba94968fc56656bf745b531af481c3dc652c158c73e4e2"
+    },
+    {
+      "workspace_relative_path": "docs/environment/dev-smoke-and-gitops-plan.md",
+      "declared_revision": "0.1",
+      "sha256": "63863e2748de0ff9ef7bb79050881e6e2312d340d8b403a0497f6ffc29f2e032"
+    },
+    {
+      "workspace_relative_path": "config/dev-smoke-profile.json",
+      "declared_revision": "0.1",
+      "sha256": "a86381e0b1668b2871a2f7e795645d2afe872dcfc4692aaff23977e992f2a5b7"
+    },
+    {
+      "workspace_relative_path": "docs/handoffs/C1-environment.md",
+      "declared_revision": "as-read",
+      "sha256": "9fbf9e85113ecee708964707e6701d07f18a672540f9021c3f9424b9a424a2d5"
+    },
+    {
+      "workspace_relative_path": "docs/handoffs/C2-xk6-implementation.md",
+      "declared_revision": "0.2",
+      "sha256": "09968af29b835e7a1041d9c8ee30ce097a28c1a4242109683c168fe80fc8acdb"
+    },
+    {
+      "workspace_relative_path": "docs/environment/namespace-layout.md",
+      "declared_revision": "2026-11-19",
+      "sha256": "6ec709a5dad01e08bce672d3c7f6960a8b6da9e1cf0d8caf39914a4f3c2c985d"
+    }
+  ],
+  "checks": "Git clone/status; JSON snapshot equality; four-topic, payload/deadline and budget checks; no runtime test"
+}
