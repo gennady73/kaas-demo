@@ -1,0 +1,12 @@
+apiVersion: operators.coreos.com/v1alpha1
+kind: Subscription
+metadata:
+  name: amq-streams
+  namespace: kafka-operator
+spec:
+  channel: amq-streams-3.2.x
+  installPlanApproval: Manual
+  name: amq-streams
+  source: redhat-operators
+  sourceNamespace: openshift-marketplace
+  startingCSV: amqstreams.v3.2.1-10
