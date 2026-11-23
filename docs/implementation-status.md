@@ -1,5 +1,9 @@
 # Implementation status
 
+## Kafka cluster deployed, 2026-11-23
+
+Kafka 4.2.0/metadata 4.2-IV1 is Ready in kaas-kafka: three Ready broker/controller pods on distinct hosts, three Bound 20Gi claims, four Ready topics and a Ready scoped user. Application kaas-demo-kafka is Synced/Healthy at ea80ef8. The first sync permission failure was resolved by the published namespace-only Kafka CR Role/RoleBinding at 8c380a0. See [Kafka cluster result](kafka-cluster-result-2026-11-23.md). Six documentation files were published; producer/consumer and recovery tests remain unexecuted, and newer Kafka operator plan 3.2.2-9 remains unapproved. Earlier sections are historical.
+
 ## Documentation and access follow-up, 2026-11-23
 
 Created separate [bootstrap guide](bootstrap-guide.md) and [Git workflow](git-workflow.md). Refreshed token authenticated as `admin` with TLS verification; read-only discovery reports ArgoCD Available, Kafka operator 3.2.1-10 installed with Manual approval and 3.2.2-9 advertised, and GitOps 1.22.3 installed. No bootstrap was rerun, no operator upgrade approved and no token saved while writing the guides. New/updated documentation remains local until reviewed and committed/pushed; instructions do not claim publication.
