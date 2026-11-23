@@ -4,6 +4,12 @@ GitOps implementation repository for the KaaS OpenShift development sandbox.
 
 Status: Kafka operator installation manifests prepared, 2026-11-19. Start with [deployment sequence](docs/deployment-sequence.md). Kafka broker manifests and the executable smoke runner remain subsequent stages; preparation does not claim deployment.
 
+## Guides
+
+- [Bootstrap guide](docs/bootstrap-guide.md): prerequisites, namespace/project/Application bootstrap, manual sync and exact initial-plan approval, readiness checks and current limits.
+- [Git workflow](docs/git-workflow.md): what belongs in each local repository, credential setup, review/push and the separate ArgoCD promotion step.
+- [Operator stage result](docs/operator-stage-result-2026-11-22.md): observed installation result and evidence references.
+
 ## Layout
 
 | Path | Purpose |

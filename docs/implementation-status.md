@@ -1,5 +1,13 @@
 # Implementation status
 
+## Documentation and access follow-up, 2026-11-23
+
+Created separate [bootstrap guide](bootstrap-guide.md) and [Git workflow](git-workflow.md). Refreshed token authenticated as `admin` with TLS verification; read-only discovery reports ArgoCD Available, Kafka operator 3.2.1-10 installed with Manual approval and 3.2.2-9 advertised, and GitOps 1.22.3 installed. No bootstrap was rerun, no operator upgrade approved and no token saved while writing the guides. New/updated documentation remains local until reviewed and committed/pushed; instructions do not claim publication.
+
+## Current verified stage, 2026-11-22
+
+Kafka operator `amqstreams.v3.2.1-10` is installed and Ready through the manual GitOps stage; Application Synced/Healthy at pinned revision `7542a93`. GitOps 1.22.3 is observed after the user's upgrade approval. Later Kafka 3.2.2-9 plan remains unapproved. See [stage result and evidence](operator-stage-result-2026-11-22.md). Broker/storage/topic deployment and live tests remain outstanding. Earlier sections below are historical snapshots.
+
 Date: 2026-11-18. Owner: coordinating work area.
 
 USER-SELECTED: GitOps origin `https://github.com/gennady73/kaas-demo`; operator `3.2.1-10`, OpenShift 4.20.18–4.21.x; four-topic, <=300s, <=2 MiB smoke test.

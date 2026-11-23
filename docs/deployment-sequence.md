@@ -1,6 +1,6 @@
 # Sandbox deployment sequence
 
-Prepared 2026-11-19. Continue using the available default ArgoCD instance in `openshift-gitops`. Preserve the pending GitOps 1.22.3 InstallPlan as unapproved; intended production GitOps version remains unknown.
+Updated 2026-11-23. The complete procedure is in [bootstrap-guide.md](bootstrap-guide.md); Git publication/promotion is in [git-workflow.md](git-workflow.md). Continue using the existing ArgoCD instance in `openshift-gitops`. The user approved GitOps 1.22.3 and it is now observed installed. Kafka operator 3.2.1-10 was installed through the sequence below; preserve manual control of later Kafka upgrades. Production GitOps version remains unknown. Do not replay completed initial approvals on the existing sandbox.
 
 1. Render `environments/dev/operator` with Kustomize. Publish a reviewed Git revision and render the Application template with its full commit SHA.
 2. Bootstrap only namespaces `kafka-operator` and `kaas-kafka`, the restricted AppProject, and the manually synchronized operator Application. No extra ArgoCD instance is needed.
