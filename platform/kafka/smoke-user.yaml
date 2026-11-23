@@ -1,0 +1,34 @@
+apiVersion: kafka.strimzi.io/v1
+kind: KafkaUser
+metadata:
+  name: kaas-smoke-client
+  namespace: kaas-kafka
+  annotations:
+    argocd.argoproj.io/sync-wave: '2'
+  labels:
+    strimzi.io/cluster: kaas-dev
+spec:
+  authentication:
+    type: scram-sha-512
+  authorization:
+    type: simple
+    acls:
+    - resource:
+        type: topic
+        name: kaas-dev-smoke-
+        patternType: prefix
+      operations:
+      - Read
+      - Write
+      - Describe
+    - resource:
+        type: group
+        name: kaas-dev-smoke-
+        patternType: prefix
+      operations:
+      - Read
+      - Describe
+    - resource:
+        type: cluster
+      operations:
+      - IdempotentWrite

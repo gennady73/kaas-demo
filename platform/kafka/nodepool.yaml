@@ -1,0 +1,38 @@
+apiVersion: kafka.strimzi.io/v1
+kind: KafkaNodePool
+metadata:
+  name: dual-role
+  namespace: kaas-kafka
+  annotations:
+    argocd.argoproj.io/sync-wave: '0'
+  labels:
+    strimzi.io/cluster: kaas-dev
+spec:
+  replicas: 3
+  roles:
+  - controller
+  - broker
+  storage:
+    type: persistent-claim
+    size: 20Gi
+    class: gp3-csi
+    deleteClaim: false
+  resources:
+    requests:
+      cpu: 500m
+      memory: 2Gi
+    limits:
+      cpu: '1'
+      memory: 2Gi
+  jvmOptions:
+    -Xms: 512m
+    -Xmx: 1g
+  template:
+    pod:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchLabels:
+                strimzi.io/name: kaas-dev-kafka
+            topologyKey: kubernetes.io/hostname

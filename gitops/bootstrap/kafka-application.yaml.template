@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kaas-demo-kafka
+  namespace: openshift-gitops
+spec:
+  project: kaas-demo-kafka
+  source:
+    repoURL: https://github.com/gennady73/kaas-demo.git
+    targetRevision: ${GIT_REVISION}
+    path: environments/dev/kafka
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: kaas-kafka
+  syncPolicy:
+    syncOptions:
+    - FailOnSharedResource=true

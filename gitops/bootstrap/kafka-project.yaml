@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: kaas-demo-kafka
+  namespace: openshift-gitops
+spec:
+  description: Small sandbox Kafka cluster, users and four topics; manual sync
+  sourceRepos:
+  - https://github.com/gennady73/kaas-demo.git
+  destinations:
+  - namespace: kaas-kafka
+    server: https://kubernetes.default.svc
+  clusterResourceWhitelist: []
+  namespaceResourceWhitelist:
+  - group: kafka.strimzi.io
+    kind: Kafka
+  - group: kafka.strimzi.io
+    kind: KafkaNodePool
+  - group: kafka.strimzi.io
+    kind: KafkaUser
+  - group: kafka.strimzi.io
+    kind: KafkaTopic
