@@ -2,7 +2,7 @@
 
 GitOps implementation repository for the KaaS OpenShift development sandbox.
 
-Status: Kafka operator installation manifests prepared, 2026-11-19. Start with [deployment sequence](docs/deployment-sequence.md). Kafka broker manifests and the executable smoke runner remain subsequent stages; preparation does not claim deployment.
+Status verified 2026-11-23: Kafka 4.2.0 dev cluster deployed and Ready through manual GitOps, with three nodes, four Ready topics and a scoped client user. See the [deployment result](docs/kafka-cluster-result-2026-11-23.md). The producer/consumer smoke test has not run.
 
 ## Guides
 
@@ -23,7 +23,7 @@ Status: Kafka operator installation manifests prepared, 2026-11-19. Start with [
 
 ## Selected baseline
 
-- Red Hat Streams for Apache Kafka operator identifier `3.2.1-10`; exact artifact/digest and supported broker mapping still require inspection. This is an operator version, not the broker version.
+- Red Hat Streams for Apache Kafka operator identifier `3.2.1-10`; selected artifact/digest and broker mapping verified; exact deployed details are in the result report. This is an operator version, not the broker version.
 - OpenShift 4.20.18 through 4.21.x. Development sandbox was observed on 4.21.42 with AWS EBS CSI; target storage direction remains VSAN with planned ODF migration.
 - Target RF=2 and retention 6 hours. Preserve explicit dev billing/storage differences when implementing overlays.
 - Immediate test: four topics, producer/consumer clients, at most 300 seconds total including startup/retry/drain/shutdown; value payload maximum 2 MiB (2,097,152 bytes).
@@ -33,6 +33,6 @@ Status: Kafka operator installation manifests prepared, 2026-11-19. Start with [
 
 Review changes in Git. Only permitted personnel may initiate/authorize ArgoCD synchronization; connecting the repository does not enable automated sync. Install privileged operator/CRD resources separately from tenant changes. Keep test Jobs outside recurring application reconciliation so routine sync cannot accidentally rerun traffic.
 
-GitHub is the selected repository origin. A disconnected target needs an accessible internal mirror and controlled promotion of reviewed revisions and image dependencies. Credentials/private keys belong in approved Secret storage, never in this repository.
+GitHub is the selected repository origin. A disconnected target needs an accessible internal Git mirror and controlled promotion of reviewed revisions and image dependencies. Credentials/private keys belong in approved Secret storage, never in this repository.
 
 See [implementation status](docs/implementation-status.md) for the inputs needed to produce deployable manifests.
