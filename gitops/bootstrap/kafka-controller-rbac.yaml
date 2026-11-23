@@ -1,0 +1,34 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: kaas-kafka-gitops
+  namespace: kaas-kafka
+rules:
+- apiGroups:
+  - kafka.strimzi.io
+  resources:
+  - kafkas
+  - kafkanodepools
+  - kafkatopics
+  - kafkausers
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: kaas-kafka-gitops
+  namespace: kaas-kafka
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: kaas-kafka-gitops
+subjects:
+- kind: ServiceAccount
+  name: openshift-gitops-argocd-application-controller
+  namespace: openshift-gitops
