@@ -59,3 +59,11 @@ Initial operator-stage commit `91785f48c81265363bbd4eb7a6aeefdeb94f66f1` exists 
 Strict server dry-run accepted both proposed namespaces, the AppProject and the Application pinned to that initial commit, without persisting resources. Rendered OperatorGroup and Subscription passed offline validation against the installed OLM OpenAPI schemas; resolver behavior and selected operator runtime are not yet tested. Exact selected CSV is available in the live catalog; broker mapping remains open until that exact bundle/CSV is inspected.
 
 Prepared offline expected-record generator and example under `tests/dev-smoke/`; exact byte/checksum/boundary checks passed, no Kafka traffic. Shared detailed results: coordinator `docs/environment/operator-stage-preparation-2026-11-19.md`. ArgoCD sync/install must wait for publication; do not bypass GitOps using a direct operator installation. Pending GitOps 1.22.3 stays unapproved.
+
+## Update: functional smoke observed 2026-11-23
+
+Native Java-client smoke PASS: 16/16 unique originals delivered on four topics, each including 2 MiB, within 268s through container exit. See [full result](smoke-test-result-2026-11-23.md). Initial xk6 image failed at 1 MiB and emitted its test credential; containment and replacement credential are documented. xk6 correction, performance and recovery qualification remain OPEN. This supersedes earlier not-run statements for basic functional delivery only.
+
+## Update: custom xk6 smoke PASS, 2026-11-24
+
+The isolated corrected custom build passed all 16 records including 2 MiB across four topics within 268s. Old image lacked custom size reader; source build/config corrections, runtime hash/file-precedence probe and independent reconciliation are recorded in the [build audit/result](xk6-build-and-smoke-2026-11-24.md). New image is sandbox-local, no external release or Git push. Capacity/recovery acceptance remains open.

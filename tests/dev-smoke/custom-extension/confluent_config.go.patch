@@ -1,0 +1,13 @@
+--- original/confluent_config.go
++++ build/confluent_config.go
+@@ -78,8 +78,8 @@
+ 	configMap := ckafka.ConfigMap{
+ 		"bootstrap.servers": strings.Join(brokers, ","),
+ 		"message.max.bytes": getCustomMaxBytes(),
+-		"max.request.size":  getCustomMaxBytes(),
+-		"debug":             "msg,broker",
++		
++		
+ 	}
+ 
+ 	// logrus.Infof("=== [DEBUG] LIBRDKAFKA CONFIG MAP ===")

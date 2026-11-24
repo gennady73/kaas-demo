@@ -1,0 +1,160 @@
+diff --git a/pkg/kafka/confluent_config.go b/pkg/kafka/confluent_config.go
+index c97b8f2..e1adbb6 100644
+--- a/pkg/kafka/confluent_config.go
++++ b/pkg/kafka/confluent_config.go
+@@ -2,10 +2,14 @@ package kafka
+ 
+ import (
+ 	"context"
++	// "fmt"
+ 	"maps"
+ 	"strconv"
+ 	"strings"
+ 	"time"
++	"os"
++	"sync"
++	// "github.com/sirupsen/logrus"
+ 
+ 	ckafka "github.com/confluentinc/confluent-kafka-go/v2/kafka"
+ )
+@@ -17,6 +21,41 @@ const (
+ 	confluentAutoOffsetResetLatest   = "latest"
+ )
+ 
++// DYNAMIC CONFIG STATE
++var (
++	customMaxBytes int
++	loadConfigOnce sync.Once
++)
++
++// getCustomMaxBytes safely reads the limit from disk (or EnvVar) exactly once.
++func getCustomMaxBytes() int {
++	loadConfigOnce.Do(func() {
++		// Base safety default (50MB) if nothing is provided
++		customMaxBytes = 52428800
++
++		// fmt.Printf("*** Value in bytes: %d\n", customMaxBytes)
++
++		// 1. Try reading from the external file mounted via K8s ConfigMap
++		if data, err := os.ReadFile("/script/kafka-client-limits.txt"); err == nil {
++			if parsed, err := strconv.Atoi(strings.TrimSpace(string(data))); err == nil {
++				customMaxBytes = parsed
++				// fmt.Printf("*** Value in bytes Error: %d\n", customMaxBytes)
++				// fmt.Printf("*** Value parsed Error: %d\n", string(data))
++				return
++			}
++		}
++
++		// 2. Fallback to an Environment Variable if the file is missing
++		if envStr := os.Getenv("XK6_KAFKA_MAX_BYTES"); envStr != "" {
++			if parsed, err := strconv.Atoi(envStr); err == nil {
++				customMaxBytes = parsed
++				// fmt.Printf("*** Value in bytes SUCCESS: %d\n", customMaxBytes)
++			}
++		}
++	})
++	return customMaxBytes
++}
++
+ func ensureContext(ctx context.Context) context.Context {
+ 	if ctx == nil {
+ 		return context.Background()
+@@ -35,10 +74,21 @@ func newConfluentConfigMap(brokers []string) (ckafka.ConfigMap, error) {
+ 	if len(brokers) == 0 {
+ 		return nil, newInvalidConfigError("confluent config", errBrokersMustNotBeEmpty)
+ 	}
+-
+-	return ckafka.ConfigMap{
++	
++	configMap := ckafka.ConfigMap{
+ 		"bootstrap.servers": strings.Join(brokers, ","),
+-	}, nil
++		"message.max.bytes": getCustomMaxBytes(),
++		"max.request.size":  getCustomMaxBytes(),
++		"debug":             "msg,broker",
++	}
++
++	// logrus.Infof("=== [DEBUG] LIBRDKAFKA CONFIG MAP ===")
++	// for k, v := range configMap {
++	// 	logrus.Infof("  -> %s: %v", k, v)
++	// }
++	// logrus.Infof("=====================================")
++	
++	return configMap, nil
+ }
+ 
+ func setConfluentConfigValue(config ckafka.ConfigMap, key string, value any) error {
+diff --git a/pkg/kafka/producer.go b/pkg/kafka/producer.go
+index 2a80a90..f3acc58 100644
+--- a/pkg/kafka/producer.go
++++ b/pkg/kafka/producer.go
+@@ -6,6 +6,7 @@ import (
+ 	"fmt"
+ 	"sync"
+ 	"time"
++	// "github.com/sirupsen/logrus"
+ 
+ 	ckafka "github.com/confluentinc/confluent-kafka-go/v2/kafka"
+ )
+@@ -32,6 +33,17 @@ func NewProducerFromWriterConfig(writerConfig *WriterConfig) (*Producer, error)
+ 		return nil, err
+ 	}
+ 
++    // OVERRIDES: The absolute last step before the C-library 
++	// _ = config.SetKey("message.max.bytes", 104857600)
++	// _ = config.SetKey("max.request.size", 104857600)
++	// _ = config.SetKey("debug", "msg,broker")
++
++	// // Print as an Error so k6 doesn't hide it during normal execution
++	// logrus.Errorf("=== [DEBUG] OVERRIDING CONFIG MAP IN PRODUCER.GO ===")
++	// for k, v := range config {
++	// 	logrus.Errorf("  -> %s: %v", k, v)
++	// }
++
+ 	saslContext, err := NewSaslContext(writerConfig.SASL, writerConfig.Brokers, SASLContextOpts{})
+ 	if err != nil {
+ 		return nil, err
+diff --git a/pkg/kafka/writer.go b/pkg/kafka/writer.go
+index 139738a..9dc3c2b 100644
+--- a/pkg/kafka/writer.go
++++ b/pkg/kafka/writer.go
+@@ -2,13 +2,15 @@ package kafka
+ 
+ import (
+ 	"errors"
+-	"fmt"
++	// "fmt"
+ 	"reflect"
+ 	"time"
+ 
+ 	"github.com/go-viper/mapstructure/v2"
+ 	"github.com/grafana/sobek"
+ 	"go.k6.io/k6/js/common"
++
++	// "os"
+ )
+ 
+ var (
+@@ -106,12 +108,22 @@ type ProduceConfig struct {
+ }
+ 
+ func (k *Kafka) producerClass(call sobek.ConstructorCall) *sobek.Object {
++
++	// os.Stdout.WriteString("<<< producerClass >>> Bypassing all loggers - stdout\n")
++	// fmt.Fprintf(os.Stderr, "<<< producerClass >>> Bypassing all loggers - stderr: %s\n", "critical info")
++	// println("<<< producerClass >>> Bypassing all loggers - Built-in print directly to stderr")
++
+ 	return k.compatProducerClass(call)
+ }
+ 
+ // writerClass is the deprecated Writer compatibility constructor exposed to JS.
+ // nolint: funlen
+ func (k *Kafka) writerClass(call sobek.ConstructorCall) *sobek.Object {
++
++	// os.Stdout.WriteString("<<< writerClass >>> Bypassing all loggers - stdout\n")
++	// fmt.Fprintf(os.Stderr, "<<< writerClass >>> Bypassing all loggers - stderr: %s\n", "critical info")
++	// println("<<< writerClass >>> Bypassing all loggers - Built-in print directly to stderr")	
++
+ 	return k.compatProducerClass(call)
+ }
+ 

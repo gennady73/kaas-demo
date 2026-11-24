@@ -2,7 +2,7 @@
 
 GitOps implementation repository for the KaaS OpenShift development sandbox.
 
-Status verified 2026-11-23: Kafka 4.2.0 dev cluster deployed and Ready through manual GitOps, with three nodes, four Ready topics and a scoped client user. See the [deployment result](docs/kafka-cluster-result-2026-11-23.md). The producer/consumer smoke test has not run.
+Status verified 2026-11-24: Kafka 4.2.0 dev cluster is Ready. The rebuilt custom xk6 passed the four-topic smoke: 16/16 records including 2 MiB values, within 268 seconds through container completion. See the [custom xk6 build audit and result](docs/xk6-build-and-smoke-2026-11-24.md), [earlier deployment result](docs/kafka-cluster-result-2026-11-23.md), and [historical Java smoke/old-image failure](docs/smoke-test-result-2026-11-23.md). The new image is sandbox-local; the original Docker Hub image is unchanged.
 
 ## Guides
 
@@ -18,7 +18,7 @@ Status verified 2026-11-23: Kafka 4.2.0 dev cluster deployed and Ready through m
 | `tenants/` | GitOps-managed tenant topics and access resources |
 | `environments/dev/` | Intended development overlay and ArgoCD source path |
 | `gitops/` | ArgoCD project/application definitions and sync controls |
-| `tests/dev-smoke/` | Four-topic smoke-test input snapshot and later runner integration |
+| `tests/dev-smoke/` | Four-topic smoke contract, executed native runner and independent reconciliation |
 | `docs/` | Baseline provenance and implementation status |
 
 ## Selected baseline

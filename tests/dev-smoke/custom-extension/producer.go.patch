@@ -1,0 +1,10 @@
+--- original/producer.go
++++ build/producer.go
+@@ -49,6 +49,7 @@
+ 		return nil, err
+ 	}
+ 
++	fmt.Printf("KAAS_PRODUCER_CONFIG message.max.bytes=%v acks=%v\n", config["message.max.bytes"], config["acks"])
+ 	client, err := ckafka.NewProducer(&config)
+ 	if err != nil {
+ 		return nil, NewXk6KafkaError(failedCreateProducer, "Failed to create producer.", err)

@@ -1,0 +1,11 @@
+--- original/writer.go
++++ build/writer.go
+@@ -2,7 +2,7 @@
+ 
+ import (
+ 	"errors"
+-	// "fmt"
++	"fmt"
+ 	"reflect"
+ 	"time"
+ 
