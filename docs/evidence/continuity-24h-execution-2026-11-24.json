@@ -1,0 +1,29 @@
+{
+  "status": "RUNNING",
+  "run_id": "continuity-24h-20261124170112-1a83",
+  "namespace": "kaas-demo",
+  "job": "kaas-continuity-24h-20261124170112-1a83",
+  "observer_job": "kaas-continuity-24h-20261124170112-1a83-watch",
+  "generation_start_utc": "2026-11-24T17:02:42.136Z",
+  "generation_end_utc": "2026-11-25T17:02:42.136Z",
+  "target_original_value_bytes": 100000000,
+  "target_records": 100000,
+  "value_bytes": 1000,
+  "topics": 4,
+  "observed_counts": {
+    "acknowledged": 500,
+    "attempt": 500,
+    "client_ready": 8,
+    "client_start": 8,
+    "commit": 500,
+    "heartbeat": 128,
+    "receipt": 500
+  },
+  "stopped": null,
+  "recorded_at_utc": "2026-11-24T17:11:18.384785+00:00",
+  "plan_sha256": "70db532a78fb8c35619771ac43dcddca6738ca5b6f33e72f69e27fbf413d5be1",
+  "utility_commit": "963db2d41b6dc140d661c96e108f1c09a7c76da5",
+  "demo_commit": "6106cbc3f90e4e1c04398eb813a1b54782f70970",
+  "short_rehearsals": "15m and 60m not run; direct 24h requested",
+  "acceptance": "Pending full independent reconciliation, successful worker/observer exits and final cluster/restart review"
+}

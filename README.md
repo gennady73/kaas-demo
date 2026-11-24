@@ -38,3 +38,7 @@ Review changes in Git. Only permitted personnel may initiate/authorize ArgoCD sy
 GitHub is the selected repository origin. A disconnected target needs an accessible internal Git mirror and controlled promotion of reviewed revisions and image dependencies. Credentials/private keys belong in approved Secret storage, never in this repository.
 
 See [implementation status](docs/implementation-status.md) for the inputs needed to produce deployable manifests.
+
+## Continuity evidence collection
+
+The user-authorized 24-hour/100 MB sandbox test is in progress, with no final PASS yet. See the [run checkpoint](docs/continuity-24h-run-2026-11-24.md) and [collector and one-run monitor guide](tests/continuity/collector/README.md). Publishing this source does not deploy, restart, or rerun the test; the committed stage profiles remain disabled.

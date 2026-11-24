@@ -1,0 +1,15 @@
+{
+  "scope": "local handler/SQLite checks only, no network/native Kafka",
+  "checks": [
+    "commit visible from new SQLite connection before ACK",
+    "same-envelope deduplication",
+    "wrong hash rejected",
+    "conflicting duplicate rejected",
+    "bearer authentication",
+    "readiness scoped to plan",
+    "operator stop blocks new sends",
+    "incomplete seal rejected",
+    "health"
+  ],
+  "passed": true
+}
