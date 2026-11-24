@@ -1,0 +1,178 @@
+{
+  "contract_version": "0.1",
+  "profile_id": "SANDBOX-CONTINUITY-100MB-24H",
+  "recorded_date": "2026-11-24",
+  "status": "implemented_offline_candidates_not_execution_ready",
+  "execution_enabled": false,
+  "execution_ready": false,
+  "user_instruction": "Prepare only; do not run. Qualify continuity at 100 MB over 24h before finalizing/committing 24h 2TB/20TB profiles.",
+  "accounting": {
+    "byte_units": "decimal",
+    "target_boundary": "unique original generated UTF-8 ASCII value bytes",
+    "target_bytes": 100000000,
+    "wire_replication_consumer_retry_metadata_bytes_excluded": true,
+    "record_count": 100000,
+    "record_value_bytes": 1000,
+    "application_retries": 0,
+    "unresolved_outcomes_allowed_for_pass": 0
+  },
+  "measurement": {
+    "generation_seconds": 86400,
+    "setup_limit_seconds": 120,
+    "drain_limit_seconds": 300,
+    "shutdown_limit_seconds": 60,
+    "maximum_total_job_seconds": 86880,
+    "schedule": "deterministic_uniform_interleaved",
+    "record_due_seconds_formula": "(global_record_index + 0.5) * 86400 / 100000",
+    "topic_selection": "global_record_index modulo 4",
+    "unbounded_catch_up": false,
+    "late_generation_allowed": false,
+    "maximum_proposed_start_lateness_seconds": 5
+  },
+  "clients": {
+    "logical_producers": 4,
+    "logical_consumers": 4,
+    "required_acks": -1,
+    "compression": "none",
+    "native_message_max_bytes": 3145728,
+    "consumer_fetch_max_bytes": 4194304,
+    "auto_commit": false,
+    "consumer_policy": "one fresh stable group per topic; continuous polling; no intentional stop/start or member overlap",
+    "manual_commit_policy": "implement and verify selected-build API; commit only after verified receipt and durable evidence acknowledgement",
+    "max_unplanned_per_topic_ack_gap_seconds": 60,
+    "max_unplanned_per_group_receipt_gap_seconds": 60,
+    "heartbeat_period_seconds": 60,
+    "maximum_verified_consumer_lag_seconds": 60
+  },
+  "topics": [
+    {
+      "name": "kaas-dev-smoke-01",
+      "record_count": 25000,
+      "value_bytes": 25000000,
+      "consumer_group_template": "kaas-dev-smoke-01-continuity-<unique-run-id>"
+    },
+    {
+      "name": "kaas-dev-smoke-02",
+      "record_count": 25000,
+      "value_bytes": 25000000,
+      "consumer_group_template": "kaas-dev-smoke-02-continuity-<unique-run-id>"
+    },
+    {
+      "name": "kaas-dev-smoke-03",
+      "record_count": 25000,
+      "value_bytes": 25000000,
+      "consumer_group_template": "kaas-dev-smoke-03-continuity-<unique-run-id>"
+    },
+    {
+      "name": "kaas-dev-smoke-04",
+      "record_count": 25000,
+      "value_bytes": 25000000,
+      "consumer_group_template": "kaas-dev-smoke-04-continuity-<unique-run-id>"
+    }
+  ],
+  "environment_reference": {
+    "test_namespace": "kaas-demo",
+    "kafka_namespace": "kaas-kafka",
+    "cluster": "kaas-dev",
+    "bootstrap_endpoints": [
+      "kaas-dev-kafka-bootstrap.kaas-kafka.svc:9093"
+    ],
+    "image": "image-registry.openshift-image-registry.svc:5000/kaas-demo/kaas-xk6-verified-20261124@sha256:f66c3f86f2365b219c590d1d3c580ea41fcc4ab2ba74fc1efb2ae72d93be0df2",
+    "binary_sha256": "6c705c09c17c9773158ef08d4446531855d37ab0b20ad5aaee41decd949604ec",
+    "retention_ms": 21600000,
+    "replication_factor": 2,
+    "minimum_isr": 2,
+    "security": "TLS verified CA/hostname and SCRAM-SHA-512",
+    "source_secret_reference": "kaas-kafka/kaas-smoke-client",
+    "ca_reference": "kaas-kafka/kaas-dev-cluster-ca-cert",
+    "new_test_secret_name": null,
+    "resource_requests": {
+      "cpu": "500m",
+      "memory": "512Mi"
+    },
+    "resource_limits": {
+      "cpu": "2",
+      "memory": "1Gi"
+    }
+  },
+  "stages": [
+    {
+      "id": "S0",
+      "name": "existing_boundary_smoke",
+      "status": "verified_in_prior_run",
+      "measurement_seconds": null,
+      "record_count": 16,
+      "target_unique_value_bytes": 12849152,
+      "execution_enabled": false,
+      "observed_job_to_container_finish_seconds": 268,
+      "maximum_total_seconds": 300
+    },
+    {
+      "id": "S1",
+      "name": "offline_continuity_adapter_review",
+      "status": "implemented_and_validated_offline_only",
+      "measurement_seconds": null,
+      "record_count": null,
+      "target_unique_value_bytes": null,
+      "execution_enabled": false
+    },
+    {
+      "id": "S2",
+      "name": "pacing_and_evidence_15m",
+      "status": "planned_not_run",
+      "measurement_seconds": 900,
+      "record_count": 1040,
+      "target_unique_value_bytes": 1040000,
+      "execution_enabled": false
+    },
+    {
+      "id": "S3",
+      "name": "continuity_rehearsal_60m",
+      "status": "planned_not_run",
+      "measurement_seconds": 3600,
+      "record_count": 4168,
+      "target_unique_value_bytes": 4168000,
+      "execution_enabled": false
+    },
+    {
+      "id": "S4",
+      "name": "sandbox_continuity_24h",
+      "status": "planned_not_run",
+      "measurement_seconds": 86400,
+      "record_count": 100000,
+      "target_unique_value_bytes": 100000000,
+      "execution_enabled": false
+    }
+  ],
+  "entry_gaps": [
+    "Offline planner/runner implementation and simulations completed; no native runtime execution of the continuity path.",
+    "Collector endpoint/storage/ack protocol and external Job/metric exports must be provided and validated before arming.",
+    "Selected-build consumer position, commit and close behavior plus external deadline and eight-VU resource adequacy require separately authorized short-stage verification.",
+    "Fresh live run ID, seed, UTC start, owner, new Secret, initial offsets and stop-control/evidence references remain required."
+  ],
+  "run_inputs": {
+    "run_id": null,
+    "seed": null,
+    "planned_start_utc": null,
+    "owner": null,
+    "evidence_sink_reference": null,
+    "stop_control_reference": null
+  },
+  "promotion": {
+    "after_successful_100mb_24h_only": true,
+    "future_volume_configs_generated_or_committed_now": false,
+    "automatic_high_volume_execution": false,
+    "full_scale_execution_requires_separate_target_capacity_and_operating_envelope_validation": true
+  },
+  "prepared_scenarios": {
+    "15m": "scenarios/15m.json",
+    "60m": "scenarios/60m.json",
+    "24h": "scenarios/24h.json"
+  },
+  "prepared_plans": {
+    "15m": "generated/15m/worker-0.json",
+    "60m": "generated/60m/worker-0.json",
+    "24h": "generated/24h/worker-0.json"
+  },
+  "runtime_bundle": "runtime/manifest.json"
+}

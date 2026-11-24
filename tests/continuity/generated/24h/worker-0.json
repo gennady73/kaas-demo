@@ -1,0 +1,204 @@
+{
+  "algorithm": "sha256-hex-ascii-v1",
+  "clients": [
+    "producer_0",
+    "producer_1",
+    "producer_2",
+    "producer_3",
+    "consumer_0",
+    "consumer_1",
+    "consumer_2",
+    "consumer_3"
+  ],
+  "collector_timeout_seconds": 2,
+  "compression": "none",
+  "consumer_fetch_max_bytes": 4194304,
+  "consumer_groups": [
+    {
+      "commit_policy": "manual_after_durable_receipt",
+      "group_id": "kaas-dev-smoke-01-continuity-offline-continuity-24h-20261124",
+      "offset_reset": "earliest",
+      "require_full_run": true,
+      "topics": [
+        "kaas-dev-smoke-01"
+      ]
+    },
+    {
+      "commit_policy": "manual_after_durable_receipt",
+      "group_id": "kaas-dev-smoke-02-continuity-offline-continuity-24h-20261124",
+      "offset_reset": "earliest",
+      "require_full_run": true,
+      "topics": [
+        "kaas-dev-smoke-02"
+      ]
+    },
+    {
+      "commit_policy": "manual_after_durable_receipt",
+      "group_id": "kaas-dev-smoke-03-continuity-offline-continuity-24h-20261124",
+      "offset_reset": "earliest",
+      "require_full_run": true,
+      "topics": [
+        "kaas-dev-smoke-03"
+      ]
+    },
+    {
+      "commit_policy": "manual_after_durable_receipt",
+      "group_id": "kaas-dev-smoke-04-continuity-offline-continuity-24h-20261124",
+      "offset_reset": "earliest",
+      "require_full_run": true,
+      "topics": [
+        "kaas-dev-smoke-04"
+      ]
+    }
+  ],
+  "consumer_sessions": [
+    {
+      "end_seconds": 86700,
+      "group_id": "kaas-dev-smoke-01-continuity-offline-continuity-24h-20261124",
+      "phase": "continuous_generation_and_drain",
+      "session_id": "kaas-dev-smoke-01-continuity-offline-continuity-24h-20261124:continuous",
+      "start_seconds": 0,
+      "topics": [
+        "kaas-dev-smoke-01"
+      ]
+    },
+    {
+      "end_seconds": 86700,
+      "group_id": "kaas-dev-smoke-02-continuity-offline-continuity-24h-20261124",
+      "phase": "continuous_generation_and_drain",
+      "session_id": "kaas-dev-smoke-02-continuity-offline-continuity-24h-20261124:continuous",
+      "start_seconds": 0,
+      "topics": [
+        "kaas-dev-smoke-02"
+      ]
+    },
+    {
+      "end_seconds": 86700,
+      "group_id": "kaas-dev-smoke-03-continuity-offline-continuity-24h-20261124",
+      "phase": "continuous_generation_and_drain",
+      "session_id": "kaas-dev-smoke-03-continuity-offline-continuity-24h-20261124:continuous",
+      "start_seconds": 0,
+      "topics": [
+        "kaas-dev-smoke-03"
+      ]
+    },
+    {
+      "end_seconds": 86700,
+      "group_id": "kaas-dev-smoke-04-continuity-offline-continuity-24h-20261124",
+      "phase": "continuous_generation_and_drain",
+      "session_id": "kaas-dev-smoke-04-continuity-offline-continuity-24h-20261124:continuous",
+      "start_seconds": 0,
+      "topics": [
+        "kaas-dev-smoke-04"
+      ]
+    }
+  ],
+  "delivery_timeout_seconds": 10,
+  "drain_limit_seconds": 300,
+  "duration_seconds": 86400,
+  "environment": {
+    "binary_sha256": "6c705c09c17c9773158ef08d4446531855d37ab0b20ad5aaee41decd949604ec",
+    "bootstrap_endpoints": [
+      "kaas-dev-kafka-bootstrap.kaas-kafka.svc:9093"
+    ],
+    "cluster": "kaas-dev",
+    "evidence_sink_url": null,
+    "kafka_namespace": "kaas-kafka",
+    "namespace": "kaas-demo",
+    "test_image": "image-registry.openshift-image-registry.svc:5000/kaas-demo/kaas-xk6-verified-20261124@sha256:f66c3f86f2365b219c590d1d3c580ea41fcc4ab2ba74fc1efb2ae72d93be0df2"
+  },
+  "execution_enabled": false,
+  "execution_ready": false,
+  "fixture": false,
+  "heartbeat_seconds": 30,
+  "input_hashes": {
+    "contract": "214173de3e9ff3cb7a6e6d8594439ae92954adafea84dfc4237bbb75e789591c",
+    "scenario": "a376f8029d100ec0d93afda0a6d672a4b9558d47fab55ad541d1eaa423d063bc"
+  },
+  "max_ack_gap_seconds": 60,
+  "max_application_retries": 0,
+  "max_receipt_gap_seconds": 60,
+  "max_receive_latency_seconds": 60,
+  "max_start_lateness_seconds": 5,
+  "maximum_clock_drift_ms": 2000,
+  "maximum_total_job_seconds": 86880,
+  "mode": "sandbox_continuity",
+  "native_message_max_bytes": 3145728,
+  "owner": null,
+  "plan_version": "continuity-1.0",
+  "planned_start_utc": null,
+  "profile_id": "SANDBOX-CONTINUITY-100MB-24H",
+  "qualification": "low_volume_continuity",
+  "record_count": 100000,
+  "record_value_bytes": 1000,
+  "required_acks": -1,
+  "run_id": "offline-continuity-24h-20261124",
+  "runner_entrypoint": "preflight/continuity.js",
+  "runner_source_sha256": {
+    "continuity-core.mjs": "5651bce19cbdb9e9023e98fec624748ce959743135a9467d05dfced01b435620",
+    "continuity-engine.mjs": "a4abaa0fe9ba971df5569bb96297f5855129f5c63bdfc450d08bed1712c99b25",
+    "continuity.js": "f6cddd09437c8e3cd6aab5d9a92a252c6bde9ffbb122cda311a9ac82a1c60989",
+    "core.mjs": "afae5cc4378a22a182448bc69f9e08a26e463e213c86d9fb3df4ad62c9974183"
+  },
+  "runtime_evidence": {
+    "binary_ack_semantics_reference": null,
+    "collector_durability_reference": null,
+    "effective_topic_settings_reference": null,
+    "evidence_collection_reference": null,
+    "initial_group_offsets_reference": null,
+    "job_deadline_reference": null,
+    "native_commit_close_reference": null,
+    "security_adapter_reference": null,
+    "stop_policy_reference": null,
+    "worker_budget_reference": null
+  },
+  "schedule": "uniform_interleaved_midpoints",
+  "seed": 20261124,
+  "setup_limit_seconds": 120,
+  "shutdown_limit_seconds": 60,
+  "source_scenario_execution_enabled": false,
+  "stage": "24h",
+  "stop_control_reference": null,
+  "streams": [
+    {
+      "budget_bytes": 25000000,
+      "group_id": "kaas-dev-smoke-01-continuity-offline-continuity-24h-20261124",
+      "maximum_payload_bytes": 1000,
+      "minimum_payload_bytes": 1000,
+      "name": "kaas-dev-smoke-01",
+      "ordinal": 0,
+      "record_count": 25000
+    },
+    {
+      "budget_bytes": 25000000,
+      "group_id": "kaas-dev-smoke-02-continuity-offline-continuity-24h-20261124",
+      "maximum_payload_bytes": 1000,
+      "minimum_payload_bytes": 1000,
+      "name": "kaas-dev-smoke-02",
+      "ordinal": 1,
+      "record_count": 25000
+    },
+    {
+      "budget_bytes": 25000000,
+      "group_id": "kaas-dev-smoke-03-continuity-offline-continuity-24h-20261124",
+      "maximum_payload_bytes": 1000,
+      "minimum_payload_bytes": 1000,
+      "name": "kaas-dev-smoke-03",
+      "ordinal": 2,
+      "record_count": 25000
+    },
+    {
+      "budget_bytes": 25000000,
+      "group_id": "kaas-dev-smoke-04-continuity-offline-continuity-24h-20261124",
+      "maximum_payload_bytes": 1000,
+      "minimum_payload_bytes": 1000,
+      "name": "kaas-dev-smoke-04",
+      "ordinal": 3,
+      "record_count": 25000
+    }
+  ],
+  "target_tolerance_fraction": 0,
+  "target_value_payload_bytes": 100000000,
+  "worker_count": 1,
+  "worker_id": 0
+}

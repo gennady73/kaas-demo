@@ -1,0 +1,14 @@
+{
+  "status": "OFFLINE_REVIEW_BUNDLE_NOT_EXECUTED",
+  "canonical_source": "https://github.com/gennady73/kafka-load-test/tree/963db2d41b6dc140d661c96e108f1c09a7c76da5/preflight",
+  "mount_directory": "/script/preflight",
+  "files": {
+    "continuity.js": "f6cddd09437c8e3cd6aab5d9a92a252c6bde9ffbb122cda311a9ac82a1c60989",
+    "continuity-core.mjs": "5651bce19cbdb9e9023e98fec624748ce959743135a9467d05dfced01b435620",
+    "continuity-engine.mjs": "a4abaa0fe9ba971df5569bb96297f5855129f5c63bdfc450d08bed1712c99b25",
+    "core.mjs": "afae5cc4378a22a182448bc69f9e08a26e463e213c86d9fb3df4ad62c9974183",
+    "continuity-entrypoint.sh": "7c449164ab1b81aec8283a0f8a13982580aa7b39c82a2213b6410b85d5c58497"
+  },
+  "canonical_repository": "https://github.com/gennady73/kafka-load-test.git",
+  "canonical_commit": "963db2d41b6dc140d661c96e108f1c09a7c76da5"
+}

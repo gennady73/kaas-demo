@@ -1,0 +1,54 @@
+{
+  "mode": "sandbox_continuity",
+  "profile_id": "SANDBOX-CONTINUITY-100MB-24H",
+  "stage": "24h",
+  "execution_enabled": false,
+  "fixture": false,
+  "short_validation": false,
+  "run_id": "offline-continuity-24h-20261124",
+  "seed": 20261124,
+  "workers": 1,
+  "duration_seconds": 86400,
+  "record_count": 100000,
+  "record_value_bytes": 1000,
+  "target_value_payload_bytes": 100000000,
+  "target_tolerance_fraction": 0,
+  "required_acks": -1,
+  "max_application_retries": 0,
+  "setup_limit_seconds": 120,
+  "drain_limit_seconds": 300,
+  "shutdown_limit_seconds": 60,
+  "schedule": "uniform_interleaved_midpoints",
+  "topics": [
+    "kaas-dev-smoke-01",
+    "kaas-dev-smoke-02",
+    "kaas-dev-smoke-03",
+    "kaas-dev-smoke-04"
+  ],
+  "environment": {
+    "namespace": "kaas-demo",
+    "kafka_namespace": "kaas-kafka",
+    "cluster": "kaas-dev",
+    "bootstrap_endpoints": [
+      "kaas-dev-kafka-bootstrap.kaas-kafka.svc:9093"
+    ],
+    "test_image": "image-registry.openshift-image-registry.svc:5000/kaas-demo/kaas-xk6-verified-20261124@sha256:f66c3f86f2365b219c590d1d3c580ea41fcc4ab2ba74fc1efb2ae72d93be0df2",
+    "binary_sha256": "6c705c09c17c9773158ef08d4446531855d37ab0b20ad5aaee41decd949604ec",
+    "evidence_sink_url": null
+  },
+  "owner": null,
+  "planned_start_utc": null,
+  "stop_control_reference": null,
+  "runtime_evidence": {
+    "effective_topic_settings_reference": null,
+    "binary_ack_semantics_reference": null,
+    "worker_budget_reference": null,
+    "evidence_collection_reference": null,
+    "stop_policy_reference": null,
+    "security_adapter_reference": null,
+    "initial_group_offsets_reference": null,
+    "native_commit_close_reference": null,
+    "job_deadline_reference": null,
+    "collector_durability_reference": null
+  }
+}

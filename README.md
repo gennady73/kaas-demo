@@ -6,6 +6,8 @@ Status verified 2026-11-24: Kafka 4.2.0 dev cluster is Ready. The rebuilt custom
 
 ## Guides
 
+- [Staged continuity plan](docs/staged-xk6-continuity-plan.md): preparation only; 24-hour/100 MB sandbox continuity before later terabyte-profile finalization, plus existing Argo CD UI URL.
+
 - [Bootstrap guide](docs/bootstrap-guide.md): prerequisites, namespace/project/Application bootstrap, manual sync and exact initial-plan approval, readiness checks and current limits.
 - [Git workflow](docs/git-workflow.md): what belongs in each local repository, credential setup, review/push and the separate ArgoCD promotion step.
 - [Operator stage result](docs/operator-stage-result-2026-11-22.md): observed installation result and evidence references.

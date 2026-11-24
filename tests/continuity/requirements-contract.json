@@ -1,0 +1,63 @@
+{
+  "contract_version": "1.0",
+  "status": "preparation_inputs_not_a_runnable_xk6_configuration",
+  "recorded_date": "2026-11-17",
+  "srs_revision": "0.8",
+  "framework_repository": "https://github.com/gennady73/kafka-load-test",
+  "synthetic_conventions": {
+    "byte_units": "decimal",
+    "volume_boundary": "original_generated_value_payload_bytes",
+    "serialization_and_record_overhead_in_target": false,
+    "consumer_and_replica_bytes_in_target": false,
+    "production_representativeness_claimed": false
+  },
+  "common": {
+    "generation_duration_seconds": 86400,
+    "topic_replication_factor": 2,
+    "topic_retention_ms": 21600000,
+    "fixed_burst_multiplier": null,
+    "target_volume_tolerance_fraction": null,
+    "producer_acknowledgements": null,
+    "minimum_in_sync_replicas": null,
+    "random_seed": null,
+    "random_generator_algorithm": null,
+    "consumer_group_policy": null,
+    "consumer_schedule_bounds": null,
+    "producer_schedule_bounds": null,
+    "separate_drain_limit_seconds": null,
+    "infrastructure_persistence_dependency": "DEP-PERSIST-01"
+  },
+  "profiles": [
+    {
+      "id": "WP-A",
+      "target_value_payload_bytes": 2000000000000,
+      "minimum_payload_bytes": 1000,
+      "maximum_payload_bytes": 10000000,
+      "uniform_input_reference_payload_bytes_retained_rf2_6h": 1000000000000,
+      "topics": []
+    },
+    {
+      "id": "WP-B",
+      "target_value_payload_bytes": 20000000000000,
+      "minimum_payload_bytes": 10000,
+      "maximum_payload_bytes": 300000,
+      "uniform_input_reference_payload_bytes_retained_rf2_6h": 10000000000000,
+      "topics": []
+    }
+  ],
+  "environment": {
+    "openshift_version": null,
+    "namespace": null,
+    "kafka_cluster_reference": null,
+    "bootstrap_endpoints": [],
+    "security_profile_reference": null,
+    "credential_secret_references": [],
+    "component_inventory_reference": null,
+    "test_image_digest": null,
+    "storage_class_reference": null,
+    "usable_storage_bytes": null,
+    "observability_reference": null,
+    "resource_manifest_reference": null
+  },
+  "execution_rule": "Select one profile, resolve environment and scenario inputs, verify effective topic/client configuration and framework support, then perform a short validation run before the 24-hour run. Null values and empty lists are unresolved inputs, not defaults. No run or GitOps application has been performed."
+}
