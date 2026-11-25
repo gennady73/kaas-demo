@@ -128,7 +128,7 @@ def validate(stages):
                 ):
                     raise ValueError("registry bootstrap role cannot grant Secret/wildcard/delete access")
         if kind in {"ApicurioRegistry3", "KeycloakRealmImport"}:
-            fn = "apicurio-redhat-3.3.4-r1.json" if kind == "ApicurioRegistry3" else "keycloak-upstream-26.4.7.json"
+            fn = "apicurio-redhat-3.3.4-r1.json" if kind == "ApicurioRegistry3" else "keycloak-redhat-served-26.4.18.json"
             schema_path = ROOT / "validation" / "schemas" / fn
             if kind == "ApicurioRegistry3":
                 release = json.loads((ROOT / "redhat-release-lock.json").read_text())
@@ -188,7 +188,7 @@ def render(inputs, out, mode):
         }, sort_keys=False))
     receipt = {"mode": mode, "resource_count": sum(map(len, stages.values())), "missing_values": missing,
                "deployment_authorized": False, "registration_authorized": False, "tests_authorized": False,
-               "validation_scope": "exact Red Hat3.3.4-r1 Registry CR spec/strict fields; upstream Keycloak26.4 family spec; C5 policy; no server/runtime validation"}
+               "validation_scope": "exact Red Hat3.3.4-r1 Registry CR spec/strict fields; served Keycloak26.4.18 RealmImport spec; C5 policy; no admission/runtime validation"}
     (out / "render-result.json").write_text(json.dumps(receipt, indent=2) + "\n")
     return receipt
 

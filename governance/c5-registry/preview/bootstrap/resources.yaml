@@ -69,7 +69,7 @@ spec:
   project: kaas-c5-registry
   source:
     repoURL: https://github.com/gennady73/kaas-demo.git
-    targetRevision: UNRESOLVED_SOURCE_REVISION
+    targetRevision: d8dac192d30a98c1ad7c3a1e9c077b8dea85c248
     path: governance/c5-registry/rendered/operator
   destination:
     server: https://kubernetes.default.svc
@@ -87,7 +87,7 @@ spec:
   project: kaas-c5-registry
   source:
     repoURL: https://github.com/gennady73/kaas-demo.git
-    targetRevision: UNRESOLVED_SOURCE_REVISION
+    targetRevision: d8dac192d30a98c1ad7c3a1e9c077b8dea85c248
     path: governance/c5-registry/rendered/postgres
   destination:
     server: https://kubernetes.default.svc
@@ -113,7 +113,7 @@ spec:
   project: kaas-c5-registry
   source:
     repoURL: https://github.com/gennady73/kaas-demo.git
-    targetRevision: UNRESOLVED_SOURCE_REVISION
+    targetRevision: d8dac192d30a98c1ad7c3a1e9c077b8dea85c248
     path: governance/c5-registry/rendered/registry
   destination:
     server: https://kubernetes.default.svc
@@ -131,7 +131,7 @@ spec:
   project: kaas-c5-realm
   source:
     repoURL: https://github.com/gennady73/kaas-demo.git
-    targetRevision: UNRESOLVED_SOURCE_REVISION
+    targetRevision: d8dac192d30a98c1ad7c3a1e9c077b8dea85c248
     path: governance/c5-registry/rendered/realm
   destination:
     server: https://kubernetes.default.svc

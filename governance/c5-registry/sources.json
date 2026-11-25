@@ -57,5 +57,15 @@
     "qualification": "Exact digest-pinned Red Hat bundle downloaded through existing login, manifest/config/layer SHA256 checked; CSV, image env/relatedImages and CRD schema inspected; Registry CR spec and strict fields validated offline. No runtime/server validation.",
     "schema_file": "validation/schemas/apicurio-redhat-3.3.4-r1.json",
     "schema_sha256": "473a2d165ebbfc6161a2d97391f6bfa3d792da5f5d210ae8d1c123dd51c91a2f"
+  },
+  "keycloak_served_schema": {
+    "date": "2026-11-25",
+    "installed_operator": "26.4.18-opr.2",
+    "api_version": "k8s.keycloak.org/v2alpha1",
+    "source": "GET keycloakrealmimports.k8s.keycloak.org via signed-in sandbox3088 console proxy",
+    "file": "validation/schemas/keycloak-redhat-served-26.4.18.json",
+    "sha256": "dc9561eda092661d8a8d246fc40d4dc0d87a731b7fba0897d4c8a8064bdeabca",
+    "comparison": "full parsed served schema equals prior upstream26.4.7 snapshot; current renderer now uses served copy",
+    "qualification": "structural spec/strict fields only, not admission/CEL or import execution"
   }
 }

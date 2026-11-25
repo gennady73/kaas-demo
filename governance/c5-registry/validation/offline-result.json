@@ -1,184 +1,87 @@
 {
   "date": "2026-11-25",
-  "status": "EXACT_BUNDLE_OFFLINE_VALIDATED_NOT_DEPLOYED",
-  "bundle": {
-    "result": "PASS_EXACT_BUNDLE_OFFLINE",
-    "manifest_sha256": "ed9356d61f58291fb47c4c984242e3fa0f98f1054c262e70ccac0bb7cd70b82c",
-    "csv": "apicurio-registry-3.v3.3.4-r1",
-    "version": "3.3.4-r1",
-    "blob_sha256_checks": 2,
-    "registry_cr_schema": "PASS_SPEC_AND_STRICT_FIELDS",
-    "watch_mapping": "metadata.annotations['olm.targetNamespaces']",
-    "missing_values": [
-      "SOURCE_REVISION"
-    ],
-    "keycloak_schema": "upstream26.4.7 family only",
-    "server_admission_runtime_signature_validation": "NOT_EXECUTED"
-  },
-  "schema_full_parsed_equals_cached_upstream": true,
-  "unit_tests": {
-    "methods": 15,
-    "result": "PASS"
-  },
-  "kustomize_stages": 5,
-  "resource_count": 25,
-  "tamper_probes": [
-    {
-      "case": "manifest_tampering",
-      "result": "REJECTED",
-      "reason": "ValueError: bundle manifest digest mismatch"
-    },
-    {
-      "case": "blob_tampering",
-      "result": "REJECTED",
-      "reason": "ValueError: bundle blob size/digest mismatch"
-    }
-  ],
-  "candidate": "REJECTED_expected_missing_SOURCE_REVISION_before_output",
-  "preservation": {
-    "existing_non_C5_demo_files_checked": 178,
-    "changed": []
-  },
-  "preview": {
-    "mode": "preview",
-    "resource_count": 25,
-    "missing_values": [
-      "SOURCE_REVISION"
-    ],
+  "status": "SOURCE_PINNED_READ_ONLY_CHECKED_EXECUTION_DISABLED",
+  "source_revision": "d8dac192d30a98c1ad7c3a1e9c077b8dea85c248",
+  "runtime_flags": {
     "deployment_authorized": false,
     "registration_authorized": false,
     "tests_authorized": false,
-    "validation_scope": "exact Red Hat3.3.4-r1 Registry CR spec/strict fields; upstream Keycloak26.4 family spec; C5 policy; no server/runtime validation"
+    "execution_ready": false
   },
-  "commands": [
+  "source_blobs_verified": 8,
+  "applications_pinned": 4,
+  "unit_tests": {
+    "methods": 16,
+    "result": "PASS",
+    "evidence": "unit-tests.txt"
+  },
+  "kustomize_checks": [
     {
-      "argv": [
-        "/usr/bin/python",
-        "/home/gunger/Projects/kaas-solution/kaas-demo/governance/c5-registry/validation/verify_redhat_bundle.py",
-        "--image-dir",
-        "/home/gunger/Projects/kaas-solution/docs/governance/c5-bundle-validation-2026-11-25/bundle-image"
-      ],
-      "cwd": "/home/gunger/Projects/kaas-solution",
-      "exit": 0
+      "path": "preview/bootstrap",
+      "result": "PASS"
     },
     {
-      "argv": [
-        "/usr/bin/python",
-        "-m",
-        "unittest",
-        "-v",
-        "test_render"
-      ],
-      "cwd": "/home/gunger/Projects/kaas-solution/kaas-demo/governance/c5-registry",
-      "exit": 0
+      "path": "preview/operator",
+      "result": "PASS"
     },
     {
-      "argv": [
-        "oc",
-        "kustomize",
-        "/home/gunger/Projects/kaas-solution/kaas-demo/governance/c5-registry/preview/bootstrap"
-      ],
-      "cwd": "/home/gunger/Projects/kaas-solution",
-      "exit": 0
+      "path": "preview/postgres",
+      "result": "PASS"
     },
     {
-      "argv": [
-        "oc",
-        "kustomize",
-        "/home/gunger/Projects/kaas-solution/kaas-demo/governance/c5-registry/preview/operator"
-      ],
-      "cwd": "/home/gunger/Projects/kaas-solution",
-      "exit": 0
+      "path": "preview/realm",
+      "result": "PASS"
     },
     {
-      "argv": [
-        "oc",
-        "kustomize",
-        "/home/gunger/Projects/kaas-solution/kaas-demo/governance/c5-registry/preview/postgres"
-      ],
-      "cwd": "/home/gunger/Projects/kaas-solution",
-      "exit": 0
+      "path": "preview/registry",
+      "result": "PASS"
     },
     {
-      "argv": [
-        "oc",
-        "kustomize",
-        "/home/gunger/Projects/kaas-solution/kaas-demo/governance/c5-registry/preview/realm"
-      ],
-      "cwd": "/home/gunger/Projects/kaas-solution",
-      "exit": 0
-    },
-    {
-      "argv": [
-        "oc",
-        "kustomize",
-        "/home/gunger/Projects/kaas-solution/kaas-demo/governance/c5-registry/preview/registry"
-      ],
-      "cwd": "/home/gunger/Projects/kaas-solution",
-      "exit": 0
-    },
-    {
-      "argv": [
-        "/usr/bin/python",
-        "/home/gunger/Projects/kaas-solution/kaas-demo/governance/c5-registry/render.py",
-        "--mode",
-        "candidate",
-        "--out",
-        "/tmp/c5-redhat-f_oidfbd/candidate"
-      ],
-      "cwd": "/home/gunger/Projects/kaas-solution",
-      "exit": 2
-    },
-    {
-      "argv": [
-        "/usr/bin/python",
-        "/home/gunger/Projects/kaas-solution/kaas-demo/governance/c5-registry/validation/verify_redhat_bundle.py",
-        "--image-dir",
-        "/tmp/c5-redhat-f_oidfbd/manifest"
-      ],
-      "cwd": "/home/gunger/Projects/kaas-solution",
-      "exit": 1
-    },
-    {
-      "argv": [
-        "/usr/bin/python",
-        "/home/gunger/Projects/kaas-solution/kaas-demo/governance/c5-registry/validation/verify_redhat_bundle.py",
-        "--image-dir",
-        "/tmp/c5-redhat-f_oidfbd/blob"
-      ],
-      "cwd": "/home/gunger/Projects/kaas-solution",
-      "exit": 1
+      "path": "registration",
+      "result": "PASS"
     }
   ],
-  "limitations": [
-    "Keycloak schema remains upstream26.4.7 family",
-    "No server admission/CEL/defaulting/live-schema validation",
-    "No image execution/signature validation/runtime acceptance",
-    "Resource budget, operational evidence and source publication/pin remain open"
-  ],
-  "deployment_authorized": false,
-  "registration_authorized": false,
-  "tests_authorized": false,
+  "real_candidate": "REJECTED_expected_missing_operational_promotion_evidence",
+  "registry_schema": "exact bundle and live served schema equal; spec/strict fields PASS",
+  "realm_schema": "exact installed served v2alpha1; spec/strict fields PASS; parsed equals former upstream snapshot",
+  "preservation": {
+    "unselected_existing_files_checked": 178,
+    "changed": [],
+    "realm_template_unchanged": true
+  },
+  "readiness_summary": "readiness-summary.json",
   "not_executed": [
-    "cluster API/Secret reads or writes",
-    "OLM approval/install",
+    "Kubernetes resource/permission/Secret changes",
+    "access-review POST/server dry-run/admission",
+    "App registration/sync",
+    "InstallPlan approval/upgrade",
     "realm import/SSO modification",
-    "runtime/load tests",
-    "commit/push/publication",
-    "independent reviewer"
+    "container/client/runtime/load tests"
   ],
   "package_sha256": {
-    "inputs.json": "db81e8de644b94f8308b6c17f404f59f56a4323d599cba516339feb59b36bdbd",
-    "render.py": "57d187f66dc202ceebd51cc518657d93b0601e814aa4c81e01d8b87caf34c0fa",
-    "test_render.py": "84211ebfa966ae36150c7a81bea07e17ae10585c702e8a13dd8745aea080c392",
-    "README.md": "7e907b3488c0ce4605a8996c6979e053a03794a59361bd1331872b94713ef2ac",
+    "inputs.json": "3106b55a51524bc70b2924e70b48299502348ec19819b463f3582cb67e9fca5d",
+    "render.py": "b2e297f288a1f4aaf370383725cccbd56b6e28d6aa3b74ebb0986484f3194c30",
+    "test_render.py": "bd58c82fcda317699be9a9177a270bd2e4e1fd833501be39771b0a1bb0ab6f7d",
+    "README.md": "84af3378c3921382de6f7c3758912f70096792ce9973b9b86ed8815e3644bf01",
     "secret-contract.json": "0673d12a9478ebbca0e2fc2234c032a001f25b2efa5ff9c82a2a34b6740b7a24",
-    "sources.json": "6ad6dab37152d32cf0396b281bfa1b0dba882ba1cc45f37ca5e2ddd10b0b2fa4",
+    "sources.json": "f2c0fe70bb369a1cf7bfc9502925a8a39ecfd4aad8bbd65b598f5abc6a648ad3",
     "redhat-release-lock.json": "351cf179606b387fb74bb52cd782802c9d3f17d6e05210920f7beb9301edb421",
-    "validation/verify_redhat_bundle.py": "8624c933134e9b6618758b8fadd46ad5b89c5db2c6cac4405f048e44ab5cf4a7",
+    "resource-source-lock.json": "57ac9d134c931291c4838cf78f5eae61132536143e60e7de62e976ec809826e6",
+    "readiness-summary.json": "74bb5395b107a14b4488f4480332e606c8565f1c686b19c68692d8b9b9cdddbc",
+    "validation/verify_redhat_bundle.py": "6f689adfd679a79641eeaddb26a3095b17b84bb454a87f13a371cd95d539657d",
     "admin-review/realm-import-rbac.yaml.template": "24096d7bc8cbd62fada3dd0cc73c43da0063bb3bd7f10de1426903c4422ac205",
-    "preview/render-result.json": "f90df209ef212af4777be1a987171b4e8aa53433439f1ab091c3cf759baffc3b",
-    "preview/bootstrap/resources.yaml": "8dc34742351f6f5045d2f6b2843d2fed0a78de025b613fdef116ddacbff969de",
+    "preview/render-result.json": "c3de33d74cb7fb81d02238c1ecddad295526d658e5067c449cd30c675e964a1d",
+    "registration/resources.yaml": "8ee3f1ba1ff6d1314e3eb32e0b74f45915b0b13dfe73e848227bf79fe05de449",
+    "registration/kustomization.yaml": "4fe0245114630ad93c69d1c9c6d065f1a8d79aeabb30358883916a5f190d4fb5",
+    "rendered/operator/resources.yaml": "e5ea30bd0241402c9b8354b90fba33ac3c882bb97f6460842e627d215c3253ff",
+    "rendered/operator/kustomization.yaml": "4fe0245114630ad93c69d1c9c6d065f1a8d79aeabb30358883916a5f190d4fb5",
+    "rendered/postgres/resources.yaml": "e287b9af3dcd06e3b92ca74a706789f60367576b50cb88aa5c32ec4edb8364eb",
+    "rendered/postgres/kustomization.yaml": "4fe0245114630ad93c69d1c9c6d065f1a8d79aeabb30358883916a5f190d4fb5",
+    "rendered/realm/resources.yaml": "ad8b28185f4df450296d3eb920a2464bcd28b6bf711824d3e07cd019aa0aefc5",
+    "rendered/realm/kustomization.yaml": "4fe0245114630ad93c69d1c9c6d065f1a8d79aeabb30358883916a5f190d4fb5",
+    "rendered/registry/resources.yaml": "edb4c41d31ee7696ae674f3f96fdd8e1dedc0d913e1df07a7409417e6412efff",
+    "rendered/registry/kustomization.yaml": "4fe0245114630ad93c69d1c9c6d065f1a8d79aeabb30358883916a5f190d4fb5",
+    "preview/bootstrap/resources.yaml": "8ee3f1ba1ff6d1314e3eb32e0b74f45915b0b13dfe73e848227bf79fe05de449",
     "preview/bootstrap/kustomization.yaml": "4fe0245114630ad93c69d1c9c6d065f1a8d79aeabb30358883916a5f190d4fb5",
     "preview/operator/resources.yaml": "e5ea30bd0241402c9b8354b90fba33ac3c882bb97f6460842e627d215c3253ff",
     "preview/operator/kustomization.yaml": "4fe0245114630ad93c69d1c9c6d065f1a8d79aeabb30358883916a5f190d4fb5",
@@ -191,28 +94,11 @@
     "validation/schemas/apicurio-upstream-3.3.4.json": "46424dc608256a553c88fa321161ef450587276019eb6baebcc05ed6a54fcb98",
     "validation/schemas/keycloak-upstream-26.4.7.json": "ed5a899682c88b7db2e45c17896eb2641b954f7ccea0eac418a9898ed188caa9",
     "validation/schemas/apicurio-redhat-3.3.4-r1.json": "473a2d165ebbfc6161a2d97391f6bfa3d792da5f5d210ae8d1c123dd51c91a2f",
+    "validation/schemas/keycloak-redhat-served-26.4.18.json": "dc9561eda092661d8a8d246fc40d4dc0d87a731b7fba0897d4c8a8064bdeabca",
     "templates/bootstrap/resources.yaml.template": "0d54da9bde34ff782fbbde698cd165cd67b55e9e0c73cc3f4bd0703bf8f4d49b",
     "templates/operator/resources.yaml.template": "46db44418abc05f3ed19bfc27ea99d527876122fae1649226d9ba918f9270991",
     "templates/postgres/resources.yaml.template": "7e7312b2f0d50a665b05831c45470f907220a6feb3a00d8e32b88fea53adfb65",
     "templates/registry/resources.yaml.template": "bac2a7e810535bff3f7da75a0dcbdec3a4759ffab1cf70cb04bc099744b49b5f",
     "templates/realm/resources.yaml.template": "6490604bc5fd50dad6d26109a84c5d31c856feb582bad35c277dcd1a76dd4c7d"
-  },
-  "bundle_files_sha256": {
-    "bundle-image/version": "c08ff8b68add15153b4fa2ca4ab4e70a6068f4d28286145b60636da0b374c9a4",
-    "bundle-image/signature-6": "5ab57d89bd7e9cb804087106fcae763d20388ca6d32cdf72056fdbbf0d922ef6",
-    "bundle-image/signature-5": "e1538f3d3bb373bda5a686376ff1259dd56babfe6f77bee78d41f94231811890",
-    "bundle-image/signature-4": "c8d0b034e083bcc9ba331474e27b081e65dc3c62586077fd08aeda4e877ce61e",
-    "bundle-image/signature-3": "2178df77abac69d4bc49e856a16c5c78a353d10ae881e1691d5837c32ad5867d",
-    "bundle-image/signature-2": "62bf82304c298f3a34e3207d6eff959623099cb047ae2af371fb500ee2625338",
-    "bundle-image/signature-1": "8d74c57034377b78b4050cd30fbcdc68656b86d4decda984eea223329fc06591",
-    "bundle-image/manifest.json": "ed9356d61f58291fb47c4c984242e3fa0f98f1054c262e70ccac0bb7cd70b82c",
-    "bundle-image/20e42b4d089f8dff7fe86bdc2912db3c46f92f54791fc70cbaa13e6ff52a6ede": "20e42b4d089f8dff7fe86bdc2912db3c46f92f54791fc70cbaa13e6ff52a6ede",
-    "bundle-image/745938c4bac904dd99c618b3e8401a09bfa1b39c6ee4060b1a787228b9bea599": "745938c4bac904dd99c618b3e8401a09bfa1b39c6ee4060b1a787228b9bea599",
-    "bundle-extracted/metadata/dependencies.yaml": "568c092a1d4f28424e3df8d8aa2d2fc738e14c32d8854f970d69bb480e476afd",
-    "bundle-extracted/metadata/annotations.yaml": "52f0370ccb2c811577baadbb939e50d1db7099f11f72a120f60fef497eebf5cb",
-    "bundle-extracted/manifests/registry.apicur.io_apicurioregistries3.yaml": "798c0d183129c723ab319b757ae69351e01f2ad5172eaa74f981903933c612f7",
-    "bundle-extracted/manifests/apicurio-registry-3.clusterserviceversion.yaml": "074541e0b7197f28da12dbbc5b504629258b46308b3c4d9d65505294019fc02c",
-    "bundle-extracted/root/buildinfo/Dockerfile-apicurio-apicurio-registry-3-operator-bundle-3.3.4.r1-5": "e34b1738c05bc59e51ec2f4bf8aef7b1848333df2c22e94c53e877a8d8fcff8e",
-    "bundle-extracted/root/buildinfo/content_manifests/apicurio-registry-3-operator-bundle-container-3.3.4.r1-5.json": "27ee41d92a1011cecd3f923a159e673dc36f99e83ff81783d314893fd55fc870"
   }
 }

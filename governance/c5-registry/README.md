@@ -2,7 +2,7 @@
 
 User-selected operator/package: **Red Hat build of Apicurio Registry 3, 3.3.4-r1**. Realm: **kaas-c5-poc**. Reuse the existing Keycloak service; create a separate registry PostgreSQL instance and PVC. Do not modify the existing `sso`/`master` realms, OpenShift OAuth, `idp-4-ocp`, Keycloak CR/operator/database, Kafka or existing ArgoCD Applications.
 
-**Nothing here is deployed or registered.** Inputs keep deployment, registration and tests false. There is no root Kustomization, ApplicationSet or existing development overlay reference to this directory. `preview/` contains an unresolved source-revision placeholder and is for review only. These conventions are not Kubernetes admission controls: manually applying files bypasses local checks and is not authorized.
+**Nothing here is deployed or registered.** Inputs keep deployment, registration and tests false. There is no root Kustomization, ApplicationSet or existing development overlay reference to this directory. `preview/` and `registration/` contain immutable source pins and are for review only. These conventions are not Kubernetes admission controls: manually applying files bypasses local checks and is not authorized.
 
 ## Exact release identity
 
@@ -10,7 +10,7 @@ User-selected operator/package: **Red Hat build of Apicurio Registry 3, 3.3.4-r1
 
 ## Published resource and registration boundary
 
-`rendered/{operator,postgres,realm,registry}` contains the reviewed resource stages for immutable Git pinning. No bootstrap or Application is included in these source paths, and no existing composition references them. `resource-source-lock.json` records their content hashes. A separate follow-up commit pins `inputs.json`, previews and `registration/` to the verified resource commit; it never changes existing Applications. Publication does not authorize registration, sync or deployment. Remaining readiness evidence must be reviewed before execution.
+`rendered/{operator,postgres,realm,registry}` contains the reviewed resource stages for immutable Git pinning. No bootstrap or Application is included in these source paths, and no existing composition references them. `resource-source-lock.json` records their content hashes. `inputs.json`, previews and `registration/` pin all four Applications to published resource revision `d8dac192d30a98c1ad7c3a1e9c077b8dea85c248`; existing Applications are unchanged. Publication does not authorize registration, sync or deployment. Remaining readiness evidence must be reviewed before execution.
 
 ## Layout and offline use
 
@@ -23,7 +23,7 @@ User-selected operator/package: **Red Hat build of Apicurio Registry 3, 3.3.4-r1
 | `templates/realm/` | One-shot KeycloakRealmImport for only kaas-c5-poc, secret placeholders and bounded resource requests |
 | `templates/registry/` | ApicurioRegistry3, API/UI edge Routes and limited ingress |
 | `admin-review/` | Optional high-privilege realm-import controller grant, deliberately excluded from all compositions |
-| `validation/schemas/` | Exact Red Hat3.3.4-r1 Registry schema plus historical upstream Registry and provisional Keycloak family schemas; not installation manifests |
+| `validation/schemas/` | Exact Red Hat3.3.4-r1 Registry schema plus historical upstream Registry and installed Keycloak served schema plus historical family snapshots; not installation manifests |
 | `preview/` | Locally rendered, syntactically reviewable Kustomize stages; **not a deployment candidate** |
 
 From this directory:
@@ -35,9 +35,9 @@ oc kustomize /tmp/c5-registry-preview-review/registry
 python render.py --mode candidate --out /tmp/c5-registry-promotion-review
 ```
 
-The last command **must reject the shipped inputs** before writing output: source revision remains unresolved; promotion evidence is incomplete. Commands render/check local files only. PyYAML and jsonschema are required. No renderer command talks to a cluster, obtains credentials, imports a realm or changes authorization flags.
+The last command **must reject the shipped inputs** before writing output: operational promotion evidence remains incomplete even though source/CSV/image pins are resolved. Commands render/check local files only. PyYAML and jsonschema are required. No renderer command talks to a cluster, obtains credentials, imports a realm or changes authorization flags.
 
-After complete input review, a later authorized source-preparation step may materialize all stages under `governance/c5-registry/rendered/`, publish/verify the exact Git revision, and pin that revision in separately reviewed Application registration manifests. The rendered source commit must exist before registering Applications. Bootstrap/Application registration files do not need to be part of the same pinned resource commit. Do not commit a dummy SHA, change existing Application pins, or assume an empty `syncPolicy` starts an operation.
+The four resource stages under `governance/c5-registry/rendered/` are published and verified, and the separate registration manifests pin that exact resource revision. The rendered source commit must exist before registering Applications. Bootstrap/Application registration files do not need to be part of the same pinned resource commit. Do not commit a dummy SHA, change existing Application pins, or assume an empty `syncPolicy` starts an operation.
 
 ## Security and lifecycle contract
 
@@ -66,4 +66,10 @@ One app, UI, PostgreSQL and operator replica. Proposed steady requests: **950m C
 
 After separately authorized rollout, require Ready operator/registry/database, successful isolated realm import, unchanged baseline OpenShift SSO, valid UI login/logout and account-console SSO, API admin/writer/reader/no-role tests, invalid audience/token rejection, schema compatibility and serialization fixtures, verified JDBC/OIDC trust, restart/restore preserving schema IDs, and no-egress qualification for any air-gapped claim. Readiness alone is not acceptance. Kafka OAuth authorization remains outside this rollout.
 
-The coordinator workspace holds the deployment plan, source/validation evidence and C5 handoff. The package's `sources.json` and `redhat-release-lock.json` record exact catalog CSV/app/UI/bundle identities and supplementary upstream source versions. Exact Registry bundle schema checks pass offline; Keycloak schema remains a provisional upstream family snapshot. Server validation and live execution remain OPEN.
+The coordinator workspace holds the deployment plan, source/validation evidence and C5 handoff. The package's `sources.json` and `redhat-release-lock.json` record exact catalog CSV/app/UI/bundle identities and supplementary upstream source versions. Exact Registry bundle schema checks pass offline; Keycloak RealmImport uses the installed Red Hat26.4.18 served schema; full parsed schema equals the retained upstream snapshot. Server validation and live execution remain OPEN.
+
+## Read-only readiness result
+
+See `readiness-summary.json`. Read-only checks are complete with execution disabled. Keycloak and GitOps are available, C5 names are absent, served CRD checks and workstation image/DNS/TLS checks pass. The cluster retains a same-schema Apicurio CRD with OLM labels for an absent prior CSV; no matching Subscription/Deployment/CSV or Registry instance was found. Do not delete it or assume adoption: inspect actual initial InstallPlan ownership before any approval. The existing global OperatorGroup is untouched.
+
+New Secrets, actual namespace/image-pull/admission/SCC/PVC behavior, pod network/trust, concrete execution window and runtime acceptance remain open. They cannot be established by these GET-only checks. Existing controller global read/other broad grants remain; the scoped proposed bootstrap Role does not revoke existing rights. The optional realm Application remains gated on the accepted privileged import path. No registration, sync, OLM approval, realm import or SSO change occurred.

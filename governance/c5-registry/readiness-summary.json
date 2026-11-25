@@ -1,0 +1,44 @@
+{
+  "date": "2026-11-25",
+  "status": "SOURCE_PUBLISHED_PINNED_READ_ONLY_CHECKS_COMPLETE_NOT_DEPLOYED",
+  "source_revision": "d8dac192d30a98c1ad7c3a1e9c077b8dea85c248",
+  "deployment_authorized": false,
+  "registration_authorized": false,
+  "tests_authorized": false,
+  "execution_ready": false,
+  "verified": [
+    "exact Red Hat3.3.4-r1 CSV/bundle/app/UI digest mapping",
+    "Registry spec against downstream bundle and matching pre-existing served CRD",
+    "RealmImport spec against current installed Red Hat Keycloak served v2alpha1 schema",
+    "Keycloak Ready, three namespace pods Ready, database PVC Bound",
+    "ArgoCD Available; existing two Applications Synced/Healthy and unchanged pins",
+    "C5 namespace/realm/import/Applications/AppProjects/Route hosts absent",
+    "five nodes Ready/no pressure; gp3-csi and service-ca/ingress Available",
+    "workstation app/UI/PostgreSQL manifest reads by exact digest",
+    "public issuer discovery and verified DNS/TLS for SSO and future Registry hosts",
+    "static existing admin cluster-admin binding and existing controller RBAC inspected"
+  ],
+  "retained_registry_crd": "Established; exact schema matches selected bundle; OLM metadata names an absent prior openshift-operators CSV; namespace CSV/Deployment inventories and subscription inventory show no active matching installation; no Registry instances. Preserve and review ownership in the later InstallPlan; no adoption/deletion performed.",
+  "remaining": [
+    "Select concrete execution window and approve initial InstallPlan after retained-CRD ownership review",
+    "Approve resource budget and verify namespace admission/SCC/scheduling/PVC provisioning",
+    "Provision new external Secrets/truststores and verify namespace image pulls",
+    "Select authorized one-shot realm import path; no controller import grant assumed",
+    "Validate actual admitted Routes, mounted CA, pod-to-IdP/database paths and JDBC TLS",
+    "SSO/API/schema/persistence/outage and air-gapped runtime acceptance tests"
+  ],
+  "limits": [
+    "Read-only GETs, DNS/TLS handshakes and local schema checks only; no access-review POST, dry-run, admission or reconciliation",
+    "Kubernetes admin authority is statically evidenced; ArgoCD SSO session/role not validated",
+    "Node allocatable capacity is not free capacity or an approved project resource budget",
+    "Current authenticated console plus unchanged OAuth link is not a fresh OpenShift logout/login test",
+    "Workstation registry access does not establish cluster image-pull authorization or disconnected readiness"
+  ],
+  "other_observations": [
+    "Cluster4.21.42 Available/FailingFalse; UpgradeableFalse for existing missing-root-credential upgrade condition, left unchanged",
+    "Existing GitOps installed1.22.3/current1.22.4 Manual and Kafka installed3.2.1-10/current3.2.2-9 Manual unchanged",
+    "Existing Keycloak subscription Automatic, installed26.4.18-opr.2, unchanged",
+    "Keycloak database pod has four lifetime restarts; server/operator zero; metrics-enabled warning retained",
+    "Existing Argo controller ClusterRole has global read including Secrets and other broad existing permissions; no new grants or isolation claim"
+  ]
+}

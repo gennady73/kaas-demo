@@ -20,5 +20,7 @@
     "registry"
   ],
   "registration_source": "Prepared separately after resource commit publication; no self-referential source SHA",
-  "validation": "exact Red Hat3.3.4-r1 Registry schema; Keycloak family schema until served snapshot replaces it; local renders only"
+  "validation": "Resource data validated against exact Red Hat Registry bundle; realm revalidated against installed served Keycloak schema; no resource content changes",
+  "source_revision": "d8dac192d30a98c1ad7c3a1e9c077b8dea85c248",
+  "publication_verified": true
 }

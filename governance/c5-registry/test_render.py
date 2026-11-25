@@ -15,13 +15,12 @@ class C5PreparationTests(unittest.TestCase):
     def candidate_inputs(self):
         # Deliberately synthetic. These values are never promotion evidence.
         result = copy.deepcopy(self.inputs)
-        result["values"].update(SOURCE_REVISION="a" * 40)
         result["promotion_evidence"] = {k: "SYNTHETIC_TEST_ONLY" for k in result["promotion_evidence"]}
         return result
 
     def test_preview_and_explicit_gaps(self):
         self.assertEqual(sum(map(len, self.stages.values())), 25)
-        self.assertEqual(self.missing, ["SOURCE_REVISION"])
+        self.assertEqual(self.missing, [])
         for policy in self.stages["registry"]:
             if policy["kind"] == "NetworkPolicy":
                 self.assertEqual(policy["spec"]["ingress"][0]["from"][0]["namespaceSelector"]["matchLabels"],
@@ -30,9 +29,16 @@ class C5PreparationTests(unittest.TestCase):
     def test_real_candidate_rejected_before_output(self):
         with tempfile.TemporaryDirectory() as d:
             out = Path(d) / "candidate"
-            with self.assertRaisesRegex(ValueError, "missing values"):
+            with self.assertRaisesRegex(ValueError, "promotion evidence"):
                 render.render(self.inputs, out, "candidate")
             self.assertFalse(out.exists())
+
+    def test_missing_or_rolling_source_revision_rejected(self):
+        for revision in (None, "main"):
+            inputs = self.candidate_inputs()
+            inputs["values"]["SOURCE_REVISION"] = revision
+            with self.subTest(revision=revision), self.assertRaises(ValueError):
+                render.load(inputs, "candidate")
 
     def test_other_release_csv_or_images_rejected(self):
         for key, value in (("STARTING_CSV", "apicurio-registry-3.v3.3.4-r2"),

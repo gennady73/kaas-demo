@@ -66,7 +66,7 @@ def verify(image_dir):
             'blob_sha256_checks': len(manifest['layers']) + 1,
             'registry_cr_schema': 'PASS_SPEC_AND_STRICT_FIELDS',
             'watch_mapping': watch, 'missing_values': missing,
-            'keycloak_schema': 'upstream26.4.7 family only',
+            'keycloak_schema': 'served sandbox26.4.18 RealmImport v2alpha1; structural spec only',
             'server_admission_runtime_signature_validation': 'NOT_EXECUTED'}
 
 
