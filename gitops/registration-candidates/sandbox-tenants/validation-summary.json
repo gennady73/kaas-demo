@@ -1,0 +1,104 @@
+{
+  "date": "2026-11-25",
+  "status": "PINNED_REGISTRATION_PACKAGE_OFFLINE_VALIDATED_DISABLED",
+  "resource_commit": "3211df93ae40d7d6f47c6334966ae6d1f658fee7",
+  "repo_url": "https://github.com/gennady73/kaas-demo.git",
+  "registration_enabled": false,
+  "deployment_enabled": false,
+  "tests_enabled": false,
+  "execution_ready": false,
+  "counts": {
+    "KafkaTopic": 4,
+    "KafkaUser": 4,
+    "AppProject_preview": 2,
+    "Application_preview": 2
+  },
+  "source_verification": "Fresh fetch plus ancestor-of-origin/main check and exact Git source blob/lock/content validation",
+  "local_Kustomize_source_renders": 2,
+  "ArgoCD_schema_scope": "4objects against served CRD snapshots captured2026-11-25; no server dry-run/CEL/admission/reconciliation",
+  "schema_provenance": [
+    {
+      "kind": "Application",
+      "crd_uid": "a2eb1da3-b610-48e0-b80b-c3aaca508b87",
+      "resourceVersion": "286665",
+      "schema_sha256": "b4efa6cd74f2e65d7e14e1823f9a0a7651ac94b3456f0ad2bd0e8fc42e20dc01"
+    },
+    {
+      "kind": "AppProject",
+      "crd_uid": "64a3b15d-e89b-4e0a-b864-9737607f3957",
+      "resourceVersion": "286718",
+      "schema_sha256": "07ef43a9c6fcd8c523b4f33b6d1aad388dfa0800c8f77a4afaf40964f0949489"
+    }
+  ],
+  "negative_probes": [
+    {
+      "name": "rolling branch instead of pinned SHA",
+      "result": "REJECTED_AS_EXPECTED",
+      "reason": "registration source/destination/privilege/manual-sync policy differs"
+    },
+    {
+      "name": "different source revision",
+      "result": "REJECTED_AS_EXPECTED",
+      "reason": "registration source/destination/privilege/manual-sync policy differs"
+    },
+    {
+      "name": "active platform source path",
+      "result": "REJECTED_AS_EXPECTED",
+      "reason": "registration source/destination/privilege/manual-sync policy differs"
+    },
+    {
+      "name": "other repository",
+      "result": "REJECTED_AS_EXPECTED",
+      "reason": "registration source/destination/privilege/manual-sync policy differs"
+    },
+    {
+      "name": "other destination",
+      "result": "REJECTED_AS_EXPECTED",
+      "reason": "registration source/destination/privilege/manual-sync policy differs"
+    },
+    {
+      "name": "automatic sync/prune",
+      "result": "REJECTED_AS_EXPECTED",
+      "reason": "registration source/destination/privilege/manual-sync policy differs"
+    },
+    {
+      "name": "resource deletion finalizer",
+      "result": "REJECTED_AS_EXPECTED",
+      "reason": "registration source/destination/privilege/manual-sync policy differs"
+    },
+    {
+      "name": "namespace creation",
+      "result": "REJECTED_AS_EXPECTED",
+      "reason": "registration source/destination/privilege/manual-sync policy differs"
+    },
+    {
+      "name": "wildcard resource kinds",
+      "result": "REJECTED_AS_EXPECTED",
+      "reason": "registration source/destination/privilege/manual-sync policy differs"
+    },
+    {
+      "name": "cluster-scoped resource grant",
+      "result": "REJECTED_AS_EXPECTED",
+      "reason": "registration source/destination/privilege/manual-sync policy differs"
+    },
+    {
+      "name": "new delegated role",
+      "result": "REJECTED_AS_EXPECTED",
+      "reason": "registration source/destination/privilege/manual-sync policy differs"
+    },
+    {
+      "name": "cross-project assignment",
+      "result": "REJECTED_AS_EXPECTED",
+      "reason": "registration source/destination/privilege/manual-sync policy differs"
+    }
+  ],
+  "publication": "NOT_COMMITTED_OR_PUSHED_IN_THIS_PREPARATION",
+  "runtime_registration": "NOT_PERFORMED",
+  "workloads": 0,
+  "independent_reviewer": false,
+  "remaining_gates": [
+    "Concrete owner-authorized operation/window and chosen operation-path verification",
+    "Fresh health/headroom/ownership and unmanaged backend topic/user name check before reconciliation",
+    "No automatic Git/tenant-content or controller-isolation enforcement inferred"
+  ]
+}

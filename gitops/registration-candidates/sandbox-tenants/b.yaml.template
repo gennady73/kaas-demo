@@ -1,0 +1,36 @@
+# OFFLINE REGISTRATION PREVIEW; REGISTRATION/DEPLOYMENT/TESTS DISABLED
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: kaas-sbx-tenants-b
+  namespace: openshift-gitops
+spec:
+  sourceRepos:
+  - https://github.com/gennady73/kaas-demo.git
+  destinations:
+  - namespace: kaas-kafka
+    server: https://kubernetes.default.svc
+  clusterResourceWhitelist: []
+  namespaceResourceWhitelist:
+  - group: kafka.strimzi.io
+    kind: KafkaTopic
+  - group: kafka.strimzi.io
+    kind: KafkaUser
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kaas-sbx-tenants-b
+  namespace: openshift-gitops
+spec:
+  project: kaas-sbx-tenants-b
+  source:
+    repoURL: https://github.com/gennady73/kaas-demo.git
+    targetRevision: 3211df93ae40d7d6f47c6334966ae6d1f658fee7
+    path: environments/sandbox-tenants/b
+  destination:
+    namespace: kaas-kafka
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    syncOptions:
+    - FailOnSharedResource=true
