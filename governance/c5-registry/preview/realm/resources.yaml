@@ -1,0 +1,178 @@
+# OFFLINE C5 PREVIEW; NOT AUTHORIZED TO APPLY
+apiVersion: k8s.keycloak.org/v2alpha1
+kind: KeycloakRealmImport
+metadata:
+  name: kaas-c5-poc-import
+  namespace: keycloak
+  annotations:
+    argocd.argoproj.io/sync-options: Prune=false,Delete=false
+spec:
+  keycloakCRName: keycloak
+  resources:
+    requests:
+      cpu: 100m
+      memory: 256Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
+  placeholders:
+    C5_ADMIN_PASSWORD:
+      secret:
+        name: kaas-c5-realm-bootstrap
+        key: c5-admin-password
+    C5_WRITER_PASSWORD:
+      secret:
+        name: kaas-c5-realm-bootstrap
+        key: c5-writer-password
+    C5_READER_PASSWORD:
+      secret:
+        name: kaas-c5-realm-bootstrap
+        key: c5-reader-password
+    C5_DENIED_PASSWORD:
+      secret:
+        name: kaas-c5-realm-bootstrap
+        key: c5-denied-password
+    C5_PUBLISHER_SECRET:
+      secret:
+        name: kaas-c5-realm-bootstrap
+        key: c5-publisher-secret
+  realm:
+    id: kaas-c5-poc
+    realm: kaas-c5-poc
+    displayName: KaaS C5 isolated registry PoC
+    enabled: true
+    sslRequired: all
+    registrationAllowed: false
+    resetPasswordAllowed: false
+    loginWithEmailAllowed: false
+    duplicateEmailsAllowed: false
+    bruteForceProtected: true
+    accessTokenLifespan: 300
+    roles:
+      realm:
+      - name: sr-admin
+      - name: sr-developer
+      - name: sr-readonly
+    clients:
+    - clientId: c5-registry-api
+      enabled: true
+      protocol: openid-connect
+      bearerOnly: true
+      publicClient: false
+      standardFlowEnabled: false
+      directAccessGrantsEnabled: false
+      serviceAccountsEnabled: false
+      fullScopeAllowed: false
+    - clientId: c5-registry-ui
+      enabled: true
+      protocol: openid-connect
+      publicClient: true
+      standardFlowEnabled: true
+      directAccessGrantsEnabled: false
+      serviceAccountsEnabled: false
+      fullScopeAllowed: false
+      redirectUris:
+      - https://kaas-c5-registry-ui.apps.ocp.rddgh.sandbox3088.opentlc.com/*
+      webOrigins:
+      - https://kaas-c5-registry-ui.apps.ocp.rddgh.sandbox3088.opentlc.com
+      attributes:
+        pkce.code.challenge.method: S256
+        post.logout.redirect.uris: https://kaas-c5-registry-ui.apps.ocp.rddgh.sandbox3088.opentlc.com/*
+      protocolMappers:
+      - name: registry-api-audience
+        protocol: openid-connect
+        protocolMapper: oidc-audience-mapper
+        consentRequired: false
+        config:
+          included.client.audience: c5-registry-api
+          access.token.claim: 'true'
+          id.token.claim: 'false'
+      - name: registry-realm-roles
+        protocol: openid-connect
+        protocolMapper: oidc-usermodel-realm-role-mapper
+        consentRequired: false
+        config:
+          multivalued: 'true'
+          claim.name: realm_access.roles
+          jsonType.label: String
+          access.token.claim: 'true'
+          id.token.claim: 'false'
+          userinfo.token.claim: 'false'
+    - clientId: c5-registry-publisher
+      enabled: true
+      protocol: openid-connect
+      publicClient: false
+      clientAuthenticatorType: client-secret
+      secret: ${C5_PUBLISHER_SECRET}
+      standardFlowEnabled: false
+      directAccessGrantsEnabled: false
+      serviceAccountsEnabled: true
+      fullScopeAllowed: false
+      protocolMappers:
+      - name: registry-api-audience
+        protocol: openid-connect
+        protocolMapper: oidc-audience-mapper
+        consentRequired: false
+        config:
+          included.client.audience: c5-registry-api
+          access.token.claim: 'true'
+          id.token.claim: 'false'
+      - name: registry-realm-roles
+        protocol: openid-connect
+        protocolMapper: oidc-usermodel-realm-role-mapper
+        consentRequired: false
+        config:
+          multivalued: 'true'
+          claim.name: realm_access.roles
+          jsonType.label: String
+          access.token.claim: 'true'
+          id.token.claim: 'false'
+          userinfo.token.claim: 'false'
+    scopeMappings:
+    - client: c5-registry-ui
+      roles:
+      - sr-admin
+      - sr-developer
+      - sr-readonly
+    - client: c5-registry-publisher
+      roles:
+      - sr-developer
+    users:
+    - username: c5-admin
+      enabled: true
+      realmRoles:
+      - sr-admin
+      credentials:
+      - type: password
+        value: ${C5_ADMIN_PASSWORD}
+        temporary: false
+    - username: c5-writer
+      enabled: true
+      realmRoles:
+      - sr-developer
+      credentials:
+      - type: password
+        value: ${C5_WRITER_PASSWORD}
+        temporary: false
+    - username: c5-reader
+      enabled: true
+      realmRoles:
+      - sr-readonly
+      credentials:
+      - type: password
+        value: ${C5_READER_PASSWORD}
+        temporary: false
+    - username: c5-denied
+      enabled: true
+      realmRoles: []
+      credentials:
+      - type: password
+        value: ${C5_DENIED_PASSWORD}
+        temporary: false
+    - username: service-account-c5-registry-publisher
+      enabled: true
+      serviceAccountClientId: c5-registry-publisher
+      realmRoles:
+      - sr-developer
+    adminEventsEnabled: true
+    adminEventsDetailsEnabled: false

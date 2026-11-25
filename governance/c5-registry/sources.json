@@ -1,0 +1,61 @@
+{
+  "date": "2026-11-25",
+  "apicurio_upstream": {
+    "tag": "3.3.4",
+    "commit": "5662f79947dce0c09a3b9f61ddd5c4bc588fa004",
+    "url": "https://github.com/Apicurio/apicurio-registry/tree/5662f79947dce0c09a3b9f61ddd5c4bc588fa004",
+    "files": {
+      "operator/install/install.yaml": "d11ee46d07d46c9636a480ba2ff9bf73b0603890b95616dc6a8b6c6de3945c27",
+      "operator/controller/src/main/java/io/apicurio/registry/operator/resource/ResourceFactory.java": "53c87e6bd93fac04218c15652b7c2f3cea5f659bd9e2945ece2fcada2aa3db11",
+      "operator/controller/src/main/java/io/apicurio/registry/operator/resource/Labels.java": "da6c4b1a0e6706c3c157cf62cd62208318b6bf519702d7c7eea189bf4e63999b",
+      "operator/controller/src/main/java/io/apicurio/registry/operator/feat/security/Auth.java": "f4acf4e381c5dd94d07012fa75f88d3054c32dae0de41f4364065ef3e183d99a",
+      "operator/controller/src/main/java/io/apicurio/registry/operator/feat/security/AuthTLS.java": "a6724b1c395f70b759f9eda4e3b24261ed4df623e7268fa1934eb3b8bf381230",
+      "operator/controller/src/main/java/io/apicurio/registry/operator/feat/security/Authz.java": "edde2f16ce8e51f6dc2c1480dccc8c5bf56617437c4f46cd40e62d4b5f45f055",
+      "operator/controller/src/main/java/io/apicurio/registry/operator/resource/ui/UIDeploymentResource.java": "17d58be865b320205bb53dd728b45709cc55b7cbc7d27031778bc64196878c6d",
+      "ui/README.md": "044cc6e2aef217cd05d8b27231bb7df56b57d4c3360c1cac50a14bd451f5c01b",
+      "ui/ui-app/src/services/useConfigService.ts": "9f88040cb8a87dfc351de4a97863a7ac601058b2f198aa9c3a491337d6a36947"
+    },
+    "qualification": "upstream source/schema; NOT exact Red Hat 3.3.4-r1 bundle proof"
+  },
+  "keycloak_schema": {
+    "tag": "26.4.7",
+    "commit": "fe4fe0db3f8480ba4e3068948572a81f64c35807",
+    "url": "https://github.com/keycloak/keycloak-k8s-resources/blob/fe4fe0db3f8480ba4e3068948572a81f64c35807/kubernetes/keycloakrealmimports.k8s.keycloak.org-v1.yml",
+    "qualification": "upstream 26.4 family v2alpha1 schema, NOT installed Red Hat 26.4.18-opr.2 schema"
+  },
+  "postgres_container_source": {
+    "commit": "9264dbf56c67cb97beeda8704e9882e69305d75f",
+    "url": "https://github.com/sclorg/postgresql-container/tree/9264dbf56c67cb97beeda8704e9882e69305d75f",
+    "files": [
+      "src/README.md",
+      "src/root/usr/share/container-scripts/postgresql/common.sh"
+    ],
+    "qualification": "configuration contract inspected; exact selected image content not executed/matched"
+  },
+  "primary_docs": [
+    {
+      "version": "Apicurio 3.3",
+      "url": "https://docs.redhat.com/en/documentation/red_hat_build_of_apicurio_registry/3.3/html/installing_and_deploying_apicurio_registry_on_openshift/deploying-registry-operator_registry"
+    },
+    {
+      "version": "Red Hat Keycloak 26.4",
+      "url": "https://docs.redhat.com/en/documentation/red_hat_build_of_keycloak/26.4/html-single/operator_guide/operator_guide"
+    },
+    {
+      "version": "PostgreSQL 16",
+      "url": "https://www.postgresql.org/docs/16/ssl-tcp.html"
+    },
+    {
+      "version": "OpenShift 4.21",
+      "url": "https://docs.redhat.com/en/documentation/openshift_container_platform/4.21/html/network_security/network-policy"
+    }
+  ],
+  "redhat_release": {
+    "lock": "redhat-release-lock.json",
+    "catalog_package_sha256": "1b10351cf968d564357208cca42fd862a1092debe46e603808f0492ee2ef846e",
+    "public_pyxis_url": "https://catalog.redhat.com/api/containers/v1/operators/bundles?filter=csv_name%3D%3Dapicurio-registry-3.v3.3.4-r1&page_size=100",
+    "qualification": "Exact digest-pinned Red Hat bundle downloaded through existing login, manifest/config/layer SHA256 checked; CSV, image env/relatedImages and CRD schema inspected; Registry CR spec and strict fields validated offline. No runtime/server validation.",
+    "schema_file": "validation/schemas/apicurio-redhat-3.3.4-r1.json",
+    "schema_sha256": "473a2d165ebbfc6161a2d97391f6bfa3d792da5f5d210ae8d1c123dd51c91a2f"
+  }
+}

@@ -1,0 +1,35 @@
+# OPTIONAL HIGH-PRIVILEGE EXCEPTION. Not composed by the renderer or any Application.
+# RealmImport writers can access placeholder environment/Secrets via the operator.
+# Namespace resource scope does NOT confine imported realm content.
+# Prefer namespace-admin-reviewed one-shot import unless controller access is explicitly accepted.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: kaas-c5-realm-import-gitops
+  namespace: keycloak
+rules:
+- apiGroups:
+  - k8s.keycloak.org
+  resources:
+  - keycloakrealmimports
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: kaas-c5-realm-import-gitops
+  namespace: keycloak
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: kaas-c5-realm-import-gitops
+subjects:
+- kind: ServiceAccount
+  name: openshift-gitops-argocd-application-controller
+  namespace: openshift-gitops

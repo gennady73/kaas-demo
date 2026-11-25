@@ -1,0 +1,223 @@
+# CANDIDATE ONLY; no existing Kafka or SSO resource is changed.
+apiVersion: registry.apicur.io/v1
+kind: ApicurioRegistry3
+metadata:
+  name: kaas-c5-registry
+  namespace: kaas-c5-registry
+spec:
+  app:
+    replicas: 1
+    ingress:
+      enabled: false
+    networkPolicy:
+      enabled: false
+    podDisruptionBudget:
+      enabled: false
+    storage:
+      type: postgresql
+      sql:
+        dataSource:
+          url: jdbc:postgresql://registry-postgres.kaas-c5-registry.svc:5432/registry?sslmode=verify-full&sslrootcert=/etc/postgres-ca/service-ca.crt
+          username: registry
+          password:
+            name: registry-db-credentials
+            key: password
+    auth:
+      enabled: true
+      appClientId: c5-registry-api
+      uiClientId: c5-registry-ui
+      authServerUrl: https://sso.apps.ocp.rddgh.sandbox3088.opentlc.com/realms/kaas-c5-poc
+      redirectUri: https://kaas-c5-registry-ui.apps.ocp.rddgh.sandbox3088.opentlc.com/
+      logoutUrl: https://kaas-c5-registry-ui.apps.ocp.rddgh.sandbox3088.opentlc.com/
+      anonymousReadsEnabled: false
+      basicAuth:
+        enabled: false
+      tls:
+        tlsVerificationType: required
+        truststoreSecretRef:
+          name: registry-oidc-trust
+          key: ca.p12
+        truststorePasswordSecretRef:
+          name: registry-oidc-trust
+          key: ca.password
+      authz:
+        enabled: true
+        ownerOnlyEnabled: true
+        groupAccessEnabled: true
+        readAccessEnabled: false
+        roles:
+          source: token
+          admin: sr-admin
+          developer: sr-developer
+          readOnly: sr-readonly
+        adminOverride:
+          enabled: true
+          from: token
+          type: role
+          role: sr-admin
+    env:
+    - name: QUARKUS_OIDC_TOKEN_AUDIENCE
+      value: c5-registry-api
+    - name: QUARKUS_OIDC_ROLES_ROLE_CLAIM_PATH
+      value: realm_access/roles
+    - name: QUARKUS_HTTP_CORS_ENABLED
+      value: 'true'
+    - name: QUARKUS_HTTP_CORS_ORIGINS
+      value: https://kaas-c5-registry-ui.apps.ocp.rddgh.sandbox3088.opentlc.com
+    - name: APICURIO_AUTH_ANONYMOUS_READ_ACCESS_ENABLED
+      value: 'false'
+    - name: APICURIO_AUTH_AUTHENTICATED_READ_ACCESS_ENABLED
+      value: 'false'
+    podTemplateSpec:
+      spec:
+        automountServiceAccountToken: false
+        securityContext:
+          runAsNonRoot: true
+          seccompProfile:
+            type: RuntimeDefault
+        containers:
+        - name: apicurio-registry-app
+          image: '@@APP_IMAGE@@'
+          resources:
+            requests:
+              cpu: 500m
+              memory: 512Mi
+            limits:
+              cpu: '1'
+              memory: 1Gi
+          securityContext: &id001
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+              - ALL
+          volumeMounts:
+          - name: pg-ca
+            mountPath: /etc/postgres-ca
+            readOnly: true
+        volumes:
+        - name: pg-ca
+          configMap:
+            name: registry-db-ca
+  ui:
+    enabled: true
+    replicas: 1
+    ingress:
+      enabled: false
+    networkPolicy:
+      enabled: false
+    podDisruptionBudget:
+      enabled: false
+    env:
+    - name: REGISTRY_API_URL
+      value: https://kaas-c5-registry-api.apps.ocp.rddgh.sandbox3088.opentlc.com/apis/registry/v3
+    - name: REGISTRY_AUTH_TYPE
+      value: oidc
+    - name: REGISTRY_AUTH_URL
+      value: https://sso.apps.ocp.rddgh.sandbox3088.opentlc.com/realms/kaas-c5-poc
+    - name: REGISTRY_AUTH_CLIENT_ID
+      value: c5-registry-ui
+    - name: REGISTRY_AUTH_CLIENT_SCOPES
+      value: openid profile email
+    - name: REGISTRY_AUTH_REDIRECT_URL
+      value: https://kaas-c5-registry-ui.apps.ocp.rddgh.sandbox3088.opentlc.com/
+    - name: REGISTRY_AUTH_RBAC_ENABLED
+      value: 'true'
+    - name: REGISTRY_AUTH_OBAC_ENABLED
+      value: 'true'
+    podTemplateSpec:
+      spec:
+        automountServiceAccountToken: false
+        securityContext:
+          runAsNonRoot: true
+          seccompProfile:
+            type: RuntimeDefault
+        containers:
+        - name: apicurio-registry-ui
+          image: '@@UI_IMAGE@@'
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 256Mi
+          securityContext: *id001
+  consolePlugin:
+    enabled: false
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: kaas-c5-registry-app
+  namespace: kaas-c5-registry
+spec:
+  host: kaas-c5-registry-api.apps.ocp.rddgh.sandbox3088.opentlc.com
+  to:
+    kind: Service
+    name: kaas-c5-registry-app-service
+  port:
+    targetPort: http
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: kaas-c5-registry-ui
+  namespace: kaas-c5-registry
+spec:
+  host: kaas-c5-registry-ui.apps.ocp.rddgh.sandbox3088.opentlc.com
+  to:
+    kind: Service
+    name: kaas-c5-registry-ui-service
+  port:
+    targetPort: http
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: registry-app-ingress
+  namespace: kaas-c5-registry
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/instance: kaas-c5-registry
+      app.kubernetes.io/component: app
+  policyTypes:
+  - Ingress
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          policy-group.network.openshift.io/ingress: ''
+    - podSelector:
+        matchLabels:
+          kaas.c5/client: 'true'
+    ports:
+    - port: 8080
+      protocol: TCP
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: registry-ui-ingress
+  namespace: kaas-c5-registry
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/instance: kaas-c5-registry
+      app.kubernetes.io/component: ui
+  policyTypes:
+  - Ingress
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          policy-group.network.openshift.io/ingress: ''
+    ports:
+    - port: 8080
+      protocol: TCP

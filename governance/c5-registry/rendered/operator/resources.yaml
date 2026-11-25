@@ -1,0 +1,30 @@
+# OFFLINE C5 PREVIEW; NOT AUTHORIZED TO APPLY
+apiVersion: operators.coreos.com/v1
+kind: OperatorGroup
+metadata:
+  name: kaas-c5-registry
+  namespace: kaas-c5-registry
+spec:
+  targetNamespaces:
+  - kaas-c5-registry
+---
+apiVersion: operators.coreos.com/v1alpha1
+kind: Subscription
+metadata:
+  name: apicurio-registry-3
+  namespace: kaas-c5-registry
+spec:
+  channel: 3.x
+  installPlanApproval: Manual
+  name: apicurio-registry-3
+  source: redhat-operators
+  sourceNamespace: openshift-marketplace
+  startingCSV: apicurio-registry-3.v3.3.4-r1
+  config:
+    resources:
+      requests:
+        cpu: 100m
+        memory: 256Mi
+      limits:
+        cpu: 500m
+        memory: 512Mi

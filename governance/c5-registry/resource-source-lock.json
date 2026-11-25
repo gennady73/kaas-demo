@@ -1,0 +1,24 @@
+{
+  "status": "VALIDATED_RESOURCE_SOURCE_ONLY_NOT_DEPLOYED",
+  "deployment_authorized": false,
+  "registration_authorized": false,
+  "tests_authorized": false,
+  "files": {
+    "rendered/operator/resources.yaml": "e5ea30bd0241402c9b8354b90fba33ac3c882bb97f6460842e627d215c3253ff",
+    "rendered/operator/kustomization.yaml": "4fe0245114630ad93c69d1c9c6d065f1a8d79aeabb30358883916a5f190d4fb5",
+    "rendered/postgres/resources.yaml": "e287b9af3dcd06e3b92ca74a706789f60367576b50cb88aa5c32ec4edb8364eb",
+    "rendered/postgres/kustomization.yaml": "4fe0245114630ad93c69d1c9c6d065f1a8d79aeabb30358883916a5f190d4fb5",
+    "rendered/realm/resources.yaml": "ad8b28185f4df450296d3eb920a2464bcd28b6bf711824d3e07cd019aa0aefc5",
+    "rendered/realm/kustomization.yaml": "4fe0245114630ad93c69d1c9c6d065f1a8d79aeabb30358883916a5f190d4fb5",
+    "rendered/registry/resources.yaml": "edb4c41d31ee7696ae674f3f96fdd8e1dedc0d913e1df07a7409417e6412efff",
+    "rendered/registry/kustomization.yaml": "4fe0245114630ad93c69d1c9c6d065f1a8d79aeabb30358883916a5f190d4fb5"
+  },
+  "resource_stages": [
+    "operator",
+    "postgres",
+    "realm",
+    "registry"
+  ],
+  "registration_source": "Prepared separately after resource commit publication; no self-referential source SHA",
+  "validation": "exact Red Hat3.3.4-r1 Registry schema; Keycloak family schema until served snapshot replaces it; local renders only"
+}

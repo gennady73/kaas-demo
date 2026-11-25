@@ -1,0 +1,30 @@
+# PREPARATION ONLY. Render locally; no stage is registered or authorized to deploy.
+apiVersion: operators.coreos.com/v1
+kind: OperatorGroup
+metadata:
+  name: kaas-c5-registry
+  namespace: kaas-c5-registry
+spec:
+  targetNamespaces:
+  - kaas-c5-registry
+---
+apiVersion: operators.coreos.com/v1alpha1
+kind: Subscription
+metadata:
+  name: apicurio-registry-3
+  namespace: kaas-c5-registry
+spec:
+  channel: 3.x
+  installPlanApproval: Manual
+  name: apicurio-registry-3
+  source: '@@CATALOG_SOURCE@@'
+  sourceNamespace: openshift-marketplace
+  startingCSV: '@@STARTING_CSV@@'
+  config:
+    resources:
+      requests:
+        cpu: 100m
+        memory: 256Mi
+      limits:
+        cpu: 500m
+        memory: 512Mi

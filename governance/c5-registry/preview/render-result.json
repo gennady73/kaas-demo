@@ -1,0 +1,11 @@
+{
+  "mode": "preview",
+  "resource_count": 25,
+  "missing_values": [
+    "SOURCE_REVISION"
+  ],
+  "deployment_authorized": false,
+  "registration_authorized": false,
+  "tests_authorized": false,
+  "validation_scope": "exact Red Hat3.3.4-r1 Registry CR spec/strict fields; upstream Keycloak26.4 family spec; C5 policy; no server/runtime validation"
+}

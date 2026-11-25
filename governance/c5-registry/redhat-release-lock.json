@@ -1,0 +1,47 @@
+{
+  "date": "2026-11-25",
+  "catalog": "redhat-operators",
+  "catalog_namespace": "openshift-marketplace",
+  "package": "apicurio-registry-3",
+  "channel": "3.x",
+  "version": "3.3.4-r1",
+  "starting_csv": "apicurio-registry-3.v3.3.4-r1",
+  "operator_image": "registry.redhat.io/apicurio/apicurio-registry-rhel9-operator@sha256:eac1d0ef4d709e6c27849a42e13d3bf5bae97c0a21d7cbd62dc94ed922d11008",
+  "app_image": "registry.redhat.io/apicurio/apicurio-registry-rhel9@sha256:73a58499f0c827ecb958de02753962ab951ddc39bfa3c17f692fed8cded3f4b5",
+  "ui_image": "registry.redhat.io/apicurio/apicurio-registry-ui-rhel9@sha256:6ff4b3a98498d8acd4249b8cf5e11926a86e7fe5969d13531255ec11d34e10fa",
+  "bundle_image": "registry.redhat.io/apicurio/apicurio-registry-3-operator-bundle@sha256:ed9356d61f58291fb47c4c984242e3fa0f98f1054c262e70ccac0bb7cd70b82c",
+  "related_images": [
+    "registry.redhat.io/apicurio/apicurio-registry-ui-rhel9@sha256:6ff4b3a98498d8acd4249b8cf5e11926a86e7fe5969d13531255ec11d34e10fa",
+    "registry.redhat.io/apicurio/apicurio-registry-3-operator-bundle@sha256:ed9356d61f58291fb47c4c984242e3fa0f98f1054c262e70ccac0bb7cd70b82c",
+    "registry.redhat.io/apicurio/apicurio-registry-gitops-sync-rhel9@sha256:d47aec380ce36f8082f501a6a947b49556c08d0f7dbe4b12efa4db82f85a25c0",
+    "registry.redhat.io/apicurio/apicurio-registry-rhel9-operator@sha256:eac1d0ef4d709e6c27849a42e13d3bf5bae97c0a21d7cbd62dc94ed922d11008",
+    "registry.redhat.io/apicurio/apicurio-registry-rhel9@sha256:73a58499f0c827ecb958de02753962ab951ddc39bfa3c17f692fed8cded3f4b5"
+  ],
+  "install_modes": [
+    {
+      "type": "OwnNamespace",
+      "supported": true
+    },
+    {
+      "type": "SingleNamespace",
+      "supported": true
+    },
+    {
+      "type": "MultiNamespace",
+      "supported": true
+    },
+    {
+      "type": "AllNamespaces",
+      "supported": true
+    }
+  ],
+  "evidence_status": "EXACT_BUNDLE_CSV_CRD_VERIFIED_OFFLINE",
+  "bundle_schema_validation": "PASS_CR_SPEC_AND_STRICT_FIELDS",
+  "source_url": "https://console-openshift-console.apps.ocp.rddgh.sandbox3088.opentlc.com/api/kubernetes/apis/packages.operators.coreos.com/v1/namespaces/openshift-marketplace/packagemanifests?labelSelector=catalog%3Dredhat-operators&fieldSelector=metadata.name%3Dapicurio-registry-3",
+  "package_response_sha256": "1b10351cf968d564357208cca42fd862a1092debe46e603808f0492ee2ef846e",
+  "bundle_manifest_sha256": "ed9356d61f58291fb47c4c984242e3fa0f98f1054c262e70ccac0bb7cd70b82c",
+  "crd_schema_file": "validation/schemas/apicurio-redhat-3.3.4-r1.json",
+  "crd_schema_sha256": "473a2d165ebbfc6161a2d97391f6bfa3d792da5f5d210ae8d1c123dd51c91a2f",
+  "upstream_schema_comparison": "Full parsed OpenAPI schema equals cached upstream3.3.4 schema; actual downstream copy now used",
+  "operator_watch_mapping": "APICURIO_OPERATOR_WATCHED_NAMESPACES from metadata.annotations['olm.targetNamespaces']; OwnNamespace supported; runtime watch not executed"
+}

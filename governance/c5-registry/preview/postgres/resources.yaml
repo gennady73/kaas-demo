@@ -1,0 +1,184 @@
+# OFFLINE C5 PREVIEW; NOT AUTHORIZED TO APPLY
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: registry-postgres
+  namespace: kaas-c5-registry
+automountServiceAccountToken: false
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: registry-postgres-data
+  namespace: kaas-c5-registry
+  annotations:
+    argocd.argoproj.io/sync-options: Prune=false,Delete=false
+spec:
+  accessModes:
+  - ReadWriteOnce
+  storageClassName: gp3-csi
+  resources:
+    requests:
+      storage: 10Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: registry-postgres
+  namespace: kaas-c5-registry
+  annotations:
+    service.beta.openshift.io/serving-cert-secret-name: registry-postgres-tls
+spec:
+  selector:
+    app.kubernetes.io/name: c5-registry-postgres
+  ports:
+  - name: postgres
+    port: 5432
+    targetPort: postgres
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: registry-postgres-config
+  namespace: kaas-c5-registry
+data:
+  ssl.conf: 'ssl = on
+
+    ssl_cert_file = ''/etc/pgsql-tls/tls.crt''
+
+    ssl_key_file = ''/etc/pgsql-tls/tls.key''
+
+    password_encryption = ''scram-sha-256''
+
+    '
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: registry-db-ca
+  namespace: kaas-c5-registry
+  annotations:
+    service.beta.openshift.io/inject-cabundle: 'true'
+data: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: registry-postgres
+  namespace: kaas-c5-registry
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: c5-registry-postgres
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: c5-registry-postgres
+    spec:
+      serviceAccountName: registry-postgres
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+      - name: postgres
+        image: registry.redhat.io/rhel9/postgresql-16@sha256:3f586d6fd6139bbad131716168590b12db0cdfe4dcbb15ccee65b080d5594b6e
+        ports:
+        - name: postgres
+          containerPort: 5432
+        env:
+        - name: POSTGRESQL_USER
+          value: registry
+        - name: POSTGRESQL_DATABASE
+          value: registry
+        - name: POSTGRESQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: registry-db-credentials
+              key: password
+        resources:
+          requests:
+            cpu: 250m
+            memory: 256Mi
+          limits:
+            cpu: '1'
+            memory: 1Gi
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+        volumeMounts:
+        - name: data
+          mountPath: /var/lib/pgsql/data
+        - name: tls
+          mountPath: /etc/pgsql-tls
+          readOnly: true
+        - name: config
+          mountPath: /opt/app-root/src/postgresql-cfg
+          readOnly: true
+        readinessProbe:
+          exec:
+            command:
+            - /bin/sh
+            - -ec
+            - pg_isready -q -h 127.0.0.1 -p 5432
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          timeoutSeconds: 3
+        startupProbe:
+          exec:
+            command:
+            - /bin/sh
+            - -ec
+            - pg_isready -q -h 127.0.0.1 -p 5432
+          failureThreshold: 30
+          periodSeconds: 10
+          timeoutSeconds: 3
+      volumes:
+      - name: data
+        persistentVolumeClaim:
+          claimName: registry-postgres-data
+      - name: tls
+        secret:
+          secretName: registry-postgres-tls
+          defaultMode: 288
+      - name: config
+        configMap:
+          name: registry-postgres-config
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: c5-default-deny-ingress
+  namespace: kaas-c5-registry
+spec:
+  podSelector: {}
+  policyTypes:
+  - Ingress
+  ingress: []
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: registry-postgres-from-api
+  namespace: kaas-c5-registry
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: c5-registry-postgres
+  policyTypes:
+  - Ingress
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app.kubernetes.io/instance: kaas-c5-registry
+          app.kubernetes.io/component: app
+    ports:
+    - port: 5432
+      protocol: TCP

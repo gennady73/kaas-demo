@@ -1,0 +1,232 @@
+# OFFLINE C5 PREVIEW; NOT AUTHORIZED TO APPLY
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: kaas-c5-registry
+  labels:
+    kaas.c5/scope: registry
+  annotations:
+    argocd.argoproj.io/sync-options: Prune=false,Delete=false
+---
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: kaas-c5-registry
+  namespace: openshift-gitops
+spec:
+  description: C5 candidate only; manual sync, no automatic pruning
+  sourceRepos:
+  - https://github.com/gennady73/kaas-demo.git
+  destinations:
+  - namespace: kaas-c5-registry
+    server: https://kubernetes.default.svc
+  clusterResourceWhitelist: []
+  namespaceResourceWhitelist:
+  - group: operators.coreos.com
+    kind: OperatorGroup
+  - group: operators.coreos.com
+    kind: Subscription
+  - group: ''
+    kind: ConfigMap
+  - group: ''
+    kind: PersistentVolumeClaim
+  - group: ''
+    kind: ServiceAccount
+  - group: ''
+    kind: Service
+  - group: apps
+    kind: Deployment
+  - group: networking.k8s.io
+    kind: NetworkPolicy
+  - group: registry.apicur.io
+    kind: ApicurioRegistry3
+  - group: route.openshift.io
+    kind: Route
+---
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: kaas-c5-realm
+  namespace: openshift-gitops
+spec:
+  description: C5 candidate only; manual sync, no automatic pruning
+  sourceRepos:
+  - https://github.com/gennady73/kaas-demo.git
+  destinations:
+  - namespace: keycloak
+    server: https://kubernetes.default.svc
+  clusterResourceWhitelist: []
+  namespaceResourceWhitelist:
+  - group: k8s.keycloak.org
+    kind: KeycloakRealmImport
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kaas-c5-operator
+  namespace: openshift-gitops
+spec:
+  project: kaas-c5-registry
+  source:
+    repoURL: https://github.com/gennady73/kaas-demo.git
+    targetRevision: UNRESOLVED_SOURCE_REVISION
+    path: governance/c5-registry/rendered/operator
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: kaas-c5-registry
+  syncPolicy:
+    syncOptions:
+    - FailOnSharedResource=true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kaas-c5-postgres
+  namespace: openshift-gitops
+spec:
+  project: kaas-c5-registry
+  source:
+    repoURL: https://github.com/gennady73/kaas-demo.git
+    targetRevision: UNRESOLVED_SOURCE_REVISION
+    path: governance/c5-registry/rendered/postgres
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: kaas-c5-registry
+  syncPolicy:
+    syncOptions:
+    - FailOnSharedResource=true
+    - RespectIgnoreDifferences=true
+  ignoreDifferences:
+  - group: ''
+    kind: ConfigMap
+    name: registry-db-ca
+    namespace: kaas-c5-registry
+    jsonPointers:
+    - /data
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kaas-c5-registry
+  namespace: openshift-gitops
+spec:
+  project: kaas-c5-registry
+  source:
+    repoURL: https://github.com/gennady73/kaas-demo.git
+    targetRevision: UNRESOLVED_SOURCE_REVISION
+    path: governance/c5-registry/rendered/registry
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: kaas-c5-registry
+  syncPolicy:
+    syncOptions:
+    - FailOnSharedResource=true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kaas-c5-realm
+  namespace: openshift-gitops
+spec:
+  project: kaas-c5-realm
+  source:
+    repoURL: https://github.com/gennady73/kaas-demo.git
+    targetRevision: UNRESOLVED_SOURCE_REVISION
+    path: governance/c5-registry/rendered/realm
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: keycloak
+  syncPolicy:
+    syncOptions:
+    - FailOnSharedResource=true
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: kaas-c5-registry-gitops
+  namespace: kaas-c5-registry
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  - persistentvolumeclaims
+  - serviceaccounts
+  - services
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+- apiGroups:
+  - apps
+  resources:
+  - deployments
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+- apiGroups:
+  - networking.k8s.io
+  resources:
+  - networkpolicies
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+- apiGroups:
+  - route.openshift.io
+  resources:
+  - routes
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+- apiGroups:
+  - registry.apicur.io
+  resources:
+  - apicurioregistries3
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+- apiGroups:
+  - operators.coreos.com
+  resources:
+  - operatorgroups
+  - subscriptions
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: kaas-c5-registry-gitops
+  namespace: kaas-c5-registry
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: kaas-c5-registry-gitops
+subjects:
+- kind: ServiceAccount
+  name: openshift-gitops-argocd-application-controller
+  namespace: openshift-gitops
