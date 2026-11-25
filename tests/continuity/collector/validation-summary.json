@@ -1,15 +1,10 @@
 {
-  "scope": "local handler/SQLite checks only, no network/native Kafka",
-  "checks": [
-    "commit visible from new SQLite connection before ACK",
-    "same-envelope deduplication",
-    "wrong hash rejected",
-    "conflicting duplicate rejected",
-    "bearer authentication",
-    "readiness scoped to plan",
-    "operator stop blocks new sends",
-    "incomplete seal rejected",
-    "health"
-  ],
-  "passed": true
+  "status": "PASS",
+  "scope": "offline collector regression checks only; no Kafka/network",
+  "checks": 6,
+  "source_sha256": "02f58ea213a7f2c40bf2173ce1b349ad314b8bef87780ffc2cb911d478926308",
+  "test_source_sha256": "3ca8894acbd58264d8e5a2e014ca3ddb176fd27ff98a8e91bbadf4dbc457a523",
+  "recorded_at_utc": "2026-11-25T08:12:00.049295+00:00",
+  "original_command_from_coordinator_workspace": "python3 -W error::ResourceWarning -m unittest discover -s kaas-demo/tests/continuity/collector -p test_server.py -v",
+  "command_from_repository_root": "python3 -W error::ResourceWarning -m unittest discover -s tests/continuity/collector -p test_server.py -v"
 }

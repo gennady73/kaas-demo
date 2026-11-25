@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "scope": "8 concurrent metadata clients; live verified HTTPS; same 2s collector budget; mixed POST/readiness/seal and summary of retained 207820-event failed run; no Kafka",
+  "run_id": "collector-concurrency-20261125081114",
+  "requests": 326,
+  "persisted_unique_metadata_events": 202,
+  "same_connection_idle_35s_post_passed": true,
+  "duplicate_retry_deduplicated": true,
+  "max_seconds": 0.9053726060083136,
+  "p95_seconds": 0.7028011280053761,
+  "timeouts": 0,
+  "recorded_at_utc": "2026-11-25T08:12:20.635230+00:00"
+}

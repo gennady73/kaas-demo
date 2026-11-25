@@ -1,18 +1,20 @@
 {
-  "status": "SOURCE_MATCHES_SUBMITTED_CONFIGMAP_SNAPSHOTS",
-  "recorded_at_utc": "2026-11-24T17:13:13.020880+00:00",
-  "run_id": "continuity-24h-20261124170112-1a83",
+  "status": "SHORT_VALIDATION_PASSED_FRESH_24H_RUNNING",
+  "recorded_at_utc": "2026-11-25T09:54:31.468301+00:00",
+  "run_id": "continuity-24h-20261125083551-5d08",
   "canonical_auditor_repository": "https://github.com/gennady73/kafka-load-test.git",
   "canonical_auditor_commit": "963db2d41b6dc140d661c96e108f1c09a7c76da5",
   "canonical_auditor_path": "preflight/continuity_reconcile.py",
   "files": {
-    "server.py": "1ebf4028d8bedfcac892ee50dea9a6201d79354f9cec20794fbcf8d739f0e2aa",
+    "server.py": "02f58ea213a7f2c40bf2173ce1b349ad314b8bef87780ffc2cb911d478926308",
     "watch.py": "d5fb5ea4de6b3cdc10c2828e9e232e0c2198620d32462906c8b76b6fe6c56bcc",
     "InitialGroups.java": "bb43944afd7d842d5eaf4bfbf758ef2972f30d62bcf8f3fc5d170f593e9dacee",
-    "continuity_reconcile.py": "65cd5a6d37a67c165111724b61278f7e2cf344b5e5987092270e2528938018ab"
+    "continuity_reconcile.py": "65cd5a6d37a67c165111724b61278f7e2cf344b5e5987092270e2528938018ab",
+    "test_server.py": "3ca8894acbd58264d8e5a2e014ca3ddb176fd27ff98a8e91bbadf4dbc457a523"
   },
   "limitations": [
-    "Compared against saved submitted manifests, not a new live ConfigMap read.",
-    "No full 24-hour pass claimed; runtime test remains in progress."
-  ]
+    "Fixed source and regression tests are included in this Git publication; running ConfigMaps and Jobs are unchanged.",
+    "Daily run acceptance pending; prior failures retained."
+  ],
+  "previous_failed_run": "continuity-24h-20261124170112-1a83"
 }

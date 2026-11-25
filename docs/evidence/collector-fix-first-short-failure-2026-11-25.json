@@ -1,0 +1,7 @@
+{
+  "status": "FAIL",
+  "run_id": "continuity-15m-20261125074735-d966",
+  "counts_delivered": 1040,
+  "reason": "evidence HTTP request failure during drain; 30s HTTP idle limit collides with 30s heartbeat",
+  "correction": "Restore prior 180s HTTP idle timeout; retain independent5s TLS handshake timeout; rerun short test"
+}

@@ -42,3 +42,5 @@ See [implementation status](docs/implementation-status.md) for the inputs needed
 ## Continuity evidence collection
 
 The user-authorized 24-hour/100 MB sandbox test is in progress, with no final PASS yet. See the [run checkpoint](docs/continuity-24h-run-2026-11-24.md) and [collector and one-run monitor guide](tests/continuity/collector/README.md). Publishing this source does not deploy, restart, or rerun the test; the committed stage profiles remain disabled.
+
+Latest: [collector fix, short validation PASS and fresh daily rerun](docs/collector-fix-validation-2026-11-25.md). Earlier daily-run checkpoints are historical.

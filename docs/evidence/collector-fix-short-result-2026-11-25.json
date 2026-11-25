@@ -1,0 +1,38 @@
+{
+  "status": "PASS",
+  "scope": "15-minute/1040000-byte four-topic continuity plus300sdrain, not daily/production acceptance",
+  "run_id": "continuity-15m-20261125081237-5917",
+  "plan_sha256": "c75fb1e6f8c6db6307828b22ec7b68ebaec7ac3f525c73b2deb0bd4bfbea9089",
+  "collector_source_sha256": "02f58ea213a7f2c40bf2173ce1b349ad314b8bef87780ffc2cb911d478926308",
+  "records_acknowledged_received_committed": 1040,
+  "all_8_clients_complete": true,
+  "worker_and_observer_exit_zero": true,
+  "worker_observer_collector_restart_counts_zero": true,
+  "kafka_restart_counts_unchanged": true,
+  "reconciliation": "ACCOUNTING_COMPLETE; zero issues",
+  "export_sha256": "cedc67f2a7cb47588471a1344706c5d19bc2a0de22b36a21b397892ea75820ee",
+  "runtime_metrics": {
+    "collector_cpu": {
+      "samples": 40,
+      "min": 0.0015134438731274579,
+      "max": 0.012835078996517093
+    },
+    "collector_throttle": {
+      "samples": 40,
+      "min": 0.0,
+      "max": 0.0
+    },
+    "collector_restarts": {
+      "samples": 40,
+      "min": 0.0,
+      "max": 0.0
+    }
+  },
+  "metrics_window_utc": [
+    "2026-11-25T08:14:30Z",
+    "2026-11-25T08:34:00Z"
+  ],
+  "checked_at_utc": "2026-11-25T08:35:37.530660+00:00",
+  "first_short_failure_retained": "first-short-result.json",
+  "60m_stage": "NOT_RUN; user requested one short validation then24h rerun"
+}
