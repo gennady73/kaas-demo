@@ -1,0 +1,44 @@
+{
+  "contract_version": "tenant-only-1.0",
+  "purpose": "offline-tenant-only-gitops",
+  "deployment_enabled": false,
+  "registration_enabled": false,
+  "tests_enabled": false,
+  "execution_ready": false,
+  "target": {
+    "environment": "sandbox3088",
+    "kafka_namespace": "kaas-kafka",
+    "kafka_name": "kaas-dev",
+    "gitops_namespace": "openshift-gitops"
+  },
+  "scope_decision": "USER_ACCEPTED_SHARED_FIRST_EXISTING_CLUSTER",
+  "owner": "user",
+  "approver": "user",
+  "authority_policy": "Existing authorized sandbox owner only; no tenant sync delegation; effective identities/rights unverified",
+  "tenants": [
+    "kaas-sbx-a",
+    "kaas-sbx-b"
+  ],
+  "repo_url": "https://github.com/gennady73/kaas-demo.git",
+  "resource_revision": null,
+  "topic_policy": {
+    "suffixes": [
+      "events",
+      "audit"
+    ],
+    "partitions": 1,
+    "replicas": 2,
+    "retention_ms": 21600000,
+    "min_insync_replicas": 2,
+    "max_message_bytes": 3145728,
+    "cleanup_policy": "delete"
+  },
+  "user_policy": {
+    "authentication": "scram-sha-512",
+    "authorization": "simple",
+    "producerByteRate": 65536,
+    "consumerByteRate": 65536,
+    "requestPercentage": 5
+  },
+  "change_window": null
+}

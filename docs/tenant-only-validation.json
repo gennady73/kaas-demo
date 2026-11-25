@@ -1,0 +1,34 @@
+{
+  "date": "2026-11-25",
+  "status": "OFFLINE_PUBLICATION_PACKAGE_VALIDATED",
+  "base_revision": "12b68bae90cf504747ada7cab5c7de4e7d64036b",
+  "environment": "isolated copy of published kaas-demo plus only selected tenant-only package; no parent workspace or unpublished C4 readiness dependency",
+  "tests": {
+    "tenant_only": 23,
+    "published_C4_suite": 35,
+    "total": 58,
+    "status": "PASS"
+  },
+  "local_workspace_previous_validation": "23tenant-only+55C4=78PASS; extra20C4 tests are separate uncommitted work, excluded from publication",
+  "kustomize_renders": 2,
+  "cached_Kafka_schema_checks": 8,
+  "new_cluster_guard": "PRESERVED, expected rejection of kaas-dev/kaas-kafka via public check_profile API",
+  "deployment_enabled": false,
+  "registration_enabled": false,
+  "tests_enabled": false,
+  "execution_ready": false,
+  "resource_revision": null,
+  "publication_scope": "workflow/disabled contract/regressions/docs only; no materialized manifests or registered Applications",
+  "source_sha256": {
+    "environments/candidates/sandbox-tenants/inputs.json": "5a07e2828dc1bd3c28111aaa4306c8edff839fe0bbfc6c32c21a90e929b3b6e7",
+    "policies/tenant-only/inputs.schema.json": "d3cbf980e02e4235b05e52cb3d7d8c58f5aeff8f159f8e59cb25acf64edc4344",
+    "policies/tenant-only/tenant_only.py": "b7bde40bc9a06776e6367c120a581f1522defb303e29c80a2d0fee504e95e82c",
+    "policies/tenant-only/test_tenant_only.py": "e315a752866e19b5395d249c4eac170787a88ba2ef419e867b2aea73011e5796",
+    "policies/tenant-only/validate_offline.py": "83d88469c67097ed5030f2471f231f54e3f543fe2566e0d23ce39e66c5c69599"
+  },
+  "limitations": [
+    "No installed ArgoCD/server schema, live name/ownership/capacity or effective permission checks",
+    "No cluster access, registration, deployment, client workload or independent reviewer",
+    "Filled source revision would remain a preview; actual resource commit/path verification and owner-authorized window still required"
+  ]
+}

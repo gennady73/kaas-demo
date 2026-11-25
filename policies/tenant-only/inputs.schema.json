@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contract_version",
+    "purpose",
+    "deployment_enabled",
+    "registration_enabled",
+    "tests_enabled",
+    "execution_ready",
+    "target",
+    "scope_decision",
+    "owner",
+    "approver",
+    "authority_policy",
+    "tenants",
+    "repo_url",
+    "resource_revision",
+    "topic_policy",
+    "user_policy",
+    "change_window"
+  ],
+  "properties": {
+    "contract_version": {
+      "const": "tenant-only-1.0"
+    },
+    "purpose": {
+      "const": "offline-tenant-only-gitops"
+    },
+    "deployment_enabled": {
+      "const": false
+    },
+    "registration_enabled": {
+      "const": false
+    },
+    "tests_enabled": {
+      "const": false
+    },
+    "execution_ready": {
+      "const": false
+    },
+    "target": {
+      "const": {
+        "environment": "sandbox3088",
+        "kafka_namespace": "kaas-kafka",
+        "kafka_name": "kaas-dev",
+        "gitops_namespace": "openshift-gitops"
+      }
+    },
+    "scope_decision": {
+      "const": "USER_ACCEPTED_SHARED_FIRST_EXISTING_CLUSTER"
+    },
+    "owner": {
+      "const": "user"
+    },
+    "approver": {
+      "const": "user"
+    },
+    "authority_policy": {
+      "const": "Existing authorized sandbox owner only; no tenant sync delegation; effective identities/rights unverified"
+    },
+    "tenants": {
+      "const": [
+        "kaas-sbx-a",
+        "kaas-sbx-b"
+      ]
+    },
+    "repo_url": {
+      "const": "https://github.com/gennady73/kaas-demo.git"
+    },
+    "resource_revision": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[0-9a-f]{40}$",
+      "description": "Actual future resource commit; null produces unresolved registration templates, never approval."
+    },
+    "topic_policy": {
+      "const": {
+        "suffixes": [
+          "events",
+          "audit"
+        ],
+        "partitions": 1,
+        "replicas": 2,
+        "retention_ms": 21600000,
+        "min_insync_replicas": 2,
+        "max_message_bytes": 3145728,
+        "cleanup_policy": "delete"
+      }
+    },
+    "user_policy": {
+      "const": {
+        "authentication": "scram-sha-512",
+        "authorization": "simple",
+        "producerByteRate": 65536,
+        "consumerByteRate": 65536,
+        "requestPercentage": 5
+      }
+    },
+    "change_window": {
+      "const": null
+    }
+  }
+}
