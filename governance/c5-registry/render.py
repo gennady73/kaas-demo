@@ -122,11 +122,17 @@ def validate(stages):
         if kind == "Subscription" and d["spec"]["installPlanApproval"] != "Manual":
             raise ValueError("manual OLM approval required")
         if kind == "Role":
+            host_create = {"apiGroups": ["route.openshift.io"],
+                           "resources": ["routes/custom-host"], "verbs": ["create"]}
             for rule in d["rules"]:
                 if "secrets" in rule["resources"] or "*" in rule["resources"] or any(
                     verb not in {"get", "list", "watch", "create", "update", "patch"} for verb in rule["verbs"]
                 ):
                     raise ValueError("registry bootstrap role cannot grant Secret/wildcard/delete access")
+                if "routes/custom-host" in rule["resources"] and rule != host_create:
+                    raise ValueError("custom-host access must grant only namespace-scoped create")
+            if m["name"] == "kaas-c5-registry-gitops" and host_create not in d["rules"]:
+                raise ValueError("registry bootstrap role requires custom-host create for fixed Route hosts")
         if kind in {"ApicurioRegistry3", "KeycloakRealmImport"}:
             fn = "apicurio-redhat-3.3.4-r1.json" if kind == "ApicurioRegistry3" else "keycloak-redhat-served-26.4.18.json"
             schema_path = ROOT / "validation" / "schemas" / fn

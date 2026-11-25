@@ -176,6 +176,12 @@ rules:
   - routes
   verbs: *id001
 - apiGroups:
+  - route.openshift.io
+  resources:
+  - routes/custom-host
+  verbs:
+  - create
+- apiGroups:
   - registry.apicur.io
   resources:
   - apicurioregistries3

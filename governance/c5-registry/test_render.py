@@ -121,6 +121,19 @@ class C5PreparationTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "Secret"):
             render.validate(stages)
 
+    def test_route_host_creation_requires_scoped_create_only(self):
+        role = next(d for d in self.stages["bootstrap"] if d["kind"] == "Role")
+        host_rule = next(r for r in role["rules"] if "routes/custom-host" in r["resources"])
+        role["rules"].remove(host_rule)
+        with self.assertRaisesRegex(ValueError, "custom-host create"):
+            render.validate(self.stages)
+        for verbs in (["update"], ["create", "update"], ["*"]):
+            stages, _ = render.load(self.inputs)
+            role = next(d for d in stages["bootstrap"] if d["kind"] == "Role")
+            next(r for r in role["rules"] if "routes/custom-host" in r["resources"])["verbs"] = verbs
+            with self.subTest(verbs=verbs), self.assertRaises(ValueError):
+                render.validate(stages)
+
     def test_moving_tags_and_missing_evidence_rejected(self):
         inputs = self.candidate_inputs()
         inputs["values"]["POSTGRES_IMAGE"] = "example.invalid/postgres:latest"

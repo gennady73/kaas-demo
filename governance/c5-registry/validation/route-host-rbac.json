@@ -1,0 +1,73 @@
+{
+  "date": "2026-11-25",
+  "status": "ROLE_SOURCE_CORRECTION_OFFLINE_VALIDATED_NOT_APPLIED",
+  "role": "kaas-c5-registry/kaas-c5-registry-gitops",
+  "added_rule": {
+    "apiGroups": [
+      "route.openshift.io"
+    ],
+    "resources": [
+      "routes/custom-host"
+    ],
+    "verbs": [
+      "create"
+    ]
+  },
+  "no_other_RBAC_changes": true,
+  "representations": [
+    {
+      "path": "templates/bootstrap/resources.yaml.template",
+      "result": "EXACTLY_ONE_NAMESPACE_ROLE_RULE_ADDED_ALL_OTHER_OBJECTS_IDENTICAL"
+    },
+    {
+      "path": "preview/bootstrap/resources.yaml",
+      "result": "EXACTLY_ONE_NAMESPACE_ROLE_RULE_ADDED_ALL_OTHER_OBJECTS_IDENTICAL"
+    },
+    {
+      "path": "registration/resources.yaml",
+      "result": "EXACTLY_ONE_NAMESPACE_ROLE_RULE_ADDED_ALL_OTHER_OBJECTS_IDENTICAL"
+    }
+  ],
+  "unit_tests": {
+    "command": "python -m unittest discover -s kaas-demo/governance/c5-registry -p test_render.py -v",
+    "methods": 17,
+    "result": "PASS",
+    "exit_code": 0,
+    "evidence": "executed tool transcript; regression covers omitted rule and update/create+update/wildcard verb rejection"
+  },
+  "kustomize_renders": 2,
+  "source_resource_revision": "d8dac192d30a98c1ad7c3a1e9c077b8dea85c248",
+  "unchanged_published_resource_blobs": 8,
+  "unchanged_application_pins": 4,
+  "existing_implementation_files_checked": 220,
+  "unchanged_existing_files": 214,
+  "authorized_existing_files_changed": [
+    "governance/c5-registry/render.py",
+    "governance/c5-registry/test_render.py",
+    "governance/c5-registry/README.md",
+    "governance/c5-registry/registration/resources.yaml",
+    "governance/c5-registry/preview/bootstrap/resources.yaml",
+    "governance/c5-registry/templates/bootstrap/resources.yaml.template"
+  ],
+  "real_candidate": "REJECTED_EXPECTED_missing_operational_evidence",
+  "open_runtime_acceptance": "No server admission/SAR or reconciliation; namespace-scoped RBAC remains unapplied; prior SSO/runtime observations not refreshed",
+  "deployment_authorized": false,
+  "registration_authorized": false,
+  "tests_authorized": false,
+  "not_executed": [
+    "cluster/API/Secret queries or writes",
+    "RBAC application or authorization review POST",
+    "Argo registration/sync/OLM approval",
+    "SSO or realm change",
+    "continuity workload access",
+    "runtime tests"
+  ],
+  "changed_file_sha256": {
+    "governance/c5-registry/render.py": "4d1a30e13a7ae543c36f9a2526bd1de2f86e7ab1ed8b85b8b31abdc052f90ddb",
+    "governance/c5-registry/test_render.py": "6478ad8a321a1bdc256afa5a6af7cce18514465d571ab6455950cb74738c8f31",
+    "governance/c5-registry/README.md": "c5b2f0b8727e90567543dab57f03f85dbec8d1d8266c92991fb8371752cb67c7",
+    "governance/c5-registry/registration/resources.yaml": "88255bf2ebf704052e8e7b844324da7f5ad8f090e352b7aa5835479f3a238363",
+    "governance/c5-registry/preview/bootstrap/resources.yaml": "88255bf2ebf704052e8e7b844324da7f5ad8f090e352b7aa5835479f3a238363",
+    "governance/c5-registry/templates/bootstrap/resources.yaml.template": "80a0e7ebf387ac26f57edd1e3fcf59a84ae48a1771d4c2bbf6e28d772035898b"
+  }
+}
