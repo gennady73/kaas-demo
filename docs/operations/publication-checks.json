@@ -1,0 +1,18 @@
+{
+  "scope": "isolated publication package, no parent workspace/network/cluster",
+  "tests_passed": 35,
+  "record_checks": 25,
+  "budget_checks": 10,
+  "test_exit_code": 0,
+  "template_clis_open": [
+    "deployment-support.json",
+    "evidence-custody.json",
+    "incident.json",
+    "monitoring-evidence.json",
+    "recovery-result.json"
+  ],
+  "checker_logic_matches_reviewed_fix": true,
+  "test_change": "template path only",
+  "template_bytes_identical": true,
+  "credential_and_markdown_link_checks": "PASS"
+}

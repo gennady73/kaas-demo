@@ -1,0 +1,71 @@
+{
+  "template_revision": "0.1",
+  "record_status": "TEMPLATE",
+  "execution_enabled": false,
+  "record_id": null,
+  "environment_id": null,
+  "tenancy_mode": null,
+  "prepared_by": null,
+  "prepared_at_utc": null,
+  "reviewer": null,
+  "reviewed_at_utc": null,
+  "conclusion": "OPEN",
+  "limitations": [],
+  "unresolved_inputs": [],
+  "record_type": "monitoring-evidence",
+  "procedure_reference": "docs/operations/monitoring-and-overload.md",
+  "stack_versions_reference": null,
+  "configuration_revision": null,
+  "monitoring_owner": null,
+  "coverage": [
+    {
+      "coverage_id": null,
+      "requirement_claim_ids": null,
+      "tenant_deployment_scope": null,
+      "signal_source_exporter": null,
+      "actual_query": null,
+      "unit": null,
+      "label_mapping": null,
+      "scrape_interval_seconds": null,
+      "evaluation_window_seconds": null,
+      "threshold": null,
+      "missing_series_behavior": null,
+      "receiver_escalation_reference": null,
+      "acknowledgement_owner": null,
+      "metrics_retention_reference": null,
+      "rule_configuration_reference": null,
+      "query_result_reference": null,
+      "alert_delivery_execution_reference": null,
+      "observed_delivery_latency_seconds": null,
+      "coverage_status": "OPEN"
+    }
+  ],
+  "overload": {
+    "admission_control_reference": null,
+    "warning_critical_hysteresis_reference": null,
+    "authorized_response_owner": null,
+    "tenant_aggregate_accounting_reference": null,
+    "stop_retry_buffer_contract_reference": null,
+    "recovery_execution_reference": null
+  },
+  "limits": {
+    "cardinality_budget_reference": null,
+    "evidence_access_reference": null,
+    "active_run_protection_reference": null
+  },
+  "evidence": [
+    {
+      "evidence_id": null,
+      "requirement_or_claim_id": null,
+      "evidence_type": null,
+      "source_reference": null,
+      "source_version": null,
+      "observed_at_utc": null,
+      "environment_id": null,
+      "acceptance_criterion": null,
+      "review_status": "OPEN",
+      "reviewer": null,
+      "limitation": null
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "scope": "DERIVED_PLANNING_ONLY",
+  "release_qualified": false,
+  "mean_ingress_Bps": 23148148.14814815,
+  "retained_original_bytes": 500000000000.0,
+  "retained_replica_payload_bytes": 1000000000000.0,
+  "replay_slack_s": 3600,
+  "replay_screen": "POSITIVE_MARGIN",
+  "catchup_model": "OPEN"
+}

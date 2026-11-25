@@ -1,0 +1,12 @@
+{
+  "daily_value_bytes": 2000000000000,
+  "replication_factor": 2,
+  "history_s": 21600,
+  "oldest_unread_age_s": 3600,
+  "outage_s": 10800,
+  "catchup_s": 1800,
+  "safety_s": 1800,
+  "backlog_bytes": null,
+  "ingress_Bps": null,
+  "consume_Bps": null
+}

@@ -1,0 +1,411 @@
+{
+  "revision": "0.1",
+  "date": "2026-11-25",
+  "status": "PROPOSED review matrix; not a release authorization",
+  "baseline": "SRS 0.9",
+  "release_qualified": false,
+  "configurations": {
+    "dev-recorded": {
+      "openshift": "4.21.42 (historical observation)",
+      "streams_csv": "amqstreams.v3.2.1-10",
+      "kafka": "4.2.0",
+      "metadata": "4.2-IV1 (historical observation)",
+      "gitops_operator": "1.22.3 (historical observation)",
+      "argocd_server": null,
+      "storage": "gp3-csi",
+      "topology": "3 dual-role / 3 x 20Gi",
+      "rf": 2,
+      "min_isr": 2,
+      "retention_ms": 21600000,
+      "security": "internal TLS/SCRAM; scoped ACLs",
+      "acks": "all in selected smoke/continuity client evidence"
+    },
+    "target-unresolved": {
+      "openshift_range": "4.20.18 through 4.21.x",
+      "streams_selection": "3.2.1-10; exact target bundle/image/compatibility needs verification",
+      "storage": "VSAN; ODF future",
+      "mode": "separately identify dedicated/shared",
+      "rf": 2,
+      "retention_ms": 21600000,
+      "cpu": "5 CPU deployment total; actual allocation and adequacy unverified",
+      "ram": "0.5T deployment total; units/allocation OPEN; environment up to 1T scenario",
+      "source_pin": null,
+      "security": null,
+      "min_isr": null,
+      "acks": null
+    }
+  },
+  "rows": [
+    {
+      "id": "DEV-XK6-SMOKE",
+      "environment": "sandbox",
+      "mode": "single dev cluster; tenancy isolation unqualified",
+      "configuration": "dev-recorded",
+      "claim": "16-record <=2MiB functional compatibility only",
+      "status": "PASS_RECORDED",
+      "evidence": [
+        "docs/testing/xk6-build-and-smoke-2026-11-24.md"
+      ],
+      "owner": "C3",
+      "missing": [
+        "production release promotion",
+        "broader capacity and recovery"
+      ]
+    },
+    {
+      "id": "CONTINUITY-ORIGINAL",
+      "environment": "sandbox",
+      "mode": "single dev cluster",
+      "configuration": "dev-recorded",
+      "claim": "24h / 100MB continuity",
+      "status": "FAIL_RECORDED",
+      "evidence": [
+        "docs/testing/continuity-followup-2026-11-25.md"
+      ],
+      "owner": "C3",
+      "missing": [
+        "full duration",
+        "full offered budget",
+        "complete terminal lifecycle"
+      ]
+    },
+    {
+      "id": "CONTINUITY-FIRST-SHORT",
+      "environment": "sandbox",
+      "mode": "single dev cluster",
+      "configuration": "collector-30s-idle historical",
+      "claim": "15m + drain lifecycle",
+      "status": "FAIL_RECORDED",
+      "evidence": [
+        "docs/testing/runs/collector-fix-20261125/first-short-result.json"
+      ],
+      "owner": "C3",
+      "missing": [
+        "successful drain"
+      ]
+    },
+    {
+      "id": "CONTINUITY-REPEAT-SHORT",
+      "environment": "sandbox",
+      "mode": "single dev cluster",
+      "configuration": "collector sha256 02f58ea213a7f2c40bf2173ce1b349ad314b8bef87780ffc2cb911d478926308; 180s HTTP idle/5s TLS handshake",
+      "claim": "15m/1040 records + 300s drain only",
+      "status": "PASS_RECORDED",
+      "evidence": [
+        "docs/testing/runs/collector-fix-20261125/15m-result.json",
+        "docs/testing/runs/collector-fix-20261125/continuity-15m-20261125081237-5917/reconciliation.json"
+      ],
+      "owner": "C3",
+      "missing": [
+        "24h completion",
+        "RST qualification"
+      ]
+    },
+    {
+      "id": "CONTINUITY-FRESH-24H",
+      "environment": "sandbox",
+      "mode": "single dev cluster",
+      "configuration": "frozen plan 0bc991ccdbd548a11e3ec1b210e17d96690d095659a283c7213f2821ca3b6a9f",
+      "claim": "24h / 100MB continuity; launch recorded only",
+      "status": "OPEN",
+      "evidence": [
+        "docs/testing/runs/collector-fix-20261125/continuity-24h-20261125083551-5d08/launch.json"
+      ],
+      "owner": "C3",
+      "missing": [
+        "final export/seal/audit",
+        "terminal Jobs/lifecycle",
+        "restart and resource review"
+      ]
+    },
+    {
+      "id": "DEDICATED-RST-01",
+      "environment": "selected target",
+      "mode": "dedicated",
+      "configuration": "target-unresolved",
+      "claim": "RST-01",
+      "status": "OPEN",
+      "evidence": [],
+      "owner": "C3 with C1/C4/C5/C6/C7",
+      "missing": [
+        "authorized single-broker variant",
+        "record/offset reconciliation",
+        "<=10800s complete recovery",
+        "exact environment/configuration/source pins"
+      ]
+    },
+    {
+      "id": "DEDICATED-RST-02",
+      "environment": "selected target",
+      "mode": "dedicated",
+      "configuration": "target-unresolved",
+      "claim": "RST-02",
+      "status": "OPEN",
+      "evidence": [],
+      "owner": "C3 with C1/C4/C5/C6/C7",
+      "missing": [
+        "approved step/order/quorum/ISR gates",
+        "per-step and aggregate recovery/reconciliation",
+        "exact environment/configuration/source pins"
+      ]
+    },
+    {
+      "id": "DEDICATED-RST-03",
+      "environment": "selected target",
+      "mode": "dedicated",
+      "configuration": "target-unresolved",
+      "claim": "RST-03",
+      "status": "OPEN",
+      "evidence": [],
+      "owner": "C3 with C1/C4/C5/C6/C7",
+      "missing": [
+        "all broker/controller restart procedure",
+        "metadata/offset/client recovery and reconciliation",
+        "exact environment/configuration/source pins"
+      ]
+    },
+    {
+      "id": "DEDICATED-RST-04",
+      "environment": "selected target",
+      "mode": "dedicated",
+      "configuration": "target-unresolved",
+      "claim": "RST-04",
+      "status": "OPEN",
+      "evidence": [],
+      "owner": "C3 with C1/C4/C5/C6/C7",
+      "missing": [
+        "DEP-PERSIST-01 supplying project/owner/reference/scope/evidence",
+        "infrastructure-to-Kafka integration and replay clock",
+        "exact environment/configuration/source pins"
+      ]
+    },
+    {
+      "id": "DEDICATED-CAP-WP-A",
+      "environment": "selected target",
+      "mode": "dedicated",
+      "configuration": "target-unresolved",
+      "claim": "CAP-WP-A",
+      "status": "OPEN",
+      "evidence": [],
+      "owner": "C3 with C1/C4/C5/C6/C7",
+      "missing": [
+        "2TB/24h selected size mix and operating envelopes",
+        "producer and consumer accounting",
+        "resource/latency/overload acceptance",
+        "exact environment/configuration/source pins"
+      ]
+    },
+    {
+      "id": "DEDICATED-CAP-WP-B",
+      "environment": "selected target",
+      "mode": "dedicated",
+      "configuration": "target-unresolved",
+      "claim": "CAP-WP-B",
+      "status": "OPEN",
+      "evidence": [],
+      "owner": "C3 with C1/C4/C5/C6/C7",
+      "missing": [
+        "20TB/24h selected size mix and operating envelopes",
+        "producer and consumer accounting",
+        "resource/latency/overload acceptance",
+        "exact environment/configuration/source pins"
+      ]
+    },
+    {
+      "id": "DEDICATED-TENANCY",
+      "environment": "selected target",
+      "mode": "dedicated",
+      "configuration": "target-unresolved",
+      "claim": "TENANCY",
+      "status": "OPEN",
+      "evidence": [],
+      "owner": "C3 with C1/C4/C5/C6/C7",
+      "missing": [
+        "C6 policy",
+        "positive/negative auth/listener/group/topic tests",
+        "shared aggregate admission or dedicated contention evidence",
+        "exact environment/configuration/source pins"
+      ]
+    },
+    {
+      "id": "DEDICATED-GOVERNANCE",
+      "environment": "selected target",
+      "mode": "dedicated",
+      "configuration": "target-unresolved",
+      "claim": "GOVERNANCE",
+      "status": "OPEN",
+      "evidence": [],
+      "owner": "C3 with C1/C4/C5/C6/C7",
+      "missing": [
+        "C5 product/backend/version contract",
+        "schema enforcement and metadata integration",
+        "backup/restore and replay qualification",
+        "exact environment/configuration/source pins"
+      ]
+    },
+    {
+      "id": "DEDICATED-OBSERVABILITY",
+      "environment": "selected target",
+      "mode": "dedicated",
+      "configuration": "target-unresolved",
+      "claim": "OBSERVABILITY",
+      "status": "OPEN",
+      "evidence": [],
+      "owner": "C3 with C1/C4/C5/C6/C7",
+      "missing": [
+        "C1 actual exporter/query/rule/retention configuration",
+        "named on-call and receiver",
+        "alert delivery and overload recovery evidence",
+        "exact environment/configuration/source pins"
+      ]
+    },
+    {
+      "id": "SHARED-RST-01",
+      "environment": "selected target",
+      "mode": "shared",
+      "configuration": "target-unresolved",
+      "claim": "RST-01",
+      "status": "OPEN",
+      "evidence": [],
+      "owner": "C3 with C1/C4/C5/C6/C7",
+      "missing": [
+        "authorized single-broker variant",
+        "record/offset reconciliation",
+        "<=10800s complete recovery",
+        "exact environment/configuration/source pins"
+      ]
+    },
+    {
+      "id": "SHARED-RST-02",
+      "environment": "selected target",
+      "mode": "shared",
+      "configuration": "target-unresolved",
+      "claim": "RST-02",
+      "status": "OPEN",
+      "evidence": [],
+      "owner": "C3 with C1/C4/C5/C6/C7",
+      "missing": [
+        "approved step/order/quorum/ISR gates",
+        "per-step and aggregate recovery/reconciliation",
+        "exact environment/configuration/source pins"
+      ]
+    },
+    {
+      "id": "SHARED-RST-03",
+      "environment": "selected target",
+      "mode": "shared",
+      "configuration": "target-unresolved",
+      "claim": "RST-03",
+      "status": "OPEN",
+      "evidence": [],
+      "owner": "C3 with C1/C4/C5/C6/C7",
+      "missing": [
+        "all broker/controller restart procedure",
+        "metadata/offset/client recovery and reconciliation",
+        "exact environment/configuration/source pins"
+      ]
+    },
+    {
+      "id": "SHARED-RST-04",
+      "environment": "selected target",
+      "mode": "shared",
+      "configuration": "target-unresolved",
+      "claim": "RST-04",
+      "status": "OPEN",
+      "evidence": [],
+      "owner": "C3 with C1/C4/C5/C6/C7",
+      "missing": [
+        "DEP-PERSIST-01 supplying project/owner/reference/scope/evidence",
+        "infrastructure-to-Kafka integration and replay clock",
+        "exact environment/configuration/source pins"
+      ]
+    },
+    {
+      "id": "SHARED-CAP-WP-A",
+      "environment": "selected target",
+      "mode": "shared",
+      "configuration": "target-unresolved",
+      "claim": "CAP-WP-A",
+      "status": "OPEN",
+      "evidence": [],
+      "owner": "C3 with C1/C4/C5/C6/C7",
+      "missing": [
+        "2TB/24h selected size mix and operating envelopes",
+        "producer and consumer accounting",
+        "resource/latency/overload acceptance",
+        "exact environment/configuration/source pins"
+      ]
+    },
+    {
+      "id": "SHARED-CAP-WP-B",
+      "environment": "selected target",
+      "mode": "shared",
+      "configuration": "target-unresolved",
+      "claim": "CAP-WP-B",
+      "status": "OPEN",
+      "evidence": [],
+      "owner": "C3 with C1/C4/C5/C6/C7",
+      "missing": [
+        "20TB/24h selected size mix and operating envelopes",
+        "producer and consumer accounting",
+        "resource/latency/overload acceptance",
+        "exact environment/configuration/source pins"
+      ]
+    },
+    {
+      "id": "SHARED-TENANCY",
+      "environment": "selected target",
+      "mode": "shared",
+      "configuration": "target-unresolved",
+      "claim": "TENANCY",
+      "status": "OPEN",
+      "evidence": [],
+      "owner": "C3 with C1/C4/C5/C6/C7",
+      "missing": [
+        "C6 policy",
+        "positive/negative auth/listener/group/topic tests",
+        "shared aggregate admission or dedicated contention evidence",
+        "exact environment/configuration/source pins"
+      ]
+    },
+    {
+      "id": "SHARED-GOVERNANCE",
+      "environment": "selected target",
+      "mode": "shared",
+      "configuration": "target-unresolved",
+      "claim": "GOVERNANCE",
+      "status": "OPEN",
+      "evidence": [],
+      "owner": "C3 with C1/C4/C5/C6/C7",
+      "missing": [
+        "C5 product/backend/version contract",
+        "schema enforcement and metadata integration",
+        "backup/restore and replay qualification",
+        "exact environment/configuration/source pins"
+      ]
+    },
+    {
+      "id": "SHARED-OBSERVABILITY",
+      "environment": "selected target",
+      "mode": "shared",
+      "configuration": "target-unresolved",
+      "claim": "OBSERVABILITY",
+      "status": "OPEN",
+      "evidence": [],
+      "owner": "C3 with C1/C4/C5/C6/C7",
+      "missing": [
+        "C1 actual exporter/query/rule/retention configuration",
+        "named on-call and receiver",
+        "alert delivery and overload recovery evidence",
+        "exact environment/configuration/source pins"
+      ]
+    }
+  ],
+  "promotion_rules": [
+    "R1 support checklist and I1-I5 do not imply R2 or R3",
+    "No PASS propagation across storage/version/security/topology/mode/workload changes without applicable reviewed evidence",
+    "PASS_RECORDED is inherited narrow evidence read by C7, not a new execution",
+    "ODF migration requires a separately scoped change and requalification",
+    "RST controlled/abrupt variants and clocks require C0/C3 acceptance"
+  ]
+}

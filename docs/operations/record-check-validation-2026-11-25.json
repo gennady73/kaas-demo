@@ -1,0 +1,146 @@
+{
+  "date": "2026-11-25",
+  "status": "OFFLINE_VALIDATED_READY_FOR_REVIEW",
+  "baseline": "SRS 0.9; C7 templates 0.1; existing owner inputs unchanged",
+  "demo_head_local": "a0e9e7d50d1f10bf2e79da3e4c5cc60d0e0c2a12",
+  "python": "3.15.0",
+  "commands": [
+    "python3 -B -m unittest discover -s kaas-demo/operations -p test_*.py -v",
+    "python3 -B kaas-demo/operations/record_check.py <each of five local templates> --templates docs/operations/templates",
+    "local AST/Markdown/template hashes/116 tracked source preservation checks"
+  ],
+  "unit_checks": {
+    "total_passed": 29,
+    "new_record_checks": 19,
+    "existing_budget_checks": 10,
+    "method": "synthetic in-memory records, temporary files and local CLI only; actual shared blank templates reused"
+  },
+  "template_cli_results": [
+    {
+      "template": "docs/operations/templates/deployment-support.json",
+      "status": "OPEN",
+      "errors": [],
+      "unresolved_field_count": 77,
+      "exit_code": 0
+    },
+    {
+      "template": "docs/operations/templates/evidence-custody.json",
+      "status": "OPEN",
+      "errors": [],
+      "unresolved_field_count": 56,
+      "exit_code": 0
+    },
+    {
+      "template": "docs/operations/templates/incident.json",
+      "status": "OPEN",
+      "errors": [],
+      "unresolved_field_count": 75,
+      "exit_code": 0
+    },
+    {
+      "template": "docs/operations/templates/monitoring-evidence.json",
+      "status": "OPEN",
+      "errors": [],
+      "unresolved_field_count": 52,
+      "exit_code": 0
+    },
+    {
+      "template": "docs/operations/templates/recovery-result.json",
+      "status": "OPEN",
+      "errors": [],
+      "unresolved_field_count": 92,
+      "exit_code": 0
+    }
+  ],
+  "additional_checks": [
+    {
+      "check": "CLI template remains OPEN deployment-support.json",
+      "passed": true
+    },
+    {
+      "check": "CLI template remains OPEN evidence-custody.json",
+      "passed": true
+    },
+    {
+      "check": "CLI template remains OPEN incident.json",
+      "passed": true
+    },
+    {
+      "check": "CLI template remains OPEN monitoring-evidence.json",
+      "passed": true
+    },
+    {
+      "check": "CLI template remains OPEN recovery-result.json",
+      "passed": true
+    },
+    {
+      "check": "blank template unchanged deployment-support.json",
+      "passed": true
+    },
+    {
+      "check": "blank template unchanged incident.json",
+      "passed": true
+    },
+    {
+      "check": "blank template unchanged recovery-result.json",
+      "passed": true
+    },
+    {
+      "check": "blank template unchanged evidence-custody.json",
+      "passed": true
+    },
+    {
+      "check": "blank template unchanged monitoring-evidence.json",
+      "passed": true
+    },
+    {
+      "check": "all preexisting tracked demo files unchanged",
+      "passed": true
+    },
+    {
+      "check": "all operations Python parses",
+      "passed": true
+    },
+    {
+      "check": "C7 Markdown targets exist",
+      "passed": true
+    },
+    {
+      "check": "operations excluded from active dev Kustomizations",
+      "passed": true
+    }
+  ],
+  "protected_tracked_files": 116,
+  "changed_protected_files": [],
+  "source_sha256": {
+    "docs/operations/templates/deployment-support.json": "0297ef4c939a82a3fd3b9a2de6d2b2521fadd2baad5fe611ac89a9d83aae9a3b",
+    "docs/operations/templates/incident.json": "f149373b8e4dec4e0141d1be444cf4e64141ab9a7dc5f4f2947ac1d76a9f90ff",
+    "docs/operations/templates/recovery-result.json": "48fd64f3a27debe85856fb39fa534a14bd547ba1725dc1bec215e382021421b7",
+    "docs/operations/templates/evidence-custody.json": "2125eedae438962216b2bd2546ce5de1cd7e86a5a290297ce41cb2614546ad25",
+    "docs/operations/templates/monitoring-evidence.json": "eba33344be2da38e2acb8decc7144b2cf648ce09334332b8e11cfb8f37518739",
+    "docs/operations/input-checklist.md": "508bbd273a63524b928147979e63d466978d5a20443719e8d414ae67dff7d647",
+    "docs/operations/helm-deferred-evaluation.md": "fc5ccb2863adf4aec3fd350e6be357b2ab54a5a1f61ca9640bd1bd841b593026",
+    "docs/operations/release-matrix.json": "c3f92032437fbd4ba0fea3332334d8deeccf6fabe330a2f448e36b446378d3d2"
+  },
+  "artifact_sha256": {
+    "kaas-demo/operations/record_check.py": "f6ea4e150a00ae89d01ef26b5a62929073165c6b5d4743f7c65fcd3eeae6fd60",
+    "kaas-demo/operations/test_record_check.py": "9790b9a8d5009da8af99272596476a61c126d2ffbf86b904109e1500dc0f6b77",
+    "kaas-demo/operations/README.md": "f15f60428c7ec4dc5b238ca068d230f1978463cbd2f9c0d1e5b9def265443dcf",
+    "docs/operations/offline-record-checks.md": "b66bd47bfddf2736bc510bacc8355addaf2d2eca11d841beb24672ac9df3b126",
+    "docs/operations/README.md": "a31c4180fb92edd12eccf8f4d773b876ab3e51540b8b999a97b4d0eaf6b70c34",
+    "docs/operations/templates/README.md": "52af02b749225c11f2fb2056e58b901c3c8f27b686bcd5ac2264ce9e1237d06c",
+    "docs/handoffs/C7-operations-release.md": "7ebecf6a2b6117c9eb6c9c67671a791a97a622c3666722f65c169aa8e5dd2a10",
+    "docs/handoffs/C7-C0-summary-2026-11-25.md": "c27da6c430a069e86e26d250ca9e8bbfaf062ffa0c2d7ad4d94b9e9cd1644e14"
+  },
+  "release_qualified": false,
+  "execution_ready": false,
+  "helm": "DEFERRED",
+  "packaging": "Kustomize",
+  "limits": [
+    "No evidence reference dereferencing or authentication",
+    "Selected consistency checks are not a full schema, evidence verification, approval or security enforcement",
+    "No API/network/Secret or active-run access/control, runtime changes or qualification",
+    "No independent human reviewer, commit/push or outbound communication",
+    "Further configuration-specific operational mapping awaits owner-supplied artifacts"
+  ]
+}

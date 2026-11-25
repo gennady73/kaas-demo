@@ -1,0 +1,102 @@
+{
+  "template_revision": "0.1",
+  "record_status": "TEMPLATE",
+  "execution_enabled": false,
+  "record_id": null,
+  "environment_id": null,
+  "tenancy_mode": null,
+  "prepared_by": null,
+  "prepared_at_utc": null,
+  "reviewer": null,
+  "reviewed_at_utc": null,
+  "conclusion": "OPEN",
+  "limitations": [],
+  "unresolved_inputs": [],
+  "record_type": "incident",
+  "procedure_reference": "docs/operations/incident-and-evidence.md",
+  "incident_id": null,
+  "run_id": null,
+  "affected_tenants_topics_groups": null,
+  "ownership": {
+    "run_owner": null,
+    "incident_lead": null,
+    "escalation_reference": null
+  },
+  "timeline": {
+    "first_impact_utc": null,
+    "detection_utc": null,
+    "last_success_utc": null,
+    "restored_utc": null,
+    "clock_source_uncertainty_reference": null
+  },
+  "identities": {
+    "frozen_plan_sha256": null,
+    "source_revisions": null,
+    "worker_job_uid": null,
+    "observer_job_uid": null,
+    "collector_pod_uid": null
+  },
+  "versions": {
+    "openshift": null,
+    "streams_csv": null,
+    "kafka": null,
+    "kafka_metadata_features": null,
+    "argocd_server": null,
+    "gitops_operator": null,
+    "storage_backend_interface": null,
+    "client_image_digest": null,
+    "native_client_version": null
+  },
+  "classification": {
+    "service_failure": "OPEN",
+    "harness_failure": "OPEN",
+    "unsent_demand": "OPEN",
+    "ambiguous_sends": "OPEN",
+    "missing_acknowledged_data": "OPEN",
+    "incomplete_evidence": "OPEN",
+    "required_unread_expiry": "OPEN"
+  },
+  "accounting": {
+    "planned_ids_reference": null,
+    "attempted_ids_reference": null,
+    "acknowledged_ids_reference": null,
+    "ambiguous_ids_reference": null,
+    "received_ids_reference": null,
+    "durable_business_effects_reference": null,
+    "committed_offsets_reference": null,
+    "unsent_count": null,
+    "missing_acknowledged_count": null,
+    "replayed_or_duplicate_count": null
+  },
+  "diagnosis": {
+    "observed_facts": null,
+    "hypotheses": null,
+    "proven_causes": null,
+    "counterevidence": null
+  },
+  "actions": {
+    "owner_authorization_reference": null,
+    "stop_drain_deadline_receipt_reference": null,
+    "correction_revision": null,
+    "regression_evidence_reference": null
+  },
+  "evidence_custody_reference": null,
+  "acceptance_impact": null,
+  "closure_owner": null,
+  "closure_disposition_reference": null,
+  "evidence": [
+    {
+      "evidence_id": null,
+      "requirement_or_claim_id": null,
+      "evidence_type": null,
+      "source_reference": null,
+      "source_version": null,
+      "observed_at_utc": null,
+      "environment_id": null,
+      "acceptance_criterion": null,
+      "review_status": "OPEN",
+      "reviewer": null,
+      "limitation": null
+    }
+  ]
+}

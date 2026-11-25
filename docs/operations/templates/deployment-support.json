@@ -1,0 +1,107 @@
+{
+  "template_revision": "0.1",
+  "record_status": "TEMPLATE",
+  "execution_enabled": false,
+  "record_id": null,
+  "environment_id": null,
+  "tenancy_mode": null,
+  "prepared_by": null,
+  "prepared_at_utc": null,
+  "reviewer": null,
+  "reviewed_at_utc": null,
+  "conclusion": "OPEN",
+  "limitations": [],
+  "unresolved_inputs": [],
+  "record_type": "deployment-support",
+  "procedure_reference": "docs/operations/release-runbook.md",
+  "stage": null,
+  "c4_i1_i5_contract_reference": null,
+  "target_profile_reference": null,
+  "identities": {
+    "kafka_namespace": null,
+    "kafka_cluster": null,
+    "tenant_ids": null,
+    "argocd_instance": null,
+    "controller_service_account": null
+  },
+  "versions": {
+    "openshift": null,
+    "streams_csv": null,
+    "kafka": null,
+    "kafka_metadata_features": null,
+    "argocd_server": null,
+    "gitops_operator": null,
+    "storage_backend_interface": null,
+    "client_image_digest": null,
+    "native_client_version": null
+  },
+  "source": {
+    "repository": null,
+    "resource_revision": null,
+    "resource_path": null,
+    "bootstrap_revision": null,
+    "render_sha256": null,
+    "packaging": "Kustomize"
+  },
+  "owners": {
+    "change_executor": null,
+    "incident_lead": null,
+    "backup": null,
+    "infrastructure_escalation": null,
+    "security_escalation": null,
+    "rollback_decision_authority": null,
+    "contact_route_reference": null
+  },
+  "resources": {
+    "approved_incremental_allocation_reference": null,
+    "free_capacity_observation_reference": null,
+    "placement_storage_reference": null,
+    "evidence_budget_reference": null
+  },
+  "controls": {
+    "access_admission_reference": null,
+    "watch_rbac_reference": null,
+    "effective_sync_prune_delete_authority_reference": null,
+    "secret_ca_reference": null
+  },
+  "change": {
+    "authorization_reference": null,
+    "window_start_utc": null,
+    "window_end_utc": null,
+    "active_run_owner_handoff_reference": null,
+    "approved_diff_reference": null,
+    "prechange_health_reference": null,
+    "execution_receipt_reference": null,
+    "postchange_health_reference": null
+  },
+  "rollback": {
+    "trigger_criteria": null,
+    "known_good_revision": null,
+    "reversible_boundary": null,
+    "irreversible_changes": null,
+    "approved_procedure_reference": null,
+    "latest_safe_decision_point": null,
+    "result_reference": null
+  },
+  "stage_assessment": {
+    "input_status": "OPEN",
+    "external_gate_status": "OPEN",
+    "c4_readiness_reference": null,
+    "c0_disposition_reference": null
+  },
+  "evidence": [
+    {
+      "evidence_id": null,
+      "requirement_or_claim_id": null,
+      "evidence_type": null,
+      "source_reference": null,
+      "source_version": null,
+      "observed_at_utc": null,
+      "environment_id": null,
+      "acceptance_criterion": null,
+      "review_status": "OPEN",
+      "reviewer": null,
+      "limitation": null
+    }
+  ]
+}

@@ -1,0 +1,178 @@
+{
+  "scope": "C7offline publication; source links adapted, raw/coordinator-only evidence excluded",
+  "recorded_at_utc": "2026-11-25T10:28:07.868273+00:00",
+  "base_demo_commit": "a0e9e7d50d1f10bf2e79da3e4c5cc60d0e0c2a12",
+  "documents": [
+    {
+      "coordinator_source": "docs/operations/README.md",
+      "coordinator_source_sha256": "a31c4180fb92edd12eccf8f4d773b876ab3e51540b8b999a97b4d0eaf6b70c34",
+      "published_path": "docs/operations/README.md",
+      "published_sha256": "2fd9b7d7452063502b063cf6febce6d95f5a5841a80202ca7a670984b8a3ffa6"
+    },
+    {
+      "coordinator_source": "docs/operations/budget-example-result.json",
+      "coordinator_source_sha256": "1f226f10494bc9f51c8fdf031506c497ac7b6e89718f710d3b85e3c3333f681b",
+      "published_path": "docs/operations/budget-example-result.json",
+      "published_sha256": "1f226f10494bc9f51c8fdf031506c497ac7b6e89718f710d3b85e3c3333f681b"
+    },
+    {
+      "coordinator_source": "docs/operations/capacity-and-evidence-budgets.md",
+      "coordinator_source_sha256": "db2f2c1b5811ea73cebe1aee034df07c92fbcea36f20cfd9770d97b21db6cd36",
+      "published_path": "docs/operations/capacity-and-evidence-budgets.md",
+      "published_sha256": "6f5897bb895aa4edfaec4a55a446f33156d12ac3e623238a438e1a02e2021d9b"
+    },
+    {
+      "coordinator_source": "docs/operations/checklist-validation-2026-11-25.json",
+      "coordinator_source_sha256": "99f2f334a19161cadec541fcbb3eac3aed8c4a621e4c22421bfc4733a0ebe8d4",
+      "published_path": "docs/operations/checklist-validation-2026-11-25.json",
+      "published_sha256": "99f2f334a19161cadec541fcbb3eac3aed8c4a621e4c22421bfc4733a0ebe8d4"
+    },
+    {
+      "coordinator_source": "docs/operations/helm-deferred-evaluation.md",
+      "coordinator_source_sha256": "fc5ccb2863adf4aec3fd350e6be357b2ab54a5a1f61ca9640bd1bd841b593026",
+      "published_path": "docs/operations/helm-deferred-evaluation.md",
+      "published_sha256": "72ef6913e5f98bd402ca383db8a6f1c26c35d1e4281ba2042d9bbf46a90f8de5"
+    },
+    {
+      "coordinator_source": "docs/operations/incident-and-evidence.md",
+      "coordinator_source_sha256": "608c332218d34d0173dd331063046284f6ed79925a6da1cdd2b5646ed2e855f5",
+      "published_path": "docs/operations/incident-and-evidence.md",
+      "published_sha256": "6a7f2b259c50db8a2f79271cce28250c9b7cf711f62686e671a5f08e31253605"
+    },
+    {
+      "coordinator_source": "docs/operations/input-checklist.md",
+      "coordinator_source_sha256": "508bbd273a63524b928147979e63d466978d5a20443719e8d414ae67dff7d647",
+      "published_path": "docs/operations/input-checklist.md",
+      "published_sha256": "db22b7ff99cd8834d654a6865829561de38f17984a53088a131b614eea8399de"
+    },
+    {
+      "coordinator_source": "docs/operations/monitoring-and-overload.md",
+      "coordinator_source_sha256": "9d3fbead364b41a6f2310c2d7656768be5ae54d0fad874b922bc99bb835ed048",
+      "published_path": "docs/operations/monitoring-and-overload.md",
+      "published_sha256": "f75be8cc21ace61f4e90a95b1cdced527b1826527771c47f8c9090cecbcc43ad"
+    },
+    {
+      "coordinator_source": "docs/operations/offline-record-checks.md",
+      "coordinator_source_sha256": "5a14d1c1836075da19715fb346b977bd2b50fb276f8541765949939a175fefcc",
+      "published_path": "docs/operations/offline-record-checks.md",
+      "published_sha256": "07e0e894975d01da342cd6a0eeb2378a77ba2dea50debb3a452945553112e341"
+    },
+    {
+      "coordinator_source": "docs/operations/offline-unit-checks.txt",
+      "coordinator_source_sha256": "c9b109493825768d8318e1dfc5c592d12fdcfde7327ec5b0029a380eccea088d",
+      "published_path": "docs/operations/offline-unit-checks.txt",
+      "published_sha256": "c9b109493825768d8318e1dfc5c592d12fdcfde7327ec5b0029a380eccea088d"
+    },
+    {
+      "coordinator_source": "docs/operations/record-check-validation-2026-11-25.json",
+      "coordinator_source_sha256": "a97f9558bff0ff31a1936d95ba8d290ed29db1a85a33b2df92cef491b29c6248",
+      "published_path": "docs/operations/record-check-validation-2026-11-25.json",
+      "published_sha256": "a97f9558bff0ff31a1936d95ba8d290ed29db1a85a33b2df92cef491b29c6248"
+    },
+    {
+      "coordinator_source": "docs/operations/recovery-qualification.md",
+      "coordinator_source_sha256": "82d14fb0a91e16a09ea25ccec1cb27f1805092cbe70e2e8ac31618a600049fa0",
+      "published_path": "docs/operations/recovery-qualification.md",
+      "published_sha256": "a34fbc9bdef5ffd4c42dabeabbdd6d6ea2e3b11b7a3f9420a3d31c5b2985948f"
+    },
+    {
+      "coordinator_source": "docs/operations/release-matrix.json",
+      "coordinator_source_sha256": "c3f92032437fbd4ba0fea3332334d8deeccf6fabe330a2f448e36b446378d3d2",
+      "published_path": "docs/operations/release-matrix.json",
+      "published_sha256": "c3f92032437fbd4ba0fea3332334d8deeccf6fabe330a2f448e36b446378d3d2"
+    },
+    {
+      "coordinator_source": "docs/operations/release-runbook.md",
+      "coordinator_source_sha256": "865d870a72d8e1aa2b4c8dea5c7773a771057218df7c7fe9880b324ee381943b",
+      "published_path": "docs/operations/release-runbook.md",
+      "published_sha256": "f792c0791bd47cc4f3176b5bffd06777c5e83324b46835f01011f962c63e7790"
+    },
+    {
+      "coordinator_source": "docs/operations/source-snapshot-2026-11-25.json",
+      "coordinator_source_sha256": "ccc29311453cd374b7dbbc1683a171e4725ab4335ba8543ef09620774d8cc7e0",
+      "published_path": "docs/operations/source-snapshot-2026-11-25.json",
+      "published_sha256": "ccc29311453cd374b7dbbc1683a171e4725ab4335ba8543ef09620774d8cc7e0"
+    },
+    {
+      "coordinator_source": "docs/operations/validation-2026-11-25.json",
+      "coordinator_source_sha256": "b4d24b941d2f9e2f4a1697e9e0940b98dc64434789cbc0235a4d0bbbfc8c54f9",
+      "published_path": "docs/operations/validation-2026-11-25.json",
+      "published_sha256": "b4d24b941d2f9e2f4a1697e9e0940b98dc64434789cbc0235a4d0bbbfc8c54f9"
+    },
+    {
+      "coordinator_source": "docs/operations/templates/README.md",
+      "coordinator_source_sha256": "52af02b749225c11f2fb2056e58b901c3c8f27b686bcd5ac2264ce9e1237d06c",
+      "published_path": "docs/operations/templates/README.md",
+      "published_sha256": "f9ba67bd7397140ecaa8c7a17dc5d4dfa046ea7b8626f0cc72c37da767b0e9df"
+    },
+    {
+      "coordinator_source": "docs/operations/templates/deployment-support.json",
+      "coordinator_source_sha256": "0297ef4c939a82a3fd3b9a2de6d2b2521fadd2baad5fe611ac89a9d83aae9a3b",
+      "published_path": "docs/operations/templates/deployment-support.json",
+      "published_sha256": "0297ef4c939a82a3fd3b9a2de6d2b2521fadd2baad5fe611ac89a9d83aae9a3b"
+    },
+    {
+      "coordinator_source": "docs/operations/templates/evidence-custody.json",
+      "coordinator_source_sha256": "2125eedae438962216b2bd2546ce5de1cd7e86a5a290297ce41cb2614546ad25",
+      "published_path": "docs/operations/templates/evidence-custody.json",
+      "published_sha256": "2125eedae438962216b2bd2546ce5de1cd7e86a5a290297ce41cb2614546ad25"
+    },
+    {
+      "coordinator_source": "docs/operations/templates/incident.json",
+      "coordinator_source_sha256": "f149373b8e4dec4e0141d1be444cf4e64141ab9a7dc5f4f2947ac1d76a9f90ff",
+      "published_path": "docs/operations/templates/incident.json",
+      "published_sha256": "f149373b8e4dec4e0141d1be444cf4e64141ab9a7dc5f4f2947ac1d76a9f90ff"
+    },
+    {
+      "coordinator_source": "docs/operations/templates/monitoring-evidence.json",
+      "coordinator_source_sha256": "eba33344be2da38e2acb8decc7144b2cf648ce09334332b8e11cfb8f37518739",
+      "published_path": "docs/operations/templates/monitoring-evidence.json",
+      "published_sha256": "eba33344be2da38e2acb8decc7144b2cf648ce09334332b8e11cfb8f37518739"
+    },
+    {
+      "coordinator_source": "docs/operations/templates/recovery-result.json",
+      "coordinator_source_sha256": "48fd64f3a27debe85856fb39fa534a14bd547ba1725dc1bec215e382021421b7",
+      "published_path": "docs/operations/templates/recovery-result.json",
+      "published_sha256": "48fd64f3a27debe85856fb39fa534a14bd547ba1725dc1bec215e382021421b7"
+    },
+    {
+      "coordinator_source": "docs/handoffs/C7-operations-release.md",
+      "coordinator_source_sha256": "7ebecf6a2b6117c9eb6c9c67671a791a97a622c3666722f65c169aa8e5dd2a10",
+      "published_path": "docs/handoffs/C7-operations-release.md",
+      "published_sha256": "da4aab6707fef227d553ecbf1845079c515c93d4972dfaf6129e38bd5207db13"
+    },
+    {
+      "coordinator_source": "docs/handoffs/C7-C0-summary-2026-11-25.md",
+      "coordinator_source_sha256": "c27da6c430a069e86e26d250ca9e8bbfaf062ffa0c2d7ad4d94b9e9cd1644e14",
+      "published_path": "docs/handoffs/C7-C0-summary-2026-11-25.md",
+      "published_sha256": "01e16ad33ba27f4de5913842173f2866c370539869d1b18b44502552b7013968"
+    },
+    {
+      "coordinator_source": "docs/reviews/C0-C7-RC-01-fix-2026-11-25.json",
+      "coordinator_source_sha256": "95c4fc7b8180f8e8a0de7d9d8f6b84c069f9a9304f9ca1bbffebe01310bcb2ed",
+      "published_path": "docs/operations/evidence/C0-C7-RC-01-fix-2026-11-25.json",
+      "published_sha256": "95c4fc7b8180f8e8a0de7d9d8f6b84c069f9a9304f9ca1bbffebe01310bcb2ed"
+    }
+  ],
+  "coordinator_only_references": {
+    "docs/testing/continuity-followup-2026-11-25.md": "e880995e95eb3a433ac65a6af255de5b4204df96b3bf17456f302bb3ef1af16a",
+    "docs/testing/runs/collector-fix-20261125/continuity-24h-20261125083551-5d08/launch.json": "7ca6159aaccbf92e4b8d9f4f166334f1d4f288bed2ff622ecb47ce7447565bbe",
+    "docs/chat-coordination-plan.md": "e928a15aa15985001899f7cb969085984de40bc4f8b18d6355c69a550954395e",
+    "docs/platform/tenant-profile-minimum-inputs-2026-11-25.md": "8435ff2fd065bd7e8945b9083c4d67a1472a3c7671dc8d7b843df7fa2d965a30",
+    "docs/handoffs/C4-kafka-platform-gitops.md": "a269fea77122397ad7a70bfad5fa9dca1108443b7b9f95dd707a3302d30fb3e5",
+    "docs/testing/runs/collector-fix-20261125/repeat-short-complete-metrics/monitoring-pods.json": "03fb13eaea8aea072668fb8bd44b00c8827fd7d00b5257236a21305abcae44b5",
+    "docs/testing/continuity-maintenance-check-2026-11-25.md": "0baab98056c0aff114fc5c2eceed45838d7bee9067aa655536feb2e97fe20287"
+  },
+  "helper_publication_adaptation": "test_record_check.py loads templates from the included repository docs/operations/templates; checker runtime logic unchanged from the C0-C7-RC-01 fix.",
+  "runtime_execution": "none; Git publication only",
+  "helpers_sha256": {
+    "operations/README.md": "448c07e4bf0bc20d2facfbb34bfb85cce2d53340761c3e0914d9c1b93ea159b4",
+    "operations/budget_check.py": "939abad9fa44eff809c81ca441637767f333cb74e536ba7127121c18bdc25efb",
+    "operations/fixtures/replay-example.json": "c4e928e0db5faf246311a2f3abd3dc7ebdd27b6c1b5c3703a96f1de8fee41401",
+    "operations/record_check.py": "cbe94c1f0975dbee9127a6c9c1e12eaa14c3faacd01e7d95d41e117126c0b6d1",
+    "operations/test_budget_check.py": "7b9841bc3cdca2ceef5eda814b2ecbfe9be93b855a3e544bb8f27049b1a197d9",
+    "operations/test_record_check.py": "fc27ddebbb11bea532f5b96386c92069a6a27f2fcec1b9bf9e61ca60b8454a2f"
+  },
+  "validation_reference": "docs/operations/publication-checks.json",
+  "validation": "35tests and5template CLI checks pass in isolated package; no parent workspace required"
+}

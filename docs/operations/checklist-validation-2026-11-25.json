@@ -1,0 +1,325 @@
+{
+  "revision": "0.1",
+  "date": "2026-11-25",
+  "scope": "C7 checklist, blank evidence templates and deferred Helm evaluation requirement",
+  "status": "OFFLINE_STRUCTURAL_CHECKS_PASS_READY_FOR_REVIEW",
+  "baseline": "SRS 0.9 plus dated C0 overlays",
+  "demo_head_local": "a0e9e7d50d1f10bf2e79da3e4c5cc60d0e0c2a12",
+  "current_packaging": "Kustomize",
+  "helm_evaluation_status": "DEFERRED_REQUIREMENT",
+  "execution_enabled": false,
+  "release_qualified": false,
+  "checks_passed": 38,
+  "checks": [
+    {
+      "check": "exactly five expected template types",
+      "passed": true
+    },
+    {
+      "check": "deployment-support.json blank documentation state",
+      "passed": true
+    },
+    {
+      "check": "deployment-support.json no invented identity/reviewer",
+      "passed": true
+    },
+    {
+      "check": "deployment-support.json procedure reference exists",
+      "passed": true
+    },
+    {
+      "check": "deployment-support.json evidence unobserved",
+      "passed": true
+    },
+    {
+      "check": "deployment-support.json no populated PASS claims",
+      "passed": true
+    },
+    {
+      "check": "incident.json blank documentation state",
+      "passed": true
+    },
+    {
+      "check": "incident.json no invented identity/reviewer",
+      "passed": true
+    },
+    {
+      "check": "incident.json procedure reference exists",
+      "passed": true
+    },
+    {
+      "check": "incident.json evidence unobserved",
+      "passed": true
+    },
+    {
+      "check": "incident.json no populated PASS claims",
+      "passed": true
+    },
+    {
+      "check": "recovery-result.json blank documentation state",
+      "passed": true
+    },
+    {
+      "check": "recovery-result.json no invented identity/reviewer",
+      "passed": true
+    },
+    {
+      "check": "recovery-result.json procedure reference exists",
+      "passed": true
+    },
+    {
+      "check": "recovery-result.json evidence unobserved",
+      "passed": true
+    },
+    {
+      "check": "recovery-result.json no populated PASS claims",
+      "passed": true
+    },
+    {
+      "check": "evidence-custody.json blank documentation state",
+      "passed": true
+    },
+    {
+      "check": "evidence-custody.json no invented identity/reviewer",
+      "passed": true
+    },
+    {
+      "check": "evidence-custody.json procedure reference exists",
+      "passed": true
+    },
+    {
+      "check": "evidence-custody.json evidence unobserved",
+      "passed": true
+    },
+    {
+      "check": "evidence-custody.json no populated PASS claims",
+      "passed": true
+    },
+    {
+      "check": "monitoring-evidence.json blank documentation state",
+      "passed": true
+    },
+    {
+      "check": "monitoring-evidence.json no invented identity/reviewer",
+      "passed": true
+    },
+    {
+      "check": "monitoring-evidence.json procedure reference exists",
+      "passed": true
+    },
+    {
+      "check": "monitoring-evidence.json evidence unobserved",
+      "passed": true
+    },
+    {
+      "check": "monitoring-evidence.json no populated PASS claims",
+      "passed": true
+    },
+    {
+      "check": "no-loss/3h requirements retained",
+      "passed": true
+    },
+    {
+      "check": "inherited infrastructure evidence remains OPEN",
+      "passed": true
+    },
+    {
+      "check": "actual recovery counters and clock unobserved",
+      "passed": true
+    },
+    {
+      "check": "Kustomize retained",
+      "passed": true
+    },
+    {
+      "check": "no execution authorization invented",
+      "passed": true
+    },
+    {
+      "check": "12 distinct input entries",
+      "passed": true
+    },
+    {
+      "check": "Helm deferred requirement gated",
+      "passed": true
+    },
+    {
+      "check": "all local Markdown targets exist",
+      "passed": true
+    },
+    {
+      "check": "no filled record directory created",
+      "passed": true
+    },
+    {
+      "check": "all 116 existing tracked demo files preserved",
+      "passed": true
+    },
+    {
+      "check": "no chart introduced in C7 scope",
+      "passed": true
+    },
+    {
+      "check": "templates outside active Kustomizations",
+      "passed": true
+    }
+  ],
+  "commands": [
+    "Local python3 -B JSON parsing, exact template identities, blank-state/null checks, procedure targets, requirement values, checklist IDs and Markdown-link checks",
+    "git -C kaas-demo ls-files plus before/after SHA-256 of 116 tracked files",
+    "git -C kaas-demo rev-parse HEAD"
+  ],
+  "protected_tracked_files": 116,
+  "changed_protected_files": [],
+  "protected_file_sha256": {
+    ".gitignore": "19772154188a6dd2ee6eb2d3e6dbd619a283c8d0dabe2fe8f60044c31cca8e5a",
+    "README.md": "bf5fbadae41d6a3153b3a698433aba03773f986def4aef40f523c670ae71ee0a",
+    "docs/baseline-provenance.json": "59083ff8046e5267c759344d4f41cdb7a99aa66df32c0c7d3dd51e8ae0cb895f",
+    "docs/bootstrap-guide.md": "34ceb436e15156b8e34b4d9dfa625faaf0f39e7c93adde9da2e3accc5a4b9222",
+    "docs/collector-fix-validation-2026-11-25.md": "0200a8cdb5326d4eaf437c9e536933228c576f6a8c2ed186837dac3bddbb029d",
+    "docs/continuity-24h-run-2026-11-24.md": "78c5dca82dddb3f723bd4a0f72f8ad0b55f0ede7a64f1ee10b0c4f30b635edea",
+    "docs/continuity-adapter-offline.md": "602d7bf9af002b3921c3818851b84e8f3f50abd43205c0db1d4645c09eea452a",
+    "docs/deployment-sequence.md": "f9fdb86968b598853a2dd2b29c4a2229c97a9fefd784349c7bcc944daa741d6c",
+    "docs/evidence/collector-fix-first-short-failure-2026-11-25.json": "c6b94aa8a0703ba07fba0c86aecb06e7a9b996e7c0b70d9bad96d077dd9ecfa0",
+    "docs/evidence/collector-fix-http-regression-2026-11-25.json": "d9149f05840fd32f9dbb63808aea80b774ab4e4868ddcb2f6a2f1daf2db06bee",
+    "docs/evidence/collector-fix-query-benchmark-2026-11-25.json": "af363a63a21e0733e5c6cf47e4770f531365f9bf68f15981fd0973a27e1f756b",
+    "docs/evidence/collector-fix-rerun-receipt-2026-11-25.json": "acec82bd5ca188d44c572d3b39901ec4b6e69b7d9c1d2b00e991c89de7ac5bec",
+    "docs/evidence/collector-fix-short-result-2026-11-25.json": "a926a2ff4bc21407675543588aca73ad0b3a7c83c196689f95acd101795e5639",
+    "docs/evidence/continuity-24h-execution-2026-11-24.json": "becd5af2b0e24ee46eae7141f3b8650fa5478aacebe488df3066e94125803ad6",
+    "docs/git-workflow.md": "9520ae5ff4612e461497183a331d3c51954c4033d1386342a7ea8c15452345ad",
+    "docs/implementation-status.md": "31508623f466d5116fb9c4c5c11a7c3e26e48bf69696d6d9095ec7635c5940fa",
+    "docs/kafka-cluster-result-2026-11-23.md": "95177d295514498af9bd9fe06c544b2a85d8fe5b993b4c4a0ba057047a5b45fa",
+    "docs/kafka-deployment-guide.md": "6ed37212cca23bb06bb8a483a25d36f813611d8d53b4d56e04fc09c21987ffa8",
+    "docs/operator-stage-result-2026-11-22.md": "3f7978b0bf12978fb77cb40d4032277db895bbf172ee581f8eaa8cd3264db5c6",
+    "docs/smoke-test-result-2026-11-23.md": "23f6db7be09ff7e4ebb74f01a4c9b4b511d02692b757e932f65a678493d22dab",
+    "docs/staged-xk6-continuity-plan.md": "554b2cfa88dbe85da250e66e4d680c115707c4026e952899547503e3b912622a",
+    "docs/tenant-profile-scaffolds.md": "e2fba76a1cfe90842a8f16893c9474aa140080deedd83c4543108fb8cb7e315a",
+    "docs/xk6-build-and-smoke-2026-11-24.md": "533f8d67880ff8a8df24fb48d9f4326563f14222e8574ed91f7e5d75e9509014",
+    "environments/candidates/README.md": "28cd1b378053663b8d11bd812bfcf43659f5225c87b628ed35995a8710263c8a",
+    "environments/candidates/dedicated/profile.json": "fac2c51e7fd16c1487c35ff9cff04f31806e73b5b49d9af188cf4898965dff24",
+    "environments/candidates/shared/profile.json": "b46c6039e65373f2a09cbf6df6fad677c995921f1403735f90fa32cfad1f9c48",
+    "environments/dev/README.md": "ffed92fa31ce718e5720a5f6f4beb068dbba64593cf5830b6ad7397c043dbd5c",
+    "environments/dev/kafka/kustomization.yaml": "d3ea63277106f8903971bf264e6057d89a3ed37d3032e1d5e517a96638dd4bf9",
+    "environments/dev/operator/kustomization.yaml": "922ef0c4e26e0448efdfb167b5dd20cd55ac5aaf045f44c62e176a3d996d3873",
+    "gitops/README.md": "ce33a1243922adb4518408ef2021e1251db7068f7b302a7ca8dc5bd63a1d5808",
+    "gitops/bootstrap/README.md": "1f1a50f122fc9190c0fad6de4eaa0ba7ea4955110482514b06207bd31c7d35b0",
+    "gitops/bootstrap/argocd.yaml.template": "3c3356e6790de0ffebef76c104a445deb982161274b742adcad1436549128bbe",
+    "gitops/bootstrap/kafka-application.yaml.template": "ae383ae5c38d1ff1578f202fd30d07e32d40581282f4027a9d8de3dbab55688e",
+    "gitops/bootstrap/kafka-controller-rbac.yaml": "067e9efd33b59f9890a0d548b2b663bdff2b63bd0f68ed7338ccb157b51963ef",
+    "gitops/bootstrap/kafka-project.yaml": "a95361346181fa47a81b39778cdc942ce3d9295361061de0c3697899e93b7d8d",
+    "gitops/bootstrap/namespaces.yaml": "441f068aa126502d95516ea9102cbe806648e815db93c39a09f5bf1360248319",
+    "gitops/bootstrap/operator-application.yaml.template": "c3e1e1fc294e04e8a96794844ae927b7c7dfb2041ee0aa08cd8e2d4b451a5ad1",
+    "gitops/bootstrap/project.yaml": "1517c00cc94aac418132df64b17d418b513ddb7b4cce5412075c0e1f9930a433",
+    "gitops/profiles/README.md": "1bdf259673f8a9b07dda104ff7e2fb5b0b8076aae5065e7822b4e2e63565dd03",
+    "gitops/profiles/application-set.yaml.template": "db61a61dc3510b95216f519cd0a04f57355b75de58f64a4ca2a62f4ed0d7cd8d",
+    "gitops/profiles/bootstrap-inputs.json": "d0c5babf82bbee07301730917822765bbb9752db63cb8c29dee0b5b4b2464612",
+    "platform/README.md": "42c5dc875fb1329eff0609b2e85962301fb070166c7f853d0339d0b37d346998",
+    "platform/kafka/README.md": "e9b9058126f51b919c8e046a57dab1987cf57c212fd7257cac9c0048490c4e37",
+    "platform/kafka/kafka.yaml": "d280e093d3575abdf79d1cf72e8a9b2b70943abb2cd701487c72bb7dad796895",
+    "platform/kafka/kustomization.yaml": "f04ae8572cce82de529fa64fb97b827921cea46978a23eceea46d829140fcd37",
+    "platform/kafka/nodepool.yaml": "84a29493b38d8e83a656ff91fe030880b00115e7447b7cafbd58c4b095b20a90",
+    "platform/kafka/smoke-topics.yaml": "b93a45aa38e75dee6fa086b1bbb546dd4f3dbf0a1326b002df8e302a7c036bdc",
+    "platform/kafka/smoke-user.yaml": "53caaf354e98730ecf21f6f635e5f261c4109d2f0d0e33edb7298f996f10e1ee",
+    "platform/operator/README.md": "48a362a495cf81a75de8fc347aa79d41871391cd6fd3ac53784fb78317337335",
+    "platform/operator/kustomization.yaml": "4749f05534ea8732943e23153651ddc00dfe32d976f934c1622795f746a859b7",
+    "platform/operator/operatorgroup.yaml": "25a7f6878555f9b552b2788efedaab052ce34229508f9eaa7126b2aa946f7e63",
+    "platform/operator/subscription.yaml": "307a755f76c54729a9f701406cd7f3a1787752f3f0749837d887d0108397ae74",
+    "platform/profiles/README.md": "2b692b8e34d4380ca5a60771cbda31bf6ff57a7931660904204fa1ff9176805c",
+    "platform/profiles/common/kafka.yaml.template": "0ced78d1dd4335fac7ed33398f24221eb22a6fa0e3857485b5e2ea7b352995ec",
+    "platform/profiles/common/nodepool.yaml.template": "21bd3e58c7ecf76a5272fc91f025175348c7f1b1adc93e5e1bf427208f7b1cf4",
+    "platform/profiles/dedicated/composition.json": "fe47b2659852926b21d57c3d2c14e258422c3678b01e09739a2c0b74b6b2c3a0",
+    "platform/profiles/shared/composition.json": "5ee523f061371698c951d63ac7f25eb0aa5e5f5b1dc604902a37022f032276d6",
+    "policies/tenants/README.md": "4f1ca918ec0484edfd10ff32b76fe6015b2fbe4ad02952e3526439858f343897",
+    "policies/tenants/fixtures/dedicated.json": "172048ac283ea1ccd730645a9bb579ba5c6897795aa1ed81a4d2716926eb3359",
+    "policies/tenants/fixtures/shared.json": "eae405460c89ed75c98da880964a18dad1bc75f74958578e1321597f04a8be78",
+    "policies/tenants/profile.schema.json": "dfbc0697451667911aa476a0f46fd9fe7d44a1972a7b784561ce8a3952266304",
+    "policies/tenants/profile_tool.py": "7b1a206cb7f2dd4bcb014a518e80108b137eb5c5d6fc8cc9dfe72f1e35955941",
+    "policies/tenants/schemas/Kafka-v1.json": "8b8cbb751f944eab62fe8704957c6ee95c4e800bc73ff9d2948aa1d772c1e55f",
+    "policies/tenants/schemas/KafkaNodePool-v1.json": "8abdf334ed52ee2e0fa9c8561a92ae100a7452814fabb400d3bac537a7573fd3",
+    "policies/tenants/schemas/KafkaTopic-v1.json": "6246686fb611ab29b60eefc5bca905778cd4c9ce9238236bf6edd9b29c1a3cae",
+    "policies/tenants/schemas/KafkaUser-v1.json": "a238d10c0552ccf99be02d00a53544b624ffc47bd0941e95a46563f1cb0f0528",
+    "policies/tenants/schemas/provenance.json": "9bac418cc01f2a51631400a8a0437ea27db49b6505be4e9cb23f953a42add262",
+    "policies/tenants/test_profiles.py": "7c477b75f5e1f0f6ee0071978fc1df0c7638364f869b643ecfed3f35d7b352cd",
+    "policies/tenants/validate_offline.py": "bd9b61c4da47df404c25ba91df62858323870041316d2764d0974a1ee14f6762",
+    "tenants/README.md": "2ba5bf8750338a26d0df9ebccdb904b8ebf14315a7bf3fc4c8776fe3ee429cc9",
+    "tenants/profiles/README.md": "959d46a84fa71dfefa024abe6685e773da69561d2c75fd046fa91efc9c17aa47",
+    "tenants/profiles/topic.yaml.template": "1fcacdfd9075e8949039e7786347bb74d619241db31fe7426fe51db0a8761abf",
+    "tenants/profiles/user.yaml.template": "0db1ded4e072087e110a1ba6f146bdf204916b377b228f844a03bce00a01c9d9",
+    "tests/continuity/README.md": "cb406464088cb2bf077cbca409fdd8d4780637c6fd858bb4b5977ee95157cafd",
+    "tests/continuity/collector/InitialGroups.java": "bb43944afd7d842d5eaf4bfbf758ef2972f30d62bcf8f3fc5d170f593e9dacee",
+    "tests/continuity/collector/README.md": "fcaebdd7b914f970d2f9932b63cf820c5e0a88d620262e11512f7b6d3d9d475d",
+    "tests/continuity/collector/continuity_reconcile.py": "65cd5a6d37a67c165111724b61278f7e2cf344b5e5987092270e2528938018ab",
+    "tests/continuity/collector/server.py": "02f58ea213a7f2c40bf2173ce1b349ad314b8bef87780ffc2cb911d478926308",
+    "tests/continuity/collector/source-manifest.json": "f32de4f70eeb5b9ad284ba5fcd2005f07c68eb8781f24210539671c01a669388",
+    "tests/continuity/collector/test_server.py": "3ca8894acbd58264d8e5a2e014ca3ddb176fd27ff98a8e91bbadf4dbc457a523",
+    "tests/continuity/collector/validation-summary.json": "76f8376098e7f580b8eda3172cf8e6c11b1f46551c8c763d01b2e0de4370f3a8",
+    "tests/continuity/collector/watch.py": "d5fb5ea4de6b3cdc10c2828e9e232e0c2198620d32462906c8b76b6fe6c56bcc",
+    "tests/continuity/continuity-plan.json": "76fa3c54f6575a6f5c9b7875dfb0881b5074f8a63e4e6f9809603498dd99d475",
+    "tests/continuity/generated/15m/manifest.json": "12ab983ad3303ed544168c1f120887203a4df9c7389f9112204eb0bbad57e008",
+    "tests/continuity/generated/15m/worker-0.json": "c6f3cdac891f4a03e119b6598ab6c9e83012b46cefd077c3104178777338c62f",
+    "tests/continuity/generated/24h/manifest.json": "ce7cfc6c7871914ed7f44859d6476ae5b0e9d45f6004fdcc18501826144906f4",
+    "tests/continuity/generated/24h/worker-0.json": "bbf822512c3f6b6583be7ff9be14b9d6b3fbc3f5375af77f0097f83a8388dd7d",
+    "tests/continuity/generated/60m/manifest.json": "5a5f3e1dff65036d0f2da20af8940a72c715dd26cb1ce5ee27d889706c067380",
+    "tests/continuity/generated/60m/worker-0.json": "697a70f31a9ca632bafce5d7a899a37568faf4422762f7e993daf054b8fd6596",
+    "tests/continuity/requirements-contract.json": "214173de3e9ff3cb7a6e6d8594439ae92954adafea84dfc4237bbb75e789591c",
+    "tests/continuity/runtime/manifest.json": "da56bf84c19c48c542d7af4ec6fec346197a388901c69833e4f50f0eddd25be8",
+    "tests/continuity/runtime/preflight/continuity-core.mjs": "5651bce19cbdb9e9023e98fec624748ce959743135a9467d05dfced01b435620",
+    "tests/continuity/runtime/preflight/continuity-engine.mjs": "a4abaa0fe9ba971df5569bb96297f5855129f5c63bdfc450d08bed1712c99b25",
+    "tests/continuity/runtime/preflight/continuity-entrypoint.sh": "7c449164ab1b81aec8283a0f8a13982580aa7b39c82a2213b6410b85d5c58497",
+    "tests/continuity/runtime/preflight/continuity.js": "f6cddd09437c8e3cd6aab5d9a92a252c6bde9ffbb122cda311a9ac82a1c60989",
+    "tests/continuity/runtime/preflight/core.mjs": "afae5cc4378a22a182448bc69f9e08a26e463e213c86d9fb3df4ad62c9974183",
+    "tests/continuity/scenarios/15m.json": "582f5f7d72abdf66410650e448fe5e7cd43a6aead53c556fe0aaa8bfb6081a93",
+    "tests/continuity/scenarios/24h.json": "a376f8029d100ec0d93afda0a6d672a4b9558d47fab55ad541d1eaa423d063bc",
+    "tests/continuity/scenarios/60m.json": "cc5c165cdbc5d64b494726dcd0c7bcc121e50377c124ff0d3532242c4afe45db",
+    "tests/dev-smoke/README.md": "1e0c83694f3b3e281d98452f958d70b1752b097efe6a0e687d8beb5429727d1d",
+    "tests/dev-smoke/Smoke.java": "a7af981979a47715e51e5ae9a9e86818b8eea1895dc980733b176de0664e00ee",
+    "tests/dev-smoke/custom-extension/Dockerfile": "28a77fde7440e718c0443dc869de4598d7b494520458d5077c05e1aeb0d3f017",
+    "tests/dev-smoke/custom-extension/README.md": "73cc530e06c96a9c3cd5b596c5e45aff533b2a08d04067a9a465d718f76a4332",
+    "tests/dev-smoke/custom-extension/build/extension.go": "4a3270a5ea4a0d5a668c953d663e8c6d9fddf33236568ef003113803b0695769",
+    "tests/dev-smoke/custom-extension/build/go.mod": "f0ece82096f59e0d5f2fd6d56e42072174860ee227ff79b420560176ad4cf888",
+    "tests/dev-smoke/custom-extension/build/go.sum": "619a9938e5e4aa486341a537d807bab46e7a09141667d327ecbb4b629b901f1e",
+    "tests/dev-smoke/custom-extension/build/main.go": "a25f688e497b70e110145394808622fdfa5c47843b3d4d85ac832fe38d00a0ae",
+    "tests/dev-smoke/custom-extension/confluent_config.go.patch": "832424233f0b46dc84a0eb6bef9a1a9b15f3bcd4db206c6afaec17cf725e971a",
+    "tests/dev-smoke/custom-extension/original-local-changes.patch": "4057b37e5c04d5cf9c358d6e53286c62f2178d2c1b7147d80da3774bc5143a61",
+    "tests/dev-smoke/custom-extension/producer.go.patch": "eb239b6cf752f9b3e80014e9a06bd06c6958d9097b7e7ec468ec5eded00bdf48",
+    "tests/dev-smoke/custom-extension/writer.go.patch": "ad29f3e6dfa49b7bde741bb95fd208c0739deb4ca75cdd1fe77d05fba58ebdff",
+    "tests/dev-smoke/expected-cases.example.json": "72c5fe3c5c208070cb4346f2079232af09f33ae3ba1b3d86344dd0e48aeb278e",
+    "tests/dev-smoke/prepare_cases.py": "630a66055fa49e3c83f1a1aba66df416e31c55d61e7b5d0214488ccd2cc39cfd",
+    "tests/dev-smoke/profile.json": "a86381e0b1668b2871a2f7e795645d2afe872dcfc4692aaff23977e992f2a5b7",
+    "tests/dev-smoke/reconcile.py": "39f43e256891aaa3249ddde0620c44b8866f9cdbad1b209597a1bee7c7a11147",
+    "tests/dev-smoke/smoke.js": "cba5d1b356248b9744d66a556dd9fa689338cf1a6d1b0811e38f7ba47e288536"
+  },
+  "source_sha256": {
+    "AGENTS.md": "3dd2b6a713c8a7a4af18afb74f14069efe20f86bd6d7cc1ae2cda25af210bf0e",
+    "docs/project-context.md": "cada098a2a436b9007a0b5b05b016afc7050a62df29d1686b2c6e3803591bf36",
+    "docs/validation-register.md": "f362d41e309f0a01c5f6c7eca79fd9644c84ee204f551647414d6422738115a5",
+    "docs/kaas-system-requirements-specification.md": "e438dd18b7426aa242ba94968fc56656bf745b531af481c3dc652c158c73e4e2",
+    "docs/chat-coordination-plan.md": "e928a15aa15985001899f7cb969085984de40bc4f8b18d6355c69a550954395e",
+    "docs/handoffs/C4-kafka-platform-gitops.md": "a269fea77122397ad7a70bfad5fa9dca1108443b7b9f95dd707a3302d30fb3e5",
+    "docs/platform/tenant-profile-minimum-inputs-2026-11-25.md": "8435ff2fd065bd7e8945b9083c4d67a1472a3c7671dc8d7b843df7fa2d965a30",
+    "docs/operations/incident-and-evidence.md": "608c332218d34d0173dd331063046284f6ed79925a6da1cdd2b5646ed2e855f5",
+    "docs/operations/recovery-qualification.md": "82d14fb0a91e16a09ea25ccec1cb27f1805092cbe70e2e8ac31618a600049fa0",
+    "docs/operations/release-matrix.json": "c3f92032437fbd4ba0fea3332334d8deeccf6fabe330a2f448e36b446378d3d2"
+  },
+  "artifact_sha256": {
+    "docs/operations/input-checklist.md": "508bbd273a63524b928147979e63d466978d5a20443719e8d414ae67dff7d647",
+    "docs/operations/helm-deferred-evaluation.md": "fc5ccb2863adf4aec3fd350e6be357b2ab54a5a1f61ca9640bd1bd841b593026",
+    "docs/operations/README.md": "01b53d27f8b0ae5abcb275692f38221ba4cf349a1e1632e14d980167a8424e31",
+    "docs/operations/release-runbook.md": "865d870a72d8e1aa2b4c8dea5c7773a771057218df7c7fe9880b324ee381943b",
+    "docs/operations/templates/README.md": "fa2cceab51a1df489dc671b58719a045b0717eb2f4c7f809b20d8b8ec1c53b88",
+    "docs/handoffs/C7-operations-release.md": "29fcd486416407c0f12a8619653ff4859deb4e3fed66e9d57c3b833d4baef777",
+    "docs/operations/templates/deployment-support.json": "0297ef4c939a82a3fd3b9a2de6d2b2521fadd2baad5fe611ac89a9d83aae9a3b",
+    "docs/operations/templates/incident.json": "f149373b8e4dec4e0141d1be444cf4e64141ab9a7dc5f4f2947ac1d76a9f90ff",
+    "docs/operations/templates/recovery-result.json": "48fd64f3a27debe85856fb39fa534a14bd547ba1725dc1bec215e382021421b7",
+    "docs/operations/templates/evidence-custody.json": "2125eedae438962216b2bd2546ce5de1cd7e86a5a290297ce41cb2614546ad25",
+    "docs/operations/templates/monitoring-evidence.json": "eba33344be2da38e2acb8decc7144b2cf648ce09334332b8e11cfb8f37518739"
+  },
+  "limits": [
+    "Static checks only; no new unit tests or runtime checks and earlier test results not rerun",
+    "Templates are documentation, not schemas or admission/execution enforcement",
+    "No API/network/Secret/continuity query or control, mutation, load, fault, sync or publication",
+    "No real support identity, budget, approval or completed result fabricated",
+    "No independent reviewer; C0/C3 retain decisions/results",
+    "Initial C7 source snapshots and validation receipts remain historical; new hashes describe this slice"
+  ]
+}

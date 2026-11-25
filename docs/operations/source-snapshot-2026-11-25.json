@@ -1,0 +1,27 @@
+{
+  "baseline": "SRS 0.9; local evidence snapshot 2026-11-25",
+  "demo_head": "a3ff863fad2f3b1eb7a34ee543ecfa0988047bf1",
+  "sources": {
+    "AGENTS.md": "3dd2b6a713c8a7a4af18afb74f14069efe20f86bd6d7cc1ae2cda25af210bf0e",
+    "docs/project-context.md": "9b20c46e8a3e9b3e4b82e95735333c84937ac395201673258384c7557ca4311e",
+    "docs/kaas-system-requirements-specification.md": "e438dd18b7426aa242ba94968fc56656bf745b531af481c3dc652c158c73e4e2",
+    "docs/validation-register.md": "9a7c80967937f19f4232012007add60fcd76129f715ac017d8f6acb16fa843ed",
+    "docs/chat-coordination-plan.md": "e928a15aa15985001899f7cb969085984de40bc4f8b18d6355c69a550954395e",
+    "docs/chat-prompts-c5-c7.md": "ca7d9802abe62e681e096dff3ad6290a57aed825f05c59befef249382c98d61a",
+    "docs/handoffs/C4-kafka-platform-gitops.md": "a269fea77122397ad7a70bfad5fa9dca1108443b7b9f95dd707a3302d30fb3e5",
+    "docs/platform/tenant-profile-minimum-inputs-2026-11-25.md": "8435ff2fd065bd7e8945b9083c4d67a1472a3c7671dc8d7b843df7fa2d965a30",
+    "docs/testing/continuity-followup-2026-11-25.md": "e880995e95eb3a433ac65a6af255de5b4204df96b3bf17456f302bb3ef1af16a",
+    "docs/testing/continuity-maintenance-check-2026-11-25.md": "0baab98056c0aff114fc5c2eceed45838d7bee9067aa655536feb2e97fe20287",
+    "kaas-demo/README.md": "bf5fbadae41d6a3153b3a698433aba03773f986def4aef40f523c670ae71ee0a",
+    "kaas-demo/docs/implementation-status.md": "31508623f466d5116fb9c4c5c11a7c3e26e48bf69696d6d9095ec7635c5940fa",
+    "kaas-demo/platform/kafka/kafka.yaml": "d280e093d3575abdf79d1cf72e8a9b2b70943abb2cd701487c72bb7dad796895",
+    "kaas-demo/platform/kafka/nodepool.yaml": "84a29493b38d8e83a656ff91fe030880b00115e7447b7cafbd58c4b095b20a90",
+    "kaas-demo/tests/continuity/collector/server.py": "02f58ea213a7f2c40bf2173ce1b349ad314b8bef87780ffc2cb911d478926308",
+    "kaas-demo/tests/continuity/collector/watch.py": "d5fb5ea4de6b3cdc10c2828e9e232e0c2198620d32462906c8b76b6fe6c56bcc",
+    "kaas-demo/tests/continuity/collector/README.md": "fcaebdd7b914f970d2f9932b63cf820c5e0a88d620262e11512f7b6d3d9d475d",
+    "docs/testing/runs/collector-fix-20261125/15m-result.json": "a926a2ff4bc21407675543588aca73ad0b3a7c83c196689f95acd101795e5639",
+    "docs/testing/runs/collector-fix-20261125/first-short-result.json": "c6b94aa8a0703ba07fba0c86aecb06e7a9b996e7c0b70d9bad96d077dd9ecfa0",
+    "docs/testing/runs/collector-fix-20261125/continuity-24h-20261125083551-5d08/launch.json": "7ca6159aaccbf92e4b8d9f4f166334f1d4f288bed2ff622ecb47ce7447565bbe",
+    "docs/testing/runs/collector-fix-20261125/repeat-short-complete-metrics/monitoring-pods.json": "03fb13eaea8aea072668fb8bd44b00c8827fd7d00b5257236a21305abcae44b5"
+  }
+}

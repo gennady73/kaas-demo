@@ -1,0 +1,77 @@
+{
+  "template_revision": "0.1",
+  "record_status": "TEMPLATE",
+  "execution_enabled": false,
+  "record_id": null,
+  "environment_id": null,
+  "tenancy_mode": null,
+  "prepared_by": null,
+  "prepared_at_utc": null,
+  "reviewer": null,
+  "reviewed_at_utc": null,
+  "conclusion": "OPEN",
+  "limitations": [],
+  "unresolved_inputs": [],
+  "record_type": "evidence-custody",
+  "procedure_reference": "docs/operations/incident-and-evidence.md",
+  "run_or_incident_id": null,
+  "custodian": null,
+  "classification_policy_reference": null,
+  "artifacts": [
+    {
+      "artifact_id": null,
+      "role": null,
+      "original_source_uid_path": null,
+      "local_or_store_reference": null,
+      "acquired_at_utc": null,
+      "snapshot_or_export_method": null,
+      "byte_count": null,
+      "sha256": null,
+      "complete": null,
+      "sanitization_reference": null,
+      "access_policy_reference": null
+    }
+  ],
+  "storage": {
+    "primary_destination_reference": null,
+    "second_copy_destination_reference": null,
+    "separate_failure_domain_reference": null,
+    "quota_bytes": null,
+    "free_bytes": null,
+    "capacity_observed_at_utc": null,
+    "peak_db_wal_export_audit_budget_reference": null
+  },
+  "verification": {
+    "original_hash_manifest_reference": null,
+    "second_copy_hash_check_reference": null,
+    "restore_readability_check_reference": null,
+    "verified_by": null,
+    "verified_at_utc": null
+  },
+  "disposition": {
+    "retention_owner": null,
+    "retention_duration_or_end": null,
+    "retention_policy_reference": null,
+    "legal_hold_status": "OPEN",
+    "deletion_authority": null,
+    "disposition_authorization_reference": null,
+    "disposition_receipt_reference": null
+  },
+  "raw_negative_outcomes_preserved": null,
+  "consistency_limitations": null,
+  "evidence": [
+    {
+      "evidence_id": null,
+      "requirement_or_claim_id": null,
+      "evidence_type": null,
+      "source_reference": null,
+      "source_version": null,
+      "observed_at_utc": null,
+      "environment_id": null,
+      "acceptance_criterion": null,
+      "review_status": "OPEN",
+      "reviewer": null,
+      "limitation": null
+    }
+  ]
+}

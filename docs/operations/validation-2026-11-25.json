@@ -1,0 +1,284 @@
+{
+  "date": "2026-11-25",
+  "status": "OFFLINE_VALIDATED_READY_FOR_REVIEW",
+  "release_qualified": false,
+  "commands": [
+    "python3 -B -m unittest discover -s kaas-demo/operations -p test_*.py -v",
+    "python3 -B kaas-demo/operations/budget_check.py kaas-demo/operations/fixtures/replay-example.json",
+    "negative CLI: outage_s=NaN -> exit 2",
+    "local Python AST/JSON/Markdown links/matrix/evidence/protected source checks; fractions.Fraction arithmetic"
+  ],
+  "unit_tests": 10,
+  "checks": [
+    {
+      "check": "10 arithmetic/unknown/error unit checks",
+      "passed": true
+    },
+    {
+      "check": "positive CLI is planning-only",
+      "passed": true
+    },
+    {
+      "check": "negative CLI exits 2 for nonfinite input",
+      "passed": true
+    },
+    {
+      "check": "independent Fraction arithmetic RF2 2000000000000",
+      "passed": true
+    },
+    {
+      "check": "independent Fraction arithmetic RF2 20000000000000",
+      "passed": true
+    },
+    {
+      "check": "dev allocated PVC bytes",
+      "passed": true
+    },
+    {
+      "check": "export scaling rounds correctly",
+      "passed": true
+    },
+    {
+      "check": "new Python syntax",
+      "passed": true
+    },
+    {
+      "check": "all local Markdown link targets exist",
+      "passed": true
+    },
+    {
+      "check": "23 unique matrix rows; no release qualified",
+      "passed": true
+    },
+    {
+      "check": "evidence paths DEV-XK6-SMOKE",
+      "passed": true
+    },
+    {
+      "check": "evidence paths CONTINUITY-ORIGINAL",
+      "passed": true
+    },
+    {
+      "check": "evidence paths CONTINUITY-FIRST-SHORT",
+      "passed": true
+    },
+    {
+      "check": "evidence paths CONTINUITY-REPEAT-SHORT",
+      "passed": true
+    },
+    {
+      "check": "evidence paths CONTINUITY-FRESH-24H",
+      "passed": true
+    },
+    {
+      "check": "evidence paths DEDICATED-RST-01",
+      "passed": true
+    },
+    {
+      "check": "target OPEN DEDICATED-RST-01",
+      "passed": true
+    },
+    {
+      "check": "evidence paths DEDICATED-RST-02",
+      "passed": true
+    },
+    {
+      "check": "target OPEN DEDICATED-RST-02",
+      "passed": true
+    },
+    {
+      "check": "evidence paths DEDICATED-RST-03",
+      "passed": true
+    },
+    {
+      "check": "target OPEN DEDICATED-RST-03",
+      "passed": true
+    },
+    {
+      "check": "evidence paths DEDICATED-RST-04",
+      "passed": true
+    },
+    {
+      "check": "target OPEN DEDICATED-RST-04",
+      "passed": true
+    },
+    {
+      "check": "evidence paths DEDICATED-CAP-WP-A",
+      "passed": true
+    },
+    {
+      "check": "target OPEN DEDICATED-CAP-WP-A",
+      "passed": true
+    },
+    {
+      "check": "evidence paths DEDICATED-CAP-WP-B",
+      "passed": true
+    },
+    {
+      "check": "target OPEN DEDICATED-CAP-WP-B",
+      "passed": true
+    },
+    {
+      "check": "evidence paths DEDICATED-TENANCY",
+      "passed": true
+    },
+    {
+      "check": "target OPEN DEDICATED-TENANCY",
+      "passed": true
+    },
+    {
+      "check": "evidence paths DEDICATED-GOVERNANCE",
+      "passed": true
+    },
+    {
+      "check": "target OPEN DEDICATED-GOVERNANCE",
+      "passed": true
+    },
+    {
+      "check": "evidence paths DEDICATED-OBSERVABILITY",
+      "passed": true
+    },
+    {
+      "check": "target OPEN DEDICATED-OBSERVABILITY",
+      "passed": true
+    },
+    {
+      "check": "evidence paths SHARED-RST-01",
+      "passed": true
+    },
+    {
+      "check": "target OPEN SHARED-RST-01",
+      "passed": true
+    },
+    {
+      "check": "evidence paths SHARED-RST-02",
+      "passed": true
+    },
+    {
+      "check": "target OPEN SHARED-RST-02",
+      "passed": true
+    },
+    {
+      "check": "evidence paths SHARED-RST-03",
+      "passed": true
+    },
+    {
+      "check": "target OPEN SHARED-RST-03",
+      "passed": true
+    },
+    {
+      "check": "evidence paths SHARED-RST-04",
+      "passed": true
+    },
+    {
+      "check": "target OPEN SHARED-RST-04",
+      "passed": true
+    },
+    {
+      "check": "evidence paths SHARED-CAP-WP-A",
+      "passed": true
+    },
+    {
+      "check": "target OPEN SHARED-CAP-WP-A",
+      "passed": true
+    },
+    {
+      "check": "evidence paths SHARED-CAP-WP-B",
+      "passed": true
+    },
+    {
+      "check": "target OPEN SHARED-CAP-WP-B",
+      "passed": true
+    },
+    {
+      "check": "evidence paths SHARED-TENANCY",
+      "passed": true
+    },
+    {
+      "check": "target OPEN SHARED-TENANCY",
+      "passed": true
+    },
+    {
+      "check": "evidence paths SHARED-GOVERNANCE",
+      "passed": true
+    },
+    {
+      "check": "target OPEN SHARED-GOVERNANCE",
+      "passed": true
+    },
+    {
+      "check": "evidence paths SHARED-OBSERVABILITY",
+      "passed": true
+    },
+    {
+      "check": "target OPEN SHARED-OBSERVABILITY",
+      "passed": true
+    },
+    {
+      "check": "distinct RST-01..04 DEDICATED",
+      "passed": true
+    },
+    {
+      "check": "distinct RST-01..04 SHARED",
+      "passed": true
+    },
+    {
+      "check": "recorded short PASS with 1040 and clean jobs",
+      "passed": true
+    },
+    {
+      "check": "negative evidence retained",
+      "passed": true
+    },
+    {
+      "check": "protected runtime/source unchanged; concurrent coordination overlays separately recorded",
+      "passed": true
+    },
+    {
+      "check": "operations absent from active Kustomizations",
+      "passed": true
+    },
+    {
+      "check": "package JSON parses",
+      "passed": true
+    }
+  ],
+  "checks_passed": 58,
+  "source_snapshot": "source-snapshot-2026-11-25.json",
+  "concurrent_coordination_updates_reread": [
+    "docs/project-context.md",
+    "docs/validation-register.md",
+    "docs/chat-prompts-c5-c7.md"
+  ],
+  "refreshed_source_sha256": {
+    "docs/project-context.md": "0b40a54445e6dbbbe23ddf0a3f6a942bf9d890552ff3edff5dc454e190608baf",
+    "docs/validation-register.md": "3fa997ac612bfa8571fed1c144fb577dcbe6efb60b9d652ffa98744b0ce13e8e",
+    "docs/chat-prompts-c5-c7.md": "c938d996c55658588e5a027fec171b202baa7fd9e98fc36c2312f9fd6301e01a",
+    "docs/testing/collector-fix-validation-2026-11-25.md": "1b5630062f6f25d1fb9595a839a201c046ce53c1b33ce841c9db934bd3a47f77",
+    "docs/handoffs/C1-environment.md": "9fbf9e85113ecee708964707e6701d07f18a672540f9021c3f9424b9a424a2d5",
+    "docs/handoffs/C3-validation.md": "2e06013bb83e19df81af78d173d58d34042b13e332d1f1799ada3dea9cba47de",
+    "docs/testing/validation-plan.md": "edd58ef1b5cc4d9acabebc9c8e649f4e7f68376f8ee1049d84666c0eca9b278f"
+  },
+  "artifact_sha256": {
+    "docs/operations/README.md": "34f165e2d04b530c808259230834da716576a9c77d0552957d269980671aa22a",
+    "docs/operations/monitoring-and-overload.md": "9d3fbead364b41a6f2310c2d7656768be5ae54d0fad874b922bc99bb835ed048",
+    "docs/operations/capacity-and-evidence-budgets.md": "db2f2c1b5811ea73cebe1aee034df07c92fbcea36f20cfd9770d97b21db6cd36",
+    "docs/operations/incident-and-evidence.md": "608c332218d34d0173dd331063046284f6ed79925a6da1cdd2b5646ed2e855f5",
+    "docs/operations/recovery-qualification.md": "82d14fb0a91e16a09ea25ccec1cb27f1805092cbe70e2e8ac31618a600049fa0",
+    "docs/operations/release-runbook.md": "4d26090bee63f37ad42a1311e6a13e9ae1ff541f938826cd0eb007d181d2f64e",
+    "docs/operations/release-matrix.json": "c3f92032437fbd4ba0fea3332334d8deeccf6fabe330a2f448e36b446378d3d2",
+    "kaas-demo/operations/budget_check.py": "939abad9fa44eff809c81ca441637767f333cb74e536ba7127121c18bdc25efb",
+    "kaas-demo/operations/test_budget_check.py": "7b9841bc3cdca2ceef5eda814b2ecbfe9be93b855a3e544bb8f27049b1a197d9",
+    "kaas-demo/operations/fixtures/replay-example.json": "c4e928e0db5faf246311a2f3abd3dc7ebdd27b6c1b5c3703a96f1de8fee41401",
+    "kaas-demo/operations/README.md": "0c2f032bfbbd77b9b4b0e0705c28b88dd968c7eaf991b4f7369547a22c176b2e",
+    "docs/handoffs/C7-operations-release.md": "f3c27964cda615e770861bc9fd7698bff93e63313fb39142d6202bc0bea38cfb"
+  },
+  "limitations": [
+    "No independent human reviewer",
+    "No cluster/API/Secret access or live workload/recovery/sync/upgrade/migration executed",
+    "Recorded run results inherited by local inspection, not rerun",
+    "Local hashes do not prove remote freshness or installed compatibility",
+    "Concurrent C0 overlays changed during checks; initial snapshot preserved and changed overlays reread",
+    "No R1/R2/R3 or no-loss/capacity/recovery acceptance granted"
+  ]
+}

@@ -1,0 +1,15 @@
+test_backlog_growth_and_allowance (test_budget_check.BudgetChecks.test_backlog_growth_and_allowance) ... ok
+test_catchup_insufficient_service (test_budget_check.BudgetChecks.test_catchup_insufficient_service) ... ok
+test_decimal_replica_accounting (test_budget_check.BudgetChecks.test_decimal_replica_accounting) ... ok
+test_equality_is_unsafe (test_budget_check.BudgetChecks.test_equality_is_unsafe) ... ok
+test_exact_contract (test_budget_check.BudgetChecks.test_exact_contract) ... ok
+test_finite_overflow_rejected (test_budget_check.BudgetChecks.test_finite_overflow_rejected) ... ok
+test_invalid_numeric_inputs (test_budget_check.BudgetChecks.test_invalid_numeric_inputs) ... ok
+test_positive_margin_is_not_release (test_budget_check.BudgetChecks.test_positive_margin_is_not_release) ... ok
+test_replication_integer (test_budget_check.BudgetChecks.test_replication_integer) ... ok
+test_unknown_not_zero (test_budget_check.BudgetChecks.test_unknown_not_zero) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.001s
+
+OK

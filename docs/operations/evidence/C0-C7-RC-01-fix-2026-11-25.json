@@ -1,0 +1,47 @@
+{
+  "finding_id": "C0-C7-RC-01",
+  "status": "CLOSED_FIXED_VALIDATED",
+  "date": "2026-11-25",
+  "validated_at_utc": "2026-11-25T10:25:27.227016+00:00",
+  "authorization": "User explicitly requested C0 fix, regressions, test execution and shared review updates.",
+  "change": "Explicitly validate missing_required_records/integrity_mismatches whenever supplied as nonnegative JSON integers; bool/float/container/string rejected, null remains unresolved.",
+  "source_sha256": {
+    "kaas-demo/operations/record_check.py": "cbe94c1f0975dbee9127a6c9c1e12eaa14c3faacd01e7d95d41e117126c0b6d1",
+    "kaas-demo/operations/test_record_check.py": "936c743433501470067661264449a0923b7f05a2fc7c667e9279e3594165df75",
+    "kaas-demo/operations/README.md": "d89dc7d5146593dfddd87771699b214f8fd2f1ff79810125e9cfd7d1aa711783",
+    "docs/operations/offline-record-checks.md": "5a14d1c1836075da19715fb346b977bd2b50fb276f8541765949939a175fefcc"
+  },
+  "regression_evidence": {
+    "before_fix": {
+      "command": "python3 -B -m unittest test_record_check.RecordChecks.test_recovery_false_counters_are_invalid_for_pass -v",
+      "cwd": "kaas-demo/operations",
+      "exit_code": 1,
+      "failing_subcases": 2,
+      "observed": "Both false counters returned OPEN rather than INVALID."
+    },
+    "after_fix": {
+      "command": "python3 -B -m unittest discover -s operations -p 'test_*.py' -v",
+      "cwd": "kaas-demo",
+      "exit_code": 0,
+      "tests_passed": 35,
+      "record_checker_tests": 25,
+      "budget_tests": 10,
+      "new_test_methods": 6,
+      "coverage": "Both fields across all supported conclusions; bool/negative/fraction/whole float/nonfinite/string/container invalid; zero/null/positive failure controls; API and19CLI subcases."
+    },
+    "original_review_probes": "C0-C7-record-checker-postfix-probe-2026-11-25.json",
+    "blank_template_checks": "C0-C7-record-checker-postfix-templates-2026-11-25.json",
+    "templates_open_and_unchanged": 5
+  },
+  "protected_local_files_checked": 37,
+  "changed_protected_files": [],
+  "protected_scope": "Continuity source/profile bundle, collector/observer source, saved active run plan/Job/ConfigMap/observer package, all5C7templates and budget helper.",
+  "runtime_actions": "None: no network/API/Secret access, live run status/control, source ConfigMap mutation, deployment/sync/restart/fault, load, commit/push or external message.",
+  "disposition": "Offline record-checker extension accepted within documented consistency scope; C0-C7-RC-01 closed. Prior runtime/service/evidence-owner gates remain open.",
+  "limitations": [
+    "No evidence references are dereferenced or authenticated; no full evidence completeness/recovery approval inferred.",
+    "release_qualified/execution_ready remainfalse; strict supplied JSON-integer types for the two counters only.",
+    "Historical C7 and initial C0 receipts/probe results remain the earlier source evidence; this receipt is the correction."
+  ],
+  "packaging": "Kustomize remains current; Helm evaluation deferred."
+}

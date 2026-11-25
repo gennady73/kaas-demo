@@ -1,0 +1,123 @@
+{
+  "template_revision": "0.1",
+  "record_status": "TEMPLATE",
+  "execution_enabled": false,
+  "record_id": null,
+  "environment_id": null,
+  "tenancy_mode": null,
+  "prepared_by": null,
+  "prepared_at_utc": null,
+  "reviewer": null,
+  "reviewed_at_utc": null,
+  "conclusion": "OPEN",
+  "limitations": [],
+  "unresolved_inputs": [],
+  "record_type": "recovery-result",
+  "procedure_reference": "docs/operations/recovery-qualification.md",
+  "restart_category": null,
+  "variant": null,
+  "requirement": "SC3 / RST-01..04",
+  "acceptance": {
+    "no_loss_required": true,
+    "recovery_target_seconds": 10800,
+    "preservation_contract_reference": null,
+    "approved_clock_definition_reference": null,
+    "stable_window_seconds": null,
+    "expiry_protection_reference": null,
+    "external_sink_replay_responsibility_reference": null
+  },
+  "source_configuration": {
+    "c4_action_package_reference": null,
+    "authorization_reference": null,
+    "source_revisions": null,
+    "registered_plan_sha256": null,
+    "versions": {
+      "openshift": null,
+      "streams_csv": null,
+      "kafka": null,
+      "kafka_metadata_features": null,
+      "argocd_server": null,
+      "gitops_operator": null,
+      "storage_backend_interface": null,
+      "client_image_digest": null,
+      "native_client_version": null
+    },
+    "effective_topic_client_config_reference": null,
+    "quorum_storage_failure_domain_reference": null
+  },
+  "inherited_persistence": {
+    "dependency_id": "DEP-PERSIST-01",
+    "supplying_project": null,
+    "requirement_version": null,
+    "accountable_owner": null,
+    "covered_failures": null,
+    "exclusions": null,
+    "persistence_boundary": null,
+    "restore_obligations": null,
+    "evidence_reference": null,
+    "selected_pv_applicability_reference": null,
+    "review_status": "OPEN"
+  },
+  "timeline": {
+    "injection_utc": null,
+    "first_impact_utc": null,
+    "detection_utc": null,
+    "t0_utc": null,
+    "infrastructure_ready_utc": null,
+    "kafka_ready_utc": null,
+    "clients_reconnected_utc": null,
+    "caught_up_utc": null,
+    "reconciled_utc": null,
+    "stable_window_end_utc": null,
+    "t1_utc": null,
+    "total_recovery_seconds": null,
+    "clock_uncertainty_reference": null
+  },
+  "accounting": {
+    "expected_sets_reference": null,
+    "attempt_ack_receipt_commit_sets_reference": null,
+    "ambiguous_send_resolution_reference": null,
+    "topic_partition_offsets_reference": null,
+    "duplicates_replay_side_effects_reference": null,
+    "missing_required_records": null,
+    "integrity_mismatches": null,
+    "unsent_count": null,
+    "expiry_observation_reference": null,
+    "oldest_unread_age_seconds": null,
+    "catchup_budget_reference": null,
+    "auditor_revision_command_reference": null,
+    "reconciliation_result_reference": null
+  },
+  "execution": {
+    "per_step_receipts_reference": null,
+    "worker_observer_terminal_reference": null,
+    "quorum_isr_health_reference": null,
+    "restart_delta_reference": null,
+    "metrics_alerts_reference": null,
+    "unaffected_tenant_impact_reference": null,
+    "custody_manifest_reference": null
+  },
+  "assessment": {
+    "actual_variant_coverage": null,
+    "no_loss_status": "OPEN",
+    "recovery_time_status": "OPEN",
+    "evidence_completeness_status": "OPEN",
+    "c3_result_reference": null,
+    "c0_acceptance_reference": null
+  },
+  "evidence": [
+    {
+      "evidence_id": null,
+      "requirement_or_claim_id": null,
+      "evidence_type": null,
+      "source_reference": null,
+      "source_version": null,
+      "observed_at_utc": null,
+      "environment_id": null,
+      "acceptance_criterion": null,
+      "review_status": "OPEN",
+      "reviewer": null,
+      "limitation": null
+    }
+  ]
+}
