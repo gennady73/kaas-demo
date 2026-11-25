@@ -17,6 +17,9 @@ ROOT = Path(__file__).resolve().parents[2]
 HERE = Path(__file__).resolve().parent
 LIVE_NAMESPACES = {'kaas-kafka', 'kaas-demo', 'kafka-operator', 'openshift-gitops',
                    'openshift-gitops-operator'}
+CONTROL_PLANE_NAMESPACES = {'openshift-gitops'}
+PROTECTED_GITOPS_NAMES = {'kaas-demo', 'kaas-demo-kafka', 'kaas-demo-operator'}
+STAGES = ('R0', 'R1', 'R2', 'R3')
 ANNOTATION = 'kaas.example.com/offline-scaffold'
 
 
@@ -45,6 +48,36 @@ def unresolved(value, path='$'):
     return []
 
 
+def input_stage(path):
+    """Earliest milestone needing this input; input completeness is not approval."""
+    if path.endswith('.delivery_reference') or path == '$.policy_references.secret_delivery':
+        return 'R2'
+    if path in {'$.policy_references.recovery_and_persistence',
+                '$.policy_references.observability', '$.policy_references.governance'}:
+        return 'R3'
+    if (path in {'$.profile_id', '$.environment', '$.cluster.name', '$.cluster.namespace',
+                 '$.policy_references.git_authorization'} or path.startswith('$.gitops.')
+            or re.fullmatch(r'\$\.tenants\[\d+\]\.(id|owner|sync_groups)', path)):
+        return 'R0'
+    return 'R1'
+
+
+def required_unresolved(profile, stage='R1'):
+    require(stage in STAGES, 'unknown readiness stage')
+    return [p for p in unresolved(profile) if STAGES.index(input_stage(p)) <= STAGES.index(stage)]
+
+
+def check_placement(profile):
+    """ArgoCD metadata may use the existing control plane; workloads may not."""
+    c, g = profile['cluster'], profile['gitops']
+    require(c['namespace'] not in LIVE_NAMESPACES and c['name'] != 'kaas-dev',
+            'current live dev identities are excluded from scaffolds')
+    require(g['namespace'] not in LIVE_NAMESPACES - CONTROL_PLANE_NAMESPACES,
+            'protected namespace cannot host candidate GitOps metadata')
+    if c['namespace'] is not None and g['namespace'] is not None:
+        require(c['namespace'] != g['namespace'], 'Kafka and GitOps namespaces must differ')
+
+
 def check_shape(profile):
     errors = sorted(jsonschema.Draft202012Validator(read_json(HERE / 'profile.schema.json'))
                     .iter_errors(profile), key=lambda e: str(list(e.path)))
@@ -68,20 +101,13 @@ def check_resources(resources):
         require(request <= limit, f'{field} request exceeds limit')
 
 
-def check_profile(profile):
-    check_shape(profile)
-    missing = unresolved(profile)
-    require(not missing, 'unresolved inputs: ' + ', '.join(missing))
-    cluster = profile['cluster']
-    tenants = profile['tenants']
+def check_registration(profile):
+    check_placement(profile)
+    cluster, tenants = profile['cluster'], profile['tenants']
     descriptor = read_json(ROOT / 'platform/profiles' / profile['mode'] / 'composition.json')
     require(len(tenants) >= descriptor['minimum_tenants'], 'wrong tenant count for mode')
     require(descriptor['maximum_tenants'] is None or len(tenants) <= descriptor['maximum_tenants'],
             'dedicated mode requires exactly one tenant')
-    require(cluster['namespace'] not in LIVE_NAMESPACES and cluster['name'] != 'kaas-dev',
-            'current live dev identities are excluded from scaffolds')
-    require(profile['gitops']['namespace'] not in LIVE_NAMESPACES,
-            'use a candidate GitOps namespace; active GitOps namespace excluded')
     require(profile['profile_id'].startswith('fixture-') == profile['synthetic_fixture'],
             'fixture profiles must use fixture- IDs; candidates must not')
     if profile['synthetic_fixture']:
@@ -89,6 +115,30 @@ def check_profile(profile):
                 'fixture repository must be the reserved git.invalid host')
     require(not any(c in profile['gitops']['repo_url'] for c in ['*', '?', '#']),
             'repository URL must be exact and contain no wildcard/query/fragment')
+    if profile['gitops']['namespace'] in CONTROL_PLANE_NAMESPACES:
+        names = {profile['profile_id'] + '-platform'} | {
+            profile['profile_id'] + '-' + t['id'] for t in tenants}
+        require(not (names & PROTECTED_GITOPS_NAMES),
+                'candidate GitOps metadata collides with a protected existing project/application')
+    ids = [t['id'] for t in tenants]
+    require(len(set(ids)) == len(ids), 'duplicate tenant IDs')
+    groups = [set(profile['gitops']['platform_sync_groups'])] + [set(t['sync_groups']) for t in tenants]
+    require(all(not (a & b) for i, a in enumerate(groups) for b in groups[i+1:]),
+            'platform/tenant sync groups overlap')
+    require(all(re.fullmatch(r'[a-zA-Z0-9_.:@/-]+', group) and '*' not in group
+                for values in groups for group in values), 'invalid sync group')
+    require(all(len(profile['profile_id'] + '-' + t['id']) <= 63 for t in tenants)
+            and len(profile['profile_id'] + '-platform') <= 63,
+            'generated GitOps name exceeds 63 characters')
+
+
+def check_profile(profile):
+    check_shape(profile)
+    missing = required_unresolved(profile)
+    require(not missing, 'unresolved inputs: ' + ', '.join(missing))
+    cluster = profile['cluster']
+    tenants = profile['tenants']
+    check_registration(profile)
     require(cluster['follower_fetch_bytes'] >= cluster['record_ceiling_bytes'],
             'follower fetch must cover declared record ceiling')
     require(re.fullmatch(r'[a-zA-Z0-9./_-]+', cluster['rack_topology_key']) is not None,
@@ -260,11 +310,14 @@ def summary(profile, documents):
             totals[scope + '_' + ('cpu_cores' if resource == 'cpu' else 'memory_bytes')] = str(amount)
     return {'contract_version': '0.1', 'status': 'OFFLINE_SCAFFOLD_ONLY', 'deployment_enabled': False,
             'execution_ready': False, 'synthetic_fixture': profile['synthetic_fixture'],
+            'report_version': '0.2',
+            'unresolved_inputs_by_stage': {stage: [p for p in unresolved(profile)
+                if input_stage(p) == stage] for stage in STAGES},
             'mode': profile['mode'], 'profile_id': profile['profile_id'],
             'components': {p: len(d) for p, d in documents.items()},
             'cached_schema_validated': validate_bundle(profile, documents),
             'derived_allocations_exclude_cluster_operator_and_platform': totals,
-            'limitations': ['No deployment, readiness or capacity qualification',
+            'limitations': ['No deployment, runtime readiness or capacity qualification',
                 'ArgoCD schemas not available locally; generated ArgoCD objects checked by exact policy only',
                 'Git/ArgoCD/Kubernetes policy enforcement not installed',
                 'No bootstrap/watch-scope/RBAC/Secret-delivery implementation or runtime isolation tests']}
@@ -313,9 +366,11 @@ def read_bundle(profile, output):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('command', choices=['inspect', 'render', 'validate'])
+    parser.add_argument('command', choices=['inspect', 'readiness', 'render', 'validate'])
     parser.add_argument('--profile', type=Path, required=True)
     parser.add_argument('--output', type=Path)
+    parser.add_argument('--bootstrap', type=Path,
+                        help='Optional offline bootstrap plan for readiness; no resources applied')
     args = parser.parse_args()
     try:
         profile = read_json(args.profile)
@@ -324,6 +379,10 @@ def main():
             print(json.dumps({'status': 'UNRESOLVED' if unresolved(profile) else 'INPUTS_FILLED_NOT_READY',
                               'deployment_enabled': False, 'execution_ready': False,
                               'unresolved': unresolved(profile)}, indent=2))
+        elif args.command == 'readiness':
+            import readiness
+            bootstrap = read_json(args.bootstrap) if args.bootstrap else None
+            print(json.dumps(readiness.assess(profile, bootstrap), indent=2))
         else:
             require(args.output is not None, '--output is required')
             result = write_bundle(profile, args.output) if args.command == 'render' else read_bundle(profile, args.output)

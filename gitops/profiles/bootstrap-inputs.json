@@ -1,10 +1,10 @@
 {
-  "contract_version": "0.1",
+  "contract_version": "0.2",
   "purpose": "offline-bootstrap-design-only",
   "deployment_enabled": false,
-  "argocd_instance_namespace": null,
-  "argocd_controller_service_account": null,
-  "kafka_operator_namespace": null,
+  "argocd_instance_namespace": "openshift-gitops",
+  "argocd_controller_service_account": "openshift-gitops-argocd-application-controller",
+  "kafka_operator_namespace": "kafka-operator",
   "selected_operator_watch_scope_mechanism": null,
   "selected_operator_target_namespaces": null,
   "namespace_creation_owner": null,
@@ -13,14 +13,33 @@
   "credential_ca_delivery_and_rotation_evidence": null,
   "topic_deletion_authority_and_procedure": null,
   "proposed_controller_permissions": {
-    "platform_kinds": ["Kafka", "KafkaNodePool"],
-    "tenant_kinds": ["KafkaTopic", "KafkaUser"],
+    "platform_kinds": [
+      "Kafka",
+      "KafkaNodePool"
+    ],
+    "tenant_kinds": [
+      "KafkaTopic",
+      "KafkaUser"
+    ],
     "api_group": "kafka.strimzi.io",
     "namespace_scope": null,
-    "non_delete_verbs": ["get", "list", "watch", "create", "update", "patch"],
+    "non_delete_verbs": [
+      "get",
+      "list",
+      "watch",
+      "create",
+      "update",
+      "patch"
+    ],
     "secret_permissions_proposed": false,
     "delete_permissions_proposed": false,
     "wildcard_permissions_proposed": false,
-    "note": "Design proposal only. One shared controller ServiceAccount may hold combined rights; project/role/policy boundaries and global privileges require review. No RBAC is rendered or applied."
-  }
+    "note": "Offline plan only. Local Namespace/Role/RoleBinding proposals may be validated; nothing is applied. One controller ServiceAccount may hold combined rights; effective project/global authority and deletion controls need later review."
+  },
+  "synthetic_fixture": false,
+  "selected_operator_csv": "amqstreams.v3.2.1-10",
+  "existing_operator_target_namespaces": [
+    "kaas-kafka"
+  ],
+  "watch_scope_versioned_evidence": null
 }

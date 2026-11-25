@@ -91,7 +91,7 @@ class ProfileChecks(unittest.TestCase):
     def test_live_cluster_and_namespace_rejected(self):
         for key, value in [('name', 'kaas-dev'), ('namespace', 'kaas-kafka')]:
             self.reject_profile(lambda p: p['cluster'].update({key: value}), 'live dev identities')
-        self.reject_profile(lambda p: p['gitops'].update(namespace='openshift-gitops'), 'active GitOps')
+        self.reject_profile(lambda p: p['gitops'].update(namespace='kaas-demo'), 'protected namespace')
         self.reject_profile(lambda p: p['tenants'][0].update(app_namespaces=['kaas-demo']), 'platform/live')
 
     def test_sync_actor_overlap(self):

@@ -1,0 +1,274 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "contract_version": {
+      "const": "0.2"
+    },
+    "purpose": {
+      "const": "offline-bootstrap-design-only"
+    },
+    "deployment_enabled": {
+      "const": false
+    },
+    "synthetic_fixture": {
+      "type": "boolean"
+    },
+    "argocd_instance_namespace": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$",
+          "maxLength": 63
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "argocd_controller_service_account": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$",
+          "maxLength": 63
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "kafka_operator_namespace": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$",
+          "maxLength": 63
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "selected_operator_csv": {
+      "anyOf": [
+        {
+          "const": "amqstreams.v3.2.1-10"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "existing_operator_target_namespaces": {
+      "anyOf": [
+        {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$",
+            "maxLength": 63
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "selected_operator_watch_scope_mechanism": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "selected_operator_target_namespaces": {
+      "anyOf": [
+        {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$",
+            "maxLength": 63
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "watch_scope_versioned_evidence": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "namespace_creation_owner": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "git_branch_protection_and_review_evidence": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "argocd_global_role_and_sso_mapping_evidence": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "credential_ca_delivery_and_rotation_evidence": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "topic_deletion_authority_and_procedure": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "proposed_controller_permissions": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "platform_kinds": {
+          "const": [
+            "Kafka",
+            "KafkaNodePool"
+          ]
+        },
+        "tenant_kinds": {
+          "const": [
+            "KafkaTopic",
+            "KafkaUser"
+          ]
+        },
+        "api_group": {
+          "const": "kafka.strimzi.io"
+        },
+        "namespace_scope": {
+          "anyOf": [
+            {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$",
+                "maxLength": 63
+              }
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "non_delete_verbs": {
+          "type": "array",
+          "minItems": 6,
+          "maxItems": 6,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "get",
+              "list",
+              "watch",
+              "create",
+              "update",
+              "patch"
+            ]
+          }
+        },
+        "secret_permissions_proposed": {
+          "const": false
+        },
+        "delete_permissions_proposed": {
+          "const": false
+        },
+        "wildcard_permissions_proposed": {
+          "const": false
+        },
+        "note": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "platform_kinds",
+        "tenant_kinds",
+        "api_group",
+        "namespace_scope",
+        "non_delete_verbs",
+        "secret_permissions_proposed",
+        "delete_permissions_proposed",
+        "wildcard_permissions_proposed",
+        "note"
+      ]
+    }
+  },
+  "required": [
+    "contract_version",
+    "purpose",
+    "deployment_enabled",
+    "synthetic_fixture",
+    "argocd_instance_namespace",
+    "argocd_controller_service_account",
+    "kafka_operator_namespace",
+    "selected_operator_csv",
+    "existing_operator_target_namespaces",
+    "selected_operator_watch_scope_mechanism",
+    "selected_operator_target_namespaces",
+    "watch_scope_versioned_evidence",
+    "namespace_creation_owner",
+    "git_branch_protection_and_review_evidence",
+    "argocd_global_role_and_sso_mapping_evidence",
+    "credential_ca_delivery_and_rotation_evidence",
+    "topic_deletion_authority_and_procedure",
+    "proposed_controller_permissions"
+  ],
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

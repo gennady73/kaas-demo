@@ -1,0 +1,50 @@
+{
+  "contract_version": "0.2",
+  "purpose": "offline-bootstrap-design-only",
+  "deployment_enabled": false,
+  "argocd_instance_namespace": "fixture-gitops",
+  "argocd_controller_service_account": "openshift-gitops-argocd-application-controller",
+  "kafka_operator_namespace": "kafka-operator",
+  "selected_operator_watch_scope_mechanism": "fixture-reviewed-scope-proposal",
+  "selected_operator_target_namespaces": [
+    "kaas-kafka",
+    "fixture-dedicated-kafka"
+  ],
+  "namespace_creation_owner": "fixture-platform-owner",
+  "git_branch_protection_and_review_evidence": "fixture-only:protected-git-review",
+  "argocd_global_role_and_sso_mapping_evidence": "fixture-only:effective-role-review",
+  "credential_ca_delivery_and_rotation_evidence": null,
+  "topic_deletion_authority_and_procedure": "fixture-only:no-delete-no-prune-procedure",
+  "proposed_controller_permissions": {
+    "platform_kinds": [
+      "Kafka",
+      "KafkaNodePool"
+    ],
+    "tenant_kinds": [
+      "KafkaTopic",
+      "KafkaUser"
+    ],
+    "api_group": "kafka.strimzi.io",
+    "namespace_scope": [
+      "fixture-dedicated-kafka"
+    ],
+    "non_delete_verbs": [
+      "get",
+      "list",
+      "watch",
+      "create",
+      "update",
+      "patch"
+    ],
+    "secret_permissions_proposed": false,
+    "delete_permissions_proposed": false,
+    "wildcard_permissions_proposed": false,
+    "note": "Offline plan only. Local Namespace/Role/RoleBinding proposals may be validated; nothing is applied. One controller ServiceAccount may hold combined rights; effective project/global authority and deletion controls need later review."
+  },
+  "synthetic_fixture": true,
+  "selected_operator_csv": "amqstreams.v3.2.1-10",
+  "existing_operator_target_namespaces": [
+    "kaas-kafka"
+  ],
+  "watch_scope_versioned_evidence": "fixture-only:version-specific-watch-scope-review"
+}

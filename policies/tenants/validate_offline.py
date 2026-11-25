@@ -11,6 +11,8 @@ import sys
 
 import yaml
 import profile_tool as tool
+import bootstrap_tool
+import readiness
 
 
 def digest(path):
@@ -53,7 +55,27 @@ def main():
             commands.append(run(output, label, command))
             rendered[component] = list(yaml.safe_load_all((output / (label + '.stdout.txt')).read_text()))
         counts = tool.validate_bundle(profile, rendered)
-        modes[mode] = {'report': report, 'kustomize_exact_policy_and_cached_schema_counts': counts}
+        plan = tool.read_json(tool.HERE / 'fixtures' / ('bootstrap-' + mode + '.json'))
+        bootstrap_report = bootstrap_tool.assess(plan, profile)
+        proposal = bootstrap_tool.expected_resources(plan, profile)
+        bootstrap_checks = bootstrap_tool.validate_resources(plan, profile, proposal)
+        (output / ('bootstrap-' + mode + '-proposal.yaml')).write_text(yaml.safe_dump_all(proposal, sort_keys=False))
+        stages = readiness.assess(profile, plan)
+        # Later interfaces may remain OPEN while the same resource bundle renders offline.
+        deferred = tool.read_json(tool.HERE / 'fixtures' / (mode + '.json'))
+        for key in ['secret_delivery', 'governance', 'observability', 'recovery_and_persistence']:
+            deferred['policy_references'][key] = None
+        for tenant in deferred['tenants']:
+            for identity_input in tenant['identities'].values():
+                identity_input['delivery_reference'] = None
+        tool.require(tool.build(deferred) == tool.build(profile), 'later references changed resource output')
+        deferred_stages = readiness.assess(deferred, plan)
+        tool.require(deferred_stages['stages']['R1']['local_status'] == 'SYNTHETIC_ONLY'
+                     and deferred_stages['stages']['R2']['local_status'] == 'BLOCKED',
+                     'stage separation regression')
+        modes[mode] = {'report': report, 'kustomize_exact_policy_and_cached_schema_counts': counts,
+            'bootstrap': bootstrap_report, 'bootstrap_resource_policy': bootstrap_checks,
+            'readiness': stages, 'later_inputs_deferred_readiness': deferred_stages}
     candidates = {}
     for mode in ['dedicated', 'shared']:
         path = tool.ROOT / 'environments/candidates' / mode / 'profile.json'
@@ -67,7 +89,11 @@ def main():
             tool.require('unresolved inputs' in str(error), 'candidate rejected for unexpected reason')
         else:
             raise tool.Invalid('unresolved candidate unexpectedly rendered')
-        candidates[mode] = {'render_rejected': True, 'unresolved_count': len(missing), 'unresolved': missing}
+        plan = tool.read_json(tool.ROOT / 'gitops/profiles/bootstrap-inputs.json')
+        stages = readiness.assess(p, plan)
+        (output / (mode + '-candidate-readiness.json')).write_text(json.dumps(stages, indent=2) + '\n')
+        candidates[mode] = {'render_rejected': True, 'unresolved_count': len(missing),
+                            'unresolved': missing, 'readiness': stages}
     provenance = tool.read_json(tool.HERE / 'schemas/provenance.json')
     for record in provenance['sources']:
         schema_path = tool.ROOT / record['schema_path']

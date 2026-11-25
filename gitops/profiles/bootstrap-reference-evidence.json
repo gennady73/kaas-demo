@@ -1,0 +1,36 @@
+{
+  "date": "2026-11-25",
+  "scope": "Recorded development environment only; not a new observation or selection of a different target",
+  "known_bootstrap_baseline": {
+    "argocd_instance_namespace": "openshift-gitops",
+    "argocd_controller_service_account": "openshift-gitops-argocd-application-controller",
+    "kafka_operator_namespace": "kafka-operator",
+    "selected_operator_csv": "amqstreams.v3.2.1-10",
+    "existing_operator_target_namespaces": [
+      "kaas-kafka"
+    ]
+  },
+  "source_observation_dates": [
+    "2026-11-23",
+    "2026-11-24"
+  ],
+  "sources": [
+    {
+      "path": "config/environments/argocd-ui-observation-2026-11-24.json",
+      "sha256": "cb808537e21bdb642ca219469115a3ae58b31a2d4228cea0ce494ecc028017bf"
+    },
+    {
+      "path": "kaas-demo/gitops/bootstrap/kafka-controller-rbac.yaml",
+      "sha256": "067e9efd33b59f9890a0d548b2b663bdff2b63bd0f68ed7338ccb157b51963ef"
+    },
+    {
+      "path": "kaas-demo/platform/operator/operatorgroup.yaml",
+      "sha256": "25a7f6878555f9b552b2788efedaab052ce34229508f9eaa7126b2aa946f7e63"
+    },
+    {
+      "path": "docs/platform/kafka-cluster-result-2026-11-23.md",
+      "sha256": "95177d295514498af9bd9fe06c544b2a85d8fe5b993b4c4a0ba057047a5b45fa"
+    }
+  ],
+  "freshness": "Recheck actual identity/watch configuration at the separately authorized execution boundary; no API accessed"
+}
