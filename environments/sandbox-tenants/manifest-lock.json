@@ -1,0 +1,22 @@
+{
+  "manifest_lock_version": "tenant-only-1.0",
+  "deployment_enabled": false,
+  "registration_enabled": false,
+  "tests_enabled": false,
+  "execution_ready": false,
+  "input_path": "environments/candidates/sandbox-tenants/inputs.json",
+  "input_sha256": "5a07e2828dc1bd3c28111aaa4306c8edff839fe0bbfc6c32c21a90e929b3b6e7",
+  "target": "kaas-kafka/kaas-dev",
+  "files": {
+    "environments/sandbox-tenants/a/resources.yaml": "bdc9f7a3b69ec182acb8933aa4f2fddc94fd95c0c7f035c0a9ee75c69ebd9923",
+    "environments/sandbox-tenants/a/kustomization.yaml": "4fe0245114630ad93c69d1c9c6d065f1a8d79aeabb30358883916a5f190d4fb5",
+    "environments/sandbox-tenants/b/resources.yaml": "abf4d52179899de35fd71ee11918365e198c5a6c327c961446b2ed7cbfb9b7e5",
+    "environments/sandbox-tenants/b/kustomization.yaml": "4fe0245114630ad93c69d1c9c6d065f1a8d79aeabb30358883916a5f190d4fb5"
+  },
+  "topic_count": 4,
+  "user_count": 4,
+  "logical_partitions": 4,
+  "replica_instances": 8,
+  "source_commit": "intentionally external: obtain actual Git commit SHA; do not put a self-referential SHA here",
+  "live_readiness": "not implied by file hashes; independently verify before registration/sync"
+}
