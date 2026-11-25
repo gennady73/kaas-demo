@@ -1,0 +1,16 @@
+{
+  "contract_version": "0.1",
+  "mode": "shared",
+  "minimum_tenants": 2,
+  "maximum_tenants": null,
+  "platform_templates": [
+    "common/kafka.yaml.template",
+    "common/nodepool.yaml.template"
+  ],
+  "tenant_templates": [
+    "../../../tenants/profiles/topic.yaml.template",
+    "../../../tenants/profiles/user.yaml.template"
+  ],
+  "gitops_template": "../../../gitops/profiles/application-set.yaml.template",
+  "deployment_enabled": false
+}

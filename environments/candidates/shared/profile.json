@@ -1,0 +1,101 @@
+{
+  "contract_version": "0.1",
+  "purpose": "offline-scaffold",
+  "deployment_enabled": false,
+  "synthetic_fixture": false,
+  "mode": "shared",
+  "profile_id": null,
+  "environment": null,
+  "cluster": {
+    "name": null,
+    "namespace": null,
+    "broker_version": "4.2.0",
+    "operator_csv": "amqstreams.v3.2.1-10",
+    "image": null,
+    "minimum_isr": null,
+    "record_ceiling_bytes": null,
+    "follower_fetch_bytes": null,
+    "rack_topology_key": null,
+    "pools": [
+      {
+        "name": null,
+        "replicas": null,
+        "roles": null,
+        "storage_class": null,
+        "storage_size": null,
+        "resources": null,
+        "heap": null
+      }
+    ],
+    "entity_operator_resources": null
+  },
+  "gitops": {
+    "repo_url": null,
+    "revision": null,
+    "namespace": null,
+    "platform_sync_groups": null
+  },
+  "policy_references": {
+    "watch_scope_and_bootstrap": null,
+    "identity_network": null,
+    "secret_delivery": null,
+    "capacity_and_admission": null,
+    "lifecycle_and_deletion": null,
+    "recovery_and_persistence": null,
+    "observability": null,
+    "governance": null,
+    "git_authorization": null
+  },
+  "tenants": [
+    {
+      "id": null,
+      "owner": null,
+      "app_namespaces": null,
+      "sync_groups": null,
+      "max_topics": null,
+      "max_partitions": null,
+      "topics": [
+        {
+          "suffix": null,
+          "partitions": null,
+          "max_record_bytes": null
+        }
+      ],
+      "identities": {
+        "producer": {
+          "quotas": null,
+          "delivery_reference": null
+        },
+        "consumer": {
+          "quotas": null,
+          "delivery_reference": null
+        }
+      }
+    },
+    {
+      "id": null,
+      "owner": null,
+      "app_namespaces": null,
+      "sync_groups": null,
+      "max_topics": null,
+      "max_partitions": null,
+      "topics": [
+        {
+          "suffix": null,
+          "partitions": null,
+          "max_record_bytes": null
+        }
+      ],
+      "identities": {
+        "producer": {
+          "quotas": null,
+          "delivery_reference": null
+        },
+        "consumer": {
+          "quotas": null,
+          "delivery_reference": null
+        }
+      }
+    }
+  ]
+}

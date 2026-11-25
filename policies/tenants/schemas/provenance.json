@@ -1,0 +1,44 @@
+{
+  "captured_date": "2026-11-23",
+  "extracted_date": "2026-11-25",
+  "operator_csv": "amqstreams.v3.2.1-10",
+  "validation_scope": "cached v1 structural schema only; not server validation",
+  "sources": [
+    {
+      "source_path": "config/environments/kafkas-live-schema-2026-11-23.json",
+      "source_sha256": "d25e166ca52a032858aabe0fc971423e492627b6f8f4fda4a1f533d15a8673e3",
+      "schema_path": "policies/tenants/schemas/Kafka-v1.json",
+      "schema_sha256": "8b8cbb751f944eab62fe8704957c6ee95c4e800bc73ff9d2948aa1d772c1e55f",
+      "served": true,
+      "version": "v1",
+      "kind": "Kafka"
+    },
+    {
+      "source_path": "config/environments/kafkanodepools-live-schema-2026-11-23.json",
+      "source_sha256": "37fce68a60b5290abab9040b552a7d1026feaa2efd5f0bd828383276f7384657",
+      "schema_path": "policies/tenants/schemas/KafkaNodePool-v1.json",
+      "schema_sha256": "8abdf334ed52ee2e0fa9c8561a92ae100a7452814fabb400d3bac537a7573fd3",
+      "served": true,
+      "version": "v1",
+      "kind": "KafkaNodePool"
+    },
+    {
+      "source_path": "config/environments/kafkatopics-live-schema-2026-11-23.json",
+      "source_sha256": "5204dc0494863fef9d0c789b6c4fe9ff235dc5fa2d10279d568e6846a4b94db3",
+      "schema_path": "policies/tenants/schemas/KafkaTopic-v1.json",
+      "schema_sha256": "6246686fb611ab29b60eefc5bca905778cd4c9ce9238236bf6edd9b29c1a3cae",
+      "served": true,
+      "version": "v1",
+      "kind": "KafkaTopic"
+    },
+    {
+      "source_path": "config/environments/kafkausers-live-schema-2026-11-23.json",
+      "source_sha256": "067be0d4ed5aa269dcc59125b9a61e853e9790bb9c110bc398dd96bef17743f8",
+      "schema_path": "policies/tenants/schemas/KafkaUser-v1.json",
+      "schema_sha256": "a238d10c0552ccf99be02d00a53544b624ffc47bd0941e95a46563f1cb0f0528",
+      "served": true,
+      "version": "v1",
+      "kind": "KafkaUser"
+    }
+  ]
+}

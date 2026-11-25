@@ -1,0 +1,15 @@
+apiVersion: kafka.strimzi.io/v1
+kind: KafkaUser
+metadata:
+  name: ${user_name}
+  namespace: ${namespace}
+  labels:
+    strimzi.io/cluster: ${cluster_name}
+    kaas.example.com/tenant: ${tenant_id}
+spec:
+  authentication:
+    type: scram-sha-512
+  authorization:
+    type: simple
+    acls: ${acls}
+  quotas: ${quotas}

@@ -1,0 +1,26 @@
+{
+  "contract_version": "0.1",
+  "purpose": "offline-bootstrap-design-only",
+  "deployment_enabled": false,
+  "argocd_instance_namespace": null,
+  "argocd_controller_service_account": null,
+  "kafka_operator_namespace": null,
+  "selected_operator_watch_scope_mechanism": null,
+  "selected_operator_target_namespaces": null,
+  "namespace_creation_owner": null,
+  "git_branch_protection_and_review_evidence": null,
+  "argocd_global_role_and_sso_mapping_evidence": null,
+  "credential_ca_delivery_and_rotation_evidence": null,
+  "topic_deletion_authority_and_procedure": null,
+  "proposed_controller_permissions": {
+    "platform_kinds": ["Kafka", "KafkaNodePool"],
+    "tenant_kinds": ["KafkaTopic", "KafkaUser"],
+    "api_group": "kafka.strimzi.io",
+    "namespace_scope": null,
+    "non_delete_verbs": ["get", "list", "watch", "create", "update", "patch"],
+    "secret_permissions_proposed": false,
+    "delete_permissions_proposed": false,
+    "wildcard_permissions_proposed": false,
+    "note": "Design proposal only. One shared controller ServiceAccount may hold combined rights; project/role/policy boundaries and global privileges require review. No RBAC is rendered or applied."
+  }
+}

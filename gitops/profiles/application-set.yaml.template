@@ -1,0 +1,36 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: ${project_name}
+  namespace: ${gitops_namespace}
+spec:
+  sourceRepos:
+  - ${repo_url}
+  destinations:
+  - namespace: ${namespace}
+    server: https://kubernetes.default.svc
+  clusterResourceWhitelist: []
+  namespaceResourceWhitelist: ${kind_allowlist}
+  roles:
+  - name: sync
+    description: Explicit reviewed sync only; no project or Application edit permission
+    groups: ${sync_groups}
+    policies: ${sync_policies}
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ${project_name}
+  namespace: ${gitops_namespace}
+spec:
+  project: ${project_name}
+  source:
+    repoURL: ${repo_url}
+    targetRevision: ${revision}
+    path: ${source_path}
+  destination:
+    namespace: ${namespace}
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    syncOptions:
+    - FailOnSharedResource=true

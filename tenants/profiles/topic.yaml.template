@@ -1,0 +1,17 @@
+apiVersion: kafka.strimzi.io/v1
+kind: KafkaTopic
+metadata:
+  name: ${topic_name}
+  namespace: ${namespace}
+  labels:
+    strimzi.io/cluster: ${cluster_name}
+    kaas.example.com/tenant: ${tenant_id}
+spec:
+  topicName: ${topic_name}
+  partitions: ${partitions}
+  replicas: 2
+  config:
+    retention.ms: 21600000
+    min.insync.replicas: ${minimum_isr}
+    max.message.bytes: ${max_record_bytes}
+    cleanup.policy: delete

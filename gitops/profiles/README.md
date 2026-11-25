@@ -1,0 +1,9 @@
+# Offline GitOps project and application templates
+
+`application-set.yaml.template` is a pair of AppProject and Application documents for each rendered scope; it is not an ApplicationSet CR/controller. Platform projects permit only Kafka/KafkaNodePool. A separate project for each tenant permits only KafkaTopic/KafkaUser. Repository, revision, destination and sync groups are explicit inputs. No automated sync, prune option, resource-deletion finalizer, test hook or Application-of-Applications is generated.
+
+Project roles propose only get/sync on their own project Applications. These documents do not grant Kubernetes controller rights, configure SSO, remove global ArgoCD privileges or stop an already privileged actor editing projects/Applications. A manual sync permission alone cannot enforce a no-prune policy; later bootstrap/controller permissions and authorized workflow must enforce deletion controls. AppProject kind restrictions do not constrain ACL contents, topic names, or source paths within a repository. The offline validator checks those generated contents; Git protections and any admission/CI integration are not installed.
+
+The candidates deliberately exclude the current dev cluster and active GitOps namespaces. A later promotion design must review actual destinations, operator watch scope, controller RBAC, namespace ownership and policy integration; these review objects must not be applied as a dev ownership transfer. Cached Kafka schemas validate Kafka CRs; ArgoCD objects receive exact local policy/content checks only, not ArgoCD CRD/server validation.
+
+`bootstrap-inputs.json` records unresolved administrator/watch-scope/delivery/authorization inputs and the proposed namespace-scoped non-delete permission vocabulary. It is not a Kubernetes resource or a ready bootstrap configuration.

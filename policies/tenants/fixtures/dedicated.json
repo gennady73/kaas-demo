@@ -1,0 +1,116 @@
+{
+  "contract_version": "0.1",
+  "purpose": "offline-scaffold",
+  "deployment_enabled": false,
+  "synthetic_fixture": true,
+  "mode": "dedicated",
+  "profile_id": "fixture-dedicated",
+  "environment": "fixture",
+  "cluster": {
+    "name": "fixture-dedicated",
+    "namespace": "fixture-dedicated-kafka",
+    "broker_version": "4.2.0",
+    "operator_csv": "amqstreams.v3.2.1-10",
+    "image": "registry.redhat.io/amq-streams/kafka-42-rhel9@sha256:ce7dc91b664600c6f06e1df3d6b56a4684bb779865d9c28b4df648addd89189d",
+    "minimum_isr": 2,
+    "record_ceiling_bytes": 3145728,
+    "follower_fetch_bytes": 4194304,
+    "rack_topology_key": "kubernetes.io/hostname",
+    "pools": [
+      {
+        "name": "fixture-dual-role",
+        "replicas": 3,
+        "roles": [
+          "broker",
+          "controller"
+        ],
+        "storage_class": "fixture-storage",
+        "storage_size": "20Gi",
+        "resources": {
+          "requests": {
+            "cpu": "100m",
+            "memory": "512Mi"
+          },
+          "limits": {
+            "cpu": "500m",
+            "memory": "1Gi"
+          }
+        },
+        "heap": {
+          "-Xms": "128m",
+          "-Xmx": "256m"
+        }
+      }
+    ],
+    "entity_operator_resources": {
+      "requests": {
+        "cpu": "100m",
+        "memory": "512Mi"
+      },
+      "limits": {
+        "cpu": "500m",
+        "memory": "1Gi"
+      }
+    }
+  },
+  "gitops": {
+    "repo_url": "https://git.invalid/fixture/kaas.git",
+    "revision": "1111111111111111111111111111111111111111",
+    "namespace": "fixture-gitops",
+    "platform_sync_groups": [
+      "fixture-platform-reviewers"
+    ]
+  },
+  "policy_references": {
+    "watch_scope_and_bootstrap": "fixture-only:watch_scope_and_bootstrap",
+    "identity_network": "fixture-only:identity_network",
+    "secret_delivery": "fixture-only:secret_delivery",
+    "capacity_and_admission": "fixture-only:capacity_and_admission",
+    "lifecycle_and_deletion": "fixture-only:lifecycle_and_deletion",
+    "recovery_and_persistence": "fixture-only:recovery_and_persistence",
+    "observability": "fixture-only:observability",
+    "governance": "fixture-only:governance",
+    "git_authorization": "fixture-only:git_authorization"
+  },
+  "tenants": [
+    {
+      "id": "fixture-a",
+      "owner": "fixture-a-owner",
+      "app_namespaces": [
+        "fixture-a-apps"
+      ],
+      "sync_groups": [
+        "fixture-a-reviewers"
+      ],
+      "max_topics": 2,
+      "max_partitions": 4,
+      "topics": [
+        {
+          "suffix": "events",
+          "partitions": 2,
+          "max_record_bytes": 3145728
+        }
+      ],
+      "identities": {
+        "producer": {
+          "quotas": {
+            "producerByteRate": 100000,
+            "consumerByteRate": 100000,
+            "requestPercentage": 10,
+            "controllerMutationRate": 1
+          },
+          "delivery_reference": "fixture-only:fixture-a-producer-delivery"
+        },
+        "consumer": {
+          "quotas": {
+            "producerByteRate": 100000,
+            "consumerByteRate": 100000,
+            "requestPercentage": 10,
+            "controllerMutationRate": 1
+          },
+          "delivery_reference": "fixture-only:fixture-a-consumer-delivery"
+        }
+      }
+    }
+  ]
+}
