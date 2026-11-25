@@ -1,3 +1,4 @@
+import {EXPECTED_PLAN_SHA256} from './projection-lock.mjs';
 // Runtime projection is compiled/validated offline, then bound by its exact hash
 // in a separately reviewed execution record. No offline plan mode is enabled.
 export const ERROR_CATEGORIES=['topic_authorization_denied','group_authorization_denied','cluster_authorization_denied','authentication_failed','tls_failed','network_failed','timeout','unknown'];
@@ -9,18 +10,22 @@ export function canonical(x){if(x===null||typeof x!=='object')return JSON.string
 export function freeze(x){if(x&&typeof x==='object'){Object.values(x).forEach(freeze);Object.freeze(x);}return x;}
 export function valueFor(seed,record,sha){let value='';for(let n=0;value.length<1000;n++)value+=sha(`${seed}:${record.tenant}:${record.topic}:${record.sequence}:${record.case_id}:${n}`);return value.slice(0,1000);}
 export function validatePlan(plan,deps){
- require(plan.plan_version==='tenant-native-candidate-1.0'&&plan.mode==='NATIVE_CANDIDATE','native_plan');
- require(deps.runtimeAuthorized===true&&deps.sha256(canonical(plan))===deps.reviewedPlanHash,'reviewed_native_plan_required');
+ require(plan.plan_version==='tenant-native-candidate-1.1'&&plan.mode==='NATIVE_CANDIDATE','native_plan');
+ require(deps.runtimeAuthorized===true&&deps.sha256(canonical(plan))===EXPECTED_PLAN_SHA256&&deps.reviewedPlanHash===EXPECTED_PLAN_SHA256,'reviewed_native_plan_required');
  require(plan.maximum_total_seconds===300&&plan.maximum_logical_value_bytes===20000&&plan.records.length===16&&plan.negative.length===8,'fixture_bounds');
- require(plan.execution_enabled===false&&plan.tests_enabled===false,'preparation_plan_required');
+ require(['execution_enabled','deployment_enabled','tests_enabled','execution_ready'].every(k=>plan[k]===false),'preparation_plan_required');
  return freeze(plan);
 }
 export function validateExecution(plan,gate,sha){
  require(gate&&gate.protocol==='kaas-r2-execution-v1'&&gate.execution_authorized===true&&gate.tests_enabled===true,'execution_not_authorized');
- require(gate.plan_sha256===sha(canonical(plan)),'plan_hash');
+ require(Object.keys(gate).sort().join(',')===['protocol','execution_authorized','tests_enabled','authority_reference','plan_sha256','image_digest','package_sha256','binary_sha256','job_start_unix_ms','sink_origin','exclusive_fixture_groups','gates'].sort().join(','),'unknown_execution_field');
+ validatePlan(plan,{runtimeAuthorized:true,sha256:sha,reviewedPlanHash:gate.plan_sha256});
+ require(gate.plan_sha256===EXPECTED_PLAN_SHA256,'plan_hash');
  require(typeof gate.authority_reference==='string'&&gate.authority_reference.length>0,'authority_reference');
  const required=['native_image_and_source','C3_changed_source_review','C6_changed_source_review','credentials_delivered','CA_chain_SAN_expiry','namespace_network_SCC','fixture_group_ownership','sink_TLS_auth_persistence','custody_retention_second_copy','native_cancellation_close_bounds','independent_export_auditor'];
  require(required.every(k=>gate.gates?.[k]==='VERIFIED'),'execution_gates_open');
+ require(Object.keys(gate.gates).sort().join(',')===[...required].sort().join(','),'unknown_execution_gate');
+ require(/^[a-f0-9]{64}$/.test(gate.binary_sha256||''),'immutable_binary');
  require(/^sha256:[a-f0-9]{64}$/.test(gate.image_digest||'')&&/^[a-f0-9]{64}$/.test(gate.package_sha256||''),'immutable_package');
  require(Number.isSafeInteger(gate.job_start_unix_ms)&&gate.job_start_unix_ms>0,'job_start_required');
  require(typeof gate.sink_origin==='string'&&/^https:\/\/[a-z0-9.-]+:8443$/.test(gate.sink_origin),'sink_origin');

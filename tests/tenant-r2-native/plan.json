@@ -1,5 +1,5 @@
 {
-  "plan_version": "tenant-native-candidate-1.0",
+  "plan_version": "tenant-native-candidate-1.1",
   "mode": "NATIVE_CANDIDATE",
   "run_id": "r2-native-20261125",
   "seed": 2470,
@@ -1162,7 +1162,7 @@
   "maximum_total_seconds": 300,
   "maximum_logical_value_bytes": 20000,
   "positive_value_bytes": 16000,
-  "write_settings_signature": "eb022b69dca88b2587f87729f2e6f98b3244d024739b561477ac1467fcc03fe4",
+  "write_settings_signature": "685e06840c23abca0b29b93d1b02eaab65d673b518b39c29f02bcef5efc7db0c",
   "call_reserve_ms": 10000,
   "sink_reserve_ms": 2000,
   "close_reserve_ms": 8000,
@@ -1201,7 +1201,8 @@
     "producer_delivery_wait_ms": 6000,
     "metadata_snapshot_timeout_ms": 8000,
     "consumer_poll_ms": 2000,
-    "close_bound": "OPEN_requires_cancellation_review_and_job_containment",
+    "facade_commit_close_wait_ms": 6000,
+    "close_bound": "BOUNDED_FACADE_WAIT_QUARANTINE_NATIVE_CANCELLATION_UNPROVEN",
     "existing_smoke_image_usable": false
   }
 }

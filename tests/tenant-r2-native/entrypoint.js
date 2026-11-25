@@ -3,6 +3,7 @@ import native from 'k6/x/kaasr2';
 import crypto from 'k6/crypto';
 import http from 'k6/http';
 import {sleep} from 'k6';
+import {verifyRuntimeSources} from './source-integrity.mjs';
 import {validateExecution} from './native-policy.mjs';
 import {bindNative} from './binder.mjs';
 import {evidenceTransport} from './transport.mjs';
@@ -11,7 +12,10 @@ const sha=value=>crypto.sha256(value,'hex');
 const plan=JSON.parse(open('/r2/plan.json'));
 // All readiness checks precede credentials, native construction and HTTP.
 const gate=validateExecution(plan,JSON.parse(open('/r2/runtime.json')),sha);
+verifyRuntimeSources(name=>open('/r2/'+name),sha,gate.package_sha256);
 if(__ENV.K6_HTTP_DEBUG||__ENV.K6_VERBOSE==='true')throw new Error('unsafe_debug_configuration');
+const identity=native.identity();
+if(identity.ok!==true||identity.binary_sha256!==gate.binary_sha256||!identity.native_version.startsWith('2.14.0'))throw new Error('native_binary_identity');
 const writerToken=open('/evidence-auth/writer-token').trim();
 if(writerToken.length<32)throw new Error('evidence_auth_required');
 // Trust store must contain the separately verified sink CA AND Kafka CA.

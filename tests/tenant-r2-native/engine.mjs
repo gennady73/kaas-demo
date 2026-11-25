@@ -38,7 +38,7 @@ export function runNativeTenantFixture(plan,deps){
   }catch(_){unpersisted.push({type,event_id:e.event_id,reason:'durable_evidence_unavailable'});issue('durable_evidence_unavailable');}
   previous=event_sha256;events.push(e);envelopes.push(envelope);return e.event_id;
  }
- function enter(name){if(now()>phaseEnd)issue('phase_overrun');phase=name;phaseEnd=Math.min(now()+plan.phase_seconds[name]*1000,end);phaseEnds[name]=phaseEnd;
+ function enter(name){if(deps.shouldStop?.()===true)issue('stop_requested');if(now()>phaseEnd)issue('phase_overrun');phase=name;phaseEnd=Math.min(now()+plan.phase_seconds[name]*1000,end);phaseEnds[name]=phaseEnd;
   if(name==='positive_delivery')positiveCutoff=phaseEnd;
   emit('phase_start',{phase,deadline_ms:phaseEnd,positive_cutoff_ms:positiveCutoff});budget();}
  function binding(id){const b=plan.bindings.find(x=>x.id===id);if(!b)issue('unknown_binding','FAIL');return b;}
@@ -229,7 +229,7 @@ export function runNativeTenantFixture(plan,deps){
  try{emit('fixture_terminal',{status:!firstFailure&&allCases&&closed?'NATIVE_COMPLETE':'NATIVE_INCOMPLETE',elapsed_ms:duration,closed:closed&&handles.every(h=>h.closed),positive_cutoff_ms:positiveCutoff});terminal=true;}catch(_){firstFailure=firstFailure??{reason:'terminal_evidence_missing',severity:'INCONCLUSIVE'};}
  const finalDuration=now()-start;if(finalDuration>300000)firstFailure=firstFailure??{reason:'total_deadline_exceeded',severity:'INCONCLUSIVE'};
  const exportText=envelopes.map(x=>JSON.stringify(x)+'\n').join('');
- return {mode:'NATIVE_CANDIDATE',run_id:plan.run_id,plan_sha256:planHash,live_execution:true,
+ return {mode:'NATIVE_CANDIDATE',run_id:plan.run_id,plan_sha256:planHash,live_execution:deps.execution_context==='SYNTHETIC'?false:null,execution_context:deps.execution_context??'UNATTESTED',runtime_acceptance:'NOT_ASSESSED',
   status:!firstFailure&&allCases&&closed&&terminal?'NATIVE_COMPLETE':'NATIVE_INCOMPLETE',
   first_failure:firstFailure,cases,stats,records:[...recordStates.values()],duration_ms:finalDuration,
   cleanup_complete:closed&&handles.every(h=>h.closed),terminal_recorded:terminal,unpersisted,events,envelopes,

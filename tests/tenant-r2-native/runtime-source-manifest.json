@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "files": {
+    "ascii.mjs": "82cd918785535d42816db487e392933f9421254ad0b784858ad17068fd951740",
+    "audit.mjs": "ac083b0c457354d76ff6e5e6319b4d05ebccc958a94178bee543e16e7bc349f2",
+    "binder.mjs": "ceb660995148a9472f7e9072e7d2b2afb540e43d4cb05b7a2fc9c7273ddf0a93",
+    "engine.mjs": "9de2006b432be978d26864bdf45ccfa013feb05a5a0742cc11f92af3c7f241cd",
+    "entrypoint.js": "ab5a80b62c74ae91c1a4169b50632c867722fe8ccb7f070618cd20c6365844ff",
+    "native-policy.mjs": "3ff0aada8bda81fceef96d7beb6a6f3a5b04ff44ac121cd292860b5d27e02bcf",
+    "plan.json": "1810a8b73d29bdd192f7265b3b86a14a7dce3baa8d04d01d9dc3ed4ed487f19a",
+    "projection-lock.mjs": "bf2a1a53d566d00b74115f319f979047d59ed74385635cd2a3f5b0df04b48c22",
+    "source-integrity.mjs": "02de316cb33b5999198bf0de8ccd8c4857204b0519ff6550ff4c69d3d12977ec",
+    "strict-json.mjs": "63b26dea5cd81e04b74fa71dbe70e4567dfd3c0fd039529987aa708ed79a0ae7",
+    "transport.mjs": "54defef5bb8574a6e210872e103052fea4e27ab04923f0329cde28a4af0df80b"
+  }
+}

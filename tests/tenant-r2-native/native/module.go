@@ -3,7 +3,10 @@ package r2native
 
 import (
 	"context"
+	"crypto/sha256"
+	"encoding/hex"
 	"errors"
+	"io"
 	"os"
 	"strings"
 	"time"
@@ -16,12 +19,14 @@ func init() { modules.Register("k6/x/kaasr2", new(Root)) }
 
 type Root struct{}
 type Module struct {
-	born    time.Time
-	anchor  int64
-	started bool
-	next    int
-	handles map[int]*handle
-	sent    map[string]bool
+	born      time.Time
+	anchor    int64
+	started   bool
+	faulted   bool
+	binarySHA string
+	next      int
+	handles   map[int]*handle
+	sent      map[string]bool
 }
 type handle struct {
 	p                 *k.Producer
@@ -30,6 +35,7 @@ type handle struct {
 	last              *k.Message
 	joined, forbidden bool
 	commitAllowed     bool
+	quarantined       bool
 }
 
 func (*Root) NewModuleInstance(modules.VU) modules.Instance {
@@ -145,14 +151,44 @@ func (m *Module) Start(jobStartUnixMs int64) Result {
 	if m.started || age < 0 || age > 45000 {
 		return bad("startup")
 	}
+	if err := validateInputs(os.ReadFile, time.Now()); err != nil {
+		return bad("startup")
+	}
+	age = time.Now().UnixMilli() - jobStartUnixMs
+	if age < 0 || age > 45000 {
+		return bad("startup")
+	}
 	m.anchor = age
 	m.born = time.Now()
 	m.started = true
-	return ok(Result{"mapping_id": "KAAS_R2_CONFLUENT_2_14_V1", "native_version": nativeVersion()})
+	if m.Now() > 45000 {
+		return bad("startup")
+	}
+	return m.Identity()
+}
+func (m *Module) Identity() Result {
+	if m.binarySHA != "" {
+		return ok(Result{"mapping_id": "KAAS_R2_CONFLUENT_2_14_V1", "native_version": nativeVersion(), "binary_sha256": m.binarySHA})
+	}
+	binary, err := os.Executable()
+	if err != nil {
+		return bad("startup")
+	}
+	file, err := os.Open(binary)
+	if err != nil {
+		return bad("startup")
+	}
+	defer file.Close()
+	hash := sha256.New()
+	if _, err = io.Copy(hash, file); err != nil {
+		return bad("startup")
+	}
+	m.binarySHA = hex.EncodeToString(hash.Sum(nil))
+	return ok(Result{"mapping_id": "KAAS_R2_CONFLUENT_2_14_V1", "native_version": nativeVersion(), "binary_sha256": m.binarySHA})
 }
 func nativeVersion() string  { _, v := k.LibraryVersion(); return v }
 func (m *Module) Now() int64 { return m.anchor + time.Since(m.born).Milliseconds() }
-func (m *Module) live() bool { return m.started && m.Now() < 270000 }
+func (m *Module) live() bool { return m.started && !m.faulted && m.Now() < 270000 }
 func (m *Module) OpenProducer(principal, topic string) Result {
 	if !m.live() || !topicOK(topic) {
 		return bad("produce")
@@ -232,6 +268,9 @@ func (m *Module) Produce(id int, key, value string) Result {
 		if msg.TopicPartition.Error != nil {
 			return failure(msg.TopicPartition.Error, "produce")
 		}
+		if msg.TopicPartition.Topic == nil || *msg.TopicPartition.Topic != h.topic || msg.TopicPartition.Partition != 0 || msg.TopicPartition.Offset < 0 {
+			return bad("produce")
+		}
 		return ok(nil) // ACK only from a successful delivery report, never enqueue.
 	case <-timer.C:
 		return failure(context.DeadlineExceeded, "produce")
@@ -248,6 +287,9 @@ func (m *Module) poll(h *handle, milliseconds int) Result {
 		case *k.Message:
 			if v.TopicPartition.Error != nil {
 				return failure(v.TopicPartition.Error, "consume")
+			}
+			if v.TopicPartition.Topic == nil || *v.TopicPartition.Topic != h.topic || v.TopicPartition.Partition != 0 || v.TopicPartition.Offset < 0 {
+				return bad("consume")
 			}
 			h.last = v
 			return ok(Result{"messages": []Result{{"topic": *v.TopicPartition.Topic, "partition": v.TopicPartition.Partition, "offset": int64(v.TopicPartition.Offset), "key": string(v.Key), "value": string(v.Value)}}})
@@ -297,7 +339,7 @@ func (m *Module) Position(id int) Result {
 }
 func (m *Module) ProbeState(id int) Result {
 	h := m.handles[id]
-	if h == nil {
+	if h == nil || h.quarantined || m.faulted {
 		return bad("consume")
 	}
 	return ok(Result{"broker_confirmed": h.joined, "group_joined": h.joined, "forbidden_assignment": h.forbidden})
@@ -310,31 +352,41 @@ func (m *Module) Commit(id int) Result {
 	// Commit exactly the verified record's next offset; no native auto-store.
 	p := h.last.TopicPartition
 	p.Offset++
-	offsets, err := h.c.CommitOffsets([]k.TopicPartition{p})
-	if err != nil {
-		return failure(err, "commit")
+	result := m.boundedHandle(h, m.waitLimit(270000*time.Millisecond), "commit", func() Result {
+		offsets, err := h.c.CommitOffsets([]k.TopicPartition{p})
+		if err != nil {
+			return failure(err, "commit")
+		}
+		if len(offsets) != 1 || offsets[0].Error != nil || offsets[0].Topic == nil || *offsets[0].Topic != h.topic || offsets[0].Partition != p.Partition || offsets[0].Offset != p.Offset {
+			return bad("commit")
+		}
+		return ok(nil)
+	})
+	if result["ok"] == true {
+		h.last = nil
 	}
-	if len(offsets) != 1 || offsets[0].Error != nil || offsets[0].Offset != p.Offset {
-		return bad("commit")
-	}
-	h.last = nil
-	return ok(nil)
+	return result
 }
 func (m *Module) Close(id int) Result {
 	h := m.handles[id]
-	if h == nil {
+	if h == nil || h.quarantined {
 		return bad("close")
 	}
-	delete(m.handles, id)
-	if h.p != nil {
-		h.p.Close()
-	}
-	if h.c != nil {
-		if err := h.c.Close(); err != nil {
-			return failure(err, "close")
+	result := m.boundedHandle(h, m.waitLimit(300000*time.Millisecond), "close", func() Result {
+		if h.p != nil {
+			h.p.Close()
 		}
+		if h.c != nil {
+			if err := h.c.Close(); err != nil {
+				return failure(err, "close")
+			}
+		}
+		return ok(nil)
+	})
+	if result["ok"] == true {
+		delete(m.handles, id)
 	}
-	return ok(nil)
+	return result
 }
 
 // Metadata only: no subscription, poll, assignment, offset alteration or payload.
@@ -342,6 +394,22 @@ func (m *Module) Close(id int) Result {
 // principal under negative test. Fixture ownership is a separate reviewed input.
 func (m *Module) Snapshot(topic, group string) Result {
 	if !m.live() || !topicOK(topic) || !groupOK(group) {
+		return bad("observe")
+	}
+	wait := 8 * time.Second
+	if remaining := time.Duration(270000-m.Now()) * time.Millisecond; remaining < wait {
+		wait = remaining
+	}
+	ctx, cancel := context.WithTimeout(context.Background(), wait)
+	defer cancel()
+	result, timedOut := boundedResult(wait, "observe", func() Result { return snapshot(ctx, topic, group) })
+	if timedOut {
+		m.faulted = true
+	}
+	return result
+}
+func snapshot(ctx context.Context, topic, group string) Result {
+	if !topicOK(topic) || !groupOK(group) {
 		return bad("observe")
 	}
 	groupTenant := strings.TrimSuffix(strings.TrimSuffix(strings.TrimSuffix(group, "-group"), "-events"), "-audit")
@@ -355,8 +423,6 @@ func (m *Module) Snapshot(topic, group string) Result {
 		return failure(err, "observe")
 	}
 	defer ga.Close()
-	ctx, cancel := context.WithTimeout(context.Background(), 8*time.Second)
-	defer cancel()
 	// Absent-group DescribeConsumerGroups timed out in the saved Java Admin
 	// observation. Require a complete, error-free list before describing only
 	// present groups. The tenant must be authorized to describe its own group.

@@ -1,0 +1,23 @@
+{
+  "reviewed_base_commit": "5e29d34fa9edc45e3a265d082191cde82e6df9bc",
+  "corrected_version": "native candidate1.1 / guide0.2",
+  "status": "SOURCE_GAPS_FIXED_OFFLINE_BUILD_PASS_RUNTIME_NOT_RUN",
+  "counts": {
+    "binding": 7,
+    "review": 31,
+    "sink": 18,
+    "Go_top_level": 10
+  },
+  "binary_sha256": "7405cc006c1d05d2748aee1955bfd3db6e3edf4e6f723dd997e060bd22c6525b",
+  "runtime_manifest_sha256": "d26b13cbc6e96bc56625adc26467b95a5a09cd011f525b9b6bb4ed8376ec93c0",
+  "plan_sha256": "78e427f79f510efe87834000371584394fc44ccd0ed4e0a903f919d31edca13d",
+  "retained_client_bound_seconds": 300,
+  "retained_attempted_original_value_bytes": 20000,
+  "events_replayed": 182,
+  "reported_commits_reconciled": 16,
+  "deployment_enabled": false,
+  "workloads_enabled": false,
+  "source_publication": "LOCAL_UNCOMMITTED_NOT_PUSHED",
+  "preserved_accepted_adapter_and_continuity_files": 38,
+  "formal_C3_C6_owner_acceptance": "NOT_INFERRED_FROM_C0_REVIEW"
+}

@@ -35,7 +35,9 @@ def handler(store, writer_token, owner_token):
             role=allowed.get((method,self.path))
             if role is None:return self.respond(404,{'error':'endpoint'})
             expected=writer_token if role=='writer' else owner_token
-            if not hmac.compare_digest(self.headers.get('Authorization',''), 'Bearer '+expected):return self.respond(401,{'error':'authentication'})
+            try:authenticated=hmac.compare_digest(self.headers.get('Authorization','').encode('ascii'), ('Bearer '+expected).encode('ascii'))
+            except (UnicodeError,AttributeError):authenticated=False
+            if not authenticated:return self.respond(401,{'error':'authentication'})
             try:
                 if method=='POST':
                     if self.headers.get('Transfer-Encoding') is not None:raise Rejected('body')

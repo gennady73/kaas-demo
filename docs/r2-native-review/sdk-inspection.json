@@ -1,0 +1,13 @@
+{
+  "version": "confluent-kafka-go/v2@v2.14.0",
+  "files": {
+    "consumer.go": "cc2636f639b164e04d2ffefd9ad29fef95ad077983004c1e2293f79a4b90670e",
+    "producer.go": "6b55582b9aebadcc8c7957412533009a73e8068bcf8810de79a99913fc86a54e"
+  },
+  "findings": {
+    "consumer.go:246": "commit polls the native completion queue with -1; no context argument",
+    "consumer.go:531": "Close waits for reader goroutines and consumer_closed loop; no context argument",
+    "producer.go:407": "Close waits for SDK goroutines and native destroy"
+  },
+  "consequence": "Facade timeout is containment, not cancellation; late commit uncertainty remains until external observation/process exit"
+}

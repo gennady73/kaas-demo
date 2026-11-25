@@ -1,0 +1,124 @@
+{
+  "reviewed_published_base": "5e29d34fa9edc45e3a265d082191cde82e6df9bc",
+  "review_type": "C0 agent source and offline tests against C3/C6 requirements; not independent human or owner sign-off",
+  "C3_cases": [
+    {
+      "id": "N01",
+      "source_fix_references": "C0-R2-N01/N05",
+      "offline_evidence": "Pinned projection, source manifest, actual executable identity, build/API imports",
+      "actual_runtime_result": "NOT_RUN"
+    },
+    {
+      "id": "N02",
+      "source_fix_references": "C0-R2-N05",
+      "offline_evidence": "Pure real SDK error-object/code tests and synthetic denial/control mappings; real broker stage remains open",
+      "actual_runtime_result": "NOT_RUN"
+    },
+    {
+      "id": "N03",
+      "source_fix_references": "C0-R2-N02/N06",
+      "offline_evidence": "Receipt-before-commit and exact location checks, quarantine; actual offsets/membership/late completion open",
+      "actual_runtime_result": "NOT_RUN"
+    },
+    {
+      "id": "K01",
+      "source_fix_references": "C0-R2-N04",
+      "offline_evidence": "Exact bounded ACK retry, stop before new admission/phase, settlement,182-event cross-runtime join",
+      "actual_runtime_result": "NOT_RUN"
+    },
+    {
+      "id": "K02",
+      "source_fix_references": "C0-R2-N04",
+      "offline_evidence": "Local SQLite/process crash/reopen/conflict/storage-fault tests; target persistence unqualified",
+      "actual_runtime_result": "NOT_RUN"
+    },
+    {
+      "id": "K03",
+      "source_fix_references": "C0-R2-N02/N07",
+      "offline_evidence": "Strict byte/seal and semantic auditing; actual custody/export/disposition open",
+      "actual_runtime_result": "NOT_RUN"
+    },
+    {
+      "id": "S01",
+      "source_fix_references": "C0-R2-N01/N05",
+      "offline_evidence": "Four fixed bindings, all-input preflight, no fallback; real delivery/readers/SCC open",
+      "actual_runtime_result": "NOT_RUN"
+    },
+    {
+      "id": "S02",
+      "source_fix_references": "C0-R2-N05/N07",
+      "offline_evidence": "Private fixed errors, synthetic canaries, no raw exception fields; actual native/auth logging capture open",
+      "actual_runtime_result": "NOT_RUN"
+    },
+    {
+      "id": "S03",
+      "source_fix_references": "C0-R2-N01/N05",
+      "offline_evidence": "Strict TLS/native settings and certificate preflight; real leaf/trust/advertised endpoints open",
+      "actual_runtime_result": "NOT_RUN"
+    },
+    {
+      "id": "D01",
+      "source_fix_references": "C0-R2-N03/N06",
+      "offline_evidence": "300s/20k bounds preserved; timers/reservations/facade waiting checked, target feasibility open",
+      "actual_runtime_result": "NOT_RUN"
+    },
+    {
+      "id": "D02",
+      "source_fix_references": "C0-R2-N04/N06",
+      "offline_evidence": "Failure admission latch, no retry of Kafka, quarantine/late callback tests; real hard process deadline open",
+      "actual_runtime_result": "NOT_RUN"
+    },
+    {
+      "id": "D03",
+      "source_fix_references": "C0-R2-N02/N03/N08",
+      "offline_evidence": "Per-ID/phase/observation/lifecycle dimensions independently checked; all actual-broker results NOT_RUN",
+      "actual_runtime_result": "NOT_RUN"
+    }
+  ],
+  "C6_conditions": [
+    {
+      "id": "C6-R2-01",
+      "source_offline_disposition": "Same explicit producer options and non-idempotent diagnostic path; wrong/unknown denial type cannot pass",
+      "actual_runtime_result": "NOT_RUN"
+    },
+    {
+      "id": "C6-R2-02",
+      "source_offline_disposition": "Known numeric native errors/private fixed envelopes and intended stage; auth/TLS/network/timeout/cluster/unknown never prove the expected topic/group denial",
+      "actual_runtime_result": "NOT_RUN"
+    },
+    {
+      "id": "C6-R2-03",
+      "source_offline_disposition": "Named positive controls, equivalent diagnostic settings and exact case/byte denominator checked without extra traffic",
+      "actual_runtime_result": "NOT_RUN"
+    },
+    {
+      "id": "C6-R2-04",
+      "source_offline_disposition": "Positive clients close before group reuse; no auto-store/auto-commit/negative commit, before/after snapshots, unexpected join/record stop; actual group behavior open",
+      "actual_runtime_result": "NOT_RUN"
+    },
+    {
+      "id": "C6-R2-05",
+      "source_offline_disposition": "No-group-creation is intent only; exclusive ownership/membership baselines required and unexpected joins preserved; actual runtime group effects untested",
+      "actual_runtime_result": "NOT_RUN"
+    },
+    {
+      "id": "C6-R2-06",
+      "source_offline_disposition": "Strict source/principal/resource/mount boundaries; all input preflight; real copy/lifecycle/readability open",
+      "actual_runtime_result": "NOT_RUN"
+    },
+    {
+      "id": "C6-R2-07",
+      "source_offline_disposition": "Canary/no raw errors/source-file allowlist/strict export schema; actual all-channel native logging evidence open",
+      "actual_runtime_result": "NOT_RUN"
+    },
+    {
+      "id": "C6-R2-08",
+      "source_offline_disposition": "Stop, bytes/cases/deadline, partial evidence and no destructive cleanup; runtime containment/custody open",
+      "actual_runtime_result": "NOT_RUN"
+    }
+  ],
+  "C3_V02_01": "Fixed for new native auditor; original frozen offline artifact/addendum untouched",
+  "native_cancellation": "NOT_PROVEN: SDK call can finish after facade timeout; quarantined/uncertain with external containment required",
+  "deployment_enabled": false,
+  "workloads_enabled": false
+}
