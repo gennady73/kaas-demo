@@ -1,0 +1,11 @@
+{
+  "apiVersion": "v1",
+  "kind": "ConfigMap",
+  "metadata": {
+    "name": "kaas-r2-disabled-entrypoint",
+    "namespace": "kaas-demo"
+  },
+  "data": {
+    "disabled.js": "throw new Error('R2_OFFLINE_PACKAGE_ONLY_NATIVE_RUNTIME_NOT_IMPLEMENTED');\nexport default function () {}\n"
+  }
+}

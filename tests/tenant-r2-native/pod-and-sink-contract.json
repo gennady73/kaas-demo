@@ -1,0 +1,203 @@
+{
+  "document_type": "NATIVE_R2_ADDITIVE_POD_CONTRACT_NOT_A_JOB",
+  "revision": "0.2-native-candidate",
+  "namespace": "kaas-demo",
+  "trusted_harness_boundary": "Single administrator-controlled harness can access all four credentials; not tenant-workload Secret isolation",
+  "serviceAccountName": "kaas-r2-harness",
+  "automountServiceAccountToken": false,
+  "hostNetwork": false,
+  "pod_labels": {
+    "kaas.example.com/r2-runner": "trusted"
+  },
+  "volumes": [
+    {
+      "name": "cluster-ca",
+      "configMap": {
+        "name": "kaas-r2-cluster-ca",
+        "items": [
+          {
+            "key": "ca.crt",
+            "path": "ca.crt"
+          }
+        ],
+        "defaultMode": 292
+      }
+    },
+    {
+      "name": "credential-0",
+      "secret": {
+        "secretName": "kaas-sbx-a-producer",
+        "items": [
+          {
+            "key": "password",
+            "path": "password"
+          }
+        ],
+        "defaultMode": 288
+      }
+    },
+    {
+      "name": "credential-1",
+      "secret": {
+        "secretName": "kaas-sbx-a-consumer",
+        "items": [
+          {
+            "key": "password",
+            "path": "password"
+          }
+        ],
+        "defaultMode": 288
+      }
+    },
+    {
+      "name": "credential-2",
+      "secret": {
+        "secretName": "kaas-sbx-b-producer",
+        "items": [
+          {
+            "key": "password",
+            "path": "password"
+          }
+        ],
+        "defaultMode": 288
+      }
+    },
+    {
+      "name": "credential-3",
+      "secret": {
+        "secretName": "kaas-sbx-b-consumer",
+        "items": [
+          {
+            "key": "password",
+            "path": "password"
+          }
+        ],
+        "defaultMode": 288
+      }
+    }
+  ],
+  "volumeMounts": [
+    {
+      "name": "cluster-ca",
+      "mountPath": "/credentials/cluster-ca",
+      "readOnly": true
+    },
+    {
+      "name": "credential-0",
+      "mountPath": "/credentials/kaas-sbx-a-producer",
+      "readOnly": true
+    },
+    {
+      "name": "credential-1",
+      "mountPath": "/credentials/kaas-sbx-a-consumer",
+      "readOnly": true
+    },
+    {
+      "name": "credential-2",
+      "mountPath": "/credentials/kaas-sbx-b-producer",
+      "readOnly": true
+    },
+    {
+      "name": "credential-3",
+      "mountPath": "/credentials/kaas-sbx-b-consumer",
+      "readOnly": true
+    }
+  ],
+  "container_security_context": {
+    "runAsNonRoot": true,
+    "allowPrivilegeEscalation": false,
+    "capabilities": {
+      "drop": [
+        "ALL"
+      ]
+    },
+    "seccompProfile": {
+      "type": "RuntimeDefault"
+    },
+    "readOnlyRootFilesystem": true
+  },
+  "proposed_resources_not_allocated": {
+    "requests": {
+      "cpu": "100m",
+      "memory": "128Mi"
+    },
+    "limits": {
+      "cpu": "500m",
+      "memory": "512Mi"
+    }
+  },
+  "SCC_arbitrary_UID_and_fsGroup_validation": "OPEN; do not impose fixed UID; 0440 credential readability requires admission/fsGroup verification",
+  "temporary_working_directory": "If required by selected runtime, bounded emptyDir /tmp, never sole durable evidence store",
+  "job_bounds_if_later_implemented": {
+    "suspend": true,
+    "backoffLimit": 0,
+    "activeDeadlineSeconds": 300,
+    "restartPolicy": "Never",
+    "parallelism": 1,
+    "completions": 1
+  },
+  "native_entrypoint": "/r2/entrypoint.js",
+  "image_pull_current_verification": null,
+  "evidence_sink_peer": null,
+  "job_manifest_created": false,
+  "execution_enabled": false,
+  "native_module": "k6/x/kaasr2",
+  "native_client_source": "confluent-kafka-go v2.14.0",
+  "native_image_digest": null,
+  "existing_smoke_image_usable": false,
+  "evidence_protocol": "kaas-tenant-evidence-v1",
+  "sink_storage_allocation": null,
+  "additional_PVCs_allocated": 0,
+  "additional_required_read_only_mounts": [
+    {
+      "path": "/r2",
+      "contents": [
+        "plan.json",
+        "runtime.json",
+        "entrypoint.js",
+        "engine.mjs",
+        "native-policy.mjs",
+        "ascii.mjs",
+        "binder.mjs",
+        "transport.mjs"
+      ],
+      "source": "future frozen ConfigMap; runtime.json not shipped"
+    },
+    {
+      "path": "/evidence-auth/writer-token",
+      "source": "future separate writer-only Secret; not generated/delivered"
+    },
+    {
+      "path": "/evidence-trust/combined-ca.pem",
+      "source": "future public trust bundle for selected sink; not generated/delivered"
+    }
+  ],
+  "environment_contract": {
+    "SSL_CERT_FILE": "/evidence-trust/combined-ca.pem",
+    "K6_HTTP_DEBUG": "MUST_BE_UNSET",
+    "K6_VERBOSE": "MUST_NOT_BE_true"
+  },
+  "candidate_sink_budget_not_allocated": {
+    "requests": {
+      "cpu": "100m",
+      "memory": "128Mi"
+    },
+    "limits": {
+      "cpu": "500m",
+      "memory": "256Mi"
+    },
+    "database_and_WAL_cap_bytes": 33554432,
+    "minimum_filesystem_free_bytes": 67108864,
+    "maximum_events": 1024,
+    "maximum_event_json_bytes": 16384,
+    "storage": "OPEN approved existing durable allocation/custodian required; no new EBS/PVC assumed"
+  },
+  "evidence_custody": {
+    "source": "docs/coordination/r2-native-preparation-2026-11-25/README.md",
+    "sandbox_retention_days": 7,
+    "export_destination": "/home/gunger/Projects/kaas-solution/docs/testing/runs/<run-id>/",
+    "second_copy_verified": false,
+    "actual_custodian_and_storage_allocation": "OPEN technical execution join; reuse accepted evidence policy",
+    "cleanup_automation_created": false
+  }
+}

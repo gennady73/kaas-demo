@@ -1,0 +1,25 @@
+{
+  "protocol": "kaas-r2-execution-v1",
+  "execution_authorized": false,
+  "tests_enabled": false,
+  "authority_reference": null,
+  "plan_sha256": "2d04ab5558d16046b9a3095c6905111f222ce549bda07091b256db423a4ba8aa",
+  "image_digest": null,
+  "package_sha256": null,
+  "job_start_unix_ms": null,
+  "sink_origin": null,
+  "exclusive_fixture_groups": [],
+  "gates": {
+    "native_image_and_source": "OPEN",
+    "C3_changed_source_review": "OPEN",
+    "C6_changed_source_review": "OPEN",
+    "credentials_delivered": "OPEN",
+    "CA_chain_SAN_expiry": "OPEN",
+    "namespace_network_SCC": "OPEN",
+    "fixture_group_ownership": "OPEN",
+    "sink_TLS_auth_persistence": "OPEN",
+    "custody_retention_second_copy": "OPEN",
+    "native_cancellation_close_bounds": "OPEN",
+    "independent_export_auditor": "OPEN"
+  }
+}

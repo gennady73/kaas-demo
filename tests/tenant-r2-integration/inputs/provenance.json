@@ -1,0 +1,8 @@
+{
+  "scope": "Prior accepted offline adapter only; not new native release approval",
+  "files": {
+    "client-contract.json": "170b9cdad28508c64bccfd804d8d675efd703b373604a7177fdcb36443b9988a",
+    "C3-offline-review.txt": "e38b184e3563d658eebed782c89638774a8c0ac620ad7562fe74c17bfaa86bce",
+    "C6-offline-review.txt": "9e2219180b61b8813c378f600a790779f95c10b9e7aaa918330109d7d9a8697b"
+  }
+}

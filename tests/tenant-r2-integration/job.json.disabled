@@ -1,0 +1,184 @@
+{
+  "apiVersion": "batch/v1",
+  "kind": "Job",
+  "metadata": {
+    "name": "kaas-r2-two-tenant-candidate",
+    "namespace": "kaas-demo",
+    "annotations": {
+      "kaas.example.com/status": "OFFLINE_ONLY_NOT_FOR_DEPLOYMENT",
+      "kaas.example.com/runtime": "NOT_IMPLEMENTED_CURRENT_IMAGE_NOT_QUALIFIED"
+    }
+  },
+  "spec": {
+    "suspend": true,
+    "backoffLimit": 0,
+    "activeDeadlineSeconds": 300,
+    "parallelism": 1,
+    "completions": 1,
+    "template": {
+      "metadata": {
+        "labels": {
+          "kaas.example.com/r2-runner": "trusted"
+        }
+      },
+      "spec": {
+        "serviceAccountName": "kaas-r2-harness",
+        "automountServiceAccountToken": false,
+        "restartPolicy": "Never",
+        "terminationGracePeriodSeconds": 0,
+        "hostNetwork": false,
+        "containers": [
+          {
+            "name": "trusted-harness",
+            "image": "image-registry.openshift-image-registry.svc:5000/kaas-demo/kaas-xk6-verified-20261124@sha256:f66c3f86f2365b219c590d1d3c580ea41fcc4ab2ba74fc1efb2ae72d93be0df2",
+            "imagePullPolicy": "IfNotPresent",
+            "command": [
+              "k6",
+              "run",
+              "/r2/disabled.js"
+            ],
+            "resources": {
+              "requests": {
+                "cpu": "100m",
+                "memory": "128Mi"
+              },
+              "limits": {
+                "cpu": "500m",
+                "memory": "512Mi"
+              }
+            },
+            "securityContext": {
+              "runAsNonRoot": true,
+              "allowPrivilegeEscalation": false,
+              "capabilities": {
+                "drop": [
+                  "ALL"
+                ]
+              },
+              "seccompProfile": {
+                "type": "RuntimeDefault"
+              },
+              "readOnlyRootFilesystem": true
+            },
+            "volumeMounts": [
+              {
+                "name": "cluster-ca",
+                "mountPath": "/credentials/cluster-ca",
+                "readOnly": true
+              },
+              {
+                "name": "credential-0",
+                "mountPath": "/credentials/kaas-sbx-a-producer",
+                "readOnly": true
+              },
+              {
+                "name": "credential-1",
+                "mountPath": "/credentials/kaas-sbx-a-consumer",
+                "readOnly": true
+              },
+              {
+                "name": "credential-2",
+                "mountPath": "/credentials/kaas-sbx-b-producer",
+                "readOnly": true
+              },
+              {
+                "name": "credential-3",
+                "mountPath": "/credentials/kaas-sbx-b-consumer",
+                "readOnly": true
+              },
+              {
+                "name": "disabled-entrypoint",
+                "mountPath": "/r2",
+                "readOnly": true
+              },
+              {
+                "name": "tmp",
+                "mountPath": "/tmp"
+              }
+            ]
+          }
+        ],
+        "volumes": [
+          {
+            "name": "cluster-ca",
+            "configMap": {
+              "name": "kaas-r2-cluster-ca",
+              "items": [
+                {
+                  "key": "ca.crt",
+                  "path": "ca.crt"
+                }
+              ],
+              "defaultMode": 292
+            }
+          },
+          {
+            "name": "credential-0",
+            "secret": {
+              "secretName": "kaas-sbx-a-producer",
+              "items": [
+                {
+                  "key": "password",
+                  "path": "password"
+                }
+              ],
+              "defaultMode": 288
+            }
+          },
+          {
+            "name": "credential-1",
+            "secret": {
+              "secretName": "kaas-sbx-a-consumer",
+              "items": [
+                {
+                  "key": "password",
+                  "path": "password"
+                }
+              ],
+              "defaultMode": 288
+            }
+          },
+          {
+            "name": "credential-2",
+            "secret": {
+              "secretName": "kaas-sbx-b-producer",
+              "items": [
+                {
+                  "key": "password",
+                  "path": "password"
+                }
+              ],
+              "defaultMode": 288
+            }
+          },
+          {
+            "name": "credential-3",
+            "secret": {
+              "secretName": "kaas-sbx-b-consumer",
+              "items": [
+                {
+                  "key": "password",
+                  "path": "password"
+                }
+              ],
+              "defaultMode": 288
+            }
+          },
+          {
+            "name": "disabled-entrypoint",
+            "configMap": {
+              "name": "kaas-r2-disabled-entrypoint",
+              "defaultMode": 292
+            }
+          },
+          {
+            "name": "tmp",
+            "emptyDir": {
+              "sizeLimit": "16Mi"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

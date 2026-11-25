@@ -1,0 +1,80 @@
+{
+  "schema": "r2-offline-integration-package-1",
+  "status": "OFFLINE_PREPARATION_NATIVE_GAPS_OPEN",
+  "execution_enabled": false,
+  "deployment_enabled": false,
+  "workloads_enabled": false,
+  "execution_ready": false,
+  "automatic_sync_enabled": false,
+  "resource_revision": "3211df93ae40d7d6f47c6334966ae6d1f658fee7",
+  "source_contract": "c2-tenant-r2-0.2",
+  "namespace": "kaas-demo",
+  "job_candidate": "job.json.disabled",
+  "active_kustomization_include": false,
+  "live_entrypoint": null,
+  "native_image_qualified": false,
+  "native_candidate_compiler": "kafka-load-test/preflight/tenant-native-candidate/native-contract.mjs",
+  "durable_sink_candidate": {
+    "file": "offline_sink.py",
+    "protocol": "r2-offline-sqlite-1",
+    "network_listener": false,
+    "deployment_selected": false,
+    "persistence_scope": "Local committed SQLite transaction survives tested local process restart; Pod/node/volume failure remains unqualified",
+    "transport_authentication": null
+  },
+  "fixture": {
+    "positive_records": 16,
+    "value_bytes_each": 1000,
+    "positive_original_value_bytes": 16000,
+    "negative_write_attempts_max": 4,
+    "negative_read_operations": 4,
+    "negative_operations": 8,
+    "maximum_original_attempt_value_bytes": 20000,
+    "application_attempts_per_id": 1,
+    "phase_seconds": {
+      "startup_and_controls": 45,
+      "positive_delivery": 90,
+      "negative_cases": 90,
+      "final_reconciliation_drain": 45,
+      "shutdown": 30
+    },
+    "whole_client_job_seconds": 300
+  },
+  "required_before_live": [
+    "reviewed_k6_compatible_runtime_and_native_error_boundary",
+    "explicit_native_settings_and_bounded_commit_close",
+    "isolated_sink_transport_storage_authentication_and_resources",
+    "credential_CA_SCC_delivery_readability_and_TLS_validation",
+    "exclusive_literal_group_offset_and_member_baselines",
+    "current_health_and_exact_image_verification",
+    "C3_C6_changed_source_join_and_C7_support_custody",
+    "separately_authorized_execution_window"
+  ],
+  "runtime_result": "NOT_RUN",
+  "parallel_native_owner_source": {
+    "path": "tests/tenant-r2-native",
+    "status": "IN_PROGRESS_UNREVIEWED_SNAPSHOT_TESTED_SEPARATELY",
+    "note": "C2 is preparing an additive k6/x/kaasr2 native module and tenant sink. This supplemental package does not overwrite or freeze that active owner source as a release."
+  },
+  "evidence_custody_decision": {
+    "status": "ACCEPTED_BY_USER",
+    "date": "2026-11-25",
+    "sandbox_retention_days": 7,
+    "export_destination": "/home/gunger/Projects/kaas-solution/docs/testing/runs/<run-id>/",
+    "scope": "Evidence only; no deployment or run authorization",
+    "verified_second_copy": false
+  },
+  "resource_proposals_not_allocated": {
+    "sink_storage": "1Gi isolated disposable sandbox PVC, storage class to verify; never reuse continuity database",
+    "sink_resources": {
+      "requests": {
+        "cpu": "50m",
+        "memory": "64Mi"
+      },
+      "limits": {
+        "cpu": "100m",
+        "memory": "128Mi"
+      }
+    }
+  }
+}

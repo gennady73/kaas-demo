@@ -1,0 +1,61 @@
+{
+  "revision": "0.1",
+  "status": "REFERENCE_ONLY_NO_SECRETS",
+  "credential_bindings": [
+    {
+      "tenant": "kaas-sbx-a",
+      "role": "producer",
+      "principal": "kaas-sbx-a-producer",
+      "source_secret": "kaas-kafka/kaas-sbx-a-producer",
+      "destination_secret": "kaas-demo/kaas-sbx-a-producer",
+      "key": "password",
+      "mount_path": "/credentials/kaas-sbx-a-producer/password",
+      "source_metadata_observed": true,
+      "credential_values_read_or_delivered": false
+    },
+    {
+      "tenant": "kaas-sbx-a",
+      "role": "consumer",
+      "principal": "kaas-sbx-a-consumer",
+      "source_secret": "kaas-kafka/kaas-sbx-a-consumer",
+      "destination_secret": "kaas-demo/kaas-sbx-a-consumer",
+      "key": "password",
+      "mount_path": "/credentials/kaas-sbx-a-consumer/password",
+      "source_metadata_observed": true,
+      "credential_values_read_or_delivered": false
+    },
+    {
+      "tenant": "kaas-sbx-b",
+      "role": "producer",
+      "principal": "kaas-sbx-b-producer",
+      "source_secret": "kaas-kafka/kaas-sbx-b-producer",
+      "destination_secret": "kaas-demo/kaas-sbx-b-producer",
+      "key": "password",
+      "mount_path": "/credentials/kaas-sbx-b-producer/password",
+      "source_metadata_observed": true,
+      "credential_values_read_or_delivered": false
+    },
+    {
+      "tenant": "kaas-sbx-b",
+      "role": "consumer",
+      "principal": "kaas-sbx-b-consumer",
+      "source_secret": "kaas-kafka/kaas-sbx-b-consumer",
+      "destination_secret": "kaas-demo/kaas-sbx-b-consumer",
+      "key": "password",
+      "mount_path": "/credentials/kaas-sbx-b-consumer/password",
+      "source_metadata_observed": true,
+      "credential_values_read_or_delivered": false
+    }
+  ],
+  "ca_binding": {
+    "source": "kaas-kafka/kaas-dev-cluster-ca-cert",
+    "source_key": "ca.crt",
+    "destination_kind": "ConfigMap",
+    "destination": "kaas-demo/kaas-r2-cluster-ca",
+    "mount_path": "/credentials/cluster-ca/ca.crt",
+    "source_metadata_observed": true,
+    "trust_content_expiry_SAN_checks": "OPEN_no_certificate_value_read_in_this_preparation",
+    "delivered": false
+  },
+  "execution_enabled": false
+}

@@ -1,0 +1,144 @@
+{
+  "document_type": "pod_and_mount_contract_not_a_Job",
+  "revision": "0.1",
+  "namespace": "kaas-demo",
+  "trusted_harness_boundary": "Single administrator-controlled harness can access all four credentials; not tenant-workload Secret isolation",
+  "serviceAccountName": "kaas-r2-harness",
+  "automountServiceAccountToken": false,
+  "hostNetwork": false,
+  "pod_labels": {
+    "kaas.example.com/r2-runner": "trusted"
+  },
+  "volumes": [
+    {
+      "name": "cluster-ca",
+      "configMap": {
+        "name": "kaas-r2-cluster-ca",
+        "items": [
+          {
+            "key": "ca.crt",
+            "path": "ca.crt"
+          }
+        ],
+        "defaultMode": 292
+      }
+    },
+    {
+      "name": "credential-0",
+      "secret": {
+        "secretName": "kaas-sbx-a-producer",
+        "items": [
+          {
+            "key": "password",
+            "path": "password"
+          }
+        ],
+        "defaultMode": 288
+      }
+    },
+    {
+      "name": "credential-1",
+      "secret": {
+        "secretName": "kaas-sbx-a-consumer",
+        "items": [
+          {
+            "key": "password",
+            "path": "password"
+          }
+        ],
+        "defaultMode": 288
+      }
+    },
+    {
+      "name": "credential-2",
+      "secret": {
+        "secretName": "kaas-sbx-b-producer",
+        "items": [
+          {
+            "key": "password",
+            "path": "password"
+          }
+        ],
+        "defaultMode": 288
+      }
+    },
+    {
+      "name": "credential-3",
+      "secret": {
+        "secretName": "kaas-sbx-b-consumer",
+        "items": [
+          {
+            "key": "password",
+            "path": "password"
+          }
+        ],
+        "defaultMode": 288
+      }
+    }
+  ],
+  "volumeMounts": [
+    {
+      "name": "cluster-ca",
+      "mountPath": "/credentials/cluster-ca",
+      "readOnly": true
+    },
+    {
+      "name": "credential-0",
+      "mountPath": "/credentials/kaas-sbx-a-producer",
+      "readOnly": true
+    },
+    {
+      "name": "credential-1",
+      "mountPath": "/credentials/kaas-sbx-a-consumer",
+      "readOnly": true
+    },
+    {
+      "name": "credential-2",
+      "mountPath": "/credentials/kaas-sbx-b-producer",
+      "readOnly": true
+    },
+    {
+      "name": "credential-3",
+      "mountPath": "/credentials/kaas-sbx-b-consumer",
+      "readOnly": true
+    }
+  ],
+  "container_security_context": {
+    "runAsNonRoot": true,
+    "allowPrivilegeEscalation": false,
+    "capabilities": {
+      "drop": [
+        "ALL"
+      ]
+    },
+    "seccompProfile": {
+      "type": "RuntimeDefault"
+    },
+    "readOnlyRootFilesystem": true
+  },
+  "proposed_resources_not_allocated": {
+    "requests": {
+      "cpu": "100m",
+      "memory": "128Mi"
+    },
+    "limits": {
+      "cpu": "500m",
+      "memory": "512Mi"
+    }
+  },
+  "SCC_arbitrary_UID_and_fsGroup_validation": "OPEN; do not impose fixed UID; 0440 credential readability requires admission/fsGroup verification",
+  "temporary_working_directory": "If required by selected runtime, bounded emptyDir /tmp, never sole durable evidence store",
+  "job_bounds_if_later_implemented": {
+    "suspend": true,
+    "backoffLimit": 0,
+    "activeDeadlineSeconds": 300,
+    "restartPolicy": "Never",
+    "parallelism": 1,
+    "completions": 1
+  },
+  "native_entrypoint": null,
+  "image_pull_current_verification": null,
+  "evidence_sink_peer": null,
+  "job_manifest_created": false,
+  "execution_enabled": false
+}

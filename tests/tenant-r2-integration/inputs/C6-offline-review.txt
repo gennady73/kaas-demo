@@ -1,0 +1,58 @@
+# C6 final review — tenant-specific offline adapter
+
+Revision0.1, 2026-11-25 (Asia/Jerusalem). **C6-R2-01–08 SATISFIED FOR THE SCOPED OFFLINE PACKAGE. I01/I02 CLOSED_FIXED_VALIDATED. LIVE EXECUTION REMAINS DISABLED.**
+
+## Conclusion and exact reviewed package
+
+C2 completed the requested corrections and offline validation. C6 waited for the implementation turn to finish, then verified and extracted the immutable **v0.2** package into a temporary directory and reran its tests and C6 probes. No remaining C6 offline blocker was reproduced. This closes the implementation conditions from the [C6 contract review](r2-two-tenant-contract-review-2026-11-25.md) within their original offline scope; it does not establish runtime Kafka authorization, native transport compatibility, actual credential/network isolation or production acceptance.
+
+- Frozen archive: [tenant-offline-package-v0.2.tar.gz](../testing/r2-two-tenant-2026-11-25/implementation/tenant-offline-package-v0.2.tar.gz).
+- Archive SHA-256: `ee0f2d737fca7340077513a1bc291a5336ece286b36da216632cfa3475a29275`.
+- [C2 source manifest](../testing/r2-two-tenant-2026-11-25/implementation/frozen-package.json), [C2 receipt](../testing/r2-two-tenant-2026-11-25/implementation/validation.json) and [result revision0.2](../testing/r2-tenant-adapter-offline-result-2026-11-25.md).
+- Contract `c2-tenant-r2-0.2`; tenant resource pin `3211df93ae40d7d6f47c6334966ae6d1f658fee7`; utility base `963db2d41b6dc140d661c96e108f1c09a7c76da5`. New utility code remains local/uncommitted; no publication is implied by the archive.
+
+The older [changes-requested review](r2-adapter-implementation-review-2026-11-25.md) and original failing probe output remain historical evidence. An intermediate v0.1 archive was superseded after C2 added final phase-overrun corrections. C6's first consistency check stopped when that archive differed from a changing test file; it did not grant acceptance to mixed versions. The final re-review verifies all source hashes before and after testing against v0.2.
+
+## Executed verification
+
+[C6 final receipt](r2-implementation-review-2026-11-25/final/validation.json) records exact source hashes, commands, logs, outcomes, disabled flags and preservation checks. Reproduce from workspace root with:
+
+```bash
+python docs/security/r2-implementation-review-2026-11-25/verify-final.py
+```
+
+Executed locally with Node v18.20.4 and Python3.15.0:
+
+- Verified archive digest and all **20 archive-entry hashes**; the 12 additive source-file hashes match the working files and remain unchanged after review. Archived tenant YAML hashes match the immutable Git resources.
+- Isolated direct test execution: **88 adapter/policy/security tests +32 auditor/mutation tests +5 CLI tests =125 PASS**. Logs: [adapter](r2-implementation-review-2026-11-25/final/adapter.txt), [auditor](r2-implementation-review-2026-11-25/final/auditor.txt), [CLI](r2-implementation-review-2026-11-25/final/cli-tests.txt).
+- Both original C6 defect probes now reject their attacks: no canary in result or persisted stop event, and no accepted smoke binding override. [Original-probe replay](r2-implementation-review-2026-11-25/final/original-probes.txt).
+- **39 supplemental C6 checks PASS**, covering exact-plan mutations, forged errors/properties/getters/causes, wrong denial layers/stages, group/credential/trust gates, unexpected access, commit/evidence failure and budget stops. These use C2's injected in-memory fakes plus C6's additional assertions; they are not a separate Kafka implementation. [Checks and results](r2-implementation-review-2026-11-25/final/c6-supplemental.txt).
+- Reproduced canonical CLI output from the archive; all **six files in the canonical CLI manifest match byte-for-byte**, including plan/events/seal/reports. [Reproduced manifest](r2-implementation-review-2026-11-25/final/cli-reproduction/manifest.json).
+- All **48 pre-existing generic/continuity/test/frozen demo files remain byte-identical** to the preservation snapshot. Contract execution_enabled/deployment_enabled/tests_enabled/execution_ready remain false. No live binder/entrypoint is supplied; changing flags is rejected.
+
+C2's saved existing-regression results and ten retained nonpassing fault examples were inspected, not rerun by C6. C3's [separate review](../testing/c3-r2-implementation-review-2026-11-25.md) owns C3-R2-01–06 acceptance and applies to its own recorded source hashes; this C6 review does not expand that signoff to unreviewed deltas. C6's 125-test rerun includes the final three phase-overrun regressions added after the intermediate package.
+
+## Condition-by-condition decision
+
+Every SATISFIED below means **offline implementation/fixture behavior verified**, with the stated runtime boundary still open.
+
+| Condition | Source and executed evidence | Decision / runtime limit |
+| --- | --- | --- |
+| C6-R2-01 consumer-write confound | Fixed expected failure stages; cluster IdempotentWrite and unknown/mismatched layers cannot pass Topic Write; compiled authorized write-control ID and settings signature; confound resolution explicitly labelled topic_stage_observed_in_stub | **SATISFIED OFFLINE.** Native failure-stage mapping and equivalent actual diagnostic producer settings remain unverified. A live cluster denial would still be INCONCLUSIVE for topic denial; no consumer ACL was widened. |
+| C6-R2-02 safe denial classification | Allowlisted structured categories/stages and OFFLINE_STUB_TYPED_V1 only. Wrong category/stage/map, timeout, empty read, SASL/TLS/network/unknown errors remain nonpassing; auditor rejects forged denial evidence | **SATISFIED OFFLINE.** Stub codes are not a native mapping; no runtime denial PASS is established. |
+| C6-R2-03 valid positive controls | Source/destination/topic/group and equivalent-write controls reference completed positive cases; complete-plan recompilation rejects removed/changed controls or forged expected outcomes. Controls reuse16 originals | **SATISFIED OFFLINE.** Actual permitted operations must succeed in the selected environment before their negative cases are interpreted. No hidden extra sends beyond20,000 attempted logical value bytes. |
+| C6-R2-04 group and commit side effects | Positive consumers close before probes; explicit manual/no-close-commit options and dependency capabilities; exclusive fixture group/member/offset baselines; stop snapshots retained after unexpected join/delivery; implicit offset mutation fails | **SATISFIED OFFLINE.** No negative explicit commits in valid adapter paths; deliberately injected implicit commit is detected. Actual native auto-commit/close semantics, exclusive membership and initial/final state remain entry/observation requirements. |
+| C6-R2-05 intent is not broker enforcement | Compiler labels group-creation flag intent-only; unknown ownership/membership/offset gates block progress; surprise join/record fails with preserved evidence, no reset/delete or suffix | **SATISFIED OFFLINE.** Neither false flags nor empty polling establish that no backend group was created. Missing final observations remain incomplete. |
+| C6-R2-06 immutable role credentials / I02 | Exact four tenant/role/principal/password-path/ACL bindings; strict nested contract keys; engine-boundary full recompilation and structure comparison before any credential/factory access; plan deep freeze; swap/duplicate/smoke/override/unknown-field mutations rejected | **SATISFIED OFFLINE; I02 CLOSED_FIXED_VALIDATED.** Actual source/destination Secret existence, readers/delivery authority and mounted bindings remain unverified. A shared trusted harness is not malicious-workload credential isolation. |
+| C6-R2-07 evidence redaction / I01 | Module-private WeakMap distinguishes internal failures; fixed reason/severity exports; debug gate precedes credential retrieval; read/factory/consume/sink/close/forged-property/getter/cause canaries cannot enter reports or evidence. Original leak replay now false | **SATISFIED OFFLINE; I01 CLOSED_FIXED_VALIDATED.** Selected extension/binder/debug/stdout logging must be inspected and verified before real credentials are used; fake tests do not certify native logging. |
+| C6-R2-08 unexpected/ambiguous outcomes | Unexpected negative ACK/record/join fails and stops later work; ambiguous send/commit remains unresolved; foreign/gap/corrupt positive records stop before unsafe commits; negative bytes excluded from positive target; retained fault transcripts stay nonpassing | **SATISFIED OFFLINE.** No cleanup deletion, unbudgeted reconciliation campaign, policy broadening or retry introduced. Real observation/settlement gaps cannot become a denial/integrity PASS. |
+
+## Remaining execution boundary and next work
+
+Keep deployment and live workloads disabled. This completed package provides only offline compiler/adapter/checker/fakes; it cannot activate Kafka clients by flipping a flag.
+
+The next implementation join is a separately scoped native/evidence binder: exact selected binary/modules, typed error/stage mapping and IdempotentWrite confound handling; native retry/ACK/commit/close/timeouts and debug containment; four deliberate Secret/CA deliveries; verified issuer/hostname/advertised broker paths and effective policy; approved disposable literal groups with no competing members or unprocessed application records; compatible durable evidence registration/ACK/export/custody; actual resource and whole-Job300-second budget; named run/support owner and concrete authorized window. The existing continuity collector registration is not automatically compatible with the tenant contract and remains unchanged.
+
+Current positive scope remains16x1,000-byte originals and eight negative operations, with up to20,000 attempted logical value bytes. This is not all tenant permissions, 2MiB-with-quota coverage, namespace/network isolation, external access, quota fairness, credential lifecycle, registry integration, full24h/TB capacity or no-loss/three-hour recovery qualification. Those acceptance gaps remain explicit and do not reopen completed offline conditions. Kafka stays TLS/SCRAM with the pinned literal ACL boundary; no OAuth/Keycloak migration.
+
+Only user-authorized C2 coordination messages, local archive/file/hash reads, fake-driven tests and C6-owned evidence/docs writes occurred. No real credential/CA/Secret read, native Kafka/k6, network/cluster/collector query, workload, sync/deployment/restart/upgrade, Git publication or central-baseline edit. This is assistant source/test verification, not an independent human reviewer or runtime certification. C0 may index this final review and receipt as **OFFLINE_ACCEPTED_EXECUTION_DISABLED**, preserving the earlier findings as superseded historical snapshots.
