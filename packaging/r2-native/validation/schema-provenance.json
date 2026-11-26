@@ -1,0 +1,25 @@
+{
+  "server": "https://api.ocp.rddgh.sandbox3088.opentlc.com:6443",
+  "endpoint": "/openapi/v2",
+  "method": "GET",
+  "api_info": {
+    "title": "Kubernetes",
+    "version": "1.34"
+  },
+  "full_response_sha256": "9011cbb87276d6a82cc8011112ef93a7b790f8cb206c9034503ff3d35906214e",
+  "selected_schema_sha256": "d46c365fa2a637f0a1a4f22716eed0ade799244cb0fd794a8c71f14b1918100b",
+  "definitions": 205,
+  "roots": [
+    "io.k8s.api.core.v1.ConfigMap",
+    "io.k8s.api.core.v1.ServiceAccount",
+    "io.k8s.api.core.v1.Service",
+    "io.k8s.api.batch.v1.Job",
+    "io.k8s.api.apps.v1.Deployment",
+    "io.k8s.api.networking.v1.NetworkPolicy",
+    "io.k8s.api.core.v1.PersistentVolumeClaim",
+    "com.github.openshift.api.build.v1.BuildConfig",
+    "com.github.openshift.api.image.v1.ImageStream"
+  ],
+  "credential_persisted": false,
+  "cluster_writes": false
+}

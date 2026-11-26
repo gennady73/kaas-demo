@@ -1,0 +1,80 @@
+{
+  "date": "2026-11-26",
+  "status": "OFFLINE_PREPARATION_PASS_RUNTIME_NOT_RUN",
+  "native_source_commit": "afb9c7c7b2f3901a8a4e2c456029a931a9db00b6",
+  "native_source_files_unchanged": 39,
+  "regression_tests": 16,
+  "rendered_deployment_objects": 11,
+  "schema_validated_objects": 16,
+  "public_schema_definitions": 205,
+  "active_gitops_references": [],
+  "deployment_enabled": false,
+  "workloads_enabled": false,
+  "build_enabled": false,
+  "cluster_access": {
+    "authenticated_identity": "admin",
+    "read_only_namespace_check": "kaas-demo",
+    "public_schema_GET": "/openapi/v2",
+    "TLS": "verified with supplied trusted CA",
+    "credential_storage": "memory-only; sessions closed",
+    "Secret_value_reads": false,
+    "cluster_mutations": false
+  },
+  "actual_image_build": "NOT_RUN",
+  "container_import_check": "NOT_RUN",
+  "local_image_runtime_limitation": "Podman runtime-directory access unavailable; not repaired",
+  "server_admission": "NOT_RUN",
+  "native_Kafka_test": "NOT_RUN",
+  "publication": "NOT_REQUESTED_LOCAL_ONLY",
+  "approval_wait": {
+    "limit_seconds": 300,
+    "pending_question": false,
+    "expired": false
+  },
+  "build_contexts": {
+    "runner": {
+      "path": "/tmp/kaas-r2-image-contexts-20261126/runner-context.tar.gz",
+      "sha256": "6545ef4d7160b898b154ec4c665dd1f9f95011544e1713a72f2057ea7d94a534",
+      "bytes": 36654383,
+      "archive_entries_verified": 17,
+      "actual_image_build": "NOT_RUN",
+      "files": {
+        "Dockerfile": "ca5adcc0cf7b9812ebf21fc28496eef560470c278c7ef21728a5a28856935cd4",
+        "k6": "7405cc006c1d05d2748aee1955bfd3db6e3edf4e6f723dd997e060bd22c6525b",
+        "client-guard.sh": "670ca07eea099b3501c48995f7a9c9ddd495534bae29501a6a4cc04566199010",
+        "r2/ascii.mjs": "82cd918785535d42816db487e392933f9421254ad0b784858ad17068fd951740",
+        "r2/audit.mjs": "ac083b0c457354d76ff6e5e6319b4d05ebccc958a94178bee543e16e7bc349f2",
+        "r2/binder.mjs": "ceb660995148a9472f7e9072e7d2b2afb540e43d4cb05b7a2fc9c7273ddf0a93",
+        "r2/engine.mjs": "9de2006b432be978d26864bdf45ccfa013feb05a5a0742cc11f92af3c7f241cd",
+        "r2/entrypoint.js": "ab5a80b62c74ae91c1a4169b50632c867722fe8ccb7f070618cd20c6365844ff",
+        "r2/native-policy.mjs": "3ff0aada8bda81fceef96d7beb6a6f3a5b04ff44ac121cd292860b5d27e02bcf",
+        "r2/plan.json": "1810a8b73d29bdd192f7265b3b86a14a7dce3baa8d04d01d9dc3ed4ed487f19a",
+        "r2/projection-lock.mjs": "bf2a1a53d566d00b74115f319f979047d59ed74385635cd2a3f5b0df04b48c22",
+        "r2/source-integrity.mjs": "02de316cb33b5999198bf0de8ccd8c4857204b0519ff6550ff4c69d3d12977ec",
+        "r2/strict-json.mjs": "63b26dea5cd81e04b74fa71dbe70e4567dfd3c0fd039529987aa708ed79a0ae7",
+        "r2/transport.mjs": "54defef5bb8574a6e210872e103052fea4e27ab04923f0329cde28a4af0df80b",
+        "r2/runtime-source-manifest.json": "d26b13cbc6e96bc56625adc26467b95a5a09cd011f525b9b6bb4ed8376ec93c0",
+        "r2/inspect.js": "fe3da5a614b6a01f9a9b603362e4b2dd3308b9cc0b20e954062d98c558ada867"
+      }
+    },
+    "sink": {
+      "path": "/tmp/kaas-r2-image-contexts-20261126/sink-context.tar.gz",
+      "sha256": "a90c927cfad4e343f49ce96a70189f43080e98830a82929e7f738b4f66b0d8bd",
+      "bytes": 6615,
+      "archive_entries_verified": 6,
+      "actual_image_build": "NOT_RUN",
+      "files": {
+        "Dockerfile": "8d6a86a7ceeaafe15cf2fd83234ec0e4cf08d6adf359c39b1ce12f9050dd801f",
+        "sink-guard.sh": "869ff6a6e8cc3dbf67d98508478fcd87344f3cfa4bc7d9211996dfe341e04781",
+        "sink/server.py": "52433378434fc85d5dc54ef6198135a485faa6441fca3e2deec144fcd4ceb04d",
+        "sink/store.py": "510f45b93990a00d54d55cf6e64245d4d36c3752c3a5fbed0c8dad0dc6472e57",
+        "sink/verify_export.py": "94739ff3bbf302de4fb1a76a6935e914dbbb500dd54477b76f7b58d119632396"
+      }
+    }
+  },
+  "checksums": {
+    "rendered.yaml": "3c3799eb50f3eabec182ecc3de76ef3b6cb52a8c3f070cc0e65bb1cf014a9f8e",
+    "sandbox-openapi.json.gz": "91e32c1f62db95a2538cda6e666b6da5655788adb3b4b49254fbcb12e05c917a",
+    "schema-provenance.json": "a212eb8aaedc74329c10e545948545ef934aa4005719b449a0b3d431276b2392"
+  }
+}

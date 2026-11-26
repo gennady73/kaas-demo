@@ -1,0 +1,89 @@
+{
+  "offline_schema_validation": "PASS",
+  "objects": 16,
+  "definitions": 205,
+  "normalization": "Kubernetes int-or-string only",
+  "server_admission_or_dry_run": "NOT_RUN",
+  "checked": [
+    {
+      "kind": "ServiceAccount",
+      "name": "kaas-r2-evidence",
+      "schema": "io.k8s.api.core.v1.ServiceAccount"
+    },
+    {
+      "kind": "ServiceAccount",
+      "name": "kaas-r2-harness",
+      "schema": "io.k8s.api.core.v1.ServiceAccount"
+    },
+    {
+      "kind": "ConfigMap",
+      "name": "kaas-r2-arming-disabled",
+      "schema": "io.k8s.api.core.v1.ConfigMap"
+    },
+    {
+      "kind": "ConfigMap",
+      "name": "kaas-r2-execution-disabled",
+      "schema": "io.k8s.api.core.v1.ConfigMap"
+    },
+    {
+      "kind": "ConfigMap",
+      "name": "kaas-r2-sink-config",
+      "schema": "io.k8s.api.core.v1.ConfigMap"
+    },
+    {
+      "kind": "ConfigMap",
+      "name": "kaas-r2-sink-trust",
+      "schema": "io.k8s.api.core.v1.ConfigMap"
+    },
+    {
+      "kind": "Service",
+      "name": "kaas-r2-evidence",
+      "schema": "io.k8s.api.core.v1.Service"
+    },
+    {
+      "kind": "Deployment",
+      "name": "kaas-r2-evidence",
+      "schema": "io.k8s.api.apps.v1.Deployment"
+    },
+    {
+      "kind": "Job",
+      "name": "kaas-r2-native-client",
+      "schema": "io.k8s.api.batch.v1.Job"
+    },
+    {
+      "kind": "NetworkPolicy",
+      "name": "kaas-r2-evidence",
+      "schema": "io.k8s.api.networking.v1.NetworkPolicy"
+    },
+    {
+      "kind": "NetworkPolicy",
+      "name": "kaas-r2-native-client",
+      "schema": "io.k8s.api.networking.v1.NetworkPolicy"
+    },
+    {
+      "kind": "BuildConfig",
+      "name": "kaas-r2-runner",
+      "schema": "com.github.openshift.api.build.v1.BuildConfig"
+    },
+    {
+      "kind": "BuildConfig",
+      "name": "kaas-r2-sink",
+      "schema": "com.github.openshift.api.build.v1.BuildConfig"
+    },
+    {
+      "kind": "ImageStream",
+      "name": "kaas-r2-runner",
+      "schema": "com.github.openshift.api.image.v1.ImageStream"
+    },
+    {
+      "kind": "ImageStream",
+      "name": "kaas-r2-sink",
+      "schema": "com.github.openshift.api.image.v1.ImageStream"
+    },
+    {
+      "kind": "PersistentVolumeClaim",
+      "name": "kaas-r2-native-evidence",
+      "schema": "io.k8s.api.core.v1.PersistentVolumeClaim"
+    }
+  ]
+}

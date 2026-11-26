@@ -1,0 +1,11 @@
+{
+  "status": "OFFLINE_CONTRACT_PASS",
+  "manifest_objects": 11,
+  "manual_binary_build_definitions": 2,
+  "PVC_included": false,
+  "deployment_enabled": false,
+  "workloads_enabled": false,
+  "actual_image_build": "NOT_RUN",
+  "API_schema_validation": "SEPARATE_VALIDATOR",
+  "server_admission": "NOT_RUN"
+}

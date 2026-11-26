@@ -1,0 +1,445 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: kaas-r2-harness
+  namespace: kaas-demo
+  labels:
+    kaas.example.com/package: r2-native-disabled
+automountServiceAccountToken: false
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: kaas-r2-evidence
+  namespace: kaas-demo
+  labels:
+    kaas.example.com/package: r2-native-disabled
+automountServiceAccountToken: false
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kaas-r2-arming-disabled
+  namespace: kaas-demo
+  labels:
+    kaas.example.com/package: r2-native-disabled
+immutable: true
+data:
+  enabled: 'false'
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kaas-r2-execution-disabled
+  namespace: kaas-demo
+  labels:
+    kaas.example.com/package: r2-native-disabled
+immutable: true
+data:
+  runtime.json: "{\n  \"protocol\": \"kaas-r2-execution-v1\",\n  \"execution_authorized\"\
+    : false,\n  \"tests_enabled\": false,\n  \"authority_reference\": null,\n  \"\
+    plan_sha256\": \"78e427f79f510efe87834000371584394fc44ccd0ed4e0a903f919d31edca13d\"\
+    ,\n  \"image_digest\": null,\n  \"package_sha256\": \"d26b13cbc6e96bc56625adc26467b95a5a09cd011f525b9b6bb4ed8376ec93c0\"\
+    ,\n  \"job_start_unix_ms\": null,\n  \"sink_origin\": \"https://kaas-r2-evidence.kaas-demo.svc:8443\"\
+    ,\n  \"exclusive_fixture_groups\": [],\n  \"gates\": {\n    \"native_image_and_source\"\
+    : \"OPEN\",\n    \"C3_changed_source_review\": \"OPEN\",\n    \"C6_changed_source_review\"\
+    : \"OPEN\",\n    \"credentials_delivered\": \"OPEN\",\n    \"CA_chain_SAN_expiry\"\
+    : \"OPEN\",\n    \"namespace_network_SCC\": \"OPEN\",\n    \"fixture_group_ownership\"\
+    : \"OPEN\",\n    \"sink_TLS_auth_persistence\": \"OPEN\",\n    \"custody_retention_second_copy\"\
+    : \"OPEN\",\n    \"native_cancellation_close_bounds\": \"OPEN\",\n    \"independent_export_auditor\"\
+    : \"OPEN\"\n  },\n  \"binary_sha256\": \"7405cc006c1d05d2748aee1955bfd3db6e3edf4e6f723dd997e060bd22c6525b\"\
+    \n}\n"
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kaas-r2-sink-config
+  namespace: kaas-demo
+  labels:
+    kaas.example.com/package: r2-native-disabled
+immutable: true
+data:
+  config.json: "{\n  \"database\": \"/var/lib/r2/evidence.sqlite\",\n  \"run_id\"\
+    : \"r2-native-20261125\",\n  \"plan_sha256\": \"78e427f79f510efe87834000371584394fc44ccd0ed4e0a903f919d31edca13d\"\
+    ,\n  \"writer_token_file\": \"/auth/writer-token\",\n  \"owner_token_file\": \"\
+    /owner-auth/owner-token\",\n  \"tls_cert_file\": \"/tls/tls.crt\",\n  \"tls_key_file\"\
+    : \"/tls/tls.key\"\n}\n"
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kaas-r2-sink-trust
+  namespace: kaas-demo
+  labels:
+    kaas.example.com/package: r2-native-disabled
+  annotations:
+    service.beta.openshift.io/inject-cabundle: 'true'
+data: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kaas-r2-evidence
+  namespace: kaas-demo
+  labels:
+    kaas.example.com/package: r2-native-disabled
+  annotations:
+    service.beta.openshift.io/serving-cert-secret-name: kaas-r2-sink-tls
+spec:
+  type: ClusterIP
+  selector:
+    kaas.example.com/r2-component: evidence
+  ports:
+  - name: https
+    port: 8443
+    targetPort: https
+    protocol: TCP
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: kaas-r2-native-client
+  namespace: kaas-demo
+  labels:
+    kaas.example.com/package: r2-native-disabled
+spec:
+  suspend: true
+  backoffLimit: 0
+  activeDeadlineSeconds: 300
+  parallelism: 1
+  completions: 1
+  template:
+    metadata:
+      labels:
+        kaas.example.com/r2-component: client
+        kaas.example.com/r2-runner: trusted
+    spec:
+      serviceAccountName: kaas-r2-harness
+      automountServiceAccountToken: false
+      hostNetwork: false
+      restartPolicy: Never
+      terminationGracePeriodSeconds: 0
+      containers:
+      - name: native-client
+        image: invalid.invalid/kaas-r2-native@sha256:0000000000000000000000000000000000000000000000000000000000000000
+        imagePullPolicy: IfNotPresent
+        command:
+        - /opt/r2/client-guard.sh
+        env:
+        - name: K6_NO_USAGE_REPORT
+          value: 'true'
+        - name: SSL_CERT_FILE
+          value: /evidence-trust/service-ca.crt
+        - name: HOME
+          value: /tmp
+        securityContext:
+          runAsNonRoot: true
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          seccompProfile:
+            type: RuntimeDefault
+          readOnlyRootFilesystem: true
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 500m
+            memory: 512Mi
+        volumeMounts:
+        - name: cluster-ca
+          mountPath: /credentials/cluster-ca
+          readOnly: true
+        - name: credential-0
+          mountPath: /credentials/kaas-sbx-a-producer
+          readOnly: true
+        - name: credential-1
+          mountPath: /credentials/kaas-sbx-a-consumer
+          readOnly: true
+        - name: credential-2
+          mountPath: /credentials/kaas-sbx-b-producer
+          readOnly: true
+        - name: credential-3
+          mountPath: /credentials/kaas-sbx-b-consumer
+          readOnly: true
+        - name: arming
+          mountPath: /arming
+          readOnly: true
+        - name: execution
+          mountPath: /r2/runtime.json
+          subPath: runtime.json
+          readOnly: true
+        - name: writer
+          mountPath: /evidence-auth
+          readOnly: true
+        - name: sink-trust
+          mountPath: /evidence-trust
+          readOnly: true
+        - name: tmp
+          mountPath: /tmp
+      volumes:
+      - name: cluster-ca
+        configMap:
+          name: kaas-r2-cluster-ca
+          items:
+          - key: ca.crt
+            path: ca.crt
+          defaultMode: 292
+      - name: credential-0
+        secret:
+          secretName: kaas-sbx-a-producer
+          items:
+          - key: password
+            path: password
+          defaultMode: 288
+      - name: credential-1
+        secret:
+          secretName: kaas-sbx-a-consumer
+          items:
+          - key: password
+            path: password
+          defaultMode: 288
+      - name: credential-2
+        secret:
+          secretName: kaas-sbx-b-producer
+          items:
+          - key: password
+            path: password
+          defaultMode: 288
+      - name: credential-3
+        secret:
+          secretName: kaas-sbx-b-consumer
+          items:
+          - key: password
+            path: password
+          defaultMode: 288
+      - name: arming
+        configMap:
+          name: kaas-r2-arming-disabled
+      - name: execution
+        configMap:
+          name: kaas-r2-execution-disabled
+      - name: writer
+        secret:
+          secretName: kaas-r2-evidence-writer
+          defaultMode: 288
+          items:
+          - key: writer-token
+            path: writer-token
+      - name: sink-trust
+        configMap:
+          name: kaas-r2-sink-trust
+          items:
+          - key: service-ca.crt
+            path: service-ca.crt
+      - name: tmp
+        emptyDir:
+          sizeLimit: 16Mi
+      nodeSelector:
+        kubernetes.io/os: linux
+        kubernetes.io/arch: amd64
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kaas-r2-evidence
+  namespace: kaas-demo
+  labels:
+    kaas.example.com/package: r2-native-disabled
+spec:
+  replicas: 0
+  paused: true
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      kaas.example.com/r2-component: evidence
+  template:
+    metadata:
+      labels:
+        kaas.example.com/r2-component: evidence
+    spec:
+      serviceAccountName: kaas-r2-evidence
+      automountServiceAccountToken: false
+      hostNetwork: false
+      terminationGracePeriodSeconds: 10
+      containers:
+      - name: evidence
+        image: invalid.invalid/kaas-r2-evidence@sha256:0000000000000000000000000000000000000000000000000000000000000000
+        imagePullPolicy: IfNotPresent
+        command:
+        - /opt/r2-sink/sink-guard.sh
+        ports:
+        - name: https
+          containerPort: 8443
+          protocol: TCP
+        securityContext:
+          runAsNonRoot: true
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          seccompProfile:
+            type: RuntimeDefault
+          readOnlyRootFilesystem: true
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 500m
+            memory: 256Mi
+        env:
+        - name: PYTHONDONTWRITEBYTECODE
+          value: '1'
+        - name: HOME
+          value: /tmp
+        readinessProbe:
+          tcpSocket:
+            port: https
+          initialDelaySeconds: 1
+          periodSeconds: 3
+          timeoutSeconds: 1
+        volumeMounts:
+        - name: arming
+          mountPath: /arming
+          readOnly: true
+        - name: config
+          mountPath: /etc/r2-sink
+          readOnly: true
+        - name: writer
+          mountPath: /auth
+          readOnly: true
+        - name: owner
+          mountPath: /owner-auth
+          readOnly: true
+        - name: tls
+          mountPath: /tls
+          readOnly: true
+        - name: data
+          mountPath: /var/lib/r2
+        - name: tmp
+          mountPath: /tmp
+      volumes:
+      - name: arming
+        configMap:
+          name: kaas-r2-arming-disabled
+      - name: config
+        configMap:
+          name: kaas-r2-sink-config
+      - name: writer
+        secret:
+          secretName: kaas-r2-evidence-writer
+          defaultMode: 288
+          items:
+          - key: writer-token
+            path: writer-token
+      - name: owner
+        secret:
+          secretName: kaas-r2-evidence-owner
+          defaultMode: 288
+          items:
+          - key: owner-token
+            path: owner-token
+      - name: tls
+        secret:
+          secretName: kaas-r2-sink-tls
+          defaultMode: 288
+      - name: data
+        persistentVolumeClaim:
+          claimName: kaas-r2-native-evidence
+      - name: tmp
+        emptyDir:
+          sizeLimit: 16Mi
+      nodeSelector:
+        kubernetes.io/os: linux
+        kubernetes.io/arch: amd64
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: kaas-r2-native-client
+  namespace: kaas-demo
+  labels:
+    kaas.example.com/package: r2-native-disabled
+spec:
+  podSelector:
+    matchLabels:
+      kaas.example.com/r2-component: client
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress: []
+  egress:
+  - to:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: openshift-dns
+      podSelector:
+        matchLabels:
+          dns.operator.openshift.io/daemonset-dns: default
+    ports:
+    - protocol: UDP
+      port: 53
+    - protocol: TCP
+      port: 53
+    - protocol: UDP
+      port: dns
+    - protocol: TCP
+      port: dns-tcp
+  - to:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: kaas-kafka
+      podSelector:
+        matchLabels:
+          strimzi.io/cluster: kaas-dev
+          strimzi.io/name: kaas-dev-kafka
+    ports:
+    - protocol: TCP
+      port: 9093
+  - to:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: kaas-demo
+      podSelector:
+        matchLabels:
+          kaas.example.com/r2-component: evidence
+    ports:
+    - protocol: TCP
+      port: 8443
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: kaas-r2-evidence
+  namespace: kaas-demo
+  labels:
+    kaas.example.com/package: r2-native-disabled
+spec:
+  podSelector:
+    matchLabels:
+      kaas.example.com/r2-component: evidence
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: kaas-demo
+      podSelector:
+        matchLabels:
+          kaas.example.com/r2-component: client
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: kaas-demo
+      podSelector:
+        matchLabels:
+          kaas.example.com/r2-evidence-owner: 'true'
+    ports:
+    - protocol: TCP
+      port: 8443
+  egress: []

@@ -1,0 +1,16 @@
+{
+  "date": "2026-11-26",
+  "purpose": "User-authorized Git publication of disabled R2 native packaging",
+  "status": "PRECOMMIT_VALIDATED",
+  "base_commit": "afb9c7c7b2f3901a8a4e2c456029a931a9db00b6",
+  "regression_tests": 16,
+  "offline_schema_objects": 16,
+  "render_objects": 11,
+  "unchanged_native_source_files": 39,
+  "active_GitOps_includes": 0,
+  "deployment_enabled": false,
+  "workloads_enabled": false,
+  "cluster_access_this_publication": false,
+  "image_build": "NOT_RUN",
+  "snapshot_note": "inputs.json and validation/validation.json preserve original preparation-time status; publication is a subsequent operation."
+}

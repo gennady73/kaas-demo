@@ -1,0 +1,38 @@
+{
+  "version": "1.0",
+  "date": "2026-11-26",
+  "status": "OFFLINE_PREPARED_NOT_BUILT_OR_APPLIED",
+  "source_commit": "afb9c7c7b2f3901a8a4e2c456029a931a9db00b6",
+  "namespace": "kaas-demo",
+  "execution_enabled": false,
+  "deployment_enabled": false,
+  "workloads_enabled": false,
+  "build_enabled": false,
+  "base_image": "registry.redhat.io/amq-streams/kafka-42-rhel9@sha256:ce7dc91b664600c6f06e1df3d6b56a4684bb779865d9c28b4df648addd89189d",
+  "base_evidence": "Existing saved continuity collector deployment used this exact Kafka/RHEL9 image with python3; new image import/ABI checks remain NOT_RUN",
+  "binary_sha256": "7405cc006c1d05d2748aee1955bfd3db6e3edf4e6f723dd997e060bd22c6525b",
+  "runtime_manifest_sha256": "d26b13cbc6e96bc56625adc26467b95a5a09cd011f525b9b6bb4ed8376ec93c0",
+  "plan_sha256": "78e427f79f510efe87834000371584394fc44ccd0ed4e0a903f919d31edca13d",
+  "runner_image_digest": null,
+  "sink_image_digest": null,
+  "storage_proposal": {
+    "name": "kaas-r2-native-evidence",
+    "class": "gp3-csi",
+    "capacity": "1Gi",
+    "status": "OPTIONAL_NOT_INCLUDED_NOT_ALLOCATED",
+    "source": "Saved sandbox NodePool storage class; freshness/admission/approval required"
+  },
+  "retention_policy": {
+    "sandbox_days": 7,
+    "export": "shared workspace docs/testing/runs/<run-id>/",
+    "verified_second_copy": false
+  },
+  "actual_image_build": "NOT_RUN",
+  "actual_runtime": "NOT_RUN",
+  "approval_wait_policy": {
+    "maximum_unanswered_seconds": 300,
+    "on_expiry": "SUSPEND_PROCESSING",
+    "status": "NO_APPROVAL_QUESTION_PENDING"
+  },
+  "source_commit_scope": "Reviewed native source only; new packaging recipes are local/unpublished and fingerprinted separately"
+}

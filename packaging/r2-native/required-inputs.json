@@ -1,0 +1,53 @@
+{
+  "credential_values_shipped": false,
+  "tenant_passwords": [
+    {
+      "name": "kaas-sbx-a-producer",
+      "namespace": "kaas-demo",
+      "key": "password"
+    },
+    {
+      "name": "kaas-sbx-a-consumer",
+      "namespace": "kaas-demo",
+      "key": "password"
+    },
+    {
+      "name": "kaas-sbx-b-producer",
+      "namespace": "kaas-demo",
+      "key": "password"
+    },
+    {
+      "name": "kaas-sbx-b-consumer",
+      "namespace": "kaas-demo",
+      "key": "password"
+    }
+  ],
+  "writer": {
+    "name": "kaas-r2-evidence-writer",
+    "key": "writer-token",
+    "mounts": [
+      "client",
+      "sink"
+    ]
+  },
+  "owner": {
+    "name": "kaas-r2-evidence-owner",
+    "key": "owner-token",
+    "mounts": [
+      "sink",
+      "later authorized custodian only"
+    ]
+  },
+  "TLS": {
+    "name": "kaas-r2-sink-tls",
+    "source": "OpenShift service serving-certificate controller, not executed"
+  },
+  "trust": {
+    "name": "kaas-r2-sink-trust",
+    "source": "OpenShift service CA injection, public service-ca.crt only"
+  },
+  "Kafka_CA": {
+    "name": "kaas-r2-cluster-ca",
+    "source": "Prior create-only delivery proposal; not executed"
+  }
+}
