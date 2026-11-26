@@ -46,6 +46,7 @@ export function bindNative(native,transport,plan,gate,sha,sleep){
   persist:envelope=>transport.persist(envelope),shouldStop:()=>transport.shouldStop(),
   groupState(group,topic){
    require(gate.exclusive_fixture_groups.includes(group),'fixture_ownership');
+   require(topic===group.replace(/-group$/,''),'observation_topic_binding');
    const r=invoke('snapshot',topic,group);
    require(Number.isSafeInteger(r.log_start_offset)&&r.log_start_offset>=0&&Number.isSafeInteger(r.log_end_offset)&&Number.isSafeInteger(r.members)&&r.members>=0&&(r.committed_offset===null||Number.isSafeInteger(r.committed_offset))&&r.membership_observed===true,'group_state_shape');
    require(r.log_start_offset<=r.log_end_offset&&(r.committed_offset===null?r.log_start_offset===0:r.committed_offset>=r.log_start_offset&&r.committed_offset<=r.log_end_offset),'retained_baseline');

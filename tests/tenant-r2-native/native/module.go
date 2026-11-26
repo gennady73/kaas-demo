@@ -103,6 +103,12 @@ func tenant(name string) string {
 func topicOK(topic string) bool {
 	return topic == "kaas-sbx-a-events" || topic == "kaas-sbx-a-audit" || topic == "kaas-sbx-b-events" || topic == "kaas-sbx-b-audit"
 }
+
+// Canonical fixture observation is distinct from a negative client target.
+// This is a harness binding, not an additional Kafka ACL policy.
+func observationOK(topic, group string) bool {
+	return topicOK(topic) && groupOK(group) && topic == strings.TrimSuffix(group, "-group")
+}
 func groupOK(group string) bool {
 	return strings.HasSuffix(group, "-group") && topicOK(strings.TrimSuffix(group, "-group"))
 }
@@ -460,7 +466,7 @@ func (m *Module) Close(id int) Result {
 // Group and topic are observed with their OWN permitted identities, never the
 // principal under negative test. Fixture ownership is a separate reviewed input.
 func (m *Module) Snapshot(topic, group string) Result {
-	if !m.live() || !topicOK(topic) || !groupOK(group) {
+	if !m.live() || !observationOK(topic, group) {
 		return bad("observe")
 	}
 	wait := 8 * time.Second
@@ -476,7 +482,7 @@ func (m *Module) Snapshot(topic, group string) Result {
 	return result
 }
 func snapshot(ctx context.Context, topic, group string) Result {
-	if !topicOK(topic) || !groupOK(group) {
+	if !observationOK(topic, group) {
 		return bad("observe")
 	}
 	groupTenant := strings.TrimSuffix(strings.TrimSuffix(strings.TrimSuffix(group, "-group"), "-events"), "-audit")

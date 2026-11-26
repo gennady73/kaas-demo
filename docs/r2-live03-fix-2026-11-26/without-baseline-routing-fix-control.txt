@@ -1,0 +1,246 @@
+TAP version 13
+# Subtest: self-rehashed projection mutation rejected: principal
+ok 1 - self-rehashed projection mutation rejected: principal
+  ---
+  duration_ms: 5.048691
+  ...
+# Subtest: self-rehashed projection mutation rejected: credential path
+ok 2 - self-rehashed projection mutation rejected: credential path
+  ---
+  duration_ms: 2.217775
+  ...
+# Subtest: self-rehashed projection mutation rejected: groups
+ok 3 - self-rehashed projection mutation rejected: groups
+  ---
+  duration_ms: 2.089881
+  ...
+# Subtest: self-rehashed projection mutation rejected: record bytes
+ok 4 - self-rehashed projection mutation rejected: record bytes
+  ---
+  duration_ms: 1.681855
+  ...
+# Subtest: self-rehashed projection mutation rejected: TLS
+ok 5 - self-rehashed projection mutation rejected: TLS
+  ---
+  duration_ms: 3.608176
+  ...
+# Subtest: self-rehashed projection mutation rejected: roles
+ok 6 - self-rehashed projection mutation rejected: roles
+  ---
+  duration_ms: 2.768977
+  ...
+# Subtest: self-rehashed projection mutation rejected: deployment flag
+ok 7 - self-rehashed projection mutation rejected: deployment flag
+  ---
+  duration_ms: 3.179628
+  ...
+# Subtest: self-rehashed projection mutation rejected: deadline
+ok 8 - self-rehashed projection mutation rejected: deadline
+  ---
+  duration_ms: 2.025124
+  ...
+# Subtest: self-rehashed projection mutation rejected: extra field
+ok 9 - self-rehashed projection mutation rejected: extra field
+  ---
+  duration_ms: 1.978078
+  ...
+# Subtest: plan rejected before invoking native start
+ok 10 - plan rejected before invoking native start
+  ---
+  duration_ms: 2.225415
+  ...
+# Subtest: raw native exception is replaced by a fixed diagnostic
+ok 11 - raw native exception is replaced by a fixed diagnostic
+  ---
+  duration_ms: 2.574417
+  ...
+# Subtest: known-good synthetic native export semantically matches without claiming broker execution
+ok 12 - known-good synthetic native export semantically matches without claiming broker execution
+  ---
+  duration_ms: 78.625253
+  ...
+# Subtest: rehashed semantic corruption rejected: removed commit
+ok 13 - rehashed semantic corruption rejected: removed commit
+  ---
+  duration_ms: 76.118132
+  ...
+# Subtest: rehashed semantic corruption rejected: wrong receipt checksum
+ok 14 - rehashed semantic corruption rejected: wrong receipt checksum
+  ---
+  duration_ms: 67.500035
+  ...
+# Subtest: rehashed semantic corruption rejected: lost negative result
+ok 15 - rehashed semantic corruption rejected: lost negative result
+  ---
+  duration_ms: 63.506604
+  ...
+# Subtest: rehashed semantic corruption rejected: forged denial stage
+ok 16 - rehashed semantic corruption rejected: forged denial stage
+  ---
+  duration_ms: 52.170508
+  ...
+# Subtest: rehashed semantic corruption rejected: wrong binding
+ok 17 - rehashed semantic corruption rejected: wrong binding
+  ---
+  duration_ms: 51.856219
+  ...
+# Subtest: rehashed semantic corruption rejected: false phase compliance
+ok 18 - rehashed semantic corruption rejected: false phase compliance
+  ---
+  duration_ms: 49.748471
+  ...
+# Subtest: C3 phase dimension rejects last delayed case_end persistence
+ok 19 - C3 phase dimension rejects last delayed case_end persistence
+  ---
+  duration_ms: 30.456064
+  ...
+# Subtest: C3 phase dimension rejects last delayed denial_result persistence
+ok 20 - C3 phase dimension rejects last delayed denial_result persistence
+  ---
+  duration_ms: 47.303871
+  ...
+# Subtest: lost ACK retries identical evidence, closes mutation admission but permits terminal evidence
+ok 21 - lost ACK retries identical evidence, closes mutation admission but permits terminal evidence
+  ---
+  duration_ms: 0.503401
+  ...
+# Subtest: wrong ACK identity never permits Kafka commit
+ok 22 - wrong ACK identity never permits Kafka commit
+  ---
+  duration_ms: 0.20114
+  ...
+# Subtest: seal counters cannot use booleans and external timing is required
+ok 23 - seal counters cannot use booleans and external timing is required
+  ---
+  duration_ms: 42.626002
+  ...
+# Subtest: unexpected negative success and lost commit response never semantically pass
+ok 24 - unexpected negative success and lost commit response never semantically pass
+  ---
+  duration_ms: 40.553351
+  ...
+# Subtest: wrong executable fingerprint rejects before native startup or credentials
+ok 25 - wrong executable fingerprint rejects before native startup or credentials
+  ---
+  duration_ms: 1.3355
+  ...
+# Subtest: source manifest pins every exact public runtime file
+not ok 26 - source manifest pins every exact public runtime file
+  ---
+  duration_ms: 1.412978
+  location: 'file:///tmp/kaas-r2-live03-without-fix-control-20261126/kaas-demo/tests/tenant-r2-native/test-review.mjs:28:1'
+  failureType: 'testCodeFailure'
+  error: 'runtime_source_hash'
+  code: 'ERR_TEST_FAILURE'
+  stack: |-
+    verifyRuntimeSources (file:///tmp/kaas-r2-live03-without-fix-control-20261126/kaas-demo/tests/tenant-r2-native/source-integrity.mjs:8:115)
+    TestContext.<anonymous> (file:///tmp/kaas-r2-live03-without-fix-control-20261126/kaas-demo/tests/tenant-r2-native/test-review.mjs:28:176)
+    Test.runInAsyncScope (node:async_hooks:203:9)
+    Test.run (node:internal/test_runner/test:631:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:374:18)
+    Test.postRun (node:internal/test_runner/test:715:19)
+    Test.run (node:internal/test_runner/test:673:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:374:7)
+  ...
+# Subtest: manifest cannot request credential files or arbitrary hashing
+ok 27 - manifest cannot request credential files or arbitrary hashing
+  ---
+  duration_ms: 0.687788
+  ...
+# Subtest: strict evidence parser rejects duplicate keys, nonfinite numbers and prototype pollution
+ok 28 - strict evidence parser rejects duplicate keys, nonfinite numbers and prototype pollution
+  ---
+  duration_ms: 0.202352
+  ...
+# Subtest: rehashed duplicate-key inner event is rejected
+ok 29 - rehashed duplicate-key inner event is rejected
+  ---
+  duration_ms: 49.66817
+  ...
+# Subtest: recovered receipt ACK keeps the evidence chain and cleanup but makes zero offset commits
+ok 30 - recovered receipt ACK keeps the evidence chain and cleanup but makes zero offset commits
+  ---
+  duration_ms: 7.476992
+  ...
+# Subtest: execution record rejects arbitrary debug/credential fields
+ok 31 - execution record rejects arbitrary debug/credential fields
+  ---
+  duration_ms: 0.567671
+  ...
+# Subtest: initial native position failure is explicit, terminal and prevents every producer call
+ok 32 - initial native position failure is explicit, terminal and prevents every producer call
+  ---
+  duration_ms: 2.297906
+  ...
+# Subtest: ACL-shaped baseline accepts all eight negative cases without querying foreign topic offsets
+not ok 33 - ACL-shaped baseline accepts all eight negative cases without querying foreign topic offsets
+  ---
+  duration_ms: 26.352659
+  location: 'file:///tmp/kaas-r2-live03-without-fix-control-20261126/kaas-demo/tests/tenant-r2-native/test-review.mjs:37:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+
+    + 'NATIVE_INCOMPLETE'
+    - 'NATIVE_COMPLETE'
+              ^
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'NATIVE_COMPLETE'
+  actual: 'NATIVE_INCOMPLETE'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///tmp/kaas-r2-live03-without-fix-control-20261126/kaas-demo/tests/tenant-r2-native/test-review.mjs:41:9)
+    Test.runInAsyncScope (node:async_hooks:203:9)
+    Test.run (node:internal/test_runner/test:631:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:374:18)
+    Test.postRun (node:internal/test_runner/test:715:19)
+    Test.run (node:internal/test_runner/test:673:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:374:7)
+  ...
+# Subtest: negative group baseline retains existing offset four rather than manufacturing null or zero
+not ok 34 - negative group baseline retains existing offset four rather than manufacturing null or zero
+  ---
+  duration_ms: 40.460208
+  location: 'file:///tmp/kaas-r2-live03-without-fix-control-20261126/kaas-demo/tests/tenant-r2-native/test-review.mjs:51:1'
+  failureType: 'testCodeFailure'
+  error: 'false == true'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///tmp/kaas-r2-live03-without-fix-control-20261126/kaas-demo/tests/tenant-r2-native/test-review.mjs:55:10)
+    Test.runInAsyncScope (node:async_hooks:203:9)
+    Test.run (node:internal/test_runner/test:631:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:374:18)
+    Test.postRun (node:internal/test_runner/test:715:19)
+    Test.run (node:internal/test_runner/test:673:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:374:7)
+  ...
+# Subtest: negative canonical group offset mutation still fails without a negative commit
+ok 35 - negative canonical group offset mutation still fails without a negative commit
+  ---
+  duration_ms: 26.261058
+  ...
+# Subtest: baseline observation failure stays incomplete with fixed diagnostic and no forged denial
+ok 36 - baseline observation failure stays incomplete with fixed diagnostic and no forged denial
+  ---
+  duration_ms: 27.077175
+  ...
+# Subtest: auditor rejects relabelled negative offset topic even with a recomputed event chain
+ok 37 - auditor rejects relabelled negative offset topic even with a recomputed event chain
+  ---
+  duration_ms: 60.073015
+  ...
+1..37
+# tests 37
+# suites 0
+# pass 34
+# fail 3
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 913.196179

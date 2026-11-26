@@ -1,0 +1,35 @@
+{
+  "status": "R2_LIVE_03_BASELINE_ROUTING_FIXED_OFFLINE",
+  "base_commit": "c6a74b41e06ebf06d050aad322a844daeda619e1",
+  "date": "2026-11-26",
+  "source_fingerprints_verified": 42,
+  "candidate_binary_sha256": "0174513d51947fb65aa17ae70f85fea19f7ed5a605aae0ca6d016d8e1cd94cc0",
+  "candidate_runtime_manifest_sha256": "07f7bd428716626f2d0ca3a229fd4d4d346c5a5a5ff8dff92fa119827ee27b59",
+  "tests": {
+    "binding": 8,
+    "review": 37,
+    "sink_export": 18,
+    "Go_race_top_level": 22,
+    "synthetic_exit": 4,
+    "synthetic_replay_events": 182,
+    "synthetic_reported_commits": 16,
+    "negative_control": "EXPECTED_FAILURE when only canonical baseline routing is reverted"
+  },
+  "changes": [
+    "Observe canonical fixture topic for the supplied group, with group-owner principal",
+    "Keep forbidden client target explicit and unchanged",
+    "Require canonical observation binding in binder and native snapshot before SDK construction",
+    "Auditor requires exact observed group-topic identity and still rejects negative offset changes",
+    "Retain measured offsets, including4; never substitute null/zero for denial",
+    "Fixed safe diagnostic for failed baseline observation"
+  ],
+  "evidence_scope": "Canonical established fixture partition plus group membership. No claim that offsets on a forbidden group/topic pair were directly measured. Typed native denial and no-negative-commit path remain mandatory.",
+  "live_root_cause_limit": "Original native error not captured; authorization conflict confirmed in source/design and reproduced by ACL-shaped offline fake; new correction not broker-tested",
+  "live_test_rerun": false,
+  "cluster_access": false,
+  "new_image_built": false,
+  "all_three_client_Jobs": "Untouched; last saved API states suspended",
+  "actual_image_runtime_pins": "Unchanged7773f3ed/e0294b2a/a8ff4044; old image does not contain this correction",
+  "publication": "LOCAL_UNCOMMITTED",
+  "R2_acceptance": "INCOMPLETE; negative matrix awaits later exact-image authorized broker run"
+}

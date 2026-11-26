@@ -72,5 +72,12 @@
     "binary_sha256": "e0294b2a2916408eb61805fbbeffcf785066c75105f665b61c325e7401ee3be3",
     "runtime_manifest_sha256": "a8ff40449e28da9f46aded0bca19b669c4d5dc8c2fa53fc5fc3d9e396270877e",
     "actual_image_pins_unchanged": false
+  },
+  "offline_live03_candidate": {
+    "status": "BASELINE_FIX_VALIDATED_OFFLINE_NOT_IMAGE_BUILT_OR_DEPLOYED",
+    "receipt": "../../docs/r2-live03-fix-2026-11-26/validation-summary.json",
+    "binary_sha256": "0174513d51947fb65aa17ae70f85fea19f7ed5a605aae0ca6d016d8e1cd94cc0",
+    "runtime_manifest_sha256": "07f7bd428716626f2d0ca3a229fd4d4d346c5a5a5ff8dff92fa119827ee27b59",
+    "actual_image_pins_unchanged": true
   }
 }

@@ -1,0 +1,11 @@
+{
+  "build_enabled": false,
+  "execution_authorized": false,
+  "tests_enabled": false,
+  "source_validation_receipt": "offline-build-validation.json",
+  "binary_sha256": "0174513d51947fb65aa17ae70f85fea19f7ed5a605aae0ca6d016d8e1cd94cc0",
+  "runtime_manifest_sha256": "07f7bd428716626f2d0ca3a229fd4d4d346c5a5a5ff8dff92fa119827ee27b59",
+  "image_digest": null,
+  "sink_rebuild_required_by_source_change": false,
+  "note": "Candidate only; exact published source commit and image verification are later steps, no activation."
+}

@@ -72,9 +72,12 @@ export function runNativeTenantFixture(plan,deps){
  }
  function state(group,topic,caseId,stage){
   budget(plan.call_reserve_ms+plan.sink_reserve_ms);
-  const s=deps.groupState(group,topic);
+  // Observe the group's established fixture partition under its owner. The
+  // forbidden target remains explicit in case_start/client_open, never relabelled.
+  const offsetTopic=group.replace(/-group$/,'');
+  let s;try{s=deps.groupState(group,offsetTopic);}catch(_){issue('group_ownership_or_membership_unverified');}
   if(!s||s.fixture_only!==true||s.exclusive!==true||s.members!==0||s.membership_observed!==true||!(s.committed_offset===null||Number.isSafeInteger(s.committed_offset)&&s.committed_offset>=0)||!Number.isSafeInteger(s.log_end_offset)||s.log_end_offset<0)issue('group_ownership_or_membership_unverified');
-  emit('group_state',{case_id:caseId,group_id:group,topic,stage,committed_offset:s.committed_offset,log_end_offset:s.log_end_offset,members:0,membership_observed:true});
+  emit('group_state',{case_id:caseId,group_id:group,topic:offsetTopic,stage,committed_offset:s.committed_offset,log_end_offset:s.log_end_offset,members:0,membership_observed:true});
   return {committed_offset:s.committed_offset,log_end_offset:s.log_end_offset};
  }
  function reserve(r){
@@ -190,7 +193,7 @@ export function runNativeTenantFixture(plan,deps){
    if(!pass)issue(n.consumer_write_confounded?'consumer_write_layer_confounded':'negative_failure_layer_unproven');
   }finally{
    if(h&&!h.closed){try{close(h);}catch(_){/* Do not overwrite original failure with cleanup. */}}
-   if(before&&!finalStateRecorded){try{const after=state(n.group,n.topic,n.id,'after_stop');if(before.committed_offset!==after.committed_offset){cases[n.id]='FAIL';firstFailure={reason:'negative_offset_changed',severity:'FAIL'};emit('negative_state_violation',{case_id:n.id,reason:'offset_changed'});}}catch(_){try{emit('group_state_unavailable',{case_id:n.id,topic:n.topic,group_id:n.group,reason:'final_snapshot_unavailable'});}catch(_){/* Missing external evidence remains incomplete. */}}}
+   if(before&&!finalStateRecorded){try{const after=state(n.group,n.topic,n.id,'after_stop');if(before.committed_offset!==after.committed_offset){cases[n.id]='FAIL';firstFailure={reason:'negative_offset_changed',severity:'FAIL'};emit('negative_state_violation',{case_id:n.id,reason:'offset_changed'});}}catch(_){try{emit('group_state_unavailable',{case_id:n.id,topic:n.group.replace(/-group$/,''),group_id:n.group,reason:'final_snapshot_unavailable'});}catch(_){/* Missing external evidence remains incomplete. */}}}
    // No negative code path calls commitOffsets; selected native auto-commit behavior remains unverified.
   }
  }

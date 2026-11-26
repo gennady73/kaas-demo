@@ -70,7 +70,7 @@ function auditReportedEvents(plan,envelopes,seal,sha){
    if(e.closed)open.delete(k);
   }else if(e.type==='close_skipped'){cleanupFailure=true;problem('close_skipped',e.case_id);
   }else if(e.type==='group_state'){
-   if(!['before','after','after_stop'].includes(e.stage)||e.topic!==c.topic||e.group_id!==c.group||e.members!==0||e.membership_observed!==true)problem('group_state',e.case_id);
+   if(!['before','after','after_stop'].includes(e.stage)||e.topic!==c.group?.replace(/-group$/,'')||e.group_id!==c.group||e.members!==0||e.membership_observed!==true)problem('group_state',e.case_id);
    const k=e.case_id;if(e.stage==='before'){
     if(snapshots.has(k))problem('duplicate_group_baseline',e.case_id);snapshots.set(k,{before:e});
     if(plan.positive.some(p=>p.id===e.case_id)){if(!((e.committed_offset===null&&e.log_end_offset===0)||e.committed_offset===e.log_end_offset))problem('unprocessed_initial_records',k);lastOffsets.set(k,e.log_end_offset-1);}

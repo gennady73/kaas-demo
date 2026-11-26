@@ -33,3 +33,41 @@ test('recovered receipt ACK keeps the evidence chain and cleanup but makes zero 
 test('execution record rejects arbitrary debug/credential fields',()=>{const gate=JSON.parse(fs.readFileSync(new URL('./runtime.example.json',import.meta.url)));gate.execution_authorized=true;gate.tests_enabled=true;gate.password='CANARY';assert.throws(()=>validateExecution(plan,gate,sha),/unknown_execution_field/);});
 
 test('initial native position failure is explicit, terminal and prevents every producer call',()=>{const w=world(),make=w.deps.makeConsumer;w.deps.makeConsumer=o=>({...make(o),position(){throw Error('PASSWORD_CANARY');}});const r=runNativeTenantFixture(plan,w.deps);assert.equal(r.status,'NATIVE_INCOMPLETE');assert.equal(r.first_failure.reason,'initial_position_unverified');assert.equal(r.events.filter(e=>e.type==='attempt_intent').length,0);assert.equal(r.events.filter(e=>e.type==='client_open'&&e.client_role==='producer').length,0);assert.equal(r.cleanup_complete,true);assert.equal(r.events.at(-1).type,'fixture_terminal');assert.equal(JSON.stringify(r).includes('PASSWORD_CANARY'),false);});
+
+test('ACL-shaped baseline accepts all eight negative cases without querying foreign topic offsets',()=>{
+ const w=world(),state=w.deps.groupState,observations=[];
+ w.deps.groupState=(group,topic)=>{observations.push({group,topic});if(topic!==group.replace(/-group$/,''))throw Error('SYNTHETIC_OFFSET_FETCH_TOPIC_DENIED');return state(group,topic);};
+ const r=runNativeTenantFixture(plan,w.deps);
+ assert.equal(r.status,'NATIVE_COMPLETE');assert.equal(audit(r).status,'NATIVE_EVIDENCE_MATCHED');
+ for(const n of plan.negative.filter(n=>n.operation==='consume')){
+  assert.equal(r.cases[n.id],'PASS');
+  const snapshots=r.events.filter(e=>e.type==='group_state'&&e.case_id===n.id);
+  assert.equal(snapshots.length,2);assert.ok(snapshots.every(e=>e.topic===n.group.replace(/-group$/,'')));
+  assert.equal(r.events.find(e=>e.type==='case_start'&&e.case_id===n.id).topic,n.topic);
+ }
+ assert.ok(observations.every(x=>x.topic===x.group.replace(/-group$/,'')));
+ assert.equal(w.commits.length,16);
+});
+test('negative group baseline retains existing offset four rather than manufacturing null or zero',()=>{
+ const r=runNativeTenantFixture(plan,world().deps);
+ for(const n of plan.negative.filter(n=>n.operation==='consume')){
+  const snapshots=r.events.filter(e=>e.type==='group_state'&&e.case_id===n.id);
+  assert.ok(snapshots.every(e=>e.committed_offset===4&&e.log_end_offset===4));
+ }
+});
+test('negative canonical group offset mutation still fails without a negative commit',()=>{
+ const w=world(),state=w.deps.groupState,n=plan.negative.find(n=>n.operation==='consume');let calls=0;
+ w.deps.groupState=(group,topic)=>{const s=state(group,topic);if(group===n.group&&++calls>=4)return {...s,committed_offset:3};return s;};
+ const r=runNativeTenantFixture(plan,w.deps);assert.equal(r.status,'NATIVE_INCOMPLETE');assert.equal(r.first_failure.reason,'negative_offset_changed');assert.equal(w.commits.length,16);
+});
+test('baseline observation failure stays incomplete with fixed diagnostic and no forged denial',()=>{
+ const w=world(),state=w.deps.groupState;let calls=0;
+ w.deps.groupState=(group,topic)=>{if(++calls===9)throw Error('PASSWORD_CANARY');return state(group,topic);};
+ const r=runNativeTenantFixture(plan,w.deps);assert.equal(r.status,'NATIVE_INCOMPLETE');assert.equal(r.first_failure.reason,'group_ownership_or_membership_unverified');
+ assert.equal(r.events.filter(e=>e.type==='denial_result').length,1);assert.equal(JSON.stringify(r).includes('PASSWORD_CANARY'),false);assert.equal(w.commits.length,16);
+});
+test('auditor rejects relabelled negative offset topic even with a recomputed event chain',()=>{
+ const r=runNativeTenantFixture(plan,world().deps),n=plan.negative.find(n=>n.operation==='consume');
+ const events=clone(r.events).map(e=>e.type==='group_state'&&e.case_id===n.id?{...e,topic:n.topic}:e);
+ const a=audit(r,rechain(events));assert.equal(a.status,'NATIVE_INCOMPLETE');assert.ok(a.issues.some(i=>i.code==='group_state'));
+});

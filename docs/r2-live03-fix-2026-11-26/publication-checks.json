@@ -1,0 +1,20 @@
+{
+  "status": "STATIC_PUBLICATION_CHECKS_PASS",
+  "source_fingerprints_verified": 42,
+  "saved_Jobs_suspended": 3,
+  "cluster_access": false,
+  "live_test_rerun": false,
+  "actual_image_pins_unchanged": true,
+  "display_log_normalization": {
+    "buildinfo.txt": {
+      "raw_sha256": "3616dae237620d5d8c80610ccaa3ee71a92c91e0ff968cb85ce021a537ccd123",
+      "display_sha256": "d4d49374a0719054b78c5748762d7cccb57124f756d447f618ade3c4417995a6",
+      "note": "Trailing whitespace only; raw retained in shared review directory"
+    },
+    "without-baseline-routing-fix-control.txt": {
+      "raw_sha256": "069f74c9691e6b0268b881923614c706d79799cbc896c6665a6dcf01fb297bfc",
+      "display_sha256": "c24548137019407f07dc0c4b8a18f2c52473c57c53b8631f990296848538d1ac",
+      "note": "Trailing whitespace only; raw retained in shared review directory"
+    }
+  }
+}

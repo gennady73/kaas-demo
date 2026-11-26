@@ -1,0 +1,14 @@
+{
+  "checked_date": "2026-11-26",
+  "broker_version": "Kafka4.2.0",
+  "url": "https://kafka.apache.org/42/security/authorization-and-acls/",
+  "finding": "OffsetFetch needs Describe on both Group and Topic; group-level access alone does not authorize a foreign-topic offset query.",
+  "inspected_local_sources": [
+    "engine.mjs state/negative",
+    "binder.mjs groupState",
+    "native/module.go snapshot",
+    "audit.mjs group_state"
+  ],
+  "sdk_version": "confluent-kafka-go/librdkafka2.14.0",
+  "source_and_live_distinction": "Original live error code unavailable; no live probe repeated for this investigation."
+}

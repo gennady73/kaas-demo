@@ -1,0 +1,9 @@
+test_complete_exits_zero (__main__.ProcessExit.test_complete_exits_zero) ... ok
+test_incomplete_aborts_process (__main__.ProcessExit.test_incomplete_aborts_process) ... ok
+test_legacy_throw_reproduces_false_success (__main__.ProcessExit.test_legacy_throw_reproduces_false_success) ... ok
+test_unexpected_exception_aborts_without_raw_error (__main__.ProcessExit.test_unexpected_exception_aborts_without_raw_error) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.129s
+
+OK

@@ -68,3 +68,11 @@ test('synthetic post-poll unauthorized membership stops without negative commits
  const result=runNativeTenantFixture(plan,world.deps);
  assert.equal(result.status,'NATIVE_INCOMPLETE');assert.equal(result.first_failure.reason,'unexpected_negative_join');assert.equal(result.first_failure.severity,'FAIL');assert.equal(world.commits.length,16);
 });
+
+test('binder rejects mixed observation topic/group before native snapshot and preserves canonical offset',()=>{
+ const calls=[];const native={identity:()=>({ok:true,binary_sha256:'b'.repeat(64),mapping_id:'KAAS_R2_CONFLUENT_2_14_V1'}),start:()=>({ok:true}),snapshot:(topic,group)=>{calls.push([topic,group]);return {ok:true,committed_offset:4,log_start_offset:0,log_end_offset:4,members:0,membership_observed:true};}};
+ const group=plan.positive[0].group,topic=plan.positive[0].topic;
+ const d=bindNative(native,null,plan,{plan_sha256:sha(canonical(plan)),job_start_unix_ms:1,binary_sha256:'b'.repeat(64),exclusive_fixture_groups:[group]},sha,()=>{});
+ assert.throws(()=>d.groupState(group,'kaas-sbx-b-events'),/observation_topic_binding/);assert.equal(calls.length,0);
+ assert.equal(d.groupState(group,topic).committed_offset,4);assert.deepEqual(calls,[[topic,group]]);
+});
