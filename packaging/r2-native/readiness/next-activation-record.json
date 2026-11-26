@@ -1,0 +1,32 @@
+{
+  "protocol": "kaas-r2-next-activation-preparation-v1",
+  "status": "PREPARED_NOT_AUTHORIZED",
+  "deployment_enabled": false,
+  "workloads_enabled": false,
+  "authority_reference": null,
+  "executor": null,
+  "window_start_UTC": null,
+  "job_start_unix_ms": null,
+  "owner_approver": "user-selected sandbox owner",
+  "accepted_evidence_policy": {
+    "sandbox_days": 7,
+    "second_copy": "shared workspace docs/testing/runs/<run-id>/",
+    "actual_copy_verified": false
+  },
+  "prepared_dependencies": "readiness.json",
+  "remaining": {
+    "final_source_and_review_join": "OPEN",
+    "fresh_source_credential_and_certificate_revisions": "OPEN",
+    "sink_image_pull_and_uid_mount_readability": "OPEN",
+    "PVC_bound_headroom_and_SQLite_WAL_persistence": "OPEN",
+    "live_sink_TLS_keypair_and_authorization": "OPEN",
+    "broker_leaf_certificate_and_native_TLS_SCRAM": "OPEN",
+    "effective_network_path": "OPEN",
+    "fresh_health_ISR_and_exclusive_group_offsets": "OPEN",
+    "external_deadline_stop_late_offset_disposition": "OPEN",
+    "final_reconciliation_and_independent_export_audit": "OPEN",
+    "owner_custody_and_verified_second_copy": "OPEN"
+  },
+  "runtime_gates": "ALL_11_OPEN",
+  "tests_executed": false
+}

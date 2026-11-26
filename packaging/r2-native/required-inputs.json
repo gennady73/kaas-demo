@@ -40,14 +40,15 @@
   },
   "TLS": {
     "name": "kaas-r2-sink-tls",
-    "source": "OpenShift service serving-certificate controller, not executed"
+    "source": "OpenShift service certificate generated; public chain/hostname/expiry checked"
   },
   "trust": {
     "name": "kaas-r2-sink-trust",
-    "source": "OpenShift service CA injection, public service-ca.crt only"
+    "source": "Service CA injection observed, verified against generated public leaf"
   },
   "Kafka_CA": {
     "name": "kaas-r2-cluster-ca",
-    "source": "Prior create-only delivery proposal; not executed"
-  }
+    "source": "Delivered create-only by reviewed helper; receipt in readiness/credential-delivery.json"
+  },
+  "readiness_receipt": "readiness/readiness.json"
 }

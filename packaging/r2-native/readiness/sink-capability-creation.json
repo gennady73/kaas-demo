@@ -1,0 +1,18 @@
+{
+  "status": "CREATED_NOT_RUNTIME_TESTED",
+  "created": [
+    {
+      "name": "kaas-r2-evidence-writer",
+      "namespace": "kaas-demo",
+      "uid": "9fae3942-00e7-40ae-8082-f9dd677aa936",
+      "resourceVersion": "1051084"
+    },
+    {
+      "name": "kaas-r2-evidence-owner",
+      "namespace": "kaas-demo",
+      "uid": "4d7a3c06-db97-46a4-a7cc-d33d420f665c",
+      "resourceVersion": "1051087"
+    }
+  ],
+  "credential_values_in_receipt": false
+}

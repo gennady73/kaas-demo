@@ -1,7 +1,7 @@
 {
   "version": "1.0",
   "date": "2026-11-26",
-  "status": "IMAGES_BUILT_VERIFIED_DEPLOYMENT_DISABLED",
+  "status": "DEPENDENCIES_PREPARED_RUNTIME_READINESS_PARTIAL_DEPLOYMENT_DISABLED",
   "source_commit": "afb9c7c7b2f3901a8a4e2c456029a931a9db00b6",
   "namespace": "kaas-demo",
   "execution_enabled": false,
@@ -19,8 +19,8 @@
     "name": "kaas-r2-native-evidence",
     "class": "gp3-csi",
     "capacity": "1Gi",
-    "status": "OPTIONAL_NOT_INCLUDED_NOT_ALLOCATED",
-    "source": "Saved sandbox NodePool storage class; freshness/admission/approval required"
+    "status": "CREATED_PENDING_FIRST_CONSUMER",
+    "source": "Fresh gp3-csi class observation, WFFC; claim created, no volume binding or mount yet"
   },
   "retention_policy": {
     "sandbox_days": 7,
@@ -37,5 +37,6 @@
   "source_commit_scope": "Reviewed native source at afb9c7c; packaging baseline at 1a4ed9d plus local sink module-import verification increment",
   "runner_image_reference": "image-registry.openshift-image-registry.svc:5000/kaas-demo/kaas-r2-runner@sha256:dec50714130f1244403f8bb1a79847dc28821b7e87a02507bbd923d081fe2d8d",
   "sink_image_reference": "image-registry.openshift-image-registry.svc:5000/kaas-demo/kaas-r2-sink@sha256:f730c89baceda0f8a536ab9c94696b768c996fe55d60202300095b4d450efa25",
-  "image_verification": "BUILD_CHECKS_AND_REGISTRY_METADATA_PASS"
+  "image_verification": "BUILD_CHECKS_AND_REGISTRY_METADATA_PASS",
+  "readiness_receipt": "readiness/readiness.json"
 }

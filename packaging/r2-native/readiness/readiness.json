@@ -1,0 +1,63 @@
+{
+  "date": "2026-11-26",
+  "status": "DEPENDENCIES_PREPARED_DEPLOYMENT_DISABLED_RUNTIME_READINESS_PARTIAL",
+  "source_commit": "9b5033d88ac13c4a7d998eee41588e6b35f819e6",
+  "delivered_password_only_Secrets": 4,
+  "delivered_public_Kafka_CA_ConfigMap": 1,
+  "created_sink_capability_Secrets": 2,
+  "created_support_objects": 9,
+  "created_evidence_PVC": {
+    "name": "kaas-r2-native-evidence",
+    "capacity": "1Gi",
+    "class": "gp3-csi",
+    "phase": "Pending",
+    "binding": "WaitForFirstConsumer",
+    "no_binder_Pod": true
+  },
+  "sink_TLS": {
+    "controller_generated": true,
+    "chain_and_hostname_verification": "PASS",
+    "hostname": "kaas-r2-evidence.kaas-demo.svc",
+    "not_after_UTC": "2028-11-25T11:42:57Z",
+    "public_certificate_sha256": "770af2e78dd0796f25a01b9c5bba9821e55bc6011f44183fb7c723f77081efa6",
+    "private_key_not_exported": true,
+    "keypair_and_live_handshake": "NOT_CHECKED"
+  },
+  "Kafka_CA": {
+    "parse_self_signature_and_current_validity": "PASS",
+    "not_after_UTC": "2027-11-23T11:32:38Z",
+    "broker_leaf_SAN_or_handshake": "NOT_CHECKED"
+  },
+  "permission_checks": {
+    "both_ServiceAccounts_Secret_get": false,
+    "both_ServiceAccounts_internal_image_layers_get": true,
+    "both_ServiceAccounts_restricted_v2_use": true,
+    "new_RBAC_grants": 0,
+    "automountServiceAccountToken": false
+  },
+  "admission": {
+    "method": "server dry-run only; no Pod persisted",
+    "executor": "admin",
+    "client": "restricted-v2",
+    "sink": "restricted-v2",
+    "assigned_fsGroup": 1000770000,
+    "actual_volume_permissions_or_runtime": "NOT_CHECKED"
+  },
+  "existing_Job_Deployment_specs_and_UIDs_unchanged": 17,
+  "R2_client_or_sink_workload_created": false,
+  "sink_ready_endpoints": 0,
+  "tests_executed": false,
+  "Kafka_clients_executed": false,
+  "credentials_in_local_evidence_or_Git": false,
+  "API_credential_storage": "memory-only; no default kubeconfig change",
+  "deployment_enabled": false,
+  "all_11_runtime_gates": "OPEN",
+  "git_publication": "NOT_REQUESTED_LOCAL_CHANGES",
+  "limits": [
+    "PVC cannot bind or prove filesystem persistence until future authorized consumer scheduling",
+    "No client/sink image pull or Pod execution",
+    "No live TLS/SCRAM/ACL/CNI/network or SQLite/export check",
+    "No current broker leaf certificate or consumer group/offset inspection",
+    "No recovery/deadline/custody completion inferred"
+  ]
+}

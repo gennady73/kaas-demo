@@ -1,0 +1,6 @@
+notBefore=Nov 26 11:42:56 2026 GMT
+notAfter=Nov 25 11:42:57 2028 GMT
+subject=CN=kaas-r2-evidence.kaas-demo.svc
+issuer=CN=openshift-service-serving-signer@1794935903
+X509v3 Subject Alternative Name:
+    DNS:kaas-r2-evidence.kaas-demo.svc, DNS:kaas-r2-evidence.kaas-demo.svc.cluster.local

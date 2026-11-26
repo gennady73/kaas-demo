@@ -1,3 +1,5 @@
+Latest dependency status: [R2 credential, TLS, storage and permission readiness](readiness/README.md). Client and sink deployment remain disabled.
+
 # R2 native images and disabled manifests
 
 Status: see `image-build-results.md` for the subsequent authorized build, verification and pinned-image record. **DEPLOYMENT_AND_WORKLOADS_DISABLED**. The paragraphs and validation receipts below describe the original preparation baseline; image build status and pins are superseded by the build result. The user authorized Git publication of this disabled package on 2026-11-26. No resource, build, credential delivery or client workload was started. The earlier native implementation is published at `afb9c7c7b2f3901a8a4e2c456029a931a9db00b6`; that commit identifies the native source, while this directory is added by the later packaging commit. Saved preparation receipts retain their original local/unpublished status as historical evidence.

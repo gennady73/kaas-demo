@@ -1,0 +1,4 @@
+notBefore=Nov 23 11:32:38 2026 GMT
+notAfter=Nov 23 11:32:38 2027 GMT
+subject=O=io.strimzi, CN=cluster-ca v0
+issuer=O=io.strimzi, CN=cluster-ca v0

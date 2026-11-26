@@ -1,0 +1,18 @@
+{
+  "date": "2026-11-26",
+  "status": "STATIC_PUBLICATION_REVIEW_PASS",
+  "base_commit": "9b5033d88ac13c4a7d998eee41588e6b35f819e6",
+  "tests_executed": false,
+  "cluster_access": false,
+  "delivery_receipts": "Identity metadata only; no credential fields or values",
+  "unchanged_native_source_files": 39,
+  "client_suspended": true,
+  "sink_replicas": 0,
+  "sink_paused": true,
+  "arming_and_authorization": false,
+  "runtime_gates": "ALL_11_OPEN",
+  "active_GitOps_references": 0,
+  "image_pins": "UNCHANGED",
+  "prepared_activation_record": "DISABLED_AUTHORITY_NULL",
+  "historical_receipts": "Original readiness receipt preserves its preparation-time publication status"
+}

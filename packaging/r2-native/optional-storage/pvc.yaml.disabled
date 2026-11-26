@@ -6,7 +6,7 @@ metadata:
   labels:
     kaas.example.com/package: r2-native-disabled
   annotations:
-    kaas.example.com/status: PROPOSED_ONLY_NOT_INCLUDED_OR_ALLOCATED
+    kaas.example.com/status: CREATED_PENDING_FIRST_CONSUMER
     kaas.example.com/retention: 7days; verified shared-workspace export before approved
       cleanup
 spec:
