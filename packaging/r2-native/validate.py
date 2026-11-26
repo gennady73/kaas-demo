@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Offline typed contract checks. No API, native SDK, credentials or apply calls."""
-import json,yaml
+import json,re,yaml
 from pathlib import Path
 HERE=Path(__file__).resolve().parent
 
@@ -9,7 +9,11 @@ def load():
 def validate(objects,builds,pvc,inputs,docker):
  assert len(objects)==11 and len(builds)==4
  assert all(inputs[k] is False for k in ['execution_enabled','deployment_enabled','workloads_enabled','build_enabled'])
- assert inputs['runner_image_digest'] is None and inputs['sink_image_digest'] is None
+ pinned=inputs['actual_image_build']=='COMPLETE'
+ for role in ['runner','sink']:
+  digest=inputs[role+'_image_digest']
+  if pinned:assert isinstance(digest,str) and re.fullmatch(r'sha256:[a-f0-9]{64}',digest) and digest!='sha256:'+'0'*64
+  else:assert digest is None
  index={(o['kind'],o['metadata']['name']):o for o in objects}
  assert len(index)==11 and all(o['metadata']['namespace']=='kaas-demo' for o in objects)
  assert {o['kind'] for o in objects}=={'ConfigMap','ServiceAccount','Service','Job','Deployment','NetworkPolicy'}
@@ -17,19 +21,20 @@ def validate(objects,builds,pvc,inputs,docker):
  assert get('ConfigMap','kaas-r2-arming-disabled')['data']=={'enabled':'false'}
  runtime=json.loads(get('ConfigMap','kaas-r2-execution-disabled')['data']['runtime.json'])
  assert runtime['execution_authorized'] is False and runtime['tests_enabled'] is False and all(x=='OPEN' for x in runtime['gates'].values())
- assert runtime['image_digest'] is None and runtime['job_start_unix_ms'] is None and runtime['authority_reference'] is None
+ assert runtime['image_digest']==inputs['runner_image_digest'] and runtime['job_start_unix_ms'] is None and runtime['authority_reference'] is None
  assert runtime['binary_sha256']==inputs['binary_sha256'] and runtime['package_sha256']==inputs['runtime_manifest_sha256'] and runtime['plan_sha256']==inputs['plan_sha256']
  assert runtime['sink_origin']=='https://kaas-r2-evidence.kaas-demo.svc:8443'
  job=get('Job','kaas-r2-native-client')['spec'];assert job['suspend'] is True
  for key,value in {'backoffLimit':0,'activeDeadlineSeconds':300,'parallelism':1,'completions':1}.items():assert type(job[key]) is int and job[key]==value
  dep=get('Deployment','kaas-r2-evidence')['spec'];assert type(dep['replicas']) is int and dep['replicas']==0 and dep['paused'] is True and dep['strategy']=={'type':'Recreate'}
  cp=job['template']['spec'];sp=dep['template']['spec'];assert cp['restartPolicy']=='Never' and cp['terminationGracePeriodSeconds']==0
- for pod in [cp,sp]:
+ for role,pod in [('runner',cp),('sink',sp)]:
   assert pod['nodeSelector']=={'kubernetes.io/os':'linux','kubernetes.io/arch':'amd64'}
   assert pod['automountServiceAccountToken'] is False and pod['hostNetwork'] is False and not pod.get('initContainers') and len(pod['containers'])==1
   assert not any('hostPath' in x for x in pod['volumes'])
   for c in pod['containers']:
-   assert c['image'].startswith('invalid.invalid/') and c['image'].endswith('@sha256:'+'0'*64)
+   if pinned:assert c['image']==inputs[role+'_image_reference'] and c['image'].endswith('@'+inputs[role+'_image_digest'])
+   else:assert c['image'].startswith('invalid.invalid/') and c['image'].endswith('@sha256:'+'0'*64)
    assert not c.get('envFrom') and c['command'][0].endswith('-guard.sh')
    assert c['securityContext']=={'runAsNonRoot':True,'allowPrivilegeEscalation':False,'capabilities':{'drop':['ALL']},'seccompProfile':{'type':'RuntimeDefault'},'readOnlyRootFilesystem':True}
    assert not any(x['name'] in ['K6_HTTP_DEBUG','K6_VERBOSE','PASSWORD','TOKEN'] for x in c.get('env',[]))
@@ -65,5 +70,5 @@ def validate(objects,builds,pvc,inputs,docker):
  assert inputs['binary_sha256'] in docker['runner'] and 'k6 inspect /r2/inspect.js' in docker['runner']
  assert pvc['kind']=='PersistentVolumeClaim' and pvc['metadata']['name']=='kaas-r2-native-evidence' and pvc['spec']['storageClassName']=='gp3-csi' and pvc['spec']['resources']['requests']['storage']=='1Gi'
  assert (HERE/'deploy/kustomization.yaml').read_text().count('resources.yaml')==1
- return {'status':'OFFLINE_CONTRACT_PASS','manifest_objects':11,'manual_binary_build_definitions':2,'PVC_included':False,'deployment_enabled':False,'workloads_enabled':False,'actual_image_build':'NOT_RUN','API_schema_validation':'SEPARATE_VALIDATOR','server_admission':'NOT_RUN'}
+ return {'status':'OFFLINE_CONTRACT_PASS','manifest_objects':11,'manual_binary_build_definitions':2,'PVC_included':False,'deployment_enabled':False,'workloads_enabled':False,'actual_image_build':inputs['actual_image_build'],'API_schema_validation':'SEPARATE_VALIDATOR','server_admission':'NOT_RUN'}
 if __name__=='__main__':print(json.dumps(validate(*load())))

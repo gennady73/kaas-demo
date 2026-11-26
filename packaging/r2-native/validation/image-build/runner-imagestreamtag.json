@@ -1,0 +1,192 @@
+{
+    "apiVersion": "image.openshift.io/v1",
+    "generation": 1,
+    "image": {
+        "dockerImageLayers": [
+            {
+                "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+                "name": "sha256:b02c58b1810d6d9c787b6e23d8ac6f4f454a1969867e2c1d9e78cbe380cfab0a",
+                "size": 40712915
+            },
+            {
+                "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+                "name": "sha256:f6215d8452014177de1c29955bb0edd38f9ae59d3f720975f75450a940b44391",
+                "size": 330600952
+            },
+            {
+                "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+                "name": "sha256:cdd485f096a764d6595743e2941c81ff323270a0271185a4081e4f9b4eed4297",
+                "size": 37648972
+            },
+            {
+                "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+                "name": "sha256:612cf959eebad045721b8e313ee01df9b41049fb9398328f5e4e4a04907a88f4",
+                "size": 24974
+            },
+            {
+                "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+                "name": "sha256:221c444eb522a26ed51ed1175fb328d2be075f31178b07ee9bd7eec4598a03c7",
+                "size": 451
+            },
+            {
+                "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+                "name": "sha256:aec3ffd707e3513d72dd69bea3d0515d641291be33acf8981212d6daeaa3cf5f",
+                "size": 37639115
+            },
+            {
+                "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+                "name": "sha256:e352a5a179beb3676041429c0b05163bc826e2c1d8cc2c02ae1567b659613d9a",
+                "size": 99
+            }
+        ],
+        "dockerImageManifestMediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "dockerImageMetadata": {
+            "Architecture": "amd64",
+            "Config": {
+                "Cmd": [
+                    "/bin/sh",
+                    "-c",
+                    "null"
+                ],
+                "Entrypoint": [
+                    "/opt/r2/client-guard.sh"
+                ],
+                "Env": [
+                    "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                    "container=oci",
+                    "CRUISE_CONTROL_HOME=/opt/cruise-control",
+                    "KAFKA_EXPORTER_HOME=/opt/kafka-exporter",
+                    "KAFKA_HOME=/opt/kafka",
+                    "KAFKA_VERSION=4.2.0",
+                    "JMX_EXPORTER_HOME=/opt/prometheus-jmx-exporter",
+                    "S2I_HOME=/opt/kafka/s2i",
+                    "COM_REDHAT_COMPONENT=amqstreams-kafka-42-container",
+                    "JBOSS_IMAGE_NAME=amq-streams/kafka-42-rhel9",
+                    "JBOSS_IMAGE_VERSION=3.2.1",
+                    "HOME=/tmp",
+                    "K6_NO_USAGE_REPORT=true",
+                    "OPENSHIFT_BUILD_NAME=kaas-r2-runner-1",
+                    "OPENSHIFT_BUILD_NAMESPACE=kaas-demo"
+                ],
+                "Hostname": "bd71e80f465c",
+                "Labels": {
+                    "architecture": "x86_64",
+                    "build-date": "2026-08-18T02:04:12",
+                    "com.redhat.component": "amqstreams-kafka-42-container",
+                    "com.redhat.license_terms": "https://www.redhat.com/agreements",
+                    "cpe": "cpe:/a:redhat:enterprise_linux:9::appstream",
+                    "description": "AMQ Streams image for running Apache Kafka, Kafka Connect, Mirror Maker and Cruise Control",
+                    "distribution-scope": "public",
+                    "io.buildah.version": "1.39.7",
+                    "io.k8s.description": "A reliable and fault tolerant stream processing platform",
+                    "io.k8s.display-name": "AMQ Streams Apache Kafka",
+                    "io.openshift.build.name": "kaas-r2-runner-1",
+                    "io.openshift.build.namespace": "kaas-demo",
+                    "io.openshift.expose-services": "",
+                    "io.openshift.tags": "messaging,amq,jboss",
+                    "maintainer": "AMQ Streams Engineering \u003camq-streams-dev@redhat.com\u003e",
+                    "name": "amq-streams/kafka-42-rhel9",
+                    "org.opencontainers.image.created": "2026-08-17T17:26:46Z",
+                    "org.opencontainers.image.revision": "6bb838e7904a1c68094d157a898fff623ad3fcb9",
+                    "release": "12",
+                    "summary": "AMQ Streams image for running Apache Kafka, Kafka Connect, Mirror Maker and Cruise Control",
+                    "url": "https://access.redhat.com/containers/#/registry.access.redhat.com/amq-streams/kafka-42-rhel9/images/3.2.1-12",
+                    "vcs-ref": "1e56f15adca51a59dd75343b227b36618e966520",
+                    "vcs-type": "git",
+                    "vendor": "Red Hat, Inc.",
+                    "version": "3.2.1"
+                },
+                "User": "1001:0",
+                "WorkingDir": "/tmp"
+            },
+            "Container": "3f1d22140f33c5c096ff7361b909c70b610d04f1a887dd52cf9c2c8db5521909",
+            "ContainerConfig": {
+                "Cmd": [
+                    "/bin/sh",
+                    "-c",
+                    "null"
+                ],
+                "Entrypoint": [
+                    "/opt/r2/client-guard.sh"
+                ],
+                "Env": [
+                    "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                    "container=oci",
+                    "CRUISE_CONTROL_HOME=/opt/cruise-control",
+                    "KAFKA_EXPORTER_HOME=/opt/kafka-exporter",
+                    "KAFKA_HOME=/opt/kafka",
+                    "KAFKA_VERSION=4.2.0",
+                    "JMX_EXPORTER_HOME=/opt/prometheus-jmx-exporter",
+                    "S2I_HOME=/opt/kafka/s2i",
+                    "COM_REDHAT_COMPONENT=amqstreams-kafka-42-container",
+                    "JBOSS_IMAGE_NAME=amq-streams/kafka-42-rhel9",
+                    "JBOSS_IMAGE_VERSION=3.2.1",
+                    "HOME=/tmp",
+                    "K6_NO_USAGE_REPORT=true",
+                    "OPENSHIFT_BUILD_NAME=kaas-r2-runner-1",
+                    "OPENSHIFT_BUILD_NAMESPACE=kaas-demo"
+                ],
+                "Hostname": "bd71e80f465c",
+                "Labels": {
+                    "architecture": "x86_64",
+                    "build-date": "2026-08-18T02:04:12",
+                    "com.redhat.component": "amqstreams-kafka-42-container",
+                    "com.redhat.license_terms": "https://www.redhat.com/agreements",
+                    "cpe": "cpe:/a:redhat:enterprise_linux:9::appstream",
+                    "description": "AMQ Streams image for running Apache Kafka, Kafka Connect, Mirror Maker and Cruise Control",
+                    "distribution-scope": "public",
+                    "io.buildah.version": "1.39.7",
+                    "io.k8s.description": "A reliable and fault tolerant stream processing platform",
+                    "io.k8s.display-name": "AMQ Streams Apache Kafka",
+                    "io.openshift.build.name": "kaas-r2-runner-1",
+                    "io.openshift.build.namespace": "kaas-demo",
+                    "io.openshift.expose-services": "",
+                    "io.openshift.tags": "messaging,amq,jboss",
+                    "maintainer": "AMQ Streams Engineering \u003camq-streams-dev@redhat.com\u003e",
+                    "name": "amq-streams/kafka-42-rhel9",
+                    "org.opencontainers.image.created": "2026-08-17T17:26:46Z",
+                    "org.opencontainers.image.revision": "6bb838e7904a1c68094d157a898fff623ad3fcb9",
+                    "release": "12",
+                    "summary": "AMQ Streams image for running Apache Kafka, Kafka Connect, Mirror Maker and Cruise Control",
+                    "url": "https://access.redhat.com/containers/#/registry.access.redhat.com/amq-streams/kafka-42-rhel9/images/3.2.1-12",
+                    "vcs-ref": "1e56f15adca51a59dd75343b227b36618e966520",
+                    "vcs-type": "git",
+                    "vendor": "Red Hat, Inc.",
+                    "version": "3.2.1"
+                },
+                "User": "1001:0",
+                "WorkingDir": "/tmp"
+            },
+            "Created": "2026-11-26T11:34:44Z",
+            "Id": "sha256:f8e9196bef31a3f9e198769c2bfa809d73ebb71328e800838d8741b117c6e712",
+            "Size": 446645955,
+            "apiVersion": "image.openshift.io/1.0",
+            "kind": "DockerImage"
+        },
+        "dockerImageMetadataVersion": "1.0",
+        "dockerImageReference": "image-registry.openshift-image-registry.svc:5000/kaas-demo/kaas-r2-runner@sha256:dec50714130f1244403f8bb1a79847dc28821b7e87a02507bbd923d081fe2d8d",
+        "metadata": {
+            "annotations": {
+                "image.openshift.io/dockerLayersOrder": "ascending",
+                "image.openshift.io/manifestBlobStored": "true",
+                "openshift.io/image.managed": "true"
+            },
+            "creationTimestamp": "2026-11-26T11:35:00Z",
+            "name": "sha256:dec50714130f1244403f8bb1a79847dc28821b7e87a02507bbd923d081fe2d8d",
+            "resourceVersion": "1048688",
+            "uid": "d9176164-70ea-4419-8d2b-385a303b9e47"
+        }
+    },
+    "kind": "ImageStreamTag",
+    "lookupPolicy": {
+        "local": false
+    },
+    "metadata": {
+        "creationTimestamp": "2026-11-26T11:35:00Z",
+        "name": "kaas-r2-runner:candidate-20261126",
+        "namespace": "kaas-demo",
+        "resourceVersion": "1048689",
+        "uid": "34da0244-fafd-4f98-aba3-4c23901c475e"
+    },
+    "tag": null
+}

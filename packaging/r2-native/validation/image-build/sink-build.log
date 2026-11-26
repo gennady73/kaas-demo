@@ -1,0 +1,52 @@
+Receiving source from STDIN as archive ...
+time="2026-11-26T11:35:32Z" level=info msg="Not using native diff for overlay, this may cause degraded performance for building images: kernel has CONFIG_OVERLAY_FS_REDIRECT_DIR enabled"
+I1126 11:35:32.141820       1 defaults.go:112] Defaulting to storage driver "overlay" with options [mountopt=metacopy=on].
+Caching blobs under "/var/cache/blobs".
+
+Pulling image registry.redhat.io/amq-streams/kafka-42-rhel9@sha256:ce7dc91b664600c6f06e1df3d6b56a4684bb779865d9c28b4df648addd89189d ...
+Trying to pull registry.redhat.io/amq-streams/kafka-42-rhel9@sha256:ce7dc91b664600c6f06e1df3d6b56a4684bb779865d9c28b4df648addd89189d...
+Getting image source signatures
+Copying blob sha256:f6215d8452014177de1c29955bb0edd38f9ae59d3f720975f75450a940b44391
+Copying blob sha256:b02c58b1810d6d9c787b6e23d8ac6f4f454a1969867e2c1d9e78cbe380cfab0a
+Copying config sha256:4016b5f3d4e1c2ef06ac5895c471bb5c893d6b49010cbd8982d6781e83a6928c
+Writing manifest to image destination
+Adding transient rw bind mount for /run/secrets/rhsm
+STEP 1/12: FROM registry.redhat.io/amq-streams/kafka-42-rhel9@sha256:ce7dc91b664600c6f06e1df3d6b56a4684bb779865d9c28b4df648addd89189d
+STEP 2/12: USER 0
+--> cfb86b5f6617
+STEP 3/12: COPY sink /opt/r2-sink
+--> f4a01992d434
+STEP 4/12: COPY sink-guard.sh /opt/r2-sink/sink-guard.sh
+--> b428d721b1ae
+STEP 5/12: RUN chmod 0555 /opt/r2-sink/sink-guard.sh && chmod -R a+rX /opt/r2-sink && mkdir -p /var/lib/r2 && chgrp 0 /var/lib/r2 && chmod g+rwx /var/lib/r2 && PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=/opt/r2-sink python3 -c "import ssl, sqlite3, server, store, verify_export; print('R2_SINK_MODULE_IMPORT_OK')"
+R2_SINK_MODULE_IMPORT_OK
+--> d3b03ad4f495
+STEP 6/12: ENV HOME=/tmp PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+--> 7bc2519000a5
+STEP 7/12: USER 1001:0
+--> 6351526864bd
+STEP 8/12: WORKDIR /tmp
+--> 676408114afc
+STEP 9/12: ENTRYPOINT ["/opt/r2-sink/sink-guard.sh"]
+--> aa8cc1f4cf1f
+STEP 10/12: CMD null
+--> f88c2fabf855
+STEP 11/12: ENV "OPENSHIFT_BUILD_NAME"="kaas-r2-sink-1" "OPENSHIFT_BUILD_NAMESPACE"="kaas-demo"
+--> a1bf5ac641ec
+STEP 12/12: LABEL "io.openshift.build.name"="kaas-r2-sink-1" "io.openshift.build.namespace"="kaas-demo"
+COMMIT temp.builder.openshift.io/kaas-demo/kaas-r2-sink-1:3dc9ceee
+--> 2afe20bf1c43
+Successfully tagged temp.builder.openshift.io/kaas-demo/kaas-r2-sink-1:3dc9ceee
+2afe20bf1c43652333d50bb11eb90f96cd950545ab3db5e104d4768fca7ed660
+
+Pushing image image-registry.openshift-image-registry.svc:5000/kaas-demo/kaas-r2-sink:candidate-20261126 ...
+Getting image source signatures
+Copying blob sha256:6c8a269358c1639b08ffa9237fed40afdcd5a02d291b35f267ab18c079f9af27
+Copying blob sha256:b02c58b1810d6d9c787b6e23d8ac6f4f454a1969867e2c1d9e78cbe380cfab0a
+Copying blob sha256:6c75386c93d65a4cef0648227b28b4285bf915954b125ff8ace7d8ff1fd49597
+Copying blob sha256:f6215d8452014177de1c29955bb0edd38f9ae59d3f720975f75450a940b44391
+Copying blob sha256:c42651ff97b976fcf858dce7ec243fd3c9d5aabade8accf26717f17b7432c26b
+Copying config sha256:2afe20bf1c43652333d50bb11eb90f96cd950545ab3db5e104d4768fca7ed660
+Writing manifest to image destination
+Successfully pushed image-registry.openshift-image-registry.svc:5000/kaas-demo/kaas-r2-sink@sha256:f730c89baceda0f8a536ab9c94696b768c996fe55d60202300095b4d450efa25
+Push successful

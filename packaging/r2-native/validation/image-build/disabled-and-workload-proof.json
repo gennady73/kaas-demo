@@ -1,0 +1,15 @@
+{
+  "existing_workload_objects_unchanged": 17,
+  "new_client_Job_or_sink_Deployment": false,
+  "rendered_objects": 11,
+  "client_suspended": true,
+  "sink_replicas": 0,
+  "sink_paused": true,
+  "arming_enabled": false,
+  "runtime_authorized": false,
+  "actual_gates": "ALL_11_OPEN",
+  "test_suites_executed": false,
+  "validator_execution": "NOT_RUN; syntax parsed and changed mapping inspected",
+  "checks": "Static manifest pin/disabled checks and local kustomize render only",
+  "render_sha256": "4e6e4d9480921192aad6c03d392842f4bbeb412157b871fe2d64a39e69636363"
+}

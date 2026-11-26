@@ -1,0 +1,69 @@
+{
+  "date": "2026-11-26",
+  "status": "IMAGES_BUILT_AND_VERIFIED_DEPLOYMENT_DISABLED",
+  "packaging_baseline_commit": "1a4ed9d95327bdfeea56777f36bd34a8f66849aa",
+  "native_source_commit": "afb9c7c7b2f3901a8a4e2c456029a931a9db00b6",
+  "binary_sha256": "7405cc006c1d05d2748aee1955bfd3db6e3edf4e6f723dd997e060bd22c6525b",
+  "images": {
+    "runner": {
+      "build": "kaas-r2-runner-1",
+      "phase": "Complete",
+      "started_UTC": "2026-11-26T11:32:46Z",
+      "completed_UTC": "2026-11-26T11:35:02Z",
+      "digest": "sha256:dec50714130f1244403f8bb1a79847dc28821b7e87a02507bbd923d081fe2d8d",
+      "image_reference": "image-registry.openshift-image-registry.svc:5000/kaas-demo/kaas-r2-runner@sha256:dec50714130f1244403f8bb1a79847dc28821b7e87a02507bbd923d081fe2d8d",
+      "architecture": "amd64",
+      "user": "1001:0",
+      "entrypoint": [
+        "/opt/r2/client-guard.sh"
+      ],
+      "builder_CMD": [
+        "/bin/sh",
+        "-c",
+        "null"
+      ],
+      "verification_marker": "R2_NATIVE_IDENTITY",
+      "layers": 7,
+      "size_bytes": 446645955
+    },
+    "sink": {
+      "build": "kaas-r2-sink-1",
+      "phase": "Complete",
+      "started_UTC": "2026-11-26T11:35:28Z",
+      "completed_UTC": "2026-11-26T11:36:51Z",
+      "digest": "sha256:f730c89baceda0f8a536ab9c94696b768c996fe55d60202300095b4d450efa25",
+      "image_reference": "image-registry.openshift-image-registry.svc:5000/kaas-demo/kaas-r2-sink@sha256:f730c89baceda0f8a536ab9c94696b768c996fe55d60202300095b4d450efa25",
+      "architecture": "amd64",
+      "user": "1001:0",
+      "entrypoint": [
+        "/opt/r2-sink/sink-guard.sh"
+      ],
+      "builder_CMD": [
+        "/bin/sh",
+        "-c",
+        "null"
+      ],
+      "verification_marker": "R2_SINK_MODULE_IMPORT_OK",
+      "layers": 5,
+      "size_bytes": 371338554
+    }
+  },
+  "tests_executed": false,
+  "Kafka_clients_constructed": false,
+  "sink_server_started": false,
+  "verification": "Build-time checksum/native inspect and Python module imports; registry image/build output metadata cross-check",
+  "separate_final_container_execution": "NOT_RUN",
+  "deployment_enabled": false,
+  "workloads_enabled": false,
+  "client_job_applied": false,
+  "sink_deployment_applied": false,
+  "approval_question_pending": false,
+  "credentials_persisted": false,
+  "image_registry_publication": "SANDBOX_INTERNAL_ONLY",
+  "git_publication": "NOT_REQUESTED_LOCAL_CHANGES",
+  "source_changes": "Sink Dockerfile module import check; disabled validator updated to accept exact verified digest pins",
+  "build_polling": "45-second wait polls expired while builds were progressing; both subsequently completed within 600-second build deadlines",
+  "existing_workload_objects_unchanged": 17,
+  "tests_note": "No regression, integration, load or producer/consumer tests executed in this increment; build-time inspect/import verification only",
+  "runtime_arguments_note": "Builder metadata encodes CMD [] as /bin/sh -c null; explicit guards ignore positional arguments and remain entrypoints. No server/native fixture is launched by the image build."
+}

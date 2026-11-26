@@ -39,7 +39,7 @@ data:
   runtime.json: "{\n  \"protocol\": \"kaas-r2-execution-v1\",\n  \"execution_authorized\"\
     : false,\n  \"tests_enabled\": false,\n  \"authority_reference\": null,\n  \"\
     plan_sha256\": \"78e427f79f510efe87834000371584394fc44ccd0ed4e0a903f919d31edca13d\"\
-    ,\n  \"image_digest\": null,\n  \"package_sha256\": \"d26b13cbc6e96bc56625adc26467b95a5a09cd011f525b9b6bb4ed8376ec93c0\"\
+    ,\n  \"image_digest\": \"sha256:dec50714130f1244403f8bb1a79847dc28821b7e87a02507bbd923d081fe2d8d\",\n  \"package_sha256\": \"d26b13cbc6e96bc56625adc26467b95a5a09cd011f525b9b6bb4ed8376ec93c0\"\
     ,\n  \"job_start_unix_ms\": null,\n  \"sink_origin\": \"https://kaas-r2-evidence.kaas-demo.svc:8443\"\
     ,\n  \"exclusive_fixture_groups\": [],\n  \"gates\": {\n    \"native_image_and_source\"\
     : \"OPEN\",\n    \"C3_changed_source_review\": \"OPEN\",\n    \"C6_changed_source_review\"\
@@ -121,7 +121,7 @@ spec:
       terminationGracePeriodSeconds: 0
       containers:
       - name: native-client
-        image: invalid.invalid/kaas-r2-native@sha256:0000000000000000000000000000000000000000000000000000000000000000
+        image: image-registry.openshift-image-registry.svc:5000/kaas-demo/kaas-r2-runner@sha256:dec50714130f1244403f8bb1a79847dc28821b7e87a02507bbd923d081fe2d8d
         imagePullPolicy: IfNotPresent
         command:
         - /opt/r2/client-guard.sh
@@ -267,7 +267,7 @@ spec:
       terminationGracePeriodSeconds: 10
       containers:
       - name: evidence
-        image: invalid.invalid/kaas-r2-evidence@sha256:0000000000000000000000000000000000000000000000000000000000000000
+        image: image-registry.openshift-image-registry.svc:5000/kaas-demo/kaas-r2-sink@sha256:f730c89baceda0f8a536ab9c94696b768c996fe55d60202300095b4d450efa25
         imagePullPolicy: IfNotPresent
         command:
         - /opt/r2-sink/sink-guard.sh

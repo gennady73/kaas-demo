@@ -1,0 +1,151 @@
+{
+    "apiVersion": "build.openshift.io/v1",
+    "kind": "Build",
+    "metadata": {
+        "annotations": {
+            "openshift.io/build-config.name": "kaas-r2-sink",
+            "openshift.io/build.number": "1",
+            "openshift.io/build.pod-name": "kaas-r2-sink-1-build"
+        },
+        "creationTimestamp": "2026-11-26T11:35:28Z",
+        "generation": 2,
+        "labels": {
+            "buildconfig": "kaas-r2-sink",
+            "kaas.example.com/package": "r2-native-disabled",
+            "openshift.io/build-config.name": "kaas-r2-sink",
+            "openshift.io/build.start-policy": "Serial"
+        },
+        "name": "kaas-r2-sink-1",
+        "namespace": "kaas-demo",
+        "ownerReferences": [
+            {
+                "apiVersion": "build.openshift.io/v1",
+                "controller": true,
+                "kind": "BuildConfig",
+                "name": "kaas-r2-sink",
+                "uid": "90de2a02-1388-4bc0-8afa-6ce8fde941d1"
+            }
+        ],
+        "resourceVersion": "1049266",
+        "uid": "ce232eb6-0034-4603-bf0b-18ce3467892a"
+    },
+    "spec": {
+        "completionDeadlineSeconds": 600,
+        "nodeSelector": {
+            "kubernetes.io/arch": "amd64",
+            "kubernetes.io/os": "linux"
+        },
+        "output": {
+            "pushSecret": {
+                "name": "builder-dockercfg-pp7mb"
+            },
+            "to": {
+                "kind": "ImageStreamTag",
+                "name": "kaas-r2-sink:candidate-20261126"
+            }
+        },
+        "postCommit": {},
+        "resources": {
+            "limits": {
+                "cpu": "500m",
+                "memory": "512Mi"
+            },
+            "requests": {
+                "cpu": "100m",
+                "memory": "128Mi"
+            }
+        },
+        "serviceAccount": "builder",
+        "source": {
+            "binary": {},
+            "type": "Binary"
+        },
+        "strategy": {
+            "dockerStrategy": {
+                "dockerfilePath": "Dockerfile"
+            },
+            "type": "Docker"
+        }
+    },
+    "status": {
+        "completionTimestamp": "2026-11-26T11:36:51Z",
+        "conditions": [
+            {
+                "lastTransitionTime": "2026-11-26T11:35:28Z",
+                "lastUpdateTime": "2026-11-26T11:35:28Z",
+                "status": "False",
+                "type": "New"
+            },
+            {
+                "lastTransitionTime": "2026-11-26T11:35:29Z",
+                "lastUpdateTime": "2026-11-26T11:35:29Z",
+                "status": "False",
+                "type": "Pending"
+            },
+            {
+                "lastTransitionTime": "2026-11-26T11:36:51Z",
+                "lastUpdateTime": "2026-11-26T11:36:51Z",
+                "status": "False",
+                "type": "Running"
+            },
+            {
+                "lastTransitionTime": "2026-11-26T11:36:51Z",
+                "lastUpdateTime": "2026-11-26T11:36:51Z",
+                "status": "True",
+                "type": "Complete"
+            }
+        ],
+        "config": {
+            "kind": "BuildConfig",
+            "name": "kaas-r2-sink",
+            "namespace": "kaas-demo"
+        },
+        "duration": 83000000000,
+        "output": {
+            "to": {
+                "imageDigest": "sha256:f730c89baceda0f8a536ab9c94696b768c996fe55d60202300095b4d450efa25"
+            }
+        },
+        "outputDockerImageReference": "image-registry.openshift-image-registry.svc:5000/kaas-demo/kaas-r2-sink:candidate-20261126",
+        "phase": "Complete",
+        "stages": [
+            {
+                "durationMilliseconds": 60653,
+                "name": "PullImages",
+                "startTime": "2026-11-26T11:35:32Z",
+                "steps": [
+                    {
+                        "durationMilliseconds": 60653,
+                        "name": "PullBaseImage",
+                        "startTime": "2026-11-26T11:35:32Z"
+                    }
+                ]
+            },
+            {
+                "durationMilliseconds": 14559,
+                "name": "Build",
+                "startTime": "2026-11-26T11:36:32Z",
+                "steps": [
+                    {
+                        "durationMilliseconds": 14559,
+                        "name": "DockerBuild",
+                        "startTime": "2026-11-26T11:36:32Z"
+                    }
+                ]
+            },
+            {
+                "durationMilliseconds": 1906,
+                "name": "PushImage",
+                "startTime": "2026-11-26T11:36:47Z",
+                "steps": [
+                    {
+                        "durationMilliseconds": 1906,
+                        "name": "PushDockerImage",
+                        "startTime": "2026-11-26T11:36:47Z"
+                    }
+                ]
+            }
+        ],
+        "startTimestamp": "2026-11-26T11:35:28Z"
+    }
+}

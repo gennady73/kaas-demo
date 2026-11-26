@@ -1,0 +1,16 @@
+{
+  "date": "2026-11-26",
+  "status": "PRECOMMIT_STATIC_REVIEW_PASS",
+  "base_commit": "1a4ed9d95327bdfeea56777f36bd34a8f66849aa",
+  "tests_executed": false,
+  "cluster_access": false,
+  "build_records_and_registry_digest_pins_match": true,
+  "client_suspended": true,
+  "sink_replicas": 0,
+  "sink_paused": true,
+  "authorization": false,
+  "gates": "ALL_11_OPEN",
+  "active_GitOps_references": 0,
+  "unchanged_native_source_files": 39,
+  "historical_receipts": "results.json and earlier validation files retain preparation/build-time publication statuses"
+}
