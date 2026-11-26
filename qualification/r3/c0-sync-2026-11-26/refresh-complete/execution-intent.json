@@ -1,0 +1,17 @@
+{
+  "case": "R3-SYNC-RO-01",
+  "attempt": "USER_DIRECTED_RENEWED_MEMORY_SESSION",
+  "at_utc": "2026-11-26T18:45:25.819104+00:00",
+  "authority": "User renewed credential in response to authentication hold; resume previously authorized bounded read-only scope",
+  "prior_attempt": "docs/coordination/r3-readonly-refresh-2026-11-26/evidence/result.json",
+  "prior_request_count": 1,
+  "maximum_requests_this_attempt": 39,
+  "combined_request_cap": 40,
+  "target": "https://api.ocp.rddgh.sandbox3088.opentlc.com:6443",
+  "credential_delivery": "Interactive getpass to memory only; no oc login or kubeconfig update",
+  "source_sha256": "37ad35623ba588cf89d778e0688431832afdadedb6fe3b6be9e5b4a1d8f72304",
+  "TLS": "Captured API CA, CERT_REQUIRED/hostname verification",
+  "resource_or_Job_changes": false,
+  "workloads": false,
+  "packet": "docs/coordination/r3-sync-2026-11-26/next-step.disabled.json"
+}

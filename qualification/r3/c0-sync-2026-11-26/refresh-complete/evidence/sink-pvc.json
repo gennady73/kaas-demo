@@ -1,0 +1,17 @@
+{
+  "metadata": {
+    "name": "kaas-r2-native-evidence",
+    "namespace": "kaas-demo",
+    "uid": "d2cd40eb-6e4b-48d2-a2af-d4b5d10879a2",
+    "generation": null,
+    "resourceVersion": "1057001"
+  },
+  "phase": "Bound",
+  "storageClass": "gp3-csi",
+  "requested": {
+    "storage": "1Gi"
+  },
+  "capacity": {
+    "storage": "1Gi"
+  }
+}

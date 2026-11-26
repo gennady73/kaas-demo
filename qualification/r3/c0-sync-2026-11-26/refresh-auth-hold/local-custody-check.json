@@ -1,0 +1,24 @@
+{
+  "at_utc": "2026-11-26T18:38:37.552159+00:00",
+  "status": "LOCAL_CUSTODY_REFERENCE_AND_EXPORT_BYTES_VERIFIED",
+  "workspace_case": "docs/testing/runs/r2-native-05a3f2d-retest-20261126",
+  "event_count": 182,
+  "export_sha256": "18ba064608624da60e80101aaea81af9f0e8bfe9f4edbed126cc5903dd66c96e",
+  "saved_seal_matches_current_local_bytes": true,
+  "files_sha256": {
+    "docs/testing/runs/r2-native-05a3f2d-retest-20261126/events.ndjson": "18ba064608624da60e80101aaea81af9f0e8bfe9f4edbed126cc5903dd66c96e",
+    "docs/testing/runs/r2-native-05a3f2d-retest-20261126/seal.json": "ae1c14450520f6dbacd36d5002c494369d2be7489ec655a7b746fce2282d8cdf",
+    "docs/testing/runs/r2-native-05a3f2d-retest-20261126/custody.json": "3ccef7a330f079852633b8a8099110ea31b6ecedcad06aae14feba5b3df41304",
+    "docs/testing/runs/r2-native-05a3f2d-retest-20261126/results.json": "fd6b4fc42125e251a2e69ac0377263ce08c575ee33a9954501851e1bd94a011f",
+    "docs/testing/runs/r2-native-05a3f2d-retest-20261126/r2-closeout.json": "d1c536187e864b986145127cf0b9c6d47d7804450f0f4f5be1b3da20ed4b6e85"
+  },
+  "R2_scope": "16positive/eightnegative bounded fixture accepted; no rerun",
+  "sandbox_retention_days": 7,
+  "retain_until_at_least_UTC": "2026-12-03T15:12:05Z",
+  "retention_end_does_not_authorize_deletion": true,
+  "sandbox_copy_current_existence_or_headroom": "NOT_CHECKED_AUTHENTICATION_401",
+  "workspace_copy_current_readability": "VERIFIED_LOCAL_BYTES_ONLY_NOT_STORAGE_FAILURE_QUALIFICATION",
+  "ongoing_custodian": "OPEN_C7_RECORD_USER_IS_ACCOUNTABLE_OWNER_ONLY",
+  "monitoring_receiver": "NOT_REFRESHED_AUTHENTICATION_401_NO_SECRET_ACCESS",
+  "no_new_export_or_evidence_acquisition_from_cluster": true
+}

@@ -1,0 +1,11 @@
+{
+  "attributes": {
+    "resource": "prometheusrules",
+    "group": "monitoring.coreos.com",
+    "namespace": "kaas-kafka",
+    "verb": "list"
+  },
+  "allowed": true,
+  "denied": null,
+  "evaluationError": false
+}

@@ -1,0 +1,15 @@
+{
+  "metadata": {
+    "name": "argocd-cm",
+    "namespace": "openshift-gitops",
+    "uid": "1daddbec-eb4a-46b4-893c-57f8e18f0a07",
+    "generation": null,
+    "resourceVersion": "189706"
+  },
+  "selected_data": {
+    "admin.enabled": "true",
+    "exec.enabled": "false",
+    "application.resourceTrackingMethod": "annotation",
+    "application.instanceLabelKey": "app.kubernetes.io/instance"
+  }
+}

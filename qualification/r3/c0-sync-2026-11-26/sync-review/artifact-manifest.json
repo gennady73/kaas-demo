@@ -1,0 +1,13 @@
+{
+  "algorithm": "sha256",
+  "scope": "C0 sync artifacts, excluding manifest and Python caches",
+  "files": {
+    "README.md": "30eaf8c60f95ebcd1e72beed27d194fb2a2a18ea0d88e81ea220ef3af789c761",
+    "integrity-checks.json": "5703eb48429054ec142abb0083ee659580626c6ccc5528480a494838da0fbcfb",
+    "next-step.disabled.json": "8bd3bc033549991b82b4762643a19178a89ae7ed98d69edd62137d03898d7f08",
+    "result.json": "f754c0ed6b8fb1660c8694794d23d2614c2e9375db9d9c62038167d315bd204b",
+    "review-checks.json": "05b9b7ea1f3ec692a5e91dcd149fff20526bd81c3e2eafacc833f3cd1de20f47",
+    "source-index.json": "59967fc4505e6e13bf04368c6c348793454bad8907e9f8bc2bf4496a3124eba9",
+    "thread-status.json": "dc2f0fbc462096d59084fb948a77a7877f942a005e4b7435d5396d92d32d7d74"
+  }
+}

@@ -1,0 +1,199 @@
+{
+  "items": [
+    {
+      "metadata": {
+        "name": "kaas-continuity-collector-ingress",
+        "namespace": "kaas-demo",
+        "uid": "528b9667-7be1-448f-8ff0-b12a141aa2ee",
+        "generation": 1,
+        "resourceVersion": "556842"
+      },
+      "spec": {
+        "podSelector": {
+          "matchLabels": {
+            "app.kubernetes.io/name": "kaas-continuity-collector"
+          }
+        },
+        "ingress": [
+          {
+            "ports": [
+              {
+                "protocol": "TCP",
+                "port": 8443
+              }
+            ],
+            "from": [
+              {
+                "podSelector": {
+                  "matchLabels": {
+                    "kaas-continuity-client": "true"
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "policyTypes": [
+          "Ingress"
+        ]
+      }
+    },
+    {
+      "metadata": {
+        "name": "kaas-r2-evidence",
+        "namespace": "kaas-demo",
+        "uid": "9e681840-1cca-44ef-9161-debac8b375ec",
+        "generation": 1,
+        "resourceVersion": "1051123"
+      },
+      "spec": {
+        "podSelector": {
+          "matchLabels": {
+            "kaas.example.com/r2-component": "evidence"
+          }
+        },
+        "ingress": [
+          {
+            "ports": [
+              {
+                "protocol": "TCP",
+                "port": 8443
+              }
+            ],
+            "from": [
+              {
+                "podSelector": {
+                  "matchLabels": {
+                    "kaas.example.com/r2-component": "client"
+                  }
+                },
+                "namespaceSelector": {
+                  "matchLabels": {
+                    "kubernetes.io/metadata.name": "kaas-demo"
+                  }
+                }
+              },
+              {
+                "podSelector": {
+                  "matchLabels": {
+                    "kaas.example.com/r2-evidence-owner": "true"
+                  }
+                },
+                "namespaceSelector": {
+                  "matchLabels": {
+                    "kubernetes.io/metadata.name": "kaas-demo"
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "policyTypes": [
+          "Ingress",
+          "Egress"
+        ]
+      }
+    },
+    {
+      "metadata": {
+        "name": "kaas-r2-native-client",
+        "namespace": "kaas-demo",
+        "uid": "c64acb7f-16d7-4381-b41d-2e1f7f7359da",
+        "generation": 2,
+        "resourceVersion": "1062328"
+      },
+      "spec": {
+        "podSelector": {
+          "matchLabels": {
+            "kaas.example.com/r2-component": "client"
+          }
+        },
+        "egress": [
+          {
+            "ports": [
+              {
+                "protocol": "UDP",
+                "port": 53
+              },
+              {
+                "protocol": "TCP",
+                "port": 53
+              },
+              {
+                "protocol": "UDP",
+                "port": 5353
+              },
+              {
+                "protocol": "TCP",
+                "port": 5353
+              }
+            ],
+            "to": [
+              {
+                "podSelector": {
+                  "matchLabels": {
+                    "dns.operator.openshift.io/daemonset-dns": "default"
+                  }
+                },
+                "namespaceSelector": {
+                  "matchLabels": {
+                    "kubernetes.io/metadata.name": "openshift-dns"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "ports": [
+              {
+                "protocol": "TCP",
+                "port": 9093
+              }
+            ],
+            "to": [
+              {
+                "podSelector": {
+                  "matchLabels": {
+                    "strimzi.io/cluster": "kaas-dev",
+                    "strimzi.io/name": "kaas-dev-kafka"
+                  }
+                },
+                "namespaceSelector": {
+                  "matchLabels": {
+                    "kubernetes.io/metadata.name": "kaas-kafka"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "ports": [
+              {
+                "protocol": "TCP",
+                "port": 8443
+              }
+            ],
+            "to": [
+              {
+                "podSelector": {
+                  "matchLabels": {
+                    "kaas.example.com/r2-component": "evidence"
+                  }
+                },
+                "namespaceSelector": {
+                  "matchLabels": {
+                    "kubernetes.io/metadata.name": "kaas-demo"
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "policyTypes": [
+          "Ingress",
+          "Egress"
+        ]
+      }
+    }
+  ]
+}

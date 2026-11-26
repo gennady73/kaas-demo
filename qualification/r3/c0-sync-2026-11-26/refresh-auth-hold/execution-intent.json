@@ -1,0 +1,30 @@
+{
+  "case": "R3-SYNC-RO-01",
+  "at_utc": "2026-11-26T18:38:06.731414+00:00",
+  "authority": "Current user explicitly authorized bounded read-only sandbox refresh; keep all four Jobs suspended and no workloads/resource changes",
+  "executor": "C0 assistant using existing locally configured admin credential in memory only",
+  "target": "https://api.ocp.rddgh.sandbox3088.opentlc.com:6443",
+  "source_sha256": "1e0cb7f8cb8d8f2a2cf728f472fd677bf7d3e99ff5756dde1f8f554571cb805e",
+  "packet_reference": "docs/coordination/r3-sync-2026-11-26/next-step.disabled.json",
+  "limits": {
+    "seconds": 600,
+    "requests": 40,
+    "bytes_each": 1048576,
+    "bytes_total": 8388608,
+    "items": 100,
+    "request_timeout_seconds": 15,
+    "automatic_retries": 0
+  },
+  "selected_request_count_maximum": 38,
+  "allowed_methods": [
+    "GET",
+    "POST to SelfSubjectAccessReview only (nonpersistent; six maximum)"
+  ],
+  "TLS": "Existing captured API CA, hostname/CERT_REQUIRED; saved insecure flag ignored",
+  "Secret_API_reads": false,
+  "exec_or_logs": false,
+  "resource_changes": false,
+  "workloads": false,
+  "notifications": false,
+  "existing_disabled_profiles_unchanged": true
+}

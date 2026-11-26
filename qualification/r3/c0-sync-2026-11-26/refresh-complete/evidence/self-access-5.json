@@ -1,0 +1,12 @@
+{
+  "attributes": {
+    "resource": "configmaps",
+    "group": "",
+    "namespace": "openshift-gitops",
+    "verb": "get",
+    "name": "argocd-rbac-cm"
+  },
+  "allowed": true,
+  "denied": null,
+  "evaluationError": false
+}

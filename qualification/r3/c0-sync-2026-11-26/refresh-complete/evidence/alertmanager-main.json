@@ -1,0 +1,29 @@
+{
+  "metadata": {
+    "name": "main",
+    "namespace": "openshift-monitoring",
+    "uid": "1961f911-d92e-4c9b-876e-a056f5a924c3",
+    "generation": 1,
+    "resourceVersion": "1137501"
+  },
+  "selected_spec": {
+    "configSecret": null,
+    "alertmanagerConfigSelector": null,
+    "alertmanagerConfigNamespaceSelector": null,
+    "replicas": 2
+  },
+  "conditions": [
+    {
+      "type": "Available",
+      "status": "True",
+      "reason": "",
+      "lastTransitionTime": "2026-11-26T17:08:49Z"
+    },
+    {
+      "type": "Reconciled",
+      "status": "True",
+      "reason": "",
+      "lastTransitionTime": "2026-11-26T17:08:42Z"
+    }
+  ]
+}

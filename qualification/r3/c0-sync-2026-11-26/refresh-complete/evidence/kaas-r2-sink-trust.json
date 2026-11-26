@@ -1,0 +1,15 @@
+{
+  "metadata": {
+    "name": "kaas-r2-sink-trust",
+    "namespace": "kaas-demo",
+    "uid": "0e1748e8-7f3f-4407-badb-0cf7f78cac59",
+    "generation": null,
+    "resourceVersion": "1051114"
+  },
+  "public_data_keys": [
+    "service-ca.crt"
+  ],
+  "data_sha256": {
+    "service-ca.crt": "face8bd9faa46890ecee20d8548b148437c39b556a96054850966871ba154b25"
+  }
+}

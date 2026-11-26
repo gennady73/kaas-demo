@@ -1,0 +1,49 @@
+{
+  "source": "Codex read_thread latest-turn review, 2026-11-26; read-only status inspection, no new messages sent",
+  "threads": {
+    "C2": {
+      "thread_id": "01a1ea18-bec0-7b03-943f-fd95adb892ee",
+      "host": "local",
+      "observed_status": "idle",
+      "latest_turn": "completed",
+      "outcome": "READY_FOR_C0_REVIEW"
+    },
+    "C3": {
+      "thread_id": "01a1ea19-a7c4-78a0-84d9-5e55fc748b05",
+      "host": "local",
+      "observed_status": "idle",
+      "latest_turn": "completed",
+      "outcome": "READY_FOR_C0_REVIEW"
+    },
+    "C4": {
+      "thread_id": "01a20e93-1e1e-7941-9ab5-49b775ed2193",
+      "host": "local",
+      "observed_status": "idle",
+      "latest_turn": "completed",
+      "outcome": "READY_FOR_C0_REVIEW"
+    },
+    "C5": {
+      "thread_id": "01a211d6-9f06-7d52-917f-954321d08bf8",
+      "host": "local",
+      "observed_status": "idle",
+      "latest_turn": "completed",
+      "outcome": "READY_FOR_C0_REVIEW"
+    },
+    "C6": {
+      "thread_id": "01a211d8-3ab9-7cf3-b086-65c0bc0d41c4",
+      "host": "local",
+      "observed_status": "idle",
+      "latest_turn": "completed",
+      "outcome": "BLOCKED_DIRECT_NO_ACTION_HOLD"
+    },
+    "C7": {
+      "thread_id": "01a211d8-e3db-70c2-81ed-60a28a0df049",
+      "host": "local",
+      "observed_status": "idle",
+      "latest_turn": "completed",
+      "outcome": "READY_FOR_C0_REVIEW"
+    }
+  },
+  "C6_final_excerpt": "BLOCKED by this chat\u2019s direct no-action instruction.",
+  "note": "Task completion is distinct from deliverable acceptance or runtime qualification"
+}

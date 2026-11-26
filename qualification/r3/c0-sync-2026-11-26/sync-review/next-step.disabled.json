@@ -1,0 +1,66 @@
+{
+  "id": "R3-SYNC-RO-01",
+  "status": "PROPOSED_BOUNDED_READ_ONLY_PACKET_NOT_EXECUTABLE_RUNNER",
+  "execution_enabled": false,
+  "deployment_enabled": false,
+  "workloads_enabled": false,
+  "authorization": null,
+  "executor": null,
+  "window": null,
+  "target": {
+    "api": "https://api.ocp.rddgh.sandbox3088.opentlc.com:6443",
+    "kafka": "kaas-kafka/kaas-dev",
+    "test_namespace": "kaas-demo",
+    "gitops_namespace": "openshift-gitops",
+    "repository": "https://github.com/gennady73/kaas-demo.git",
+    "resource_pin": "3211df93ae40d7d6f47c6334966ae6d1f658fee7",
+    "contract_review_commit": "8490ea628580393fbed78dbbdecb65dfc2afacdb"
+  },
+  "budget_proposal": {
+    "maximum_total_seconds": 600,
+    "maximum_remote_requests_total": 40,
+    "maximum_request_seconds": 15,
+    "maximum_response_bytes_each": 1048576,
+    "maximum_response_bytes_total": 8388608,
+    "maximum_list_items": 100,
+    "automatic_retries": 0,
+    "follow_pagination_or_redirects": false,
+    "new_Pods_Jobs_PVCs_Secrets_or_notifications": 0
+  },
+  "allowed_families": [
+    "Local existing CLI context/target and trusted TLS verification without credential output; authenticated identity must be established",
+    "GET exact two tenant Applications/AppProjects, selected Argo configuration keys and effective source/manual/tracking metadata",
+    "GET Kafka kaas-dev, selected broker/operator Pod readiness metadata, named existing PVC metadata and four exact client Job suspend/active/completion metadata",
+    "GET selected existing Role/RoleBinding/controller role references and existing namespace network policies; sanitize subjects/config projections",
+    "At most six nonpersistent SelfSubjectAccessReview POSTs for current identity's named Application patch, Topic/User read and relevant config/monitoring/Job get permissions; no impersonation or persistent write",
+    "GET existing selected PrometheusRule/ServiceMonitor metadata and public monitoring endpoint references; names/labels from existing saved inventory, stop at missing/oversized scope",
+    "GET public CA metadata/selected ConfigMap trust references without private material; no TLS bypass",
+    "Optional GitHub GET metadata only for repository/default branch/rules/protections, within the same total cap and approved existing authentication",
+    "Inspect existing sanitized workspace custody/configuration references; use only a known approved monitoring query endpoint for existing PVC/headroom metadata if available within bounds, otherwise record OPEN"
+  ],
+  "client_Jobs_observe_only": [
+    "kaas-r2-native-client",
+    "kaas-r2-native-client-02e2e2f-r2",
+    "kaas-r2-native-client-351528d-r2",
+    "kaas-r2-native-client-05a3f2d-r2"
+  ],
+  "forbidden": [
+    "Any Secret API read including raw monitoring receiver Secret data",
+    "Pod exec/logs, client connection, producer/consumer/fault/notification/continuity tests",
+    "Any persistent create/update/patch/delete, sync, registration, pause/resume or Job mutation",
+    "Credentials written to disk/chat/evidence; TLS bypass; automatic remediation",
+    "Claiming notification delivery, live security denials, recovery or capacity from metadata"
+  ],
+  "response_handling": "Retain only explicit allowlisted metadata/config projections and counts; never full auth/provider or receiver configuration. On sensitive, truncated or unexpected data, discard unsafe content, preserve a sanitized failure note and stop the affected stage.",
+  "monitoring_receiver_secret_boundary": "Use existing sanitized export/reference if available; otherwise leave receiver/route OPEN and request only missing reference/owner, not secret values",
+  "stop": [
+    "Wrong target/identity/source, untrusted TLS, expired authentication or unavailable access: record OPEN and stop; no login/token/TLS workaround",
+    "Request/time/byte/item cap, pagination or required endpoint binding unresolved: stop and retain partial result; no broad discovery",
+    "Any unexpected mutation or active client Job: stop; do not suspend/repair it without separate authority",
+    "Missing configuration/series/receiver/headroom remains OPEN, never healthy zero or proof of absent monitoring"
+  ],
+  "output": "One sanitized timestamped source/control/health/monitoring-custody delta report, explicit missing references and preserved four-Job state; no live result exists yet",
+  "custody": "Existing seven-day sandbox plus workspace policy reused; append separately identified refresh evidence, preserve all prior attempts and do not delete anything",
+  "decision_needed_to_execute": "Explicit user authorization for this packet and an existing valid local session; exact allowed query bindings/projections must be checked before the first remote request",
+  "C6_dependency": "Missing C6 concurrence remains visible; no blocked security test or sign-off is substituted by this read-only packet"
+}

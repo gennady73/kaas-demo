@@ -1,0 +1,21 @@
+{
+  "case": "R3-SYNC-RO-01",
+  "status": "AUTHENTICATION_HOLD_PARTIAL_STOPPED",
+  "live_refresh_completed": false,
+  "strict_API_TLS": "SUCCEEDED_BEFORE_HTTP401",
+  "credential_result": "REJECTED_HTTP401_EXPIRY_NOT_ESTABLISHED",
+  "remote_requests": 1,
+  "authenticated_identity": null,
+  "effective_controls": "NOT_REFRESHED",
+  "four_Job_states": "NOT_OBSERVED_LAST_SAVED_ALL_SUSPENDED",
+  "monitoring_and_sandbox_custody": "NOT_REFRESHED",
+  "local_workspace_export": "VERIFIED182EVENTS_MATCH_SAVED_SEAL",
+  "required_input": "Renew existing local oc login for exactsandbox and replyReady; token stays out of chat",
+  "automatic_retries": 0,
+  "jobs_changed": false,
+  "resources_changed": false,
+  "workloads_run": false,
+  "credentials_saved": false,
+  "next_remote_execution": "WAIT_FOR_USER_RENEWED_SESSION_FRESH_EVIDENCE_DIRECTORY",
+  "publication": "LOCAL_ONLY_NOT_REQUESTED"
+}

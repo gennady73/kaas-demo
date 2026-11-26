@@ -1,0 +1,16 @@
+{
+  "status": "REFRESH_EVIDENCE_AND_PRESERVATION_PASS",
+  "earlier401_artifacts_unchanged": true,
+  "native_source_fingerprints_unchanged": 46,
+  "source_matches_executed_intent": true,
+  "requests38_plus_earlier1_within40": true,
+  "six_nonpersistent_access_reviews_only_POSTs": true,
+  "four_jobs_suspend_true_active0_observed": true,
+  "Secret_API_reads": 0,
+  "resources_changed": false,
+  "jobs_changed": false,
+  "workloads_run": false,
+  "credentials_saved": false,
+  "local_kubeconfig_changed": false,
+  "prior_suites_rerun": false
+}

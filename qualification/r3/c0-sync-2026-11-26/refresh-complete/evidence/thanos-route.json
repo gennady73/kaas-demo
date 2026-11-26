@@ -1,0 +1,10 @@
+{
+  "metadata": {
+    "name": "thanos-querier",
+    "namespace": "openshift-monitoring",
+    "uid": "798482c0-fcec-4766-a9cd-6adcb9418c7d",
+    "generation": 1,
+    "resourceVersion": "27081"
+  },
+  "host": "thanos-querier-openshift-monitoring.apps.ocp.rddgh.sandbox3088.opentlc.com"
+}

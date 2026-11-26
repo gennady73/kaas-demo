@@ -1,0 +1,28 @@
+{
+  "status": "success",
+  "resultType": "vector",
+  "results": [
+    {
+      "metric": {
+        "__name__": "kubelet_volume_stats_available_bytes",
+        "namespace": "kaas-demo",
+        "persistentvolumeclaim": "kaas-r2-native-evidence"
+      },
+      "value": [
+        1795718752.238,
+        "999993344"
+      ]
+    },
+    {
+      "metric": {
+        "__name__": "kubelet_volume_stats_capacity_bytes",
+        "namespace": "kaas-demo",
+        "persistentvolumeclaim": "kaas-r2-native-evidence"
+      },
+      "value": [
+        1795718752.238,
+        "1020702720"
+      ]
+    }
+  ]
+}

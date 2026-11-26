@@ -1,0 +1,12 @@
+{
+  "metadata": {
+    "name": "default-ingress-cert",
+    "namespace": "openshift-config-managed",
+    "uid": "85015fac-3d9e-40cb-9dcd-112432e406c2",
+    "generation": null,
+    "resourceVersion": "32917"
+  },
+  "public_data_keys": [
+    "ca-bundle.crt"
+  ]
+}

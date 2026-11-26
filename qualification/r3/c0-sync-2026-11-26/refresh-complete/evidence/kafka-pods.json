@@ -1,0 +1,205 @@
+{
+  "items": [
+    {
+      "metadata": {
+        "name": "kaas-dev-dual-role-0",
+        "namespace": "kaas-kafka",
+        "uid": "6999e7c8-9c3d-40cc-8b2d-e254454892b2",
+        "generation": 1,
+        "resourceVersion": "1141485"
+      },
+      "phase": "Running",
+      "conditions": [
+        {
+          "type": "PodReadyToStartContainers",
+          "status": "True",
+          "reason": null,
+          "lastTransitionTime": "2026-11-26T17:14:08Z"
+        },
+        {
+          "type": "Initialized",
+          "status": "True",
+          "reason": null,
+          "lastTransitionTime": "2026-11-26T17:13:48Z"
+        },
+        {
+          "type": "Ready",
+          "status": "True",
+          "reason": null,
+          "lastTransitionTime": "2026-11-26T17:14:30Z"
+        },
+        {
+          "type": "ContainersReady",
+          "status": "True",
+          "reason": null,
+          "lastTransitionTime": "2026-11-26T17:14:30Z"
+        },
+        {
+          "type": "PodScheduled",
+          "status": "True",
+          "reason": null,
+          "lastTransitionTime": "2026-11-26T17:13:48Z"
+        }
+      ],
+      "containers": [
+        {
+          "name": "kafka",
+          "ready": true,
+          "restartCount": 0
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "kaas-dev-dual-role-1",
+        "namespace": "kaas-kafka",
+        "uid": "22991711-49e5-433a-afef-d1ed5adf2185",
+        "generation": 1,
+        "resourceVersion": "1140287"
+      },
+      "phase": "Running",
+      "conditions": [
+        {
+          "type": "PodReadyToStartContainers",
+          "status": "True",
+          "reason": null,
+          "lastTransitionTime": "2026-11-26T17:07:56Z"
+        },
+        {
+          "type": "Initialized",
+          "status": "True",
+          "reason": null,
+          "lastTransitionTime": "2026-11-24T13:23:30Z"
+        },
+        {
+          "type": "Ready",
+          "status": "True",
+          "reason": null,
+          "lastTransitionTime": "2026-11-26T17:12:00Z"
+        },
+        {
+          "type": "ContainersReady",
+          "status": "True",
+          "reason": null,
+          "lastTransitionTime": "2026-11-26T17:12:00Z"
+        },
+        {
+          "type": "PodScheduled",
+          "status": "True",
+          "reason": null,
+          "lastTransitionTime": "2026-11-24T13:23:30Z"
+        }
+      ],
+      "containers": [
+        {
+          "name": "kafka",
+          "ready": true,
+          "restartCount": 4
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "kaas-dev-dual-role-2",
+        "namespace": "kaas-kafka",
+        "uid": "f346a03e-269e-409c-a343-6fce146d5229",
+        "generation": 1,
+        "resourceVersion": "1140345"
+      },
+      "phase": "Running",
+      "conditions": [
+        {
+          "type": "PodReadyToStartContainers",
+          "status": "True",
+          "reason": null,
+          "lastTransitionTime": "2026-11-26T17:11:36Z"
+        },
+        {
+          "type": "Initialized",
+          "status": "True",
+          "reason": null,
+          "lastTransitionTime": "2026-11-23T11:32:46Z"
+        },
+        {
+          "type": "Ready",
+          "status": "True",
+          "reason": null,
+          "lastTransitionTime": "2026-11-26T17:12:07Z"
+        },
+        {
+          "type": "ContainersReady",
+          "status": "True",
+          "reason": null,
+          "lastTransitionTime": "2026-11-26T17:12:07Z"
+        },
+        {
+          "type": "PodScheduled",
+          "status": "True",
+          "reason": null,
+          "lastTransitionTime": "2026-11-23T11:32:46Z"
+        }
+      ],
+      "containers": [
+        {
+          "name": "kafka",
+          "ready": true,
+          "restartCount": 3
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "kaas-dev-entity-operator-7b447f8867-fj5mn",
+        "namespace": "kaas-kafka",
+        "uid": "0e091c10-24f9-455b-a41c-b33e8401f8cb",
+        "generation": 1,
+        "resourceVersion": "1141330"
+      },
+      "phase": "Running",
+      "conditions": [
+        {
+          "type": "PodReadyToStartContainers",
+          "status": "True",
+          "reason": null,
+          "lastTransitionTime": "2026-11-26T17:13:50Z"
+        },
+        {
+          "type": "Initialized",
+          "status": "True",
+          "reason": null,
+          "lastTransitionTime": "2026-11-26T17:13:47Z"
+        },
+        {
+          "type": "Ready",
+          "status": "True",
+          "reason": null,
+          "lastTransitionTime": "2026-11-26T17:14:12Z"
+        },
+        {
+          "type": "ContainersReady",
+          "status": "True",
+          "reason": null,
+          "lastTransitionTime": "2026-11-26T17:14:12Z"
+        },
+        {
+          "type": "PodScheduled",
+          "status": "True",
+          "reason": null,
+          "lastTransitionTime": "2026-11-26T17:13:47Z"
+        }
+      ],
+      "containers": [
+        {
+          "name": "topic-operator",
+          "ready": true,
+          "restartCount": 0
+        },
+        {
+          "name": "user-operator",
+          "ready": true,
+          "restartCount": 0
+        }
+      ]
+    }
+  ]
+}

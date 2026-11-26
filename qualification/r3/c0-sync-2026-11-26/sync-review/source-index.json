@@ -1,0 +1,88 @@
+{
+  "at_utc": "2026-11-26T18:20:12.999220+00:00",
+  "source_repositories": {
+    "kaas_demo": "8490ea628580393fbed78dbbdecb65dfc2afacdb",
+    "kafka_load_test": "888276c20ad5eecdaaa2f40a98592118acc4a184"
+  },
+  "areas": {
+    "C2": {
+      "disposition": "ACCEPTED_OFFLINE_GENERATION_PREPARATION_C3_CODE_REVIEW_AND_RUNTIME_INTEGRATION_OPEN",
+      "files": {
+        "docs/testing/r3-c2-payload-2026-11-26/README.md": "c229465d1667b7e50e801e755b2f8736df5f47eb0f601ab2389d0f964eb9d075",
+        "docs/testing/r3-c2-payload-2026-11-26/compile-sample.mjs": "490ec57059535d679bb82294ea9ab98aeaec3bd561826ff7200cc93ccd6495f1",
+        "docs/testing/r3-c2-payload-2026-11-26/compiled-sample.disabled.json": "28e2d0e31ca4760d8f99271df6a4751bc39a1e9eaabf76f8201f283b6bbf89b0",
+        "docs/testing/r3-c2-payload-2026-11-26/handoff-manifest.json": "1d4930f81aa613cdc6df3701017848914d81c8ff229ec06563d744d8f9ffbbff",
+        "docs/testing/r3-c2-payload-2026-11-26/preserved-before.json": "8a28c03cffc7c40da62e627adecb78111bf42f36e12964b8de4a2de07dc92b0c",
+        "docs/testing/r3-c2-payload-2026-11-26/sample-compilation.json": "6136e2b020a274a7410d1a6c371112a31e74f9996ff59bbdf6786cebc16702e7",
+        "docs/testing/r3-c2-payload-2026-11-26/tests.tap": "d282a4bfc51e793568a86c19c2ee40e66fa50c6be82c8c9dd5dac0eec73829d0",
+        "docs/testing/r3-c2-payload-2026-11-26/validation.json": "91d1cbdd9917f55e6310568286eac95ce9247b067b674dbd4260599bf32ef27a",
+        "docs/testing/r3-c2-payload-2026-11-26/verify-handoff.py": "dc3063dd6e932b5e2f8ee63bca612b366430d4f56010bfae18937946e4b1aa09"
+      },
+      "adapter_files": {
+        "kafka-load-test/preflight/r3-payload/README.md": "cc68cca0c826285119f34131b91703b688a405b9a92cef16608bc76397ecc9f9",
+        "kafka-load-test/preflight/r3-payload/adapter.mjs": "ec9fb5b0bed5c07f27257e6212c0c9e05ab9558b487abeecbc17bcb95e107dff",
+        "kafka-load-test/preflight/r3-payload/sample.disabled.json": "2c5bb14e1f23b44e9422f03fa99a5410fa1166dc517bfb019339369be7a5535e",
+        "kafka-load-test/preflight/r3-payload/test-adapter.mjs": "bc2ae8586f51f5e34cb8528491ac0c5acdfbd9b5e7d7f0e590daf9c685e5b58c"
+      }
+    },
+    "C3": {
+      "disposition": "ACCEPTED_FINITE_EXIT_MATRIX_NO_NEW_REQUIREMENTS",
+      "files": {
+        "docs/testing/r3-c3-exit-matrix-2026-11-26/README.md": "b569772207c3edf6044c56814944ffdc03317ad79b02c76f970acdefc50f4bd2",
+        "docs/testing/r3-c3-exit-matrix-2026-11-26/exit-matrix.json": "1ad6aefd026d7eeb4670a323cab904f851f6368ebfb6eee4af012af8f8fdc935",
+        "docs/testing/r3-c3-exit-matrix-2026-11-26/source-snapshot.json": "776e7f2e5081b05930b7a157e79e2fcd9a335bdc4245c7d759b495b3b506ed91",
+        "docs/testing/r3-c3-exit-matrix-2026-11-26/validation.json": "7bd37c3630e698896b271a2e1d012168bea8da7ff976cb170f0b71bf0323388b"
+      }
+    },
+    "C4": {
+      "disposition": "ACCEPTED_DISABLED_CANARY_PREPARATION_NR05_DOCUMENTATION_CLOSED_BY_OWNER",
+      "files": {
+        "docs/platform/r3-c4-lifecycle-2026-11-26/01-create/kustomization.yaml": "4fe0245114630ad93c69d1c9c6d065f1a8d79aeabb30358883916a5f190d4fb5",
+        "docs/platform/r3-c4-lifecycle-2026-11-26/01-create/resources.yaml": "4c7e7a24c21bec7705e1b08719b893aeb0ed18cd6a53bd33237d2e1b2219697b",
+        "docs/platform/r3-c4-lifecycle-2026-11-26/02-quota-update/kustomization.yaml": "4fe0245114630ad93c69d1c9c6d065f1a8d79aeabb30358883916a5f190d4fb5",
+        "docs/platform/r3-c4-lifecycle-2026-11-26/02-quota-update/resources.yaml": "f8e3b8ad89c65d42d671bbc666bd01d8d7952850578a03b48b5d7d7bf4b6f926",
+        "docs/platform/r3-c4-lifecycle-2026-11-26/03-forward-correction/kustomization.yaml": "4fe0245114630ad93c69d1c9c6d065f1a8d79aeabb30358883916a5f190d4fb5",
+        "docs/platform/r3-c4-lifecycle-2026-11-26/03-forward-correction/resources.yaml": "4c7e7a24c21bec7705e1b08719b893aeb0ed18cd6a53bd33237d2e1b2219697b",
+        "docs/platform/r3-c4-lifecycle-2026-11-26/README.md": "4ea3a4004ec2078435b15e609075417e44ed8ae9cae12c9b3ad1d753a33a09a8",
+        "docs/platform/r3-c4-lifecycle-2026-11-26/artifact-manifest.json": "cf8ba1adc13789c7e9ddc376a0f0805ea1b4b27e763fdf1a80aa0354638dade4",
+        "docs/platform/r3-c4-lifecycle-2026-11-26/change-support.json": "0ea7bd02372c335c43437af4e244fa354821fe3c7d27f8f47a23d6645355da00",
+        "docs/platform/r3-c4-lifecycle-2026-11-26/proposed-allowlist.json": "a30355ddf458b403fc4e4683fae23ea9bd3ce88970b311392f71b8a212fc1ada",
+        "docs/platform/r3-c4-lifecycle-2026-11-26/proposed.diff": "71dd6ac3428d04d15ba665b9c5e100638f1e9ed15976a0a33e89601daf1c6a82",
+        "docs/platform/r3-c4-lifecycle-2026-11-26/registration-preview.yaml.template": "b5529cbbce3690a0ded589f8eec8e0ee47602f6f1d5103a484b6fc157ac61b5d",
+        "docs/platform/r3-c4-lifecycle-2026-11-26/result.json": "912459a6457f8d75811fdaaa6cb8cebc326fcb7f6fc304b7685e183e569e6a75",
+        "docs/platform/r3-c4-lifecycle-2026-11-26/validate_local.py": "ee7c2f44cecc94f3738353f8f553eaed3796bba26f9ab0ea9b52146d9eb85630",
+        "docs/platform/r3-c4-lifecycle-2026-11-26/validation.json": "1856bea743cce7c6cd24aabbc16e35e43397400fda79990ee4f6f8a52fa67509"
+      }
+    },
+    "C5": {
+      "disposition": "ACCEPTED_OPTIONAL_DECISION_PACKAGE_NOT_SELECTED_FOR_NEXT_INCREMENT",
+      "files": {
+        "docs/governance/r3-c5-decision-package-2026-11-26/README.md": "6b1e7a764d0691a5e46b5a65082c9e4b3d415d6afff839590014db2cd99570bf",
+        "docs/governance/r3-c5-decision-package-2026-11-26/ordered-package.json": "35d542575ebacf8e1f71dfe012ac3d2d0e34227b80ca86a9a625f8abf9abb2da",
+        "docs/governance/r3-c5-decision-package-2026-11-26/source-lock.json": "fab8fecddc18d14e245b4e8bfd2447c9df40b95fe7904c639f9b931b9cb66c19",
+        "docs/governance/r3-c5-decision-package-2026-11-26/validation.json": "22e2d9a80485efae46a6585f539411c9cc32201489c872511618c3b1cbc64794"
+      }
+    },
+    "C7": {
+      "disposition": "ACCEPTED_CURRENT_RECORDS_AND_MAPPING_OPERATIONAL_FIELDS_OPEN",
+      "files": {
+        "docs/operations/r3-c7-closeout-2026-11-26/README.md": "e59588e9356b83f5d84eba10b02b985e453467a984f4e5b8c81a6c2988e32677",
+        "docs/operations/r3-c7-closeout-2026-11-26/custody-check.json": "01eb8d434bcb50eb9175e4fc350d26186dfac83b0db4b736e78902b6a1c35c1c",
+        "docs/operations/r3-c7-closeout-2026-11-26/custody-record.json": "4ab31a4af8d5c0ee4070fb672836db8975656ccfb91cd31c3cdda80b3509975d",
+        "docs/operations/r3-c7-closeout-2026-11-26/monitoring-check.json": "3a38ffa6632b3d6e41f7d3d9798e80b77d76d5517239d98eb648fdb35349feb2",
+        "docs/operations/r3-c7-closeout-2026-11-26/monitoring-record.json": "9f53c8051d2c1b7d0fd34732c2ee0301df181543de23e7d0498caea52ea49b0c",
+        "docs/operations/r3-c7-closeout-2026-11-26/r3-03-mapping.md": "cf7d82a171774108ee0cd1341e40c568aed9ac6632acf26c8d2d98c98498fb27",
+        "docs/operations/r3-c7-closeout-2026-11-26/release-record.json": "c3cf5b8a321fd442cf268fad053451751981066a699c1b727b6fd2333a97c3a4",
+        "docs/operations/r3-c7-closeout-2026-11-26/support-check.json": "1a76653b806e6183438c06635d758f5b1e186b3cbb6a157d68113b219feae69d",
+        "docs/operations/r3-c7-closeout-2026-11-26/support-record.json": "66e017256a7de13299bc0621e783fab55e77a47d27da899ae5be969778ad12cf",
+        "docs/operations/r3-c7-closeout-2026-11-26/validation.json": "ec45ce14a6f979128a0fdff2865b1ed0e7a2be32087c3c40aeac0ef4b8d412ea"
+      }
+    },
+    "C6": {
+      "disposition": "BLOCKED_BY_DIRECT_CHAT_NO_ACTION_HOLD",
+      "output_directory_exists": false,
+      "technical_finding": "NOT_ASSESSED_NO_NEW_REVIEW",
+      "concurrence": "NOT_SUPPLIED"
+    }
+  }
+}

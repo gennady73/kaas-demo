@@ -1,0 +1,183 @@
+{
+  "items": [
+    {
+      "metadata": {
+        "name": "kaas-dev-entity-operator",
+        "namespace": "kaas-kafka",
+        "uid": "e48e71cb-2cee-46b7-b4e7-00d80a4c53fe",
+        "generation": 1,
+        "resourceVersion": "422548"
+      },
+      "spec": {
+        "podSelector": {
+          "matchLabels": {
+            "strimzi.io/cluster": "kaas-dev",
+            "strimzi.io/kind": "Kafka",
+            "strimzi.io/name": "kaas-dev-entity-operator"
+          }
+        },
+        "ingress": [
+          {
+            "ports": [
+              {
+                "protocol": "TCP",
+                "port": 8080
+              }
+            ]
+          },
+          {
+            "ports": [
+              {
+                "protocol": "TCP",
+                "port": 8081
+              }
+            ]
+          }
+        ],
+        "policyTypes": [
+          "Ingress"
+        ]
+      }
+    },
+    {
+      "metadata": {
+        "name": "kaas-dev-network-policy-kafka",
+        "namespace": "kaas-kafka",
+        "uid": "c56aaf5c-9592-467c-8d94-31bfae9a39c1",
+        "generation": 1,
+        "resourceVersion": "422041"
+      },
+      "spec": {
+        "podSelector": {
+          "matchLabels": {
+            "strimzi.io/cluster": "kaas-dev",
+            "strimzi.io/kind": "Kafka",
+            "strimzi.io/name": "kaas-dev-kafka"
+          }
+        },
+        "ingress": [
+          {
+            "ports": [
+              {
+                "protocol": "TCP",
+                "port": 9090
+              }
+            ],
+            "from": [
+              {
+                "podSelector": {
+                  "matchLabels": {
+                    "strimzi.io/cluster": "kaas-dev",
+                    "strimzi.io/kind": "Kafka",
+                    "strimzi.io/name": "kaas-dev-kafka"
+                  }
+                }
+              },
+              {
+                "podSelector": {
+                  "matchLabels": {
+                    "strimzi.io/kind": "cluster-operator"
+                  }
+                },
+                "namespaceSelector": {}
+              }
+            ]
+          },
+          {
+            "ports": [
+              {
+                "protocol": "TCP",
+                "port": 9091
+              }
+            ],
+            "from": [
+              {
+                "podSelector": {
+                  "matchLabels": {
+                    "strimzi.io/kind": "cluster-operator"
+                  }
+                },
+                "namespaceSelector": {}
+              },
+              {
+                "podSelector": {
+                  "matchLabels": {
+                    "strimzi.io/cluster": "kaas-dev",
+                    "strimzi.io/kind": "Kafka",
+                    "strimzi.io/name": "kaas-dev-kafka"
+                  }
+                }
+              },
+              {
+                "podSelector": {
+                  "matchLabels": {
+                    "strimzi.io/name": "kaas-dev-entity-operator"
+                  }
+                }
+              },
+              {
+                "podSelector": {
+                  "matchLabels": {
+                    "strimzi.io/name": "kaas-dev-kafka-exporter"
+                  }
+                }
+              },
+              {
+                "podSelector": {
+                  "matchLabels": {
+                    "strimzi.io/name": "kaas-dev-cruise-control"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "ports": [
+              {
+                "protocol": "TCP",
+                "port": 8443
+              }
+            ],
+            "from": [
+              {
+                "podSelector": {
+                  "matchLabels": {
+                    "strimzi.io/kind": "cluster-operator"
+                  }
+                },
+                "namespaceSelector": {}
+              }
+            ]
+          },
+          {
+            "ports": [
+              {
+                "protocol": "TCP",
+                "port": 9093
+              }
+            ],
+            "from": [
+              {
+                "namespaceSelector": {
+                  "matchLabels": {
+                    "kubernetes.io/metadata.name": "kaas-kafka"
+                  }
+                }
+              },
+              {
+                "namespaceSelector": {
+                  "matchLabels": {
+                    "kubernetes.io/metadata.name": "kaas-demo"
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "policyTypes": [
+          "Ingress"
+        ]
+      }
+    }
+  ]
+}

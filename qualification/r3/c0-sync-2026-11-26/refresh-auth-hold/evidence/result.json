@@ -1,0 +1,31 @@
+{
+  "status": "PARTIAL_STOPPED",
+  "started_at_utc": "2026-11-26T18:38:06.808927+00:00",
+  "finished_at_utc": "2026-11-26T18:38:07.471070+00:00",
+  "elapsed_seconds": 0.662,
+  "stop_reason": "identity_http_401",
+  "request_count": 1,
+  "response_bytes": 0,
+  "requests": [
+    {
+      "name": "identity",
+      "path": "/apis/user.openshift.io/v1/users/~",
+      "host": "https://api.ocp.rddgh.sandbox3088.opentlc.com:6443",
+      "method": "GET",
+      "at_utc": "2026-11-26T18:38:06.888032+00:00",
+      "http_status": 401,
+      "result": "OPEN_HTTP_401"
+    }
+  ],
+  "authenticated_identity": null,
+  "four_jobs_observed_suspended": false,
+  "jobs_changed": false,
+  "resources_changed": false,
+  "workloads_run": false,
+  "Secret_API_reads": 0,
+  "notifications_sent": 0,
+  "credentials_saved": false,
+  "GitHub_effective_controls": "NOT_REFRESHED_OPTIONAL_BRANCH_NOT_SELECTED",
+  "receiver_delivery": "NOT_ASSESSED_NO_SECRET_OR_NOTIFICATION_ACCESS",
+  "custody": "Local saved references reviewed separately; live DB contents not read"
+}

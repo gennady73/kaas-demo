@@ -1,0 +1,55 @@
+{
+  "items": [
+    {
+      "metadata": {
+        "name": "data-kaas-dev-dual-role-0",
+        "namespace": "kaas-kafka",
+        "uid": "c5de6469-b3e0-4c17-9e30-5c1d949b18fa",
+        "generation": null,
+        "resourceVersion": "422174"
+      },
+      "phase": "Bound",
+      "storageClass": "gp3-csi",
+      "requested": {
+        "storage": "20Gi"
+      },
+      "capacity": {
+        "storage": "20Gi"
+      }
+    },
+    {
+      "metadata": {
+        "name": "data-kaas-dev-dual-role-1",
+        "namespace": "kaas-kafka",
+        "uid": "c2bd7c96-78d0-442a-a4be-4559c943aa69",
+        "generation": null,
+        "resourceVersion": "422178"
+      },
+      "phase": "Bound",
+      "storageClass": "gp3-csi",
+      "requested": {
+        "storage": "20Gi"
+      },
+      "capacity": {
+        "storage": "20Gi"
+      }
+    },
+    {
+      "metadata": {
+        "name": "data-kaas-dev-dual-role-2",
+        "namespace": "kaas-kafka",
+        "uid": "75b00ccd-d16b-4c33-922d-2993dfab4352",
+        "generation": null,
+        "resourceVersion": "422171"
+      },
+      "phase": "Bound",
+      "storageClass": "gp3-csi",
+      "requested": {
+        "storage": "20Gi"
+      },
+      "capacity": {
+        "storage": "20Gi"
+      }
+    }
+  ]
+}

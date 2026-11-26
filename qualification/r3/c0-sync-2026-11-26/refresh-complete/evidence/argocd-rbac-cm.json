@@ -1,0 +1,14 @@
+{
+  "metadata": {
+    "name": "argocd-rbac-cm",
+    "namespace": "openshift-gitops",
+    "uid": "d70059e3-33ff-47f1-adfc-e36c0c716fca",
+    "generation": null,
+    "resourceVersion": "184964"
+  },
+  "selected_data": {
+    "policy.csv": "g, system:cluster-admins, role:admin\ng, cluster-admins, role:admin\n",
+    "policy.default": "",
+    "scopes": "[groups]"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "attributes": {
+    "resource": "jobs",
+    "group": "batch",
+    "namespace": "kaas-demo",
+    "verb": "get",
+    "name": "kaas-r2-native-client"
+  },
+  "allowed": true,
+  "denied": null,
+  "evaluationError": false
+}

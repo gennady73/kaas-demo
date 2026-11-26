@@ -1,0 +1,25 @@
+{
+  "metadata": {
+    "name": "kaas-r2-evidence",
+    "namespace": "kaas-demo",
+    "uid": "83db3eda-9250-404b-8283-36762b151c56",
+    "generation": 4,
+    "resourceVersion": "1115849"
+  },
+  "replicas": 1,
+  "readyReplicas": 1,
+  "conditions": [
+    {
+      "type": "Available",
+      "status": "True",
+      "reason": "MinimumReplicasAvailable",
+      "lastTransitionTime": "2026-11-26T15:10:47Z"
+    },
+    {
+      "type": "Progressing",
+      "status": "True",
+      "reason": "NewReplicaSetAvailable",
+      "lastTransitionTime": "2026-11-26T11:57:43Z"
+    }
+  ]
+}

@@ -1,0 +1,403 @@
+{
+  "status": "BOUNDED_READ_ONLY_REFRESH_COMPLETE",
+  "started_at_utc": "2026-11-26T18:45:25.903489+00:00",
+  "finished_at_utc": "2026-11-26T18:45:52.327261+00:00",
+  "elapsed_seconds": 26.424,
+  "stop_reason": null,
+  "request_count": 38,
+  "response_bytes": 192745,
+  "requests": [
+    {
+      "name": "identity",
+      "path": "/apis/user.openshift.io/v1/users/~",
+      "host": "https://api.ocp.rddgh.sandbox3088.opentlc.com:6443",
+      "method": "GET",
+      "at_utc": "2026-11-26T18:45:32.667603+00:00",
+      "http_status": 200,
+      "response_bytes": 543,
+      "result": "PROJECTED_SAVED"
+    },
+    {
+      "name": "job-kaas-r2-native-client",
+      "path": "/apis/batch/v1/namespaces/kaas-demo/jobs/kaas-r2-native-client",
+      "host": "https://api.ocp.rddgh.sandbox3088.opentlc.com:6443",
+      "method": "GET",
+      "at_utc": "2026-11-26T18:45:33.271126+00:00",
+      "http_status": 200,
+      "response_bytes": 9134,
+      "result": "PROJECTED_SAVED"
+    },
+    {
+      "name": "job-kaas-r2-native-client-02e2e2f-r2",
+      "path": "/apis/batch/v1/namespaces/kaas-demo/jobs/kaas-r2-native-client-02e2e2f-r2",
+      "host": "https://api.ocp.rddgh.sandbox3088.opentlc.com:6443",
+      "method": "GET",
+      "at_utc": "2026-11-26T18:45:33.779895+00:00",
+      "http_status": 200,
+      "response_bytes": 9096,
+      "result": "PROJECTED_SAVED"
+    },
+    {
+      "name": "job-kaas-r2-native-client-351528d-r2",
+      "path": "/apis/batch/v1/namespaces/kaas-demo/jobs/kaas-r2-native-client-351528d-r2",
+      "host": "https://api.ocp.rddgh.sandbox3088.opentlc.com:6443",
+      "method": "GET",
+      "at_utc": "2026-11-26T18:45:34.269553+00:00",
+      "http_status": 200,
+      "response_bytes": 9096,
+      "result": "PROJECTED_SAVED"
+    },
+    {
+      "name": "job-kaas-r2-native-client-05a3f2d-r2",
+      "path": "/apis/batch/v1/namespaces/kaas-demo/jobs/kaas-r2-native-client-05a3f2d-r2",
+      "host": "https://api.ocp.rddgh.sandbox3088.opentlc.com:6443",
+      "method": "GET",
+      "at_utc": "2026-11-26T18:45:34.775775+00:00",
+      "http_status": 200,
+      "response_bytes": 9163,
+      "result": "PROJECTED_SAVED"
+    },
+    {
+      "name": "application-a",
+      "path": "/apis/argoproj.io/v1alpha1/namespaces/openshift-gitops/applications/kaas-sbx-tenants-a",
+      "host": "https://api.ocp.rddgh.sandbox3088.opentlc.com:6443",
+      "method": "GET",
+      "at_utc": "2026-11-26T18:45:35.281261+00:00",
+      "http_status": 200,
+      "response_bytes": 5195,
+      "result": "PROJECTED_SAVED"
+    },
+    {
+      "name": "appproject-a",
+      "path": "/apis/argoproj.io/v1alpha1/namespaces/openshift-gitops/appprojects/kaas-sbx-tenants-a",
+      "host": "https://api.ocp.rddgh.sandbox3088.opentlc.com:6443",
+      "method": "GET",
+      "at_utc": "2026-11-26T18:45:35.796954+00:00",
+      "http_status": 200,
+      "response_bytes": 867,
+      "result": "PROJECTED_SAVED"
+    },
+    {
+      "name": "application-b",
+      "path": "/apis/argoproj.io/v1alpha1/namespaces/openshift-gitops/applications/kaas-sbx-tenants-b",
+      "host": "https://api.ocp.rddgh.sandbox3088.opentlc.com:6443",
+      "method": "GET",
+      "at_utc": "2026-11-26T18:45:36.281542+00:00",
+      "http_status": 200,
+      "response_bytes": 5195,
+      "result": "PROJECTED_SAVED"
+    },
+    {
+      "name": "appproject-b",
+      "path": "/apis/argoproj.io/v1alpha1/namespaces/openshift-gitops/appprojects/kaas-sbx-tenants-b",
+      "host": "https://api.ocp.rddgh.sandbox3088.opentlc.com:6443",
+      "method": "GET",
+      "at_utc": "2026-11-26T18:45:36.793637+00:00",
+      "http_status": 200,
+      "response_bytes": 867,
+      "result": "PROJECTED_SAVED"
+    },
+    {
+      "name": "kafka",
+      "path": "/apis/kafka.strimzi.io/v1/namespaces/kaas-kafka/kafkas/kaas-dev",
+      "host": "https://api.ocp.rddgh.sandbox3088.opentlc.com:6443",
+      "method": "GET",
+      "at_utc": "2026-11-26T18:45:37.292606+00:00",
+      "http_status": 200,
+      "response_bytes": 7250,
+      "result": "PROJECTED_SAVED"
+    },
+    {
+      "name": "kafka-pods",
+      "path": "/api/v1/namespaces/kaas-kafka/pods?limit=100&labelSelector=strimzi.io%2Fcluster%3Dkaas-dev",
+      "host": "https://api.ocp.rddgh.sandbox3088.opentlc.com:6443",
+      "method": "GET",
+      "at_utc": "2026-11-26T18:45:37.802933+00:00",
+      "http_status": 200,
+      "response_bytes": 58051,
+      "result": "PROJECTED_SAVED"
+    },
+    {
+      "name": "kafka-pvcs",
+      "path": "/api/v1/namespaces/kaas-kafka/persistentvolumeclaims?limit=100&labelSelector=strimzi.io%2Fcluster%3Dkaas-dev",
+      "host": "https://api.ocp.rddgh.sandbox3088.opentlc.com:6443",
+      "method": "GET",
+      "at_utc": "2026-11-26T18:45:38.625563+00:00",
+      "http_status": 200,
+      "response_bytes": 8166,
+      "result": "PROJECTED_SAVED"
+    },
+    {
+      "name": "sink-deployment",
+      "path": "/apis/apps/v1/namespaces/kaas-demo/deployments/kaas-r2-evidence",
+      "host": "https://api.ocp.rddgh.sandbox3088.opentlc.com:6443",
+      "method": "GET",
+      "at_utc": "2026-11-26T18:45:39.119064+00:00",
+      "http_status": 200,
+      "response_bytes": 7662,
+      "result": "PROJECTED_SAVED"
+    },
+    {
+      "name": "sink-pvc",
+      "path": "/api/v1/namespaces/kaas-demo/persistentvolumeclaims/kaas-r2-native-evidence",
+      "host": "https://api.ocp.rddgh.sandbox3088.opentlc.com:6443",
+      "method": "GET",
+      "at_utc": "2026-11-26T18:45:39.609919+00:00",
+      "http_status": 200,
+      "response_bytes": 2547,
+      "result": "PROJECTED_SAVED"
+    },
+    {
+      "name": "argocd-cm",
+      "path": "/api/v1/namespaces/openshift-gitops/configmaps/argocd-cm",
+      "host": "https://api.ocp.rddgh.sandbox3088.opentlc.com:6443",
+      "method": "GET",
+      "at_utc": "2026-11-26T18:45:40.119770+00:00",
+      "http_status": 200,
+      "response_bytes": 3888,
+      "result": "PROJECTED_SAVED"
+    },
+    {
+      "name": "argocd-rbac-cm",
+      "path": "/api/v1/namespaces/openshift-gitops/configmaps/argocd-rbac-cm",
+      "host": "https://api.ocp.rddgh.sandbox3088.opentlc.com:6443",
+      "method": "GET",
+      "at_utc": "2026-11-26T18:45:40.616668+00:00",
+      "http_status": 200,
+      "response_bytes": 1205,
+      "result": "PROJECTED_SAVED"
+    },
+    {
+      "name": "controller-role",
+      "path": "/apis/rbac.authorization.k8s.io/v1/clusterroles/openshift-gitops-openshift-gitops-argocd-application-controller",
+      "host": "https://api.ocp.rddgh.sandbox3088.opentlc.com:6443",
+      "method": "GET",
+      "at_utc": "2026-11-26T18:45:41.101096+00:00",
+      "http_status": 200,
+      "response_bytes": 1997,
+      "result": "PROJECTED_SAVED"
+    },
+    {
+      "name": "controller-binding",
+      "path": "/apis/rbac.authorization.k8s.io/v1/clusterrolebindings/openshift-gitops-openshift-gitops-argocd-application-controller",
+      "host": "https://api.ocp.rddgh.sandbox3088.opentlc.com:6443",
+      "method": "GET",
+      "at_utc": "2026-11-26T18:45:41.599611+00:00",
+      "http_status": 200,
+      "response_bytes": 1245,
+      "result": "PROJECTED_SAVED"
+    },
+    {
+      "name": "networkpolicies-kaas-kafka",
+      "path": "/apis/networking.k8s.io/v1/namespaces/kaas-kafka/networkpolicies?limit=100",
+      "host": "https://api.ocp.rddgh.sandbox3088.opentlc.com:6443",
+      "method": "GET",
+      "at_utc": "2026-11-26T18:45:42.088554+00:00",
+      "http_status": 200,
+      "response_bytes": 4359,
+      "result": "PROJECTED_SAVED"
+    },
+    {
+      "name": "networkpolicies-kaas-demo",
+      "path": "/apis/networking.k8s.io/v1/namespaces/kaas-demo/networkpolicies?limit=100",
+      "host": "https://api.ocp.rddgh.sandbox3088.opentlc.com:6443",
+      "method": "GET",
+      "at_utc": "2026-11-26T18:45:42.578690+00:00",
+      "http_status": 200,
+      "response_bytes": 4884,
+      "result": "PROJECTED_SAVED"
+    },
+    {
+      "name": "kaas-r2-cluster-ca",
+      "path": "/api/v1/namespaces/kaas-demo/configmaps/kaas-r2-cluster-ca",
+      "host": "https://api.ocp.rddgh.sandbox3088.opentlc.com:6443",
+      "method": "GET",
+      "at_utc": "2026-11-26T18:45:43.068167+00:00",
+      "http_status": 200,
+      "response_bytes": 2435,
+      "result": "PROJECTED_SAVED"
+    },
+    {
+      "name": "kaas-r2-sink-trust",
+      "path": "/api/v1/namespaces/kaas-demo/configmaps/kaas-r2-sink-trust",
+      "host": "https://api.ocp.rddgh.sandbox3088.opentlc.com:6443",
+      "method": "GET",
+      "at_utc": "2026-11-26T18:45:43.552383+00:00",
+      "http_status": 200,
+      "response_bytes": 2390,
+      "result": "PROJECTED_SAVED"
+    },
+    {
+      "name": "prometheusrules-kaas-kafka",
+      "path": "/apis/monitoring.coreos.com/v1/namespaces/kaas-kafka/prometheusrules?limit=100",
+      "host": "https://api.ocp.rddgh.sandbox3088.opentlc.com:6443",
+      "method": "GET",
+      "at_utc": "2026-11-26T18:45:44.040077+00:00",
+      "http_status": 200,
+      "response_bytes": 136,
+      "result": "PROJECTED_SAVED"
+    },
+    {
+      "name": "servicemonitors-kaas-kafka",
+      "path": "/apis/monitoring.coreos.com/v1/namespaces/kaas-kafka/servicemonitors?limit=100",
+      "host": "https://api.ocp.rddgh.sandbox3088.opentlc.com:6443",
+      "method": "GET",
+      "at_utc": "2026-11-26T18:45:44.531417+00:00",
+      "http_status": 200,
+      "response_bytes": 136,
+      "result": "PROJECTED_SAVED"
+    },
+    {
+      "name": "prometheusrules-kaas-demo",
+      "path": "/apis/monitoring.coreos.com/v1/namespaces/kaas-demo/prometheusrules?limit=100",
+      "host": "https://api.ocp.rddgh.sandbox3088.opentlc.com:6443",
+      "method": "GET",
+      "at_utc": "2026-11-26T18:45:45.031814+00:00",
+      "http_status": 200,
+      "response_bytes": 136,
+      "result": "PROJECTED_SAVED"
+    },
+    {
+      "name": "servicemonitors-kaas-demo",
+      "path": "/apis/monitoring.coreos.com/v1/namespaces/kaas-demo/servicemonitors?limit=100",
+      "host": "https://api.ocp.rddgh.sandbox3088.opentlc.com:6443",
+      "method": "GET",
+      "at_utc": "2026-11-26T18:45:45.534510+00:00",
+      "http_status": 200,
+      "response_bytes": 136,
+      "result": "PROJECTED_SAVED"
+    },
+    {
+      "name": "prometheus-k8s",
+      "path": "/apis/monitoring.coreos.com/v1/namespaces/openshift-monitoring/prometheuses/k8s",
+      "host": "https://api.ocp.rddgh.sandbox3088.opentlc.com:6443",
+      "method": "GET",
+      "at_utc": "2026-11-26T18:45:46.022029+00:00",
+      "http_status": 200,
+      "response_bytes": 13321,
+      "result": "PROJECTED_SAVED"
+    },
+    {
+      "name": "alertmanager-main",
+      "path": "/apis/monitoring.coreos.com/v1/namespaces/openshift-monitoring/alertmanagers/main",
+      "host": "https://api.ocp.rddgh.sandbox3088.opentlc.com:6443",
+      "method": "GET",
+      "at_utc": "2026-11-26T18:45:46.694834+00:00",
+      "http_status": 200,
+      "response_bytes": 9631,
+      "result": "PROJECTED_SAVED"
+    },
+    {
+      "name": "cluster-monitoring-config",
+      "path": "/api/v1/namespaces/openshift-monitoring/configmaps/cluster-monitoring-config",
+      "host": "https://api.ocp.rddgh.sandbox3088.opentlc.com:6443",
+      "method": "GET",
+      "at_utc": "2026-11-26T18:45:47.184977+00:00",
+      "http_status": 404,
+      "result": "OPEN_HTTP_404"
+    },
+    {
+      "name": "self-access-0",
+      "path": "/apis/authorization.k8s.io/v1/selfsubjectaccessreviews",
+      "host": "https://api.ocp.rddgh.sandbox3088.opentlc.com:6443",
+      "method": "POST_NONPERSISTENT_SSAR",
+      "at_utc": "2026-11-26T18:45:47.687394+00:00",
+      "http_status": 201,
+      "response_bytes": 693,
+      "result": "PROJECTED_SAVED"
+    },
+    {
+      "name": "self-access-1",
+      "path": "/apis/authorization.k8s.io/v1/selfsubjectaccessreviews",
+      "host": "https://api.ocp.rddgh.sandbox3088.opentlc.com:6443",
+      "method": "POST_NONPERSISTENT_SSAR",
+      "at_utc": "2026-11-26T18:45:48.197275+00:00",
+      "http_status": 201,
+      "response_bytes": 650,
+      "result": "PROJECTED_SAVED"
+    },
+    {
+      "name": "self-access-2",
+      "path": "/apis/authorization.k8s.io/v1/selfsubjectaccessreviews",
+      "host": "https://api.ocp.rddgh.sandbox3088.opentlc.com:6443",
+      "method": "POST_NONPERSISTENT_SSAR",
+      "at_utc": "2026-11-26T18:45:48.697781+00:00",
+      "http_status": 201,
+      "response_bytes": 649,
+      "result": "PROJECTED_SAVED"
+    },
+    {
+      "name": "self-access-3",
+      "path": "/apis/authorization.k8s.io/v1/selfsubjectaccessreviews",
+      "host": "https://api.ocp.rddgh.sandbox3088.opentlc.com:6443",
+      "method": "POST_NONPERSISTENT_SSAR",
+      "at_utc": "2026-11-26T18:45:49.190330+00:00",
+      "http_status": 201,
+      "response_bytes": 673,
+      "result": "PROJECTED_SAVED"
+    },
+    {
+      "name": "self-access-4",
+      "path": "/apis/authorization.k8s.io/v1/selfsubjectaccessreviews",
+      "host": "https://api.ocp.rddgh.sandbox3088.opentlc.com:6443",
+      "method": "POST_NONPERSISTENT_SSAR",
+      "at_utc": "2026-11-26T18:45:49.698962+00:00",
+      "http_status": 201,
+      "response_bytes": 659,
+      "result": "PROJECTED_SAVED"
+    },
+    {
+      "name": "self-access-5",
+      "path": "/apis/authorization.k8s.io/v1/selfsubjectaccessreviews",
+      "host": "https://api.ocp.rddgh.sandbox3088.opentlc.com:6443",
+      "method": "POST_NONPERSISTENT_SSAR",
+      "at_utc": "2026-11-26T18:45:50.195464+00:00",
+      "http_status": 201,
+      "response_bytes": 650,
+      "result": "PROJECTED_SAVED"
+    },
+    {
+      "name": "ingress-public-ca",
+      "path": "/api/v1/namespaces/openshift-config-managed/configmaps/default-ingress-cert",
+      "host": "https://api.ocp.rddgh.sandbox3088.opentlc.com:6443",
+      "method": "GET",
+      "at_utc": "2026-11-26T18:45:50.697700+00:00",
+      "http_status": 200,
+      "response_bytes": 7207,
+      "result": "PROJECTED_SAVED"
+    },
+    {
+      "name": "thanos-route",
+      "path": "/apis/route.openshift.io/v1/namespaces/openshift-monitoring/routes/thanos-querier",
+      "host": "https://api.ocp.rddgh.sandbox3088.opentlc.com:6443",
+      "method": "GET",
+      "at_utc": "2026-11-26T18:45:51.208096+00:00",
+      "http_status": 200,
+      "response_bytes": 1991,
+      "result": "PROJECTED_SAVED"
+    },
+    {
+      "name": "sink-pvc-headroom",
+      "path": "/api/v1/query?query=%7B__name__%3D~%22kubelet_volume_stats_%28available%7Ccapacity%29_bytes%22%2Cnamespace%3D%22kaas-demo%22%2Cpersistentvolumeclaim%3D%22kaas-r2-native-evidence%22%7D",
+      "host": "https://thanos-querier-openshift-monitoring.apps.ocp.rddgh.sandbox3088.opentlc.com",
+      "method": "GET",
+      "at_utc": "2026-11-26T18:45:51.728600+00:00",
+      "http_status": 200,
+      "response_bytes": 842,
+      "result": "PROJECTED_SAVED"
+    }
+  ],
+  "authenticated_identity": {
+    "name": "admin"
+  },
+  "four_jobs_observed_suspended": true,
+  "jobs_changed": false,
+  "resources_changed": false,
+  "workloads_run": false,
+  "Secret_API_reads": 0,
+  "notifications_sent": 0,
+  "credentials_saved": false,
+  "GitHub_effective_controls": "NOT_REFRESHED_OPTIONAL_BRANCH_NOT_SELECTED",
+  "receiver_delivery": "NOT_ASSESSED_NO_SECRET_OR_NOTIFICATION_ACCESS",
+  "custody": "Local saved references reviewed separately; live DB contents not read"
+}

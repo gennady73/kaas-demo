@@ -1,0 +1,31 @@
+{
+  "metadata": {
+    "name": "kaas-sbx-tenants-b",
+    "namespace": "openshift-gitops",
+    "uid": "9fa52825-1671-4dfc-b3b5-d678d8d8ace6",
+    "generation": 1,
+    "resourceVersion": "967100"
+  },
+  "spec": {
+    "clusterResourceWhitelist": [],
+    "destinations": [
+      {
+        "namespace": "kaas-kafka",
+        "server": "https://kubernetes.default.svc"
+      }
+    ],
+    "namespaceResourceWhitelist": [
+      {
+        "group": "kafka.strimzi.io",
+        "kind": "KafkaTopic"
+      },
+      {
+        "group": "kafka.strimzi.io",
+        "kind": "KafkaUser"
+      }
+    ],
+    "sourceRepos": [
+      "https://github.com/gennady73/kaas-demo.git"
+    ]
+  }
+}

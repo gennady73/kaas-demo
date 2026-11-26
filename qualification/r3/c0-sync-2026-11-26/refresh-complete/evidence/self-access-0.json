@@ -1,0 +1,12 @@
+{
+  "attributes": {
+    "resource": "applications",
+    "group": "argoproj.io",
+    "namespace": "openshift-gitops",
+    "verb": "patch",
+    "name": "kaas-sbx-tenants-a"
+  },
+  "allowed": true,
+  "denied": null,
+  "evaluationError": false
+}

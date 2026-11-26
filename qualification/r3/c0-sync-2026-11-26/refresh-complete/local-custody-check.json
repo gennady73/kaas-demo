@@ -1,0 +1,10 @@
+{
+  "status": "VERIFIED_LOCAL_BYTES_CURRENT",
+  "source": "docs/testing/runs/r2-native-05a3f2d-retest-20261126",
+  "event_count": 182,
+  "export_sha256": "18ba064608624da60e80101aaea81af9f0e8bfe9f4edbed126cc5903dd66c96e",
+  "matches_saved_seal": true,
+  "retention_minimum": "2026-12-03T15:12:05Z",
+  "remote_data_integrity": "NOT_READ",
+  "no_cleanup": true
+}

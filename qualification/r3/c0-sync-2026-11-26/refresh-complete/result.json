@@ -1,0 +1,106 @@
+{
+  "case": "R3-SYNC-RO-01",
+  "status": "BOUNDED_READ_ONLY_REFRESH_COMPLETE_WITH_EXPLICIT_MONITORING_CUSTODY_GAPS",
+  "observed_window_UTC": {
+    "start": "2026-11-26T18:45:25.903489+00:00",
+    "end": "2026-11-26T18:45:52.327261+00:00"
+  },
+  "elapsed_seconds": 26.424,
+  "requests_this_attempt": 38,
+  "requests_including_prior401": 39,
+  "combined_request_cap": 40,
+  "response_body_bytes_this_attempt": 192745,
+  "strict_TLS": true,
+  "identity": "admin",
+  "four_Job_states": [
+    {
+      "name": "kaas-r2-native-client",
+      "suspend": true,
+      "active": 0
+    },
+    {
+      "name": "kaas-r2-native-client-02e2e2f-r2",
+      "suspend": true,
+      "active": 0
+    },
+    {
+      "name": "kaas-r2-native-client-351528d-r2",
+      "suspend": true,
+      "active": 0
+    },
+    {
+      "name": "kaas-r2-native-client-05a3f2d-r2",
+      "suspend": true,
+      "active": 0
+    }
+  ],
+  "Applications": "A/B Synced Healthy, exact3211df9manualspec/Projectmatches, no pending operation",
+  "Kafka": "Ready/currentgeneration,4.2.0,TLS/SCRAM,RF2,minISR2,6h,auto-createfalse",
+  "broker_PVCs": "3Bound20Gi gp3-csi",
+  "sink": "existingDeployment1/1Available; evidencePVCBound1Gi",
+  "self_access_reviews": {
+    "count": 6,
+    "all_allowed": true,
+    "scope": "Current API admin selected verbs only; no impersonation/delegated role or human SSO test"
+  },
+  "argocd_selected_config_matches_Nov25": {
+    "argocd-rbac-cm": true,
+    "argocd-cm": true
+  },
+  "controller_cluster_role_has_wildcard_get_list_watch": true,
+  "controller_identity": [
+    {
+      "kind": "ServiceAccount",
+      "name": "openshift-gitops-argocd-application-controller",
+      "namespace": "openshift-gitops"
+    }
+  ],
+  "monitoring": {
+    "prometheus": "Available/Reconciled, declaredretention15d; not proof of15daystore persistence",
+    "alertmanager": "Available/Reconciled,2replicas; receivernotread",
+    "ServiceMonitor_counts": {
+      "kaas-kafka": 0,
+      "kaas-demo": 0
+    },
+    "PrometheusRule_counts": {
+      "kaas-kafka": 0,
+      "kaas-demo": 0
+    },
+    "cluster_monitoring_config": "HTTP404_optional_ConfigMap_absent_not_a_stack_failure",
+    "coverage_limit": "Selectednamespaces/kindsonly; noPodMonitor/globalrules/remoteconfigurationorKafkaexporterscrapeproof",
+    "receiver_routing_and_delivery": "OPEN_notreadSecret_notestednotification"
+  },
+  "evidence_PVC_filesystem": {
+    "capacity_bytes": 1020702720,
+    "available_bytes": 999993344,
+    "used_bytes": 20709376,
+    "available_MiB": 953.66796875,
+    "available_percent": 97.97106683520937,
+    "meaning": "Observedaggregatefilesystemfree, notSQLiteDBsize/per-runallocation/growthguarantee"
+  },
+  "custody": {
+    "local_export_SHA256": "18ba064608624da60e80101aaea81af9f0e8bfe9f4edbed126cc5903dd66c96e",
+    "events": 182,
+    "local_bytes_match_saved_seal": true,
+    "accepted_sandbox_days": 7,
+    "retain_until_at_least_UTC": "2026-12-03T15:12:05Z",
+    "current_remote_DB_or_export_content": "NOT_READ",
+    "ongoing_technical_custodian_and_disposition": "OPEN_useralreadyaccountableowner"
+  },
+  "unassessed": [
+    "CurrentGitHubbranchprotection/requiredCIwasnotrefreshed",
+    "HumanArgoSSO/delegatedtenanteffectiveaccess",
+    "KafkaISR/backendoffsets/data-planeauthnotqueried(noexec/client)",
+    "Kafka-specificscrape/alertcoverageandreceiverdelivery",
+    "EvidenceDBcontents/enforcedretention/ongoingcustodian",
+    "C6offlineconcurrenceholdunchanged"
+  ],
+  "resources_changed": false,
+  "jobs_changed": false,
+  "workloads_run": false,
+  "Secret_API_reads": 0,
+  "notifications_sent": 0,
+  "credentials_saved": false,
+  "local_kubeconfig_updated": false,
+  "publication": "LOCAL_UNCOMMITTED_NOT_REQUESTED"
+}

@@ -1,5 +1,5 @@
 {
-  "revision": "0.3",
+  "revision": "0.6",
   "date": "2026-11-26",
   "plan_commit": "0f9df49fc0dfb3632c9c7f4eb32fb7e6d3aec1e6",
   "execution_enabled": false,
@@ -29,7 +29,7 @@
     "R3-01": {
       "status": "OFFLINE_CONTRACT_REVIEW_DOCUMENTATION_AND_VALIDATION_PASS",
       "result": "r3-01/result.json",
-      "C4_NR_05": "DOCUMENTATION_RECONCILED_ADDITIVE_OVERLAY",
+      "C4_NR_05": "CLOSED_DOCUMENTATION_SCOPE_C4_OWNER_CONCURRENCE_RECORDED_2026_11_26",
       "effective_rights_refresh": "NOT_RUN",
       "lifecycle_runtime_qualification": "NOT_RUN",
       "execution_enabled": false,
@@ -37,6 +37,36 @@
       "review_scope": "C0 consolidation; current C3 exact-auditor concurrence indexed separately; no new C4/C6 concurrence invented"
     }
   },
-  "remaining_cases": "R3-00/10/11/01 offline progress recorded; effective-rights refresh, selected lifecycle/runtime cases and broader qualification remain unexecuted",
-  "note": "Progress overlay supersedes pre-correction OPEN labels only for this exact offline source/result; does not arm any planned case"
+  "remaining_cases": "Boundedread-onlyrefreshcomplete: service/Apps/manualcontrolsandfourJobsfreshlyobserved,selectedaccess6allowed,PVCheadroomverified. Kafka-specificmonitoring/receiver/custodyrolesandC6reviewremainOPEN;noautomaticsync/deployment/workloadornewtestauthorized.",
+  "note": "Progress overlay supersedes pre-correction OPEN labels only for this exact offline source/result; does not arm any planned case",
+  "coordination_sync": {
+    "date": "2026-11-26",
+    "status": "C0_SYNC_COMPLETE_FIVE_OFFLINE_DELIVERIES_ACCEPTED_ONE_AUTHORITY_HOLD",
+    "owner_dispositions": {
+      "C2": "ACCEPTED_OFFLINE_GENERATION_PREPARATION_C3_CODE_REVIEW_AND_RUNTIME_INTEGRATION_OPEN",
+      "C3": "ACCEPTED_FINITE_EXIT_MATRIX_NO_NEW_REQUIREMENTS",
+      "C4": "ACCEPTED_DISABLED_CANARY_PREPARATION_NR05_DOCUMENTATION_CLOSED_BY_OWNER",
+      "C5": "ACCEPTED_OPTIONAL_DECISION_PACKAGE_NOT_SELECTED_FOR_NEXT_INCREMENT",
+      "C7": "ACCEPTED_CURRENT_RECORDS_AND_MAPPING_OPERATIONAL_FIELDS_OPEN",
+      "C6": "BLOCKED_BY_DIRECT_CHAT_NO_ACTION_HOLD"
+    },
+    "smallest_next_step": {
+      "id": "R3-SYNC-RO-01",
+      "status": "BOUNDED_READ_ONLY_REFRESH_COMPLETED_GAPS_RECORDED",
+      "workloads_required": false,
+      "new_resources": 0,
+      "live_refresh_completed": true,
+      "remote_requests": 38,
+      "current_Job_states": "ALL_FOUR_OBSERVED_SUSPENDED_ACTIVE0_2026_11_26T18_45Z",
+      "required_input": "Ongoingtechnicalcustodianandapprovedsanitizedmonitoringcoverage/routingreferences;C6holdseparate",
+      "total_requests_including_earlier401": 39
+    },
+    "C4_NR_05": "CLOSED_DOCUMENTATION_SCOPE_WITH_C4_OWNER_CONCURRENCE",
+    "C6": "BLOCKED_DIRECT_CHAT_HOLD_NO_PACKAGE_NO_CONCURRENCE",
+    "full_service_release": "NOT_QUALIFIED",
+    "shared_workspace_record": "Parent shared workspace docs/coordination/r3-sync-2026-11-26/README.md (original provenance)",
+    "publication": "PUBLISHED_BY_OWNING_COMMIT_VALIDATION_RECEIPTS_REMAIN_HISTORICAL",
+    "portable_record": "c0-sync-2026-11-26/README.md",
+    "next_action": "R3-03: resolve actual monitoring/routing references and ongoing custodian; C6offlinehold must be lifted in its own chat; no automatic workload"
+  }
 }

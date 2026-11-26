@@ -1,0 +1,58 @@
+{
+  "metadata": {
+    "name": "kaas-dev",
+    "namespace": "kaas-kafka",
+    "uid": "7cc0bbf7-2503-4a47-9e07-a694992a9b7d",
+    "generation": 1,
+    "resourceVersion": "1141647"
+  },
+  "version": "4.2.0",
+  "config": {
+    "auto.create.topics.enable": false,
+    "default.replication.factor": 2,
+    "log.retention.ms": 21600000,
+    "message.max.bytes": 3145728,
+    "min.insync.replicas": 2,
+    "offsets.topic.replication.factor": 2,
+    "replica.fetch.max.bytes": 4194304,
+    "transaction.state.log.min.isr": 2,
+    "transaction.state.log.replication.factor": 2,
+    "unclean.leader.election.enable": false
+  },
+  "listener_modes": [
+    {
+      "name": "tls",
+      "port": 9093,
+      "type": "internal",
+      "tls": true,
+      "authentication": {
+        "type": "scram-sha-512"
+      },
+      "networkPolicyPeers": [
+        {
+          "namespaceSelector": {
+            "matchLabels": {
+              "kubernetes.io/metadata.name": "kaas-kafka"
+            }
+          }
+        },
+        {
+          "namespaceSelector": {
+            "matchLabels": {
+              "kubernetes.io/metadata.name": "kaas-demo"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "conditions": [
+    {
+      "type": "Ready",
+      "status": "True",
+      "reason": null,
+      "lastTransitionTime": "2026-11-26T17:14:52.712472753Z"
+    }
+  ],
+  "observedGeneration": 1
+}

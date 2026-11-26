@@ -1,0 +1,21 @@
+{
+  "metadata": {
+    "name": "openshift-gitops-openshift-gitops-argocd-application-controller",
+    "namespace": null,
+    "uid": "f8db88ab-3470-46f8-ba1a-07179440a909",
+    "generation": null,
+    "resourceVersion": "184812"
+  },
+  "roleRef": {
+    "apiGroup": "rbac.authorization.k8s.io",
+    "kind": "ClusterRole",
+    "name": "openshift-gitops-openshift-gitops-argocd-application-controller"
+  },
+  "subjects": [
+    {
+      "kind": "ServiceAccount",
+      "name": "openshift-gitops-argocd-application-controller",
+      "namespace": "openshift-gitops"
+    }
+  ]
+}

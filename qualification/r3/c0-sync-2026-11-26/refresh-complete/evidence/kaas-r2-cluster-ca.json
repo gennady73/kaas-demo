@@ -1,0 +1,15 @@
+{
+  "metadata": {
+    "name": "kaas-r2-cluster-ca",
+    "namespace": "kaas-demo",
+    "uid": "d85ef665-9527-4b73-b692-5bd92134a962",
+    "generation": null,
+    "resourceVersion": "1051063"
+  },
+  "public_data_keys": [
+    "ca.crt"
+  ],
+  "data_sha256": {
+    "ca.crt": "be02ed41422ce6af7a6aa734573bdb514168e3e87118b19d2e27ad58e5fdcb46"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "target_matches": true,
+  "credential_present": true,
+  "credential_saved": false,
+  "local_insecure_flag_ignored": true,
+  "TLS": "CERT_REQUIRED_HOSTNAME_CHECKED",
+  "trusted_CA_sha256": "8b69a79e7fa927f46a56128d5ff6ce339128259ad8e179a9d00ca47a203213c8"
+}

@@ -1,0 +1,47 @@
+{
+  "metadata": {
+    "name": "kaas-sbx-tenants-b",
+    "namespace": "openshift-gitops",
+    "uid": "42bff491-c1a9-4076-a748-be7246bdf7b2",
+    "generation": 196,
+    "resourceVersion": "1169260"
+  },
+  "spec": {
+    "project": "kaas-sbx-tenants-b",
+    "source": {
+      "path": "environments/sandbox-tenants/b",
+      "repoURL": "https://github.com/gennady73/kaas-demo.git",
+      "targetRevision": "3211df93ae40d7d6f47c6334966ae6d1f658fee7"
+    },
+    "destination": {
+      "namespace": "kaas-kafka",
+      "server": "https://kubernetes.default.svc"
+    },
+    "syncPolicy": {
+      "syncOptions": [
+        "FailOnSharedResource=true"
+      ]
+    }
+  },
+  "sync": {
+    "comparedTo": {
+      "destination": {
+        "namespace": "kaas-kafka",
+        "server": "https://kubernetes.default.svc"
+      },
+      "source": {
+        "path": "environments/sandbox-tenants/b",
+        "repoURL": "https://github.com/gennady73/kaas-demo.git",
+        "targetRevision": "3211df93ae40d7d6f47c6334966ae6d1f658fee7"
+      }
+    },
+    "revision": "3211df93ae40d7d6f47c6334966ae6d1f658fee7",
+    "status": "Synced"
+  },
+  "health": {
+    "lastTransitionTime": "2026-11-25T15:42:21Z",
+    "status": "Healthy"
+  },
+  "operationPhase": "Succeeded",
+  "pending_operation": false
+}

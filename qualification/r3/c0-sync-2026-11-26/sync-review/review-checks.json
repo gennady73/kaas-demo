@@ -1,0 +1,14 @@
+{
+  "scope": "C0 source/receipt/hash/case-dependency review only; no suites or runtime tests rerun",
+  "results": {
+    "C2": "Source/artifact hashes match; adapter inspected; recorded8tests reused, not rerun; not native/runtime ready",
+    "C4": "Artifact manifest matches; stages/diff inspected; documentation-only NR05 closure accepted; live canary disabled",
+    "C5": "Source lock matches; budget arithmetic and optional four-decision boundary reviewed; no approval inferred",
+    "C3": "Exact12existingcase IDs/dependencies/owners preserved; matrix hash matches; no new release requirement inserted",
+    "C7": "Changed-record artifact hashes match; zero structural errors but OPEN status preserved; original182eventR2hash unchanged",
+    "C6": "BLOCKED_DIRECT_CHAT_NO_ACTION_HOLD; no output/package; not technical rejection"
+  },
+  "cluster_accessed": false,
+  "jobs_changed": false,
+  "workloads_run": false
+}

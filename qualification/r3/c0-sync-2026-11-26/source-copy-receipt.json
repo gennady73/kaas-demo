@@ -1,0 +1,395 @@
+{
+  "scope": "Only user-requested C0 sync and refresh records; no bulk shared workspace or specialist source publication",
+  "copies": [
+    {
+      "shared_workspace_source": "docs/coordination/r3-sync-2026-11-26/README.md",
+      "published_path": "qualification/r3/c0-sync-2026-11-26/sync-review/README.md",
+      "sha256": "30eaf8c60f95ebcd1e72beed27d194fb2a2a18ea0d88e81ea220ef3af789c761",
+      "transform": "NONE_EXACT_BYTES"
+    },
+    {
+      "shared_workspace_source": "docs/coordination/r3-sync-2026-11-26/artifact-manifest.json",
+      "published_path": "qualification/r3/c0-sync-2026-11-26/sync-review/artifact-manifest.json",
+      "sha256": "5f897d0ea22710f7601d94dded16e114b715fd90bbeb5ce6ff8d6be57fc27c24",
+      "transform": "NONE_EXACT_BYTES"
+    },
+    {
+      "shared_workspace_source": "docs/coordination/r3-sync-2026-11-26/integrity-checks.json",
+      "published_path": "qualification/r3/c0-sync-2026-11-26/sync-review/integrity-checks.json",
+      "sha256": "5703eb48429054ec142abb0083ee659580626c6ccc5528480a494838da0fbcfb",
+      "transform": "NONE_EXACT_BYTES"
+    },
+    {
+      "shared_workspace_source": "docs/coordination/r3-sync-2026-11-26/next-step.disabled.json",
+      "published_path": "qualification/r3/c0-sync-2026-11-26/sync-review/next-step.disabled.json",
+      "sha256": "8bd3bc033549991b82b4762643a19178a89ae7ed98d69edd62137d03898d7f08",
+      "transform": "NONE_EXACT_BYTES"
+    },
+    {
+      "shared_workspace_source": "docs/coordination/r3-sync-2026-11-26/result.json",
+      "published_path": "qualification/r3/c0-sync-2026-11-26/sync-review/result.json",
+      "sha256": "f754c0ed6b8fb1660c8694794d23d2614c2e9375db9d9c62038167d315bd204b",
+      "transform": "NONE_EXACT_BYTES"
+    },
+    {
+      "shared_workspace_source": "docs/coordination/r3-sync-2026-11-26/review-checks.json",
+      "published_path": "qualification/r3/c0-sync-2026-11-26/sync-review/review-checks.json",
+      "sha256": "05b9b7ea1f3ec692a5e91dcd149fff20526bd81c3e2eafacc833f3cd1de20f47",
+      "transform": "NONE_EXACT_BYTES"
+    },
+    {
+      "shared_workspace_source": "docs/coordination/r3-sync-2026-11-26/source-index.json",
+      "published_path": "qualification/r3/c0-sync-2026-11-26/sync-review/source-index.json",
+      "sha256": "59967fc4505e6e13bf04368c6c348793454bad8907e9f8bc2bf4496a3124eba9",
+      "transform": "NONE_EXACT_BYTES"
+    },
+    {
+      "shared_workspace_source": "docs/coordination/r3-sync-2026-11-26/thread-status.json",
+      "published_path": "qualification/r3/c0-sync-2026-11-26/sync-review/thread-status.json",
+      "sha256": "dc2f0fbc462096d59084fb948a77a7877f942a005e4b7435d5396d92d32d7d74",
+      "transform": "NONE_EXACT_BYTES"
+    },
+    {
+      "shared_workspace_source": "docs/coordination/r3-readonly-refresh-2026-11-26/README.md",
+      "published_path": "qualification/r3/c0-sync-2026-11-26/refresh-auth-hold/README.md",
+      "sha256": "acfd1f398d3d9abab625bf838a022bb04521a822d101eee32e2eedadf158e0d7",
+      "transform": "NONE_EXACT_BYTES"
+    },
+    {
+      "shared_workspace_source": "docs/coordination/r3-readonly-refresh-2026-11-26/artifact-manifest.json",
+      "published_path": "qualification/r3/c0-sync-2026-11-26/refresh-auth-hold/artifact-manifest.json",
+      "sha256": "fe986b19fdd52f03687457f687cffb02bf8a8eed0c3d53a476e1284819146914",
+      "transform": "NONE_EXACT_BYTES"
+    },
+    {
+      "shared_workspace_source": "docs/coordination/r3-readonly-refresh-2026-11-26/evidence/identity.json",
+      "published_path": "qualification/r3/c0-sync-2026-11-26/refresh-auth-hold/evidence/identity.json",
+      "sha256": "29278313a1241c46238f6a435268a85d29605ddb9686d9de3ba7c8c7801f587a",
+      "transform": "NONE_EXACT_BYTES"
+    },
+    {
+      "shared_workspace_source": "docs/coordination/r3-readonly-refresh-2026-11-26/evidence/local-session-policy.json",
+      "published_path": "qualification/r3/c0-sync-2026-11-26/refresh-auth-hold/evidence/local-session-policy.json",
+      "sha256": "74990bb291519823247d91cd731e37012d2a4ca83db2a8b8d6b94a32c4a023eb",
+      "transform": "NONE_EXACT_BYTES"
+    },
+    {
+      "shared_workspace_source": "docs/coordination/r3-readonly-refresh-2026-11-26/evidence/result.json",
+      "published_path": "qualification/r3/c0-sync-2026-11-26/refresh-auth-hold/evidence/result.json",
+      "sha256": "6301f5384544480e1fbb5cbddba20f2769d791f7484fca57985f940446ed8752",
+      "transform": "NONE_EXACT_BYTES"
+    },
+    {
+      "shared_workspace_source": "docs/coordination/r3-readonly-refresh-2026-11-26/execution-intent.json",
+      "published_path": "qualification/r3/c0-sync-2026-11-26/refresh-auth-hold/execution-intent.json",
+      "sha256": "817a2d9e9c71ff3b7acbf3d5aac3cdd5264eb71eb23554228512289e75c9d8fe",
+      "transform": "NONE_EXACT_BYTES"
+    },
+    {
+      "shared_workspace_source": "docs/coordination/r3-readonly-refresh-2026-11-26/local-custody-check.json",
+      "published_path": "qualification/r3/c0-sync-2026-11-26/refresh-auth-hold/local-custody-check.json",
+      "sha256": "1597a3312b61d029513a1b355e73459210dbe99253069e9af8d1ae1c11ffdb5e",
+      "transform": "NONE_EXACT_BYTES"
+    },
+    {
+      "shared_workspace_source": "docs/coordination/r3-readonly-refresh-2026-11-26/preservation.json",
+      "published_path": "qualification/r3/c0-sync-2026-11-26/refresh-auth-hold/preservation.json",
+      "sha256": "b29e2c283bc9ef8299be12229d8bcf7158ee222637f60e03a993c70025f77e77",
+      "transform": "NONE_EXACT_BYTES"
+    },
+    {
+      "shared_workspace_source": "docs/coordination/r3-readonly-refresh-2026-11-26/refresh.py",
+      "published_path": "qualification/r3/c0-sync-2026-11-26/refresh-auth-hold/refresh.py",
+      "sha256": "1e0cb7f8cb8d8f2a2cf728f472fd677bf7d3e99ff5756dde1f8f554571cb805e",
+      "transform": "NONE_EXACT_BYTES"
+    },
+    {
+      "shared_workspace_source": "docs/coordination/r3-readonly-refresh-2026-11-26/result.json",
+      "published_path": "qualification/r3/c0-sync-2026-11-26/refresh-auth-hold/result.json",
+      "sha256": "e378edc18b8441a643d6497c754b45992d55caf8e1659eaf71bf1826ea208449",
+      "transform": "NONE_EXACT_BYTES"
+    },
+    {
+      "shared_workspace_source": "docs/coordination/r3-readonly-refresh-2026-11-26-resumed/README.md",
+      "published_path": "qualification/r3/c0-sync-2026-11-26/refresh-complete/README.md",
+      "sha256": "734edc6b6c708bbdd789ac19b9751db6d4140c07b9bd7c94e2058ee2c6b525bb",
+      "transform": "NONE_EXACT_BYTES"
+    },
+    {
+      "shared_workspace_source": "docs/coordination/r3-readonly-refresh-2026-11-26-resumed/artifact-manifest.json",
+      "published_path": "qualification/r3/c0-sync-2026-11-26/refresh-complete/artifact-manifest.json",
+      "sha256": "fdebec255b3dfd1744534fe6a8525c5844ceaae2b483ca7236d4a080639b0808",
+      "transform": "NONE_EXACT_BYTES"
+    },
+    {
+      "shared_workspace_source": "docs/coordination/r3-readonly-refresh-2026-11-26-resumed/evidence/alertmanager-main.json",
+      "published_path": "qualification/r3/c0-sync-2026-11-26/refresh-complete/evidence/alertmanager-main.json",
+      "sha256": "23cf20ccc2d0db924569d6c659ec151612c063d7858bb3cfee99ac57a75efebd",
+      "transform": "NONE_EXACT_BYTES"
+    },
+    {
+      "shared_workspace_source": "docs/coordination/r3-readonly-refresh-2026-11-26-resumed/evidence/application-a.json",
+      "published_path": "qualification/r3/c0-sync-2026-11-26/refresh-complete/evidence/application-a.json",
+      "sha256": "8ba87590382bb6cdaf575f6b87b316db60c1312f33a19721a7f1772bce2477bc",
+      "transform": "NONE_EXACT_BYTES"
+    },
+    {
+      "shared_workspace_source": "docs/coordination/r3-readonly-refresh-2026-11-26-resumed/evidence/application-b.json",
+      "published_path": "qualification/r3/c0-sync-2026-11-26/refresh-complete/evidence/application-b.json",
+      "sha256": "2459fc63b1ba0242a2bc3b6804d94e5862f400b86578edd3be7abafa4556ed63",
+      "transform": "NONE_EXACT_BYTES"
+    },
+    {
+      "shared_workspace_source": "docs/coordination/r3-readonly-refresh-2026-11-26-resumed/evidence/appproject-a.json",
+      "published_path": "qualification/r3/c0-sync-2026-11-26/refresh-complete/evidence/appproject-a.json",
+      "sha256": "c6e53aadb464b75bcdded5f58a02640323ca431532683a257f86dd4b98171217",
+      "transform": "NONE_EXACT_BYTES"
+    },
+    {
+      "shared_workspace_source": "docs/coordination/r3-readonly-refresh-2026-11-26-resumed/evidence/appproject-b.json",
+      "published_path": "qualification/r3/c0-sync-2026-11-26/refresh-complete/evidence/appproject-b.json",
+      "sha256": "dc75dd650f66cc72ae4ce73abb456617d74d6e6676e93dba5b738532ea4ec53d",
+      "transform": "NONE_EXACT_BYTES"
+    },
+    {
+      "shared_workspace_source": "docs/coordination/r3-readonly-refresh-2026-11-26-resumed/evidence/argocd-cm.json",
+      "published_path": "qualification/r3/c0-sync-2026-11-26/refresh-complete/evidence/argocd-cm.json",
+      "sha256": "b0a511ba2d87864ad45dc8f1b23abd9806010b04ca77d2a6775ebad7d5dc2218",
+      "transform": "NONE_EXACT_BYTES"
+    },
+    {
+      "shared_workspace_source": "docs/coordination/r3-readonly-refresh-2026-11-26-resumed/evidence/argocd-rbac-cm.json",
+      "published_path": "qualification/r3/c0-sync-2026-11-26/refresh-complete/evidence/argocd-rbac-cm.json",
+      "sha256": "bf896978945e5cf582d9e068ac564ac824ebdcdc97ecb4047c0f6a44f4a10daf",
+      "transform": "NONE_EXACT_BYTES"
+    },
+    {
+      "shared_workspace_source": "docs/coordination/r3-readonly-refresh-2026-11-26-resumed/evidence/cluster-monitoring-config.json",
+      "published_path": "qualification/r3/c0-sync-2026-11-26/refresh-complete/evidence/cluster-monitoring-config.json",
+      "sha256": "f693c9a45ab6cacbfbacfc174915792334c7166be86d820a432655a5b3dca819",
+      "transform": "NONE_EXACT_BYTES"
+    },
+    {
+      "shared_workspace_source": "docs/coordination/r3-readonly-refresh-2026-11-26-resumed/evidence/controller-binding.json",
+      "published_path": "qualification/r3/c0-sync-2026-11-26/refresh-complete/evidence/controller-binding.json",
+      "sha256": "52408d59845449fe588d5036be744298167a8e9ada60e924054842dfd7919b1a",
+      "transform": "NONE_EXACT_BYTES"
+    },
+    {
+      "shared_workspace_source": "docs/coordination/r3-readonly-refresh-2026-11-26-resumed/evidence/controller-role.json",
+      "published_path": "qualification/r3/c0-sync-2026-11-26/refresh-complete/evidence/controller-role.json",
+      "sha256": "f60695c9021f5f8d7474dc0c56a7f9b208cf328cdf373a9672bc509ba1a79c42",
+      "transform": "NONE_EXACT_BYTES"
+    },
+    {
+      "shared_workspace_source": "docs/coordination/r3-readonly-refresh-2026-11-26-resumed/evidence/identity.json",
+      "published_path": "qualification/r3/c0-sync-2026-11-26/refresh-complete/evidence/identity.json",
+      "sha256": "644d89e655fad6f537518d7456ab68b5e5a7d6e3e45b43985c22e3ead4973b4c",
+      "transform": "NONE_EXACT_BYTES"
+    },
+    {
+      "shared_workspace_source": "docs/coordination/r3-readonly-refresh-2026-11-26-resumed/evidence/ingress-public-ca.json",
+      "published_path": "qualification/r3/c0-sync-2026-11-26/refresh-complete/evidence/ingress-public-ca.json",
+      "sha256": "0e61066fdfd8932014374720b301b52574aa3d0f512305b7aa9ea84b7a718486",
+      "transform": "NONE_EXACT_BYTES"
+    },
+    {
+      "shared_workspace_source": "docs/coordination/r3-readonly-refresh-2026-11-26-resumed/evidence/job-kaas-r2-native-client-02e2e2f-r2.json",
+      "published_path": "qualification/r3/c0-sync-2026-11-26/refresh-complete/evidence/job-kaas-r2-native-client-02e2e2f-r2.json",
+      "sha256": "2a818a24d5ddecc55ef1b5501199c27103f00c0336fb61e1ab7a77e1fb4f10c1",
+      "transform": "NONE_EXACT_BYTES"
+    },
+    {
+      "shared_workspace_source": "docs/coordination/r3-readonly-refresh-2026-11-26-resumed/evidence/job-kaas-r2-native-client-05a3f2d-r2.json",
+      "published_path": "qualification/r3/c0-sync-2026-11-26/refresh-complete/evidence/job-kaas-r2-native-client-05a3f2d-r2.json",
+      "sha256": "c06b19a6674486edd75656ffa1b013bb2defd50236a7315c987a4bf435243dd5",
+      "transform": "NONE_EXACT_BYTES"
+    },
+    {
+      "shared_workspace_source": "docs/coordination/r3-readonly-refresh-2026-11-26-resumed/evidence/job-kaas-r2-native-client-351528d-r2.json",
+      "published_path": "qualification/r3/c0-sync-2026-11-26/refresh-complete/evidence/job-kaas-r2-native-client-351528d-r2.json",
+      "sha256": "c0365cab1786218398d3e0263118e88d0ef3044eb8dd8693081212a968522335",
+      "transform": "NONE_EXACT_BYTES"
+    },
+    {
+      "shared_workspace_source": "docs/coordination/r3-readonly-refresh-2026-11-26-resumed/evidence/job-kaas-r2-native-client.json",
+      "published_path": "qualification/r3/c0-sync-2026-11-26/refresh-complete/evidence/job-kaas-r2-native-client.json",
+      "sha256": "0e1e098ee43355b98adb083f18d6f9d6dff934f7a8709a0efed2a422ee267e8e",
+      "transform": "NONE_EXACT_BYTES"
+    },
+    {
+      "shared_workspace_source": "docs/coordination/r3-readonly-refresh-2026-11-26-resumed/evidence/kaas-r2-cluster-ca.json",
+      "published_path": "qualification/r3/c0-sync-2026-11-26/refresh-complete/evidence/kaas-r2-cluster-ca.json",
+      "sha256": "22edb4979542acd2ab053afec48cfeb6d37a1021750697b7b348bda79df933b5",
+      "transform": "NONE_EXACT_BYTES"
+    },
+    {
+      "shared_workspace_source": "docs/coordination/r3-readonly-refresh-2026-11-26-resumed/evidence/kaas-r2-sink-trust.json",
+      "published_path": "qualification/r3/c0-sync-2026-11-26/refresh-complete/evidence/kaas-r2-sink-trust.json",
+      "sha256": "90fe5bedb1ce79fae9b14bde67bb0ede47d9a27c0423e38f389079d5176e6efd",
+      "transform": "NONE_EXACT_BYTES"
+    },
+    {
+      "shared_workspace_source": "docs/coordination/r3-readonly-refresh-2026-11-26-resumed/evidence/kafka-pods.json",
+      "published_path": "qualification/r3/c0-sync-2026-11-26/refresh-complete/evidence/kafka-pods.json",
+      "sha256": "547645426e5cc7508963e00aea22c5d3c73e2840f8b80562eb84a8724d250218",
+      "transform": "NONE_EXACT_BYTES"
+    },
+    {
+      "shared_workspace_source": "docs/coordination/r3-readonly-refresh-2026-11-26-resumed/evidence/kafka-pvcs.json",
+      "published_path": "qualification/r3/c0-sync-2026-11-26/refresh-complete/evidence/kafka-pvcs.json",
+      "sha256": "663e7e67bbc7168caeba5745f04e18e08311b75bf2924c22fdf6086255c3ace1",
+      "transform": "NONE_EXACT_BYTES"
+    },
+    {
+      "shared_workspace_source": "docs/coordination/r3-readonly-refresh-2026-11-26-resumed/evidence/kafka.json",
+      "published_path": "qualification/r3/c0-sync-2026-11-26/refresh-complete/evidence/kafka.json",
+      "sha256": "32f8b707f6cff7511614d42a07b7c7cd87482fd0ed133b2e988707bae0ded221",
+      "transform": "NONE_EXACT_BYTES"
+    },
+    {
+      "shared_workspace_source": "docs/coordination/r3-readonly-refresh-2026-11-26-resumed/evidence/local-session-policy.json",
+      "published_path": "qualification/r3/c0-sync-2026-11-26/refresh-complete/evidence/local-session-policy.json",
+      "sha256": "b6611eac4a993e3682c634e2796a593121a94f6ba417532b8f64b47970e082cb",
+      "transform": "NONE_EXACT_BYTES"
+    },
+    {
+      "shared_workspace_source": "docs/coordination/r3-readonly-refresh-2026-11-26-resumed/evidence/networkpolicies-kaas-demo.json",
+      "published_path": "qualification/r3/c0-sync-2026-11-26/refresh-complete/evidence/networkpolicies-kaas-demo.json",
+      "sha256": "232c36945803e5ec3487d4aa34f91c73d1225c1cc191382f5979de49960bd5c5",
+      "transform": "NONE_EXACT_BYTES"
+    },
+    {
+      "shared_workspace_source": "docs/coordination/r3-readonly-refresh-2026-11-26-resumed/evidence/networkpolicies-kaas-kafka.json",
+      "published_path": "qualification/r3/c0-sync-2026-11-26/refresh-complete/evidence/networkpolicies-kaas-kafka.json",
+      "sha256": "f1378dc9b1643db12e813d41c693f37b5118120541bd56223c862e532357605e",
+      "transform": "NONE_EXACT_BYTES"
+    },
+    {
+      "shared_workspace_source": "docs/coordination/r3-readonly-refresh-2026-11-26-resumed/evidence/prometheus-k8s.json",
+      "published_path": "qualification/r3/c0-sync-2026-11-26/refresh-complete/evidence/prometheus-k8s.json",
+      "sha256": "07fac90403bcd3b16509dd1b6c304e7dac5a8a24a0fce0dc38a71644d4a8ff77",
+      "transform": "NONE_EXACT_BYTES"
+    },
+    {
+      "shared_workspace_source": "docs/coordination/r3-readonly-refresh-2026-11-26-resumed/evidence/prometheusrules-kaas-demo.json",
+      "published_path": "qualification/r3/c0-sync-2026-11-26/refresh-complete/evidence/prometheusrules-kaas-demo.json",
+      "sha256": "0343639fac1511a32a4c9a92c7655a6e9f9ad3a600fc6f30b5bdad6806160a97",
+      "transform": "NONE_EXACT_BYTES"
+    },
+    {
+      "shared_workspace_source": "docs/coordination/r3-readonly-refresh-2026-11-26-resumed/evidence/prometheusrules-kaas-kafka.json",
+      "published_path": "qualification/r3/c0-sync-2026-11-26/refresh-complete/evidence/prometheusrules-kaas-kafka.json",
+      "sha256": "0343639fac1511a32a4c9a92c7655a6e9f9ad3a600fc6f30b5bdad6806160a97",
+      "transform": "NONE_EXACT_BYTES"
+    },
+    {
+      "shared_workspace_source": "docs/coordination/r3-readonly-refresh-2026-11-26-resumed/evidence/result.json",
+      "published_path": "qualification/r3/c0-sync-2026-11-26/refresh-complete/evidence/result.json",
+      "sha256": "47562c08c87d10c36a43126fdd654703a55211505823342259939811e5c90cbf",
+      "transform": "NONE_EXACT_BYTES"
+    },
+    {
+      "shared_workspace_source": "docs/coordination/r3-readonly-refresh-2026-11-26-resumed/evidence/self-access-0.json",
+      "published_path": "qualification/r3/c0-sync-2026-11-26/refresh-complete/evidence/self-access-0.json",
+      "sha256": "eda8df73db249b15ac56b206758c5c241083ed0e1b2b75a7db419df97c304aad",
+      "transform": "NONE_EXACT_BYTES"
+    },
+    {
+      "shared_workspace_source": "docs/coordination/r3-readonly-refresh-2026-11-26-resumed/evidence/self-access-1.json",
+      "published_path": "qualification/r3/c0-sync-2026-11-26/refresh-complete/evidence/self-access-1.json",
+      "sha256": "4e77f457ca1f50c8feedddedf8031003edef47f0eb119f63dab4391bf5f7965a",
+      "transform": "NONE_EXACT_BYTES"
+    },
+    {
+      "shared_workspace_source": "docs/coordination/r3-readonly-refresh-2026-11-26-resumed/evidence/self-access-2.json",
+      "published_path": "qualification/r3/c0-sync-2026-11-26/refresh-complete/evidence/self-access-2.json",
+      "sha256": "3bf53b4799bd772b85eb8c77c64454274c921d6d4bf14a8c398c74445d16a58a",
+      "transform": "NONE_EXACT_BYTES"
+    },
+    {
+      "shared_workspace_source": "docs/coordination/r3-readonly-refresh-2026-11-26-resumed/evidence/self-access-3.json",
+      "published_path": "qualification/r3/c0-sync-2026-11-26/refresh-complete/evidence/self-access-3.json",
+      "sha256": "b0b1438881c7c763ad28141b6045faf6cead349c398347cc0869a01bd8ccdfbb",
+      "transform": "NONE_EXACT_BYTES"
+    },
+    {
+      "shared_workspace_source": "docs/coordination/r3-readonly-refresh-2026-11-26-resumed/evidence/self-access-4.json",
+      "published_path": "qualification/r3/c0-sync-2026-11-26/refresh-complete/evidence/self-access-4.json",
+      "sha256": "52cbf2a2fc2c7e55c713ca96da3c8d39476848d1e54ebc7d6d946e8b64220896",
+      "transform": "NONE_EXACT_BYTES"
+    },
+    {
+      "shared_workspace_source": "docs/coordination/r3-readonly-refresh-2026-11-26-resumed/evidence/self-access-5.json",
+      "published_path": "qualification/r3/c0-sync-2026-11-26/refresh-complete/evidence/self-access-5.json",
+      "sha256": "35fbf87779c24e1609702eb398f1232abfe6fce8eef3af5140a183b490296afe",
+      "transform": "NONE_EXACT_BYTES"
+    },
+    {
+      "shared_workspace_source": "docs/coordination/r3-readonly-refresh-2026-11-26-resumed/evidence/servicemonitors-kaas-demo.json",
+      "published_path": "qualification/r3/c0-sync-2026-11-26/refresh-complete/evidence/servicemonitors-kaas-demo.json",
+      "sha256": "0343639fac1511a32a4c9a92c7655a6e9f9ad3a600fc6f30b5bdad6806160a97",
+      "transform": "NONE_EXACT_BYTES"
+    },
+    {
+      "shared_workspace_source": "docs/coordination/r3-readonly-refresh-2026-11-26-resumed/evidence/servicemonitors-kaas-kafka.json",
+      "published_path": "qualification/r3/c0-sync-2026-11-26/refresh-complete/evidence/servicemonitors-kaas-kafka.json",
+      "sha256": "0343639fac1511a32a4c9a92c7655a6e9f9ad3a600fc6f30b5bdad6806160a97",
+      "transform": "NONE_EXACT_BYTES"
+    },
+    {
+      "shared_workspace_source": "docs/coordination/r3-readonly-refresh-2026-11-26-resumed/evidence/sink-deployment.json",
+      "published_path": "qualification/r3/c0-sync-2026-11-26/refresh-complete/evidence/sink-deployment.json",
+      "sha256": "2acc86abda95d520d8593f0d3972d9762d040de95efb1ced2be5e3e54f5fbe12",
+      "transform": "NONE_EXACT_BYTES"
+    },
+    {
+      "shared_workspace_source": "docs/coordination/r3-readonly-refresh-2026-11-26-resumed/evidence/sink-pvc-headroom.json",
+      "published_path": "qualification/r3/c0-sync-2026-11-26/refresh-complete/evidence/sink-pvc-headroom.json",
+      "sha256": "a5055ebc8d27a8b51678babcd6cda649fd7390b1192bcd05ed32531c5f3144ba",
+      "transform": "NONE_EXACT_BYTES"
+    },
+    {
+      "shared_workspace_source": "docs/coordination/r3-readonly-refresh-2026-11-26-resumed/evidence/sink-pvc.json",
+      "published_path": "qualification/r3/c0-sync-2026-11-26/refresh-complete/evidence/sink-pvc.json",
+      "sha256": "7420dda313a912dca4c19768b1f25dbf89fcefca514783c4c267ff98d987a979",
+      "transform": "NONE_EXACT_BYTES"
+    },
+    {
+      "shared_workspace_source": "docs/coordination/r3-readonly-refresh-2026-11-26-resumed/evidence/thanos-route.json",
+      "published_path": "qualification/r3/c0-sync-2026-11-26/refresh-complete/evidence/thanos-route.json",
+      "sha256": "44f83d6512b8a192405c08feb75b256fe0dba0238fc125e8d9c7dbdc2fb17b54",
+      "transform": "NONE_EXACT_BYTES"
+    },
+    {
+      "shared_workspace_source": "docs/coordination/r3-readonly-refresh-2026-11-26-resumed/execution-intent.json",
+      "published_path": "qualification/r3/c0-sync-2026-11-26/refresh-complete/execution-intent.json",
+      "sha256": "4c18b4c8d0c8078bef4b8a86e21d9a2fc9c24db5ff5dd6e13677553f8bb88734",
+      "transform": "NONE_EXACT_BYTES"
+    },
+    {
+      "shared_workspace_source": "docs/coordination/r3-readonly-refresh-2026-11-26-resumed/integrity-checks.json",
+      "published_path": "qualification/r3/c0-sync-2026-11-26/refresh-complete/integrity-checks.json",
+      "sha256": "ebb75c5cdf23e4f4cee4b884b8b0b19e10cd2ab4c87088044abc28ff5c132da0",
+      "transform": "NONE_EXACT_BYTES"
+    },
+    {
+      "shared_workspace_source": "docs/coordination/r3-readonly-refresh-2026-11-26-resumed/local-custody-check.json",
+      "published_path": "qualification/r3/c0-sync-2026-11-26/refresh-complete/local-custody-check.json",
+      "sha256": "0c4e5cb515836d4d9c4803490036c2fe31fe1436550a0fc35a94ecae59465b2f",
+      "transform": "NONE_EXACT_BYTES"
+    },
+    {
+      "shared_workspace_source": "docs/coordination/r3-readonly-refresh-2026-11-26-resumed/refresh.py",
+      "published_path": "qualification/r3/c0-sync-2026-11-26/refresh-complete/refresh.py",
+      "sha256": "37ad35623ba588cf89d778e0688431832afdadedb6fe3b6be9e5b4a1d8f72304",
+      "transform": "NONE_EXACT_BYTES"
+    },
+    {
+      "shared_workspace_source": "docs/coordination/r3-readonly-refresh-2026-11-26-resumed/result.json",
+      "published_path": "qualification/r3/c0-sync-2026-11-26/refresh-complete/result.json",
+      "sha256": "63d31e448e5edaeef1b310167142a73164c0badce6ff5179c53b9830fedfbded",
+      "transform": "NONE_EXACT_BYTES"
+    }
+  ]
+}

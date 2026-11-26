@@ -1,0 +1,15 @@
+{
+  "algorithm": "sha256",
+  "scope": "Read-only attempt artifacts excluding this manifest and Python caches",
+  "files": {
+    "README.md": "acfd1f398d3d9abab625bf838a022bb04521a822d101eee32e2eedadf158e0d7",
+    "evidence/identity.json": "29278313a1241c46238f6a435268a85d29605ddb9686d9de3ba7c8c7801f587a",
+    "evidence/local-session-policy.json": "74990bb291519823247d91cd731e37012d2a4ca83db2a8b8d6b94a32c4a023eb",
+    "evidence/result.json": "6301f5384544480e1fbb5cbddba20f2769d791f7484fca57985f940446ed8752",
+    "execution-intent.json": "817a2d9e9c71ff3b7acbf3d5aac3cdd5264eb71eb23554228512289e75c9d8fe",
+    "local-custody-check.json": "1597a3312b61d029513a1b355e73459210dbe99253069e9af8d1ae1c11ffdb5e",
+    "preservation.json": "b29e2c283bc9ef8299be12229d8bcf7158ee222637f60e03a993c70025f77e77",
+    "refresh.py": "1e0cb7f8cb8d8f2a2cf728f472fd677bf7d3e99ff5756dde1f8f554571cb805e",
+    "result.json": "e378edc18b8441a643d6497c754b45992d55caf8e1659eaf71bf1826ea208449"
+  }
+}

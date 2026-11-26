@@ -1,0 +1,33 @@
+{
+  "metadata": {
+    "name": "kaas-r2-native-client-02e2e2f-r2",
+    "namespace": "kaas-demo",
+    "uid": "21fa27ff-9fa4-45f5-b157-b1bd89a394e6",
+    "generation": 3,
+    "resourceVersion": "1090643"
+  },
+  "suspend": true,
+  "active": 0,
+  "succeeded": 0,
+  "failed": 1,
+  "conditions": [
+    {
+      "type": "Suspended",
+      "status": "False",
+      "reason": "JobResumed",
+      "lastTransitionTime": "2026-11-26T13:49:04Z"
+    },
+    {
+      "type": "FailureTarget",
+      "status": "True",
+      "reason": "BackoffLimitExceeded",
+      "lastTransitionTime": "2026-11-26T13:49:14Z"
+    },
+    {
+      "type": "Failed",
+      "status": "True",
+      "reason": "BackoffLimitExceeded",
+      "lastTransitionTime": "2026-11-26T13:49:14Z"
+    }
+  ]
+}

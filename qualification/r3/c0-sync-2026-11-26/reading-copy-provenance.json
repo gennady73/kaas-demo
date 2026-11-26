@@ -1,0 +1,7 @@
+{
+  "source": "docs/coordination/r3-sync-2026-11-26/README.md",
+  "source_sha256": "30eaf8c60f95ebcd1e72beed27d194fb2a2a18ea0d88e81ea220ef3af789c761",
+  "reading_copy": "review.md",
+  "reading_copy_sha256": "155c81dbc80ccc42e7b8881b98561ea3cccff2b94148d2e3e9f02384740dc6f4",
+  "transform": "Added historical/publication note; owner-artifact Markdown links rendered as explicit shared-workspace paths; package-local links rebased. Source snapshot unchanged."
+}
