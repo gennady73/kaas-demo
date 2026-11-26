@@ -1,7 +1,7 @@
 {
   "version": "1.0",
   "date": "2026-11-26",
-  "status": "READONLY_CLIENT_READINESS_PASS_FIXTURE_DISABLED",
+  "status": "SINGLE_R2_ATTEMPT_INCOMPLETE_CLIENT_RESUSPENDED",
   "source_commit": "afb9c7c7b2f3901a8a4e2c456029a931a9db00b6",
   "namespace": "kaas-demo",
   "execution_enabled": false,
@@ -28,7 +28,7 @@
     "verified_second_copy": false
   },
   "actual_image_build": "COMPLETE",
-  "actual_runtime": "NOT_RUN",
+  "actual_runtime": "NATIVE_INCOMPLETE",
   "approval_wait_policy": {
     "maximum_unanswered_seconds": 300,
     "on_expiry": "SUSPEND_PROCESSING",
@@ -42,9 +42,12 @@
   "actual_sink_deployment_enabled": true,
   "client_deployment_enabled": false,
   "client_workloads_enabled": false,
-  "actual_sink_runtime": "RUNNING_1_OF_1_AVAILABLE",
+  "actual_sink_runtime": "RUNNING_1_OF_1_AVAILABLE_EVIDENCE_STOPPED_AND_SEALED",
   "sink_only_overlay": "sink-only/",
   "sink_activation_receipt": "sink-only/evidence/results.json",
   "client_readiness_receipt": "client-readiness/evidence/results.json",
-  "client_network_DNS": "Explicit TCP/UDP53and5353 to observed DNS selector; live readiness verified"
+  "client_network_DNS": "Explicit TCP/UDP53and5353 to observed DNS selector; live readiness verified",
+  "actual_client_Job_present": true,
+  "actual_client_Job_suspended": true,
+  "last_fixture_result": "../../docs/r2-bounded-2026-11-26/results.json"
 }

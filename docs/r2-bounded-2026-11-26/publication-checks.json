@@ -1,0 +1,23 @@
+{
+  "date": "2026-11-26",
+  "status": "STATIC_PUBLICATION_REVIEW_PASS",
+  "base_commit": "a85b42854753fbb42eb55aaadbe9fcf7aec21b56",
+  "cluster_access": false,
+  "test_repeated": false,
+  "client_Job_suspended_in_final_saved_API_state": true,
+  "client_baseline_manifest_suspended": true,
+  "native_source_files_unchanged": 39,
+  "result": "NATIVE_INCOMPLETE; not relabeled as PASS",
+  "export_events": 8,
+  "export_sha256": "91cf8d49ca2091a3d0900cc6a8cec9b3b9fca0c9b0b60b49f23e003d5369c3e6",
+  "chain_and_seal_static_comparison": "MATCH",
+  "offset_reconciliation": "4topics unchanged at0; no commits; firstgroup remains empty",
+  "credential_values_published": false,
+  "original_execution_receipts": "Preserved with original timestamps/status",
+  "published_log_display": {
+    "change": "Trailing whitespace trimmed from display copy only; original raw log retained in shared run evidence",
+    "raw_log_sha256": "e18e4ac9f214d3d63eb1e3c2ea744a37d3d9dda8340f3fb32289d8e736945678",
+    "display_log_sha256": "7078ed993c6e402175436b89ec292496238379516b6cdbd2273b1adeed6d2ef4",
+    "sealed_event_bytes_changed": false
+  }
+}

@@ -1,3 +1,5 @@
+Latest execution result: [Single bounded R2 attempt — incomplete](../../docs/r2-bounded-2026-11-26/README.md). No send was attempted; client is re-suspended and sink evidence is stopped/sealed. Earlier readiness reports are historical.
+
 Latest client status: [Read-only client connectivity, TLS/SCRAM, health and group readiness](client-readiness/README.md). Client fixture remains disabled; evidence sink remains deployed.
 
 Latest runtime status: [R2 evidence sink deployment and verification](sink-only/README.md). The sink is deployed; the client remains disabled. Earlier readiness/build records below are historical snapshots.

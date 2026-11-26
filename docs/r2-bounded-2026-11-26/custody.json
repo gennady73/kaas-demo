@@ -1,0 +1,15 @@
+{
+  "policy": "7days in sandbox isolatedPVC plus verified shared-workspace exportedcopy",
+  "sandbox": "kaas-demo/kaas-r2-native-evidence/evidence.sqlite",
+  "sandbox_status": "Retained; sink stop+seal flags set; events frozen by server protocol",
+  "workspace": "/home/gunger/Projects/kaas-solution/docs/testing/runs/r2-native-20261125-bounded-20261126",
+  "export_bytes": 4694,
+  "export_sha256": "91cf8d49ca2091a3d0900cc6a8cec9b3b9fca0c9b0b60b49f23e003d5369c3e6",
+  "matches_sandbox_seal": true,
+  "byte_chain_verifier": "VERIFIED",
+  "semantic_auditor": "NATIVE_INCOMPLETE",
+  "event_count": 8,
+  "actual_run_retention_until_UTC": "2026-12-03T13:09:03Z",
+  "cleanup": "No deletion automation; sandbox availability is externally controlled, export retained here",
+  "limitation": "Second copy hash verified; no infrastructure restart/durability qualification"
+}

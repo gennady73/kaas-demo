@@ -1,0 +1,14 @@
+{
+  "kind": "EXTERNAL_JOB_OBSERVATION",
+  "elapsed_ms": 14173,
+  "job_start_UTC": "2026-11-26T13:08:54Z",
+  "container_finish_UTC": "2026-11-26T13:09:03+00:00",
+  "container_finish_elapsed_ms": 9000,
+  "observer_complete_UTC": "2026-11-26T13:09:08.173158+00:00",
+  "Job_controller_status": "Complete",
+  "container_exit_code": 0,
+  "fixture_console_status": "NATIVE_INCOMPLETE",
+  "pod_uid": "3432c54b-0808-480b-9767-ffa421c5c9ad",
+  "job_uid": "a9deb28d-74be-436a-83e3-f4e0995069eb",
+  "note": "Use conservative external completion observation for auditor; Kubernetes completion does not imply fixture acceptance"
+}

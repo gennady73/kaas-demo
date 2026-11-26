@@ -1,0 +1,140 @@
+{
+  "status": "ZERO_ATTEMPTS_OFFSETS_UNCHANGED_FIXTURE_INCOMPLETE",
+  "source": "Sealed event stream plus independent pre/post nativeAdmin observations",
+  "positive_planned": 16,
+  "positive_attempted": 0,
+  "positive_not_attempted": 16,
+  "negative_cases_completed": 0,
+  "negative_cases_planned": 8,
+  "negative_write_originals_not_attempted": 4,
+  "logical_original_bytes_attempted": 0,
+  "acknowledged": 0,
+  "received": 0,
+  "confirmed_commits": 0,
+  "unresolved_send_or_commit_events": 0,
+  "missing_among_attempted": 0,
+  "coverage": "No positive delivery or negative isolation result established",
+  "rows": [
+    {
+      "topic": "kaas-sbx-a-events",
+      "group": "kaas-sbx-a-events-group",
+      "before": {
+        "committed_offset": null,
+        "group_absent": true,
+        "log_end_offset": 0,
+        "log_start_offset": 0,
+        "members": 0,
+        "membership_observed": true,
+        "ok": true
+      },
+      "after": {
+        "committed_offset": null,
+        "group_absent": false,
+        "log_end_offset": 0,
+        "log_start_offset": 0,
+        "members": 0,
+        "membership_observed": true,
+        "ok": true
+      },
+      "log_end_delta": 0,
+      "committed_offset_change": false,
+      "positive_planned": 4,
+      "attempted": 0,
+      "acknowledged": 0,
+      "received": 0,
+      "committed": 0,
+      "not_attempted": 4
+    },
+    {
+      "topic": "kaas-sbx-a-audit",
+      "group": "kaas-sbx-a-audit-group",
+      "before": {
+        "committed_offset": null,
+        "group_absent": true,
+        "log_end_offset": 0,
+        "log_start_offset": 0,
+        "members": 0,
+        "membership_observed": true,
+        "ok": true
+      },
+      "after": {
+        "committed_offset": null,
+        "group_absent": true,
+        "log_end_offset": 0,
+        "log_start_offset": 0,
+        "members": 0,
+        "membership_observed": true,
+        "ok": true
+      },
+      "log_end_delta": 0,
+      "committed_offset_change": false,
+      "positive_planned": 4,
+      "attempted": 0,
+      "acknowledged": 0,
+      "received": 0,
+      "committed": 0,
+      "not_attempted": 4
+    },
+    {
+      "topic": "kaas-sbx-b-events",
+      "group": "kaas-sbx-b-events-group",
+      "before": {
+        "committed_offset": null,
+        "group_absent": true,
+        "log_end_offset": 0,
+        "log_start_offset": 0,
+        "members": 0,
+        "membership_observed": true,
+        "ok": true
+      },
+      "after": {
+        "committed_offset": null,
+        "group_absent": true,
+        "log_end_offset": 0,
+        "log_start_offset": 0,
+        "members": 0,
+        "membership_observed": true,
+        "ok": true
+      },
+      "log_end_delta": 0,
+      "committed_offset_change": false,
+      "positive_planned": 4,
+      "attempted": 0,
+      "acknowledged": 0,
+      "received": 0,
+      "committed": 0,
+      "not_attempted": 4
+    },
+    {
+      "topic": "kaas-sbx-b-audit",
+      "group": "kaas-sbx-b-audit-group",
+      "before": {
+        "committed_offset": null,
+        "group_absent": true,
+        "log_end_offset": 0,
+        "log_start_offset": 0,
+        "members": 0,
+        "membership_observed": true,
+        "ok": true
+      },
+      "after": {
+        "committed_offset": null,
+        "group_absent": true,
+        "log_end_offset": 0,
+        "log_start_offset": 0,
+        "members": 0,
+        "membership_observed": true,
+        "ok": true
+      },
+      "log_end_delta": 0,
+      "committed_offset_change": false,
+      "positive_planned": 4,
+      "attempted": 0,
+      "acknowledged": 0,
+      "received": 0,
+      "committed": 0,
+      "not_attempted": 4
+    }
+  ],
+  "retention": "No topic/record/group/offset deletion/reset; preserve new empty first group"
+}

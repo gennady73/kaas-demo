@@ -1,0 +1,18 @@
+[
+  {
+    "id": "R2-LIVE-01",
+    "severity": "BLOCKS_ACCEPTANCE",
+    "verified": "First case persisted initial group baseline and consumer-open, then consumer-close, stop reason client_or_evidence_failure, terminalNATIVE_INCOMPLETE; no producer-open or send intent",
+    "failure_boundary": "Initial consumer positioning or following producer construction; exact native error not retained",
+    "inference": "Approximate6second interval matches native Position6second deadline on empty partition; likely initial-position establishment failure, not confirmed root cause",
+    "next_fix": "Inspect/correct empty-topic initial position and retain sanitized operation/error category; never seed messages/reset offsets to bypass",
+    "runtime_rerun": "NOT_AUTHORIZED_BY_THIS_SINGLE_ATTEMPT"
+  },
+  {
+    "id": "R2-LIVE-02",
+    "severity": "BLOCKS_AUTOMATED_ACCEPTANCE",
+    "verified": "entrypoint threw tenant_fixture_incomplete after consoleNATIVE_INCOMPLETE, but container exited0 and KubernetesJobComplete",
+    "next_fix": "Make process status reflect incomplete fixture and add a regression for incomplete result exit; keep external event/audit acceptance mandatory",
+    "production_claim": "None"
+  }
+]

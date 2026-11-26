@@ -1,0 +1,23 @@
+{
+  "observation": "Final saved post-run API snapshot; not a new live check",
+  "Job": {
+    "name": "kaas-r2-native-client",
+    "uid": "a9deb28d-74be-436a-83e3-f4e0995069eb",
+    "suspend": true,
+    "startTime": "2026-11-26T13:08:54Z",
+    "completionTime": "2026-11-26T13:09:06Z",
+    "succeeded": 1,
+    "note": "Controller Complete is not fixture acceptance"
+  },
+  "sink": {
+    "name": "kaas-r2-evidence",
+    "availableReplicas": 1
+  },
+  "PVC": {
+    "name": "kaas-r2-native-evidence",
+    "uid": "d2cd40eb-6e4b-48d2-a2af-d4b5d10879a2",
+    "phase": "Bound",
+    "volumeName": "pvc-d2cd40eb-6e4b-48d2-a2af-d4b5d10879a2"
+  },
+  "test_repeated": false
+}
