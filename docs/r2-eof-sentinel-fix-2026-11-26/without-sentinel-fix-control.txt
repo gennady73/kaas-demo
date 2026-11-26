@@ -1,0 +1,6 @@
+=== RUN   TestSDKShapedPartitionEOFSentinelEstablishesInitialPosition
+    position_test.go:138: normal SDK EOF rejected map[category:unknown mapping_id:KAAS_R2_CONFLUENT_2_14_V1 native_code:0 ok:false stage:consume]
+--- FAIL: TestSDKShapedPartitionEOFSentinelEstablishesInitialPosition (0.00s)
+FAIL
+FAIL	kaas.local/tenant-r2-native	0.004s
+FAIL

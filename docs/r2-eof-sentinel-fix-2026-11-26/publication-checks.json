@@ -1,0 +1,12 @@
+{
+  "source_fingerprints_verified": 41,
+  "cluster_access": false,
+  "live_test_rerun": false,
+  "logs_display_normalization": {
+    "buildinfo.txt": {
+      "raw_sha256": "1644c6ea1f99fd602f714807d20fa66c20462ef0e13b72e43b997f587c6ee6b5",
+      "display_sha256": "a6d7f4c6f0def0a4f515b97f55d14531d0b85ea13d7fd29d10c10a5b8e89b55c",
+      "note": "Trailing whitespace only; raw retained in shared review directory"
+    }
+  }
+}

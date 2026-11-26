@@ -10,6 +10,8 @@ Latest runtime status: [R2 evidence sink deployment and verification](sink-only/
 
 # R2 native images and disabled manifests
 
+Latest continuation: [EOF sentinel correction](../../docs/r2-eof-sentinel-fix-2026-11-26/README.md) is validated offline and authorized for publication with its regression tests and evidence. Actual image pins remain at the published incomplete revised-runner checkpoint; a new image has not been built. Both client Jobs remain untouched, last observed suspended. The original preparation instructions below are historical; use the dated build/result records for current status.
+
 Status: see `image-build-results.md` for the subsequent authorized build, verification and pinned-image record. **DEPLOYMENT_AND_WORKLOADS_DISABLED**. The paragraphs and validation receipts below describe the original preparation baseline; image build status and pins are superseded by the build result. The user authorized Git publication of this disabled package on 2026-11-26. No resource, build, credential delivery or client workload was started. The earlier native implementation is published at `afb9c7c7b2f3901a8a4e2c456029a931a9db00b6`; that commit identifies the native source, while this directory is added by the later packaging commit. Saved preparation receipts retain their original local/unpublished status as historical evidence.
 
 ## Inputs and boundaries

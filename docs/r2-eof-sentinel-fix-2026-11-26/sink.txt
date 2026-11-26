@@ -1,0 +1,23 @@
+test_stable_and_partial_export_have_separate_acceptance (test_export.ExportChecks.test_stable_and_partial_export_have_separate_acceptance) ... ok
+test_terminal_export_seal_does_not_claim_case_success (test_export.ExportChecks.test_terminal_export_seal_does_not_claim_case_success) ... ok
+test_bad_hash_and_sink_failure_are_not_acknowledged (test_protocol.ProtocolChecks.test_bad_hash_and_sink_failure_are_not_acknowledged) ... ok
+test_export_seal_stop_byte_and_ack_protocol (test_protocol.ProtocolChecks.test_export_seal_stop_byte_and_ack_protocol) ... ok
+test_owner_cannot_write_and_unknown_routes_fail (test_protocol.ProtocolChecks.test_owner_cannot_write_and_unknown_routes_fail) ... ok
+test_writer_can_persist_but_not_stop_export_or_seal (test_protocol.ProtocolChecks.test_writer_can_persist_but_not_stop_export_or_seal) ... ok
+test_non_ascii_bearer_is_fixed_unauthorized (test_review.ReviewChecks.test_non_ascii_bearer_is_fixed_unauthorized) ... ok
+test_rehashed_boolean_event_version_rejected (test_review.ReviewChecks.test_rehashed_boolean_event_version_rejected) ... ok
+test_seal_boolean_negative_count_rejected (test_review.ReviewChecks.test_seal_boolean_negative_count_rejected) ... ok
+test_commit_ack_reopen_and_exact_retry (test_store.Checks.test_commit_ack_reopen_and_exact_retry) ... ok
+test_conflict_hash_sequence_binding_unknown_schema (test_store.Checks.test_conflict_hash_sequence_binding_unknown_schema) ... ok
+test_disk_full_readonly_and_budget_do_not_ack (test_store.Checks.test_disk_full_readonly_and_budget_do_not_ack) ... ok
+test_duplicate_json_keys_rejected (test_store.Checks.test_duplicate_json_keys_rejected) ... ok
+test_identity_cannot_rebind_existing_database (test_store.Checks.test_identity_cannot_rebind_existing_database) ... ok
+test_no_secret_or_payload_field (test_store.Checks.test_no_secret_or_payload_field) ... ok
+test_partial_seal_is_never_acceptance (test_store.Checks.test_partial_seal_is_never_acceptance) ... ok
+test_stop_blocks_admission_and_seal_freezes (test_store.Checks.test_stop_blocks_admission_and_seal_freezes) ... ok
+test_three_process_crash_boundaries (test_store.Checks.test_three_process_crash_boundaries) ... ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 0.040s
+
+OK

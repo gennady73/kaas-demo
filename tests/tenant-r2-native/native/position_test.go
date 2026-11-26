@@ -2,6 +2,8 @@ package r2native
 
 import (
 	"encoding/json"
+	"errors"
+	"fmt"
 	k "github.com/confluentinc/confluent-kafka-go/v2/kafka"
 	"strings"
 	"testing"
@@ -117,5 +119,62 @@ func TestNormalSDKPositionStillWorks(t *testing.T) {
 	r := m.positionWithin(1, 5*time.Millisecond)
 	if r["ok"] != true || r["position"] != int64(4) {
 		t.Fatal("normal SDK position changed", r)
+	}
+}
+
+// Mirrors event.go -> setupTopicPartitionFromCrktpar: a normal EOF event
+// can carry its typed partition-level EOF sentinel in TopicPartition.Error.
+func TestSDKShapedPartitionEOFSentinelEstablishesInitialPosition(t *testing.T) {
+	for _, offset := range []k.Offset{0, 7} {
+		for _, wrapped := range []bool{false, true} {
+			topic := "kaas-sbx-a-events"
+			var err error = k.NewError(k.ErrPartitionEOF, "SYNTHETIC_EOF_CANARY", false)
+			if wrapped {
+				err = fmt.Errorf("SYNTHETIC_WRAPPER: %w", err)
+			}
+			m, h, c := positionWorld(k.PartitionEOF(k.TopicPartition{Topic: &topic, Partition: 0, Offset: offset, Error: err}))
+			r := m.positionWithin(1, 20*time.Millisecond)
+			if r["ok"] != true || r["position"] != int64(offset) || c.commits != 0 || h.eof == nil || h.eof.Error != nil {
+				t.Fatal("normal SDK EOF rejected", r)
+			}
+			raw, _ := json.Marshal(r)
+			if strings.Contains(string(raw), "CANARY") {
+				t.Fatal("native error text escaped")
+			}
+		}
+	}
+}
+func TestEOFSentinelNormalizationRejectsOtherErrorsFatalAndTextSpoofs(t *testing.T) {
+	for _, err := range []error{errors.New("Broker: No more messages"), k.NewError(k.ErrTopicAuthorizationFailed, "CANARY", false), k.NewError(k.ErrGroupAuthorizationFailed, "CANARY", false), k.NewError(k.ErrTransport, "CANARY", false), k.NewError(k.ErrPartitionEOF, "CANARY", true)} {
+		topic := "kaas-sbx-a-events"
+		m, _, c := positionWorld(k.PartitionEOF(k.TopicPartition{Topic: &topic, Partition: 0, Offset: 0, Error: err}))
+		r := m.positionWithin(1, 10*time.Millisecond)
+		if r["ok"] != false || c.commits != 0 {
+			t.Fatal("non-normal EOF error accepted")
+		}
+	}
+}
+func TestStandaloneEOFErrorIsNeverConvertedIntoPositionOrDenial(t *testing.T) {
+	m, _, c := positionWorld(k.NewError(k.ErrPartitionEOF, "CANARY", false))
+	r := m.positionWithin(1, 10*time.Millisecond)
+	if r["ok"] != false || r["category"] != "unknown" || c.commits != 0 {
+		t.Fatal("non-event EOF error normalized", r)
+	}
+}
+func TestSDKShapedEOFPreservesAssignmentGuards(t *testing.T) {
+	for _, part := range []int32{1, -1} {
+		topic := "kaas-sbx-a-events"
+		_, valid := validatedEOF(k.PartitionEOF(k.TopicPartition{Topic: &topic, Partition: part, Offset: 0, Error: k.NewError(k.ErrPartitionEOF, "", false)}), topic)
+		if valid {
+			t.Fatal("wrong partition accepted")
+		}
+	}
+	topic := "kaas-sbx-b-events"
+	if _, valid := validatedEOF(k.PartitionEOF(k.TopicPartition{Topic: &topic, Partition: 0, Offset: 0, Error: k.NewError(k.ErrPartitionEOF, "", false)}), "kaas-sbx-a-events"); valid {
+		t.Fatal("wrong topic accepted")
+	}
+	topic = "kaas-sbx-a-events"
+	if _, valid := validatedEOF(k.PartitionEOF(k.TopicPartition{Topic: &topic, Partition: 0, Offset: k.OffsetInvalid, Error: k.NewError(k.ErrPartitionEOF, "", false)}), topic); valid {
+		t.Fatal("negative offset accepted")
 	}
 }

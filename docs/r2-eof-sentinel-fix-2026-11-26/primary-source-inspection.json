@@ -1,0 +1,9 @@
+{
+  "inspection": "Version-pinned local primary source, no network access",
+  "files": {
+    "/home/gunger/go/pkg/mod/github.com/confluentinc/confluent-kafka-go/v2@v2.14.0/kafka/event.go": "295d37a40304929733629a7dd0745857e3db7be7ef2e7e5b7e08539543fd1b34",
+    "/home/gunger/go/pkg/mod/github.com/confluentinc/confluent-kafka-go/v2@v2.14.0/kafka/kafka.go": "b0e2cb51b396e1fc34ba98a6601f5392e67c54dc61a17feced459e124461acbe",
+    "/home/gunger/go/pkg/mod/github.com/confluentinc/confluent-kafka-go/v2@v2.14.0/kafka/librdkafka_vendor/rdkafka.h": "89b9c6450663ff134f3e7553ed23e2cc56aa562c168af08df04491a506999903"
+  },
+  "chain": "PartitionEOF is built from C partition-level error; setupTopicPartitionFromCrktpar copies nonzero err as typed k.Error"
+}

@@ -1,0 +1,37 @@
+{
+  "status": "SDK_EOF_SENTINEL_CORRECTION_VALIDATED_OFFLINE",
+  "date": "2026-11-26",
+  "base_checkpoint": "dce30cff87b92d979846a8c5d90fbf3c2c7f7368",
+  "change": "Normalize only typed nonfatal ErrPartitionEOF carried by a validated actual PartitionEOF event; retain strict topic/partition/offset/current-assignment checks",
+  "guarded_rejections": [
+    "text spoof",
+    "topic/group authorization error",
+    "transport error",
+    "fatal EOF code",
+    "standalone EOF error outside PartitionEOF",
+    "foreign/invalid assignment or offsets"
+  ],
+  "regressions": {
+    "binding": 7,
+    "review": 32,
+    "sink_export": 18,
+    "Go_race_top_level": 20,
+    "synthetic_k6_exit": 4,
+    "without_sentinel_fix_control": "EXPECTED_FAILURE",
+    "synthetic_replay_events": 182,
+    "synthetic_reported_commits": 16
+  },
+  "candidate_binary_sha256": "e0294b2a2916408eb61805fbbeffcf785066c75105f665b61c325e7401ee3be3",
+  "runtime_manifest_sha256": "a8ff40449e28da9f46aded0bca19b669c4d5dc8c2fa53fc5fc3d9e396270877e",
+  "runtime_manifest_note": "Unchanged a8ff public JS; only native Go behavior and tests changed",
+  "source_files_fingerprinted": 41,
+  "source_and_target_limit": "Source condition fixed and offline tested; original live event was not captured; actual broker retest still required",
+  "target_image_built": false,
+  "actual_image_pins": "Unchanged d82a image from02e; does not contain this newest correction",
+  "cluster_access": false,
+  "live_test_rerun": false,
+  "both_client_Jobs": "Untouched; last saved API state suspended",
+  "old_run_exports": "Preserved; both remain historical NATIVE_INCOMPLETE",
+  "publication": "NEW_FIX_LOCAL_UNCOMMITTED",
+  "candidate_binary_path": "/tmp/kaas-r2-eof-sentinel-offline-20261126/k6"
+}

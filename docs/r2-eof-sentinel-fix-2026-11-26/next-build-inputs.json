@@ -1,0 +1,12 @@
+{
+  "status": "OFFLINE_ONLY_DISABLED",
+  "build_enabled": false,
+  "execution_authorized": false,
+  "tests_enabled": false,
+  "candidate_image_digest": null,
+  "binary_sha256": "e0294b2a2916408eb61805fbbeffcf785066c75105f665b61c325e7401ee3be3",
+  "runtime_manifest_sha256": "a8ff40449e28da9f46aded0bca19b669c4d5dc8c2fa53fc5fc3d9e396270877e",
+  "receipt": "offline-build-validation.json",
+  "logical_plan": "UNCHANGED",
+  "preserve_live_suspended_Jobs_and_sealed_evidence": true
+}

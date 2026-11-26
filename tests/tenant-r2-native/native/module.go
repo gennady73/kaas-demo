@@ -290,6 +290,25 @@ func (m *Module) Produce(id int, key, value string) Result {
 		return failure(context.DeadlineExceeded, "produce")
 	}
 }
+
+// The SDK builds PartitionEOF from a partition-level error event. Its normal
+// ErrPartitionEOF sentinel is position evidence here, never an ACL denial.
+// Do not normalize arbitrary errors or an ErrPartitionEOF outside this type.
+func validatedEOF(event k.PartitionEOF, topic string) (k.TopicPartition, bool) {
+	part := k.TopicPartition(event)
+	if part.Topic == nil || *part.Topic != topic || part.Partition != 0 || part.Offset < 0 {
+		return k.TopicPartition{}, false
+	}
+	if part.Error != nil {
+		var nativeError k.Error
+		if !errors.As(part.Error, &nativeError) || nativeError.Code() != k.ErrPartitionEOF || nativeError.IsFatal() {
+			return k.TopicPartition{}, false
+		}
+	}
+	part.Error = nil // Retain only validated position evidence in the handle.
+	return part, true
+}
+
 func (m *Module) poll(h *handle, milliseconds int) Result {
 	deadline := time.Now().Add(time.Duration(milliseconds) * time.Millisecond)
 	for time.Now().Before(deadline) && m.live() {
@@ -299,8 +318,8 @@ func (m *Module) poll(h *handle, milliseconds int) Result {
 		}
 		switch v := event.(type) {
 		case k.PartitionEOF:
-			part := k.TopicPartition(v)
-			if part.Error != nil || part.Topic == nil || *part.Topic != h.topic || part.Partition != 0 || part.Offset < 0 {
+			part, valid := validatedEOF(v, h.topic)
+			if !valid {
 				return bad("consume")
 			}
 			h.eof = &part

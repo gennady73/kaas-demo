@@ -64,5 +64,12 @@
     "kaas-r2-native-client",
     "kaas-r2-native-client-02e2e2f-r2"
   ],
-  "actual_sink_database": "/var/lib/r2/evidence-02e2e2f-retest.sqlite"
+  "actual_sink_database": "/var/lib/r2/evidence-02e2e2f-retest.sqlite",
+  "offline_eof_sentinel_candidate": {
+    "status": "OFFLINE_VALIDATED_NOT_BUILT_OR_DEPLOYED",
+    "receipt": "../../docs/r2-eof-sentinel-fix-2026-11-26/validation-summary.json",
+    "binary_sha256": "e0294b2a2916408eb61805fbbeffcf785066c75105f665b61c325e7401ee3be3",
+    "runtime_manifest_sha256": "a8ff40449e28da9f46aded0bca19b669c4d5dc8c2fa53fc5fc3d9e396270877e",
+    "actual_image_pins_unchanged": true
+  }
 }
