@@ -1,0 +1,13 @@
+{
+  "sandbox_days": 7,
+  "retain_until_at_least_UTC": "2026-12-03T15:12:05+00:00",
+  "sandbox_PVC": "kaas-demo/kaas-r2-native-evidence",
+  "database": "/var/lib/r2/evidence-05a3f2d-retest.sqlite",
+  "second_copy": "/home/gunger/Projects/kaas-solution/docs/testing/runs/r2-native-05a3f2d-retest-20261126",
+  "export_sha256": "18ba064608624da60e80101aaea81af9f0e8bfe9f4edbed126cc5903dd66c96e",
+  "event_count": 182,
+  "workspace_copy_matches_sink_seal": true,
+  "previous_three_sealed_exports_preserved": true,
+  "credentials_exported": false,
+  "automatic_cleanup": false
+}

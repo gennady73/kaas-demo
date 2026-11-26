@@ -1,0 +1,352 @@
+{
+  "status": "ALL16_POSITIVE_MESSAGES_AND_OFFSETS_RECONCILED",
+  "positive_planned": 16,
+  "positive_attempted": 16,
+  "positive_acknowledged": 16,
+  "receipts": 16,
+  "commits": 16,
+  "missing_positive_messages": 0,
+  "duplicate_receipts": 0,
+  "negative_cases_planned": 8,
+  "negative_cases_passed": 8,
+  "negative_results": [
+    {
+      "version": 1,
+      "run_id": "r2-native-20261125",
+      "plan_sha256": "78e427f79f510efe87834000371584394fc44ccd0ed4e0a903f919d31edca13d",
+      "client_id": "tenant_fixture",
+      "event_id": "r2-native-20261125/tenant_fixture/136",
+      "type": "denial_result",
+      "at_ms": 21314,
+      "previous_event_sha256": "6255bf85bfb0769275b5598e352eb7bb085523cf64e465f51c774cef1aab8aa2",
+      "case_id": "kaas-sbx-a-cross-topic-write",
+      "status": "PASS",
+      "category": "topic_authorization_denied",
+      "failure_stage": "produce",
+      "typed": true,
+      "control_ids": [
+        "positive-kaas-sbx-a-events",
+        "positive-kaas-sbx-b-events"
+      ],
+      "write_path_control_id": "positive-kaas-sbx-a-events",
+      "consumer_write_confounded": false,
+      "confound_resolution": "not_applicable"
+    },
+    {
+      "version": 1,
+      "run_id": "r2-native-20261125",
+      "plan_sha256": "78e427f79f510efe87834000371584394fc44ccd0ed4e0a903f919d31edca13d",
+      "client_id": "tenant_fixture",
+      "event_id": "r2-native-20261125/tenant_fixture/142",
+      "type": "denial_result",
+      "at_ms": 22195,
+      "previous_event_sha256": "aeb916412e25c6c8addb29bc8defcde63dec0ab9e6f5d6eb87dfbe783f87972e",
+      "case_id": "kaas-sbx-a-cross-topic-read",
+      "status": "PASS",
+      "category": "topic_authorization_denied",
+      "failure_stage": "consume",
+      "typed": true,
+      "control_ids": [
+        "positive-kaas-sbx-a-events",
+        "positive-kaas-sbx-b-events"
+      ],
+      "write_path_control_id": null,
+      "consumer_write_confounded": false,
+      "confound_resolution": "not_applicable"
+    },
+    {
+      "version": 1,
+      "run_id": "r2-native-20261125",
+      "plan_sha256": "78e427f79f510efe87834000371584394fc44ccd0ed4e0a903f919d31edca13d",
+      "client_id": "tenant_fixture",
+      "event_id": "r2-native-20261125/tenant_fixture/148",
+      "type": "denial_result",
+      "at_ms": 23087,
+      "previous_event_sha256": "255af884003f8b6a62e12b7599807ccf798b3337ad703ce71a76b9585d7da522",
+      "case_id": "kaas-sbx-a-cross-group-read",
+      "status": "PASS",
+      "category": "group_authorization_denied",
+      "failure_stage": "consume",
+      "typed": true,
+      "control_ids": [
+        "positive-kaas-sbx-a-events",
+        "positive-kaas-sbx-b-events"
+      ],
+      "write_path_control_id": null,
+      "consumer_write_confounded": false,
+      "confound_resolution": "not_applicable"
+    },
+    {
+      "version": 1,
+      "run_id": "r2-native-20261125",
+      "plan_sha256": "78e427f79f510efe87834000371584394fc44ccd0ed4e0a903f919d31edca13d",
+      "client_id": "tenant_fixture",
+      "event_id": "r2-native-20261125/tenant_fixture/154",
+      "type": "denial_result",
+      "at_ms": 23323,
+      "previous_event_sha256": "eb7cc4645bf515bf2a692582e67d10c92758c181373b2689d7d22821fd0ff632",
+      "case_id": "kaas-sbx-a-consumer-write",
+      "status": "PASS",
+      "category": "topic_authorization_denied",
+      "failure_stage": "produce",
+      "typed": true,
+      "control_ids": [
+        "positive-kaas-sbx-a-events"
+      ],
+      "write_path_control_id": "positive-kaas-sbx-a-events",
+      "consumer_write_confounded": true,
+      "confound_resolution": "topic_stage_observed_native"
+    },
+    {
+      "version": 1,
+      "run_id": "r2-native-20261125",
+      "plan_sha256": "78e427f79f510efe87834000371584394fc44ccd0ed4e0a903f919d31edca13d",
+      "client_id": "tenant_fixture",
+      "event_id": "r2-native-20261125/tenant_fixture/160",
+      "type": "denial_result",
+      "at_ms": 23581,
+      "previous_event_sha256": "5ae211d7e773fda1b14ac81c029311754b48b3a6b4012af8651c989fa65b3dc8",
+      "case_id": "kaas-sbx-b-cross-topic-write",
+      "status": "PASS",
+      "category": "topic_authorization_denied",
+      "failure_stage": "produce",
+      "typed": true,
+      "control_ids": [
+        "positive-kaas-sbx-b-events",
+        "positive-kaas-sbx-a-events"
+      ],
+      "write_path_control_id": "positive-kaas-sbx-b-events",
+      "consumer_write_confounded": false,
+      "confound_resolution": "not_applicable"
+    },
+    {
+      "version": 1,
+      "run_id": "r2-native-20261125",
+      "plan_sha256": "78e427f79f510efe87834000371584394fc44ccd0ed4e0a903f919d31edca13d",
+      "client_id": "tenant_fixture",
+      "event_id": "r2-native-20261125/tenant_fixture/166",
+      "type": "denial_result",
+      "at_ms": 24296,
+      "previous_event_sha256": "8dc7df8bcc1864f3332d50d024592393adb0575a6d3ae98b304f67e5c29ec271",
+      "case_id": "kaas-sbx-b-cross-topic-read",
+      "status": "PASS",
+      "category": "topic_authorization_denied",
+      "failure_stage": "consume",
+      "typed": true,
+      "control_ids": [
+        "positive-kaas-sbx-b-events",
+        "positive-kaas-sbx-a-events"
+      ],
+      "write_path_control_id": null,
+      "consumer_write_confounded": false,
+      "confound_resolution": "not_applicable"
+    },
+    {
+      "version": 1,
+      "run_id": "r2-native-20261125",
+      "plan_sha256": "78e427f79f510efe87834000371584394fc44ccd0ed4e0a903f919d31edca13d",
+      "client_id": "tenant_fixture",
+      "event_id": "r2-native-20261125/tenant_fixture/172",
+      "type": "denial_result",
+      "at_ms": 25187,
+      "previous_event_sha256": "7ef1e01c97f96ddea5ffc05e06606782a92b07edd22d7500ebd4ecbf7e81e14c",
+      "case_id": "kaas-sbx-b-cross-group-read",
+      "status": "PASS",
+      "category": "group_authorization_denied",
+      "failure_stage": "consume",
+      "typed": true,
+      "control_ids": [
+        "positive-kaas-sbx-b-events",
+        "positive-kaas-sbx-a-events"
+      ],
+      "write_path_control_id": null,
+      "consumer_write_confounded": false,
+      "confound_resolution": "not_applicable"
+    },
+    {
+      "version": 1,
+      "run_id": "r2-native-20261125",
+      "plan_sha256": "78e427f79f510efe87834000371584394fc44ccd0ed4e0a903f919d31edca13d",
+      "client_id": "tenant_fixture",
+      "event_id": "r2-native-20261125/tenant_fixture/178",
+      "type": "denial_result",
+      "at_ms": 25416,
+      "previous_event_sha256": "2de10e49d67575ec6476bfe9392bcf17f0b7db2b964f8d0554279bdc61ebff0c",
+      "case_id": "kaas-sbx-b-consumer-write",
+      "status": "PASS",
+      "category": "topic_authorization_denied",
+      "failure_stage": "produce",
+      "typed": true,
+      "control_ids": [
+        "positive-kaas-sbx-b-events"
+      ],
+      "write_path_control_id": "positive-kaas-sbx-b-events",
+      "consumer_write_confounded": true,
+      "confound_resolution": "topic_stage_observed_native"
+    }
+  ],
+  "attempted_original_value_bytes": 20000,
+  "acknowledged_value_bytes": 16000,
+  "definitively_rejected_value_bytes": 4000,
+  "unresolved_value_bytes": 0,
+  "rows": [
+    {
+      "topic": "kaas-sbx-a-events",
+      "group": "kaas-sbx-a-events-group",
+      "before": {
+        "committed_offset": 4,
+        "group_absent": false,
+        "log_end_offset": 4,
+        "log_start_offset": 0,
+        "members": 0,
+        "membership_observed": true,
+        "ok": true
+      },
+      "after": {
+        "committed_offset": 8,
+        "group_absent": false,
+        "log_end_offset": 8,
+        "log_start_offset": 0,
+        "members": 0,
+        "membership_observed": true,
+        "ok": true
+      },
+      "positive_attempts": 4,
+      "receipt_offsets": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "missing_ids": [],
+      "duplicate_receipts": 0,
+      "checks": {
+        "all4_acknowledged": true,
+        "all4_delivered_and_committed": true,
+        "checksum_match": true,
+        "receipt_offsets_exact": true,
+        "external_log_delta4": true,
+        "external_committed_at_end_idle": true
+      }
+    },
+    {
+      "topic": "kaas-sbx-a-audit",
+      "group": "kaas-sbx-a-audit-group",
+      "before": {
+        "committed_offset": 4,
+        "group_absent": false,
+        "log_end_offset": 4,
+        "log_start_offset": 0,
+        "members": 0,
+        "membership_observed": true,
+        "ok": true
+      },
+      "after": {
+        "committed_offset": 8,
+        "group_absent": false,
+        "log_end_offset": 8,
+        "log_start_offset": 0,
+        "members": 0,
+        "membership_observed": true,
+        "ok": true
+      },
+      "positive_attempts": 4,
+      "receipt_offsets": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "missing_ids": [],
+      "duplicate_receipts": 0,
+      "checks": {
+        "all4_acknowledged": true,
+        "all4_delivered_and_committed": true,
+        "checksum_match": true,
+        "receipt_offsets_exact": true,
+        "external_log_delta4": true,
+        "external_committed_at_end_idle": true
+      }
+    },
+    {
+      "topic": "kaas-sbx-b-events",
+      "group": "kaas-sbx-b-events-group",
+      "before": {
+        "committed_offset": 4,
+        "group_absent": false,
+        "log_end_offset": 4,
+        "log_start_offset": 0,
+        "members": 0,
+        "membership_observed": true,
+        "ok": true
+      },
+      "after": {
+        "committed_offset": 8,
+        "group_absent": false,
+        "log_end_offset": 8,
+        "log_start_offset": 0,
+        "members": 0,
+        "membership_observed": true,
+        "ok": true
+      },
+      "positive_attempts": 4,
+      "receipt_offsets": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "missing_ids": [],
+      "duplicate_receipts": 0,
+      "checks": {
+        "all4_acknowledged": true,
+        "all4_delivered_and_committed": true,
+        "checksum_match": true,
+        "receipt_offsets_exact": true,
+        "external_log_delta4": true,
+        "external_committed_at_end_idle": true
+      }
+    },
+    {
+      "topic": "kaas-sbx-b-audit",
+      "group": "kaas-sbx-b-audit-group",
+      "before": {
+        "committed_offset": 4,
+        "group_absent": false,
+        "log_end_offset": 4,
+        "log_start_offset": 0,
+        "members": 0,
+        "membership_observed": true,
+        "ok": true
+      },
+      "after": {
+        "committed_offset": 8,
+        "group_absent": false,
+        "log_end_offset": 8,
+        "log_start_offset": 0,
+        "members": 0,
+        "membership_observed": true,
+        "ok": true
+      },
+      "positive_attempts": 4,
+      "receipt_offsets": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "missing_ids": [],
+      "duplicate_receipts": 0,
+      "checks": {
+        "all4_acknowledged": true,
+        "all4_delivered_and_committed": true,
+        "checksum_match": true,
+        "receipt_offsets_exact": true,
+        "external_log_delta4": true,
+        "external_committed_at_end_idle": true
+      }
+    }
+  ],
+  "identity_scope": "Frozen logical record IDs repeat across attempts; reconciliation is scoped by physical Job/database and starting committed offsets, not merged across runs",
+  "offset_observation_scope": "Canonical established fixture group partitions and membership; not direct OffsetFetch of forbidden topic/group pairs"
+}

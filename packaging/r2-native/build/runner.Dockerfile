@@ -3,7 +3,7 @@ USER 0
 COPY k6 /usr/local/bin/k6
 COPY r2 /r2
 COPY client-guard.sh /opt/r2/client-guard.sh
-RUN chmod 0555 /usr/local/bin/k6 /opt/r2/client-guard.sh && chmod -R a+rX /r2 && command -v timeout && printf '%s  %s\n' 'e0294b2a2916408eb61805fbbeffcf785066c75105f665b61c325e7401ee3be3' /usr/local/bin/k6 | sha256sum -c -
+RUN chmod 0555 /usr/local/bin/k6 /opt/r2/client-guard.sh && chmod -R a+rX /r2 && command -v timeout && printf '%s  %s\n' '0174513d51947fb65aa17ae70f85fea19f7ed5a605aae0ca6d016d8e1cd94cc0' /usr/local/bin/k6 | sha256sum -c -
 ENV HOME=/tmp K6_NO_USAGE_REPORT=true
 RUN /usr/local/bin/k6 inspect /r2/inspect.js
 USER 1001:0

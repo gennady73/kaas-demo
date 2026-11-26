@@ -1,0 +1,9 @@
+{
+  "protocol": "kaas-tenant-evidence-v1",
+  "run_id": "r2-native-20261125",
+  "plan_sha256": "78e427f79f510efe87834000371584394fc44ccd0ed4e0a903f919d31edca13d",
+  "export_sha256": "18ba064608624da60e80101aaea81af9f0e8bfe9f4edbed126cc5903dd66c96e",
+  "event_count": 182,
+  "terminal_present": true,
+  "acceptance": "REQUIRES_INDEPENDENT_AUDIT"
+}

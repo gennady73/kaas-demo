@@ -1,0 +1,10 @@
+{
+  "status": "FINAL_STATIC_CHECKS_PASS",
+  "source_fingerprints": 42,
+  "native_source_unchanged": true,
+  "actual_run_and_disabled_baseline_pins_match_verified_image": true,
+  "baseline_execution_disabled": true,
+  "fresh_run_export_sha256": "18ba064608624da60e80101aaea81af9f0e8bfe9f4edbed126cc5903dd66c96e",
+  "published_now": false,
+  "no_extra_live_run": true
+}

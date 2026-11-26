@@ -1,0 +1,40 @@
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  name: kaas-r2-runner-05a3f2d
+  namespace: kaas-demo
+  labels:
+    kaas.example.com/package: r2-native-disabled
+spec:
+  runPolicy: Serial
+  triggers: []
+  completionDeadlineSeconds: 600
+  source:
+    type: Binary
+    binary: {}
+  strategy:
+    type: Docker
+    dockerStrategy:
+      dockerfilePath: Dockerfile
+      noCache: false
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
+  output:
+    to:
+      kind: ImageStreamTag
+      name: kaas-r2-runner-05a3f2d:verified-05a3f2d
+  nodeSelector:
+    kubernetes.io/os: linux
+    kubernetes.io/arch: amd64
+---
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  name: kaas-r2-runner-05a3f2d
+  namespace: kaas-demo
+spec: {}

@@ -1,8 +1,8 @@
 {
   "version": "1.0",
   "date": "2026-11-26",
-  "status": "EOF_RUNNER_RETEST_INCOMPLETE_POSITIVES_RECONCILED_CLIENTS_SUSPENDED",
-  "source_commit": "351528d83b1b95c5697f9322c7dcf5491a302625",
+  "status": "R2_BOUNDED_FIXTURE_PASS_ALL_CLIENTS_SUSPENDED",
+  "source_commit": "05a3f2dcb551c7aa7ed12b4108c7ef488113aed9",
   "namespace": "kaas-demo",
   "execution_enabled": false,
   "deployment_enabled": false,
@@ -10,10 +10,10 @@
   "build_enabled": false,
   "base_image": "registry.redhat.io/amq-streams/kafka-42-rhel9@sha256:ce7dc91b664600c6f06e1df3d6b56a4684bb779865d9c28b4df648addd89189d",
   "base_evidence": "Exact pinned base pulled successfully by both completed builds",
-  "binary_sha256": "e0294b2a2916408eb61805fbbeffcf785066c75105f665b61c325e7401ee3be3",
-  "runtime_manifest_sha256": "a8ff40449e28da9f46aded0bca19b669c4d5dc8c2fa53fc5fc3d9e396270877e",
+  "binary_sha256": "0174513d51947fb65aa17ae70f85fea19f7ed5a605aae0ca6d016d8e1cd94cc0",
+  "runtime_manifest_sha256": "07f7bd428716626f2d0ca3a229fd4d4d346c5a5a5ff8dff92fa119827ee27b59",
   "plan_sha256": "78e427f79f510efe87834000371584394fc44ccd0ed4e0a903f919d31edca13d",
-  "runner_image_digest": "sha256:7773f3ed708cbf8ab07703ed978afd478f05d9afcb13f888a27ef4159124b1af",
+  "runner_image_digest": "sha256:41f328c85ee3d3e9d8834ce12e516b5ef52506067117b1c4f1145511b493998a",
   "sink_image_digest": "sha256:f730c89baceda0f8a536ab9c94696b768c996fe55d60202300095b4d450efa25",
   "storage_proposal": {
     "name": "kaas-r2-native-evidence",
@@ -28,14 +28,14 @@
     "verified_second_copy": true
   },
   "actual_image_build": "COMPLETE",
-  "actual_runtime": "NATIVE_INCOMPLETE",
+  "actual_runtime": "NATIVE_COMPLETE",
   "approval_wait_policy": {
     "maximum_unanswered_seconds": 300,
     "on_expiry": "SUSPEND_PROCESSING",
     "status": "NO_APPROVAL_QUESTION_PENDING"
   },
-  "source_commit_scope": "Exact native source and runtime at351528d; build recipe checksum and validation receipt adapted locally for authorized image",
-  "runner_image_reference": "image-registry.openshift-image-registry.svc:5000/kaas-demo/kaas-r2-runner-351528d@sha256:7773f3ed708cbf8ab07703ed978afd478f05d9afcb13f888a27ef4159124b1af",
+  "source_commit_scope": "Exact native/runtime source05a3f2d; local recipe/pins adapted for authorized build",
+  "runner_image_reference": "image-registry.openshift-image-registry.svc:5000/kaas-demo/kaas-r2-runner-05a3f2d@sha256:41f328c85ee3d3e9d8834ce12e516b5ef52506067117b1c4f1145511b493998a",
   "sink_image_reference": "image-registry.openshift-image-registry.svc:5000/kaas-demo/kaas-r2-sink@sha256:f730c89baceda0f8a536ab9c94696b768c996fe55d60202300095b4d450efa25",
   "image_verification": "BUILD_CHECKS_AND_REGISTRY_METADATA_PASS",
   "readiness_receipt": "readiness/readiness.json",
@@ -49,7 +49,7 @@
   "client_network_DNS": "Explicit TCP/UDP53and5353 to observed DNS selector; live readiness verified",
   "actual_client_Job_present": true,
   "actual_client_Job_suspended": true,
-  "last_fixture_result": "../../docs/r2-351528d-retest-2026-11-26/results.json",
+  "last_fixture_result": "../../docs/r2-05a3f2d-retest-2026-11-26/results.json",
   "offline_fix_candidate": {
     "status": "IMAGE_BUILT_AND_RETESTED_LIVE_02_CONFIRMED_LIVE_01_NOT_RESOLVED",
     "receipt": "../../docs/r2-live-fixes-2026-11-26/validation-summary.json",
@@ -57,15 +57,16 @@
     "runtime_manifest_sha256": "a8ff40449e28da9f46aded0bca19b669c4d5dc8c2fa53fc5fc3d9e396270877e",
     "actual_image_pins_unchanged": true
   },
-  "source_validation_receipt": "docs/r2-eof-sentinel-fix-2026-11-26/offline-build-validation.json",
-  "previous_runner_image_reference": "image-registry.openshift-image-registry.svc:5000/kaas-demo/kaas-r2-runner-02e2e2f@sha256:d82a1444de832a824a135d66eef9c7486d8587299b54b5c490bccc194c42dabe",
-  "runner_buildconfig": "kaas-r2-runner-351528d",
+  "source_validation_receipt": "docs/r2-live03-fix-2026-11-26/offline-build-validation.json",
+  "previous_runner_image_reference": "image-registry.openshift-image-registry.svc:5000/kaas-demo/kaas-r2-runner-351528d@sha256:7773f3ed708cbf8ab07703ed978afd478f05d9afcb13f888a27ef4159124b1af",
+  "runner_buildconfig": "kaas-r2-runner-05a3f2d",
   "client_jobs_suspended": [
     "kaas-r2-native-client",
     "kaas-r2-native-client-02e2e2f-r2",
-    "kaas-r2-native-client-351528d-r2"
+    "kaas-r2-native-client-351528d-r2",
+    "kaas-r2-native-client-05a3f2d-r2"
   ],
-  "actual_sink_database": "/var/lib/r2/evidence-351528d-retest.sqlite",
+  "actual_sink_database": "/var/lib/r2/evidence-05a3f2d-retest.sqlite",
   "offline_eof_sentinel_candidate": {
     "status": "IMAGE_BUILT_RETESTED_EOF_LIVE_CONFIRMED_NEGATIVE_MATRIX_INCOMPLETE",
     "receipt": "../../docs/r2-eof-sentinel-fix-2026-11-26/validation-summary.json",
@@ -74,10 +75,10 @@
     "actual_image_pins_unchanged": false
   },
   "offline_live03_candidate": {
-    "status": "BASELINE_FIX_VALIDATED_OFFLINE_NOT_IMAGE_BUILT_OR_DEPLOYED",
+    "status": "IMAGE_BUILT_AND_RETESTED_LIVE_CONFIRMED_FIXED",
     "receipt": "../../docs/r2-live03-fix-2026-11-26/validation-summary.json",
     "binary_sha256": "0174513d51947fb65aa17ae70f85fea19f7ed5a605aae0ca6d016d8e1cd94cc0",
     "runtime_manifest_sha256": "07f7bd428716626f2d0ca3a229fd4d4d346c5a5a5ff8dff92fa119827ee27b59",
-    "actual_image_pins_unchanged": true
+    "actual_image_pins_unchanged": false
   }
 }

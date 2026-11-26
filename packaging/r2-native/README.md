@@ -1,3 +1,5 @@
+Latest result: [05a3f2d bounded R2 fixture passed](../../docs/r2-05a3f2d-retest-2026-11-26/README.md), all16positive records reconciled and all8negative cases pass; R2-LIVE-01/02/03 closed for this scope. All four client Jobs suspended. The user authorized publication of the verified image pins and successful results; earlier status notes below are historical.
+
 Latest offline correction: [R2-LIVE-03 baseline routing](../../docs/r2-live03-fix-2026-11-26/README.md) passes regression/build checks and is authorized for publication; new image not built. Actual image pins remain unchanged, and all three Jobs are untouched, last observed suspended.
 
 Latest execution: [351528d verified image and bounded retest](../../docs/r2-351528d-retest-2026-11-26/README.md): all16positive messages reconciled, one/eightnegative cases passed; R2 incomplete (R2-LIVE-03). All three client Jobs suspended. The user authorized publication of these pins/results as an incomplete R2 checkpoint; prior status notes below are historical.

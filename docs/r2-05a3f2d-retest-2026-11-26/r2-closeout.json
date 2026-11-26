@@ -1,0 +1,26 @@
+{
+  "status": "R2_BOUNDED_NATIVE_SCOPE_ACCEPTED",
+  "reviewer": "C0 coordinating assistant acting on user-authorized single bounded fixture",
+  "source_commit": "05a3f2dcb551c7aa7ed12b4108c7ef488113aed9",
+  "image_reference": "image-registry.openshift-image-registry.svc:5000/kaas-demo/kaas-r2-runner-05a3f2d@sha256:41f328c85ee3d3e9d8834ce12e516b5ef52506067117b1c4f1145511b493998a",
+  "basis": [
+    "Actual native Pod binary/image identity matched reviewed source/build",
+    "16positive originals accounted and matched by IDs/checksums, receipts and manual commits",
+    "Eight required negative cases typed expected denials with positive controls",
+    "No negative client commit calls; canonical established-group baseline/final offsets unchanged during negative cases",
+    "Independent post Admin metadata all4logends8/commits8/members0",
+    "Native cleanup plus observed process termination and all4Jobs suspended",
+    "Externalelapsed29528ms below300000ms; no forcedstop or retry",
+    "182event sealed export hash matches workspacecopy; byte/chain and separate semantic audit PASS"
+  ],
+  "findings": {
+    "R2-LIVE-01": "CLOSED_LIVE_CONFIRMED",
+    "R2-LIVE-02": "CLOSED_LIVE_CONFIRMED",
+    "R2-LIVE-03": "CLOSED_LIVE_CONFIRMED"
+  },
+  "qualification_boundary": "Reviewed bounded tenant-native fixture only; not96case exhaustive ACL evaluation, hostileSecret isolation, 2MiB/capacity/continuity/recovery/service/production qualification",
+  "offset_observation_boundary": "Canonical established fixture partition and group membership; forbidden target-topic/group offsets not directly described under tenant permissions",
+  "independence": "Separate auditors plus external Pod/Admin observations; no independent specialist owner signature invented",
+  "next_sync_point": "R2 bounded client activation evidence is available for C1-C7 joins; select R3/SP5 service qualification scope before new live work",
+  "publication": "LOCAL_UNCOMMITTED"
+}

@@ -1,0 +1,15 @@
+{
+  "status": "STATIC_PUBLICATION_CHECKS_PASS",
+  "source_fingerprints_verified": 42,
+  "saved_Jobs_suspended": 4,
+  "cluster_access": false,
+  "live_test_rerun": false,
+  "sealed_export_bytes_unchanged": true,
+  "display_log_normalization": {
+    "client.log": {
+      "raw_sha256": "b6270b836e235fe2fb518a193be35f89a05ec0c92f84add8721545b404c45e86",
+      "display_sha256": "1d67cea3651eb6a6eace85d8e73844236b94d4eee3ad4d840a479d641cef803d",
+      "change": "Trailing whitespace only; originals retained in shared build/run evidence"
+    }
+  }
+}

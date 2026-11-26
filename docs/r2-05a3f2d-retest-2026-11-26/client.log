@@ -1,0 +1,107 @@
+
+         /\      Grafana   /‾‾/
+    /\  /  \     |\  __   /  /
+   /  \/    \    | |/ /  /   ‾‾\
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/
+
+
+     execution: local
+        script: /r2/entrypoint.js
+        output: -
+
+     scenarios: (100.00%) 1 scenario, 1 max VUs, 4m30s max duration (incl. graceful stop):
+              * fixture: 1 iterations shared among 1 VUs (maxDuration: 4m30s)
+
+
+running (0m00.7s), 1/1 VUs, 0 complete and 0 interrupted iterations
+fixture   [   0% ] 1 VUs  0m00.7s/4m30s  0/1 shared iters
+
+running (0m01.7s), 1/1 VUs, 0 complete and 0 interrupted iterations
+fixture   [   0% ] 1 VUs  0m01.7s/4m30s  0/1 shared iters
+
+running (0m02.7s), 1/1 VUs, 0 complete and 0 interrupted iterations
+fixture   [   0% ] 1 VUs  0m02.7s/4m30s  0/1 shared iters
+
+running (0m03.7s), 1/1 VUs, 0 complete and 0 interrupted iterations
+fixture   [   0% ] 1 VUs  0m03.7s/4m30s  0/1 shared iters
+
+running (0m04.7s), 1/1 VUs, 0 complete and 0 interrupted iterations
+fixture   [   0% ] 1 VUs  0m04.7s/4m30s  0/1 shared iters
+
+running (0m05.7s), 1/1 VUs, 0 complete and 0 interrupted iterations
+fixture   [   0% ] 1 VUs  0m05.7s/4m30s  0/1 shared iters
+
+running (0m06.7s), 1/1 VUs, 0 complete and 0 interrupted iterations
+fixture   [   0% ] 1 VUs  0m06.7s/4m30s  0/1 shared iters
+
+running (0m07.7s), 1/1 VUs, 0 complete and 0 interrupted iterations
+fixture   [   0% ] 1 VUs  0m07.7s/4m30s  0/1 shared iters
+
+running (0m08.7s), 1/1 VUs, 0 complete and 0 interrupted iterations
+fixture   [   0% ] 1 VUs  0m08.7s/4m30s  0/1 shared iters
+
+running (0m09.7s), 1/1 VUs, 0 complete and 0 interrupted iterations
+fixture   [   0% ] 1 VUs  0m09.7s/4m30s  0/1 shared iters
+
+running (0m10.7s), 1/1 VUs, 0 complete and 0 interrupted iterations
+fixture   [   0% ] 1 VUs  0m10.7s/4m30s  0/1 shared iters
+
+running (0m11.7s), 1/1 VUs, 0 complete and 0 interrupted iterations
+fixture   [   0% ] 1 VUs  0m11.7s/4m30s  0/1 shared iters
+
+running (0m12.7s), 1/1 VUs, 0 complete and 0 interrupted iterations
+fixture   [   0% ] 1 VUs  0m12.7s/4m30s  0/1 shared iters
+
+running (0m13.7s), 1/1 VUs, 0 complete and 0 interrupted iterations
+fixture   [   0% ] 1 VUs  0m13.7s/4m30s  0/1 shared iters
+
+running (0m14.7s), 1/1 VUs, 0 complete and 0 interrupted iterations
+fixture   [   0% ] 1 VUs  0m14.7s/4m30s  0/1 shared iters
+
+running (0m15.7s), 1/1 VUs, 0 complete and 0 interrupted iterations
+fixture   [   0% ] 1 VUs  0m15.7s/4m30s  0/1 shared iters
+
+running (0m16.7s), 1/1 VUs, 0 complete and 0 interrupted iterations
+fixture   [   0% ] 1 VUs  0m16.7s/4m30s  0/1 shared iters
+
+running (0m17.7s), 1/1 VUs, 0 complete and 0 interrupted iterations
+fixture   [   0% ] 1 VUs  0m17.7s/4m30s  0/1 shared iters
+
+running (0m18.7s), 1/1 VUs, 0 complete and 0 interrupted iterations
+fixture   [   0% ] 1 VUs  0m18.7s/4m30s  0/1 shared iters
+
+running (0m19.7s), 1/1 VUs, 0 complete and 0 interrupted iterations
+fixture   [   0% ] 1 VUs  0m19.7s/4m30s  0/1 shared iters
+
+running (0m20.7s), 1/1 VUs, 0 complete and 0 interrupted iterations
+fixture   [   0% ] 1 VUs  0m20.7s/4m30s  0/1 shared iters
+
+running (0m21.7s), 1/1 VUs, 0 complete and 0 interrupted iterations
+fixture   [   0% ] 1 VUs  0m21.7s/4m30s  0/1 shared iters
+time="2026-11-26T15:12:05Z" level=info msg="{\"run_id\":\"r2-native-20261125\",\"status\":\"NATIVE_COMPLETE\",\"duration_ms\":25446,\"cleanup_complete\":true}" source=console
+
+
+  █ TOTAL RESULTS
+
+    HTTP
+    http_req_duration..............: avg=5.16ms min=4.13ms med=4.49ms max=43.89ms p(90)=4.77ms p(95)=4.89ms
+      { expected_response:true }...: avg=5.16ms min=4.13ms med=4.49ms max=43.89ms p(90)=4.77ms p(95)=4.89ms
+    http_req_failed................: 0.00%  0 out of 182
+    http_reqs......................: 182    8.204308/s
+
+    EXECUTION
+    iteration_duration.............: avg=22.18s min=22.18s med=22.18s max=22.18s  p(90)=22.18s p(95)=22.18s
+    iterations.....................: 1      0.045079/s
+    vus............................: 1      min=1        max=1
+    vus_max........................: 1      min=1        max=1
+
+    NETWORK
+    data_received..................: 597 kB 27 kB/s
+    data_sent......................: 480 kB 22 kB/s
+
+
+
+
+running (0m22.2s), 0/1 VUs, 1 complete and 0 interrupted iterations
+fixture ✓ [ 100% ] 1 VUs  0m22.2s/4m30s  1/1 shared iters
