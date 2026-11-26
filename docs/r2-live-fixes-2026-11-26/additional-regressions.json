@@ -1,0 +1,12 @@
+{
+  "new_binary_exit_tests": 4,
+  "new_binary_exit_suite": "PASS",
+  "legacy_iteration_throw_exit_code": 0,
+  "incomplete_or_exception_abort_exit_code": 108,
+  "complete_stub_exit_code": 0,
+  "without_EOF_fix_control": "EXPECTED_FAILURE",
+  "control_method": "Temporary source copy disables only EOF fallback; same regression detects invalid initial position",
+  "Kafka_clients_constructed": false,
+  "cluster_access": false,
+  "live_fixture_rerun": false
+}

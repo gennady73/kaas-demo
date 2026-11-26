@@ -1,0 +1,1 @@
+{"native_plan_sha256":"78e427f79f510efe87834000371584394fc44ccd0ed4e0a903f919d31edca13d","source_projection_verified":true,"execution_enabled":false}

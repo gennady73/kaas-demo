@@ -1,0 +1,44 @@
+=== RUN   TestBoundedWaitDoesNotClaimCancellation
+--- PASS: TestBoundedWaitDoesNotClaimCancellation (0.01s)
+=== RUN   TestBoundedReturnPanicAndNoAdmission
+--- PASS: TestBoundedReturnPanicAndNoAdmission (0.00s)
+=== RUN   TestAllInputValidationBeforeNativeConstruction
+=== RUN   TestAllInputValidationBeforeNativeConstruction/missing
+=== RUN   TestAllInputValidationBeforeNativeConstruction/empty_password
+=== RUN   TestAllInputValidationBeforeNativeConstruction/empty_ca
+=== RUN   TestAllInputValidationBeforeNativeConstruction/expired
+--- PASS: TestAllInputValidationBeforeNativeConstruction (0.00s)
+    --- PASS: TestAllInputValidationBeforeNativeConstruction/missing (0.00s)
+    --- PASS: TestAllInputValidationBeforeNativeConstruction/empty_password (0.00s)
+    --- PASS: TestAllInputValidationBeforeNativeConstruction/empty_ca (0.00s)
+    --- PASS: TestAllInputValidationBeforeNativeConstruction/expired (0.00s)
+=== RUN   TestTimeoutQuarantineIsLatchedAndPreventsMoreWork
+--- PASS: TestTimeoutQuarantineIsLatchedAndPreventsMoreWork (0.01s)
+=== RUN   TestLateSuccessCannotWinAgainstExpiredTimer
+--- PASS: TestLateSuccessCannotWinAgainstExpiredTimer (0.02s)
+=== RUN   TestExplicitConfiguration
+--- PASS: TestExplicitConfiguration (0.00s)
+=== RUN   TestBindingRejectsFallback
+--- PASS: TestBindingRejectsFallback (0.00s)
+=== RUN   TestTypedCodeStageAndRedaction
+--- PASS: TestTypedCodeStageAndRedaction (0.00s)
+=== RUN   TestMetadataOffsetUsesTopicValueNotPointer
+--- PASS: TestMetadataOffsetUsesTopicValueNotPointer (0.00s)
+=== RUN   TestLinkedLibraryVersionWithoutClientConstruction
+    module_test.go:80: linked librdkafka 2.14.0
+--- PASS: TestLinkedLibraryVersionWithoutClientConstruction (0.00s)
+=== RUN   TestInitialPositionUsesBrokerEOFWithoutMessagesOrCommits
+--- PASS: TestInitialPositionUsesBrokerEOFWithoutMessagesOrCommits (0.00s)
+=== RUN   TestInitialPositionNeverGuessesZeroOrUsesStaleEOF
+--- PASS: TestInitialPositionNeverGuessesZeroOrUsesStaleEOF (0.01s)
+=== RUN   TestInitialPositionRejectsWrongEOFAssignmentAndSDKError
+--- PASS: TestInitialPositionRejectsWrongEOFAssignmentAndSDKError (0.00s)
+=== RUN   TestInitialPositionRequiresCurrentAssignmentAndRejectsBacklog
+--- PASS: TestInitialPositionRequiresCurrentAssignmentAndRejectsBacklog (0.00s)
+=== RUN   TestEOFIsNotAnAuthorizationDenial
+--- PASS: TestEOFIsNotAnAuthorizationDenial (0.00s)
+=== RUN   TestNormalSDKPositionStillWorks
+--- PASS: TestNormalSDKPositionStillWorks (0.00s)
+PASS
+ok  	kaas.local/tenant-r2-native	1.068s
+?   	kaas.local/tenant-r2-native/cmd/k6	[no test files]

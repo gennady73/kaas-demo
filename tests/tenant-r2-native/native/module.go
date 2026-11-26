@@ -28,11 +28,22 @@ type Module struct {
 	handles   map[int]*handle
 	sent      map[string]bool
 }
+
+// Narrow SDK seam lets offline regressions exercise polling without clients.
+type consumerAPI interface {
+	Poll(int) k.Event
+	Assignment() ([]k.TopicPartition, error)
+	Position([]k.TopicPartition) ([]k.TopicPartition, error)
+	CommitOffsets([]k.TopicPartition) ([]k.TopicPartition, error)
+	Close() error
+}
+
 type handle struct {
 	p                 *k.Producer
-	c                 *k.Consumer
+	c                 consumerAPI
 	topic, group      string
 	last              *k.Message
+	eof               *k.TopicPartition
 	joined, forbidden bool
 	commitAllowed     bool
 	quarantined       bool
@@ -136,6 +147,7 @@ func consumerConfig(c k.ConfigMap, group string) k.ConfigMap {
 	c["group.id"] = group
 	c["enable.auto.commit"] = false
 	c["enable.auto.offset.store"] = false
+	c["enable.partition.eof"] = true
 	c["auto.offset.reset"] = "earliest"
 	c["fetch.message.max.bytes"] = 4194304
 	c["fetch.max.bytes"] = 4194304
@@ -222,6 +234,7 @@ func (m *Module) OpenConsumer(principal, topic, group string) Result {
 	err = c.SubscribeTopics([]string{topic}, func(c *k.Consumer, e k.Event) error {
 		switch v := e.(type) {
 		case k.AssignedPartitions:
+			h.resetAssignmentEvidence()
 			h.joined = true
 			for _, p := range v.Partitions {
 				if p.Topic == nil || *p.Topic != topic || p.Partition != 0 {
@@ -234,6 +247,7 @@ func (m *Module) OpenConsumer(principal, topic, group string) Result {
 			}
 			return c.Assign(v.Partitions)
 		case k.RevokedPartitions:
+			h.resetAssignmentEvidence()
 			return c.Unassign()
 		}
 		return nil
@@ -284,6 +298,13 @@ func (m *Module) poll(h *handle, milliseconds int) Result {
 			return ok(Result{"unexpected_access": true, "messages": []interface{}{}})
 		}
 		switch v := event.(type) {
+		case k.PartitionEOF:
+			part := k.TopicPartition(v)
+			if part.Error != nil || part.Topic == nil || *part.Topic != h.topic || part.Partition != 0 || part.Offset < 0 {
+				return bad("consume")
+			}
+			h.eof = &part
+			return ok(Result{"messages": []interface{}{}}) // EOF is position evidence, never an ACL denial.
 		case *k.Message:
 			if v.TopicPartition.Error != nil {
 				return failure(v.TopicPartition.Error, "consume")
@@ -291,6 +312,7 @@ func (m *Module) poll(h *handle, milliseconds int) Result {
 			if v.TopicPartition.Topic == nil || *v.TopicPartition.Topic != h.topic || v.TopicPartition.Partition != 0 || v.TopicPartition.Offset < 0 {
 				return bad("consume")
 			}
+			h.eof = nil
 			h.last = v
 			return ok(Result{"messages": []Result{{"topic": *v.TopicPartition.Topic, "partition": v.TopicPartition.Partition, "offset": int64(v.TopicPartition.Offset), "key": string(v.Key), "value": string(v.Value)}}})
 		case k.Error:
@@ -306,14 +328,25 @@ func (m *Module) Consume(id int) Result {
 	}
 	return m.poll(h, 2000)
 }
-func (m *Module) Position(id int) Result {
+func (h *handle) resetAssignmentEvidence() { h.joined = false; h.eof = nil }
+
+func (m *Module) Position(id int) Result { return m.positionWithin(id, 6*time.Second) }
+
+func (m *Module) positionWithin(id int, wait time.Duration) Result {
 	h := m.handles[id]
 	if h == nil || h.c == nil || !m.live() {
 		return bad("consume")
 	}
-	deadline := time.Now().Add(6 * time.Second)
+	deadline := time.Now().Add(wait)
 	for time.Now().Before(deadline) && m.live() {
-		r := m.poll(h, 100)
+		pollMs := int(time.Until(deadline).Milliseconds())
+		if pollMs > 100 {
+			pollMs = 100
+		}
+		if pollMs < 1 {
+			break
+		}
+		r := m.poll(h, pollMs)
 		if r["ok"] != true {
 			return r
 		}
@@ -324,15 +357,30 @@ func (m *Module) Position(id int) Result {
 		if err != nil {
 			return failure(err, "consume")
 		}
-		if len(assignments) != 1 {
+		if len(assignments) != 1 || !h.joined {
 			continue
+		}
+		if assignments[0].Topic == nil || *assignments[0].Topic != h.topic || assignments[0].Partition != 0 || assignments[0].Error != nil {
+			return bad("consume")
 		}
 		pos, err := h.c.Position(assignments)
 		if err != nil {
 			return failure(err, "consume")
 		}
-		if len(pos) == 1 && pos[0].Offset >= 0 {
+		if len(pos) != 1 || pos[0].Topic == nil || *pos[0].Topic != h.topic || pos[0].Partition != 0 {
+			return bad("consume")
+		}
+		if pos[0].Error != nil {
+			return failure(pos[0].Error, "consume")
+		}
+		if pos[0].Offset >= 0 {
 			return ok(Result{"position": int64(pos[0].Offset)})
+		}
+		// librdkafka 2.14 Position is INVALID before the first application message.
+		// A broker EOF for this still-assigned partition proves its read head
+		// without seeding data, seeking, committing or guessing zero.
+		if pos[0].Offset == k.OffsetInvalid && h.eof != nil && h.eof.Topic != nil && *h.eof.Topic == h.topic && h.eof.Partition == 0 {
+			return ok(Result{"position": int64(h.eof.Offset)})
 		}
 	}
 	return failure(context.DeadlineExceeded, "consume")

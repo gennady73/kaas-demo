@@ -1,0 +1,14 @@
+{
+  "inspection": "Primary version-pinned source in local Go module cache; no network lookup",
+  "files": {
+    "/home/gunger/go/pkg/mod/github.com/confluentinc/confluent-kafka-go/v2@v2.14.0/kafka/consumer.go": "cc2636f639b164e04d2ffefd9ad29fef95ad077983004c1e2293f79a4b90670e",
+    "/home/gunger/go/pkg/mod/github.com/confluentinc/confluent-kafka-go/v2@v2.14.0/kafka/event.go": "295d37a40304929733629a7dd0745857e3db7be7ef2e7e5b7e08539543fd1b34",
+    "/home/gunger/go/pkg/mod/github.com/confluentinc/confluent-kafka-go/v2@v2.14.0/kafka/librdkafka_vendor/rdkafka.h": "89b9c6450663ff134f3e7553ed23e2cc56aa562c168af08df04491a506999903",
+    "/home/gunger/go/pkg/mod/go.k6.io/k6@v1.7.1/internal/js/modules/k6/execution/execution.go": "15441b5ef22b153987ba314bb242ac7af34e379740dda5da4bfa93692b3f41e4"
+  },
+  "observed_contracts": [
+    "Position is last application-consumed offset+1, orINVALID without previous message",
+    "PartitionEOF needs enable.partition.eof=true and carries broker topic/partition/offset",
+    "k6 execution.test.abort triggers run-wide interrupt; subprocess tests verify108"
+  ]
+}

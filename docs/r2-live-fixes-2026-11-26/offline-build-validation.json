@@ -1,0 +1,166 @@
+{
+  "at_utc": "2026-11-26T13:25:37.350552+00:00",
+  "status": "OFFLINE_BUILD_AND_REVIEW_CHECKS_PASS",
+  "binary_sha256": "71430df6e0a407e241c570a63759f7ebd915cb36c81f5ac5e1d82c31d2057f9f",
+  "runtime_manifest_sha256": "a8ff40449e28da9f46aded0bca19b669c4d5dc8c2fa53fc5fc3d9e396270877e",
+  "commands": [
+    {
+      "name": "go-version",
+      "argv": [
+        "/home/gunger/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.26.4.linux-amd64/bin/go",
+        "version"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "projection",
+      "argv": [
+        "node",
+        "/home/gunger/Projects/kaas-solution/kaas-demo/tests/tenant-r2-native/compile-projection.mjs"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "binding",
+      "argv": [
+        "node",
+        "/home/gunger/Projects/kaas-solution/kaas-demo/tests/tenant-r2-native/test-binding.mjs"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "review",
+      "argv": [
+        "node",
+        "/home/gunger/Projects/kaas-solution/kaas-demo/tests/tenant-r2-native/test-review.mjs"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "sink",
+      "argv": [
+        "/usr/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "/home/gunger/Projects/kaas-solution/kaas-demo/tests/tenant-r2-native/sink",
+        "-p",
+        "test_*.py",
+        "-v"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "go-race",
+      "argv": [
+        "/home/gunger/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.26.4.linux-amd64/bin/go",
+        "test",
+        "-mod=readonly",
+        "-race",
+        "-count=1",
+        "-v",
+        "./..."
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "build",
+      "argv": [
+        "/home/gunger/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.26.4.linux-amd64/bin/go",
+        "build",
+        "-mod=readonly",
+        "-buildvcs=false",
+        "-trimpath",
+        "-o",
+        "/tmp/kaas-r2-live-fixes-offline-20261126/k6",
+        "./cmd/k6"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "buildinfo",
+      "argv": [
+        "/home/gunger/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.26.4.linux-amd64/bin/go",
+        "version",
+        "-m",
+        "/tmp/kaas-r2-live-fixes-offline-20261126/k6"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "inspect",
+      "argv": [
+        "/tmp/kaas-r2-live-fixes-offline-20261126/k6",
+        "--config",
+        "/tmp/kaas-r2-live-fixes-offline-20261126/empty-k6.json",
+        "inspect",
+        "/home/gunger/Projects/kaas-solution/kaas-demo/tests/tenant-r2-native/inspect.js"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "replay",
+      "argv": [
+        "/usr/bin/python",
+        "/home/gunger/Projects/kaas-solution/kaas-demo/tests/tenant-r2-native/replay_native_offline.py",
+        "--output",
+        "/tmp/kaas-r2-live-fixes-offline-20261126/replay"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "source_sha256": {
+    "engine.mjs": "9dfd82483c4516be3ee017d51454c1a2e1f2bd7a2efaab9cb6a34e783cd35daa",
+    "ascii.mjs": "82cd918785535d42816db487e392933f9421254ad0b784858ad17068fd951740",
+    "native-policy.mjs": "3ff0aada8bda81fceef96d7beb6a6f3a5b04ff44ac121cd292860b5d27e02bcf",
+    "binder.mjs": "ceb660995148a9472f7e9072e7d2b2afb540e43d4cb05b7a2fc9c7273ddf0a93",
+    "transport.mjs": "54defef5bb8574a6e210872e103052fea4e27ab04923f0329cde28a4af0df80b",
+    "entrypoint.js": "b4f1d3f555ebf9e16f1d27d3b389b26f0a5e7328ac8777aa05917d85244def5b",
+    "plan.json": "1810a8b73d29bdd192f7265b3b86a14a7dce3baa8d04d01d9dc3ed4ed487f19a",
+    "runtime.example.json": "b04148578fd0fc16fee4387d9f69bb34e956abdc76067d6d4566cf002dcd0c50",
+    "test-binding.mjs": "5b67f59b6f72c5ec0f82fc440f3e5b416a2b250914269d3c0679249ff2721567",
+    ".gitignore": "7b96165f096a401f4c126d3dee0a296070a34a044bb8e0713d11db381172e92f",
+    "inspect.js": "fe3da5a614b6a01f9a9b603362e4b2dd3308b9cc0b20e954062d98c558ada867",
+    "pod-and-sink-contract.json": "c1b4c874bd2f736bc10d2a16c40671502aad979e39f5b0294e9d022682079b1e",
+    "README.md": "f02fc596a81ba87330e0c32f2ea63d58ebefbf7dbdfa8c745493300d011ae694",
+    "compile-projection.mjs": "2f34f5e4fc8271f1870b2d3fd336fe0309efa7d9803132ab9ff355d0bc8624c2",
+    "projection-lock.mjs": "bf2a1a53d566d00b74115f319f979047d59ed74385635cd2a3f5b0df04b48c22",
+    "audit.mjs": "ac083b0c457354d76ff6e5e6319b4d05ebccc958a94178bee543e16e7bc349f2",
+    "test-review.mjs": "a19d555de32d02faf406f350c3ba1cce4cdc1828a92a231a1bfbe7ac0140f1a1",
+    "strict-json.mjs": "63b26dea5cd81e04b74fa71dbe70e4567dfd3c0fd039529987aa708ed79a0ae7",
+    "source-integrity.mjs": "02de316cb33b5999198bf0de8ccd8c4857204b0519ff6550ff4c69d3d12977ec",
+    "prepare-manifest.mjs": "a1604ff7fe6a5942e062552fbd95b4fc077a635f529e5c2ca548af96e50da23f",
+    "runtime-source-manifest.json": "a8ff40449e28da9f46aded0bca19b669c4d5dc8c2fa53fc5fc3d9e396270877e",
+    "audit-export.mjs": "253687eb319676ecbd6468752a37c7bdf2cb38ab455b1c542b2fdd5278130ac3",
+    "replay_native_offline.py": "1d07f3e629ae9725e9e44f273400facdec60b3444a626638b33487240d467017",
+    "check_offline.py": "31441b4db68f9426e9b31cdb0950e418c313411c9a78450c3f3af29f138d03fb",
+    "test_exit_offline.py": "1e034b8c035235fd6ed1f3b08bcd7ad3b61618ac300d1914028b5ebd017892f2",
+    "native/go.mod": "49399556957d141bd0fcfa2acbd5d3b39209c863edd8d2955cd09591c60acfb2",
+    "native/module.go": "b74ed3472a4742ae8b049fb8af5f976bde32be33263d1f07d7ee46775a1866b3",
+    "native/go.sum": "619a9938e5e4aa486341a537d807bab46e7a09141667d327ecbb4b629b901f1e",
+    "native/module_test.go": "dc40932fce172b1930fa4680727791b0c08c6e98d988845e26f34b713b65b80f",
+    "native/bounded.go": "3d41aedf0ddd4c844f9ecc937fc62bcf9e628f505429743e7812b83248dceb0a",
+    "native/inputs.go": "06c3b2c2d77a5c58bbaeec58a62fc37a2e003ace3eac040b46b8387a536e2a2e",
+    "native/bounded_test.go": "136862d5e6a789771b2b5b98b95805a48cde4445a7b8842a3e85192ec7f77da3",
+    "native/position_test.go": "c0f48dc2102a5913fe9516e067c6aa5704a5b485f3bf7e26c5c73f77f6b5faab",
+    "sink/store.py": "510f45b93990a00d54d55cf6e64245d4d36c3752c3a5fbed0c8dad0dc6472e57",
+    "sink/server.py": "52433378434fc85d5dc54ef6198135a485faa6441fca3e2deec144fcd4ceb04d",
+    "sink/test_store.py": "62ae8ea79f6ae0fedba0f150cd720970866fb469d45a0d60f736dcb441cc263a",
+    "sink/test_protocol.py": "cb1827ec66bf9bdbda74ed30bd33c4d679b5a8ba829fed77bc592a8946f6761b",
+    "sink/verify_export.py": "94739ff3bbf302de4fb1a76a6935e914dbbb500dd54477b76f7b58d119632396",
+    "sink/test_export.py": "a08bd4bccfaa31a43b3598adfa62cf22cc9360d6f50491b8e057f5a1bb7bd09a",
+    "sink/test_review.py": "d079112f5f9a159ebfe9112b86e62d8c2de32081b7cf227f0d271162583064e4",
+    "native/cmd/k6/main.go": "cca8fa68baea8992e18b5fca07284b2abefabd463a670b543976f979ca48c75b"
+  },
+  "deployment_enabled": false,
+  "workloads_enabled": false,
+  "Kafka_clients_constructed": false,
+  "k6_run_invoked": false,
+  "runtime_acceptance": "NOT_ASSESSED",
+  "limitations": [
+    "Bounded facade waiting does not cancel an SDK operation; late completion stays uncertain and quarantined",
+    "Actual broker TLS/auth/ACL/group/commit behavior and complete-case timing are NOT_RUN",
+    "Target image, mount/network/storage/admission and execution authority remain open"
+  ]
+}

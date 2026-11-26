@@ -1,0 +1,44 @@
+{
+  "date": "2026-11-26",
+  "status": "R2_LIVE_01_02_FIXED_OFFLINE_RUNTIME_NOT_RETESTED",
+  "base_commit": "79992572c793b8b2f2d6af735bf96d08c50f338a",
+  "R2_LIVE_01": {
+    "status": "FIXED_OFFLINE_BROKER_RETEST_PENDING",
+    "confirmed_source_condition": "SDK Position may beINVALID before first application message; old empty-topic logic could wait until6s timeout",
+    "live_cause_limit": "Original native error was not retained; exact original failure not independently replayed against Kafka",
+    "fix": "Enable brokerEOF; accept validated EOF only for currently joined exact assignment when SDKpositionINVALID; clear on rebalance/message; no guessedzero/seek/commit/seed",
+    "diagnostics": "Initial position failure emits existing specific safe reason"
+  },
+  "R2_LIVE_02": {
+    "status": "FIXED_AND_PROCESS_EXIT_VERIFIED_OFFLINE",
+    "fix": "Incomplete fixture or unexpected execution exception calls k6 execution.test.abort after normal engine cleanup/terminal path",
+    "legacy_reproduction_exit": 0,
+    "incomplete_or_exception_exit": 108,
+    "complete_synthetic_exit": 0
+  },
+  "checks": {
+    "binding": 7,
+    "review": 32,
+    "sink_export": 18,
+    "Go_race_top_level": 16,
+    "exit_status": 4,
+    "without_EOF_control": "EXPECTED_FAILURE",
+    "synthetic_replay_events": 182,
+    "synthetic_reported_commits": 16
+  },
+  "candidate_binary_sha256": "71430df6e0a407e241c570a63759f7ebd915cb36c81f5ac5e1d82c31d2057f9f",
+  "candidate_runtime_manifest_sha256": "a8ff40449e28da9f46aded0bca19b669c4d5dc8c2fa53fc5fc3d9e396270877e",
+  "logical_plan_sha256": "78e427f79f510efe87834000371584394fc44ccd0ed4e0a903f919d31edca13d",
+  "candidate_binary_path": "/tmp/kaas-r2-live-fixes-offline-20261126/k6",
+  "actual_images": "Existing published/live images unchanged and do not include these fixes",
+  "candidate_target_image_built": false,
+  "client_Job": "Untouched; last observed suspended",
+  "cluster_access": false,
+  "Kafka_clients_constructed": false,
+  "k6_run_invoked": true,
+  "k6_run_scope": "Offline synthetic iteration body with mocked dependencies and only k6/execution import; not the fixture entrypoint",
+  "live_test_rerun": false,
+  "historical_run_evidence": "Unchanged; remains NATIVE_INCOMPLETE",
+  "publication": "NOT_REQUESTED_LOCAL_CHANGES",
+  "next": "Publish/freeze source when requested, build and verify new runner image/update exact pins, then separately authorized fresh bounded attempt; preserve old sealed sink"
+}

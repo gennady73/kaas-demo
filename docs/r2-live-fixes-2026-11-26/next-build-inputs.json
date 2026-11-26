@@ -1,0 +1,12 @@
+{
+  "status": "OFFLINE_CANDIDATE_ONLY",
+  "build_enabled": false,
+  "execution_authorized": false,
+  "tests_enabled": false,
+  "candidate_image_digest": null,
+  "candidate_binary_sha256": "71430df6e0a407e241c570a63759f7ebd915cb36c81f5ac5e1d82c31d2057f9f",
+  "candidate_runtime_manifest_sha256": "a8ff40449e28da9f46aded0bca19b669c4d5dc8c2fa53fc5fc3d9e396270877e",
+  "logical_plan_sha256": "78e427f79f510efe87834000371584394fc44ccd0ed4e0a903f919d31edca13d",
+  "source_validation_receipt": "offline-build-validation.json",
+  "old_images_and_live_suspended_Job": "UNCHANGED"
+}

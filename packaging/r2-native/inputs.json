@@ -49,5 +49,12 @@
   "client_network_DNS": "Explicit TCP/UDP53and5353 to observed DNS selector; live readiness verified",
   "actual_client_Job_present": true,
   "actual_client_Job_suspended": true,
-  "last_fixture_result": "../../docs/r2-bounded-2026-11-26/results.json"
+  "last_fixture_result": "../../docs/r2-bounded-2026-11-26/results.json",
+  "offline_fix_candidate": {
+    "status": "OFFLINE_VALIDATED_NOT_IMAGE_BUILT_OR_DEPLOYED",
+    "receipt": "../../docs/r2-live-fixes-2026-11-26/validation-summary.json",
+    "binary_sha256": "71430df6e0a407e241c570a63759f7ebd915cb36c81f5ac5e1d82c31d2057f9f",
+    "runtime_manifest_sha256": "a8ff40449e28da9f46aded0bca19b669c4d5dc8c2fa53fc5fc3d9e396270877e",
+    "actual_image_pins_unchanged": true
+  }
 }

@@ -24,7 +24,7 @@ func TestExplicitConfiguration(t *testing.T) {
 		t.Fatal("configuration")
 	}
 	c = consumerConfig(c, "kaas-sbx-a-events-group")
-	if c["enable.auto.commit"] != false || c["enable.auto.offset.store"] != false {
+	if c["enable.auto.commit"] != false || c["enable.auto.offset.store"] != false || c["enable.partition.eof"] != true {
 		t.Fatal("implicit commits")
 	}
 }

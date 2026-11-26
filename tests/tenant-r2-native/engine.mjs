@@ -115,7 +115,9 @@ export function runNativeTenantFixture(plan,deps){
   let consumer,producer;
   try{
    consumer=make('consumer',p.consumer,p.topic,p.group,p.id);
-   if(consumer.client.position()!==initial.log_end_offset)issue('initial_position_unverified');
+   let initialPosition;
+   try{initialPosition=consumer.client.position();}catch(_){issue('initial_position_unverified');}
+   if(initialPosition!==initial.log_end_offset)issue('initial_position_unverified');
    producer=make('producer',p.producer,p.topic,null,p.id);
    const expected=plan.records.filter(r=>r.case_id===p.id),seen=new Set();
    for(const r of expected){const sent=send(producer,r);if(!sent.returned)issue('positive_send_unresolved');}

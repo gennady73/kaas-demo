@@ -1,0 +1,24 @@
+{
+  "date": "2026-11-26",
+  "status": "STATIC_PUBLICATION_REVIEW_PASS",
+  "base_commit": "79992572c793b8b2f2d6af735bf96d08c50f338a",
+  "native_source_fingerprints_verified": 41,
+  "runtime_manifest": "MATCHES_ALL_11_FILES",
+  "candidate_binary_sha256": "71430df6e0a407e241c570a63759f7ebd915cb36c81f5ac5e1d82c31d2057f9f",
+  "candidate_runtime_manifest_sha256": "a8ff40449e28da9f46aded0bca19b669c4d5dc8c2fa53fc5fc3d9e396270877e",
+  "client_Job_baseline_suspended": true,
+  "actual_image_pins": "UNCHANGED_OLD_IMAGES_DO_NOT_INCLUDE_FIXES",
+  "candidate_build_and_execution_flags": false,
+  "cluster_access": false,
+  "tests_executed_this_publication": false,
+  "live_test_rerun": false,
+  "raw_log_sources": "docs/reviews/r2-live-fixes-2026-11-26/ and /tmp/kaas-r2-live-fixes-offline-20261126/ in shared workspace",
+  "display_log_whitespace_normalization": [
+    {
+      "file": "buildinfo.txt",
+      "raw_sha256": "326c39f5d4944fd2e8198bf744dc589fc164700405c6ed64abce19da0fdf62a5",
+      "display_sha256": "cbef51c0b7938506d18b9badeacefb0744cee75a782c4cdf97af3c8e307da02c"
+    }
+  ],
+  "historical_R2_outcome": "NATIVE_INCOMPLETE_UNCHANGED"
+}

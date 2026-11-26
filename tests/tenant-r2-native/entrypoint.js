@@ -3,6 +3,7 @@ import native from 'k6/x/kaasr2';
 import crypto from 'k6/crypto';
 import http from 'k6/http';
 import {sleep} from 'k6';
+import exec from 'k6/execution';
 import {verifyRuntimeSources} from './source-integrity.mjs';
 import {validateExecution} from './native-policy.mjs';
 import {bindNative} from './binder.mjs';
@@ -21,10 +22,18 @@ if(writerToken.length<32)throw new Error('evidence_auth_required');
 // Trust store must contain the separately verified sink CA AND Kafka CA.
 export const options={insecureSkipTLSVerify:false,maxRedirects:0,scenarios:{fixture:{executor:'shared-iterations',vus:1,iterations:1,maxDuration:'270s',gracefulStop:'0s'}}};
 export default function(){
- const transport=evidenceTransport(http.post,gate.sink_origin,writerToken,()=>native.now());
- const deps=bindNative(native,transport,plan,gate,sha,sleep);
- const result=runNativeTenantFixture(plan,deps);
- // No record values, exceptions, options or credentials in console evidence.
+ let result;
+ try {
+  const transport=evidenceTransport(http.post,gate.sink_origin,writerToken,()=>native.now());
+  const deps=bindNative(native,transport,plan,gate,sha,sleep);
+  result=runNativeTenantFixture(plan,deps);
+ } catch (_) {
+  // An iteration exception alone can still leave k6 with process exit zero.
+  exec.test.abort('tenant_fixture_failed');
+  return;
+ }
+ // Engine cleanup/terminal evidence precede process-wide failure signalling.
+ // No raw native/transport errors, options or credentials enter console output.
  console.log(JSON.stringify({run_id:result.run_id,status:result.status,duration_ms:result.duration_ms,cleanup_complete:result.cleanup_complete}));
- if(result.status!=='NATIVE_COMPLETE')throw new Error('tenant_fixture_incomplete');
+ if(result.status!=='NATIVE_COMPLETE')exec.test.abort('tenant_fixture_incomplete');
 }

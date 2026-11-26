@@ -1,0 +1,45 @@
+TAP version 13
+# Subtest: shipped execution record refuses before native or HTTP
+ok 1 - shipped execution record refuses before native or HTTP
+  ---
+  duration_ms: 3.114668
+  ...
+# Subtest: transport exact durable ack wrapping, no redirect and bounded request
+ok 2 - transport exact durable ack wrapping, no redirect and bounded request
+  ---
+  duration_ms: 0.381538
+  ...
+# Subtest: lost or mismatching acknowledgement stops further evidence and admission
+ok 3 - lost or mismatching acknowledgement stops further evidence and admission
+  ---
+  duration_ms: 0.813767
+  ...
+# Subtest: only private typed native results classify; arbitrary error text stays unknown
+ok 4 - only private typed native results classify; arbitrary error text stays unknown
+  ---
+  duration_ms: 2.71821
+  ...
+# Subtest: positive native return and explicit offset commit map to undefined only on ok
+ok 5 - positive native return and explicit offset commit map to undefined only on ok
+  ---
+  duration_ms: 2.661068
+  ...
+# Subtest: synthetic engine preserves full fixture ledger and receipt ordering
+ok 6 - synthetic engine preserves full fixture ledger and receipt ordering
+  ---
+  duration_ms: 49.819889
+  ...
+# Subtest: synthetic post-poll unauthorized membership stops without negative commits
+ok 7 - synthetic post-poll unauthorized membership stops without negative commits
+  ---
+  duration_ms: 29.964073
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 7
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 102.399943
