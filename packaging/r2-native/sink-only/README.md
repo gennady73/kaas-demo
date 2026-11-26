@@ -1,3 +1,5 @@
+Latest sink selection: the active overlay now also contains `kaas-r2-sink-config-02e-retest` and selects a separate retest database on the same PVC. Both databases are stopped/sealed and retained. See [revised runner/retest](../../../docs/r2-revised-runner-2026-11-26/README.md); the original activation record below is historical.
+
 # R2 evidence sink activation — 2026-11-26
 
 **SINK_AVAILABLE_1_OF_1; PVC_BOUND; STORAGE_AND_TLS_VERIFIED; CLIENT_DISABLED.** User explicitly authorized the evidence sink only, including storage/TLS verification, with no producer/consumer tests. This package records the local activation overlay applied after published baseline `8d1b368cdb5be1bd7dd87c3ec2011d3d0018678b`. The user authorized Git publication of the sink-only artifacts and evidence on 2026-11-26; the owning commit identifies the published snapshot. No GitOps registration/sync or automatic sync change occurred.

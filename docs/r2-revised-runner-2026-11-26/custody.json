@@ -1,0 +1,14 @@
+{
+  "physical_attempt_id": "02e2e2f-retest-20261126",
+  "sandbox_PVC": "kaas-r2-native-evidence",
+  "sandbox_database": "/var/lib/r2/evidence-02e2e2f-retest.sqlite",
+  "sandbox_state": "STOPPED_SEALED_RETAINED",
+  "workspace": "/home/gunger/Projects/kaas-solution/docs/testing/runs/r2-native-02e2e2f-retest-20261126",
+  "export_sha256": "32496208a625aa6115dc5442e511ffc7072af6fc7267432726b4fe898ad754d3",
+  "matches_sandbox_seal": true,
+  "event_count": 8,
+  "retain_at_least_until_UTC": "2026-12-03T13:49:12Z",
+  "prior_database": "/var/lib/r2/evidence.sqlite preserved with91cf8d49... seal",
+  "logical_ID_warning": "Same frozen logical plan ID; distinct physical Job/UID/database and export; never merge attempts",
+  "cleanup": "No deletion automation; preserve both databases and copies"
+}

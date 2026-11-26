@@ -31,6 +31,8 @@ spec:
     metadata:
       labels:
         kaas.example.com/r2-component: evidence
+      annotations:
+        kaas.example.com/execution: 02e2e2f-retest-20261126
     spec:
       serviceAccountName: kaas-r2-evidence
       automountServiceAccountToken: false
@@ -99,7 +101,7 @@ spec:
           name: kaas-r2-sink-arming
       - name: config
         configMap:
-          name: kaas-r2-sink-config
+          name: kaas-r2-sink-config-02e-retest
       - name: writer
         secret:
           secretName: kaas-r2-evidence-writer
@@ -127,3 +129,16 @@ spec:
       nodeSelector:
         kubernetes.io/os: linux
         kubernetes.io/arch: amd64
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kaas-r2-sink-config-02e-retest
+  namespace: kaas-demo
+immutable: true
+data:
+  config.json: "{\n  \"database\": \"/var/lib/r2/evidence-02e2e2f-retest.sqlite\"\
+    ,\n  \"run_id\": \"r2-native-20261125\",\n  \"plan_sha256\": \"78e427f79f510efe87834000371584394fc44ccd0ed4e0a903f919d31edca13d\"\
+    ,\n  \"writer_token_file\": \"/auth/writer-token\",\n  \"owner_token_file\": \"\
+    /owner-auth/owner-token\",\n  \"tls_cert_file\": \"/tls/tls.crt\",\n  \"tls_key_file\"\
+    : \"/tls/tls.key\"\n}\n"

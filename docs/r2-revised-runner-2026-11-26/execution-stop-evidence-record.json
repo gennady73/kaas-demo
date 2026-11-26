@@ -1,0 +1,52 @@
+{
+  "status": "EXECUTED_ONCE_INCOMPLETE_STOPPED_SEALED_EXPORTED",
+  "source_commit": "02e2e2fed7db0c0e42072ef245e104fb6167b193",
+  "authority": "user-authorized-R2-single-bounded-test-02e2e2f-20261126",
+  "owner_approver": "user",
+  "executor": "admin via coordinating assistant",
+  "single_attempt": true,
+  "physical_attempt_id": "02e2e2f-retest-20261126",
+  "sink_database": "/var/lib/r2/evidence-02e2e2f-retest.sqlite",
+  "logical_ID_note": "Pinned plan ID retained; per-attempt database/Job separate; previous attempt sent zero records",
+  "plan_run_id": "r2-native-20261125",
+  "positive_originals": 16,
+  "negative_cases": 8,
+  "maximum_original_attempt_bytes": 20000,
+  "maximum_Job_seconds": 300,
+  "scope": "one shared-iteration; maximum five minutes, no padding or retry",
+  "stop_plan": {
+    "native_guard": "timeout TERM285s KILL+5s from entry",
+    "Job": "activeDeadlineSeconds300 from Job start, backoffLimit0",
+    "external_observer": "poll2s, suspend job/delete pods at295s or local stop request; observe actual termination",
+    "local_stop_request": "/tmp/r2-retest-02e-stop-request",
+    "timeout_result": "INCOMPLETE with preserved late-offset accounting, never success",
+    "sink": "owner stop then seal only after process termination; no record/topic/offset cleanup"
+  },
+  "custody": {
+    "sandbox_days": 7,
+    "sandbox": "isolated kaas-r2-native-evidence PVC",
+    "second_copy": "/home/gunger/Projects/kaas-solution/docs/testing/runs/r2-native-02e2e2f-retest-20261126",
+    "verification": "hash/chain + separate native semantic auditor + external offsets; no production durability claim"
+  },
+  "gate_evidence": {
+    "native_image_and_source": "revisedimage d82a1444... from02e2e2f; exact41native sourcefingerprints and71430df6... binaryidentity",
+    "C3_changed_source_review": "C0 exact-source C3 contract review docs/r2-live-fixes-2026-11-26 plus original contract review",
+    "C6_changed_source_review": "C0 exact-source C6 contract review and delivered/live native TLS/SCRAM readiness",
+    "credentials_delivered": "create-only receipts, revisions and liveAdmin authentication",
+    "CA_chain_SAN_expiry": "live client readiness TLS and nativeverification",
+    "namespace_network_SCC": "actual client-labelled metadata Pod and selected DNS remedy",
+    "fixture_group_ownership": "user-controlled sandbox, all four groups absent/empty, no competing run authorized",
+    "sink_TLS_auth_persistence": "sink1/1 PVCBound, same verified image/volume permissions/TLS, fresh empty per-attempt database; previous sealed database preserved",
+    "custody_retention_second_copy": "accepted7day policy, writable sharedworkspace directory, preservePVC/export workflow",
+    "native_cancellation_close_bounds": "source-verified wait quarantine + process/Job/external containment; actual elapsed independently observed",
+    "independent_export_auditor": "frozen separate byte-chain Python and semantic JS auditors; actual outcome assessed afterrun"
+  },
+  "review_limit": "Coordinator source/contract validation, not an independent C3/C6 owner signature; readiness VERIFIED means evidenced precondition/containment plan, not a passing future test",
+  "job_start_UTC": "2026-11-26T13:49:04Z",
+  "outcome": "NATIVE_INCOMPLETE",
+  "container_exit": 108,
+  "Job_outcome": "Failed",
+  "client_Job_resuspended": true,
+  "execution_authority_consumed": true,
+  "export_sha256": "32496208a625aa6115dc5442e511ffc7072af6fc7267432726b4fe898ad754d3"
+}

@@ -1,0 +1,110 @@
+{
+  "status": "NO_SENDS_OR_COMMITS_OFFSETS_UNCHANGED",
+  "positive_planned": 16,
+  "attempted": 0,
+  "negative_cases_completed": 0,
+  "positive_not_attempted": 16,
+  "bytes_attempted": 0,
+  "rows": [
+    {
+      "topic": "kaas-sbx-a-events",
+      "group": "kaas-sbx-a-events-group",
+      "before": {
+        "committed_offset": null,
+        "group_absent": true,
+        "log_end_offset": 0,
+        "log_start_offset": 0,
+        "members": 0,
+        "membership_observed": true,
+        "ok": true
+      },
+      "after": {
+        "committed_offset": null,
+        "group_absent": false,
+        "log_end_offset": 0,
+        "log_start_offset": 0,
+        "members": 0,
+        "membership_observed": true,
+        "ok": true
+      },
+      "attempted_originals": 0,
+      "log_delta": 0,
+      "commit_changed": false
+    },
+    {
+      "topic": "kaas-sbx-a-audit",
+      "group": "kaas-sbx-a-audit-group",
+      "before": {
+        "committed_offset": null,
+        "group_absent": true,
+        "log_end_offset": 0,
+        "log_start_offset": 0,
+        "members": 0,
+        "membership_observed": true,
+        "ok": true
+      },
+      "after": {
+        "committed_offset": null,
+        "group_absent": true,
+        "log_end_offset": 0,
+        "log_start_offset": 0,
+        "members": 0,
+        "membership_observed": true,
+        "ok": true
+      },
+      "attempted_originals": 0,
+      "log_delta": 0,
+      "commit_changed": false
+    },
+    {
+      "topic": "kaas-sbx-b-events",
+      "group": "kaas-sbx-b-events-group",
+      "before": {
+        "committed_offset": null,
+        "group_absent": true,
+        "log_end_offset": 0,
+        "log_start_offset": 0,
+        "members": 0,
+        "membership_observed": true,
+        "ok": true
+      },
+      "after": {
+        "committed_offset": null,
+        "group_absent": true,
+        "log_end_offset": 0,
+        "log_start_offset": 0,
+        "members": 0,
+        "membership_observed": true,
+        "ok": true
+      },
+      "attempted_originals": 0,
+      "log_delta": 0,
+      "commit_changed": false
+    },
+    {
+      "topic": "kaas-sbx-b-audit",
+      "group": "kaas-sbx-b-audit-group",
+      "before": {
+        "committed_offset": null,
+        "group_absent": true,
+        "log_end_offset": 0,
+        "log_start_offset": 0,
+        "members": 0,
+        "membership_observed": true,
+        "ok": true
+      },
+      "after": {
+        "committed_offset": null,
+        "group_absent": true,
+        "log_end_offset": 0,
+        "log_start_offset": 0,
+        "members": 0,
+        "membership_observed": true,
+        "ok": true
+      },
+      "attempted_originals": 0,
+      "log_delta": 0,
+      "commit_changed": false
+    }
+  ]
+}

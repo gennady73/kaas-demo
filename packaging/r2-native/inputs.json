@@ -1,8 +1,8 @@
 {
   "version": "1.0",
   "date": "2026-11-26",
-  "status": "SINGLE_R2_ATTEMPT_INCOMPLETE_CLIENT_RESUSPENDED",
-  "source_commit": "afb9c7c7b2f3901a8a4e2c456029a931a9db00b6",
+  "status": "REVISED_RUNNER_RETEST_INCOMPLETE_CLIENTS_SUSPENDED",
+  "source_commit": "02e2e2fed7db0c0e42072ef245e104fb6167b193",
   "namespace": "kaas-demo",
   "execution_enabled": false,
   "deployment_enabled": false,
@@ -10,10 +10,10 @@
   "build_enabled": false,
   "base_image": "registry.redhat.io/amq-streams/kafka-42-rhel9@sha256:ce7dc91b664600c6f06e1df3d6b56a4684bb779865d9c28b4df648addd89189d",
   "base_evidence": "Exact pinned base pulled successfully by both completed builds",
-  "binary_sha256": "7405cc006c1d05d2748aee1955bfd3db6e3edf4e6f723dd997e060bd22c6525b",
-  "runtime_manifest_sha256": "d26b13cbc6e96bc56625adc26467b95a5a09cd011f525b9b6bb4ed8376ec93c0",
+  "binary_sha256": "71430df6e0a407e241c570a63759f7ebd915cb36c81f5ac5e1d82c31d2057f9f",
+  "runtime_manifest_sha256": "a8ff40449e28da9f46aded0bca19b669c4d5dc8c2fa53fc5fc3d9e396270877e",
   "plan_sha256": "78e427f79f510efe87834000371584394fc44ccd0ed4e0a903f919d31edca13d",
-  "runner_image_digest": "sha256:dec50714130f1244403f8bb1a79847dc28821b7e87a02507bbd923d081fe2d8d",
+  "runner_image_digest": "sha256:d82a1444de832a824a135d66eef9c7486d8587299b54b5c490bccc194c42dabe",
   "sink_image_digest": "sha256:f730c89baceda0f8a536ab9c94696b768c996fe55d60202300095b4d450efa25",
   "storage_proposal": {
     "name": "kaas-r2-native-evidence",
@@ -34,27 +34,35 @@
     "on_expiry": "SUSPEND_PROCESSING",
     "status": "NO_APPROVAL_QUESTION_PENDING"
   },
-  "source_commit_scope": "Reviewed native source at afb9c7c; packaging baseline at 1a4ed9d plus local sink module-import verification increment",
-  "runner_image_reference": "image-registry.openshift-image-registry.svc:5000/kaas-demo/kaas-r2-runner@sha256:dec50714130f1244403f8bb1a79847dc28821b7e87a02507bbd923d081fe2d8d",
+  "source_commit_scope": "Native source and frozen runtime at02e2e2f; build recipe checksum and receipt binding adapted locally for authorized revised image",
+  "runner_image_reference": "image-registry.openshift-image-registry.svc:5000/kaas-demo/kaas-r2-runner-02e2e2f@sha256:d82a1444de832a824a135d66eef9c7486d8587299b54b5c490bccc194c42dabe",
   "sink_image_reference": "image-registry.openshift-image-registry.svc:5000/kaas-demo/kaas-r2-sink@sha256:f730c89baceda0f8a536ab9c94696b768c996fe55d60202300095b4d450efa25",
   "image_verification": "BUILD_CHECKS_AND_REGISTRY_METADATA_PASS",
   "readiness_receipt": "readiness/readiness.json",
   "actual_sink_deployment_enabled": true,
   "client_deployment_enabled": false,
   "client_workloads_enabled": false,
-  "actual_sink_runtime": "RUNNING_1_OF_1_AVAILABLE_EVIDENCE_STOPPED_AND_SEALED",
+  "actual_sink_runtime": "RUNNING_1_OF_1_AVAILABLE_RETEST_EVIDENCE_STOPPED_SEALED",
   "sink_only_overlay": "sink-only/",
   "sink_activation_receipt": "sink-only/evidence/results.json",
   "client_readiness_receipt": "client-readiness/evidence/results.json",
   "client_network_DNS": "Explicit TCP/UDP53and5353 to observed DNS selector; live readiness verified",
   "actual_client_Job_present": true,
   "actual_client_Job_suspended": true,
-  "last_fixture_result": "../../docs/r2-bounded-2026-11-26/results.json",
+  "last_fixture_result": "../../docs/r2-revised-runner-2026-11-26/results.json",
   "offline_fix_candidate": {
-    "status": "OFFLINE_VALIDATED_NOT_IMAGE_BUILT_OR_DEPLOYED",
+    "status": "IMAGE_BUILT_AND_RETESTED_LIVE_02_CONFIRMED_LIVE_01_NOT_RESOLVED",
     "receipt": "../../docs/r2-live-fixes-2026-11-26/validation-summary.json",
     "binary_sha256": "71430df6e0a407e241c570a63759f7ebd915cb36c81f5ac5e1d82c31d2057f9f",
     "runtime_manifest_sha256": "a8ff40449e28da9f46aded0bca19b669c4d5dc8c2fa53fc5fc3d9e396270877e",
     "actual_image_pins_unchanged": true
-  }
+  },
+  "source_validation_receipt": "docs/r2-live-fixes-2026-11-26/offline-build-validation.json",
+  "previous_runner_image_reference": "image-registry.openshift-image-registry.svc:5000/kaas-demo/kaas-r2-runner@sha256:dec50714130f1244403f8bb1a79847dc28821b7e87a02507bbd923d081fe2d8d",
+  "runner_buildconfig": "kaas-r2-runner-02e2e2f",
+  "client_jobs_suspended": [
+    "kaas-r2-native-client",
+    "kaas-r2-native-client-02e2e2f-r2"
+  ],
+  "actual_sink_database": "/var/lib/r2/evidence-02e2e2f-retest.sqlite"
 }

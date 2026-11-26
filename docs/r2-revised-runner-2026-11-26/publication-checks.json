@@ -1,0 +1,20 @@
+{
+  "date": "2026-11-26",
+  "status": "INCOMPLETE_CHECKPOINT_STATIC_REVIEW_PASS",
+  "source_commit": "02e2e2fed7db0c0e42072ef245e104fb6167b193",
+  "native_source_hashes_verified": 41,
+  "image_and_runtime_pins": "MATCH_BUILD_REGISTRY_AND_VALIDATED_SOURCE",
+  "both_client_Jobs_suspended_in_saved_final_API_state": true,
+  "baseline_Job_suspended": true,
+  "fixture_outcome": "NATIVE_INCOMPLETE",
+  "test_rerun": false,
+  "cluster_access": false,
+  "credentials_published": false,
+  "raw_log_display_normalization": [
+    {
+      "file": "client.log",
+      "raw_sha256": "26d6886f11ebc841a2cff5044b4885fa9eddfb72f22112632047944a00602a18",
+      "display_sha256": "974786e32963da0e3a87228cfa6c78b8a8b5f36d9ea740332a5d8591db9ced4e"
+    }
+  ]
+}

@@ -1,3 +1,5 @@
+Latest result: [Revised runner build and bounded retest](../../docs/r2-revised-runner-2026-11-26/README.md). Revised image built; exit handling confirmed live, initial-position check still incomplete. Both client Jobs are suspended.
+
 Latest code status: [R2-LIVE-01/02 fixes validated offline](../../docs/r2-live-fixes-2026-11-26/README.md). Revised image not built or deployed; no live rerun.
 
 Latest execution result: [Single bounded R2 attempt — incomplete](../../docs/r2-bounded-2026-11-26/README.md). No send was attempted; client is re-suspended and sink evidence is stopped/sealed. Earlier readiness reports are historical.

@@ -1,0 +1,16 @@
+{
+  "source": "Saved final API snapshot, no fresh API request",
+  "jobs": [
+    {
+      "name": "kaas-r2-native-client-02e2e2f-r2",
+      "uid": "21fa27ff-9fa4-45f5-b157-b1bd89a394e6",
+      "suspend": true
+    },
+    {
+      "name": "kaas-r2-native-client",
+      "uid": "a9deb28d-74be-436a-83e3-f4e0995069eb",
+      "suspend": true
+    }
+  ],
+  "test_rerun_this_publication": false
+}

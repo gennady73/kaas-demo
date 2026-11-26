@@ -1,0 +1,12 @@
+{
+  "id": "R2-LIVE-01",
+  "status": "REOPENED_AFTER_LIVE_RETEST",
+  "confirmed_live": "initial_position_unverified; no send or producer-open",
+  "confirmed_source_gap": "02e rejects every nonnil PartitionEOF.Error; SDK constructs PartitionEOF from C topic-partition, including its normal ErrPartitionEOF sentinel",
+  "offline_control": "A typedEOF event with valid topic/partition/offset0 and ErrPartitionEOF is rejected by02e; no native client constructed",
+  "live_limit": "Exact native result remains sanitized; sentinel-specific cause is source-supported, not captured directly from live SDK event",
+  "test_gap": "OriginalEOF fakes used nilError only",
+  "next_targeted_fix": "Normalize only typed ErrPartitionEOF in an actual PartitionEOF event, reject other errors, add SDK-shaped regression and preserve all assignment/offset guards",
+  "applied_now": false,
+  "extra_live_rerun": false
+}

@@ -11,7 +11,12 @@ def prepare(binary,output):
  cfg=json.loads((HERE/'inputs.json').read_text());assert cfg['build_enabled'] is False
  public=json.loads((NATIVE/'runtime-source-manifest.json').read_text())
  for name,digest in public['files'].items():assert sha((NATIVE/name).read_bytes())==digest,name
- validation=json.loads((REPO/'docs/r2-native-review/offline-build-validation.json').read_text())
+ receipt=(REPO/cfg.get('source_validation_receipt','docs/r2-native-review/offline-build-validation.json')).resolve()
+ assert REPO in receipt.parents,'receipt_outside_repository'
+ validation=json.loads(receipt.read_text())
+ assert validation['status']=='OFFLINE_BUILD_AND_REVIEW_CHECKS_PASS'
+ assert validation['binary_sha256']==cfg['binary_sha256']
+ assert validation['runtime_manifest_sha256']==cfg['runtime_manifest_sha256']
  for name,digest in validation['source_sha256'].items():assert sha((NATIVE/name).read_bytes())==digest,name
  raw_binary=binary.read_bytes();assert sha(raw_binary)==cfg['binary_sha256'],'reviewed_binary_required'
  output.mkdir(parents=True,exist_ok=False)
