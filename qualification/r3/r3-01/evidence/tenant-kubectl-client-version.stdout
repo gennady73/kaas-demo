@@ -1,0 +1,14 @@
+{
+  "clientVersion": {
+    "major": "1",
+    "minor": "29",
+    "gitVersion": "v1.29.7",
+    "gitCommit": "e8fb3c0574da9189b61a87a53956aa820cbfcd2c",
+    "gitTreeState": "clean",
+    "buildDate": "2024-08-08T23:29:34Z",
+    "goVersion": "go1.21.11 (Red Hat 1.21.11-1.el9_4) X:strictfipsruntime",
+    "compiler": "gc",
+    "platform": "linux/amd64"
+  },
+  "kustomizeVersion": "v5.0.4-0.20230601165947-6ce0bf390ce3"
+}

@@ -1,0 +1,53 @@
+{
+  "repository_base_commit": "7a1065940bda19fd34bf3adf01078ff51fe53492",
+  "inspection": "Relevant handoff status and contract sections; not a fresh live check or specialist concurrence for this package",
+  "repository_files": {
+    "platform/kafka/kafka.yaml": "d280e093d3575abdf79d1cf72e8a9b2b70943abb2cd701487c72bb7dad796895",
+    "environments/candidates/sandbox-tenants/inputs.json": "5a07e2828dc1bd3c28111aaa4306c8edff839fe0bbfc6c32c21a90e929b3b6e7",
+    "gitops/registration-candidates/sandbox-tenants/inputs.json": "66d0557bfb50bf7a45b8dbc2ed8d015840c4afa995a6674909cb05114b9cba36",
+    "gitops/registration-candidates/sandbox-tenants/a.yaml.template": "45a65305024b53bb6c136d80953654e8e21977b246364e2a47a7c05941532172",
+    "gitops/registration-candidates/sandbox-tenants/b.yaml.template": "fb6b6aa2ab65b500ca5c4440e2c5020bcfa278605085d455c5a50137008b3cae",
+    "gitops/registration-candidates/sandbox-tenants/package-lock.json": "91bf1f8fa2aa818397d2a9e9262fa25765e89da04bdb0d9d95a9b0015b17c9dc",
+    "packaging/r2-native/deploy/resources.yaml": "b96201731306d8e6497c9f7b06f202a4b66bb8f5295c6822a6d9cc34ebeb683c",
+    "packaging/r2-native/inputs.json": "cfaa8663d51a533e28b7f0f1fd2ae15680dedc91f76978d9a5d592841d5f455a",
+    "packaging/r2-native/build/runner.Dockerfile": "6bc4c5b5dc4afbdcf65685175cd25c80a70e5c39026c40a02742177502e1c8e9",
+    "packaging/r2-native/build/client-guard.sh": "670ca07eea099b3501c48995f7a9c9ddd495534bae29501a6a4cc04566199010",
+    "tests/tenant-r2-native/entrypoint.js": "b4f1d3f555ebf9e16f1d27d3b389b26f0a5e7328ac8777aa05917d85244def5b",
+    "tests/tenant-r2-native/native/module.go": "79d3d770eb25c4644db14b027ab42e8ae00292cae8aa26fc0f3c160b0b5592b3",
+    "tests/tenant-r2-native/pod-and-sink-contract.json": "c1b4c874bd2f736bc10d2a16c40671502aad979e39f5b0294e9d022682079b1e",
+    "tests/tenant-r2-preparation/pod-and-mount-contract.json": "94b1cd2f8ab06b68407c877927449fd582da7f1b35e90d40e5bfe8851fe91298",
+    "docs/r2-05a3f2d-retest-2026-11-26/results.json": "fd6b4fc42125e251a2e69ac0377263ce08c575ee33a9954501851e1bd94a011f",
+    "docs/r2-05a3f2d-retest-2026-11-26/r2-closeout.json": "d1c536187e864b986145127cf0b9c6d47d7804450f0f4f5be1b3da20ed4b6e85",
+    "policies/tenant-only/tenant_only.py": "b7bde40bc9a06776e6367c120a581f1522defb303e29c80a2d0fee504e95e82c",
+    "policies/tenant-only/inputs.schema.json": "d3cbf980e02e4235b05e52cb3d7d8c58f5aeff8f159f8e59cb25acf64edc4344",
+    "policies/tenant-only/test_tenant_only.py": "e315a752866e19b5395d249c4eac170787a88ba2ef419e867b2aea73011e5796",
+    "environments/sandbox-tenants/a/resources.yaml": "bdc9f7a3b69ec182acb8933aa4f2fddc94fd95c0c7f035c0a9ee75c69ebd9923",
+    "environments/sandbox-tenants/a/kustomization.yaml": "4fe0245114630ad93c69d1c9c6d065f1a8d79aeabb30358883916a5f190d4fb5",
+    "environments/sandbox-tenants/b/resources.yaml": "abf4d52179899de35fd71ee11918365e198c5a6c327c961446b2ed7cbfb9b7e5",
+    "environments/sandbox-tenants/b/kustomization.yaml": "4fe0245114630ad93c69d1c9c6d065f1a8d79aeabb30358883916a5f190d4fb5"
+  },
+  "shared_workspace_files": {
+    "../docs/handoffs/C1-environment.md": "bbc200c4c76111ecbe78df894fcd9d3f784d93e03380f1de25731495ef9b5810",
+    "../docs/handoffs/C2-xk6-implementation.md": "3500658c7bb1dda5a96e4e996052a9cd4eaace4f9d039f0f0edaed36f31176f4",
+    "../docs/handoffs/C3-validation.md": "80e967f1ce913d51193f717d4a3b3fc7668965c72a2947194a559b89f36bef21",
+    "../docs/handoffs/C4-kafka-platform-gitops.md": "0b093261d921d4dec49de3c7fc8e85e1c1ff5c5a6a8569ad944712ee426598b3",
+    "../docs/handoffs/C5-schema-registry-gravitino.md": "24ea143c0eef67ac32ad00236bef41c9b4bc1b370722ff4329bf3da4b4488253",
+    "../docs/handoffs/C6-identity-connectivity-isolation.md": "be5870cf57a93818d429a534819f935344f7752d61f8f75298b4ecd3462db8f2",
+    "../docs/handoffs/C7-C0-summary-2026-11-25.md": "1f22db8eb4946678ae1bdcc585fa344f6fedf0bc83fd5f7cd2caf6dbdef3b114",
+    "../docs/handoffs/C7-operations-release.md": "04d683baafd023f1c132b07e59417bec16de7dca35939fad11a166d7fad1c7dc",
+    "../docs/platform/tenant-readiness-live-2026-11-25/github-permissions.json": "0192c7d7950060bf596ca8f12ced0eecf8cc52c38bd84043e92afb26ec1685f6",
+    "../docs/platform/tenant-readiness-live-2026-11-25/argocd-rbac.json": "df2bee15a4061bb438618278c2a54963f2b724aa9f5cb34a765fb1b2a0be90e8",
+    "../docs/platform/tenant-readiness-live-2026-11-25/argocd-config.json": "d475f88677b6e0b514d459b3ada5be669e39acf4712eff0af77f7ba5cf52dcc1",
+    "../docs/platform/tenant-readiness-live-2026-11-25/authorization-reviews.json": "3977d34db8ddd851d9de87ae5f502b18a8438726b7cf1275808ebcd3cb1006d4",
+    "../docs/platform/tenant-readiness-live-2026-11-25/followup.json": "882a9600d9bc33dc842fc283033c3c626c6615daa29137a64953443ab2b7a641",
+    "../docs/platform/tenant-readiness-live-2026-11-25/live-validation.json": "9bf51648d96f603e6de656d1119793f8e1d0ecf7d8c88b32e5c5a9539fe00d4f",
+    "../docs/environment/r1-sync-2026-11-25/README.md": "b28e5e1bddae47368ee71240c31d078783fe43ef3f4aedb7425aae5e9d75ab9c",
+    "../docs/platform/c4-r1-sync-verification-2026-11-25/README.md": "cd6db0443eda8f9c21d22617fcd24954712818262eb489838f6e8fff6d75a335",
+    "../docs/testing/c3-latest-auditor-review-2026-11-26/validation.json": "4baac2a62f37b53afc0431e7327cc6c603fe20d245491029dc83c487d607d92e"
+  },
+  "new_review_files": {
+    "qualification/r3/r3-01/validate_offline.py": "ae6e7bd9bb4f759a011e33dc67e517229c5073ad7741461f4dde174c7517deb9",
+    "qualification/r3/r3-01/service-contract.json": "cbc962b19d359b4e65415fae4aee1f8d331df778406b9f18f46e47821c732068",
+    "qualification/r3/r3-01/mount-contract-reconciliation.md": "38776016e7d76b2cfeac7856343dcc5fcc30d9873a8dc8cb27699ea532522b4c"
+  }
+}

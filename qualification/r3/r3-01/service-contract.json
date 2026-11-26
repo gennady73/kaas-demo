@@ -1,0 +1,52 @@
+{
+  "version": "r3-01-offline-1.0",
+  "execution_enabled": false,
+  "deployment_enabled": false,
+  "registration_enabled": false,
+  "workloads_enabled": false,
+  "target": "kaas-kafka/kaas-dev",
+  "mode": "shared-first-sandbox",
+  "owner": "user",
+  "approver": "user",
+  "delegated_tenant_sync": false,
+  "resource_commit": "3211df93ae40d7d6f47c6334966ae6d1f658fee7",
+  "registration_package_commit": "ac2f57b1faedae88028486073abf597256a172af",
+  "manual_sync_only": true,
+  "prune_allowed": false,
+  "force_replace_allowed": false,
+  "existing_fixture_mutation_allowed": false,
+  "new_live_attempts_authorized": 0,
+  "historical_R2_runtime_source_commit": "05a3f2dcb551c7aa7ed12b4108c7ef488113aed9",
+  "historical_R2_runner_digest": "sha256:41f328c85ee3d3e9d8834ce12e516b5ef52506067117b1c4f1145511b493998a",
+  "mount_contract_overlay": {
+    "supersedes_for_current_packaging": "C4-NR-05 historical pod/combined-CA wording only; original files remain frozen",
+    "resource_kind": "Job",
+    "suspend": true,
+    "service_account": "kaas-r2-harness",
+    "kafka_ca_file": "/credentials/cluster-ca/ca.crt",
+    "sink_http_ca_file": "/evidence-trust/service-ca.crt",
+    "sink_http_ca_env": "SSL_CERT_FILE",
+    "native_uses_separate_kafka_ca": true,
+    "runtime_code": "baked into digest-pinned runner image at /r2",
+    "runtime_gate": "disabled ConfigMap file mounted read-only at /r2/runtime.json",
+    "writer_auth": "/evidence-auth/writer-token",
+    "trusted_harness_only": true
+  },
+  "authority_assurance": {
+    "policy_status": "ACCEPTED_SANDBOX_OWNER_ONLY",
+    "effective_rights_status": "HISTORICAL_OBSERVATIONS_ONLY_NOT_REFRESHED",
+    "local_validation_is_admission_control": false,
+    "git_protection_enforced": "NOT_ESTABLISHED",
+    "argocd_sso_user_mapping": "NOT_ESTABLISHED",
+    "production_delegation_and_revocation": "OPEN",
+    "live_authority_consumed_by_prior_R1_R2": true
+  },
+  "lifecycle": {
+    "next_live_case": "distinct disposable canary only, if later explicitly selected",
+    "change_window": null,
+    "authorized_diff": null,
+    "rollback": "non-destructive hold and reviewed forward correction; never automatic Git revert/prune/delete",
+    "revocation": "separate Git/Argo/Kubernetes/Kafka/Secret/session steps; no automatic rotation or deletion",
+    "infrastructure_recovery": "separate inherited DEP-PERSIST-01 and R3-07 contract"
+  }
+}

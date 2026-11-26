@@ -1,0 +1,50 @@
+{
+  "status": "HISTORICAL_CAPABILITIES_REVIEWED_NOT_REFRESHED",
+  "accepted_sandbox_owner_and_approver": "user",
+  "delegation": "NONE_SELECTED",
+  "observations": [
+    {
+      "layer": "GitHub",
+      "source_date": "2026-11-25T13:17:54.779663+00:00",
+      "source": "source-index.json:github-permissions",
+      "main_protected": false,
+      "active_branch_rules": 0,
+      "rulesets": 0,
+      "observed_repo_admin_push": true,
+      "fresh": false
+    },
+    {
+      "layer": "ArgoCD human",
+      "source": "source-index.json:argocd-rbac/argocd-config",
+      "saved_default_policy": "",
+      "saved_group_role": "cluster-admin groups -> role:admin",
+      "saved_admin_enabled": true,
+      "actual_human_SSO_session_verified": false,
+      "fresh": false
+    },
+    {
+      "layer": "Kubernetes",
+      "source": "source-index.json:authorization-reviews/followup",
+      "saved_API_admin": "cluster-admin binding",
+      "saved_controller_rights": "Includes Secret reads and Kafka updates; AppProjects are not separate Kubernetes identities",
+      "fresh": false
+    },
+    {
+      "layer": "R1 operation",
+      "source": "source-index.json:R1 execution README",
+      "method": "Owner-authorized one-time API Application operation patches, A gate before B, prune=false force=false",
+      "new_operation_authorized": false
+    }
+  ],
+  "local_validation_is_enforced_CI_or_admission": false,
+  "checked_in_github_workflow_at_base": false,
+  "production_delegation_revocation": "OPEN",
+  "C3_latest_exact_extension_disposition": {
+    "status": "ACCEPTED_OFFLINE_PUBLISHED_AUDITOR_EXTENSION",
+    "reviewed_commit": "94674205d6619e8c7060f5463338e00582f7ed4a",
+    "auditor_sha256": "b6665f58cb03a06c872732b23aa1e1ec1ac267eba3fceb0b3acf8c669b37b77a",
+    "reviewer_tests_probes": "Saved508tests/88probes; inspected, not rerun by C0",
+    "C6_concurrence": "NOT_CLAIMED"
+  },
+  "cluster_accessed": false
+}

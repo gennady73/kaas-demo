@@ -1,3 +1,5 @@
+Current contract update: [R3-01 configuration, authority and GitOps review passed offline](../qualification/r3/r3-01/README.md), including additive C4-NR-05 mount reconciliation. Effective permissions and lifecycle execution were not refreshed/run. Latest C3v1.2 accepts the exact published auditor extension offline; C6 concurrence remains separate.
+
 Current coverage update: [R3-10/11 sink failure and deadline regressions passed offline](../qualification/r3/r3-10-11/README.md): 550 native/helper checks plus 18 packaging checks. Runtime failure-path qualification remains separate; no live action or image-pin change.
 
 Current progress, 2026-11-26: [R3-00 auditor correction and sealed R2re-audit passed offline](../qualification/r3/r3-00/README.md). See [progress overlay](../qualification/r3/progress.json); the original planning statuses and copied evidence below remain historical. All four Jobs untouched/lastobservedsuspended; no workload ran.

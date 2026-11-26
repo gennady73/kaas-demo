@@ -1,0 +1,28 @@
+test_admin_privilege_and_missing_quota_rejected (test_tenant_only.TenantOnlyChecks.test_admin_privilege_and_missing_quota_rejected) ... ok
+test_arming_or_adding_an_unknown_input_is_rejected (test_tenant_only.TenantOnlyChecks.test_arming_or_adding_an_unknown_input_is_rejected) ... ok
+test_automated_sync_namespace_creation_prune_or_delete_rejected (test_tenant_only.TenantOnlyChecks.test_automated_sync_namespace_creation_prune_or_delete_rejected) ... ok
+test_cli_inspects_and_rejects_invalid_contract_without_building (test_tenant_only.TenantOnlyChecks.test_cli_inspects_and_rejects_invalid_contract_without_building) ... ok
+test_cross_tenant_or_wildcard_acl_rejected (test_tenant_only.TenantOnlyChecks.test_cross_tenant_or_wildcard_acl_rejected) ... ok
+test_duplicate_or_other_tenant_rejected (test_tenant_only.TenantOnlyChecks.test_duplicate_or_other_tenant_rejected) ... ok
+test_explicit_revision_is_only_a_preview_not_execution (test_tenant_only.TenantOnlyChecks.test_explicit_revision_is_only_a_preview_not_execution) ... ok
+test_extra_hook_or_tampered_bundle_rejected (test_tenant_only.TenantOnlyChecks.test_extra_hook_or_tampered_bundle_rejected) ... ok
+test_extra_platform_resource_rejected (test_tenant_only.TenantOnlyChecks.test_extra_platform_resource_rejected) ... ok
+test_fixed_scope_and_owner_cannot_be_redirected (test_tenant_only.TenantOnlyChecks.test_fixed_scope_and_owner_cannot_be_redirected) ... ok
+test_fresh_bundle_round_trip_and_deterministic_output (test_tenant_only.TenantOnlyChecks.test_fresh_bundle_round_trip_and_deterministic_output) ... ok
+test_hooks_tracking_override_or_finalizer_rejected (test_tenant_only.TenantOnlyChecks.test_hooks_tracking_override_or_finalizer_rejected) ... ok
+test_kustomize_document_order_allowed_but_duplicate_or_component_move_rejected (test_tenant_only.TenantOnlyChecks.test_kustomize_document_order_allowed_but_duplicate_or_component_move_rejected) ... ok
+test_no_other_repository_or_branch_pin (test_tenant_only.TenantOnlyChecks.test_no_other_repository_or_branch_pin) ... ok
+test_no_overwrite_source_write_or_symlink_output (test_tenant_only.TenantOnlyChecks.test_no_overwrite_source_write_or_symlink_output) ... ok
+test_no_platform_client_or_credential_resources (test_tenant_only.TenantOnlyChecks.test_no_platform_client_or_credential_resources) ... ok
+test_numeric_boolean_confusion_is_rejected (test_tenant_only.TenantOnlyChecks.test_numeric_boolean_confusion_is_rejected) ... ok
+test_positive_exact_eight_tenant_resources_and_four_previews (test_tenant_only.TenantOnlyChecks.test_positive_exact_eight_tenant_resources_and_four_previews) ... ok
+test_protected_saved_resource_collision_rejected (test_tenant_only.TenantOnlyChecks.test_protected_saved_resource_collision_rejected) ... ok
+test_registration_permissions_and_source_cannot_be_broadened (test_tenant_only.TenantOnlyChecks.test_registration_permissions_and_source_cannot_be_broadened) ... ok
+test_retention_replication_or_partition_change_rejected (test_tenant_only.TenantOnlyChecks.test_retention_replication_or_partition_change_rejected) ... ok
+test_smoke_name_alias_or_wrong_cluster_label_rejected (test_tenant_only.TenantOnlyChecks.test_smoke_name_alias_or_wrong_cluster_label_rejected) ... ok
+test_symlink_in_bundle_rejected (test_tenant_only.TenantOnlyChecks.test_symlink_in_bundle_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 23 tests in 0.929s
+
+OK

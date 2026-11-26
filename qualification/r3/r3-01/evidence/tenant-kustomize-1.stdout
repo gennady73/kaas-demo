@@ -1,0 +1,119 @@
+apiVersion: kafka.strimzi.io/v1
+kind: KafkaTopic
+metadata:
+  labels:
+    kaas.example.com/tenant: kaas-sbx-b
+    strimzi.io/cluster: kaas-dev
+  name: kaas-sbx-b-audit
+  namespace: kaas-kafka
+spec:
+  config:
+    cleanup.policy: delete
+    max.message.bytes: 3145728
+    min.insync.replicas: 2
+    retention.ms: 21600000
+  partitions: 1
+  replicas: 2
+  topicName: kaas-sbx-b-audit
+---
+apiVersion: kafka.strimzi.io/v1
+kind: KafkaTopic
+metadata:
+  labels:
+    kaas.example.com/tenant: kaas-sbx-b
+    strimzi.io/cluster: kaas-dev
+  name: kaas-sbx-b-events
+  namespace: kaas-kafka
+spec:
+  config:
+    cleanup.policy: delete
+    max.message.bytes: 3145728
+    min.insync.replicas: 2
+    retention.ms: 21600000
+  partitions: 1
+  replicas: 2
+  topicName: kaas-sbx-b-events
+---
+apiVersion: kafka.strimzi.io/v1
+kind: KafkaUser
+metadata:
+  labels:
+    kaas.example.com/tenant: kaas-sbx-b
+    strimzi.io/cluster: kaas-dev
+  name: kaas-sbx-b-consumer
+  namespace: kaas-kafka
+spec:
+  authentication:
+    type: scram-sha-512
+  authorization:
+    acls:
+    - operations:
+      - Read
+      - Describe
+      resource:
+        name: kaas-sbx-b-events
+        patternType: literal
+        type: topic
+    - operations:
+      - Read
+      - Describe
+      resource:
+        name: kaas-sbx-b-audit
+        patternType: literal
+        type: topic
+    - operations:
+      - Read
+      - Describe
+      resource:
+        name: kaas-sbx-b-events-group
+        patternType: literal
+        type: group
+    - operations:
+      - Read
+      - Describe
+      resource:
+        name: kaas-sbx-b-audit-group
+        patternType: literal
+        type: group
+    type: simple
+  quotas:
+    consumerByteRate: 65536
+    producerByteRate: 65536
+    requestPercentage: 5
+---
+apiVersion: kafka.strimzi.io/v1
+kind: KafkaUser
+metadata:
+  labels:
+    kaas.example.com/tenant: kaas-sbx-b
+    strimzi.io/cluster: kaas-dev
+  name: kaas-sbx-b-producer
+  namespace: kaas-kafka
+spec:
+  authentication:
+    type: scram-sha-512
+  authorization:
+    acls:
+    - operations:
+      - Write
+      - Describe
+      resource:
+        name: kaas-sbx-b-events
+        patternType: literal
+        type: topic
+    - operations:
+      - Write
+      - Describe
+      resource:
+        name: kaas-sbx-b-audit
+        patternType: literal
+        type: topic
+    - operations:
+      - IdempotentWrite
+      resource:
+        type: cluster
+    type: simple
+  quotas:
+    consumerByteRate: 65536
+    producerByteRate: 65536
+    requestPercentage: 5

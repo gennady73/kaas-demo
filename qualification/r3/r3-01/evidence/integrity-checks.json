@@ -1,0 +1,12 @@
+{
+  "status": "OFFLINE_SOURCE_AND_PRESERVATION_PASS",
+  "prior_native_source_fingerprints_verified": 46,
+  "historical_R2_export_unchanged": true,
+  "active_manifests_and_image_pins_unchanged": true,
+  "frozen_planning_contracts_unchanged": true,
+  "documentation_links_verified": true,
+  "credential_pattern_scan": "PASS",
+  "cluster_accessed": false,
+  "jobs_changed": false,
+  "workloads_run": false
+}

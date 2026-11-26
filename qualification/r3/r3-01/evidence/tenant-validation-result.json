@@ -1,0 +1,111 @@
+{
+  "status": "OFFLINE_VALIDATED_NOT_DEPLOYMENT_READY",
+  "deployment_enabled": false,
+  "registration_enabled": false,
+  "tests_enabled": false,
+  "execution_ready": false,
+  "input_sha256": "68fd5e4ab48a185f0ba61b9a17342cfd54566c1fe77e20b15d1cd872905b50fe",
+  "counts": {
+    "KafkaTopic": 4,
+    "KafkaUser": 4,
+    "AppProject_preview": 2,
+    "Application_preview": 2
+  },
+  "new_brokers": 0,
+  "new_pvcs": 0,
+  "logical_partitions_added": 4,
+  "partition_replicas_added": 8,
+  "resource_revision": null,
+  "registration_revision_supplied": false,
+  "user_scope_owner_decisions": "ACCEPTED; not deployment authorization",
+  "external_gates_not_verified": [
+    "Fresh target health, metadata/storage headroom, effective versions and unchanged watch scope",
+    "Fresh names, topicName/backend user collisions, namespace and reconciliation ownership",
+    "Existing ArgoCD tracking/prune boundary and no competing resource owner",
+    "Installed Kafka/ArgoCD schema/admission and effective Git/global/controller authorization",
+    "Actual reviewed published resource SHA/source paths and repository trust/access",
+    "Concrete owner-approved change window, reviewed diff and non-destructive rollback"
+  ],
+  "limitations": [
+    "Exact local validation, not live collision/ownership, policy enforcement or server admission",
+    "Resource manifests can be applied manually; false flags and preview suffixes are not admission controls",
+    "No Kafka/NodePool, operator/watch/RBAC/Secret/network/bootstrap/client resources generated",
+    "New app namespaces, effective network and credential delivery belong to later R2 preparation",
+    "Owner identity is user instruction, not a fabricated ArgoCD role/group grant",
+    "AppProject kinds/manual sync do not enforce content ownership or prohibit manual prune"
+  ],
+  "commands": [
+    {
+      "label": "tenant-only-tests",
+      "command": [
+        "/usr/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "policies/tenant-only",
+        "-p",
+        "test_*.py",
+        "-v"
+      ],
+      "returncode": 0
+    },
+    {
+      "label": "existing-c4-tests",
+      "command": [
+        "/usr/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "policies/tenants",
+        "-p",
+        "test_*.py",
+        "-v"
+      ],
+      "returncode": 0
+    },
+    {
+      "label": "kubectl-client-version",
+      "command": [
+        "/home/gunger/.local/bin/kubectl",
+        "version",
+        "--client",
+        "-o",
+        "json"
+      ],
+      "returncode": 0
+    },
+    {
+      "label": "kustomize-0",
+      "command": [
+        "/home/gunger/.local/bin/kubectl",
+        "kustomize",
+        "/tmp/kaas-r3-01-tenant-20261126/bundle/environments/sandbox-tenants/a"
+      ],
+      "returncode": 0
+    },
+    {
+      "label": "kustomize-1",
+      "command": [
+        "/home/gunger/.local/bin/kubectl",
+        "kustomize",
+        "/tmp/kaas-r3-01-tenant-20261126/bundle/environments/sandbox-tenants/b"
+      ],
+      "returncode": 0
+    }
+  ],
+  "input_source_sha256": {
+    "policies/tenant-only/inputs.schema.json": "d3cbf980e02e4235b05e52cb3d7d8c58f5aeff8f159f8e59cb25acf64edc4344",
+    "policies/tenant-only/tenant_only.py": "b7bde40bc9a06776e6367c120a581f1522defb303e29c80a2d0fee504e95e82c",
+    "policies/tenant-only/test_tenant_only.py": "e315a752866e19b5395d249c4eac170787a88ba2ef419e867b2aea73011e5796",
+    "policies/tenant-only/validate_offline.py": "83d88469c67097ed5030f2471f231f54e3f543fe2566e0d23ce39e66c5c69599",
+    "policies/tenant-only/README.md": "a732927868c2c48df037032ed1c6eccbe1cdee791f2ad622aa62e1e72f919184",
+    "environments/candidates/sandbox-tenants/inputs.json": "5a07e2828dc1bd3c28111aaa4306c8edff839fe0bbfc6c32c21a90e929b3b6e7",
+    "environments/candidates/sandbox-tenants/README.md": "37e1a8d127b3e184bad19a0f4cf1563b609b68635cdd356522518bc8e6dae36b"
+  },
+  "kustomize_exact_resources": "PASS",
+  "existing_new_cluster_guard": "current live dev identities are excluded from scaffolds",
+  "tests": "tenant-only plus existing C4 suite PASS",
+  "schema_scope": "Cached Kafka v1 and exact local ArgoCD content; no installed ArgoCD/server admission"
+}

@@ -1,5 +1,5 @@
 {
-  "revision": "0.2",
+  "revision": "0.3",
   "date": "2026-11-26",
   "plan_commit": "0f9df49fc0dfb3632c9c7f4eb32fb7e6d3aec1e6",
   "execution_enabled": false,
@@ -25,8 +25,18 @@
       "execution_enabled": false,
       "workloads_enabled": false,
       "review_scope": "C0 source/coverage review; no independent owner concurrence invented"
+    },
+    "R3-01": {
+      "status": "OFFLINE_CONTRACT_REVIEW_DOCUMENTATION_AND_VALIDATION_PASS",
+      "result": "r3-01/result.json",
+      "C4_NR_05": "DOCUMENTATION_RECONCILED_ADDITIVE_OVERLAY",
+      "effective_rights_refresh": "NOT_RUN",
+      "lifecycle_runtime_qualification": "NOT_RUN",
+      "execution_enabled": false,
+      "workloads_enabled": false,
+      "review_scope": "C0 consolidation; current C3 exact-auditor concurrence indexed separately; no new C4/C6 concurrence invented"
     }
   },
-  "remaining_cases": "R3-00/10/11 offline progress is recorded above; later service cases and selected target failure-path qualification remain unexecuted",
+  "remaining_cases": "R3-00/10/11/01 offline progress recorded; effective-rights refresh, selected lifecycle/runtime cases and broader qualification remain unexecuted",
   "note": "Progress overlay supersedes pre-correction OPEN labels only for this exact offline source/result; does not arm any planned case"
 }

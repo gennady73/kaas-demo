@@ -1,0 +1,49 @@
+{
+  "status": "OFFLINE_R3_01_CONTRACT_PASS",
+  "counts": {
+    "KafkaTopic": 4,
+    "KafkaUser": 4,
+    "AppProject": 2,
+    "Application": 2,
+    "job_suspended": true
+  },
+  "negative_probes_rejected": 25,
+  "probe_labels": [
+    "contract arms execution_enabled",
+    "contract arms deployment_enabled",
+    "contract arms registration_enabled",
+    "contract arms workloads_enabled",
+    "delegated sync",
+    "other owner",
+    "resource branch",
+    "other full resource SHA",
+    "boolean live-attempt count",
+    "pretend fresh rights",
+    "local checker is admission",
+    "prune_allowed",
+    "force_replace_allowed",
+    "existing_fixture_mutation_allowed",
+    "foreign topic alias",
+    "foreign CR namespace",
+    "unapproved retention",
+    "missing quotas",
+    "quota broadened",
+    "wildcard ACL",
+    "cross-tenant ACL",
+    "unsuspended client",
+    "mutable image",
+    "old combined CA env",
+    "token automount"
+  ],
+  "pinned_git_paths_verified": [
+    "environments/sandbox-tenants/a/kustomization.yaml",
+    "environments/sandbox-tenants/a/resources.yaml",
+    "environments/sandbox-tenants/b/kustomization.yaml",
+    "environments/sandbox-tenants/b/resources.yaml",
+    "gitops/registration-candidates/sandbox-tenants/a.yaml.template",
+    "gitops/registration-candidates/sandbox-tenants/b.yaml.template"
+  ],
+  "cluster_accessed": false,
+  "effective_rights_refreshed": false,
+  "workloads_run": false
+}

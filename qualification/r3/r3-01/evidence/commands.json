@@ -1,0 +1,40 @@
+{
+  "at_utc": "2026-11-26T17:48:08.654685+00:00",
+  "commands": [
+    {
+      "label": "service-contract",
+      "argv": [
+        "/usr/bin/python",
+        "qualification/r3/r3-01/validate_offline.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "label": "package-validation",
+      "argv": [
+        "/usr/bin/python",
+        "packaging/r2-native/validate.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "label": "plan-validation",
+      "argv": [
+        "/usr/bin/python",
+        "qualification/r3/validate_plan.py"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "tenant_harness": {
+    "argv": [
+      "python",
+      "policies/tenant-only/validate_offline.py",
+      "--output",
+      "/tmp/kaas-r3-01-tenant-20261126"
+    ],
+    "exit_code": 0
+  },
+  "cluster_accessed": false,
+  "workloads_run": false
+}

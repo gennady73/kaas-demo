@@ -1,0 +1,32 @@
+{
+  "algorithm": "sha256",
+  "scope": "R3-01 portable package excluding this manifest and Python caches",
+  "files": {
+    "README.md": "e28144403aba498ec6785dd8eaf15e5b3b91ebafd0ec01bee37295e7c580dd5d",
+    "evidence/authority-review.json": "ea62f893f9ba36e19ac8c981b9ae0952267f9ecffe8247f5fa1b3ec980e01d83",
+    "evidence/commands.json": "6ab28c2988f8e132190146aa5bd6c995e921e8235fded46c3983df07fca56d83",
+    "evidence/integrity-checks.json": "23c9db762fa4d818596d7512d27937817057c9fc7d402aaa607f930e37786b55",
+    "evidence/package-validation.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "evidence/package-validation.stdout": "adc198ecdeaca813dec985b872ed9fb3291844aadd7b7765d0fd0f43901abbb2",
+    "evidence/plan-validation.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "evidence/plan-validation.stdout": "1d63a9651d865794e74cc8d55d8224409076639c80a1609125960f6e4ce47dcd",
+    "evidence/service-contract.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "evidence/service-contract.stdout": "b2b36807a8d95824eac8fb856257a20eda4479b975d0c66d9d6bd70072699b81",
+    "evidence/source-index.json": "f8361189fb0f15c97d0534db860e6cec147596c2dcb8f9c3b2c8f35d43c4912b",
+    "evidence/tenant-existing-c4-tests.stderr": "13979a5f1f9d9e2b2ce94f6159cf7f85c1f0ec2670b53c0ee565698c74f8f9e2",
+    "evidence/tenant-existing-c4-tests.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "evidence/tenant-kubectl-client-version.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "evidence/tenant-kubectl-client-version.stdout": "e136409e7043ada7cfb36dc9be761a0dbae4a791fdbf04a9a4356953a548a353",
+    "evidence/tenant-kustomize-0.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "evidence/tenant-kustomize-0.stdout": "88898d275c6193b0cb0edd22305d2c9b2b8486c6650ad9aa265840a6eade68c0",
+    "evidence/tenant-kustomize-1.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "evidence/tenant-kustomize-1.stdout": "58d1c68968234c559305e7dfad373e0f45b00191c164ee25afbbd298c144ba40",
+    "evidence/tenant-tenant-only-tests.stderr": "c24f260ac556ab9ee42d9bddcfbf1553b82be95bb777c52e340072f05a620d45",
+    "evidence/tenant-tenant-only-tests.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "evidence/tenant-validation-result.json": "0a0f2edd0a3c830d35ffae6a3d75f01f74df6c17cd387a5450eadd79a85385fd",
+    "mount-contract-reconciliation.md": "38776016e7d76b2cfeac7856343dcc5fcc30d9873a8dc8cb27699ea532522b4c",
+    "result.json": "3f31da2d08f6a8c400ebd0308f25e3efb82281030108120d7ea0cc82cd66214a",
+    "service-contract.json": "cbc962b19d359b4e65415fae4aee1f8d331df778406b9f18f46e47821c732068",
+    "validate_offline.py": "ae6e7bd9bb4f759a011e33dc67e517229c5073ad7741461f4dde174c7517deb9"
+  }
+}

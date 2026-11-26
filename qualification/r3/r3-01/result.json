@@ -1,0 +1,46 @@
+{
+  "case": "R3-01",
+  "date": "2026-11-26",
+  "source_base_commit": "7a1065940bda19fd34bf3adf01078ff51fe53492",
+  "status": "OFFLINE_CONTRACT_REVIEW_DOCUMENTATION_AND_VALIDATION_PASS",
+  "publication": "LOCAL_UNCOMMITTED",
+  "acceptance": {
+    "reuse_R1_and_R2_pins": "PASS_LOCAL_SOURCE_AND_DATED_EVIDENCE",
+    "C4_NR_05": "DOCUMENTATION_RECONCILED_ADDITIVE_OVERLAY_FROZEN_SOURCES_UNCHANGED",
+    "invalid_tenant_ACL_naming_quota_changes": "REJECTED_OFFLINE",
+    "Git_Argo_Kubernetes_authority": "SEPARATE_HISTORICAL_REVIEW_CURRENT_EFFECTIVE_RIGHTS_NOT_REFRESHED",
+    "later_canary_lifecycle_contract": "PREPARED_DISABLED_NOT_EXECUTED"
+  },
+  "checks": {
+    "tenant_only_tests": 23,
+    "existing_C4_tests": 55,
+    "contract_negative_probes": 25,
+    "tests_and_probes_total": 103,
+    "local_kustomize_renders": 2,
+    "actual_pinned_git_paths_verified": 6,
+    "package_plan_validation": "PASS"
+  },
+  "production_implementation_changed": false,
+  "active_manifests_runtime_pins_changed": false,
+  "C3_latest_published_auditor_concurrence": "VERIFIED_SAVED_EXACT_SOURCE_REVIEW",
+  "new_C4_C6_concurrence": "NOT_CLAIMED",
+  "cluster_accessed": false,
+  "workloads_run": false,
+  "jobs_changed": false,
+  "all_four_Jobs": "UNTOUCHED_LAST_OBSERVED_SUSPENDED",
+  "execution_enabled": false,
+  "deployment_enabled": false,
+  "registration_enabled": false,
+  "workloads_enabled": false,
+  "open": [
+    "Fresh effective Git/Argo/Kubernetes/admission/ownership review only before a selected later live operation",
+    "Production delegation/protected-review enforcement and revocation/session policy",
+    "Distinct live lifecycle canary identities/diff/window/authority and final preservation evidence if later selected",
+    "Broader R3-02/03 and conditional recovery/capacity/governance/release acceptance"
+  ],
+  "limitations": [
+    "Local source/schema/probe checks are not actual runtime denial or admission enforcement",
+    "Historical generic-builder and plan-validator statuses remain immutable and are superseded only by specific progress/result overlays",
+    "Existing successful R2 and R3-00/10/11 evidence reused, no repeat client run or native build"
+  ]
+}

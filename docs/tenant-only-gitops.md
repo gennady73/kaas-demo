@@ -1,3 +1,5 @@
+Current service-contract overlay, 2026-11-26: [R3-01 review](../qualification/r3/r3-01/README.md) records completed R1/R2 separately from the historical preparation instructions below, owner-only authority/enforcement limits, and the [native Job/separate-CA mount reconciliation](../qualification/r3/r3-01/mount-contract-reconciliation.md). No new operation is authorized by these documents.
+
 # Tenant-only GitOps preparation for the existing sandbox Kafka
 
 Status: **offline validated; registration, deployment and tests disabled**. The user accepted shared-first on existing kaas-kafka/kaas-dev and remains sandbox owner/approver. This accepts the boundary and authority, not a deployment operation. This dedicated workflow does not weaken the new-cluster renderer's existing namespace/name protections.
