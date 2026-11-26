@@ -1,0 +1,214 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kaas-r2-client-readiness-20261126-v3
+  namespace: kaas-demo
+immutable: true
+data:
+  admin.js: "// k6 inspect only: native Admin metadata; no fixture engine or client\
+    \ handles.\nimport native from 'k6/x/kaasr2';\nconst started = native.start(Date.now());\n\
+    if (!started.ok) throw new Error('readonly_admin_start_failed');\nconsole.log('R2_ADMIN\
+    \ ' + JSON.stringify({type: 'identity', result: started}));\nfor (const topic\
+    \ of ['kaas-sbx-a-events', 'kaas-sbx-a-audit', 'kaas-sbx-b-events', 'kaas-sbx-b-audit'])\
+    \ {\n  const result = native.snapshot(topic, topic + '-group');\n  console.log('R2_ADMIN\
+    \ ' + JSON.stringify({type: 'group_snapshot', topic, group: topic + '-group',\
+    \ result}));\n  if (!result.ok) throw new Error('readonly_admin_snapshot_failed');\n\
+    }\nexport const options = {vus: 1, iterations: 1};\nexport default function ()\
+    \ { throw new Error('inspection_only_do_not_run'); }\n"
+  TopicHealth.java: "import java.util.*;\nimport java.nio.file.*;\nimport java.time.*;\n\
+    import java.util.concurrent.*;\nimport org.apache.kafka.clients.admin.*;\n\nclass\
+    \ TopicHealth {\n  static String q(String s) { return \"\\\"\" + s.replace(\"\\\
+    \\\", \"\\\\\\\\\").replace(\"\\\"\", \"\\\\\\\"\") + \"\\\"\"; }\n  public static\
+    \ void main(String[] args) {\n    try {\n      for (String tenant : List.of(\"\
+    a\", \"b\")) {\n        String user = \"kaas-sbx-\" + tenant + \"-producer\";\n\
+    \        String password = Files.readString(Path.of(\"/credentials/\" + user +\
+    \ \"/password\"));\n        if (password.indexOf('\\n') >= 0 || password.indexOf('\\\
+    r') >= 0 || password.indexOf(0) >= 0) throw new IllegalStateException();\n   \
+    \     Properties p = new Properties();\n        p.put(\"bootstrap.servers\", \"\
+    kaas-dev-kafka-bootstrap.kaas-kafka.svc:9093\");\n        p.put(\"security.protocol\"\
+    , \"SASL_SSL\"); p.put(\"sasl.mechanism\", \"SCRAM-SHA-512\");\n        p.put(\"\
+    sasl.jaas.config\", \"org.apache.kafka.common.security.scram.ScramLoginModule\
+    \ required username=\" + q(user) + \" password=\" + q(password) + \";\");\n  \
+    \      p.put(\"ssl.truststore.type\", \"PEM\"); p.put(\"ssl.truststore.certificates\"\
+    , Files.readString(Path.of(\"/credentials/cluster-ca/ca.crt\")));\n        p.put(\"\
+    ssl.endpoint.identification.algorithm\", \"https\");\n        p.put(\"default.api.timeout.ms\"\
+    , \"10000\"); p.put(\"request.timeout.ms\", \"5000\"); p.put(\"retries\", \"0\"\
+    );\n        try (Admin admin = Admin.create(p)) {\n          var topics = admin.describeTopics(List.of(\"\
+    kaas-sbx-\" + tenant + \"-events\", \"kaas-sbx-\" + tenant + \"-audit\")).allTopicNames().get(12,\
+    \ TimeUnit.SECONDS);\n          for (var entry : topics.entrySet()) for (var part\
+    \ : entry.getValue().partitions()) {\n            var leader = part.leader();\n\
+    \            System.out.println(\"R2_HEALTH {\\\"topic\\\":\" + q(entry.getKey())\
+    \ + \",\\\"partition\\\":\" + part.partition() + \",\\\"leader\\\":\" + (leader\
+    \ == null ? -1 : leader.id()) + \",\\\"leader_host\\\":\" + (leader == null ?\
+    \ \"null\" : q(leader.host())) + \",\\\"replicas\\\":\" + part.replicas().stream().map(n\
+    \ -> n.id()).toList() + \",\\\"ISR\\\":\" + part.isr().stream().map(n -> n.id()).toList()\
+    \ + \",\\\"observed_UTC\\\":\" + q(Instant.now().toString()) + \"}\");\n     \
+    \     }\n        }\n      }\n    } catch (Throwable error) {\n      System.out.println(\"\
+    R2_HEALTH {\\\"status\\\":\\\"METADATA_CHECK_FAILED\\\"}\");\n      System.exit(2);\n\
+    \    }\n  }\n}\n"
+  check.py: "\"\"\"Read-only client-path probe: DNS/TLS, Admin metadata and empty\
+    \ sink access.\n\nNo Producer/Consumer constructor, subscription, poll, group\
+    \ join or offset write.\n\"\"\"\nimport datetime\nimport http.client\nimport json\n\
+    from pathlib import Path\nimport re\nimport socket\nimport ssl\nimport subprocess\n\
+    \n\nREPORT = {}\n\ndef run():\n    result = {'status': 'CHECKING', 'observed_UTC':\
+    \ datetime.datetime.now(datetime.timezone.utc).isoformat(),\n              'produce_consume_operations':\
+    \ 0, 'mutating_Admin_operations': 0, 'group_joins': 0}\n    REPORT.update(result)\n\
+    \    REPORT['stage'] = 'bootstrap_DNS'\n    ca = ssl.create_default_context(cafile='/credentials/cluster-ca/ca.crt')\n\
+    \    host = 'kaas-dev-kafka-bootstrap.kaas-kafka.svc'\n    result['bootstrap_addresses']\
+    \ = sorted({x[4][0] for x in socket.getaddrinfo(host, 9093, type=socket.SOCK_STREAM)})\n\
+    \    REPORT['stage'] = 'bootstrap_TLS'\n    with socket.create_connection((host,\
+    \ 9093), timeout=5) as raw:\n        with ca.wrap_socket(raw, server_hostname=host)\
+    \ as channel:\n            cert = channel.getpeercert()\n            result['bootstrap_TLS']\
+    \ = {'version': channel.version(), 'certificate_not_after': cert['notAfter'],\
+    \ 'SAN': cert.get('subjectAltName')}\n    REPORT['stage'] = 'sink_HTTPS'\n   \
+    \ sink_ca = ssl.create_default_context(cafile='/evidence-trust/service-ca.crt')\n\
+    \    h = http.client.HTTPSConnection('kaas-r2-evidence.kaas-demo.svc', 8443, context=sink_ca,\
+    \ timeout=5)\n    try:\n        h.request('GET', '/v1/export'); response = h.getresponse();\
+    \ response.read(2048)\n        result['sink_unauthenticated_export_HTTP'] = response.status\n\
+    \        if response.status != 401: raise RuntimeError()\n    finally:\n     \
+    \   h.close()\n    REPORT.update(result)\n    REPORT['stage'] = 'native_Admin'\n\
+    \    native = subprocess.run(['/usr/local/bin/k6', '--log-format', 'raw', 'inspect',\
+    \ '/checks/admin.js'], capture_output=True, text=True, timeout=75)\n    observations\
+    \ = []\n    for line in (native.stdout + '\\n' + native.stderr).splitlines():\n\
+    \        if line.startswith('R2_ADMIN '): observations.append(json.loads(line[len('R2_ADMIN\
+    \ '):]))\n    result['native_Admin'] = observations\n    if native.returncode\
+    \ or len(observations) != 5 or any(not x['result']['ok'] for x in observations):\n\
+    \        result['status'] = 'NATIVE_ADMIN_CHECK_FAILED'\n        return result,\
+    \ 2\n    REPORT.update(result)\n    REPORT['stage'] = 'topic_health'\n    health\
+    \ = subprocess.run(['java', '-Xms32m', '-Xmx128m', '-XX:MaxMetaspaceSize=128m',\
+    \ '-XX:ReservedCodeCacheSize=32m', '-XX:ActiveProcessorCount=1', '--source', '17',\
+    \ '--class-path', '/opt/kafka/libs/*', '/checks/TopicHealth.java'], capture_output=True,\
+    \ text=True, timeout=45)\n    rows = [json.loads(line[len('R2_HEALTH '):]) for\
+    \ line in health.stdout.splitlines() if line.startswith('R2_HEALTH ')]\n    result['topic_health']\
+    \ = rows\n    if health.returncode or len(rows) != 4 or any(x.get('leader', -1)\
+    \ < 0 or len(x.get('replicas', [])) != 2 or len(x.get('ISR', [])) != 2 for x in\
+    \ rows):\n        result['status'] = 'TOPIC_HEALTH_CHECK_FAILED'\n        return\
+    \ result, 2\n    result['status'] = 'READONLY_CLIENT_PATH_AND_METADATA_PASS'\n\
+    \    return result, 0\n\n\nif __name__ == '__main__':\n    try:\n        report,\
+    \ code = run()\n    except Exception as error:\n        report, code = dict(REPORT,\
+    \ status='READONLY_CHECK_FAILED', credentials_in_output=False, error_class=type(error).__name__),\
+    \ 2\n    print(json.dumps(report, sort_keys=True), flush=True)\n    raise SystemExit(code)\n"
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kaas-r2-client-readiness-20261126-v3
+  namespace: kaas-demo
+  labels:
+    kaas.example.com/r2-component: client
+    kaas.example.com/r2-runner: trusted
+  annotations:
+    kaas.example.com/scope: User-authorized metadata-only readiness; no producer/consumer
+      tests
+spec:
+  serviceAccountName: kaas-r2-harness
+  automountServiceAccountToken: false
+  hostNetwork: false
+  restartPolicy: Never
+  terminationGracePeriodSeconds: 0
+  containers:
+  - name: native-client
+    image: image-registry.openshift-image-registry.svc:5000/kaas-demo/kaas-r2-runner@sha256:dec50714130f1244403f8bb1a79847dc28821b7e87a02507bbd923d081fe2d8d
+    imagePullPolicy: IfNotPresent
+    command:
+    - python3
+    - /checks/check.py
+    env:
+    - name: K6_NO_USAGE_REPORT
+      value: 'true'
+    - name: SSL_CERT_FILE
+      value: /evidence-trust/service-ca.crt
+    - name: HOME
+      value: /tmp
+    securityContext:
+      runAsNonRoot: true
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop:
+        - ALL
+      seccompProfile:
+        type: RuntimeDefault
+      readOnlyRootFilesystem: true
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        cpu: 500m
+        memory: 512Mi
+    volumeMounts:
+    - name: cluster-ca
+      mountPath: /credentials/cluster-ca
+      readOnly: true
+    - name: credential-0
+      mountPath: /credentials/kaas-sbx-a-producer
+      readOnly: true
+    - name: credential-1
+      mountPath: /credentials/kaas-sbx-a-consumer
+      readOnly: true
+    - name: credential-2
+      mountPath: /credentials/kaas-sbx-b-producer
+      readOnly: true
+    - name: credential-3
+      mountPath: /credentials/kaas-sbx-b-consumer
+      readOnly: true
+    - name: sink-trust
+      mountPath: /evidence-trust
+      readOnly: true
+    - name: tmp
+      mountPath: /tmp
+    - name: checks
+      mountPath: /checks
+      readOnly: true
+  volumes:
+  - name: cluster-ca
+    configMap:
+      name: kaas-r2-cluster-ca
+      items:
+      - key: ca.crt
+        path: ca.crt
+      defaultMode: 292
+  - name: credential-0
+    secret:
+      secretName: kaas-sbx-a-producer
+      items:
+      - key: password
+        path: password
+      defaultMode: 288
+  - name: credential-1
+    secret:
+      secretName: kaas-sbx-a-consumer
+      items:
+      - key: password
+        path: password
+      defaultMode: 288
+  - name: credential-2
+    secret:
+      secretName: kaas-sbx-b-producer
+      items:
+      - key: password
+        path: password
+      defaultMode: 288
+  - name: credential-3
+    secret:
+      secretName: kaas-sbx-b-consumer
+      items:
+      - key: password
+        path: password
+      defaultMode: 288
+  - name: sink-trust
+    configMap:
+      name: kaas-r2-sink-trust
+      items:
+      - key: service-ca.crt
+        path: service-ca.crt
+  - name: tmp
+    emptyDir:
+      sizeLimit: 16Mi
+  - name: checks
+    configMap:
+      name: kaas-r2-client-readiness-20261126-v3
+  nodeSelector:
+    kubernetes.io/os: linux
+    kubernetes.io/arch: amd64
+  activeDeadlineSeconds: 180

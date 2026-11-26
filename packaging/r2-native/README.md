@@ -1,3 +1,5 @@
+Latest client status: [Read-only client connectivity, TLS/SCRAM, health and group readiness](client-readiness/README.md). Client fixture remains disabled; evidence sink remains deployed.
+
 Latest runtime status: [R2 evidence sink deployment and verification](sink-only/README.md). The sink is deployed; the client remains disabled. Earlier readiness/build records below are historical snapshots.
 
 # R2 native images and disabled manifests

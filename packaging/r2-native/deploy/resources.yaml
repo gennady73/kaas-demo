@@ -386,9 +386,9 @@ spec:
     - protocol: TCP
       port: 53
     - protocol: UDP
-      port: dns
+      port: 5353
     - protocol: TCP
-      port: dns-tcp
+      port: 5353
   - to:
     - namespaceSelector:
         matchLabels:

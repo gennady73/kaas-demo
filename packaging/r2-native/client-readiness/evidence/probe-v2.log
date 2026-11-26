@@ -1,0 +1,1 @@
+{"credentials_in_output": false, "error_class": "gaierror", "group_joins": 0, "mutating_Admin_operations": 0, "observed_UTC": "2026-11-26T12:17:04.692046+00:00", "produce_consume_operations": 0, "stage": "bootstrap_DNS", "status": "READONLY_CHECK_FAILED"}

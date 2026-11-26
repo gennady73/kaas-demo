@@ -1,0 +1,18 @@
+{
+  "date": "2026-11-26",
+  "status": "STATIC_PUBLICATION_REVIEW_PASS",
+  "base_commit": "ed89aa48be2a93a4a9bbdf684d2465574678090b",
+  "cluster_access": false,
+  "producer_consumer_tests": false,
+  "readiness_scripts_executed_this_publication": false,
+  "client_Job_manifest_suspended": true,
+  "client_arming_and_authorization": false,
+  "actual_runtime_gates": "ALL_11_OPEN",
+  "native_source_files_unchanged": 39,
+  "DNS_policy": "Exact selected peers; explicit UDP/TCP53and5353; live snapshot matches manifest after normalizing omitted empty ingress list",
+  "image_pins": "UNCHANGED",
+  "active_GitOps_references": 0,
+  "evidence": "No Secret objects/private keys/API token values; prior diagnostic failures retained",
+  "R2_status": "READINESS_COMPLETE_BOUNDED_FIXTURE_NOT_RUN",
+  "next": "Final execution/stop/custody record, launch-time metadata refresh, explicitly authorized bounded fixture, reconciliation/closeout"
+}

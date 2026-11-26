@@ -1,0 +1,51 @@
+{
+  "protocol": "kaas-r2-bounded-run-readiness-v1",
+  "status": "PREPARED_NOT_AUTHORIZED",
+  "execution_authorized": false,
+  "tests_enabled": false,
+  "authority_reference": null,
+  "window_start_UTC": null,
+  "job_start_unix_ms": null,
+  "owner_approver": "user-selected sandbox owner",
+  "fresh_metadata_snapshot": "evidence/results.json",
+  "exclusive_fixture_groups": [
+    {
+      "topic": "kaas-sbx-a-events",
+      "group": "kaas-sbx-a-events-group",
+      "observed_empty_and_absent": true,
+      "reservation": "NOT_A_LOCK_REFRESH_BEFORE_RUN"
+    },
+    {
+      "topic": "kaas-sbx-a-audit",
+      "group": "kaas-sbx-a-audit-group",
+      "observed_empty_and_absent": true,
+      "reservation": "NOT_A_LOCK_REFRESH_BEFORE_RUN"
+    },
+    {
+      "topic": "kaas-sbx-b-events",
+      "group": "kaas-sbx-b-events-group",
+      "observed_empty_and_absent": true,
+      "reservation": "NOT_A_LOCK_REFRESH_BEFORE_RUN"
+    },
+    {
+      "topic": "kaas-sbx-b-audit",
+      "group": "kaas-sbx-b-audit-group",
+      "observed_empty_and_absent": true,
+      "reservation": "NOT_A_LOCK_REFRESH_BEFORE_RUN"
+    }
+  ],
+  "pre_run_joins": {
+    "publish_and_pin_final_readiness_package": "PUBLICATION_AUTHORIZED_PIN_OWNING_COMMIT_IN_FINAL_RECORD",
+    "refresh_health_and_group_offsets_at_start": "OPEN",
+    "final_C3_C6_C7_C4_support_and_custody_execution_record": "OPEN",
+    "startup_inclusive_deadline_and_external_stop_late_offset_plan": "OPEN",
+    "explicit_bounded_client_execution_instruction": "NOT_GIVEN"
+  },
+  "during_and_after_run_obligations": [
+    "16 positives and eight negative cases with at most 20,000 attempted original value bytes",
+    "durable receipts before commits",
+    "external final offset/late outcome reconciliation",
+    "Independent export audit and verified shared-workspace copy; retain seven days"
+  ],
+  "real_fixture_outcome": "NOT_RUN"
+}

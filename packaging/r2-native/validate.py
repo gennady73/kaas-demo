@@ -52,6 +52,7 @@ def validate(objects,builds,pvc,inputs,docker):
  assert svc['metadata']['annotations']['service.beta.openshift.io/serving-cert-secret-name']=='kaas-r2-sink-tls'
  trust=get('ConfigMap','kaas-r2-sink-trust');assert trust['metadata']['annotations']=={'service.beta.openshift.io/inject-cabundle':'true'} and trust['data']=={}
  np=get('NetworkPolicy','kaas-r2-native-client')['spec'];assert np['policyTypes']==['Ingress','Egress'] and np['ingress']==[] and len(np['egress'])==3
+ assert np['egress'][0]['ports']==[{'protocol':'UDP','port':53},{'protocol':'TCP','port':53},{'protocol':'UDP','port':5353},{'protocol':'TCP','port':5353}]
  assert np['egress'][1]['ports']==[{'protocol':'TCP','port':9093}] and np['egress'][2]['ports']==[{'protocol':'TCP','port':8443}]
  for rule in np['egress']:
   for peer in rule['to']:assert 'namespaceSelector' in peer and 'podSelector' in peer and peer['namespaceSelector'].get('matchLabels') and peer['podSelector'].get('matchLabels')
