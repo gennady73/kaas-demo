@@ -1,0 +1,55 @@
+{
+  "accountable_user_owner_and_approver": "ALREADY_ACCEPTED_NOT_REOPENED",
+  "evidence_retention_policy": "7dayssandboxplusworkspace_ALREADY_ACCEPTED",
+  "requested_choices": [
+    {
+      "id": "ACT-BUDGET",
+      "input": "Accept/amend1.25CPU/6.5Gi steady and1.75CPU/9.5Gi change-window planning reserve",
+      "status": "OPEN_PROPOSED_ESTIMATES_NOT_HARD_LIMITS",
+      "requires_before": "A1",
+      "limits": "Installed managed footprint and current capacity still need artifact reconciliation; not a Kafka minimum"
+    },
+    {
+      "id": "ACT-STORAGE",
+      "input": "Choose0newPVC functional ephemeral telemetry pilot or proposed4PVC/24Gi persistent option; accept/amend24hmetric retention",
+      "status": "OPEN",
+      "requires_before": "A1",
+      "limits": "No metricsHA/persistenceclaimfromephemeral; Kafka6h/evidence7days unchanged"
+    },
+    {
+      "id": "ACT-WINDOW",
+      "input": "Choose proposed90minwindow; accept affectedwrite interruptions; named executor/stop/escalation and relevant other-client coordination",
+      "status": "OPEN",
+      "requires_before": "A0",
+      "proposed_existing_executor": "ExistingAPIadmin/C0workflow and userstopauthority, subject to exact owner/source operation; no new account requested"
+    },
+    {
+      "id": "OPS-CUSTODIAN",
+      "input": "Evidence technical custodian and backup/contact/teamreference",
+      "status": "OPEN",
+      "requires_before": "A0"
+    },
+    {
+      "id": "OPS-RECEIVER",
+      "input": "Monitoring/routing owner, approved existing receiver reference and acknowledgement/escalation contact/runbook",
+      "status": "OPEN",
+      "requires_before": "A4;unknownrecipientholdsA5/A6rules"
+    }
+  ],
+  "recommended_initial_selection": {
+    "lag_exporter": "DEFER",
+    "safe_notification": "DEFER_UNTIL_SEPARATELY_AUTHORIZED",
+    "new_Grafana_or_Alertmanager": "NONE"
+  },
+  "technical_owner_artifact_joins": [
+    "SupportedplatformGitOps/configurationpath",
+    "ManagedreleasewholePodresource/storagefootprint",
+    "Mergedconfigandnarrowobservabilityownershipdiff/newimmutablepins",
+    "PromQLparser/rulefixturesandcurrentobservablequorum/ISR",
+    "PlatformAlertmanagerPVC/historyprotectionifHAclaimed"
+  ],
+  "execution_enabled": false,
+  "deployment_enabled": false,
+  "workloads_enabled": false,
+  "approval_question_pending": false
+}

@@ -1,0 +1,29 @@
+{
+  "status": "OFFLINE_PLAN_ARITHMETIC_STAGE_ORDER_AND_PARENT_INTEGRITY_PASS",
+  "stages": 8,
+  "minutes_budget": 90,
+  "UWM_main_and_combined_sidecar_allowance_cpu_m": 1000,
+  "UWM_memory_MiB": 6144,
+  "core_estimated_totals": {
+    "steady_cpu_m": 1150,
+    "steady_memory_MiB": 6528,
+    "change_window_cpu_m": 1650,
+    "change_window_memory_MiB": 9600
+  },
+  "rounded_proposed_reservation": {
+    "steady_cpu_m": 1250,
+    "steady_memory_MiB": 6656,
+    "change_window_cpu_m": 1750,
+    "change_window_memory_MiB": 9728,
+    "status": "PROPOSED_NOT_APPROVED_NOT_A_KUBERNETES_LIMIT"
+  },
+  "storage_choice_unset": true,
+  "parent_artifact_files_unchanged": 48,
+  "unknown_receiver_blocks_rules": true,
+  "planning_not_sizing_measurement": true,
+  "resource_budget_approved": false,
+  "cluster_accessed": false,
+  "deployment_or_workloads_run": false,
+  "rollback_runtime_tested": false,
+  "independent_reviewer": "NOT_CLAIMED"
+}

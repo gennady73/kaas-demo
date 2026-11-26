@@ -1,0 +1,18 @@
+{
+  "algorithm": "sha256",
+  "scope": "Activation plan files excluding manifest/Python caches",
+  "files": {
+    "README.md": "5071c551035522e4a0f8312cdb78d7ff887edcde8c9c3e4a0ee97e3ba8039933",
+    "evidence/integrity-checks.json": "32a546ff9902ebf7df44575a47144d96c352632d928c7f699b15a55d2f6a5f50",
+    "evidence/primary-references.json": "0e20d7933dd5f2ad0926a30d747204b48ecc69ff5d7935f95e84a3528c80500f",
+    "evidence/source-index.json": "4f0f38b785227d575db672f814ec21e80ad56189ce3391ee6d414c10d65e6dc8",
+    "evidence/validation.json": "5d10da8ac11b3667849742c412046a674ac1acdb9689d7d09286df700a9238ce",
+    "inputs-needed.json": "ca69a6d1b000724b379c270f41ce754c113d6d4f5b4b57a39f2d275f8a217056",
+    "plan.disabled.json": "8e8a6d04d8d872a932a4d2c6bb980720da64ce13d16f67f531ccbd475f9a8d5f",
+    "resource-estimates.json": "60445bec50b4cf69b9ba8756e3b36a8ba29a4254be626576c5f2754605aaf800",
+    "result.json": "2af684a5ff07a7c54bc73fe2aeccc0902088a80fc8eb6ddec53607ce8d49aeac",
+    "rollback.md": "a5c7b6b782c3a4f330d2cbfae1db25f1afccb0bd6ba942ae4da916dcacfea14f",
+    "validate_plan.py": "549b0d1133b20b3cdc80f307adf2a101fcda836a0cf83ff3e033d4f544296418",
+    "operator-brief.md": "b7c6ed72be91b6860ddca1a71f7817249101cc94cd7efa5a1ad3661fe8f4bb1d"
+  }
+}

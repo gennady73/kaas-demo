@@ -1,0 +1,52 @@
+{
+  "status": "STAGED_ACTIVATION_RESOURCE_IMPACT_ROLLBACK_PLAN_PREPARED_OFFLINE",
+  "date": "2026-11-26",
+  "source_package_commit": "3d7b6bae3beab549d0aae4a3c50dfe7129929bff",
+  "publication": "LOCAL_UNCOMMITTED",
+  "stages": 8,
+  "planning_minutes": 90,
+  "steady_planning_reservation": {
+    "cpu_m": 1250,
+    "memory_MiB": 6656
+  },
+  "change_window_planning_reservation": {
+    "cpu_m": 1750,
+    "memory_MiB": 9728
+  },
+  "resource_estimates_measured": false,
+  "resource_budget_approved": false,
+  "storage_selected": null,
+  "proposed_persistent_storage": {
+    "claims": 4,
+    "total_requested_GiB": 24
+  },
+  "ephemeral_pilot_option": {
+    "claims": 0,
+    "no_persistent_monitoring_HA_claim": true
+  },
+  "broker_change": "Only metricsConfig proposed, conservatively budget up to3serial dual-role restarts; actual operatorbehavior nottested",
+  "conditional_write_impact": "AffectedRF2/minISR2acksallwrites may beunavailable during one replica restart",
+  "rollback_constraints": [
+    "Maycauseasecondbrokerroll",
+    "No-prune source removal leaves live resources",
+    "Stopping C0promotionsdoesnotinstantlystopoperatorreconciliation",
+    "SharedUWMdisablemustprotectotherconsumersandmetricsclaims/history",
+    "No broker/evidence PVCdelete/ISRweakening/downgrade or credentials changes"
+  ],
+  "routing_before_rules": true,
+  "natural_notifications_possible_when_rules_enabled": true,
+  "safe_notification_test_in_scope": false,
+  "current_Kafka_AppProject_monitor_kinds_gap": "VERIFIED_LOCAL_SOURCE;separatenarrowmonitorownershiprequired,nocompetingKafkaowner",
+  "new_user_inputs": "Budget,storage/metricretention,window/interruptions/executor-stopcontact,custodian/backup,monitoringreceiver/responder",
+  "validation": "Localarithmetic/time/order/flagsandpublishedpackagehashesPASS;noexistingtests/renders/runtimeworkrerun",
+  "cluster_accessed": false,
+  "resources_changed": false,
+  "jobs_changed": false,
+  "jobs_state_basis": "Untouched;lastobservedsuspendedactive0",
+  "deployment_enabled": false,
+  "workloads_enabled": false,
+  "execution_enabled": false,
+  "notification_tests_enabled": false,
+  "rollback_tested": false,
+  "next": "Userinputthenexactmerged/pinnedactivationtransactionreview;noautomaticexecution"
+}

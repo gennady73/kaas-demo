@@ -1,0 +1,127 @@
+{
+  "version": "r3-03-activation-plan-0.1",
+  "status": "PREPARED_OFFLINE_NOT_AUTHORIZED_FOR_EXECUTION",
+  "source_package_commit": "3d7b6bae3beab549d0aae4a3c50dfe7129929bff",
+  "execution_enabled": false,
+  "deployment_enabled": false,
+  "workloads_enabled": false,
+  "notification_tests_enabled": false,
+  "client_Jobs_must_remain_suspended": true,
+  "selected_stages": null,
+  "resource_budget_approval": null,
+  "storage_option": null,
+  "change_window": null,
+  "named_executor_and_stop_contact": null,
+  "custodian": null,
+  "receiver_reference_and_ack_contact": null,
+  "new_source_resource_commits_and_registration_pins": null,
+  "planning_window_minutes": 90,
+  "window_is_not_RTO_or_duration_guarantee": true,
+  "serial_stage_gates": true,
+  "lag_exporter_selected": false,
+  "existing_Alertmanager_reused": true,
+  "no_Grafana_added": true,
+  "stages": [
+    {
+      "id": "A0",
+      "title": "Freeze exact activation record",
+      "planning_minutes": 10,
+      "broker_roll_possible": false,
+      "entry": "User-approved source/stages/budget/storage/window/contacts; validated disabled source and offline rule-parser results",
+      "exit": "Archive current Git pins, config fields, workload/PVC identities and no-prune policy; prepare narrow metadata-only monitoring ownership",
+      "rollback_or_hold": "No mutation; retain baseline; hold if inputs incomplete"
+    },
+    {
+      "id": "A1",
+      "title": "Enable approved UWM consumer only",
+      "planning_minutes": 15,
+      "broker_roll_possible": false,
+      "entry": "Approved supported merged config and resource/storage proposal; unrelated-user-project impact reviewed",
+      "exit": "Only approved managed UWM components healthy, resource/storage fit and selected namespace discovery verified; no broker change",
+      "rollback_or_hold": "Hold new stages; targeted merge to prior enablement only if exclusive ownership and data/consumer protection permit; never broad ConfigMap delete"
+    },
+    {
+      "id": "A2",
+      "title": "Create JMX ConfigMap and metrics-only broker change",
+      "planning_minutes": 30,
+      "broker_roll_possible": true,
+      "entry": "All3dual-role brokers healthy/fullISR/metadata quorum from approved observable source; retention/replay margin and planned write interruption accepted",
+      "exit": "Observe operator-driven serial reconciliation, at most1unavailable broker/controller, restored ISR/quorum and target state; do not force rolling or weaken ISR",
+      "rollback_or_hold": "Prefer hold/repair of exact metrics delta after inspecting reconciliation; reversal can cause another roll; no Pod/PVC delete or downgrade"
+    },
+    {
+      "id": "A3",
+      "title": "Enable exact broker scrape, rules still held",
+      "planning_minutes": 10,
+      "broker_roll_possible": false,
+      "entry": "Approved PodMonitor ownership/selection/9404 effective policy; no arbitrary cross-namespace allowance",
+      "exit": "3/3expected broker targets up, all5gauge families/labels present, scrape interval/timeout and current cardinality observed",
+      "rollback_or_hold": "Stop own scrape through reviewed selector disable/update if needed; keep JMX ConfigMap while referenced; no broker reversal solely for a scrape fault"
+    },
+    {
+      "id": "A4",
+      "title": "Receiver/routing gate before any live rules",
+      "planning_minutes": 5,
+      "broker_roll_possible": false,
+      "entry": "Known approved existing routing/contact and owner disposition; if a new KaaS route is needed, its exact merged/pinned change is approved before rules",
+      "exit": "Routing disposition/config accepted and unrelated routes preserved. Actual future rules may generate natural notifications; safe test signal is separately held",
+      "rollback_or_hold": "If routing/recipient is unknown, hold A5/A6 and stop after scrape-only. Any route correction restores only owned fragment; no shared receiver deletion"
+    },
+    {
+      "id": "A5",
+      "title": "Enable reviewed broker rules and queries",
+      "planning_minutes": 5,
+      "broker_roll_possible": false,
+      "entry": "A4 routing disposition accepted, including natural notifications; PromQL/rule fixtures passed and evaluator/target data verified",
+      "exit": "Rules reconcile/evaluate without errors; required absent-series handling explicit; no test alert or fault injected",
+      "rollback_or_hold": "Targeted group/route hold under approved owner workflow; source deletion with no-prune does not stop live rule evaluation"
+    },
+    {
+      "id": "A6",
+      "title": "Optional sink infrastructure rules",
+      "planning_minutes": 5,
+      "broker_roll_possible": false,
+      "entry": "A4 routing accepted; evaluator can see platform kubelet/kube-state series and existing sink labels/free-space floor verified",
+      "exit": "Rule health and missing-series handling observed, no signal overload, no claim of unimplemented durableACK/error metrics",
+      "rollback_or_hold": "Restore only own changed rule group or disable via approved targeted update; no sink restart or evidence cleanup"
+    },
+    {
+      "id": "A7",
+      "title": "Closeout and owner handoff",
+      "planning_minutes": 10,
+      "broker_roll_possible": false,
+      "entry": "Previous selected stages have dispositions and all4clientJobs remain suspended",
+      "exit": "Read-only preservation, actual resource/target/rule/timing/custody receipts; exact known gaps and storage holds recorded",
+      "rollback_or_hold": "Leave healthy resources in place; rollback only by stage-specific reviewed authority; no automatic prune or cleanup"
+    }
+  ],
+  "promotions_are_manual": true,
+  "sync_prune": false,
+  "sync_force_or_replace": false,
+  "new_Application_may_own_Kafka": false,
+  "ownership": {
+    "Kafka_metrics_change": "Existing kaas-demo-kafka Application/source; current Kafka AppProject remains Kafka-kinds only",
+    "Kafka_namespace_new_monitors": "Proposed distinct observability Project/Application allows only ConfigMap/PodMonitor/PrometheusRule into kaas-kafka, no Kafka kinds",
+    "Evidence_namespace_rules": "Proposed distinct observability Project/Application allows only PrometheusRule into kaas-demo; no Job/Deployment/PVC/Secret",
+    "UWM_cluster_monitoring_config": "Authorized platform owner supported Git/configuration workflow; no access via tenant Projects",
+    "RBAC": "Inspect effective existing rights at activation; only separately reviewed missing namespace/kind non-delete grants, no blanket wildcard/cluster-admin promotion"
+  },
+  "time_policy": {
+    "A2_total_minutes": 30,
+    "per_broker_progress_checkpoint_minutes": 10,
+    "healthy_stability_minutes_proposal": 5,
+    "timeout_behavior": "Stop further C0-initiated promotions; preserve/inspect operator state; not an automatic kill/instant reconciliation stop or recovery PASS"
+  },
+  "non_goals": [
+    "New client/producer/consumer runs",
+    "Fault/recovery qualification",
+    "Full-service/production acceptance",
+    "Operator/broker binary/metadata upgrade",
+    "Retention/ISR/quota/ACL/listener/storage migration",
+    "Direct cluster actions under current planning request"
+  ],
+  "offline_preparation_excluded_from_90min_window": true,
+  "natural_alert_delivery_possible_when_rules_enabled": true,
+  "unknown_receiver_blocks_live_rule_enablement": true,
+  "safe_notification_test_in_90min_scope": false
+}

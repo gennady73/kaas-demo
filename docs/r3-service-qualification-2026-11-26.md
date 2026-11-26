@@ -1,3 +1,5 @@
+Offline activation proposal: [stages, estimates, impact, rollback and remaining inputs](r3-03-activation-plan-2026-11-26.md). No rollout or workloads; all action flags remain disabled.
+
 Latest R3-03 preparation: [coverage discovery and disabled monitoring/routing configuration](r3-03-monitoring-preparation-2026-11-26.md). Existing infrastructure telemetry verified; Kafka-specific pipeline gap identified. Two operational contact/reference bundles needed; no deployment/workload/notification occurred.
 
 Latest published-record package: [C0 sync and successful bounded refresh](r3-c0-sync-and-refresh-2026-11-26.md). Four Jobs were observed suspended/zero active at18:45UTC on26November. Monitoring/custody and C6review gaps remain explicit; no workload or resource change is authorized by publication.

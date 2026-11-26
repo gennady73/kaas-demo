@@ -1,0 +1,30 @@
+{
+  "checked_date": "2026-11-26",
+  "references": [
+    {
+      "version": "OpenShift4.21",
+      "url": "https://docs.redhat.com/en/documentation/monitoring_stack_for_red_hat_openshift/4.21/html-single/configuring_user_workload_monitoring/index",
+      "used_for": "Documented example UWM1operator/2Prometheus/2ThanosRuler and config ownership",
+      "size_estimates_from_vendor": false
+    },
+    {
+      "version": "OpenShift4.21",
+      "url": "https://docs.redhat.com/en/documentation/monitoring_stack_for_red_hat_openshift/4.21/html/configuring_user_workload_monitoring/storing-and-recording-data-uwm",
+      "used_for": "Persistent monitoring/HA and storage updates can recreateStatefulSets",
+      "size_estimates_from_vendor": false
+    },
+    {
+      "version": "Streams3.2",
+      "url": "https://docs.redhat.com/en/documentation/red_hat_streams_for_apache_kafka/3.2/html/streams_for_apache_kafka_api_reference/con-common-configuration-properties-reference",
+      "used_for": "MetricsConfig enabled/absent and9404exposure; exactbuildrollbehaviorNOT_TESTED",
+      "size_estimates_from_vendor": false
+    },
+    {
+      "version": "Streams3.2",
+      "url": "https://docs.redhat.com/en/documentation/red_hat_streams_for_apache_kafka/3.2/html/kafka_configuration_properties/topic-configuration-properties-str",
+      "used_for": "ConditionalminISR/ackswriteavailability",
+      "size_estimates_from_vendor": false
+    }
+  ],
+  "scope": "Primaryversiondocumentationandlocalsource;notcluster/runtimevalidation"
+}

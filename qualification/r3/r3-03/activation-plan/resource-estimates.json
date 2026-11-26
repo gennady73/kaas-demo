@@ -1,0 +1,132 @@
+{
+  "classification": "PROPOSED_SANDBOX_PLANNING_ESTIMATES_NOT_MEASURED_OR_OPERATOR_DEFAULTS",
+  "units": {
+    "cpu": "millicores",
+    "memory": "MiB",
+    "storage": "GiB requested capacity, not observed filesystem capacity"
+  },
+  "existing_brokers": {
+    "replicas": 3,
+    "request_each_cpu_m": 500,
+    "request_each_memory_MiB": 2048,
+    "limit_each_cpu_m": 1000,
+    "limit_each_memory_MiB": 2048,
+    "request_total_cpu_m": 1500,
+    "request_total_memory_MiB": 6144,
+    "limits_total_cpu_m": 3000,
+    "limits_total_memory_MiB": 6144,
+    "selected_resource_change": false,
+    "source": "platform/kafka/nodepool.yaml (existing sandbox source; not current free capacity)"
+  },
+  "new_uwm_components": [
+    {
+      "component": "Prometheus main-container planning allowance",
+      "replicas": 2,
+      "cpu_m_each": 250,
+      "memory_MiB_each": 2048
+    },
+    {
+      "component": "Thanos Ruler main-container planning allowance",
+      "replicas": 2,
+      "cpu_m_each": 100,
+      "memory_MiB_each": 512
+    },
+    {
+      "component": "UWM Prometheus Operator main-container planning allowance",
+      "replicas": 1,
+      "cpu_m_each": 100,
+      "memory_MiB_each": 256
+    },
+    {
+      "component": "Combined managed sidecars/auxiliary planning allowance",
+      "replicas": 1,
+      "cpu_m_each": 200,
+      "memory_MiB_each": 768
+    }
+  ],
+  "uwm_steady": {
+    "nominal_new_pods": 5,
+    "cpu_m": 1000,
+    "memory_MiB": 6144
+  },
+  "uwm_change_window_reserve_factor": 1.5,
+  "uwm_change_window_allowance": {
+    "cpu_m": 1500,
+    "memory_MiB": 9216
+  },
+  "broker_metrics_overhead": {
+    "classification": "IN_PROCESS_UTILIZATION_ALLOWANCE_NOT_A_REQUEST_OR_LIMIT_CHANGE",
+    "replicas": 3,
+    "cpu_m_each": 50,
+    "memory_MiB_each": 128,
+    "total_cpu_m": 150,
+    "total_memory_MiB": 384,
+    "new_pods": 0,
+    "new_PVCs": 0,
+    "automatic_NodePool_resize": false
+  },
+  "core_totals": {
+    "steady_cpu_m": 1150,
+    "steady_memory_MiB": 6528,
+    "change_window_cpu_m": 1650,
+    "change_window_memory_MiB": 9600
+  },
+  "proposed_rounded_planning_reservation": {
+    "steady_cpu_m": 1250,
+    "steady_memory_MiB": 6656,
+    "change_window_cpu_m": 1750,
+    "change_window_memory_MiB": 9728,
+    "status": "PROPOSED_NOT_APPROVED_NOT_A_KUBERNETES_LIMIT"
+  },
+  "optional_lag_exporter": {
+    "selected": false,
+    "replicas": 1,
+    "request_cpu_m": 50,
+    "request_memory_MiB": 128,
+    "limit_cpu_m": 200,
+    "limit_memory_MiB": 256,
+    "main_component_reference": "candidate/30-lag-optional/kafka-exporter.patch.yaml.disabled",
+    "sidecar_operator_additions": "NOT_ASSUMED_ZERO_MEASURE_RENDERED_POD_BEFORE_APPROVAL",
+    "even_if_within_reserve_requires_own_activation_authority": true
+  },
+  "not_added": [
+    "Grafana instance",
+    "second Alertmanager instance",
+    "brokers/worker nodes",
+    "client Jobs",
+    "client traffic or stress",
+    "separate sink metrics exporter"
+  ],
+  "storage_options": {
+    "selected": null,
+    "ephemeral_sandbox_pilot": {
+      "new_PVCs": 0,
+      "node_ephemeral_planning_reserve_GiB": 6,
+      "change_window_reserve_GiB": 9,
+      "metrics_retention_proposal": "24h",
+      "acceptance": "Requires explicit acceptance of telemetry/history loss on restart and no HA/persistent-monitoring claim; no deletion of existing evidence",
+      "claim": "Functional sandbox only; no persistent metrics/HA qualification"
+    },
+    "persistent_monitoring": {
+      "new_PVCs": 4,
+      "prometheus_replicas": 2,
+      "prometheus_each_GiB": 10,
+      "thanos_ruler_replicas": 2,
+      "thanos_ruler_each_GiB": 2,
+      "total_new_requested_GiB": 24,
+      "storageClass_proposal": "gp3-csi",
+      "metrics_retention_proposal": "24h",
+      "capacity_status": "Initial planning allocation, not validated TSDB sizing or guaranteed node/storage availability",
+      "note": "Existing platform Alertmanager reused; existing 1Gi evidence PVC and 3x20Gi broker PVCs unchanged; retain/backup/disposition verified before any monitoring disablement"
+    }
+  },
+  "limits_and_unknowns": [
+    "CPU/RAM allowances are C0 estimates, not vendor minimums or observed requests",
+    "Do not impose hard memory limits or resource quotas from this table",
+    "Release-specific whole-Pod defaults/sidecars and all selected user-project monitors must fit approved envelope; refine before enabling",
+    "Managed resource overrides/storage/retention are not yet generated into a reviewed config diff",
+    "Current node allocatable/free resources, storage quota and fault-domain fit not freshly checked",
+    "Broker overhead must fit existing heap/2Gi limit and CPU entitlement; do not silently raise NodePool resources",
+    "1.5factor is rollout budgeting allowance, not a promise of surge topology or measured workload peak"
+  ]
+}

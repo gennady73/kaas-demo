@@ -1,0 +1,16 @@
+{
+  "base_commit": "3d7b6bae3beab549d0aae4a3c50dfe7129929bff",
+  "scope": "Savedsourceanddiscovery;no currentclusterquery",
+  "files": {
+    "kaas-demo/platform/kafka/nodepool.yaml": "84a29493b38d8e83a656ff91fe030880b00115e7447b7cafbd58c4b095b20a90",
+    "kaas-demo/platform/kafka/kafka.yaml": "d280e093d3575abdf79d1cf72e8a9b2b70943abb2cd701487c72bb7dad796895",
+    "kaas-demo/gitops/bootstrap/kafka-project.yaml": "a95361346181fa47a81b39778cdc942ce3d9295361061de0c3697899e93b7d8d",
+    "kaas-demo/gitops/bootstrap/kafka-controller-rbac.yaml": "067e9efd33b59f9890a0d548b2b663bdff2b63bd0f68ed7338ccb157b51963ef",
+    "kaas-demo/gitops/bootstrap/kafka-application.yaml.template": "ae383ae5c38d1ff1578f202fd30d07e32d40581282f4027a9d8de3dbab55688e",
+    "kaas-demo/qualification/r3/r3-03/profile.disabled.json": "f1f3560577fd8119feb0b641700cde5ba548f02e8583281a57f930c0d1a1364d",
+    "kaas-demo/qualification/r3/r3-03/proposed-kafka.diff": "36ce06d49986b0534402e7881f8f4f797ef6cee0864a0344f0f87731e2a1f883",
+    "kaas-demo/qualification/r3/r3-03/artifact-manifest.json": "1bf25bb330330edf59839e8286f56f0884408dcf6b0dbac00a0bc1936b3c87c3",
+    "kaas-demo/qualification/r3/r3-03/evidence/discovery/prometheus-all.json": "923eafd9f6c3a4a5ab0553173736dc00aa10d38db962963f5fdc766464af2e29",
+    "docs/operations/release-runbook.md": "865d870a72d8e1aa2b4c8dea5c7773a771057218df7c7fe9880b324ee381943b"
+  }
+}

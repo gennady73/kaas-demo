@@ -1,5 +1,5 @@
 {
-  "revision": "0.7",
+  "revision": "0.8",
   "date": "2026-11-26",
   "plan_commit": "0f9df49fc0dfb3632c9c7f4eb32fb7e6d3aec1e6",
   "execution_enabled": false,
@@ -44,10 +44,21 @@
       "workloads_enabled": false,
       "operational_inputs": "r3-03/inputs-needed.json",
       "coverage": "Coreinfraavailable;Kafkaexposure/scrape/rulesanduserworkloadconsumerabsentininspectedpipeline",
-      "publication": "PUBLISHED_BY_OWNING_COMMIT_PREPARATION_ONLY"
+      "publication": "PUBLISHED_BY_OWNING_COMMIT_PREPARATION_ONLY",
+      "activation_plan": {
+        "status": "STAGED_ACTIVATION_RESOURCE_IMPACT_ROLLBACK_PLAN_PREPARED_OFFLINE",
+        "result": "r3-03/activation-plan/result.json",
+        "inputs": "r3-03/activation-plan/inputs-needed.json",
+        "resource_budget_approved": false,
+        "storage_selected": null,
+        "execution_enabled": false,
+        "deployment_enabled": false,
+        "workloads_enabled": false,
+        "publication": "PUBLISHED_BY_OWNING_COMMIT_PLAN_ONLY"
+      }
     }
   },
-  "remaining_cases": "R3-03coverageidentifiedanddisabledconfigurationprepared;twooperationalrole/referencebundlesneeded. Activationbudget/window/ruleparser/targetingverificationandreceiverdeliveryremainlateractions;noautomaticdeployment/workload. ExistingR1/R2andpriorofflinepassesunchanged.",
+  "remaining_cases": "R3-03stagedactivation/resource/rollbackplanpreparedoffline,unapproved. Userbudget/storage/window-and-impact/contactchoicesandtechnicalmergedsource/managed-footprint/rulevalidationjoinsneededbeforeanyactivation. Noautomaticdeployment,notificationorworkload;existingR1/R2andpriorofflinepassesunchanged.",
   "note": "Progress overlay supersedes pre-correction OPEN labels only for this exact offline source/result; does not arm any planned case",
   "coordination_sync": {
     "date": "2026-11-26",

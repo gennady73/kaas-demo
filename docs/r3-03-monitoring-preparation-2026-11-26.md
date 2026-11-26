@@ -1,3 +1,5 @@
+Offline activation proposal: [stages, estimates, impact, rollback and remaining inputs](r3-03-activation-plan-2026-11-26.md). No rollout or workloads; all action flags remain disabled.
+
 # R3-03 monitoring preparation result
 
 [Prepared package](../qualification/r3/r3-03/README.md), [disabled profile](../qualification/r3/r3-03/profile.disabled.json), [operational inputs](../qualification/r3/r3-03/inputs-needed.json).
