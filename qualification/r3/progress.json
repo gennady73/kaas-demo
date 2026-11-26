@@ -1,5 +1,5 @@
 {
-  "revision": "0.6",
+  "revision": "0.7",
   "date": "2026-11-26",
   "plan_commit": "0f9df49fc0dfb3632c9c7f4eb32fb7e6d3aec1e6",
   "execution_enabled": false,
@@ -35,9 +35,19 @@
       "execution_enabled": false,
       "workloads_enabled": false,
       "review_scope": "C0 consolidation; current C3 exact-auditor concurrence indexed separately; no new C4/C6 concurrence invented"
+    },
+    "R3-03": {
+      "status": "EXISTING_COVERAGE_IDENTIFIED_MISSING_CONFIGURATION_PREPARED_OFFLINE",
+      "result": "r3-03/result.json",
+      "live_acceptance": "OPEN_CONFIG_NOT_DEPLOYED_ROUTING_NOT_TESTED",
+      "execution_enabled": false,
+      "workloads_enabled": false,
+      "operational_inputs": "r3-03/inputs-needed.json",
+      "coverage": "Coreinfraavailable;Kafkaexposure/scrape/rulesanduserworkloadconsumerabsentininspectedpipeline",
+      "publication": "PUBLISHED_BY_OWNING_COMMIT_PREPARATION_ONLY"
     }
   },
-  "remaining_cases": "Boundedread-onlyrefreshcomplete: service/Apps/manualcontrolsandfourJobsfreshlyobserved,selectedaccess6allowed,PVCheadroomverified. Kafka-specificmonitoring/receiver/custodyrolesandC6reviewremainOPEN;noautomaticsync/deployment/workloadornewtestauthorized.",
+  "remaining_cases": "R3-03coverageidentifiedanddisabledconfigurationprepared;twooperationalrole/referencebundlesneeded. Activationbudget/window/ruleparser/targetingverificationandreceiverdeliveryremainlateractions;noautomaticdeployment/workload. ExistingR1/R2andpriorofflinepassesunchanged.",
   "note": "Progress overlay supersedes pre-correction OPEN labels only for this exact offline source/result; does not arm any planned case",
   "coordination_sync": {
     "date": "2026-11-26",

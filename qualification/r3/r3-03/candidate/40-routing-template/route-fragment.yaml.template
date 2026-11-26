@@ -1,0 +1,13 @@
+routes:
+- matchers:
+  - kaas_service="kaas-dev"
+  - namespace=~"kaas-kafka|kaas-demo"
+  receiver: ${APPROVED_EXISTING_RECEIVER_NAME}
+  group_by:
+  - alertname
+  - namespace
+  - kaas_service
+  group_wait: 30s
+  group_interval: 5m
+  repeat_interval: 4h
+  continue: false

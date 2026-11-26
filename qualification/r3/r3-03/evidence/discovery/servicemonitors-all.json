@@ -1,0 +1,1735 @@
+{
+  "items": [
+    {
+      "metadata": {
+        "name": "openshift-apiserver-operator",
+        "namespace": "openshift-apiserver-operator",
+        "uid": "9589b3e4-ff4b-4258-bfd3-11ffbd4d0615",
+        "resourceVersion": "1657"
+      },
+      "selector": {
+        "matchLabels": {
+          "app": "openshift-apiserver-operator"
+        }
+      },
+      "namespaceSelector": {
+        "matchNames": [
+          "openshift-apiserver-operator"
+        ]
+      },
+      "endpoints": [
+        {
+          "port": "https",
+          "path": null,
+          "scheme": "https",
+          "interval": "30s"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "openshift-apiserver",
+        "namespace": "openshift-apiserver",
+        "uid": "38006318-60ba-4abb-bab0-6d88c6f82b83",
+        "resourceVersion": "6035"
+      },
+      "selector": {
+        "matchLabels": {
+          "prometheus": "openshift-apiserver"
+        }
+      },
+      "namespaceSelector": {
+        "matchNames": [
+          "openshift-apiserver"
+        ]
+      },
+      "endpoints": [
+        {
+          "port": "https",
+          "path": null,
+          "scheme": "https",
+          "interval": "30s"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "openshift-apiserver-operator-check-endpoints",
+        "namespace": "openshift-apiserver",
+        "uid": "df779ec8-591b-4f36-bd4d-22e274332b61",
+        "resourceVersion": "6099"
+      },
+      "selector": {
+        "matchLabels": {
+          "prometheus": "openshift-apiserver-check-endpoints"
+        }
+      },
+      "namespaceSelector": {
+        "matchNames": [
+          "openshift-apiserver"
+        ]
+      },
+      "endpoints": [
+        {
+          "port": "check-endpoints",
+          "path": null,
+          "scheme": "https",
+          "interval": "30s"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "authentication-operator",
+        "namespace": "openshift-authentication-operator",
+        "uid": "0140e841-4d32-4cc9-99a8-9e755b27bdea",
+        "resourceVersion": "8371"
+      },
+      "selector": {
+        "matchLabels": {
+          "app": "authentication-operator"
+        }
+      },
+      "namespaceSelector": null,
+      "endpoints": [
+        {
+          "port": "https",
+          "path": "/metrics",
+          "scheme": "https",
+          "interval": "30s"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "oauth-openshift",
+        "namespace": "openshift-authentication",
+        "uid": "8c4c421f-8ad0-418d-8229-a65b78c5ddda",
+        "resourceVersion": "8480"
+      },
+      "selector": {
+        "matchLabels": {
+          "app": "oauth-openshift"
+        }
+      },
+      "namespaceSelector": null,
+      "endpoints": [
+        {
+          "port": "https",
+          "path": "/metrics",
+          "scheme": "https",
+          "interval": "30s"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "catalogd-metrics-monitor",
+        "namespace": "openshift-catalogd",
+        "uid": "90c3476c-4230-4dc8-937b-c2e7cfc67397",
+        "resourceVersion": "6645"
+      },
+      "selector": {
+        "matchLabels": {
+          "app.kubernetes.io/name": "catalogd"
+        }
+      },
+      "namespaceSelector": {
+        "matchNames": [
+          "openshift-catalogd"
+        ]
+      },
+      "endpoints": [
+        {
+          "port": "metrics",
+          "path": "/metrics",
+          "scheme": "https",
+          "interval": "30s"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "cloud-credential-operator",
+        "namespace": "openshift-cloud-credential-operator",
+        "uid": "220f4f38-0b53-4d5b-a37e-031ed0bb7696",
+        "resourceVersion": "1673"
+      },
+      "selector": {},
+      "namespaceSelector": {
+        "matchNames": [
+          "openshift-cloud-credential-operator"
+        ]
+      },
+      "endpoints": [
+        {
+          "port": "metrics",
+          "path": null,
+          "scheme": "https",
+          "interval": "30s"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "aws-ebs-csi-driver-controller-monitor",
+        "namespace": "openshift-cluster-csi-drivers",
+        "uid": "02e333cd-f5e1-4348-a79d-4a92d21eb69e",
+        "resourceVersion": "7288"
+      },
+      "selector": {
+        "matchLabels": {
+          "app": "aws-ebs-csi-driver-controller-metrics"
+        }
+      },
+      "namespaceSelector": null,
+      "endpoints": [
+        {
+          "port": "provisioner-m",
+          "path": "/metrics",
+          "scheme": "https",
+          "interval": "30s"
+        },
+        {
+          "port": "attacher-m",
+          "path": "/metrics",
+          "scheme": "https",
+          "interval": "30s"
+        },
+        {
+          "port": "resizer-m",
+          "path": "/metrics",
+          "scheme": "https",
+          "interval": "30s"
+        },
+        {
+          "port": "snapshotter-m",
+          "path": "/metrics",
+          "scheme": "https",
+          "interval": "30s"
+        },
+        {
+          "port": "driver-m",
+          "path": "/metrics",
+          "scheme": "https",
+          "interval": "30s"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "cluster-machine-approver",
+        "namespace": "openshift-cluster-machine-approver",
+        "uid": "288d2530-4d1b-4b75-8161-b1db5d7d8dfa",
+        "resourceVersion": "1681"
+      },
+      "selector": {
+        "matchLabels": {
+          "app": "machine-approver"
+        }
+      },
+      "namespaceSelector": {
+        "matchNames": [
+          "openshift-cluster-machine-approver"
+        ]
+      },
+      "endpoints": [
+        {
+          "port": "https",
+          "path": null,
+          "scheme": "https",
+          "interval": "30s"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "node-tuning-operator",
+        "namespace": "openshift-cluster-node-tuning-operator",
+        "uid": "b8c66abf-5442-46a2-b41d-25a1a598d4a6",
+        "resourceVersion": "1670"
+      },
+      "selector": {
+        "matchLabels": {
+          "name": "node-tuning-operator"
+        }
+      },
+      "namespaceSelector": null,
+      "endpoints": [
+        {
+          "port": null,
+          "path": "/metrics",
+          "scheme": "https",
+          "interval": "60s"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "cluster-samples-operator",
+        "namespace": "openshift-cluster-samples-operator",
+        "uid": "be0c998c-2e8a-4f4b-a3ea-ed370ef04b50",
+        "resourceVersion": "9868"
+      },
+      "selector": {
+        "matchLabels": {
+          "name": "cluster-samples-operator"
+        }
+      },
+      "namespaceSelector": null,
+      "endpoints": [
+        {
+          "port": null,
+          "path": "/metrics",
+          "scheme": "https",
+          "interval": "60s"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "cluster-storage-operator",
+        "namespace": "openshift-cluster-storage-operator",
+        "uid": "a006e428-0b5f-4ea0-ae42-82479bcebecb",
+        "resourceVersion": "1669"
+      },
+      "selector": {
+        "matchLabels": {
+          "app": "cluster-storage-operator-metrics"
+        }
+      },
+      "namespaceSelector": null,
+      "endpoints": [
+        {
+          "port": "https",
+          "path": "/metrics",
+          "scheme": "https",
+          "interval": "30s"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "cluster-version-operator",
+        "namespace": "openshift-cluster-version",
+        "uid": "340a79e5-2fd6-4978-a9db-353607506c58",
+        "resourceVersion": "1672"
+      },
+      "selector": {
+        "matchLabels": {
+          "k8s-app": "cluster-version-operator"
+        }
+      },
+      "namespaceSelector": {
+        "matchNames": [
+          "openshift-cluster-version"
+        ]
+      },
+      "endpoints": [
+        {
+          "port": "metrics",
+          "path": null,
+          "scheme": "https",
+          "interval": "30s"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "config-operator",
+        "namespace": "openshift-config-operator",
+        "uid": "2e0bdd97-c7d2-41f2-a078-9d75b53a880a",
+        "resourceVersion": "2169"
+      },
+      "selector": {
+        "matchLabels": {
+          "app": "openshift-config-operator"
+        }
+      },
+      "namespaceSelector": {
+        "matchNames": [
+          "openshift-config-operator"
+        ]
+      },
+      "endpoints": [
+        {
+          "port": "https",
+          "path": null,
+          "scheme": "https",
+          "interval": "30s"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "console-operator",
+        "namespace": "openshift-console-operator",
+        "uid": "8951faa2-ff25-4f13-ad8d-9f3990eef5fb",
+        "resourceVersion": "2548"
+      },
+      "selector": {
+        "matchLabels": {
+          "name": "console-operator"
+        }
+      },
+      "namespaceSelector": null,
+      "endpoints": [
+        {
+          "port": "https",
+          "path": "/metrics",
+          "scheme": "https",
+          "interval": "30s"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "console",
+        "namespace": "openshift-console",
+        "uid": "40b63d33-b533-4df0-811f-958f3956aacb",
+        "resourceVersion": "2540"
+      },
+      "selector": {
+        "matchLabels": {
+          "app": "console"
+        }
+      },
+      "namespaceSelector": null,
+      "endpoints": [
+        {
+          "port": "https",
+          "path": "/metrics",
+          "scheme": "https",
+          "interval": "30s"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "openshift-controller-manager-operator",
+        "namespace": "openshift-controller-manager-operator",
+        "uid": "3407f0f6-5a95-45ce-8438-1274046bf00c",
+        "resourceVersion": "1678"
+      },
+      "selector": {
+        "matchLabels": {
+          "app": "openshift-controller-manager-operator"
+        }
+      },
+      "namespaceSelector": null,
+      "endpoints": [
+        {
+          "port": "https",
+          "path": null,
+          "scheme": "https",
+          "interval": "30s"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "openshift-controller-manager",
+        "namespace": "openshift-controller-manager",
+        "uid": "c3646d0f-1a31-4041-88c4-17fd6b5a02da",
+        "resourceVersion": "5495"
+      },
+      "selector": {
+        "matchLabels": {
+          "prometheus": "openshift-controller-manager"
+        }
+      },
+      "namespaceSelector": null,
+      "endpoints": [
+        {
+          "port": "https",
+          "path": null,
+          "scheme": "https",
+          "interval": "30s"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "dns-operator",
+        "namespace": "openshift-dns-operator",
+        "uid": "fd574aed-15b6-412e-b5e3-7a7388a3bd72",
+        "resourceVersion": "1656"
+      },
+      "selector": {
+        "matchLabels": {
+          "name": "dns-operator"
+        }
+      },
+      "namespaceSelector": null,
+      "endpoints": [
+        {
+          "port": "metrics",
+          "path": null,
+          "scheme": "https",
+          "interval": "30s"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "dns-default",
+        "namespace": "openshift-dns",
+        "uid": "b436dd3d-0f28-46d5-afd2-6e8d15e8791e",
+        "resourceVersion": "7934"
+      },
+      "selector": {},
+      "namespaceSelector": {
+        "matchNames": [
+          "openshift-dns"
+        ]
+      },
+      "endpoints": [
+        {
+          "port": "metrics",
+          "path": "/metrics",
+          "scheme": "https",
+          "interval": "30s"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "etcd",
+        "namespace": "openshift-etcd-operator",
+        "uid": "31264857-3b76-425a-8b7a-a66733334ce4",
+        "resourceVersion": "7525"
+      },
+      "selector": {
+        "matchLabels": {
+          "k8s-app": "etcd"
+        }
+      },
+      "namespaceSelector": {
+        "matchNames": [
+          "openshift-etcd"
+        ]
+      },
+      "endpoints": [
+        {
+          "port": "etcd-metrics",
+          "path": null,
+          "scheme": "https",
+          "interval": "30s"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "etcd-minimal",
+        "namespace": "openshift-etcd-operator",
+        "uid": "c9f49e97-233b-4f1c-9eb9-58d6d0ac02b1",
+        "resourceVersion": "7533"
+      },
+      "selector": {
+        "matchLabels": {
+          "k8s-app": "etcd"
+        }
+      },
+      "namespaceSelector": {
+        "matchNames": [
+          "openshift-etcd"
+        ]
+      },
+      "endpoints": [
+        {
+          "port": "etcd-metrics",
+          "path": null,
+          "scheme": "https",
+          "interval": "30s"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "etcd-operator",
+        "namespace": "openshift-etcd-operator",
+        "uid": "b4f8e8d8-e873-42ba-add0-8f0753ead26b",
+        "resourceVersion": "1715"
+      },
+      "selector": {
+        "matchLabels": {
+          "app": "etcd-operator"
+        }
+      },
+      "namespaceSelector": null,
+      "endpoints": [
+        {
+          "port": "https",
+          "path": null,
+          "scheme": "https",
+          "interval": "30s"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "openshift-gitops-operator-metrics-monitor",
+        "namespace": "openshift-gitops-operator",
+        "uid": "cc3186e6-2749-4e51-b3a9-71a7f65fe4b2",
+        "resourceVersion": "286396"
+      },
+      "selector": {
+        "matchLabels": {
+          "control-plane": "gitops-operator"
+        }
+      },
+      "namespaceSelector": null,
+      "endpoints": [
+        {
+          "port": "metrics",
+          "path": "/metrics",
+          "scheme": "https",
+          "interval": "30s"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "openshift-gitops",
+        "namespace": "openshift-gitops",
+        "uid": "7949e856-f7f8-4d82-8c4e-11b175c375f9",
+        "resourceVersion": "184557"
+      },
+      "selector": {
+        "matchLabels": {
+          "app.kubernetes.io/name": "openshift-gitops-metrics"
+        }
+      },
+      "namespaceSelector": {},
+      "endpoints": [
+        {
+          "port": "metrics",
+          "path": null,
+          "scheme": null,
+          "interval": null
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "openshift-gitops-repo-server",
+        "namespace": "openshift-gitops",
+        "uid": "a40032b3-40cb-4b5e-972e-c0bca8603380",
+        "resourceVersion": "184567"
+      },
+      "selector": {
+        "matchLabels": {
+          "app.kubernetes.io/name": "openshift-gitops-repo-server"
+        }
+      },
+      "namespaceSelector": {},
+      "endpoints": [
+        {
+          "port": "metrics",
+          "path": null,
+          "scheme": null,
+          "interval": null
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "openshift-gitops-server",
+        "namespace": "openshift-gitops",
+        "uid": "4200104c-4b76-41a4-becd-c15b29747f4d",
+        "resourceVersion": "184562"
+      },
+      "selector": {
+        "matchLabels": {
+          "app.kubernetes.io/name": "openshift-gitops-server-metrics"
+        }
+      },
+      "namespaceSelector": {},
+      "endpoints": [
+        {
+          "port": "metrics",
+          "path": null,
+          "scheme": null,
+          "interval": null
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "image-registry",
+        "namespace": "openshift-image-registry",
+        "uid": "25328875-05a1-4b26-8a9e-cc2dc606c20e",
+        "resourceVersion": "1688"
+      },
+      "selector": {},
+      "namespaceSelector": {
+        "matchNames": [
+          "openshift-image-registry"
+        ]
+      },
+      "endpoints": [
+        {
+          "port": "5000-tcp",
+          "path": "/extensions/v2/metrics",
+          "scheme": "https",
+          "interval": "30s"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "image-registry-operator",
+        "namespace": "openshift-image-registry",
+        "uid": "9d23e125-76eb-41fa-aacb-3192bc1dfd83",
+        "resourceVersion": "1719"
+      },
+      "selector": {
+        "matchLabels": {
+          "name": "image-registry-operator"
+        }
+      },
+      "namespaceSelector": null,
+      "endpoints": [
+        {
+          "port": null,
+          "path": "/metrics",
+          "scheme": "https",
+          "interval": "60s"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "ingress-operator",
+        "namespace": "openshift-ingress-operator",
+        "uid": "ab1c8c4f-b4af-4b9c-87b6-626b5a2f8546",
+        "resourceVersion": "1675"
+      },
+      "selector": {
+        "matchLabels": {
+          "name": "ingress-operator"
+        }
+      },
+      "namespaceSelector": null,
+      "endpoints": [
+        {
+          "port": "metrics",
+          "path": null,
+          "scheme": "https",
+          "interval": "30s"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "router-default",
+        "namespace": "openshift-ingress",
+        "uid": "e9248188-3c50-4e8e-b324-3bad2c0e05b5",
+        "resourceVersion": "9437"
+      },
+      "selector": {
+        "matchLabels": {
+          "ingresscontroller.operator.openshift.io/owning-ingresscontroller": "default"
+        }
+      },
+      "namespaceSelector": {
+        "matchNames": [
+          "openshift-ingress"
+        ]
+      },
+      "endpoints": [
+        {
+          "port": "metrics",
+          "path": "/metrics",
+          "scheme": "https",
+          "interval": "30s"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "insights-operator",
+        "namespace": "openshift-insights",
+        "uid": "fffc2b83-afd4-4182-bdb7-d89fd4458338",
+        "resourceVersion": "11042"
+      },
+      "selector": {
+        "matchLabels": {
+          "app": "insights-operator"
+        }
+      },
+      "namespaceSelector": {
+        "matchNames": [
+          "openshift-insights"
+        ]
+      },
+      "endpoints": [
+        {
+          "port": "https",
+          "path": null,
+          "scheme": "https",
+          "interval": "30s"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "kube-apiserver-operator",
+        "namespace": "openshift-kube-apiserver-operator",
+        "uid": "e1f292d9-d684-4b27-8fc7-a8787ba1f9f7",
+        "resourceVersion": "1667"
+      },
+      "selector": {
+        "matchLabels": {
+          "app": "kube-apiserver-operator"
+        }
+      },
+      "namespaceSelector": null,
+      "endpoints": [
+        {
+          "port": "https",
+          "path": null,
+          "scheme": "https",
+          "interval": "30s"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "kube-apiserver",
+        "namespace": "openshift-kube-apiserver",
+        "uid": "1a6a1890-c8f0-413b-b5f6-e68135634130",
+        "resourceVersion": "1792"
+      },
+      "selector": {
+        "matchLabels": {
+          "component": "apiserver",
+          "provider": "kubernetes"
+        }
+      },
+      "namespaceSelector": {
+        "matchNames": [
+          "default"
+        ]
+      },
+      "endpoints": [
+        {
+          "port": "https",
+          "path": null,
+          "scheme": "https",
+          "interval": "30s"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "kube-controller-manager-operator",
+        "namespace": "openshift-kube-controller-manager-operator",
+        "uid": "ca319fd3-1487-4904-8ced-cc31d3f3c37f",
+        "resourceVersion": "1661"
+      },
+      "selector": {
+        "matchLabels": {
+          "app": "kube-controller-manager-operator"
+        }
+      },
+      "namespaceSelector": null,
+      "endpoints": [
+        {
+          "port": "https",
+          "path": null,
+          "scheme": "https",
+          "interval": "30s"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "kube-controller-manager",
+        "namespace": "openshift-kube-controller-manager",
+        "uid": "0973ad63-3c48-42f4-968d-4d2bd6a5b2e9",
+        "resourceVersion": "1759"
+      },
+      "selector": {
+        "matchLabels": {
+          "prometheus": "kube-controller-manager"
+        }
+      },
+      "namespaceSelector": null,
+      "endpoints": [
+        {
+          "port": "https",
+          "path": null,
+          "scheme": "https",
+          "interval": "30s"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "kube-scheduler-operator",
+        "namespace": "openshift-kube-scheduler-operator",
+        "uid": "9c7ce0cb-d07f-4306-8a78-59f3c5c15cfc",
+        "resourceVersion": "1682"
+      },
+      "selector": {
+        "matchLabels": {
+          "app": "openshift-kube-scheduler-operator"
+        }
+      },
+      "namespaceSelector": null,
+      "endpoints": [
+        {
+          "port": "https",
+          "path": null,
+          "scheme": "https",
+          "interval": "30s"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "kube-scheduler",
+        "namespace": "openshift-kube-scheduler",
+        "uid": "b99c42ed-d168-4839-b381-c807b119252c",
+        "resourceVersion": "1842"
+      },
+      "selector": {
+        "matchLabels": {
+          "prometheus": "kube-scheduler"
+        }
+      },
+      "namespaceSelector": null,
+      "endpoints": [
+        {
+          "port": "https",
+          "path": "/metrics",
+          "scheme": "https",
+          "interval": "30s"
+        },
+        {
+          "port": "https",
+          "path": "/metrics/resources",
+          "scheme": "https",
+          "interval": "30s"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "cluster-autoscaler-operator",
+        "namespace": "openshift-machine-api",
+        "uid": "a5cab727-e834-4d3d-8af3-29ae9ae2ec75",
+        "resourceVersion": "2705"
+      },
+      "selector": {
+        "matchLabels": {
+          "k8s-app": "cluster-autoscaler-operator"
+        }
+      },
+      "namespaceSelector": {
+        "matchNames": [
+          "openshift-machine-api"
+        ]
+      },
+      "endpoints": [
+        {
+          "port": "metrics",
+          "path": null,
+          "scheme": "https",
+          "interval": "30s"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "machine-api-controllers",
+        "namespace": "openshift-machine-api",
+        "uid": "fb296a5b-c952-42b9-a1b4-f92e410d8ad5",
+        "resourceVersion": "1917"
+      },
+      "selector": {
+        "matchLabels": {
+          "k8s-app": "controller"
+        }
+      },
+      "namespaceSelector": {
+        "matchNames": [
+          "openshift-machine-api"
+        ]
+      },
+      "endpoints": [
+        {
+          "port": "machine-mtrc",
+          "path": null,
+          "scheme": "https",
+          "interval": "30s"
+        },
+        {
+          "port": "machineset-mtrc",
+          "path": null,
+          "scheme": "https",
+          "interval": "30s"
+        },
+        {
+          "port": "mhc-mtrc",
+          "path": null,
+          "scheme": "https",
+          "interval": "30s"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "machine-api-operator",
+        "namespace": "openshift-machine-api",
+        "uid": "8c092ca2-7ee3-477d-af4f-a48b9976a6bc",
+        "resourceVersion": "1881"
+      },
+      "selector": {
+        "matchLabels": {
+          "k8s-app": "machine-api-operator"
+        }
+      },
+      "namespaceSelector": {
+        "matchNames": [
+          "openshift-machine-api"
+        ]
+      },
+      "endpoints": [
+        {
+          "port": "https",
+          "path": null,
+          "scheme": "https",
+          "interval": "30s"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "machine-config-controller",
+        "namespace": "openshift-machine-config-operator",
+        "uid": "62fce636-9836-4574-8fa3-e5d99082b963",
+        "resourceVersion": "1684"
+      },
+      "selector": {
+        "matchLabels": {
+          "k8s-app": "machine-config-controller"
+        }
+      },
+      "namespaceSelector": {
+        "matchNames": [
+          "openshift-machine-config-operator"
+        ]
+      },
+      "endpoints": [
+        {
+          "port": "metrics",
+          "path": "/metrics",
+          "scheme": "https",
+          "interval": "30s"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "machine-config-daemon",
+        "namespace": "openshift-machine-config-operator",
+        "uid": "3daccb54-0da7-4a61-9c8d-6d2c0cbb7907",
+        "resourceVersion": "1714"
+      },
+      "selector": {
+        "matchLabels": {
+          "k8s-app": "machine-config-daemon"
+        }
+      },
+      "namespaceSelector": {
+        "matchNames": [
+          "openshift-machine-config-operator"
+        ]
+      },
+      "endpoints": [
+        {
+          "port": "metrics",
+          "path": "/metrics",
+          "scheme": "https",
+          "interval": "30s"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "marketplace-operator",
+        "namespace": "openshift-marketplace",
+        "uid": "ed47638f-a82a-4495-9bf6-4f6ca646416f",
+        "resourceVersion": "10734"
+      },
+      "selector": {
+        "matchLabels": {
+          "name": "marketplace-operator"
+        }
+      },
+      "namespaceSelector": {
+        "matchNames": [
+          "openshift-marketplace"
+        ]
+      },
+      "endpoints": [
+        {
+          "port": "https-metrics",
+          "path": null,
+          "scheme": "https",
+          "interval": "30s"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "alertmanager-main",
+        "namespace": "openshift-monitoring",
+        "uid": "14cd0731-f455-4667-a7bb-073835563309",
+        "resourceVersion": "26624"
+      },
+      "selector": {
+        "matchLabels": {
+          "app.kubernetes.io/component": "alert-router",
+          "app.kubernetes.io/instance": "main",
+          "app.kubernetes.io/name": "alertmanager",
+          "app.kubernetes.io/part-of": "openshift-monitoring"
+        }
+      },
+      "namespaceSelector": {},
+      "endpoints": [
+        {
+          "port": "metrics",
+          "path": null,
+          "scheme": "https",
+          "interval": "30s"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "cluster-monitoring-operator",
+        "namespace": "openshift-monitoring",
+        "uid": "e81da302-923a-49a6-90f1-010556da1346",
+        "resourceVersion": "11521"
+      },
+      "selector": {
+        "matchLabels": {
+          "app.kubernetes.io/name": "cluster-monitoring-operator"
+        }
+      },
+      "namespaceSelector": {},
+      "endpoints": [
+        {
+          "port": "https",
+          "path": null,
+          "scheme": "https",
+          "interval": null
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "kube-state-metrics",
+        "namespace": "openshift-monitoring",
+        "uid": "b6987e22-d5b7-4b82-8f56-a554f8d76f11",
+        "resourceVersion": "11640"
+      },
+      "selector": {
+        "matchLabels": {
+          "app.kubernetes.io/component": "exporter",
+          "app.kubernetes.io/name": "kube-state-metrics",
+          "app.kubernetes.io/part-of": "openshift-monitoring"
+        }
+      },
+      "namespaceSelector": {},
+      "endpoints": [
+        {
+          "port": "https-main",
+          "path": null,
+          "scheme": "https",
+          "interval": "1m"
+        },
+        {
+          "port": "https-self",
+          "path": null,
+          "scheme": "https",
+          "interval": "1m"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "kubelet",
+        "namespace": "openshift-monitoring",
+        "uid": "f16a8703-6abf-4fc1-b33a-14d7ad1ca258",
+        "resourceVersion": "11425"
+      },
+      "selector": {
+        "matchLabels": {
+          "k8s-app": "kubelet"
+        }
+      },
+      "namespaceSelector": {
+        "matchNames": [
+          "kube-system"
+        ]
+      },
+      "endpoints": [
+        {
+          "port": "https-metrics",
+          "path": null,
+          "scheme": "https",
+          "interval": "30s"
+        },
+        {
+          "port": "https-metrics",
+          "path": "/metrics/cadvisor",
+          "scheme": "https",
+          "interval": "30s"
+        },
+        {
+          "port": "https-metrics",
+          "path": "/metrics/probes",
+          "scheme": "https",
+          "interval": "30s"
+        },
+        {
+          "port": "https-metrics",
+          "path": null,
+          "scheme": "https",
+          "interval": "30s"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "metrics-server",
+        "namespace": "openshift-monitoring",
+        "uid": "6a606c53-2572-461c-afd5-d2f5e27f8f88",
+        "resourceVersion": "12643"
+      },
+      "selector": {
+        "matchLabels": {
+          "app.kubernetes.io/component": "metrics-server",
+          "app.kubernetes.io/name": "metrics-server",
+          "app.kubernetes.io/part-of": "openshift-monitoring"
+        }
+      },
+      "namespaceSelector": {},
+      "endpoints": [
+        {
+          "port": "https",
+          "path": null,
+          "scheme": "https",
+          "interval": null
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "node-exporter",
+        "namespace": "openshift-monitoring",
+        "uid": "a8178788-997c-4e07-918b-0a02e69ec469",
+        "resourceVersion": "12039"
+      },
+      "selector": {
+        "matchLabels": {
+          "app.kubernetes.io/component": "exporter",
+          "app.kubernetes.io/name": "node-exporter",
+          "app.kubernetes.io/part-of": "openshift-monitoring"
+        }
+      },
+      "namespaceSelector": {},
+      "endpoints": [
+        {
+          "port": "https",
+          "path": null,
+          "scheme": "https",
+          "interval": "15s"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "openshift-state-metrics",
+        "namespace": "openshift-monitoring",
+        "uid": "4f16c2e4-cdd4-4d66-af95-d322a6ec4a66",
+        "resourceVersion": "11518"
+      },
+      "selector": {
+        "matchLabels": {
+          "k8s-app": "openshift-state-metrics"
+        }
+      },
+      "namespaceSelector": {},
+      "endpoints": [
+        {
+          "port": "https-main",
+          "path": null,
+          "scheme": "https",
+          "interval": "2m"
+        },
+        {
+          "port": "https-self",
+          "path": null,
+          "scheme": "https",
+          "interval": "2m"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "prometheus-k8s",
+        "namespace": "openshift-monitoring",
+        "uid": "ad112a27-0d57-4e1b-b874-c951467a5a49",
+        "resourceVersion": "25890"
+      },
+      "selector": {
+        "matchLabels": {
+          "app.kubernetes.io/component": "prometheus",
+          "app.kubernetes.io/instance": "k8s",
+          "app.kubernetes.io/name": "prometheus",
+          "app.kubernetes.io/part-of": "openshift-monitoring"
+        }
+      },
+      "namespaceSelector": {},
+      "endpoints": [
+        {
+          "port": "metrics",
+          "path": null,
+          "scheme": "https",
+          "interval": "30s"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "prometheus-operator",
+        "namespace": "openshift-monitoring",
+        "uid": "4014137a-021d-4af9-8aea-44c9d765bb69",
+        "resourceVersion": "11096"
+      },
+      "selector": {
+        "matchLabels": {
+          "app.kubernetes.io/component": "controller",
+          "app.kubernetes.io/name": "prometheus-operator",
+          "app.kubernetes.io/part-of": "openshift-monitoring",
+          "app.kubernetes.io/version": "0.87.0"
+        }
+      },
+      "namespaceSelector": {},
+      "endpoints": [
+        {
+          "port": "https",
+          "path": null,
+          "scheme": "https",
+          "interval": null
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "telemeter-client",
+        "namespace": "openshift-monitoring",
+        "uid": "dd3c9b50-1b5e-4f96-93db-1cdde9de72cb",
+        "resourceVersion": "26227"
+      },
+      "selector": {
+        "matchLabels": {
+          "k8s-app": "telemeter-client"
+        }
+      },
+      "namespaceSelector": {},
+      "endpoints": [
+        {
+          "port": "https",
+          "path": null,
+          "scheme": "https",
+          "interval": "30s"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "thanos-querier",
+        "namespace": "openshift-monitoring",
+        "uid": "10301955-6eb9-412c-8e7d-137394280eaa",
+        "resourceVersion": "26437"
+      },
+      "selector": {
+        "matchLabels": {
+          "app.kubernetes.io/component": "query-layer",
+          "app.kubernetes.io/instance": "thanos-querier",
+          "app.kubernetes.io/name": "thanos-query",
+          "app.kubernetes.io/part-of": "openshift-monitoring"
+        }
+      },
+      "namespaceSelector": {},
+      "endpoints": [
+        {
+          "port": "metrics",
+          "path": null,
+          "scheme": "https",
+          "interval": "30s"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "thanos-sidecar",
+        "namespace": "openshift-monitoring",
+        "uid": "d557eb62-81df-4bc1-a73d-e93d5761b591",
+        "resourceVersion": "25891"
+      },
+      "selector": {
+        "matchLabels": {
+          "app.kubernetes.io/component": "thanos-sidecar"
+        }
+      },
+      "namespaceSelector": {},
+      "endpoints": [
+        {
+          "port": "thanos-proxy",
+          "path": null,
+          "scheme": "https",
+          "interval": "30s"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "monitor-multus-admission-controller",
+        "namespace": "openshift-multus",
+        "uid": "faa5f75e-8364-49ba-865c-218e9be83fc0",
+        "resourceVersion": "3318"
+      },
+      "selector": {
+        "matchLabels": {
+          "app": "multus-admission-controller"
+        }
+      },
+      "namespaceSelector": {
+        "matchNames": [
+          "openshift-multus"
+        ]
+      },
+      "endpoints": [
+        {
+          "port": "metrics",
+          "path": null,
+          "scheme": "https",
+          "interval": "30s"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "monitor-network",
+        "namespace": "openshift-multus",
+        "uid": "d56b7afa-400b-48f0-9e2e-5f1b5abfc87d",
+        "resourceVersion": "3210"
+      },
+      "selector": {
+        "matchLabels": {
+          "service": "network-metrics-service"
+        }
+      },
+      "namespaceSelector": {
+        "matchNames": [
+          "openshift-multus"
+        ]
+      },
+      "endpoints": [
+        {
+          "port": "metrics",
+          "path": null,
+          "scheme": "https",
+          "interval": "10s"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "network-check-source",
+        "namespace": "openshift-network-diagnostics",
+        "uid": "1afc6014-2af9-4c05-9849-fe9db82d3536",
+        "resourceVersion": "3655"
+      },
+      "selector": {
+        "matchLabels": {
+          "app": "network-check-source"
+        }
+      },
+      "namespaceSelector": {
+        "matchNames": [
+          "openshift-network-diagnostics"
+        ]
+      },
+      "endpoints": [
+        {
+          "port": "check-endpoints",
+          "path": null,
+          "scheme": "https",
+          "interval": "30s"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "network-operator",
+        "namespace": "openshift-network-operator",
+        "uid": "9c1f3218-3204-4cd0-a81f-d06dbbfff94b",
+        "resourceVersion": "1797"
+      },
+      "selector": {
+        "matchLabels": {
+          "name": "network-operator"
+        }
+      },
+      "namespaceSelector": null,
+      "endpoints": [
+        {
+          "port": "metrics",
+          "path": null,
+          "scheme": "https",
+          "interval": "30s"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "openshift-oauth-apiserver",
+        "namespace": "openshift-oauth-apiserver",
+        "uid": "3616283c-5fe7-4a63-a951-dc9da6299146",
+        "resourceVersion": "8531"
+      },
+      "selector": {
+        "matchLabels": {
+          "app": "openshift-oauth-apiserver"
+        }
+      },
+      "namespaceSelector": {
+        "matchNames": [
+          "openshift-oauth-apiserver"
+        ]
+      },
+      "endpoints": [
+        {
+          "port": "https",
+          "path": null,
+          "scheme": "https",
+          "interval": "30s"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "operator-controller-metrics-monitor",
+        "namespace": "openshift-operator-controller",
+        "uid": "a10e30e1-d8e4-46e2-b904-978bb610fc90",
+        "resourceVersion": "6234"
+      },
+      "selector": {
+        "matchLabels": {
+          "app.kubernetes.io/name": "operator-controller"
+        }
+      },
+      "namespaceSelector": {
+        "matchNames": [
+          "openshift-operator-controller"
+        ]
+      },
+      "endpoints": [
+        {
+          "port": "metrics",
+          "path": "/metrics",
+          "scheme": "https",
+          "interval": "30s"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "catalog-operator",
+        "namespace": "openshift-operator-lifecycle-manager",
+        "uid": "8598e7ea-e6f8-4d5c-b75d-11800fd05f4c",
+        "resourceVersion": "1708"
+      },
+      "selector": {
+        "matchLabels": {
+          "app": "catalog-operator"
+        }
+      },
+      "namespaceSelector": {
+        "matchNames": [
+          "openshift-operator-lifecycle-manager"
+        ]
+      },
+      "endpoints": [
+        {
+          "port": "https-metrics",
+          "path": null,
+          "scheme": "https",
+          "interval": "30s"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "olm-operator",
+        "namespace": "openshift-operator-lifecycle-manager",
+        "uid": "e0381a72-6455-47da-84f1-c86f20c9675c",
+        "resourceVersion": "1674"
+      },
+      "selector": {
+        "matchLabels": {
+          "app": "olm-operator"
+        }
+      },
+      "namespaceSelector": {
+        "matchNames": [
+          "openshift-operator-lifecycle-manager"
+        ]
+      },
+      "endpoints": [
+        {
+          "port": "https-metrics",
+          "path": null,
+          "scheme": "https",
+          "interval": "30s"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "package-server-manager-metrics",
+        "namespace": "openshift-operator-lifecycle-manager",
+        "uid": "42913542-3086-4ce4-aa3f-0d80b792d6e9",
+        "resourceVersion": "2206"
+      },
+      "selector": {},
+      "namespaceSelector": {
+        "matchNames": [
+          "openshift-operator-lifecycle-manager"
+        ]
+      },
+      "endpoints": [
+        {
+          "port": "metrics",
+          "path": null,
+          "scheme": "https",
+          "interval": "30s"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "monitor-ovn-control-plane-metrics",
+        "namespace": "openshift-ovn-kubernetes",
+        "uid": "0d6f9bba-35b8-41c8-8ee0-f520dc388fac",
+        "resourceVersion": "3508"
+      },
+      "selector": {
+        "matchLabels": {
+          "app": "ovnkube-control-plane"
+        }
+      },
+      "namespaceSelector": {
+        "matchNames": [
+          "openshift-ovn-kubernetes"
+        ]
+      },
+      "endpoints": [
+        {
+          "port": "metrics",
+          "path": null,
+          "scheme": "https",
+          "interval": "30s"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "monitor-ovn-node",
+        "namespace": "openshift-ovn-kubernetes",
+        "uid": "a657aea9-c8a4-40ec-8f2b-7748ee8787d8",
+        "resourceVersion": "3520"
+      },
+      "selector": {
+        "matchLabels": {
+          "app": "ovnkube-node"
+        }
+      },
+      "namespaceSelector": {
+        "matchNames": [
+          "openshift-ovn-kubernetes"
+        ]
+      },
+      "endpoints": [
+        {
+          "port": "metrics",
+          "path": null,
+          "scheme": "https",
+          "interval": "30s"
+        },
+        {
+          "port": "ovn-metrics",
+          "path": null,
+          "scheme": "https",
+          "interval": "30s"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "openshift-route-controller-manager",
+        "namespace": "openshift-route-controller-manager",
+        "uid": "3703f150-115e-478a-8c73-b852951cde43",
+        "resourceVersion": "5868"
+      },
+      "selector": {
+        "matchLabels": {
+          "prometheus": "route-controller-manager"
+        }
+      },
+      "namespaceSelector": null,
+      "endpoints": [
+        {
+          "port": "https",
+          "path": null,
+          "scheme": "https",
+          "interval": "30s"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "service-ca-operator",
+        "namespace": "openshift-service-ca-operator",
+        "uid": "0e47c5aa-65f2-4a3f-a8d4-cc4088ea8391",
+        "resourceVersion": "1677"
+      },
+      "selector": {
+        "matchLabels": {
+          "app": "service-ca-operator"
+        }
+      },
+      "namespaceSelector": {
+        "matchNames": [
+          "openshift-service-ca-operator"
+        ]
+      },
+      "endpoints": [
+        {
+          "port": "https",
+          "path": null,
+          "scheme": "https",
+          "interval": "30s"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "metadata": {
+    "name": "kaas-dev",
+    "namespace": "kaas-kafka",
+    "uid": "7cc0bbf7-2503-4a47-9e07-a694992a9b7d",
+    "resourceVersion": "1141647"
+  },
+  "metricsConfig": null,
+  "kafkaExporter": null,
+  "entityOperator_metricsConfig": {
+    "topicOperator": null,
+    "userOperator": null
+  },
+  "Ready": [
+    {
+      "lastTransitionTime": "2026-11-26T17:14:52.712472753Z",
+      "status": "True",
+      "type": "Ready"
+    }
+  ]
+}

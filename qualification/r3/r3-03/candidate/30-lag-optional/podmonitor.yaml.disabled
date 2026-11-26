@@ -1,0 +1,23 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: kaas-dev-lag-exporter
+  namespace: kaas-kafka
+spec:
+  selector:
+    matchLabels:
+      strimzi.io/cluster: kaas-dev
+      strimzi.io/name: kaas-dev-kafka-exporter
+  namespaceSelector:
+    matchNames:
+    - kaas-kafka
+  podMetricsEndpoints:
+  - port: tcp-prometheus
+    path: /metrics
+    interval: 30s
+    scrapeTimeout: 10s
+    relabelings:
+    - targetLabel: kaas_cluster
+      replacement: kaas-dev
+    - targetLabel: kaas_component
+      replacement: lag-exporter

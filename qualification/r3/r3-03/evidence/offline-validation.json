@@ -1,0 +1,22 @@
+{
+  "status": "OFFLINE_RENDER_SCHEMA_SOURCE_CHECKS_PASS",
+  "Kafka_change": "Onlyspec.kafka.metricsConfig",
+  "schema_checks": {
+    "cachedKafkaV1": 2,
+    "livePodMonitorV1": 2,
+    "livePrometheusRuleV1": 2
+  },
+  "representative_JMX_name_mappings": [
+    "kafka_server_replicamanager_underreplicatedpartitions",
+    "kafka_server_replicamanager_underminisrpartitioncount",
+    "kafka_server_replicamanager_offlinereplicacount",
+    "kafka_controller_kafkacontroller_activecontrollercount",
+    "kafka_controller_kafkacontroller_offlinepartitionscount"
+  ],
+  "missing_series_and_floor_guards": "PRESENT",
+  "all_action_flags": false,
+  "active_includes": "UNCHANGED",
+  "PromQL_parser_or_promtool": "NOT_AVAILABLE_NOT_RUN",
+  "CEL_admission_operator_scrape_metric_values_alerts_routing": "NOT_RUN",
+  "cluster_or_workloads": false
+}

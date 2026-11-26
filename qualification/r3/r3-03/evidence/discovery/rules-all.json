@@ -1,0 +1,510 @@
+{
+  "items": [
+    {
+      "metadata": {
+        "name": "cloud-credential-operator-alerts",
+        "namespace": "openshift-cloud-credential-operator",
+        "uid": "2f77f69d-353c-4b81-8b68-a277f05b153d",
+        "resourceVersion": "1707"
+      },
+      "group_count": 1,
+      "rule_count": 5,
+      "kafka_kaas_rules": []
+    },
+    {
+      "metadata": {
+        "name": "machineapprover-rules",
+        "namespace": "openshift-cluster-machine-approver",
+        "uid": "64d0a333-6d78-42cf-9322-8c8292fb07a4",
+        "resourceVersion": "1711"
+      },
+      "group_count": 1,
+      "rule_count": 1,
+      "kafka_kaas_rules": []
+    },
+    {
+      "metadata": {
+        "name": "node-tuning-operator",
+        "namespace": "openshift-cluster-node-tuning-operator",
+        "uid": "ee458002-ac7f-4af1-b590-cf0f10ed3790",
+        "resourceVersion": "1702"
+      },
+      "group_count": 1,
+      "rule_count": 5,
+      "kafka_kaas_rules": []
+    },
+    {
+      "metadata": {
+        "name": "samples-operator-alerts",
+        "namespace": "openshift-cluster-samples-operator",
+        "uid": "c9977302-d1aa-445b-b66d-9f7302a45669",
+        "resourceVersion": "1683"
+      },
+      "group_count": 1,
+      "rule_count": 7,
+      "kafka_kaas_rules": []
+    },
+    {
+      "metadata": {
+        "name": "prometheus",
+        "namespace": "openshift-cluster-storage-operator",
+        "uid": "d7c30753-59a6-45f2-a0e8-484e9749a2b7",
+        "resourceVersion": "11268"
+      },
+      "group_count": 5,
+      "rule_count": 13,
+      "kafka_kaas_rules": []
+    },
+    {
+      "metadata": {
+        "name": "cluster-version-operator",
+        "namespace": "openshift-cluster-version",
+        "uid": "622809c8-d38e-48ed-83a9-2d08a00d5747",
+        "resourceVersion": "1706"
+      },
+      "group_count": 2,
+      "rule_count": 9,
+      "kafka_kaas_rules": []
+    },
+    {
+      "metadata": {
+        "name": "cluster-monitoring-prometheus-rules",
+        "namespace": "openshift-console-operator",
+        "uid": "224b36f4-a76a-49f0-9d54-f090f8c45fdf",
+        "resourceVersion": "25880"
+      },
+      "group_count": 1,
+      "rule_count": 7,
+      "kafka_kaas_rules": []
+    },
+    {
+      "metadata": {
+        "name": "dns",
+        "namespace": "openshift-dns-operator",
+        "uid": "1a942988-e63d-47a4-b797-06fba75af3f4",
+        "resourceVersion": "1693"
+      },
+      "group_count": 1,
+      "rule_count": 3,
+      "kafka_kaas_rules": []
+    },
+    {
+      "metadata": {
+        "name": "etcd-prometheus-rules",
+        "namespace": "openshift-etcd-operator",
+        "uid": "4b5220de-77f3-41e9-9101-6675bdbafcb0",
+        "resourceVersion": "1685"
+      },
+      "group_count": 2,
+      "rule_count": 19,
+      "kafka_kaas_rules": []
+    },
+    {
+      "metadata": {
+        "name": "gitops-operator-argocd-alerts",
+        "namespace": "openshift-gitops",
+        "uid": "91748aee-0e26-4ae8-abc3-8011187d5cbe",
+        "resourceVersion": "184618"
+      },
+      "group_count": 1,
+      "rule_count": 1,
+      "kafka_kaas_rules": []
+    },
+    {
+      "metadata": {
+        "name": "image-registry-operator-alerts",
+        "namespace": "openshift-image-registry",
+        "uid": "15a9e556-e5a3-4e2b-93d6-239db85b38ce",
+        "resourceVersion": "22691"
+      },
+      "group_count": 1,
+      "rule_count": 2,
+      "kafka_kaas_rules": []
+    },
+    {
+      "metadata": {
+        "name": "image-registry-rules",
+        "namespace": "openshift-image-registry",
+        "uid": "d8f9345f-783d-438e-9bca-856917eca233",
+        "resourceVersion": "22683"
+      },
+      "group_count": 1,
+      "rule_count": 4,
+      "kafka_kaas_rules": []
+    },
+    {
+      "metadata": {
+        "name": "imagestreams-rules",
+        "namespace": "openshift-image-registry",
+        "uid": "0b6e1223-36fb-468c-bbba-0685421fc80d",
+        "resourceVersion": "22673"
+      },
+      "group_count": 1,
+      "rule_count": 1,
+      "kafka_kaas_rules": []
+    },
+    {
+      "metadata": {
+        "name": "ingress-operator",
+        "namespace": "openshift-ingress-operator",
+        "uid": "00ed5723-c014-42a2-98d7-67c3fda525f5",
+        "resourceVersion": "1709"
+      },
+      "group_count": 3,
+      "rule_count": 13,
+      "kafka_kaas_rules": []
+    },
+    {
+      "metadata": {
+        "name": "insights-prometheus-rules",
+        "namespace": "openshift-insights",
+        "uid": "92680d05-6b8e-4234-baa0-6871eaaf1444",
+        "resourceVersion": "10725"
+      },
+      "group_count": 1,
+      "rule_count": 3,
+      "kafka_kaas_rules": []
+    },
+    {
+      "metadata": {
+        "name": "kube-apiserver-operator",
+        "namespace": "openshift-kube-apiserver-operator",
+        "uid": "baf107cf-ecd1-40e3-9719-44578101c6e3",
+        "resourceVersion": "1699"
+      },
+      "group_count": 2,
+      "rule_count": 3,
+      "kafka_kaas_rules": []
+    },
+    {
+      "metadata": {
+        "name": "api-usage",
+        "namespace": "openshift-kube-apiserver",
+        "uid": "c483e37d-8e61-4284-9777-2bdcc7e193b1",
+        "resourceVersion": "7083"
+      },
+      "group_count": 1,
+      "rule_count": 2,
+      "kafka_kaas_rules": []
+    },
+    {
+      "metadata": {
+        "name": "audit-errors",
+        "namespace": "openshift-kube-apiserver",
+        "uid": "961f5e58-8d9d-49e8-aa14-1511945929b7",
+        "resourceVersion": "7084"
+      },
+      "group_count": 1,
+      "rule_count": 1,
+      "kafka_kaas_rules": []
+    },
+    {
+      "metadata": {
+        "name": "cpu-utilization",
+        "namespace": "openshift-kube-apiserver",
+        "uid": "673c79d6-5288-424a-b431-d90862bb5480",
+        "resourceVersion": "4902"
+      },
+      "group_count": 1,
+      "rule_count": 3,
+      "kafka_kaas_rules": []
+    },
+    {
+      "metadata": {
+        "name": "kube-apiserver-performance-recording-rules",
+        "namespace": "openshift-kube-apiserver",
+        "uid": "60926cad-a877-4195-adf4-5aa36e4c3265",
+        "resourceVersion": "1823"
+      },
+      "group_count": 1,
+      "rule_count": 58,
+      "kafka_kaas_rules": []
+    },
+    {
+      "metadata": {
+        "name": "kube-apiserver-requests",
+        "namespace": "openshift-kube-apiserver",
+        "uid": "70b71700-f309-4d85-9d24-a68b0ee304a0",
+        "resourceVersion": "7099"
+      },
+      "group_count": 1,
+      "rule_count": 1,
+      "kafka_kaas_rules": []
+    },
+    {
+      "metadata": {
+        "name": "kube-apiserver-slos-basic",
+        "namespace": "openshift-kube-apiserver",
+        "uid": "6c2f02db-c545-457d-a163-23d7c5dd2b0c",
+        "resourceVersion": "7251"
+      },
+      "group_count": 2,
+      "rule_count": 21,
+      "kafka_kaas_rules": []
+    },
+    {
+      "metadata": {
+        "name": "kube-apiserver-slos-extended",
+        "namespace": "openshift-kube-apiserver",
+        "uid": "e2b3399e-3d59-40f5-9255-9e8a6812ffcb",
+        "resourceVersion": "7376"
+      },
+      "group_count": 2,
+      "rule_count": 11,
+      "kafka_kaas_rules": []
+    },
+    {
+      "metadata": {
+        "name": "kubernetes-system-apiserver",
+        "namespace": "openshift-kube-apiserver",
+        "uid": "d5ab4a46-1afd-48da-9e0c-b481d079d8c2",
+        "resourceVersion": "7085"
+      },
+      "group_count": 1,
+      "rule_count": 4,
+      "kafka_kaas_rules": []
+    },
+    {
+      "metadata": {
+        "name": "podsecurity",
+        "namespace": "openshift-kube-apiserver",
+        "uid": "1a70207b-7c73-4f48-98e4-78638fad02c6",
+        "resourceVersion": "7311"
+      },
+      "group_count": 1,
+      "rule_count": 2,
+      "kafka_kaas_rules": []
+    },
+    {
+      "metadata": {
+        "name": "kube-controller-manager-operator",
+        "namespace": "openshift-kube-controller-manager-operator",
+        "uid": "1c07ba16-af21-4132-ab1d-824d48172d65",
+        "resourceVersion": "1789"
+      },
+      "group_count": 1,
+      "rule_count": 4,
+      "kafka_kaas_rules": []
+    },
+    {
+      "metadata": {
+        "name": "kube-scheduler-operator",
+        "namespace": "openshift-kube-scheduler-operator",
+        "uid": "ccf0553a-b30d-4bde-8251-26f0ea2b0106",
+        "resourceVersion": "1712"
+      },
+      "group_count": 2,
+      "rule_count": 2,
+      "kafka_kaas_rules": []
+    },
+    {
+      "metadata": {
+        "name": "machine-api-operator-prometheus-rules",
+        "namespace": "openshift-machine-api",
+        "uid": "ce20b7ca-1d7d-415e-94da-be96a972aabb",
+        "resourceVersion": "1961"
+      },
+      "group_count": 5,
+      "rule_count": 5,
+      "kafka_kaas_rules": []
+    },
+    {
+      "metadata": {
+        "name": "machine-config-controller",
+        "namespace": "openshift-machine-config-operator",
+        "uid": "ec55f85d-10ed-43f5-9a2b-dfcaa189b254",
+        "resourceVersion": "1874"
+      },
+      "group_count": 3,
+      "rule_count": 3,
+      "kafka_kaas_rules": []
+    },
+    {
+      "metadata": {
+        "name": "machine-config-daemon",
+        "namespace": "openshift-machine-config-operator",
+        "uid": "4f8e0dd3-0a15-4dac-9846-59cc379cca05",
+        "resourceVersion": "1899"
+      },
+      "group_count": 6,
+      "rule_count": 6,
+      "kafka_kaas_rules": []
+    },
+    {
+      "metadata": {
+        "name": "marketplace-alert-rules",
+        "namespace": "openshift-marketplace",
+        "uid": "0f7d2092-e600-4259-afd3-6deb8b2a2c8b",
+        "resourceVersion": "11037"
+      },
+      "group_count": 1,
+      "rule_count": 1,
+      "kafka_kaas_rules": []
+    },
+    {
+      "metadata": {
+        "name": "alertmanager-main-rules",
+        "namespace": "openshift-monitoring",
+        "uid": "ed6e698b-63ca-43bd-826c-3f9c1dc0b8f9",
+        "resourceVersion": "26623"
+      },
+      "group_count": 1,
+      "rule_count": 6,
+      "kafka_kaas_rules": []
+    },
+    {
+      "metadata": {
+        "name": "cluster-monitoring-operator-prometheus-rules",
+        "namespace": "openshift-monitoring",
+        "uid": "cd4aea81-6e66-48b1-8ff3-e97727e6ee26",
+        "resourceVersion": "11520"
+      },
+      "group_count": 13,
+      "rule_count": 89,
+      "kafka_kaas_rules": []
+    },
+    {
+      "metadata": {
+        "name": "kube-state-metrics-rules",
+        "namespace": "openshift-monitoring",
+        "uid": "e92b75d1-a066-4009-acd0-8951de7c2627",
+        "resourceVersion": "11639"
+      },
+      "group_count": 1,
+      "rule_count": 2,
+      "kafka_kaas_rules": []
+    },
+    {
+      "metadata": {
+        "name": "kubernetes-monitoring-rules",
+        "namespace": "openshift-monitoring",
+        "uid": "be118179-986d-43b2-9d6f-1c52d7d39b07",
+        "resourceVersion": "11423"
+      },
+      "group_count": 17,
+      "rule_count": 71,
+      "kafka_kaas_rules": []
+    },
+    {
+      "metadata": {
+        "name": "node-exporter-rules",
+        "namespace": "openshift-monitoring",
+        "uid": "2e910905-7780-4a44-a07a-9bef61c8b857",
+        "resourceVersion": "12038"
+      },
+      "group_count": 3,
+      "rule_count": 35,
+      "kafka_kaas_rules": []
+    },
+    {
+      "metadata": {
+        "name": "prometheus-k8s-prometheus-rules",
+        "namespace": "openshift-monitoring",
+        "uid": "4cc5f80b-4344-44e6-8507-26071476bb49",
+        "resourceVersion": "25849"
+      },
+      "group_count": 1,
+      "rule_count": 22,
+      "kafka_kaas_rules": []
+    },
+    {
+      "metadata": {
+        "name": "prometheus-k8s-thanos-sidecar-rules",
+        "namespace": "openshift-monitoring",
+        "uid": "fe048d30-e2da-4a04-aa28-285adcd214e8",
+        "resourceVersion": "25850"
+      },
+      "group_count": 1,
+      "rule_count": 2,
+      "kafka_kaas_rules": []
+    },
+    {
+      "metadata": {
+        "name": "prometheus-operator-rules",
+        "namespace": "openshift-monitoring",
+        "uid": "785449a4-9cd4-424e-bcd9-44f601929d47",
+        "resourceVersion": "11094"
+      },
+      "group_count": 2,
+      "rule_count": 9,
+      "kafka_kaas_rules": []
+    },
+    {
+      "metadata": {
+        "name": "telemetry",
+        "namespace": "openshift-monitoring",
+        "uid": "1a2f9924-2939-4824-a7fc-de1a178d4831",
+        "resourceVersion": "11721"
+      },
+      "group_count": 1,
+      "rule_count": 2,
+      "kafka_kaas_rules": []
+    },
+    {
+      "metadata": {
+        "name": "thanos-querier",
+        "namespace": "openshift-monitoring",
+        "uid": "91919a49-f2a6-49b3-a8e5-69e4de96951c",
+        "resourceVersion": "26438"
+      },
+      "group_count": 1,
+      "rule_count": 6,
+      "kafka_kaas_rules": []
+    },
+    {
+      "metadata": {
+        "name": "prometheus-k8s-rules",
+        "namespace": "openshift-multus",
+        "uid": "29d449ec-3bd7-4b16-97d2-99fd826ea088",
+        "resourceVersion": "3323"
+      },
+      "group_count": 1,
+      "rule_count": 2,
+      "kafka_kaas_rules": []
+    },
+    {
+      "metadata": {
+        "name": "openshift-network-operator-ipsec-rules",
+        "namespace": "openshift-network-operator",
+        "uid": "e26de205-5b78-4bcc-8e0c-15d9404f48ea",
+        "resourceVersion": "3779"
+      },
+      "group_count": 1,
+      "rule_count": 1,
+      "kafka_kaas_rules": []
+    },
+    {
+      "metadata": {
+        "name": "olm-alert-rules",
+        "namespace": "openshift-operator-lifecycle-manager",
+        "uid": "28f17b53-e07a-4298-9f32-a8c07a955beb",
+        "resourceVersion": "1738"
+      },
+      "group_count": 2,
+      "rule_count": 3,
+      "kafka_kaas_rules": []
+    },
+    {
+      "metadata": {
+        "name": "master-rules",
+        "namespace": "openshift-ovn-kubernetes",
+        "uid": "f891ef4e-23ed-4c21-9423-6f3edfd886a0",
+        "resourceVersion": "3496"
+      },
+      "group_count": 1,
+      "rule_count": 11,
+      "kafka_kaas_rules": []
+    },
+    {
+      "metadata": {
+        "name": "networking-rules",
+        "namespace": "openshift-ovn-kubernetes",
+        "uid": "f1bbda72-9b91-4df8-b4e0-078ed9697bf9",
+        "resourceVersion": "3498"
+      },
+      "group_count": 1,
+      "rule_count": 12,
+      "kafka_kaas_rules": []
+    }
+  ]
+}

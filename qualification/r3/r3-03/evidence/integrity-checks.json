@@ -1,0 +1,13 @@
+{
+  "status": "SOURCE_SCOPE_HASH_AND_REDACTION_PASS",
+  "active_platform_runtime_sources_and_pins_unchanged": true,
+  "frozen_native_files_verified": 46,
+  "sealed_R2_export_unchanged": true,
+  "new_candidate_not_active": true,
+  "four_Jobs_observed_suspended_active0_in_discovery": true,
+  "cluster_resources_changed": false,
+  "workloads_run": false,
+  "notifications_sent": false,
+  "Secret_reads": false,
+  "scope_limitation": "Offline render/schema/source checks are not PromQL parser/live scrape/routing acceptance"
+}

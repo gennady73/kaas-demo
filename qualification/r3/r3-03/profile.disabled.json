@@ -1,0 +1,45 @@
+{
+  "version": "r3-03-offline-1.0",
+  "execution_enabled": false,
+  "deployment_enabled": false,
+  "workloads_enabled": false,
+  "notification_tests_enabled": false,
+  "target": "kaas-kafka/kaas-dev",
+  "candidate_root_is_unregistered_and_not_in_active_includes": true,
+  "stages": {
+    "00": "Enable supported user-workload monitoring via merge-preserving cluster config only after fresh config/budget approval; new monitoring pods/resources expected",
+    "10": "Merge metrics-only change into existing Kafka Application owner source; do not register this validation render as another Kafka owner. ConfigMap,PodMonitor and broker rules are offline proposals",
+    "20": "Optional sink infrastructure rules; enable only after rule-evaluation-plane access to platform metrics is verified",
+    "30": "Optional lag exporter adds one operator-managed workload and Kafka administrative scrape traffic; requires separate resource/activation approval; group lag is not unread record age",
+    "40": "Nondeployable route fragment reuses approved existing receiver only; merge-preserving owner-controlled Alertmanager change, no receiver Secret read or notification now"
+  },
+  "expected_broker_targets": 3,
+  "metrics_port": 9404,
+  "named_port": "tcp-prometheus",
+  "scrape_interval_seconds": 30,
+  "alert_windows_status": "PROPOSED_INITIAL_ENGINEERING_VALUES_NOT_ACCEPTED_SLO",
+  "sink_admission_free_floor_bytes": 67108864,
+  "sink_warning_free_bytes_proposal": 134217728,
+  "monitoring_new_resource_budget": null,
+  "rollout_window": null,
+  "receiver_name": null,
+  "receiver_channel_reference": null,
+  "acknowledgement_contact": null,
+  "evidence_technical_custodian": null,
+  "custodian_backup": null,
+  "unimplemented_signals": [
+    "Per-original unread age / replay margin",
+    "Native Kafka authentication/authorization error telemetry feed and filtering",
+    "Durable ACK/SQLite write/commit chain latency or error Prometheus feed; sink exposes no /metrics",
+    "Quota/fairness limits and per-principal aggregate acceptance"
+  ],
+  "runtime_gates": [
+    "UWM selected namespaces and Prometheus/rule reconciliation",
+    "JMX port/name/MBean metric spelling/coverage and exact3targetlabels verified",
+    "Effective9404ingress evaluated as union of operator-managed policies; extra allow policy cannot restrict a broader allowance",
+    "Sink-rule evaluator sees kube-state/kubelet series across the selected rule query plane",
+    "Receiver route ownership/resolved receiver/contact and later separately approved safe signal delivery",
+    "No case claims PASS on absent series; retain original evidence and no automatic recovery/deletion"
+  ],
+  "clients_remain_suspended": true
+}

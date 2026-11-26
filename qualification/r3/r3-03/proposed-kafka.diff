@@ -1,0 +1,15 @@
+--- existing/platform/kafka/kafka.yaml
++++ proposed/existing-owner/platform/kafka/kafka.yaml
+@@ -36,6 +36,12 @@
+       message.max.bytes: 3145728
+       replica.fetch.max.bytes: 4194304
+       unclean.leader.election.enable: false
++    metricsConfig:
++      type: jmxPrometheusExporter
++      valueFrom:
++        configMapKeyRef:
++          name: kaas-dev-r3-jmx-metrics
++          key: metrics.yml
+   entityOperator:
+     topicOperator: &id001
+       resources:

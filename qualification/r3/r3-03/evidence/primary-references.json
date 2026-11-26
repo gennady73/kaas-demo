@@ -1,0 +1,26 @@
+[
+  {
+    "version": "RedHatStreams3.2",
+    "url": "https://docs.redhat.com/en/documentation/red_hat_streams_for_apache_kafka/3.2/html/deploying_and_managing_streams_for_apache_kafka_on_openshift/assembly-metrics-str",
+    "checked": "2026-11-26",
+    "used_for": "Supported application monitoring path,metricsConfig and exporter/monitor separation"
+  },
+  {
+    "version": "RedHatStreams3.2API",
+    "url": "https://docs.redhat.com/en/documentation/red_hat_streams_for_apache_kafka/3.2/html/streams_for_apache_kafka_api_reference/con-common-configuration-properties-reference",
+    "checked": "2026-11-26",
+    "used_for": "ConfigMap metricsConfig mapping"
+  },
+  {
+    "version": "OpenShift4.21",
+    "url": "https://docs.redhat.com/en/documentation/monitoring_stack_for_red_hat_openshift/4.21/html-single/configuring_user_workload_monitoring/index",
+    "checked": "2026-11-26",
+    "used_for": "enableUserWorkload and alert routing ownership modes"
+  },
+  {
+    "version": "Kafka4.2",
+    "url": "https://kafka.apache.org/42/operations/monitoring/",
+    "checked": "2026-11-26",
+    "used_for": "ReplicaManager/KafkaController MBean names"
+  }
+]

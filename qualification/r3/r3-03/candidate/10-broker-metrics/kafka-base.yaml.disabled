@@ -1,0 +1,51 @@
+apiVersion: kafka.strimzi.io/v1
+kind: Kafka
+metadata:
+  name: kaas-dev
+  namespace: kaas-kafka
+  annotations:
+    argocd.argoproj.io/sync-wave: '1'
+spec:
+  kafka:
+    version: 4.2.0
+    image: registry.redhat.io/amq-streams/kafka-42-rhel9@sha256:ce7dc91b664600c6f06e1df3d6b56a4684bb779865d9c28b4df648addd89189d
+    listeners:
+    - name: tls
+      port: 9093
+      type: internal
+      tls: true
+      authentication:
+        type: scram-sha-512
+      networkPolicyPeers:
+      - namespaceSelector:
+          matchLabels:
+            kubernetes.io/metadata.name: kaas-kafka
+      - namespaceSelector:
+          matchLabels:
+            kubernetes.io/metadata.name: kaas-demo
+    authorization:
+      type: simple
+    config:
+      default.replication.factor: 2
+      min.insync.replicas: 2
+      offsets.topic.replication.factor: 2
+      transaction.state.log.replication.factor: 2
+      transaction.state.log.min.isr: 2
+      log.retention.ms: 21600000
+      auto.create.topics.enable: false
+      message.max.bytes: 3145728
+      replica.fetch.max.bytes: 4194304
+      unclean.leader.election.enable: false
+  entityOperator:
+    topicOperator: &id001
+      resources:
+        requests:
+          cpu: 100m
+          memory: 256Mi
+        limits:
+          cpu: 500m
+          memory: 512Mi
+      jvmOptions:
+        -Xms: 128m
+        -Xmx: 256m
+    userOperator: *id001

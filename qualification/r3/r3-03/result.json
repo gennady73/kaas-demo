@@ -1,0 +1,54 @@
+{
+  "case": "R3-03",
+  "date": "2026-11-26",
+  "status": "EXISTING_COVERAGE_IDENTIFIED_MISSING_CONFIGURATION_PREPARED_OFFLINE",
+  "publication": "LOCAL_UNCOMMITTED_NOT_PUSHED",
+  "monitoring_live_qualification": "OPEN_NOT_DEPLOYED_OR_DELIVERED",
+  "source_base_commit": "0389da0256ded3b810d06d22fd218a24f25a0a49",
+  "platform_version": "4.21.42",
+  "discovery": {
+    "requests": 24,
+    "GET_only": true,
+    "elapsed_seconds": 14.365,
+    "response_bytes": 612467,
+    "strict_TLS": true,
+    "credentials_saved": false
+  },
+  "findings": {
+    "platform_infrastructure_telemetry": "VERIFIED_AVAILABLE",
+    "broker_metrics_configuration": "ABSENT_LIVE_KAFKA_CR",
+    "broker_9404_port": "NOT_PRESENT_CURRENT_PODS",
+    "kafka_exporter": "ABSENT_LIVE_KAFKA_CR",
+    "cluster_PodMonitor_count": 0,
+    "cluster_PrometheusRule_resources_inspected": 46,
+    "Kafka_kaas_referenced_rules_found": 0,
+    "user_workload_monitoring_consumer": "NOT_FOUND_ONLY_CORE_PROMETHEUS_K8S",
+    "AlertmanagerConfig_count": 0,
+    "actual_shared_receiver_configuration": "NOT_READ_NO_SECRET_OR_CONFIG_STATUS_BYPASS",
+    "external_unknown_coverage": "NOT_ASSESSED",
+    "Kafka_Strimzi_namespace_series": "EMPTY_VECTOR_OBSERVED"
+  },
+  "prepared_stages": [
+    "00userworkloadprerequisite",
+    "10brokermetrics/PodMonitor/proposedrules",
+    "20optionalsinkinfra rules",
+    "30optionallag exporter/PodMonitor",
+    "40nondeployableroutefragment"
+  ],
+  "offline_validation": "LOCAL_RENDER_AND_CACHED_LIVE_SCHEMA_SOURCE_BOUNDARIES_PASS",
+  "PromQL_rule_parser": "NOT_AVAILABLE_NOT_RUN",
+  "current_frozen_runtime_and_active_manifests": "UNCHANGED",
+  "four_client_Jobs": "FRESHLY_OBSERVED_SUSPENDED_ACTIVE0",
+  "resource_changes": false,
+  "workloads_run": false,
+  "notifications_sent": false,
+  "next_inputs": "Twooperationalrole/referencebundlesininputs-needed.json",
+  "later_activation_gates": "Budget/rollout/source/rule-parser/telemetry/ingress/query-plane/receiverchecksrequired;noapprovalaskednow",
+  "unimplemented_signals": [
+    "unreadage",
+    "sinkdurableACK/write/errorfeed",
+    "authdenialfeed",
+    "quota fairness SLO"
+  ],
+  "independence": "C0source/configuration review;noindependentruntime/humanacceptanceinvented"
+}

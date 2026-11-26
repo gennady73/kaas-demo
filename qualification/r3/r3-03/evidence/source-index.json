@@ -1,0 +1,17 @@
+{
+  "source_base_commit": "0389da0256ded3b810d06d22fd218a24f25a0a49",
+  "live_platform_version": "4.21.42",
+  "live_source_config": "Kafka UID/resourceVersion in discovery/kafka-monitoring-config.json",
+  "discovery_source_workspace": "docs/coordination/r3-03-discovery-2026-11-26/discover.py",
+  "discovery_source_sha256": "0defbd7d51460a96f23143ab754634428146e055f5c9d08e01e8fca585aac4c9",
+  "source_provenance_captured": "AFTER_EXECUTION_NO_RETROSPECTIVE_PRE_RUN_RECEIPT_CLAIM",
+  "discovery_user_authority": "CurrentuserrequestedR3-03identifyexistingcoverageandpreparemissingconfigurationoffline;read-only24GETdiscovery,noresources/workloads",
+  "files": {
+    "kaas-demo/platform/kafka/kafka.yaml": "d280e093d3575abdf79d1cf72e8a9b2b70943abb2cd701487c72bb7dad796895",
+    "kaas-demo/policies/tenants/schemas/Kafka-v1.json": "8b8cbb751f944eab62fe8704957c6ee95c4e800bc73ff9d2948aa1d772c1e55f",
+    "kaas-demo/tests/tenant-r2-native/sink/store.py": "510f45b93990a00d54d55cf6e64245d4d36c3752c3a5fbed0c8dad0dc6472e57",
+    "kaas-demo/tests/tenant-r2-native/sink/server.py": "52433378434fc85d5dc54ef6198135a485faa6441fca3e2deec144fcd4ceb04d",
+    "docs/operations/r3-c7-closeout-2026-11-26/r3-03-mapping.md": "cf7d82a171774108ee0cd1341e40c568aed9ac6632acf26c8d2d98c98498fb27"
+  },
+  "archived_discovery_source": "discovery-source.py.txt (exact executed source, original workspace context; not an installed runner)"
+}

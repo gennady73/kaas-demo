@@ -1,0 +1,10 @@
+{
+  "metadata": {
+    "name": "kaas-r2-native-client",
+    "namespace": "kaas-demo",
+    "uid": "a9deb28d-74be-436a-83e3-f4e0995069eb",
+    "resourceVersion": "1077808"
+  },
+  "suspend": true,
+  "active": 0
+}

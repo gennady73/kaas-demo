@@ -1,0 +1,54 @@
+{
+  "items": [
+    {
+      "metadata": {
+        "name": "k8s",
+        "namespace": "openshift-monitoring",
+        "uid": "d4bdc106-ae33-4584-ac63-ba58149fb355",
+        "resourceVersion": "1195317"
+      },
+      "selected_spec": {
+        "replicas": 2,
+        "retention": "15d",
+        "podMonitorSelector": {
+          "matchExpressions": [
+            {
+              "key": "monitoring.openshift.io/collection-profile",
+              "operator": "NotIn",
+              "values": [
+                "minimal"
+              ]
+            }
+          ]
+        },
+        "podMonitorNamespaceSelector": {
+          "matchLabels": {
+            "openshift.io/cluster-monitoring": "true"
+          }
+        },
+        "serviceMonitorSelector": {
+          "matchExpressions": [
+            {
+              "key": "monitoring.openshift.io/collection-profile",
+              "operator": "NotIn",
+              "values": [
+                "minimal"
+              ]
+            }
+          ]
+        },
+        "serviceMonitorNamespaceSelector": {
+          "matchLabels": {
+            "openshift.io/cluster-monitoring": "true"
+          }
+        },
+        "ruleSelector": {},
+        "ruleNamespaceSelector": {
+          "matchLabels": {
+            "openshift.io/cluster-monitoring": "true"
+          }
+        }
+      }
+    }
+  ]
+}

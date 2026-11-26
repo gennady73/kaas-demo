@@ -1,0 +1,226 @@
+{
+  "items": [
+    {
+      "metadata": {
+        "name": "kaas-dev-dual-role-0",
+        "namespace": "kaas-kafka",
+        "uid": "6999e7c8-9c3d-40cc-8b2d-e254454892b2",
+        "resourceVersion": "1141485"
+      },
+      "labels": {
+        "app.kubernetes.io/instance": "kaas-dev",
+        "app.kubernetes.io/managed-by": "strimzi-cluster-operator",
+        "app.kubernetes.io/name": "kafka",
+        "app.kubernetes.io/part-of": "strimzi-kaas-dev",
+        "com.company": "Red_Hat",
+        "rht.comp": "AMQ_Streams",
+        "rht.comp_ver": "3.2.1",
+        "rht.prod_name": "Red_Hat_Application_Foundations",
+        "rht.prod_ver": "2026.Q3",
+        "rht.subcomp": "kafka-broker",
+        "rht.subcomp_t": "application",
+        "strimzi.io/broker-role": "true",
+        "strimzi.io/cluster": "kaas-dev",
+        "strimzi.io/component-type": "kafka",
+        "strimzi.io/controller": "strimzipodset",
+        "strimzi.io/controller-name": "kaas-dev-dual-role",
+        "strimzi.io/controller-role": "true",
+        "strimzi.io/kind": "Kafka",
+        "strimzi.io/name": "kaas-dev-kafka",
+        "strimzi.io/pod-name": "kaas-dev-dual-role-0",
+        "strimzi.io/pool-name": "dual-role"
+      },
+      "ports": [
+        {
+          "container": "kafka",
+          "ports": [
+            {
+              "name": "tcp-kafkaagent",
+              "containerPort": 8443,
+              "protocol": "TCP"
+            },
+            {
+              "name": "tcp-ctrlplane",
+              "containerPort": 9090,
+              "protocol": "TCP"
+            },
+            {
+              "name": "tcp-replication",
+              "containerPort": 9091,
+              "protocol": "TCP"
+            },
+            {
+              "name": "tcp-clientstls",
+              "containerPort": 9093,
+              "protocol": "TCP"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "kaas-dev-dual-role-1",
+        "namespace": "kaas-kafka",
+        "uid": "22991711-49e5-433a-afef-d1ed5adf2185",
+        "resourceVersion": "1140287"
+      },
+      "labels": {
+        "app.kubernetes.io/instance": "kaas-dev",
+        "app.kubernetes.io/managed-by": "strimzi-cluster-operator",
+        "app.kubernetes.io/name": "kafka",
+        "app.kubernetes.io/part-of": "strimzi-kaas-dev",
+        "com.company": "Red_Hat",
+        "rht.comp": "AMQ_Streams",
+        "rht.comp_ver": "3.2.1",
+        "rht.prod_name": "Red_Hat_Application_Foundations",
+        "rht.prod_ver": "2026.Q3",
+        "rht.subcomp": "kafka-broker",
+        "rht.subcomp_t": "application",
+        "strimzi.io/broker-role": "true",
+        "strimzi.io/cluster": "kaas-dev",
+        "strimzi.io/component-type": "kafka",
+        "strimzi.io/controller": "strimzipodset",
+        "strimzi.io/controller-name": "kaas-dev-dual-role",
+        "strimzi.io/controller-role": "true",
+        "strimzi.io/kind": "Kafka",
+        "strimzi.io/name": "kaas-dev-kafka",
+        "strimzi.io/pod-name": "kaas-dev-dual-role-1",
+        "strimzi.io/pool-name": "dual-role"
+      },
+      "ports": [
+        {
+          "container": "kafka",
+          "ports": [
+            {
+              "name": "tcp-kafkaagent",
+              "containerPort": 8443,
+              "protocol": "TCP"
+            },
+            {
+              "name": "tcp-ctrlplane",
+              "containerPort": 9090,
+              "protocol": "TCP"
+            },
+            {
+              "name": "tcp-replication",
+              "containerPort": 9091,
+              "protocol": "TCP"
+            },
+            {
+              "name": "tcp-clientstls",
+              "containerPort": 9093,
+              "protocol": "TCP"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "kaas-dev-dual-role-2",
+        "namespace": "kaas-kafka",
+        "uid": "f346a03e-269e-409c-a343-6fce146d5229",
+        "resourceVersion": "1140345"
+      },
+      "labels": {
+        "app.kubernetes.io/instance": "kaas-dev",
+        "app.kubernetes.io/managed-by": "strimzi-cluster-operator",
+        "app.kubernetes.io/name": "kafka",
+        "app.kubernetes.io/part-of": "strimzi-kaas-dev",
+        "com.company": "Red_Hat",
+        "rht.comp": "AMQ_Streams",
+        "rht.comp_ver": "3.2.1",
+        "rht.prod_name": "Red_Hat_Application_Foundations",
+        "rht.prod_ver": "2026.Q3",
+        "rht.subcomp": "kafka-broker",
+        "rht.subcomp_t": "application",
+        "strimzi.io/broker-role": "true",
+        "strimzi.io/cluster": "kaas-dev",
+        "strimzi.io/component-type": "kafka",
+        "strimzi.io/controller": "strimzipodset",
+        "strimzi.io/controller-name": "kaas-dev-dual-role",
+        "strimzi.io/controller-role": "true",
+        "strimzi.io/kind": "Kafka",
+        "strimzi.io/name": "kaas-dev-kafka",
+        "strimzi.io/pod-name": "kaas-dev-dual-role-2",
+        "strimzi.io/pool-name": "dual-role"
+      },
+      "ports": [
+        {
+          "container": "kafka",
+          "ports": [
+            {
+              "name": "tcp-kafkaagent",
+              "containerPort": 8443,
+              "protocol": "TCP"
+            },
+            {
+              "name": "tcp-ctrlplane",
+              "containerPort": 9090,
+              "protocol": "TCP"
+            },
+            {
+              "name": "tcp-replication",
+              "containerPort": 9091,
+              "protocol": "TCP"
+            },
+            {
+              "name": "tcp-clientstls",
+              "containerPort": 9093,
+              "protocol": "TCP"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "kaas-dev-entity-operator-7b447f8867-fj5mn",
+        "namespace": "kaas-kafka",
+        "uid": "0e091c10-24f9-455b-a41c-b33e8401f8cb",
+        "resourceVersion": "1141330"
+      },
+      "labels": {
+        "app.kubernetes.io/instance": "kaas-dev",
+        "app.kubernetes.io/managed-by": "strimzi-cluster-operator",
+        "app.kubernetes.io/name": "entity-operator",
+        "app.kubernetes.io/part-of": "strimzi-kaas-dev",
+        "com.company": "Red_Hat",
+        "pod-template-hash": "7b447f8867",
+        "rht.comp": "AMQ_Streams",
+        "rht.comp_ver": "3.2.1",
+        "rht.prod_name": "Red_Hat_Application_Foundations",
+        "rht.prod_ver": "2026.Q3",
+        "rht.subcomp": "entity-operator",
+        "rht.subcomp_t": "infrastructure",
+        "strimzi.io/cluster": "kaas-dev",
+        "strimzi.io/component-type": "entity-operator",
+        "strimzi.io/kind": "Kafka",
+        "strimzi.io/name": "kaas-dev-entity-operator"
+      },
+      "ports": [
+        {
+          "container": "topic-operator",
+          "ports": [
+            {
+              "name": "healthcheck",
+              "containerPort": 8080,
+              "protocol": "TCP"
+            }
+          ]
+        },
+        {
+          "container": "user-operator",
+          "ports": [
+            {
+              "name": "healthcheck",
+              "containerPort": 8081,
+              "protocol": "TCP"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

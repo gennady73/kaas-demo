@@ -1,0 +1,84 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: kaas-dev-broker-health
+  namespace: kaas-kafka
+  labels:
+    kaas.example.com/monitoring: r3-03
+spec:
+  groups:
+  - name: kaas-dev-broker-health
+    rules:
+    - alert: KaaSBrokerMetricsUnavailable
+      expr: sum(up{namespace="kaas-kafka",kaas_cluster="kaas-dev",kaas_component="broker"})
+        < 3 or absent(up{namespace="kaas-kafka",kaas_cluster="kaas-dev",kaas_component="broker"})
+      for: 3m
+      labels:
+        severity: warning
+        kaas_service: kaas-dev
+        kaas_phase: r3-03
+      annotations:
+        summary: One or more of three sandbox broker scrape targets missing/down
+        action: Inspect evidence and stop dependent work; no automatic restart, scale,
+          ISR/retention change or deletion.
+    - alert: KaaSBrokerRequiredSeriesMissing
+      expr: absent(kafka_server_replicamanager_underminisrpartitioncount{namespace="kaas-kafka",kaas_cluster="kaas-dev",kaas_component="broker"})
+        or absent(kafka_controller_kafkacontroller_activecontrollercount{namespace="kaas-kafka",kaas_cluster="kaas-dev",kaas_component="broker"})
+      for: 3m
+      labels:
+        severity: warning
+        kaas_service: kaas-dev
+        kaas_phase: r3-03
+      annotations:
+        summary: Required Kafka metric family missing; cannot infer healthy zero
+        action: Inspect evidence and stop dependent work; no automatic restart, scale,
+          ISR/retention change or deletion.
+    - alert: KaaSBelowMinISR
+      expr: max(kafka_server_replicamanager_underminisrpartitioncount{namespace="kaas-kafka",kaas_cluster="kaas-dev",kaas_component="broker"})
+        > 0
+      for: 1m
+      labels:
+        severity: critical
+        kaas_service: kaas-dev
+        kaas_phase: r3-03
+      annotations:
+        summary: Partitions below configured minimum ISR
+        action: Inspect evidence and stop dependent work; no automatic restart, scale,
+          ISR/retention change or deletion.
+    - alert: KaaSUnderReplicatedPartitions
+      expr: max(kafka_server_replicamanager_underreplicatedpartitions{namespace="kaas-kafka",kaas_cluster="kaas-dev",kaas_component="broker"})
+        > 0
+      for: 5m
+      labels:
+        severity: warning
+        kaas_service: kaas-dev
+        kaas_phase: r3-03
+      annotations:
+        summary: Kafka replicas not fully in sync
+        action: Inspect evidence and stop dependent work; no automatic restart, scale,
+          ISR/retention change or deletion.
+    - alert: KaaSOfflinePartitions
+      expr: max(kafka_controller_kafkacontroller_offlinepartitionscount{namespace="kaas-kafka",kaas_cluster="kaas-dev",kaas_component="broker"})
+        > 0
+      for: 1m
+      labels:
+        severity: critical
+        kaas_service: kaas-dev
+        kaas_phase: r3-03
+      annotations:
+        summary: Controller reports offline partitions
+        action: Inspect evidence and stop dependent work; no automatic restart, scale,
+          ISR/retention change or deletion.
+    - alert: KaaSControllerCountUnexpected
+      expr: sum(kafka_controller_kafkacontroller_activecontrollercount{namespace="kaas-kafka",kaas_cluster="kaas-dev",kaas_component="broker"})
+        != 1
+      for: 3m
+      labels:
+        severity: critical
+        kaas_service: kaas-dev
+        kaas_phase: r3-03
+      annotations:
+        summary: Expected exactly one active controller in the observed dual-role
+          cluster
+        action: Inspect evidence and stop dependent work; no automatic restart, scale,
+          ISR/retention change or deletion.

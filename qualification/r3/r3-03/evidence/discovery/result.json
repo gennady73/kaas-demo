@@ -1,0 +1,203 @@
+{
+  "status": "COMPLETE",
+  "stop_reason": null,
+  "elapsed_seconds": 14.365,
+  "request_count": 24,
+  "response_bytes": 612467,
+  "queries": [
+    {
+      "name": "identity",
+      "method": "GET",
+      "path": "/apis/user.openshift.io/v1/users/~",
+      "at_utc": "2026-11-26T20:10:53.940136+00:00",
+      "http_status": 200,
+      "bytes": 543
+    },
+    {
+      "name": "job-kaas-r2-native-client",
+      "method": "GET",
+      "path": "/apis/batch/v1/namespaces/kaas-demo/jobs/kaas-r2-native-client",
+      "at_utc": "2026-11-26T20:10:54.548046+00:00",
+      "http_status": 200,
+      "bytes": 9134
+    },
+    {
+      "name": "job-kaas-r2-native-client-02e2e2f-r2",
+      "method": "GET",
+      "path": "/apis/batch/v1/namespaces/kaas-demo/jobs/kaas-r2-native-client-02e2e2f-r2",
+      "at_utc": "2026-11-26T20:10:55.059761+00:00",
+      "http_status": 200,
+      "bytes": 9096
+    },
+    {
+      "name": "job-kaas-r2-native-client-351528d-r2",
+      "method": "GET",
+      "path": "/apis/batch/v1/namespaces/kaas-demo/jobs/kaas-r2-native-client-351528d-r2",
+      "at_utc": "2026-11-26T20:10:55.588922+00:00",
+      "http_status": 200,
+      "bytes": 9096
+    },
+    {
+      "name": "job-kaas-r2-native-client-05a3f2d-r2",
+      "method": "GET",
+      "path": "/apis/batch/v1/namespaces/kaas-demo/jobs/kaas-r2-native-client-05a3f2d-r2",
+      "at_utc": "2026-11-26T20:10:56.098655+00:00",
+      "http_status": 200,
+      "bytes": 9163
+    },
+    {
+      "name": "kafka-monitoring-config",
+      "method": "GET",
+      "path": "/apis/kafka.strimzi.io/v1/namespaces/kaas-kafka/kafkas/kaas-dev",
+      "at_utc": "2026-11-26T20:10:56.586702+00:00",
+      "http_status": 200,
+      "bytes": 7250
+    },
+    {
+      "name": "podmonitors-all",
+      "method": "GET",
+      "path": "/apis/monitoring.coreos.com/v1/podmonitors?limit=100",
+      "at_utc": "2026-11-26T20:10:57.085523+00:00",
+      "http_status": 200,
+      "bytes": 132
+    },
+    {
+      "name": "servicemonitors-all",
+      "method": "GET",
+      "path": "/apis/monitoring.coreos.com/v1/servicemonitors?limit=100",
+      "at_utc": "2026-11-26T20:10:57.578188+00:00",
+      "http_status": 200,
+      "bytes": 128042
+    },
+    {
+      "name": "rules-all",
+      "method": "GET",
+      "path": "/apis/monitoring.coreos.com/v1/prometheusrules?limit=100",
+      "at_utc": "2026-11-26T20:10:58.582353+00:00",
+      "http_status": 200,
+      "bytes": 294241
+    },
+    {
+      "name": "routing-CRs",
+      "method": "GET",
+      "path": "/apis/monitoring.coreos.com/v1alpha1/alertmanagerconfigs?limit=100",
+      "at_utc": "2026-11-26T20:10:59.897947+00:00",
+      "http_status": 200,
+      "bytes": 146
+    },
+    {
+      "name": "prometheus-all",
+      "method": "GET",
+      "path": "/apis/monitoring.coreos.com/v1/prometheuses?limit=100",
+      "at_utc": "2026-11-26T20:11:00.402530+00:00",
+      "http_status": 200,
+      "bytes": 13452
+    },
+    {
+      "name": "namespace-kaas-kafka",
+      "method": "GET",
+      "path": "/api/v1/namespaces/kaas-kafka",
+      "at_utc": "2026-11-26T20:11:01.065242+00:00",
+      "http_status": 200,
+      "bytes": 2080
+    },
+    {
+      "name": "namespace-kaas-demo",
+      "method": "GET",
+      "path": "/api/v1/namespaces/kaas-demo",
+      "at_utc": "2026-11-26T20:11:01.567879+00:00",
+      "http_status": 200,
+      "bytes": 2145
+    },
+    {
+      "name": "ClusterMonitoring",
+      "method": "GET",
+      "path": "/apis/config.openshift.io/v1alpha1/clustermonitorings?limit=100",
+      "at_utc": "2026-11-26T20:11:02.073799+00:00",
+      "http_status": 404
+    },
+    {
+      "name": "user-workload-config",
+      "method": "GET",
+      "path": "/api/v1/namespaces/openshift-user-workload-monitoring/configmaps/user-workload-monitoring-config",
+      "at_utc": "2026-11-26T20:11:02.564212+00:00",
+      "http_status": 404
+    },
+    {
+      "name": "thanos-route",
+      "method": "GET",
+      "path": "/apis/route.openshift.io/v1/namespaces/openshift-monitoring/routes/thanos-querier",
+      "at_utc": "2026-11-26T20:11:03.056655+00:00",
+      "http_status": 200,
+      "bytes": 1991
+    },
+    {
+      "name": "ingress-CA",
+      "method": "GET",
+      "path": "/api/v1/namespaces/openshift-config-managed/configmaps/default-ingress-cert",
+      "at_utc": "2026-11-26T20:11:03.560050+00:00",
+      "http_status": 200,
+      "bytes": 7207
+    },
+    {
+      "name": "kafka-series",
+      "method": "GET",
+      "path": "/api/v1/query?query=count+by+%28__name__%2Cjob%29+%28%7B__name__%3D~%22kafka_.%2A%7Cstrimzi_.%2A%22%2Cnamespace%3D%22kaas-kafka%22%7D%29",
+      "at_utc": "2026-11-26T20:11:04.052686+00:00",
+      "http_status": 200,
+      "bytes": 77
+    },
+    {
+      "name": "infra-series",
+      "method": "GET",
+      "path": "/api/v1/query?query=count+by+%28__name__%2Cnamespace%29+%28%7B__name__%3D~%22kube_pod_container_status_restarts_total%7Ccontainer_cpu_usage_seconds_total%7Ckubelet_volume_stats_available_bytes%22%2Cnamespace%3D~%22kaas-kafka%7Ckaas-demo%22%7D%29",
+      "at_utc": "2026-11-26T20:11:04.634916+00:00",
+      "http_status": 200,
+      "bytes": 778
+    },
+    {
+      "name": "up-selected",
+      "method": "GET",
+      "path": "/api/v1/query?query=count+by+%28job%2Cnamespace%29+%28up%7Bnamespace%3D~%22kaas-kafka%7Ckaas-demo%22%7D%29",
+      "at_utc": "2026-11-26T20:11:05.145583+00:00",
+      "http_status": 200,
+      "bytes": 77
+    },
+    {
+      "name": "broker-pod-labels-ports",
+      "method": "GET",
+      "path": "/api/v1/namespaces/kaas-kafka/pods?limit=100&labelSelector=strimzi.io%2Fcluster%3Dkaas-dev",
+      "at_utc": "2026-11-26T20:11:05.639841+00:00",
+      "http_status": 200,
+      "bytes": 58051
+    },
+    {
+      "name": "schema-podmonitors",
+      "method": "GET",
+      "path": "/apis/apiextensions.k8s.io/v1/customresourcedefinitions/podmonitors.monitoring.coreos.com",
+      "at_utc": "2026-11-26T20:11:06.461733+00:00",
+      "http_status": 200,
+      "bytes": 44180
+    },
+    {
+      "name": "schema-prometheusrules",
+      "method": "GET",
+      "path": "/apis/apiextensions.k8s.io/v1/customresourcedefinitions/prometheusrules.monitoring.coreos.com",
+      "at_utc": "2026-11-26T20:11:07.294679+00:00",
+      "http_status": 200,
+      "bytes": 11159
+    },
+    {
+      "name": "platform-version",
+      "method": "GET",
+      "path": "/apis/config.openshift.io/v1/clusterversions/version",
+      "at_utc": "2026-11-26T20:11:07.807576+00:00",
+      "http_status": 200,
+      "bytes": 4427
+    }
+  ],
+  "resource_changes": false,
+  "workloads_run": false,
+  "Secret_reads": 0,
+  "credentials_saved": false
+}

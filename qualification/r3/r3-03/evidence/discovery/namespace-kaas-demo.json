@@ -1,0 +1,11 @@
+{
+  "metadata": {
+    "name": "kaas-demo",
+    "namespace": null,
+    "uid": "81f97217-b70d-48e3-8ada-94a0a51a52b4",
+    "resourceVersion": "103687"
+  },
+  "monitoring_labels": {
+    "kubernetes.io/metadata.name": "kaas-demo"
+  }
+}

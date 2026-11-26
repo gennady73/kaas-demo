@@ -1,0 +1,11 @@
+{
+  "metadata": {
+    "name": "kaas-kafka",
+    "namespace": null,
+    "uid": "7a7adead-430f-4e16-a4ac-8c4ca33692fc",
+    "resourceVersion": "288321"
+  },
+  "monitoring_labels": {
+    "kubernetes.io/metadata.name": "kaas-kafka"
+  }
+}

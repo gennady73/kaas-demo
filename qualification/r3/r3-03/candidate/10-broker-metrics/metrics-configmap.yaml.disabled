@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kaas-dev-r3-jmx-metrics
+  namespace: kaas-kafka
+data:
+  metrics.yml: "lowercaseOutputName: true\nrules:\n- pattern: kafka.server<type=ReplicaManager,\
+    \ name=(UnderReplicatedPartitions|UnderMinIsrPartitionCount|OfflineReplicaCount)><>Value\n\
+    \  name: kafka_server_replicamanager_$1\n  type: GAUGE\n- pattern: kafka.controller<type=KafkaController,\
+    \ name=(ActiveControllerCount|OfflinePartitionsCount)><>Value\n  name: kafka_controller_kafkacontroller_$1\n\
+    \  type: GAUGE\n"

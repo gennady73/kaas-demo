@@ -1,0 +1,26 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: kaas-dev-broker-metrics
+  namespace: kaas-kafka
+  labels:
+    kaas.example.com/monitoring: r3-03
+spec:
+  selector:
+    matchLabels:
+      strimzi.io/cluster: kaas-dev
+      strimzi.io/name: kaas-dev-kafka
+      strimzi.io/component-type: kafka
+  namespaceSelector:
+    matchNames:
+    - kaas-kafka
+  podMetricsEndpoints:
+  - port: tcp-prometheus
+    path: /metrics
+    interval: 30s
+    scrapeTimeout: 10s
+    relabelings:
+    - targetLabel: kaas_cluster
+      replacement: kaas-dev
+    - targetLabel: kaas_component
+      replacement: broker

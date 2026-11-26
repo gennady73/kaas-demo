@@ -1,0 +1,45 @@
+{
+  "accountable_owner_and_approver": "user_ALREADY_ACCEPTED",
+  "retention": "7dayssandboxplusworkspace_ALREADY_ACCEPTED",
+  "requested_now": [
+    {
+      "id": "R3-03-OPS-01",
+      "role": "technical evidence custodian",
+      "need": [
+        "name/contact or existing team reference",
+        "backup/escalation reference",
+        "existing retention/hold/disposition runbook reference if any"
+      ],
+      "can_share_person_with_OPS02": true,
+      "not_requested": [
+        "tokens",
+        "private keys",
+        "new storage choice",
+        "reconfirmation of accountable user owner"
+      ]
+    },
+    {
+      "id": "R3-03-OPS-02",
+      "role": "monitoring/routing owner and acknowledgement responder",
+      "need": [
+        "name/contact or existing team reference",
+        "approved existing receiver/channel reference",
+        "acknowledgement/escalation contact or runbook",
+        "sanitized existing configuration reference if coverage/routing is managed elsewhere"
+      ],
+      "not_requested": [
+        "receiver passwords",
+        "token-bearing webhook URLs",
+        "Secret contents",
+        "a test message now"
+      ]
+    }
+  ],
+  "later_rollout_choices_not_approvals_now": [
+    "Supported user-workload monitoring enablement resource budget and broker rollout/window",
+    "Initial proposed rule windows and warning values",
+    "Optional lag exporter resource/activation choice",
+    "Separately authorized safe notification only after resolved routing"
+  ],
+  "no_deployment_or_workloads": true
+}

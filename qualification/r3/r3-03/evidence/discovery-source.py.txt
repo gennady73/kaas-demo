@@ -1,0 +1,75 @@
+"""Bounded GET-only coverage discovery; credentials interactive/in-memory; no raw routing secrets."""
+import datetime,getpass,hashlib,json,ssl,time,urllib.error,urllib.parse,urllib.request
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[3];OUT=Path(__file__).resolve().parent/'evidence';BASE='https://api.ocp.rddgh.sandbox3088.opentlc.com:6443'
+class Stop(Exception):pass
+class NoRedirect(urllib.request.HTTPRedirectHandler):
+ def redirect_request(self,*a,**k):return None
+def main():
+ if OUT.exists():raise SystemExit('Fresh output required')
+ OUT.mkdir();token=getpass.getpass('Sandbox token (memory only): ').strip();started=time.monotonic();queries=[];total=0;status='COMPLETE';reason=None
+ ctx=ssl.create_default_context(cafile=str(ROOT/'config/environments/certificates/ocp-rddgh-api-ca.crt'));ctx.check_hostname=True
+ opener=urllib.request.build_opener(urllib.request.ProxyHandler({}),urllib.request.HTTPSHandler(context=ctx),NoRedirect())
+ def save(name,d):
+  text=json.dumps(d,indent=2)+'\n'
+  if token and token in text:raise Stop('redaction_guard')
+  (OUT/(name+'.json')).write_text(text)
+ def meta(o):return {k:o.get('metadata',{}).get(k) for k in ['name','namespace','uid','resourceVersion']}
+ def listed(project):return lambda o:{'items':[project(x) for x in o.get('items',[])]}
+ def get(name,path,project,optional=False,host=BASE):
+  nonlocal total
+  assert '/secrets' not in path and '/exec' not in path and '/log' not in path
+  assert host==BASE or host=='https://thanos-querier-openshift-monitoring.apps.ocp.rddgh.sandbox3088.opentlc.com'
+  if len(queries)>=24 or time.monotonic()-started>600:raise Stop('budget')
+  q={'name':name,'method':'GET','path':path,'at_utc':datetime.datetime.now(datetime.timezone.utc).isoformat()};queries.append(q)
+  try:
+   with opener.open(urllib.request.Request(host+path,headers={'Authorization':'Bearer '+token,'Accept':'application/json'}),timeout=15) as r:data=r.read(2097153);q['http_status']=r.status
+   q['bytes']=len(data);total+=len(data)
+   if len(data)>2097152 or total>8388608:raise Stop('byte_cap')
+   d=json.loads(data)
+   if d.get('metadata',{}).get('continue') or len(d.get('items',[]))>100:raise Stop('list_cap')
+   save(name,project(d));return d
+  except urllib.error.HTTPError as e:
+   q['http_status']=e.code;save(name,{'status':'OPEN','http_status':e.code})
+   if optional and e.code==404:return None
+   raise Stop(name+'_http_'+str(e.code)) from None
+  except (urllib.error.URLError,TimeoutError):raise Stop(name+'_connection_or_TLS') from None
+ try:
+  d=get('identity','/apis/user.openshift.io/v1/users/~',lambda o:{'name':o.get('metadata',{}).get('name')})
+  if d.get('metadata',{}).get('name')!='admin':raise Stop('identity')
+  for name in ['kaas-r2-native-client','kaas-r2-native-client-02e2e2f-r2','kaas-r2-native-client-351528d-r2','kaas-r2-native-client-05a3f2d-r2']:
+   d=get('job-'+name,'/apis/batch/v1/namespaces/kaas-demo/jobs/'+name,lambda o:{'metadata':meta(o),'suspend':o['spec'].get('suspend',False),'active':o.get('status',{}).get('active',0)})
+   if d['spec'].get('suspend') is not True or d.get('status',{}).get('active',0):raise Stop('Job_not_suspended_or_active')
+  get('kafka-monitoring-config','/apis/kafka.strimzi.io/v1/namespaces/kaas-kafka/kafkas/kaas-dev',lambda o:{'metadata':meta(o),'metricsConfig':o['spec']['kafka'].get('metricsConfig'),'kafkaExporter':o['spec'].get('kafkaExporter'),'entityOperator_metricsConfig':{k:v.get('metricsConfig') for k,v in o['spec'].get('entityOperator',{}).items() if isinstance(v,dict)},'Ready':[c for c in o.get('status',{}).get('conditions',[]) if c.get('type')=='Ready']})
+  for kind in ['podmonitors','servicemonitors']:
+   get(kind+'-all','/apis/monitoring.coreos.com/v1/'+kind+'?limit=100',listed(lambda o:{'metadata':meta(o),'selector':o.get('spec',{}).get('selector'),'namespaceSelector':o.get('spec',{}).get('namespaceSelector'),'endpoints':[{k:x.get(k) for k in ['port','path','scheme','interval']} for x in o.get('spec',{}).get('podMetricsEndpoints',o.get('spec',{}).get('endpoints',[]))]}))
+  def rules(o):
+   groups=o.get('spec',{}).get('groups',[]);selected=[]
+   for g in groups:
+    for r in g.get('rules',[]):
+     if 'kafka' in json.dumps(r).lower() or 'kaas' in json.dumps(r).lower():selected.append({k:r.get(k) for k in ['alert','record','expr','for','labels']})
+   return {'metadata':meta(o),'group_count':len(groups),'rule_count':sum(len(g.get('rules',[])) for g in groups),'kafka_kaas_rules':selected}
+  get('rules-all','/apis/monitoring.coreos.com/v1/prometheusrules?limit=100',listed(rules))
+  get('routing-CRs','/apis/monitoring.coreos.com/v1alpha1/alertmanagerconfigs?limit=100',listed(lambda o:{'metadata':meta(o),'route_receiver':o.get('spec',{}).get('route',{}).get('receiver'),'route_matchers':o.get('spec',{}).get('route',{}).get('matchers'),'receivers':[{'name':r.get('name'),'integration_types':[k for k in r if k!='name']} for r in o.get('spec',{}).get('receivers',[])]}),optional=True)
+  keys=['replicas','retention','podMonitorSelector','podMonitorNamespaceSelector','serviceMonitorSelector','serviceMonitorNamespaceSelector','ruleSelector','ruleNamespaceSelector']
+  get('prometheus-all','/apis/monitoring.coreos.com/v1/prometheuses?limit=100',listed(lambda o:{'metadata':meta(o),'selected_spec':{k:o.get('spec',{}).get(k) for k in keys}}))
+  for ns in ['kaas-kafka','kaas-demo']:
+   get('namespace-'+ns,'/api/v1/namespaces/'+ns,lambda o:{'metadata':meta(o),'monitoring_labels':{k:v for k,v in o.get('metadata',{}).get('labels',{}).items() if 'monitor' in k or k=='kubernetes.io/metadata.name'}})
+  get('ClusterMonitoring','/apis/config.openshift.io/v1alpha1/clustermonitorings?limit=100',listed(lambda o:{'metadata':meta(o),'spec':o.get('spec')}),optional=True)
+  get('user-workload-config','/api/v1/namespaces/openshift-user-workload-monitoring/configmaps/user-workload-monitoring-config',lambda o:{'metadata':meta(o),'data_keys':list(o.get('data',{}))},optional=True)
+  route=get('thanos-route','/apis/route.openshift.io/v1/namespaces/openshift-monitoring/routes/thanos-querier',lambda o:{'host':o['spec']['host']})
+  if route['spec']['host']!='thanos-querier-openshift-monitoring.apps.ocp.rddgh.sandbox3088.opentlc.com':raise Stop('route')
+  ca=get('ingress-CA','/api/v1/namespaces/openshift-config-managed/configmaps/default-ingress-cert',lambda o:{'metadata':meta(o),'public_data_keys':list(o.get('data',{}))})
+  for v in ca.get('data',{}).values():
+   if '-----BEGIN CERTIFICATE-----' in v:ctx.load_verify_locations(cadata=v)
+  metrics={'kafka-series':'count by (__name__,job) ({__name__=~"kafka_.*|strimzi_.*",namespace="kaas-kafka"})','infra-series':'count by (__name__,namespace) ({__name__=~"kube_pod_container_status_restarts_total|container_cpu_usage_seconds_total|kubelet_volume_stats_available_bytes",namespace=~"kaas-kafka|kaas-demo"})','up-selected':'count by (job,namespace) (up{namespace=~"kaas-kafka|kaas-demo"})'}
+  for name,q in metrics.items():get(name,'/api/v1/query?'+urllib.parse.urlencode({'query':q}),lambda o:{'status':o.get('status'),'data':o.get('data')},host='https://'+route['spec']['host'])
+  get('broker-pod-labels-ports','/api/v1/namespaces/kaas-kafka/pods?limit=100&labelSelector=strimzi.io%2Fcluster%3Dkaas-dev',listed(lambda o:{'metadata':meta(o),'labels':o.get('metadata',{}).get('labels'),'ports':[{'container':c['name'],'ports':c.get('ports',[])} for c in o.get('spec',{}).get('containers',[])]}))
+  for kind in ['podmonitors','prometheusrules']:
+   get('schema-'+kind,'/apis/apiextensions.k8s.io/v1/customresourcedefinitions/'+kind+'.monitoring.coreos.com',lambda o:{'metadata':meta(o),'versions':[{'name':v['name'],'served':v.get('served'),'schema':v.get('schema')} for v in o['spec']['versions']]})
+  get('platform-version','/apis/config.openshift.io/v1/clusterversions/version',lambda o:{'desired':o.get('status',{}).get('desired',{}).get('version')})
+ except Stop as e:status='PARTIAL_STOPPED';reason=str(e)
+ except Exception as e:status='PARTIAL_STOPPED';reason=type(e).__name__
+ finally:
+  save('result',{'status':status,'stop_reason':reason,'elapsed_seconds':round(time.monotonic()-started,3),'request_count':len(queries),'response_bytes':total,'queries':queries,'resource_changes':False,'workloads_run':False,'Secret_reads':0,'credentials_saved':False});token='';print(json.dumps({'status':status,'stop_reason':reason,'requests':len(queries)}))
+if __name__=='__main__':main()
