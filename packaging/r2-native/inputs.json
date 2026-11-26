@@ -1,7 +1,7 @@
 {
   "version": "1.0",
   "date": "2026-11-26",
-  "status": "DEPENDENCIES_PREPARED_RUNTIME_READINESS_PARTIAL_DEPLOYMENT_DISABLED",
+  "status": "SINK_RUNNING_STORAGE_TLS_VERIFIED_CLIENT_DISABLED",
   "source_commit": "afb9c7c7b2f3901a8a4e2c456029a931a9db00b6",
   "namespace": "kaas-demo",
   "execution_enabled": false,
@@ -19,8 +19,8 @@
     "name": "kaas-r2-native-evidence",
     "class": "gp3-csi",
     "capacity": "1Gi",
-    "status": "CREATED_PENDING_FIRST_CONSUMER",
-    "source": "Fresh gp3-csi class observation, WFFC; claim created, no volume binding or mount yet"
+    "status": "BOUND_MOUNTED_PERMISSION_VERIFIED",
+    "source": "Authorized gp3-csi claim now Bound; sink runtime UID/fsGroup write/fsync/read/unlink and SQLite checks passed"
   },
   "retention_policy": {
     "sandbox_days": 7,
@@ -38,5 +38,11 @@
   "runner_image_reference": "image-registry.openshift-image-registry.svc:5000/kaas-demo/kaas-r2-runner@sha256:dec50714130f1244403f8bb1a79847dc28821b7e87a02507bbd923d081fe2d8d",
   "sink_image_reference": "image-registry.openshift-image-registry.svc:5000/kaas-demo/kaas-r2-sink@sha256:f730c89baceda0f8a536ab9c94696b768c996fe55d60202300095b4d450efa25",
   "image_verification": "BUILD_CHECKS_AND_REGISTRY_METADATA_PASS",
-  "readiness_receipt": "readiness/readiness.json"
+  "readiness_receipt": "readiness/readiness.json",
+  "actual_sink_deployment_enabled": true,
+  "client_deployment_enabled": false,
+  "client_workloads_enabled": false,
+  "actual_sink_runtime": "RUNNING_1_OF_1_AVAILABLE",
+  "sink_only_overlay": "sink-only/",
+  "sink_activation_receipt": "sink-only/evidence/results.json"
 }

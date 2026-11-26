@@ -1,4 +1,4 @@
-Latest dependency status: [R2 credential, TLS, storage and permission readiness](readiness/README.md). Client and sink deployment remain disabled.
+Latest runtime status: [R2 evidence sink deployment and verification](sink-only/README.md). The sink is deployed; the client remains disabled. Earlier readiness/build records below are historical snapshots.
 
 # R2 native images and disabled manifests
 

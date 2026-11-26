@@ -1,0 +1,17 @@
+{
+  "date": "2026-11-26",
+  "status": "STATIC_PUBLICATION_REVIEW_PASS",
+  "base_commit": "8d1b368cdb5be1bd7dd87c3ec2011d3d0018678b",
+  "cluster_access": false,
+  "verification_script_executed": false,
+  "producer_consumer_tests": false,
+  "sink_only_objects": 2,
+  "client_Job_manifest_suspended": true,
+  "client_arming_and_authorization": false,
+  "client_execution_gates": "ALL_11_OPEN",
+  "native_source_files_unchanged": 39,
+  "image_pins": "UNCHANGED",
+  "Secret_objects_or_private_keys_or_API_tokens_in_evidence": false,
+  "active_GitOps_references": 0,
+  "historical_receipt": "Activation results retain the original deployment-time publication status"
+}

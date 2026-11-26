@@ -1,0 +1,78 @@
+{
+  "date": "2026-11-26",
+  "status": "SINK_DEPLOYED_STORAGE_TLS_VERIFIED_CLIENT_DISABLED",
+  "source_commit": "8d1b368cdb5be1bd7dd87c3ec2011d3d0018678b",
+  "authorization": "User explicitly authorized evidence-sink-only deployment and verification; no producer/consumer tests",
+  "sink_replicas": 1,
+  "sink_available": 1,
+  "sink_pod": "kaas-r2-evidence-6bf796d758-nzvqc",
+  "sink_pod_uid": "9b47d097-d602-454c-92f1-b421322014a6",
+  "sink_restart_count": 0,
+  "sink_imageID": "image-registry.openshift-image-registry.svc:5000/kaas-demo/kaas-r2-sink@sha256:f730c89baceda0f8a536ab9c94696b768c996fe55d60202300095b4d450efa25",
+  "PVC": {
+    "name": "kaas-r2-native-evidence",
+    "uid": "d2cd40eb-6e4b-48d2-a2af-d4b5d10879a2",
+    "capacity": {
+      "storage": "1Gi"
+    },
+    "phase": "Bound",
+    "volume_name": "pvc-d2cd40eb-6e4b-48d2-a2af-d4b5d10879a2",
+    "class": "gp3-csi"
+  },
+  "ready_service_endpoints": 1,
+  "independent_sink_arming_ConfigMap": "kaas-r2-sink-arming",
+  "client_arming": false,
+  "client_Job_created": false,
+  "client_Job_manifest_suspended": true,
+  "client_authorization": false,
+  "client_execution_gates": "ALL_11_OPEN",
+  "existing_workload_specs_and_UIDs_unchanged": 17,
+  "verification": {
+    "Kafka_clients_or_producer_consumer_tests": false,
+    "SQLite_journal_mode": "wal",
+    "SQLite_quick_check": "ok",
+    "TLS_connection_address": "127.0.0.1:8443",
+    "TLS_verified_hostname": "kaas-r2-evidence.kaas-demo.svc",
+    "TLS_version": "TLSv1.3",
+    "anonymous_export_HTTP": 401,
+    "database": {
+      "gid": 1000770000,
+      "mode": "0o644",
+      "uid": 1000770000
+    },
+    "directory": {
+      "gid": 1000770000,
+      "mode": "0o775",
+      "uid": 0
+    },
+    "event_POST_or_stop_or_seal_sent": false,
+    "export_bytes": 0,
+    "filesystem_bytes": 1020702720,
+    "filesystem_free_bytes": 1003814912,
+    "filesystem_write_fsync_read_unlink": "PASS",
+    "fixture_events": 0,
+    "network_policy_or_Service_path_verified": false,
+    "owner_export_HTTP": 200,
+    "peer_certificate_DER_sha256": "7fa65ed5fa02d885eebcc9434087ecde8619b84c6a5adcfe5ab2896d1b09a7f3",
+    "restart_or_infrastructure_durability_verified": false,
+    "runtime_gid": 0,
+    "runtime_uid": 1000770000,
+    "status": "SINK_STORAGE_AND_TLS_PASS",
+    "stop_or_seal_flags": 0,
+    "supplementary_groups": [
+      0,
+      1000770000
+    ],
+    "writer_export_HTTP": 401
+  },
+  "producer_consumer_tests": false,
+  "automatic_sync_enabled": false,
+  "credentials_exported": false,
+  "API_credential_storage": "memory-only sessions closed after use",
+  "git_publication": "NOT_REQUESTED_LOCAL_CHANGES",
+  "limits": [
+    "TLS verification used the live server over loopback with verified service DNS identity; no CNI/Service-path guarantee",
+    "File fsync/readback and SQLite startup/integrity are not restart or infrastructure durability qualification",
+    "No client native SASL/ACL, group offset/ISR or 300-second execution validation"
+  ]
+}

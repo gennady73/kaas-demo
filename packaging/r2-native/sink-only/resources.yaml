@@ -1,0 +1,129 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kaas-r2-sink-arming
+  namespace: kaas-demo
+  labels:
+    kaas.example.com/package: r2-sink-only
+immutable: true
+data:
+  enabled: 'true'
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kaas-r2-evidence
+  namespace: kaas-demo
+  labels:
+    kaas.example.com/package: r2-native-disabled
+  annotations:
+    kaas.example.com/authorization: user-authorized sink only 2026-11-26; client and
+      fixture disabled
+spec:
+  replicas: 1
+  paused: false
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      kaas.example.com/r2-component: evidence
+  template:
+    metadata:
+      labels:
+        kaas.example.com/r2-component: evidence
+    spec:
+      serviceAccountName: kaas-r2-evidence
+      automountServiceAccountToken: false
+      hostNetwork: false
+      terminationGracePeriodSeconds: 10
+      containers:
+      - name: evidence
+        image: image-registry.openshift-image-registry.svc:5000/kaas-demo/kaas-r2-sink@sha256:f730c89baceda0f8a536ab9c94696b768c996fe55d60202300095b4d450efa25
+        imagePullPolicy: IfNotPresent
+        command:
+        - /opt/r2-sink/sink-guard.sh
+        ports:
+        - name: https
+          containerPort: 8443
+          protocol: TCP
+        securityContext:
+          runAsNonRoot: true
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          seccompProfile:
+            type: RuntimeDefault
+          readOnlyRootFilesystem: true
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 500m
+            memory: 256Mi
+        env:
+        - name: PYTHONDONTWRITEBYTECODE
+          value: '1'
+        - name: HOME
+          value: /tmp
+        readinessProbe:
+          tcpSocket:
+            port: https
+          initialDelaySeconds: 1
+          periodSeconds: 3
+          timeoutSeconds: 1
+        volumeMounts:
+        - name: arming
+          mountPath: /arming
+          readOnly: true
+        - name: config
+          mountPath: /etc/r2-sink
+          readOnly: true
+        - name: writer
+          mountPath: /auth
+          readOnly: true
+        - name: owner
+          mountPath: /owner-auth
+          readOnly: true
+        - name: tls
+          mountPath: /tls
+          readOnly: true
+        - name: data
+          mountPath: /var/lib/r2
+        - name: tmp
+          mountPath: /tmp
+      volumes:
+      - name: arming
+        configMap:
+          name: kaas-r2-sink-arming
+      - name: config
+        configMap:
+          name: kaas-r2-sink-config
+      - name: writer
+        secret:
+          secretName: kaas-r2-evidence-writer
+          defaultMode: 288
+          items:
+          - key: writer-token
+            path: writer-token
+      - name: owner
+        secret:
+          secretName: kaas-r2-evidence-owner
+          defaultMode: 288
+          items:
+          - key: owner-token
+            path: owner-token
+      - name: tls
+        secret:
+          secretName: kaas-r2-sink-tls
+          defaultMode: 288
+      - name: data
+        persistentVolumeClaim:
+          claimName: kaas-r2-native-evidence
+      - name: tmp
+        emptyDir:
+          sizeLimit: 16Mi
+      nodeSelector:
+        kubernetes.io/os: linux
+        kubernetes.io/arch: amd64

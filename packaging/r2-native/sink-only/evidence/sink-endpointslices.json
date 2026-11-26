@@ -1,0 +1,68 @@
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "addressType": "IPv4",
+            "apiVersion": "discovery.k8s.io/v1",
+            "endpoints": [
+                {
+                    "addresses": [
+                        "10.128.2.10"
+                    ],
+                    "conditions": {
+                        "ready": true,
+                        "serving": true,
+                        "terminating": false
+                    },
+                    "nodeName": "ip-10-0-50-65.us-east-2.compute.internal",
+                    "targetRef": {
+                        "kind": "Pod",
+                        "name": "kaas-r2-evidence-6bf796d758-nzvqc",
+                        "namespace": "kaas-demo",
+                        "uid": "9b47d097-d602-454c-92f1-b421322014a6"
+                    },
+                    "zone": "us-east-2b"
+                }
+            ],
+            "kind": "EndpointSlice",
+            "metadata": {
+                "annotations": {
+                    "endpoints.kubernetes.io/last-change-trigger-time": "2026-11-26T11:57:52Z"
+                },
+                "creationTimestamp": "2026-11-26T11:42:56Z",
+                "generateName": "kaas-r2-evidence-",
+                "generation": 3,
+                "labels": {
+                    "endpointslice.kubernetes.io/managed-by": "endpointslice-controller.k8s.io",
+                    "kaas.example.com/package": "r2-native-disabled",
+                    "kubernetes.io/service-name": "kaas-r2-evidence"
+                },
+                "name": "kaas-r2-evidence-sjdgf",
+                "namespace": "kaas-demo",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Service",
+                        "name": "kaas-r2-evidence",
+                        "uid": "e4a211d5-0eb3-455f-9142-b503c7655203"
+                    }
+                ],
+                "resourceVersion": "1055571",
+                "uid": "39d96223-f2da-48e4-a238-eeec3004158b"
+            },
+            "ports": [
+                {
+                    "name": "https",
+                    "port": 8443,
+                    "protocol": "TCP"
+                }
+            ]
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}

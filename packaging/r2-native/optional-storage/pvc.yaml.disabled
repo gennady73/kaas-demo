@@ -6,7 +6,7 @@ metadata:
   labels:
     kaas.example.com/package: r2-native-disabled
   annotations:
-    kaas.example.com/status: CREATED_PENDING_FIRST_CONSUMER
+    kaas.example.com/status: BOUND_SINK_MOUNT_PERMISSION_VERIFIED
     kaas.example.com/retention: 7days; verified shared-workspace export before approved
       cleanup
 spec:

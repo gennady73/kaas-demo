@@ -1,0 +1,293 @@
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "apps/v1",
+            "kind": "Deployment",
+            "metadata": {
+                "annotations": {
+                    "deployment.kubernetes.io/revision": "1",
+                    "kaas.example.com/authorization": "user-authorized sink only 2026-11-26; client and fixture disabled"
+                },
+                "creationTimestamp": "2026-11-26T11:57:43Z",
+                "generation": 1,
+                "labels": {
+                    "kaas.example.com/package": "r2-native-disabled"
+                },
+                "name": "kaas-r2-evidence",
+                "namespace": "kaas-demo",
+                "resourceVersion": "1055574",
+                "uid": "83db3eda-9250-404b-8283-36762b151c56"
+            },
+            "spec": {
+                "progressDeadlineSeconds": 600,
+                "replicas": 1,
+                "revisionHistoryLimit": 10,
+                "selector": {
+                    "matchLabels": {
+                        "kaas.example.com/r2-component": "evidence"
+                    }
+                },
+                "strategy": {
+                    "type": "Recreate"
+                },
+                "template": {
+                    "metadata": {
+                        "labels": {
+                            "kaas.example.com/r2-component": "evidence"
+                        }
+                    },
+                    "spec": {
+                        "automountServiceAccountToken": false,
+                        "containers": [
+                            {
+                                "command": [
+                                    "/opt/r2-sink/sink-guard.sh"
+                                ],
+                                "env": [
+                                    {
+                                        "name": "PYTHONDONTWRITEBYTECODE",
+                                        "value": "1"
+                                    },
+                                    {
+                                        "name": "HOME",
+                                        "value": "/tmp"
+                                    }
+                                ],
+                                "image": "image-registry.openshift-image-registry.svc:5000/kaas-demo/kaas-r2-sink@sha256:f730c89baceda0f8a536ab9c94696b768c996fe55d60202300095b4d450efa25",
+                                "imagePullPolicy": "IfNotPresent",
+                                "name": "evidence",
+                                "ports": [
+                                    {
+                                        "containerPort": 8443,
+                                        "name": "https",
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "readinessProbe": {
+                                    "failureThreshold": 3,
+                                    "initialDelaySeconds": 1,
+                                    "periodSeconds": 3,
+                                    "successThreshold": 1,
+                                    "tcpSocket": {
+                                        "port": "https"
+                                    },
+                                    "timeoutSeconds": 1
+                                },
+                                "resources": {
+                                    "limits": {
+                                        "cpu": "500m",
+                                        "memory": "256Mi"
+                                    },
+                                    "requests": {
+                                        "cpu": "100m",
+                                        "memory": "128Mi"
+                                    }
+                                },
+                                "securityContext": {
+                                    "allowPrivilegeEscalation": false,
+                                    "capabilities": {
+                                        "drop": [
+                                            "ALL"
+                                        ]
+                                    },
+                                    "readOnlyRootFilesystem": true,
+                                    "runAsNonRoot": true,
+                                    "seccompProfile": {
+                                        "type": "RuntimeDefault"
+                                    }
+                                },
+                                "terminationMessagePath": "/dev/termination-log",
+                                "terminationMessagePolicy": "File",
+                                "volumeMounts": [
+                                    {
+                                        "mountPath": "/arming",
+                                        "name": "arming",
+                                        "readOnly": true
+                                    },
+                                    {
+                                        "mountPath": "/etc/r2-sink",
+                                        "name": "config",
+                                        "readOnly": true
+                                    },
+                                    {
+                                        "mountPath": "/auth",
+                                        "name": "writer",
+                                        "readOnly": true
+                                    },
+                                    {
+                                        "mountPath": "/owner-auth",
+                                        "name": "owner",
+                                        "readOnly": true
+                                    },
+                                    {
+                                        "mountPath": "/tls",
+                                        "name": "tls",
+                                        "readOnly": true
+                                    },
+                                    {
+                                        "mountPath": "/var/lib/r2",
+                                        "name": "data"
+                                    },
+                                    {
+                                        "mountPath": "/tmp",
+                                        "name": "tmp"
+                                    }
+                                ]
+                            }
+                        ],
+                        "dnsPolicy": "ClusterFirst",
+                        "nodeSelector": {
+                            "kubernetes.io/arch": "amd64",
+                            "kubernetes.io/os": "linux"
+                        },
+                        "restartPolicy": "Always",
+                        "schedulerName": "default-scheduler",
+                        "securityContext": {},
+                        "serviceAccount": "kaas-r2-evidence",
+                        "serviceAccountName": "kaas-r2-evidence",
+                        "terminationGracePeriodSeconds": 10,
+                        "volumes": [
+                            {
+                                "configMap": {
+                                    "defaultMode": 420,
+                                    "name": "kaas-r2-sink-arming"
+                                },
+                                "name": "arming"
+                            },
+                            {
+                                "configMap": {
+                                    "defaultMode": 420,
+                                    "name": "kaas-r2-sink-config"
+                                },
+                                "name": "config"
+                            },
+                            {
+                                "name": "writer",
+                                "secret": {
+                                    "defaultMode": 288,
+                                    "items": [
+                                        {
+                                            "key": "writer-token",
+                                            "path": "writer-token"
+                                        }
+                                    ],
+                                    "secretName": "kaas-r2-evidence-writer"
+                                }
+                            },
+                            {
+                                "name": "owner",
+                                "secret": {
+                                    "defaultMode": 288,
+                                    "items": [
+                                        {
+                                            "key": "owner-token",
+                                            "path": "owner-token"
+                                        }
+                                    ],
+                                    "secretName": "kaas-r2-evidence-owner"
+                                }
+                            },
+                            {
+                                "name": "tls",
+                                "secret": {
+                                    "defaultMode": 288,
+                                    "secretName": "kaas-r2-sink-tls"
+                                }
+                            },
+                            {
+                                "name": "data",
+                                "persistentVolumeClaim": {
+                                    "claimName": "kaas-r2-native-evidence"
+                                }
+                            },
+                            {
+                                "emptyDir": {
+                                    "sizeLimit": "16Mi"
+                                },
+                                "name": "tmp"
+                            }
+                        ]
+                    }
+                }
+            },
+            "status": {
+                "availableReplicas": 1,
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-11-26T11:57:52Z",
+                        "lastUpdateTime": "2026-11-26T11:57:52Z",
+                        "message": "Deployment has minimum availability.",
+                        "reason": "MinimumReplicasAvailable",
+                        "status": "True",
+                        "type": "Available"
+                    },
+                    {
+                        "lastTransitionTime": "2026-11-26T11:57:43Z",
+                        "lastUpdateTime": "2026-11-26T11:57:52Z",
+                        "message": "ReplicaSet \"kaas-r2-evidence-6bf796d758\" has successfully progressed.",
+                        "reason": "NewReplicaSetAvailable",
+                        "status": "True",
+                        "type": "Progressing"
+                    }
+                ],
+                "observedGeneration": 1,
+                "readyReplicas": 1,
+                "replicas": 1,
+                "updatedReplicas": 1
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "PersistentVolumeClaim",
+            "metadata": {
+                "annotations": {
+                    "kaas.example.com/retention": "7days; verified shared-workspace export before approved cleanup",
+                    "kaas.example.com/status": "CREATED_PENDING_FIRST_CONSUMER",
+                    "pv.kubernetes.io/bind-completed": "yes",
+                    "pv.kubernetes.io/bound-by-controller": "yes",
+                    "volume.beta.kubernetes.io/storage-provisioner": "ebs.csi.aws.com",
+                    "volume.kubernetes.io/selected-node": "ip-10-0-50-65.us-east-2.compute.internal",
+                    "volume.kubernetes.io/storage-provisioner": "ebs.csi.aws.com"
+                },
+                "creationTimestamp": "2026-11-26T11:42:57Z",
+                "finalizers": [
+                    "kubernetes.io/pvc-protection"
+                ],
+                "labels": {
+                    "kaas.example.com/package": "r2-native-disabled"
+                },
+                "name": "kaas-r2-native-evidence",
+                "namespace": "kaas-demo",
+                "resourceVersion": "1055517",
+                "uid": "d2cd40eb-6e4b-48d2-a2af-d4b5d10879a2"
+            },
+            "spec": {
+                "accessModes": [
+                    "ReadWriteOnce"
+                ],
+                "resources": {
+                    "requests": {
+                        "storage": "1Gi"
+                    }
+                },
+                "storageClassName": "gp3-csi",
+                "volumeMode": "Filesystem",
+                "volumeName": "pvc-d2cd40eb-6e4b-48d2-a2af-d4b5d10879a2"
+            },
+            "status": {
+                "accessModes": [
+                    "ReadWriteOnce"
+                ],
+                "capacity": {
+                    "storage": "1Gi"
+                },
+                "phase": "Bound"
+            }
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}

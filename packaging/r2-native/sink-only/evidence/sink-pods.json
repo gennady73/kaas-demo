@@ -1,0 +1,388 @@
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "k8s.ovn.org/pod-networks": "{\"default\":{\"ip_addresses\":[\"10.128.2.10/23\"],\"mac_address\":\"0a:58:0a:80:02:0a\",\"gateway_ips\":[\"10.128.2.1\"],\"routes\":[{\"dest\":\"10.128.0.0/14\",\"nextHop\":\"10.128.2.1\"},{\"dest\":\"172.30.0.0/16\",\"nextHop\":\"10.128.2.1\"},{\"dest\":\"169.254.0.5/32\",\"nextHop\":\"10.128.2.1\"},{\"dest\":\"100.64.0.0/16\",\"nextHop\":\"10.128.2.1\"}],\"ip_address\":\"10.128.2.10/23\",\"gateway_ip\":\"10.128.2.1\",\"role\":\"primary\"}}",
+                    "k8s.v1.cni.cncf.io/network-status": "[{\n    \"name\": \"ovn-kubernetes\",\n    \"interface\": \"eth0\",\n    \"ips\": [\n        \"10.128.2.10\"\n    ],\n    \"mac\": \"0a:58:0a:80:02:0a\",\n    \"default\": true,\n    \"dns\": {}\n}]",
+                    "openshift.io/scc": "restricted-v2",
+                    "seccomp.security.alpha.kubernetes.io/pod": "runtime/default",
+                    "security.openshift.io/validated-scc-subject-type": "user"
+                },
+                "creationTimestamp": "2026-11-26T11:57:43Z",
+                "generateName": "kaas-r2-evidence-6bf796d758-",
+                "generation": 1,
+                "labels": {
+                    "kaas.example.com/r2-component": "evidence",
+                    "pod-template-hash": "6bf796d758"
+                },
+                "name": "kaas-r2-evidence-6bf796d758-nzvqc",
+                "namespace": "kaas-demo",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "ReplicaSet",
+                        "name": "kaas-r2-evidence-6bf796d758",
+                        "uid": "15d5b7c0-3a19-431c-807d-99cd807b82aa"
+                    }
+                ],
+                "resourceVersion": "1055570",
+                "uid": "9b47d097-d602-454c-92f1-b421322014a6"
+            },
+            "spec": {
+                "automountServiceAccountToken": false,
+                "containers": [
+                    {
+                        "command": [
+                            "/opt/r2-sink/sink-guard.sh"
+                        ],
+                        "env": [
+                            {
+                                "name": "PYTHONDONTWRITEBYTECODE",
+                                "value": "1"
+                            },
+                            {
+                                "name": "HOME",
+                                "value": "/tmp"
+                            }
+                        ],
+                        "image": "image-registry.openshift-image-registry.svc:5000/kaas-demo/kaas-r2-sink@sha256:f730c89baceda0f8a536ab9c94696b768c996fe55d60202300095b4d450efa25",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "evidence",
+                        "ports": [
+                            {
+                                "containerPort": 8443,
+                                "name": "https",
+                                "protocol": "TCP"
+                            }
+                        ],
+                        "readinessProbe": {
+                            "failureThreshold": 3,
+                            "initialDelaySeconds": 1,
+                            "periodSeconds": 3,
+                            "successThreshold": 1,
+                            "tcpSocket": {
+                                "port": "https"
+                            },
+                            "timeoutSeconds": 1
+                        },
+                        "resources": {
+                            "limits": {
+                                "cpu": "500m",
+                                "memory": "256Mi"
+                            },
+                            "requests": {
+                                "cpu": "100m",
+                                "memory": "128Mi"
+                            }
+                        },
+                        "securityContext": {
+                            "allowPrivilegeEscalation": false,
+                            "capabilities": {
+                                "drop": [
+                                    "ALL"
+                                ]
+                            },
+                            "readOnlyRootFilesystem": true,
+                            "runAsNonRoot": true,
+                            "runAsUser": 1000770000,
+                            "seccompProfile": {
+                                "type": "RuntimeDefault"
+                            }
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/arming",
+                                "name": "arming",
+                                "readOnly": true
+                            },
+                            {
+                                "mountPath": "/etc/r2-sink",
+                                "name": "config",
+                                "readOnly": true
+                            },
+                            {
+                                "mountPath": "/auth",
+                                "name": "writer",
+                                "readOnly": true
+                            },
+                            {
+                                "mountPath": "/owner-auth",
+                                "name": "owner",
+                                "readOnly": true
+                            },
+                            {
+                                "mountPath": "/tls",
+                                "name": "tls",
+                                "readOnly": true
+                            },
+                            {
+                                "mountPath": "/var/lib/r2",
+                                "name": "data"
+                            },
+                            {
+                                "mountPath": "/tmp",
+                                "name": "tmp"
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "imagePullSecrets": [
+                    {
+                        "name": "kaas-r2-evidence-dockercfg-wr9kg"
+                    }
+                ],
+                "nodeName": "ip-10-0-50-65.us-east-2.compute.internal",
+                "nodeSelector": {
+                    "kubernetes.io/arch": "amd64",
+                    "kubernetes.io/os": "linux"
+                },
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "restartPolicy": "Always",
+                "schedulerName": "default-scheduler",
+                "securityContext": {
+                    "fsGroup": 1000770000,
+                    "seLinuxOptions": {
+                        "level": "s0:c28,c7"
+                    },
+                    "seccompProfile": {
+                        "type": "RuntimeDefault"
+                    }
+                },
+                "serviceAccount": "kaas-r2-evidence",
+                "serviceAccountName": "kaas-r2-evidence",
+                "terminationGracePeriodSeconds": 10,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoSchedule",
+                        "key": "node.kubernetes.io/memory-pressure",
+                        "operator": "Exists"
+                    }
+                ],
+                "volumes": [
+                    {
+                        "configMap": {
+                            "defaultMode": 420,
+                            "name": "kaas-r2-sink-arming"
+                        },
+                        "name": "arming"
+                    },
+                    {
+                        "configMap": {
+                            "defaultMode": 420,
+                            "name": "kaas-r2-sink-config"
+                        },
+                        "name": "config"
+                    },
+                    {
+                        "name": "writer",
+                        "secret": {
+                            "defaultMode": 288,
+                            "items": [
+                                {
+                                    "key": "writer-token",
+                                    "path": "writer-token"
+                                }
+                            ],
+                            "secretName": "kaas-r2-evidence-writer"
+                        }
+                    },
+                    {
+                        "name": "owner",
+                        "secret": {
+                            "defaultMode": 288,
+                            "items": [
+                                {
+                                    "key": "owner-token",
+                                    "path": "owner-token"
+                                }
+                            ],
+                            "secretName": "kaas-r2-evidence-owner"
+                        }
+                    },
+                    {
+                        "name": "tls",
+                        "secret": {
+                            "defaultMode": 288,
+                            "secretName": "kaas-r2-sink-tls"
+                        }
+                    },
+                    {
+                        "name": "data",
+                        "persistentVolumeClaim": {
+                            "claimName": "kaas-r2-native-evidence"
+                        }
+                    },
+                    {
+                        "emptyDir": {
+                            "sizeLimit": "16Mi"
+                        },
+                        "name": "tmp"
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-11-26T11:57:51Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "PodReadyToStartContainers"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-11-26T11:57:47Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-11-26T11:57:52Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-11-26T11:57:52Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-11-26T11:57:47Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "allocatedResources": {
+                            "cpu": "100m",
+                            "memory": "128Mi"
+                        },
+                        "containerID": "cri-o://d7e2b966d321a7f98a0cffd433b7ce8f318e535ccb7c6a2633499e45c5d9ec5d",
+                        "image": "image-registry.openshift-image-registry.svc:5000/kaas-demo/kaas-r2-sink@sha256:f730c89baceda0f8a536ab9c94696b768c996fe55d60202300095b4d450efa25",
+                        "imageID": "image-registry.openshift-image-registry.svc:5000/kaas-demo/kaas-r2-sink@sha256:f730c89baceda0f8a536ab9c94696b768c996fe55d60202300095b4d450efa25",
+                        "lastState": {},
+                        "name": "evidence",
+                        "ready": true,
+                        "resources": {
+                            "limits": {
+                                "cpu": "500m",
+                                "memory": "256Mi"
+                            },
+                            "requests": {
+                                "cpu": "100m",
+                                "memory": "128Mi"
+                            }
+                        },
+                        "restartCount": 0,
+                        "started": true,
+                        "state": {
+                            "running": {
+                                "startedAt": "2026-11-26T11:57:51Z"
+                            }
+                        },
+                        "user": {
+                            "linux": {
+                                "gid": 0,
+                                "supplementalGroups": [
+                                    0,
+                                    1000770000
+                                ],
+                                "uid": 1000770000
+                            }
+                        },
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/arming",
+                                "name": "arming",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            },
+                            {
+                                "mountPath": "/etc/r2-sink",
+                                "name": "config",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            },
+                            {
+                                "mountPath": "/auth",
+                                "name": "writer",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            },
+                            {
+                                "mountPath": "/owner-auth",
+                                "name": "owner",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            },
+                            {
+                                "mountPath": "/tls",
+                                "name": "tls",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            },
+                            {
+                                "mountPath": "/var/lib/r2",
+                                "name": "data"
+                            },
+                            {
+                                "mountPath": "/tmp",
+                                "name": "tmp"
+                            }
+                        ]
+                    }
+                ],
+                "hostIP": "10.0.50.65",
+                "hostIPs": [
+                    {
+                        "ip": "10.0.50.65"
+                    }
+                ],
+                "observedGeneration": 1,
+                "phase": "Running",
+                "podIP": "10.128.2.10",
+                "podIPs": [
+                    {
+                        "ip": "10.128.2.10"
+                    }
+                ],
+                "qosClass": "Burstable",
+                "startTime": "2026-11-26T11:57:47Z"
+            }
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}
