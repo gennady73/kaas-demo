@@ -1,5 +1,18 @@
 # R2 native wiring and tenant evidence candidate
 
+Offline auditor correction, 2026-11-26: C3-NW-01/02 remained reproducible at
+published checkpoint072eb18. The standalone auditor now requires common and
+per-event fields, validates conditional fields/types and record/case links,
+and rejects negative, fractional, Boolean, unsafe or nonfinite positions.
+Canonical group observations must retain the established position across cases;
+negative cases cannot fabricate null/zero baselines or grow the observed log.
+Committed-null remains distinct from zero; valid empty, nonzero and safe-integer
+boundary fixtures are retained. `test-audit-schema.mjs` supplies rehashed mutation
+regressions and is included in `check_offline.py`. The public source manifest is
+regenerated locally; historical image/runtime pins and saved run evidence are
+unchanged. This local source correction requires C3/C6 exact-source review and
+does not authorize deployment, image submission or a live rerun.
+
 Revision 0.2, 2026-11-25. **Reviewed offline corrections to published candidate5e29d34; client tests, deployment and automatic sync remain disabled.** This additive package preserves the accepted offline adapter, its source contract and the existing smoke/continuity clients and collector. It requires a new reviewed image: the historical `f66c3f8…` image does not contain `k6/x/kaasr2`.
 
 `entrypoint.js` joins the projected 16-record/eight-negative fixture, `binder.mjs`, an additive Go module and the dedicated tenant evidence transport. No `runtime.json` is shipped. The disabled example rejects before credential reads, HTTP or native client construction. The runtime projection is now reproducibly compiled and locked to its full canonical hash; entrypoint verifies every public runtime source and the actual executable fingerprint before reading credentials. Enabling the old offline flags cannot activate this package. The native projection retains the original disabled source contract, links its compiled-plan hash and explicitly declares the changed native settings. Review hashes inherited from that contract describe the original offline review, **not acceptance of this changed source**.

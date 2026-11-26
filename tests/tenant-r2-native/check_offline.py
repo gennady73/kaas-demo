@@ -19,6 +19,7 @@ def check(output,go):
  gate=json.loads((HERE/'runtime.example.json').read_text());assert gate['execution_authorized'] is False and gate['tests_enabled'] is False and not (HERE/'runtime.json').exists()
  run('projection',['node',HERE/'compile-projection.mjs'])
  run('binding',['node',HERE/'test-binding.mjs']);run('review',['node',HERE/'test-review.mjs'])
+ run('auditor-schema',['node',HERE/'test-audit-schema.mjs'])
  run('sink',[sys.executable,'-m','unittest','discover','-s',HERE/'sink','-p','test_*.py','-v'])
  run('go-race',[go,'test','-mod=readonly','-race','-count=1','-v','./...'],HERE/'native')
  binary=output/'k6'

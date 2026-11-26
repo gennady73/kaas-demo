@@ -1,0 +1,167 @@
+{
+  "status": "C3_AND_GROUP_CONTINUITY_PROBES_REPRODUCED_AND_REJECTED",
+  "synthetic_fixture_sha256": "d4059df28687ba61591a45750364a29a1c9f4cbe899383ebbd43c895f1889278",
+  "published_auditor_sha256": "2175c7ee63ace318bd6e6000f59a396adfb4776832e8a2c59291da72357c374e",
+  "corrected_auditor_sha256": "b6665f58cb03a06c872732b23aa1e1ec1ac267eba3fceb0b3acf8c669b37b77a",
+  "control": {
+    "published": "NATIVE_EVIDENCE_MATCHED",
+    "corrected": "NATIVE_EVIDENCE_MATCHED"
+  },
+  "results": [
+    {
+      "name": "missing_case_kind",
+      "published_status": "NATIVE_EVIDENCE_MATCHED",
+      "corrected_status": "NATIVE_INCOMPLETE",
+      "corrected_issues": [
+        {
+          "code": "event_required_field"
+        },
+        {
+          "code": "event_chain"
+        }
+      ]
+    },
+    {
+      "name": "missing_durable_case_id",
+      "published_status": "NATIVE_EVIDENCE_MATCHED",
+      "corrected_status": "NATIVE_INCOMPLETE",
+      "corrected_issues": [
+        {
+          "code": "event_required_field"
+        },
+        {
+          "code": "event_chain"
+        }
+      ]
+    },
+    {
+      "name": "negative_positive_offsets",
+      "published_status": "NATIVE_EVIDENCE_MATCHED",
+      "corrected_status": "NATIVE_INCOMPLETE",
+      "corrected_issues": [
+        {
+          "code": "event_field_type_or_domain"
+        },
+        {
+          "code": "event_chain"
+        },
+        {
+          "code": "event_field_type_or_domain"
+        },
+        {
+          "code": "event_chain"
+        },
+        {
+          "code": "event_field_type_or_domain"
+        },
+        {
+          "code": "event_field_type_or_domain"
+        },
+        {
+          "code": "event_field_type_or_domain"
+        },
+        {
+          "code": "event_chain"
+        },
+        {
+          "code": "event_field_type_or_domain"
+        },
+        {
+          "code": "event_field_type_or_domain"
+        },
+        {
+          "code": "event_field_type_or_domain"
+        },
+        {
+          "code": "event_chain"
+        },
+        {
+          "code": "event_field_type_or_domain"
+        },
+        {
+          "code": "event_field_type_or_domain"
+        },
+        {
+          "code": "event_field_type_or_domain"
+        },
+        {
+          "code": "event_chain"
+        },
+        {
+          "code": "event_field_type_or_domain"
+        },
+        {
+          "code": "event_field_type_or_domain"
+        },
+        {
+          "code": "event_chain"
+        }
+      ]
+    },
+    {
+      "name": "negative_fabricated_null",
+      "published_status": "NATIVE_EVIDENCE_MATCHED",
+      "corrected_status": "NATIVE_INCOMPLETE",
+      "corrected_issues": [
+        {
+          "code": "group_baseline_discontinuity",
+          "case_id": "kaas-sbx-a-cross-topic-read"
+        },
+        {
+          "code": "group_baseline_discontinuity",
+          "case_id": "kaas-sbx-b-cross-group-read"
+        }
+      ]
+    },
+    {
+      "name": "negative_fabricated_zero",
+      "published_status": "NATIVE_EVIDENCE_MATCHED",
+      "corrected_status": "NATIVE_INCOMPLETE",
+      "corrected_issues": [
+        {
+          "code": "group_baseline_discontinuity",
+          "case_id": "kaas-sbx-a-cross-topic-read"
+        },
+        {
+          "code": "group_baseline_discontinuity",
+          "case_id": "kaas-sbx-b-cross-group-read"
+        }
+      ]
+    },
+    {
+      "name": "negative_stale_position",
+      "published_status": "NATIVE_EVIDENCE_MATCHED",
+      "corrected_status": "NATIVE_INCOMPLETE",
+      "corrected_issues": [
+        {
+          "code": "group_baseline_discontinuity",
+          "case_id": "kaas-sbx-a-cross-topic-read"
+        },
+        {
+          "code": "group_baseline_discontinuity",
+          "case_id": "kaas-sbx-b-cross-group-read"
+        }
+      ]
+    },
+    {
+      "name": "negative_log_growth",
+      "published_status": "NATIVE_EVIDENCE_MATCHED",
+      "corrected_status": "NATIVE_INCOMPLETE",
+      "corrected_issues": [
+        {
+          "code": "negative_offset_changed",
+          "case_id": "kaas-sbx-a-cross-topic-read"
+        },
+        {
+          "code": "group_baseline_discontinuity",
+          "case_id": "kaas-sbx-b-cross-group-read"
+        },
+        {
+          "code": "group_log_end_regressed",
+          "case_id": "kaas-sbx-b-cross-group-read"
+        }
+      ]
+    }
+  ],
+  "scope": "Synthetic rehashed controls only; historical owner probe/evidence files untouched"
+}

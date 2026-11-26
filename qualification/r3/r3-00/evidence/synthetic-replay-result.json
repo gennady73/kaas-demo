@@ -1,0 +1,9 @@
+{
+  "mode": "SYNTHETIC_ONLY",
+  "events": 182,
+  "byte_verification": "VERIFIED",
+  "semantic_status": "NATIVE_EVIDENCE_MATCHED",
+  "reported_commit_records": 16,
+  "Kafka_clients_constructed": false,
+  "runtime_acceptance": "NOT_ASSESSED"
+}

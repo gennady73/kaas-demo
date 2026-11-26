@@ -1,3 +1,5 @@
+Current progress, 2026-11-26: [R3-00 auditor correction and sealed R2re-audit passed offline](../qualification/r3/r3-00/README.md). See [progress overlay](../qualification/r3/progress.json); the original planning statuses and copied evidence below remain historical. All four Jobs untouched/lastobservedsuspended; no workload ran.
+
 # R3 service qualification plan
 
 Revision0.1, 2026-11-26. **OFFLINE_PLAN_VALIDATED; DEPLOYMENT, REGISTRATION AND WORKLOADS DISABLED.** This plan selects no run window and grants no new live authority. The existing four client Jobs are untouched and last observed suspended. No cluster access, probes, workloads, faults or notifications occurred in this preparation. The user authorized publication of this plan; publication grants no live execution authority. Original preparation receipts retain their historical status.

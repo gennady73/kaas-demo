@@ -1,0 +1,14 @@
+{
+  "status": "FINAL_R3_00_LOCAL_VALIDATION_PASS",
+  "source_files_verified": 43,
+  "regression_tests": 530,
+  "historical_R2_files_unchanged": 27,
+  "runtime_pins_and_active_manifests_unchanged": true,
+  "new_image_built": false,
+  "cluster_access": false,
+  "workloads_run": false,
+  "candidate_manifest": "9af2ea57aaf851bb4855696ea0f9072ab7f4643a1b64441c9ea47f6bdf6627ff",
+  "findings_disposition": "FIXED_OFFLINE_VALIDATED_C0_TECHNICAL",
+  "owner_handoff_concurrence": "Not fabricated or rewritten",
+  "publication": "LOCAL_UNCOMMITTED"
+}

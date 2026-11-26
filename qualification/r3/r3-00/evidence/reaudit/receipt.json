@@ -1,0 +1,75 @@
+{
+  "status": "SEALED_R2_OFFLINE_REAUDIT_PASS",
+  "historical_evidence_commit": "072eb185b32ca39b6ecaebf5b6c78e9569145d2e",
+  "export_sha256": "18ba064608624da60e80101aaea81af9f0e8bfe9f4edbed126cc5903dd66c96e",
+  "event_count": 182,
+  "input_files_sha256": {
+    "build-verification.json": "8a69f9cf00ea8c37af2c1afaa649b8416bd0acaa6be8ac831fbf57cf9fd4df8e",
+    "build.json": "c5174398a00e434ba7f47132c204ad01a10ef9ca0a886df255b401f77c1774c2",
+    "image.json": "be1f74965941248d62edef3cad2c0aaa8bb67bc0e342d77ad63a5903de991638",
+    "build-resources.yaml": "1829ca04a64a71cf2da235bef90dcdaf91f41a19b759200837a73ffdf341d363",
+    "build.log": "47addf9a742d5290400105ee6e19d6074f29f9c6280388ac311404440e1cd4ef",
+    "contexts.json": "9948b282637c9c34fb5b53de03d9e4101e15897bc0234dee8536196b417aa8be",
+    "packaging-checks.txt": "42655240294630136f08ebe4a445cc5c6873b33a1cc748d8bf9c280cc714f77c",
+    "results.json": "fd6b4fc42125e251a2e69ac0377263ce08c575ee33a9954501851e1bd94a011f",
+    "r2-closeout.json": "d1c536187e864b986145127cf0b9c6d47d7804450f0f4f5be1b3da20ed4b6e85",
+    "message-offset-reconciliation.json": "8228330eccedd5133c2f8d6353167a24e6aec23a4ea3eb4c01ac7dc56910df5d",
+    "custody.json": "3ccef7a330f079852633b8a8099110ea31b6ecedcad06aae14feba5b3df41304",
+    "seal.json": "ae1c14450520f6dbacd36d5002c494369d2be7489ec655a7b746fce2282d8cdf",
+    "events.ndjson": "18ba064608624da60e80101aaea81af9f0e8bfe9f4edbed126cc5903dd66c96e",
+    "byte-integrity.json": "a250a70431517004bd048b04d13a7399cbdaa1d5c6ac48fb57f5ae962712e513",
+    "semantic-audit.json": "e9325dfb5a780914e1ca762e7d3d3613da8374c013108c7241a6f0130eb27f7a",
+    "external-observation.json": "209aa553489576a47efc9c184c19f360dfdcc93294bfa122cca694516969792a",
+    "pre-metadata.json": "f4bb83f1294e9281e09bf343f7b360af7d6d78d4e2f9f9252d7bba4518535d74",
+    "post-metadata.json": "da3233bd69ed02a93fbe3da41e30453571d7845d43e56edce604145e9d61bdac",
+    "old-evidence-preserved.json": "6bffe4628a4327ed6f8138e8bbda670e383656969e13510a4172dace1f2448bb",
+    "launch-result.json": "945bd50a72047f2f2641b4ead896b66ff020354fcde283cc33ae2798f8fff4f8",
+    "execution-stop-evidence-record.json": "f900ad46f4f1f88d9f1aca8d8422a9099388775c034001f00f635864628abd9d",
+    "final-resources.json": "18677ce4fd6967b42ffea8da076c5bd3dcd6600c5579b55ecbbd701f68a918db",
+    "client.log": "1d67cea3651eb6a6eace85d8e73844236b94d4eee3ad4d840a479d641cef803d",
+    "README.md": "c5b2f680878c3d77e5359b9dddfa4f99be42ad324eca5eec6c14f21e74d64910",
+    "evidence-manifest.json": "8510c8177873d8e505cb717b4336b51362631261cd83ac5cbb23f0294d8fa480",
+    "artifact-checks.json": "59ca137cd8ddd4f6ca8082896121f7814e3547c967bf3bd1bdc2d735155bd800",
+    "publication-checks.json": "91c862d67cdca9784de08de31b73145beda3d6683aee362afbec33c676b75321"
+  },
+  "tool_source_sha256": {
+    "audit.mjs": "b6665f58cb03a06c872732b23aa1e1ec1ac267eba3fceb0b3acf8c669b37b77a",
+    "strict-json.mjs": "63b26dea5cd81e04b74fa71dbe70e4567dfd3c0fd039529987aa708ed79a0ae7",
+    "native-policy.mjs": "3ff0aada8bda81fceef96d7beb6a6f3a5b04ff44ac121cd292860b5d27e02bcf",
+    "projection-lock.mjs": "bf2a1a53d566d00b74115f319f979047d59ed74385635cd2a3f5b0df04b48c22",
+    "runtime-source-manifest.json": "9af2ea57aaf851bb4855696ea0f9072ab7f4643a1b64441c9ea47f6bdf6627ff"
+  },
+  "commands": [
+    {
+      "argv": [
+        "/usr/bin/python",
+        "/home/gunger/Projects/kaas-solution/kaas-demo/tests/tenant-r2-native/sink/verify_export.py",
+        "--export",
+        "/home/gunger/Projects/kaas-solution/kaas-demo/docs/r2-05a3f2d-retest-2026-11-26/events.ndjson",
+        "--seal",
+        "/home/gunger/Projects/kaas-solution/kaas-demo/docs/r2-05a3f2d-retest-2026-11-26/seal.json"
+      ],
+      "exit_code": 0,
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "/home/gunger/Projects/kaas-solution/kaas-demo/tests/tenant-r2-native/audit-export.mjs",
+        "/home/gunger/Projects/kaas-solution/kaas-demo/tests/tenant-r2-native/plan.json",
+        "/home/gunger/Projects/kaas-solution/kaas-demo/docs/r2-05a3f2d-retest-2026-11-26/events.ndjson",
+        "/home/gunger/Projects/kaas-solution/kaas-demo/docs/r2-05a3f2d-retest-2026-11-26/seal.json",
+        "/home/gunger/Projects/kaas-solution/kaas-demo/docs/r2-05a3f2d-retest-2026-11-26/external-observation.json"
+      ],
+      "exit_code": 0,
+      "stderr": ""
+    }
+  ],
+  "historical_files_unchanged": true,
+  "positive_cases_matched": 4,
+  "negative_cases_matched": 8,
+  "cluster_access": false,
+  "producer_consumer_workloads_run": false,
+  "runtime_execution_repeated": false,
+  "provenance": "Re-audit of saved real-run evidence with versioned offline tool; saved external observations are not fresh cluster state"
+}

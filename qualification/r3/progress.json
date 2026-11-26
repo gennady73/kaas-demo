@@ -1,0 +1,16 @@
+{
+  "revision": "0.1",
+  "date": "2026-11-26",
+  "plan_commit": "0f9df49fc0dfb3632c9c7f4eb32fb7e6d3aec1e6",
+  "execution_enabled": false,
+  "workloads_enabled": false,
+  "cases": {
+    "R3-00": {
+      "status": "OFFLINE_FIX_REGRESSION_AND_SEALED_REAUDIT_PASS",
+      "result": "r3-00/result.json",
+      "review_scope": "C0technical; no C3/C6independent concurrence invented"
+    }
+  },
+  "remaining_cases": "Initial planning contract; not executed",
+  "note": "Progress overlay supersedes pre-correction OPEN labels only for this exact offline source/result; does not arm any planned case"
+}

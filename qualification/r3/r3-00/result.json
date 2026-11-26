@@ -1,0 +1,57 @@
+{
+  "case": "R3-00",
+  "status": "OFFLINE_FIX_REGRESSION_AND_SEALED_REAUDIT_PASS",
+  "date": "2026-11-26",
+  "source_base_commit": "0f9df49fc0dfb3632c9c7f4eb32fb7e6d3aec1e6",
+  "findings": {
+    "C3-NW-01": "FIXED_OFFLINE_VALIDATED_C0_TECHNICAL_DISPOSITION",
+    "C3-NW-02": "FIXED_OFFLINE_VALIDATED_C0_TECHNICAL_DISPOSITION"
+  },
+  "review_scope": "Pre-existing candidate reviewed/completed by C0; no independent C3/C6 owner concurrence invented or owner handoffs rewritten",
+  "new_related_guards": [
+    "Canonical group baselines must match established prior observations; no fabricated null/zero/stale offset",
+    "Negative observed log cannot grow or regress without the controlled fixture detecting inconsistency",
+    "Null record offsets/partitions rejected; nullable committed offset retained only in applicable consistent baselines"
+  ],
+  "regression_tests": {
+    "binding": 8,
+    "review": 37,
+    "standalone_auditor_schema_domain": 445,
+    "sink_export": 18,
+    "Go_race_top_level": 22
+  },
+  "regression_tests_total": 530,
+  "original_three_C3_probes": "Published auditor accepts; corrected auditor rejects all3 after full hash/seal recomputation",
+  "additional_continuity_probes": "Published auditor accepts; corrected rejects all4 fabricated-baseline/log-growth controls",
+  "valid_controls": [
+    "Empty baseline committednull/logend0 and receipt0",
+    "Established baseline4 with receipts4\u20137/final8",
+    "Safe integer upper boundary with no next-offset overflow",
+    "Full actual sealed R2export preserved"
+  ],
+  "source_files_fingerprinted": 43,
+  "native_binary_sha256": "0174513d51947fb65aa17ae70f85fea19f7ed5a605aae0ca6d016d8e1cd94cc0",
+  "runtime_manifest_sha256": "9af2ea57aaf851bb4855696ea0f9072ab7f4643a1b64441c9ea47f6bdf6627ff",
+  "actual_runtime_image_and_pins": "Unchanged41f328c8/0174513d/07f7bd42; current candidate manifest9af2ea57 is not a deployed pin",
+  "native_binary_note": "Go code unchanged; repeat hostbuild matches existing binary. No new image built.",
+  "sealed_R2_reaudit": {
+    "status": "NATIVE_EVIDENCE_MATCHED",
+    "event_count": 182,
+    "positive_cases_matched": 4,
+    "negative_cases_matched": 8,
+    "confirmed_commit_records": 16,
+    "export_sha256": "18ba064608624da60e80101aaea81af9f0e8bfe9f4edbed126cc5903dd66c96e",
+    "byte_integrity": "VERIFIED",
+    "historical_files_unchanged": true
+  },
+  "execution_enabled": false,
+  "deployment_enabled": false,
+  "cluster_access": false,
+  "producer_consumer_workloads_run": false,
+  "k6_iterations_invoked": false,
+  "all_four_client_Jobs": "Untouched; last saved API observations suspended",
+  "R2_bounded_acceptance": "Preserved; no live repeat needed for auditor-only fix",
+  "R3_runtime_acceptance": "NOT_ASSESSED",
+  "publication": "LOCAL_UNCOMMITTED",
+  "next": "Publish/freeze when requested; return exact source/test/re-audit evidence to owner review via shared artifacts. Then map R3-10/11coverage or selected next case; no automatic live run."
+}

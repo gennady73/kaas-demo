@@ -16,6 +16,42 @@ const fields={fixture_start:['job_start_ms','deadline_ms','mode'],phase_start:['
  unexpected_record:['case_id','topic','observed_key_sha256','checksum'],unexpected_access:['case_id','topic','group_id','kind','observed_key_sha256','checksum'],
  group_state_unavailable:['case_id','topic','group_id','reason'],negative_state_violation:['case_id','reason'],reconciliation_boundary:['positive_cutoff_ms'],fixture_stop:['reason','status'],
  fixture_terminal:['status','elapsed_ms','closed','positive_cutoff_ms']};
+// This standalone auditor validates its own schema; a sink validation or a valid
+// hash chain is not a substitute for required fields, types or position domains.
+const optional={send_outcome:['category','failure_stage','typed','acknowledged_at_ms','ack_bucket'],
+ case_start:['binding_id','control_ids'],unexpected_access:['observed_key_sha256','checksum']};
+const uint=x=>Number.isSafeInteger(x)&&x>=0;
+const text=x=>typeof x==='string'&&x.length>0&&x.length<=256&&/^[A-Za-z0-9_./:-]+$/.test(x);
+const digest=x=>typeof x==='string'&&/^[a-f0-9]{64}$/.test(x);
+const booleanFields=new Set(['auto_commit','commit_on_close','closed','within_reserve','negative','typed','consumer_write_confounded','membership_observed']);
+const integerFields=new Set(['version','at_ms','job_start_ms','deadline_ms','elapsed_ms','value_bytes','partition','offset','log_end_offset','members','acknowledged_at_ms']);
+const hashFields=new Set(['plan_sha256','checksum','observed_key_sha256','write_settings_signature']);
+function eventSchemaIssue(e){
+ if(!e||typeof e!=='object'||Array.isArray(e)||!Object.hasOwn(fields,e.type))return 'event_shape_or_type';
+ const allowed=[...common,...fields[e.type]],required=allowed.filter(k=>!(optional[e.type]??[]).includes(k));
+ if(Object.keys(e).some(k=>!allowed.includes(k)))return 'event_field_allowlist';
+ if(required.some(k=>!Object.hasOwn(e,k)))return 'event_required_field';
+ if(e.type==='send_outcome'){
+  const conditional=e.outcome==='acknowledged'?['acknowledged_at_ms','ack_bucket']:['category','failure_stage','typed'];
+  if(conditional.some(k=>!Object.hasOwn(e,k)))return 'event_required_field';
+ }
+ if(e.type==='case_start'&&e.case_kind==='negative'&&['binding_id','control_ids'].some(k=>!Object.hasOwn(e,k)))return 'event_required_field';
+ for(const [key,value] of Object.entries(e)){
+  let valid;
+  if(key==='previous_event_sha256')valid=value===null||digest(value);
+  else if(key==='committed_offset')valid=value===null||uint(value);
+  else if(key==='positive_cutoff_ms')valid=(value===null&&e.type==='fixture_terminal')||uint(value);
+  else if(key==='group_id'||key==='write_path_control_id')valid=value===null||text(value);
+  else if(key==='control_ids')valid=Array.isArray(value)&&value.length<=4&&value.every(text)&&new Set(value).size===value.length;
+  else if(booleanFields.has(key))valid=typeof value==='boolean';
+  else if(integerFields.has(key))valid=uint(value);
+  else if(hashFields.has(key))valid=(key==='write_settings_signature'&&value===null)||digest(value);
+  else valid=text(value);
+  if(!valid)return 'event_field_type_or_domain';
+ }
+ if(e.type==='group_state'&&e.committed_offset!==null&&e.committed_offset>e.log_end_offset)return 'event_field_type_or_domain';
+ return null;
+}
 function auditReportedEvents(plan,envelopes,seal,sha){
  validatePlan(plan,{runtimeAuthorized:true,sha256:sha,reviewedPlanHash:sha(canonical(plan))});const issues=[],parsed=[],hash=sha(canonical(plan));
  const problem=(code,case_id=null)=>issues.push({code,...(case_id?{case_id}:{})});
@@ -24,15 +60,21 @@ function auditReportedEvents(plan,envelopes,seal,sha){
  for(const [i,x] of envelopes.entries()){
   if(!x||Object.keys(x).sort().join(',')!=='event_json,event_sha256'||typeof x.event_json!=='string'||sha(x.event_json)!==x.event_sha256){problem('envelope_hash_or_shape');continue;}
   let e;try{e=strictJSON(x.event_json);}catch(_){problem('event_json');continue;}
-  if(!fields[e.type]||Object.keys(e).some(k=>![...common,...(fields[e.type]??[])].includes(k))){problem('event_field_allowlist');continue;}
+  const schemaIssue=eventSchemaIssue(e);if(schemaIssue){problem(schemaIssue);continue;}
   if(e.version!==1||e.run_id!==plan.run_id||e.plan_sha256!==hash||e.client_id!=='tenant_fixture'||e.event_id!==`${plan.run_id}/tenant_fixture/${i}`||eventIds.has(e.event_id))problem('event_identity_or_sequence');
   if(e.previous_event_sha256!==previous)problem('event_chain');
   if(!Number.isSafeInteger(e.at_ms)||e.at_ms<0||e.at_ms>300000||e.at_ms<lastTime)problem('event_time');
   previous=x.event_sha256;lastTime=e.at_ms;eventIds.add(e.event_id);parsed.push(e);
  }
+ // Do not derive successful dimensions from structurally invalid evidence or
+ // process partially parsed events with missing case/record identity.
+ if(issues.length)return {mode:'NATIVE_CANDIDATE',live_execution:false,run_id:plan.run_id,status:'NATIVE_INCOMPLETE',
+  dimensions:{duration:'INCOMPLETE',budget:'NOT_ASSESSED',accounting:'INCOMPLETE',isolation:'INCONCLUSIVE',evidence:'INCOMPLETE',cleanup:'INCOMPLETE',integrity:'NOT_ASSESSED'},
+  issues,runtime_acceptance:'NOT_ASSESSED',production_acceptance:'NOT_ASSESSED'};
  const cases=new Map([...plan.positive,...plan.negative].map(p=>[p.id,p]));
  const states=new Map([...plan.records,...plan.negative.filter(n=>n.record).map(n=>n.record)].map(r=>[r.id,{expected:r,intent:null,outcome:null,not_sent:false,present:false,receipt:null,durable:null,commit_intent:null,commit:false,commit_uncertain:false}]));
  const positiveCases=new Set(),negativeCases=new Set(),open=new Set(),opened=new Set(),snapshots=new Map(),caseStarts=new Set(),lastOffsets=new Map();
+ const observedGroups=new Map();
  const phaseDeadlines=new Map();let phaseIndex=0,priorDeadline=null;let cutoff=null,start=null,terminal=null,unexpected=false,integrityFailure=false,cleanupFailure=false,stopped=false;
  const recordCheck=e=>{
   const s=states.get(e.id);
@@ -44,6 +86,7 @@ function auditReportedEvents(plan,envelopes,seal,sha){
  for(const e of parsed){
   const c=e.case_id?cases.get(e.case_id):null;
   if(e.case_id&&!c){problem('unknown_case');continue;}
+  if(Object.hasOwn(e,'id')&&states.get(e.id)?.expected.case_id!==e.case_id){problem('record_case_link',e.case_id);continue;}
   if(e.type==='fixture_start'){
    if(start!==null||e.job_start_ms!==0||e.deadline_ms!==e.job_start_ms+300000||e.mode!=='NATIVE_CANDIDATE')problem('fixture_start');start=e.job_start_ms;priorDeadline=start+45000;
   }else if(e.type==='phase_start'){
@@ -51,6 +94,10 @@ function auditReportedEvents(plan,envelopes,seal,sha){
    if(!Object.hasOwn(plan.phase_seconds,e.phase)||!Number.isFinite(e.deadline_ms)||e.deadline_ms>e.at_ms+plan.phase_seconds[e.phase]*1000||e.deadline_ms>start+300000)problem('phase_deadline');
    phaseDeadlines.set(e.phase,e.deadline_ms);if(e.phase==='positive_delivery')cutoff=e.positive_cutoff_ms;
   }else if(e.type==='case_start'){
+   const negative=plan.negative.some(n=>n.id===e.case_id);
+   if(e.case_kind!==(negative?'negative':'positive')||e.topic!==c.topic||e.group_id!==c.group||
+    (Object.hasOwn(e,'binding_id')&&e.binding_id!==(negative?c.binding:c.producer))||
+    (!negative&&Object.hasOwn(e,'control_ids')&&e.control_ids.length))problem('case_start_binding_or_kind',e.case_id);
    if(caseStarts.has(e.case_id))problem('duplicate_case',e.case_id);caseStarts.add(e.case_id);
    if(e.case_kind==='negative'){
     if(open.size)problem('positive_or_prior_client_not_closed',e.case_id);
@@ -71,13 +118,17 @@ function auditReportedEvents(plan,envelopes,seal,sha){
   }else if(e.type==='close_skipped'){cleanupFailure=true;problem('close_skipped',e.case_id);
   }else if(e.type==='group_state'){
    if(!['before','after','after_stop'].includes(e.stage)||e.topic!==c.group?.replace(/-group$/,'')||e.group_id!==c.group||e.members!==0||e.membership_observed!==true)problem('group_state',e.case_id);
+   const observedKey=e.group_id+'|'+e.topic,prior=observedGroups.get(observedKey);
+   if(e.stage==='before'&&prior&&(e.committed_offset!==prior.committed_offset||e.log_end_offset!==prior.log_end_offset))problem('group_baseline_discontinuity',e.case_id);
+   if(prior&&e.log_end_offset<prior.log_end_offset)problem('group_log_end_regressed',e.case_id);
+   observedGroups.set(observedKey,e);
    const k=e.case_id;if(e.stage==='before'){
     if(snapshots.has(k))problem('duplicate_group_baseline',e.case_id);snapshots.set(k,{before:e});
     if(plan.positive.some(p=>p.id===e.case_id)){if(!((e.committed_offset===null&&e.log_end_offset===0)||e.committed_offset===e.log_end_offset))problem('unprocessed_initial_records',k);lastOffsets.set(k,e.log_end_offset-1);}
    }else{
     const s=snapshots.get(k);if(!s)problem('missing_group_baseline',e.case_id);else{
      s.after=e;
-     if(plan.negative.some(n=>n.id===k)&&s.before.committed_offset!==e.committed_offset){problem('negative_offset_changed',k);unexpected=true;}
+     if(plan.negative.some(n=>n.id===k)&&(s.before.committed_offset!==e.committed_offset||s.before.log_end_offset!==e.log_end_offset)){problem('negative_offset_changed',k);unexpected=true;}
      if(plan.positive.some(p=>p.id===k)&&e.committed_offset!==lastOffsets.get(k)+1)problem('positive_final_offset',k);
     }
    }
@@ -114,7 +165,7 @@ function auditReportedEvents(plan,envelopes,seal,sha){
    if(s){if(e.type==='commit_intent'){if(s.commit_intent)problem('duplicate_commit_intent',e.case_id);s.commit_intent=e;}
     else {if(!s.commit_intent||s.commit||s.commit_uncertain)problem('commit_result_conflict',e.case_id);s.commit=true;}}
   }else if(e.type==='commit_uncertain'){
-   const s=states.get(e.id);if(!s||!s.commit_intent||s.commit)problem('commit_uncertainty_state',e.case_id);else s.commit_uncertain=true;
+   const s=states.get(e.id);if(!s||!s.receipt||s.receipt.event_id!==e.receipt_event_id||!s.commit_intent||s.commit)problem('commit_uncertainty_state',e.case_id);else s.commit_uncertain=true;
   }else if(e.type==='case_end'){
    const selected=[...states.values()].filter(s=>s.expected.case_id===e.case_id);
    if(!caseStarts.has(e.case_id)||positiveCases.has(e.case_id)||e.status!=='PASS'||selected.length!==4||!selected.every(s=>s.outcome?.outcome==='acknowledged'&&s.outcome.ack_bucket==='on_time'&&s.receipt&&s.durable&&s.commit&&!s.commit_uncertain)||snapshots.get(e.case_id)?.after?.stage!=='after')problem('positive_case_incomplete',e.case_id);

@@ -2,7 +2,7 @@
   "version": 1,
   "files": {
     "ascii.mjs": "82cd918785535d42816db487e392933f9421254ad0b784858ad17068fd951740",
-    "audit.mjs": "2175c7ee63ace318bd6e6000f59a396adfb4776832e8a2c59291da72357c374e",
+    "audit.mjs": "b6665f58cb03a06c872732b23aa1e1ec1ac267eba3fceb0b3acf8c669b37b77a",
     "binder.mjs": "7e491ffa18b4859fdf5d3d7a1721c03c3f98d485c81b52781e77ba4ebc5ba121",
     "engine.mjs": "49449fd6c2480419108b8ea3cb9bf83df966898e3d4182bdbe49e9a0b5269b12",
     "entrypoint.js": "b4f1d3f555ebf9e16f1d27d3b389b26f0a5e7328ac8777aa05917d85244def5b",
