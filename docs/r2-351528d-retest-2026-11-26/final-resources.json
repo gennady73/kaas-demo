@@ -1,0 +1,1218 @@
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "batch/v1",
+            "kind": "Job",
+            "metadata": {
+                "annotations": {
+                    "kaas.example.com/authorized-source": "351528d83b1b95c5697f9322c7dcf5491a302625",
+                    "kaas.example.com/scope": "Single bounded R2 fixture; no retries"
+                },
+                "creationTimestamp": "2026-11-26T14:31:53Z",
+                "generation": 3,
+                "labels": {
+                    "kaas.example.com/package": "r2-native-disabled"
+                },
+                "name": "kaas-r2-native-client-351528d-r2",
+                "namespace": "kaas-demo",
+                "resourceVersion": "1104106",
+                "uid": "ad6736b3-8df4-41f8-bc94-2adb6a7d4a0e"
+            },
+            "spec": {
+                "activeDeadlineSeconds": 300,
+                "backoffLimit": 0,
+                "completionMode": "NonIndexed",
+                "completions": 1,
+                "manualSelector": false,
+                "parallelism": 1,
+                "podReplacementPolicy": "TerminatingOrFailed",
+                "selector": {
+                    "matchLabels": {
+                        "batch.kubernetes.io/controller-uid": "ad6736b3-8df4-41f8-bc94-2adb6a7d4a0e"
+                    }
+                },
+                "suspend": true,
+                "template": {
+                    "metadata": {
+                        "labels": {
+                            "batch.kubernetes.io/controller-uid": "ad6736b3-8df4-41f8-bc94-2adb6a7d4a0e",
+                            "batch.kubernetes.io/job-name": "kaas-r2-native-client-351528d-r2",
+                            "controller-uid": "ad6736b3-8df4-41f8-bc94-2adb6a7d4a0e",
+                            "job-name": "kaas-r2-native-client-351528d-r2",
+                            "kaas.example.com/r2-component": "client",
+                            "kaas.example.com/r2-runner": "trusted"
+                        }
+                    },
+                    "spec": {
+                        "automountServiceAccountToken": false,
+                        "containers": [
+                            {
+                                "command": [
+                                    "/opt/r2/client-guard.sh"
+                                ],
+                                "env": [
+                                    {
+                                        "name": "K6_NO_USAGE_REPORT",
+                                        "value": "true"
+                                    },
+                                    {
+                                        "name": "SSL_CERT_FILE",
+                                        "value": "/evidence-trust/service-ca.crt"
+                                    },
+                                    {
+                                        "name": "HOME",
+                                        "value": "/tmp"
+                                    }
+                                ],
+                                "image": "image-registry.openshift-image-registry.svc:5000/kaas-demo/kaas-r2-runner-351528d@sha256:7773f3ed708cbf8ab07703ed978afd478f05d9afcb13f888a27ef4159124b1af",
+                                "imagePullPolicy": "IfNotPresent",
+                                "name": "native-client",
+                                "resources": {
+                                    "limits": {
+                                        "cpu": "500m",
+                                        "memory": "512Mi"
+                                    },
+                                    "requests": {
+                                        "cpu": "100m",
+                                        "memory": "128Mi"
+                                    }
+                                },
+                                "securityContext": {
+                                    "allowPrivilegeEscalation": false,
+                                    "capabilities": {
+                                        "drop": [
+                                            "ALL"
+                                        ]
+                                    },
+                                    "readOnlyRootFilesystem": true,
+                                    "runAsNonRoot": true,
+                                    "seccompProfile": {
+                                        "type": "RuntimeDefault"
+                                    }
+                                },
+                                "terminationMessagePath": "/dev/termination-log",
+                                "terminationMessagePolicy": "File",
+                                "volumeMounts": [
+                                    {
+                                        "mountPath": "/credentials/cluster-ca",
+                                        "name": "cluster-ca",
+                                        "readOnly": true
+                                    },
+                                    {
+                                        "mountPath": "/credentials/kaas-sbx-a-producer",
+                                        "name": "credential-0",
+                                        "readOnly": true
+                                    },
+                                    {
+                                        "mountPath": "/credentials/kaas-sbx-a-consumer",
+                                        "name": "credential-1",
+                                        "readOnly": true
+                                    },
+                                    {
+                                        "mountPath": "/credentials/kaas-sbx-b-producer",
+                                        "name": "credential-2",
+                                        "readOnly": true
+                                    },
+                                    {
+                                        "mountPath": "/credentials/kaas-sbx-b-consumer",
+                                        "name": "credential-3",
+                                        "readOnly": true
+                                    },
+                                    {
+                                        "mountPath": "/arming",
+                                        "name": "arming",
+                                        "readOnly": true
+                                    },
+                                    {
+                                        "mountPath": "/r2/runtime.json",
+                                        "name": "execution",
+                                        "readOnly": true,
+                                        "subPath": "runtime.json"
+                                    },
+                                    {
+                                        "mountPath": "/evidence-auth",
+                                        "name": "writer",
+                                        "readOnly": true
+                                    },
+                                    {
+                                        "mountPath": "/evidence-trust",
+                                        "name": "sink-trust",
+                                        "readOnly": true
+                                    },
+                                    {
+                                        "mountPath": "/tmp",
+                                        "name": "tmp"
+                                    }
+                                ]
+                            }
+                        ],
+                        "dnsPolicy": "ClusterFirst",
+                        "nodeSelector": {
+                            "kubernetes.io/arch": "amd64",
+                            "kubernetes.io/os": "linux"
+                        },
+                        "restartPolicy": "Never",
+                        "schedulerName": "default-scheduler",
+                        "securityContext": {},
+                        "serviceAccount": "kaas-r2-harness",
+                        "serviceAccountName": "kaas-r2-harness",
+                        "terminationGracePeriodSeconds": 0,
+                        "volumes": [
+                            {
+                                "configMap": {
+                                    "defaultMode": 292,
+                                    "items": [
+                                        {
+                                            "key": "ca.crt",
+                                            "path": "ca.crt"
+                                        }
+                                    ],
+                                    "name": "kaas-r2-cluster-ca"
+                                },
+                                "name": "cluster-ca"
+                            },
+                            {
+                                "name": "credential-0",
+                                "secret": {
+                                    "defaultMode": 288,
+                                    "items": [
+                                        {
+                                            "key": "password",
+                                            "path": "password"
+                                        }
+                                    ],
+                                    "secretName": "kaas-sbx-a-producer"
+                                }
+                            },
+                            {
+                                "name": "credential-1",
+                                "secret": {
+                                    "defaultMode": 288,
+                                    "items": [
+                                        {
+                                            "key": "password",
+                                            "path": "password"
+                                        }
+                                    ],
+                                    "secretName": "kaas-sbx-a-consumer"
+                                }
+                            },
+                            {
+                                "name": "credential-2",
+                                "secret": {
+                                    "defaultMode": 288,
+                                    "items": [
+                                        {
+                                            "key": "password",
+                                            "path": "password"
+                                        }
+                                    ],
+                                    "secretName": "kaas-sbx-b-producer"
+                                }
+                            },
+                            {
+                                "name": "credential-3",
+                                "secret": {
+                                    "defaultMode": 288,
+                                    "items": [
+                                        {
+                                            "key": "password",
+                                            "path": "password"
+                                        }
+                                    ],
+                                    "secretName": "kaas-sbx-b-consumer"
+                                }
+                            },
+                            {
+                                "configMap": {
+                                    "defaultMode": 420,
+                                    "name": "kaas-r2-client-arming-351528d-r2"
+                                },
+                                "name": "arming"
+                            },
+                            {
+                                "configMap": {
+                                    "defaultMode": 420,
+                                    "name": "kaas-r2-execution-351528d-r2"
+                                },
+                                "name": "execution"
+                            },
+                            {
+                                "name": "writer",
+                                "secret": {
+                                    "defaultMode": 288,
+                                    "items": [
+                                        {
+                                            "key": "writer-token",
+                                            "path": "writer-token"
+                                        }
+                                    ],
+                                    "secretName": "kaas-r2-evidence-writer"
+                                }
+                            },
+                            {
+                                "configMap": {
+                                    "defaultMode": 420,
+                                    "items": [
+                                        {
+                                            "key": "service-ca.crt",
+                                            "path": "service-ca.crt"
+                                        }
+                                    ],
+                                    "name": "kaas-r2-sink-trust"
+                                },
+                                "name": "sink-trust"
+                            },
+                            {
+                                "emptyDir": {
+                                    "sizeLimit": "16Mi"
+                                },
+                                "name": "tmp"
+                            }
+                        ]
+                    }
+                }
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": "2026-11-26T14:31:53Z",
+                        "lastTransitionTime": "2026-11-26T14:31:53Z",
+                        "message": "Job resumed",
+                        "reason": "JobResumed",
+                        "status": "False",
+                        "type": "Suspended"
+                    },
+                    {
+                        "lastProbeTime": "2026-11-26T14:32:18Z",
+                        "lastTransitionTime": "2026-11-26T14:32:18Z",
+                        "message": "Job has reached the specified backoff limit",
+                        "reason": "BackoffLimitExceeded",
+                        "status": "True",
+                        "type": "FailureTarget"
+                    },
+                    {
+                        "lastProbeTime": "2026-11-26T14:32:18Z",
+                        "lastTransitionTime": "2026-11-26T14:32:18Z",
+                        "message": "Job has reached the specified backoff limit",
+                        "reason": "BackoffLimitExceeded",
+                        "status": "True",
+                        "type": "Failed"
+                    }
+                ],
+                "failed": 1,
+                "ready": 0,
+                "startTime": "2026-11-26T14:31:53Z",
+                "terminating": 0,
+                "uncountedTerminatedPods": {}
+            }
+        },
+        {
+            "apiVersion": "batch/v1",
+            "kind": "Job",
+            "metadata": {
+                "annotations": {
+                    "kaas.example.com/authorized-source": "a85b42854753fbb42eb55aaadbe9fcf7aec21b56",
+                    "kaas.example.com/scope": "Single bounded R2 fixture; no retries"
+                },
+                "creationTimestamp": "2026-11-26T13:08:53Z",
+                "generation": 3,
+                "labels": {
+                    "kaas.example.com/package": "r2-native-disabled"
+                },
+                "name": "kaas-r2-native-client",
+                "namespace": "kaas-demo",
+                "resourceVersion": "1077808",
+                "uid": "a9deb28d-74be-436a-83e3-f4e0995069eb"
+            },
+            "spec": {
+                "activeDeadlineSeconds": 300,
+                "backoffLimit": 0,
+                "completionMode": "NonIndexed",
+                "completions": 1,
+                "manualSelector": false,
+                "parallelism": 1,
+                "podReplacementPolicy": "TerminatingOrFailed",
+                "selector": {
+                    "matchLabels": {
+                        "batch.kubernetes.io/controller-uid": "a9deb28d-74be-436a-83e3-f4e0995069eb"
+                    }
+                },
+                "suspend": true,
+                "template": {
+                    "metadata": {
+                        "labels": {
+                            "batch.kubernetes.io/controller-uid": "a9deb28d-74be-436a-83e3-f4e0995069eb",
+                            "batch.kubernetes.io/job-name": "kaas-r2-native-client",
+                            "controller-uid": "a9deb28d-74be-436a-83e3-f4e0995069eb",
+                            "job-name": "kaas-r2-native-client",
+                            "kaas.example.com/r2-component": "client",
+                            "kaas.example.com/r2-runner": "trusted"
+                        }
+                    },
+                    "spec": {
+                        "automountServiceAccountToken": false,
+                        "containers": [
+                            {
+                                "command": [
+                                    "/opt/r2/client-guard.sh"
+                                ],
+                                "env": [
+                                    {
+                                        "name": "K6_NO_USAGE_REPORT",
+                                        "value": "true"
+                                    },
+                                    {
+                                        "name": "SSL_CERT_FILE",
+                                        "value": "/evidence-trust/service-ca.crt"
+                                    },
+                                    {
+                                        "name": "HOME",
+                                        "value": "/tmp"
+                                    }
+                                ],
+                                "image": "image-registry.openshift-image-registry.svc:5000/kaas-demo/kaas-r2-runner@sha256:dec50714130f1244403f8bb1a79847dc28821b7e87a02507bbd923d081fe2d8d",
+                                "imagePullPolicy": "IfNotPresent",
+                                "name": "native-client",
+                                "resources": {
+                                    "limits": {
+                                        "cpu": "500m",
+                                        "memory": "512Mi"
+                                    },
+                                    "requests": {
+                                        "cpu": "100m",
+                                        "memory": "128Mi"
+                                    }
+                                },
+                                "securityContext": {
+                                    "allowPrivilegeEscalation": false,
+                                    "capabilities": {
+                                        "drop": [
+                                            "ALL"
+                                        ]
+                                    },
+                                    "readOnlyRootFilesystem": true,
+                                    "runAsNonRoot": true,
+                                    "seccompProfile": {
+                                        "type": "RuntimeDefault"
+                                    }
+                                },
+                                "terminationMessagePath": "/dev/termination-log",
+                                "terminationMessagePolicy": "File",
+                                "volumeMounts": [
+                                    {
+                                        "mountPath": "/credentials/cluster-ca",
+                                        "name": "cluster-ca",
+                                        "readOnly": true
+                                    },
+                                    {
+                                        "mountPath": "/credentials/kaas-sbx-a-producer",
+                                        "name": "credential-0",
+                                        "readOnly": true
+                                    },
+                                    {
+                                        "mountPath": "/credentials/kaas-sbx-a-consumer",
+                                        "name": "credential-1",
+                                        "readOnly": true
+                                    },
+                                    {
+                                        "mountPath": "/credentials/kaas-sbx-b-producer",
+                                        "name": "credential-2",
+                                        "readOnly": true
+                                    },
+                                    {
+                                        "mountPath": "/credentials/kaas-sbx-b-consumer",
+                                        "name": "credential-3",
+                                        "readOnly": true
+                                    },
+                                    {
+                                        "mountPath": "/arming",
+                                        "name": "arming",
+                                        "readOnly": true
+                                    },
+                                    {
+                                        "mountPath": "/r2/runtime.json",
+                                        "name": "execution",
+                                        "readOnly": true,
+                                        "subPath": "runtime.json"
+                                    },
+                                    {
+                                        "mountPath": "/evidence-auth",
+                                        "name": "writer",
+                                        "readOnly": true
+                                    },
+                                    {
+                                        "mountPath": "/evidence-trust",
+                                        "name": "sink-trust",
+                                        "readOnly": true
+                                    },
+                                    {
+                                        "mountPath": "/tmp",
+                                        "name": "tmp"
+                                    }
+                                ]
+                            }
+                        ],
+                        "dnsPolicy": "ClusterFirst",
+                        "nodeSelector": {
+                            "kubernetes.io/arch": "amd64",
+                            "kubernetes.io/os": "linux"
+                        },
+                        "restartPolicy": "Never",
+                        "schedulerName": "default-scheduler",
+                        "securityContext": {},
+                        "serviceAccount": "kaas-r2-harness",
+                        "serviceAccountName": "kaas-r2-harness",
+                        "terminationGracePeriodSeconds": 0,
+                        "volumes": [
+                            {
+                                "configMap": {
+                                    "defaultMode": 292,
+                                    "items": [
+                                        {
+                                            "key": "ca.crt",
+                                            "path": "ca.crt"
+                                        }
+                                    ],
+                                    "name": "kaas-r2-cluster-ca"
+                                },
+                                "name": "cluster-ca"
+                            },
+                            {
+                                "name": "credential-0",
+                                "secret": {
+                                    "defaultMode": 288,
+                                    "items": [
+                                        {
+                                            "key": "password",
+                                            "path": "password"
+                                        }
+                                    ],
+                                    "secretName": "kaas-sbx-a-producer"
+                                }
+                            },
+                            {
+                                "name": "credential-1",
+                                "secret": {
+                                    "defaultMode": 288,
+                                    "items": [
+                                        {
+                                            "key": "password",
+                                            "path": "password"
+                                        }
+                                    ],
+                                    "secretName": "kaas-sbx-a-consumer"
+                                }
+                            },
+                            {
+                                "name": "credential-2",
+                                "secret": {
+                                    "defaultMode": 288,
+                                    "items": [
+                                        {
+                                            "key": "password",
+                                            "path": "password"
+                                        }
+                                    ],
+                                    "secretName": "kaas-sbx-b-producer"
+                                }
+                            },
+                            {
+                                "name": "credential-3",
+                                "secret": {
+                                    "defaultMode": 288,
+                                    "items": [
+                                        {
+                                            "key": "password",
+                                            "path": "password"
+                                        }
+                                    ],
+                                    "secretName": "kaas-sbx-b-consumer"
+                                }
+                            },
+                            {
+                                "configMap": {
+                                    "defaultMode": 420,
+                                    "name": "kaas-r2-client-bounded-arming-20261126"
+                                },
+                                "name": "arming"
+                            },
+                            {
+                                "configMap": {
+                                    "defaultMode": 420,
+                                    "name": "kaas-r2-execution-bounded-20261126"
+                                },
+                                "name": "execution"
+                            },
+                            {
+                                "name": "writer",
+                                "secret": {
+                                    "defaultMode": 288,
+                                    "items": [
+                                        {
+                                            "key": "writer-token",
+                                            "path": "writer-token"
+                                        }
+                                    ],
+                                    "secretName": "kaas-r2-evidence-writer"
+                                }
+                            },
+                            {
+                                "configMap": {
+                                    "defaultMode": 420,
+                                    "items": [
+                                        {
+                                            "key": "service-ca.crt",
+                                            "path": "service-ca.crt"
+                                        }
+                                    ],
+                                    "name": "kaas-r2-sink-trust"
+                                },
+                                "name": "sink-trust"
+                            },
+                            {
+                                "emptyDir": {
+                                    "sizeLimit": "16Mi"
+                                },
+                                "name": "tmp"
+                            }
+                        ]
+                    }
+                }
+            },
+            "status": {
+                "completionTime": "2026-11-26T13:09:06Z",
+                "conditions": [
+                    {
+                        "lastProbeTime": "2026-11-26T13:08:54Z",
+                        "lastTransitionTime": "2026-11-26T13:08:54Z",
+                        "message": "Job resumed",
+                        "reason": "JobResumed",
+                        "status": "False",
+                        "type": "Suspended"
+                    },
+                    {
+                        "lastProbeTime": "2026-11-26T13:09:06Z",
+                        "lastTransitionTime": "2026-11-26T13:09:06Z",
+                        "message": "Reached expected number of succeeded pods",
+                        "reason": "CompletionsReached",
+                        "status": "True",
+                        "type": "SuccessCriteriaMet"
+                    },
+                    {
+                        "lastProbeTime": "2026-11-26T13:09:06Z",
+                        "lastTransitionTime": "2026-11-26T13:09:06Z",
+                        "message": "Reached expected number of succeeded pods",
+                        "reason": "CompletionsReached",
+                        "status": "True",
+                        "type": "Complete"
+                    }
+                ],
+                "ready": 0,
+                "startTime": "2026-11-26T13:08:54Z",
+                "succeeded": 1,
+                "terminating": 0,
+                "uncountedTerminatedPods": {}
+            }
+        },
+        {
+            "apiVersion": "batch/v1",
+            "kind": "Job",
+            "metadata": {
+                "annotations": {
+                    "kaas.example.com/authorized-source": "02e2e2fed7db0c0e42072ef245e104fb6167b193",
+                    "kaas.example.com/scope": "Single bounded R2 fixture; no retries"
+                },
+                "creationTimestamp": "2026-11-26T13:49:04Z",
+                "generation": 3,
+                "labels": {
+                    "kaas.example.com/package": "r2-native-disabled"
+                },
+                "name": "kaas-r2-native-client-02e2e2f-r2",
+                "namespace": "kaas-demo",
+                "resourceVersion": "1090643",
+                "uid": "21fa27ff-9fa4-45f5-b157-b1bd89a394e6"
+            },
+            "spec": {
+                "activeDeadlineSeconds": 300,
+                "backoffLimit": 0,
+                "completionMode": "NonIndexed",
+                "completions": 1,
+                "manualSelector": false,
+                "parallelism": 1,
+                "podReplacementPolicy": "TerminatingOrFailed",
+                "selector": {
+                    "matchLabels": {
+                        "batch.kubernetes.io/controller-uid": "21fa27ff-9fa4-45f5-b157-b1bd89a394e6"
+                    }
+                },
+                "suspend": true,
+                "template": {
+                    "metadata": {
+                        "labels": {
+                            "batch.kubernetes.io/controller-uid": "21fa27ff-9fa4-45f5-b157-b1bd89a394e6",
+                            "batch.kubernetes.io/job-name": "kaas-r2-native-client-02e2e2f-r2",
+                            "controller-uid": "21fa27ff-9fa4-45f5-b157-b1bd89a394e6",
+                            "job-name": "kaas-r2-native-client-02e2e2f-r2",
+                            "kaas.example.com/r2-component": "client",
+                            "kaas.example.com/r2-runner": "trusted"
+                        }
+                    },
+                    "spec": {
+                        "automountServiceAccountToken": false,
+                        "containers": [
+                            {
+                                "command": [
+                                    "/opt/r2/client-guard.sh"
+                                ],
+                                "env": [
+                                    {
+                                        "name": "K6_NO_USAGE_REPORT",
+                                        "value": "true"
+                                    },
+                                    {
+                                        "name": "SSL_CERT_FILE",
+                                        "value": "/evidence-trust/service-ca.crt"
+                                    },
+                                    {
+                                        "name": "HOME",
+                                        "value": "/tmp"
+                                    }
+                                ],
+                                "image": "image-registry.openshift-image-registry.svc:5000/kaas-demo/kaas-r2-runner-02e2e2f@sha256:d82a1444de832a824a135d66eef9c7486d8587299b54b5c490bccc194c42dabe",
+                                "imagePullPolicy": "IfNotPresent",
+                                "name": "native-client",
+                                "resources": {
+                                    "limits": {
+                                        "cpu": "500m",
+                                        "memory": "512Mi"
+                                    },
+                                    "requests": {
+                                        "cpu": "100m",
+                                        "memory": "128Mi"
+                                    }
+                                },
+                                "securityContext": {
+                                    "allowPrivilegeEscalation": false,
+                                    "capabilities": {
+                                        "drop": [
+                                            "ALL"
+                                        ]
+                                    },
+                                    "readOnlyRootFilesystem": true,
+                                    "runAsNonRoot": true,
+                                    "seccompProfile": {
+                                        "type": "RuntimeDefault"
+                                    }
+                                },
+                                "terminationMessagePath": "/dev/termination-log",
+                                "terminationMessagePolicy": "File",
+                                "volumeMounts": [
+                                    {
+                                        "mountPath": "/credentials/cluster-ca",
+                                        "name": "cluster-ca",
+                                        "readOnly": true
+                                    },
+                                    {
+                                        "mountPath": "/credentials/kaas-sbx-a-producer",
+                                        "name": "credential-0",
+                                        "readOnly": true
+                                    },
+                                    {
+                                        "mountPath": "/credentials/kaas-sbx-a-consumer",
+                                        "name": "credential-1",
+                                        "readOnly": true
+                                    },
+                                    {
+                                        "mountPath": "/credentials/kaas-sbx-b-producer",
+                                        "name": "credential-2",
+                                        "readOnly": true
+                                    },
+                                    {
+                                        "mountPath": "/credentials/kaas-sbx-b-consumer",
+                                        "name": "credential-3",
+                                        "readOnly": true
+                                    },
+                                    {
+                                        "mountPath": "/arming",
+                                        "name": "arming",
+                                        "readOnly": true
+                                    },
+                                    {
+                                        "mountPath": "/r2/runtime.json",
+                                        "name": "execution",
+                                        "readOnly": true,
+                                        "subPath": "runtime.json"
+                                    },
+                                    {
+                                        "mountPath": "/evidence-auth",
+                                        "name": "writer",
+                                        "readOnly": true
+                                    },
+                                    {
+                                        "mountPath": "/evidence-trust",
+                                        "name": "sink-trust",
+                                        "readOnly": true
+                                    },
+                                    {
+                                        "mountPath": "/tmp",
+                                        "name": "tmp"
+                                    }
+                                ]
+                            }
+                        ],
+                        "dnsPolicy": "ClusterFirst",
+                        "nodeSelector": {
+                            "kubernetes.io/arch": "amd64",
+                            "kubernetes.io/os": "linux"
+                        },
+                        "restartPolicy": "Never",
+                        "schedulerName": "default-scheduler",
+                        "securityContext": {},
+                        "serviceAccount": "kaas-r2-harness",
+                        "serviceAccountName": "kaas-r2-harness",
+                        "terminationGracePeriodSeconds": 0,
+                        "volumes": [
+                            {
+                                "configMap": {
+                                    "defaultMode": 292,
+                                    "items": [
+                                        {
+                                            "key": "ca.crt",
+                                            "path": "ca.crt"
+                                        }
+                                    ],
+                                    "name": "kaas-r2-cluster-ca"
+                                },
+                                "name": "cluster-ca"
+                            },
+                            {
+                                "name": "credential-0",
+                                "secret": {
+                                    "defaultMode": 288,
+                                    "items": [
+                                        {
+                                            "key": "password",
+                                            "path": "password"
+                                        }
+                                    ],
+                                    "secretName": "kaas-sbx-a-producer"
+                                }
+                            },
+                            {
+                                "name": "credential-1",
+                                "secret": {
+                                    "defaultMode": 288,
+                                    "items": [
+                                        {
+                                            "key": "password",
+                                            "path": "password"
+                                        }
+                                    ],
+                                    "secretName": "kaas-sbx-a-consumer"
+                                }
+                            },
+                            {
+                                "name": "credential-2",
+                                "secret": {
+                                    "defaultMode": 288,
+                                    "items": [
+                                        {
+                                            "key": "password",
+                                            "path": "password"
+                                        }
+                                    ],
+                                    "secretName": "kaas-sbx-b-producer"
+                                }
+                            },
+                            {
+                                "name": "credential-3",
+                                "secret": {
+                                    "defaultMode": 288,
+                                    "items": [
+                                        {
+                                            "key": "password",
+                                            "path": "password"
+                                        }
+                                    ],
+                                    "secretName": "kaas-sbx-b-consumer"
+                                }
+                            },
+                            {
+                                "configMap": {
+                                    "defaultMode": 420,
+                                    "name": "kaas-r2-client-arming-02e2e2f-r2"
+                                },
+                                "name": "arming"
+                            },
+                            {
+                                "configMap": {
+                                    "defaultMode": 420,
+                                    "name": "kaas-r2-execution-02e2e2f-r2"
+                                },
+                                "name": "execution"
+                            },
+                            {
+                                "name": "writer",
+                                "secret": {
+                                    "defaultMode": 288,
+                                    "items": [
+                                        {
+                                            "key": "writer-token",
+                                            "path": "writer-token"
+                                        }
+                                    ],
+                                    "secretName": "kaas-r2-evidence-writer"
+                                }
+                            },
+                            {
+                                "configMap": {
+                                    "defaultMode": 420,
+                                    "items": [
+                                        {
+                                            "key": "service-ca.crt",
+                                            "path": "service-ca.crt"
+                                        }
+                                    ],
+                                    "name": "kaas-r2-sink-trust"
+                                },
+                                "name": "sink-trust"
+                            },
+                            {
+                                "emptyDir": {
+                                    "sizeLimit": "16Mi"
+                                },
+                                "name": "tmp"
+                            }
+                        ]
+                    }
+                }
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": "2026-11-26T13:49:04Z",
+                        "lastTransitionTime": "2026-11-26T13:49:04Z",
+                        "message": "Job resumed",
+                        "reason": "JobResumed",
+                        "status": "False",
+                        "type": "Suspended"
+                    },
+                    {
+                        "lastProbeTime": "2026-11-26T13:49:14Z",
+                        "lastTransitionTime": "2026-11-26T13:49:14Z",
+                        "message": "Job has reached the specified backoff limit",
+                        "reason": "BackoffLimitExceeded",
+                        "status": "True",
+                        "type": "FailureTarget"
+                    },
+                    {
+                        "lastProbeTime": "2026-11-26T13:49:14Z",
+                        "lastTransitionTime": "2026-11-26T13:49:14Z",
+                        "message": "Job has reached the specified backoff limit",
+                        "reason": "BackoffLimitExceeded",
+                        "status": "True",
+                        "type": "Failed"
+                    }
+                ],
+                "failed": 1,
+                "ready": 0,
+                "startTime": "2026-11-26T13:49:04Z",
+                "terminating": 0,
+                "uncountedTerminatedPods": {}
+            }
+        },
+        {
+            "apiVersion": "apps/v1",
+            "kind": "Deployment",
+            "metadata": {
+                "annotations": {
+                    "deployment.kubernetes.io/revision": "3",
+                    "kaas.example.com/authorization": "user-authorized sink only 2026-11-26; client and fixture disabled"
+                },
+                "creationTimestamp": "2026-11-26T11:57:43Z",
+                "generation": 3,
+                "labels": {
+                    "kaas.example.com/package": "r2-native-disabled"
+                },
+                "name": "kaas-r2-evidence",
+                "namespace": "kaas-demo",
+                "resourceVersion": "1103477",
+                "uid": "83db3eda-9250-404b-8283-36762b151c56"
+            },
+            "spec": {
+                "progressDeadlineSeconds": 600,
+                "replicas": 1,
+                "revisionHistoryLimit": 10,
+                "selector": {
+                    "matchLabels": {
+                        "kaas.example.com/r2-component": "evidence"
+                    }
+                },
+                "strategy": {
+                    "type": "Recreate"
+                },
+                "template": {
+                    "metadata": {
+                        "annotations": {
+                            "kaas.example.com/execution": "351528d-retest-20261126"
+                        },
+                        "labels": {
+                            "kaas.example.com/r2-component": "evidence"
+                        }
+                    },
+                    "spec": {
+                        "automountServiceAccountToken": false,
+                        "containers": [
+                            {
+                                "command": [
+                                    "/opt/r2-sink/sink-guard.sh"
+                                ],
+                                "env": [
+                                    {
+                                        "name": "PYTHONDONTWRITEBYTECODE",
+                                        "value": "1"
+                                    },
+                                    {
+                                        "name": "HOME",
+                                        "value": "/tmp"
+                                    }
+                                ],
+                                "image": "image-registry.openshift-image-registry.svc:5000/kaas-demo/kaas-r2-sink@sha256:f730c89baceda0f8a536ab9c94696b768c996fe55d60202300095b4d450efa25",
+                                "imagePullPolicy": "IfNotPresent",
+                                "name": "evidence",
+                                "ports": [
+                                    {
+                                        "containerPort": 8443,
+                                        "name": "https",
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "readinessProbe": {
+                                    "failureThreshold": 3,
+                                    "initialDelaySeconds": 1,
+                                    "periodSeconds": 3,
+                                    "successThreshold": 1,
+                                    "tcpSocket": {
+                                        "port": "https"
+                                    },
+                                    "timeoutSeconds": 1
+                                },
+                                "resources": {
+                                    "limits": {
+                                        "cpu": "500m",
+                                        "memory": "256Mi"
+                                    },
+                                    "requests": {
+                                        "cpu": "100m",
+                                        "memory": "128Mi"
+                                    }
+                                },
+                                "securityContext": {
+                                    "allowPrivilegeEscalation": false,
+                                    "capabilities": {
+                                        "drop": [
+                                            "ALL"
+                                        ]
+                                    },
+                                    "readOnlyRootFilesystem": true,
+                                    "runAsNonRoot": true,
+                                    "seccompProfile": {
+                                        "type": "RuntimeDefault"
+                                    }
+                                },
+                                "terminationMessagePath": "/dev/termination-log",
+                                "terminationMessagePolicy": "File",
+                                "volumeMounts": [
+                                    {
+                                        "mountPath": "/arming",
+                                        "name": "arming",
+                                        "readOnly": true
+                                    },
+                                    {
+                                        "mountPath": "/etc/r2-sink",
+                                        "name": "config",
+                                        "readOnly": true
+                                    },
+                                    {
+                                        "mountPath": "/auth",
+                                        "name": "writer",
+                                        "readOnly": true
+                                    },
+                                    {
+                                        "mountPath": "/owner-auth",
+                                        "name": "owner",
+                                        "readOnly": true
+                                    },
+                                    {
+                                        "mountPath": "/tls",
+                                        "name": "tls",
+                                        "readOnly": true
+                                    },
+                                    {
+                                        "mountPath": "/var/lib/r2",
+                                        "name": "data"
+                                    },
+                                    {
+                                        "mountPath": "/tmp",
+                                        "name": "tmp"
+                                    }
+                                ]
+                            }
+                        ],
+                        "dnsPolicy": "ClusterFirst",
+                        "nodeSelector": {
+                            "kubernetes.io/arch": "amd64",
+                            "kubernetes.io/os": "linux"
+                        },
+                        "restartPolicy": "Always",
+                        "schedulerName": "default-scheduler",
+                        "securityContext": {},
+                        "serviceAccount": "kaas-r2-evidence",
+                        "serviceAccountName": "kaas-r2-evidence",
+                        "terminationGracePeriodSeconds": 10,
+                        "volumes": [
+                            {
+                                "configMap": {
+                                    "defaultMode": 420,
+                                    "name": "kaas-r2-sink-arming"
+                                },
+                                "name": "arming"
+                            },
+                            {
+                                "configMap": {
+                                    "defaultMode": 420,
+                                    "name": "kaas-r2-sink-config-351528d-retest"
+                                },
+                                "name": "config"
+                            },
+                            {
+                                "name": "writer",
+                                "secret": {
+                                    "defaultMode": 288,
+                                    "items": [
+                                        {
+                                            "key": "writer-token",
+                                            "path": "writer-token"
+                                        }
+                                    ],
+                                    "secretName": "kaas-r2-evidence-writer"
+                                }
+                            },
+                            {
+                                "name": "owner",
+                                "secret": {
+                                    "defaultMode": 288,
+                                    "items": [
+                                        {
+                                            "key": "owner-token",
+                                            "path": "owner-token"
+                                        }
+                                    ],
+                                    "secretName": "kaas-r2-evidence-owner"
+                                }
+                            },
+                            {
+                                "name": "tls",
+                                "secret": {
+                                    "defaultMode": 288,
+                                    "secretName": "kaas-r2-sink-tls"
+                                }
+                            },
+                            {
+                                "name": "data",
+                                "persistentVolumeClaim": {
+                                    "claimName": "kaas-r2-native-evidence"
+                                }
+                            },
+                            {
+                                "emptyDir": {
+                                    "sizeLimit": "16Mi"
+                                },
+                                "name": "tmp"
+                            }
+                        ]
+                    }
+                }
+            },
+            "status": {
+                "availableReplicas": 1,
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-11-26T14:30:59Z",
+                        "lastUpdateTime": "2026-11-26T14:30:59Z",
+                        "message": "Deployment has minimum availability.",
+                        "reason": "MinimumReplicasAvailable",
+                        "status": "True",
+                        "type": "Available"
+                    },
+                    {
+                        "lastTransitionTime": "2026-11-26T11:57:43Z",
+                        "lastUpdateTime": "2026-11-26T14:30:59Z",
+                        "message": "ReplicaSet \"kaas-r2-evidence-67f7cc9d77\" has successfully progressed.",
+                        "reason": "NewReplicaSetAvailable",
+                        "status": "True",
+                        "type": "Progressing"
+                    }
+                ],
+                "observedGeneration": 3,
+                "readyReplicas": 1,
+                "replicas": 1,
+                "updatedReplicas": 1
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "PersistentVolumeClaim",
+            "metadata": {
+                "annotations": {
+                    "kaas.example.com/retention": "7days; verified shared-workspace export before approved cleanup",
+                    "kaas.example.com/status": "BOUND_SINK_MOUNT_PERMISSION_VERIFIED",
+                    "pv.kubernetes.io/bind-completed": "yes",
+                    "pv.kubernetes.io/bound-by-controller": "yes",
+                    "volume.beta.kubernetes.io/storage-provisioner": "ebs.csi.aws.com",
+                    "volume.kubernetes.io/selected-node": "ip-10-0-50-65.us-east-2.compute.internal",
+                    "volume.kubernetes.io/storage-provisioner": "ebs.csi.aws.com"
+                },
+                "creationTimestamp": "2026-11-26T11:42:57Z",
+                "finalizers": [
+                    "kubernetes.io/pvc-protection"
+                ],
+                "labels": {
+                    "kaas.example.com/package": "r2-native-disabled"
+                },
+                "name": "kaas-r2-native-evidence",
+                "namespace": "kaas-demo",
+                "resourceVersion": "1057001",
+                "uid": "d2cd40eb-6e4b-48d2-a2af-d4b5d10879a2"
+            },
+            "spec": {
+                "accessModes": [
+                    "ReadWriteOnce"
+                ],
+                "resources": {
+                    "requests": {
+                        "storage": "1Gi"
+                    }
+                },
+                "storageClassName": "gp3-csi",
+                "volumeMode": "Filesystem",
+                "volumeName": "pvc-d2cd40eb-6e4b-48d2-a2af-d4b5d10879a2"
+            },
+            "status": {
+                "accessModes": [
+                    "ReadWriteOnce"
+                ],
+                "capacity": {
+                    "storage": "1Gi"
+                },
+                "phase": "Bound"
+            }
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}

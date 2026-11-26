@@ -1,0 +1,11 @@
+{
+  "id": "R2-LIVE-03",
+  "status": "OPEN",
+  "boundary_verified": "Second negative case kaas-sbx-a-cross-topic-read starts, then fixture stops before group_state, consumer-open or denial_result",
+  "observed_stop_reason": "client_or_evidence_failure",
+  "interpretation": "Observation/baseline path failed before attempted forbidden read; not evidence of forbidden read access or lost messages",
+  "source_inspected": "engine.mjs negative calls state(group,topic) before make consumer; binder groupState invokes native snapshot(topic,group); native snapshot uses group-owner consumer to fetch group offsets for the supplied topic",
+  "source_supported_hypothesis": "Cross-topic case pairs tenant-A group with tenant-B topic; topic authorization can block that baseline Admin request. Actual underlying native error was not retained, so exact error remains unconfirmed.",
+  "next_targeted_work": "Separate authorized group baseline from forbidden target-topic observation without granting cross-tenant ACLs or fabricating offsets; retain typed-denial and final-offset accounting, add regression and validate offline before another authorized attempt",
+  "no_source_fix_or_second_live_attempt": true
+}

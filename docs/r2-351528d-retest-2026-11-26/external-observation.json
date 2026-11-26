@@ -1,0 +1,12 @@
+{
+  "kind": "EXTERNAL_JOB_OBSERVATION",
+  "elapsed_ms": 27503,
+  "job_start_UTC": "2026-11-26T14:31:53Z",
+  "container_finish_UTC": "2026-11-26T14:32:16Z",
+  "container_exit_code": 108,
+  "job_uid": "ad6736b3-8df4-41f8-bc94-2adb6a7d4a0e",
+  "pod_uid": "8f7ae0a7-91a7-4a00-a231-c3a8284afcb0",
+  "actual_imageID": "image-registry.openshift-image-registry.svc:5000/kaas-demo/kaas-r2-runner-351528d@sha256:7773f3ed708cbf8ab07703ed978afd478f05d9afcb13f888a27ef4159124b1af",
+  "Job_outcome": "Failed",
+  "physical_attempt_id": "351528d-retest-20261126"
+}

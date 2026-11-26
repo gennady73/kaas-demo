@@ -1,0 +1,15 @@
+{
+  "status": "REVISED_RUNNER_BUILD_VERIFIED",
+  "source_commit": "351528d83b1b95c5697f9322c7dcf5491a302625",
+  "build": "kaas-r2-runner-351528d-1",
+  "start_UTC": "2026-11-26T14:27:01Z",
+  "completion_UTC": "2026-11-26T14:29:11Z",
+  "image_digest": "sha256:7773f3ed708cbf8ab07703ed978afd478f05d9afcb13f888a27ef4159124b1af",
+  "image_reference": "image-registry.openshift-image-registry.svc:5000/kaas-demo/kaas-r2-runner-351528d@sha256:7773f3ed708cbf8ab07703ed978afd478f05d9afcb13f888a27ef4159124b1af",
+  "binary_sha256": "e0294b2a2916408eb61805fbbeffcf785066c75105f665b61c325e7401ee3be3",
+  "runtime_manifest_sha256": "a8ff40449e28da9f46aded0bca19b669c4d5dc8c2fa53fc5fc3d9e396270877e",
+  "native_files_verified": 41,
+  "verification": "Exact source fingerprints/archive readback, actual build checksum/native import and registry metadata agreement",
+  "sink_image_unchanged": true,
+  "client_execution": "NOT_YET_RETESTED"
+}

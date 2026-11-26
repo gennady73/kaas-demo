@@ -1,0 +1,71 @@
+{
+  "status": "R2_RETEST_INCOMPLETE_POSITIVE_DELIVERY_RECONCILED",
+  "source_commit": "351528d83b1b95c5697f9322c7dcf5491a302625",
+  "physical_attempt_id": "351528d-retest-20261126",
+  "logical_plan_run_id": "r2-native-20261125",
+  "single_attempt": true,
+  "image_reference": "image-registry.openshift-image-registry.svc:5000/kaas-demo/kaas-r2-runner-351528d@sha256:7773f3ed708cbf8ab07703ed978afd478f05d9afcb13f888a27ef4159124b1af",
+  "start_UTC": "2026-11-26T14:31:53Z",
+  "container_finish_UTC": "2026-11-26T14:32:16Z",
+  "native_reported_duration_ms": 23083,
+  "external_elapsed_ms": 27503,
+  "maximum_seconds": 300,
+  "forced_stop": false,
+  "container_exit_code": 108,
+  "Job_outcome": "Failed",
+  "positive_messages": {
+    "planned": 16,
+    "attempted": 16,
+    "acknowledged": 16,
+    "consumed": 16,
+    "durable_receipt_acks": 16,
+    "commits": 16,
+    "missing": 0,
+    "duplicate_receipts": 0,
+    "checksum_match": true
+  },
+  "negative_cases": {
+    "planned": 8,
+    "passed": 1,
+    "stopped_case": "kaas-sbx-a-cross-topic-read",
+    "unstarted": 6
+  },
+  "accounting": {
+    "attempted_value_bytes": 17000,
+    "positive_acknowledged_value_bytes": 16000,
+    "definitively_rejected_value_bytes": 1000,
+    "unresolved_value_bytes": 0,
+    "unattempted_planned_value_bytes": 3000
+  },
+  "all_four_external_log_ends": 4,
+  "all_four_external_committed_offsets": 4,
+  "all_four_external_group_members": 0,
+  "R2_LIVE_01": "LIVE_CONFIRMED_FIXED: initial empty-topic positions and all four positive cases succeeded",
+  "R2_LIVE_02": "LIVE_CONFIRMED_FIXED: incomplete fixture exit108/JobFailed",
+  "R2_LIVE_03": "OPEN: second negative-case baseline observation failure; exact native error unretained",
+  "evidence_event_count": 140,
+  "export_sha256": "1b9125375cf3bd06c58f16b146edc77425f4d275a855b0473201ba64df528016",
+  "byte_chain_integrity": "VERIFIED",
+  "semantic_audit": "NATIVE_INCOMPLETE; four positive cases and one negative case matched",
+  "cleanup": "Native reports all handles closed; container termination independently observed; all three Jobs suspended; separate semantic complete-fixture cleanup dimension remains INCOMPLETE",
+  "custody": {
+    "sandbox_days": 7,
+    "retain_until_at_least_UTC": "2026-12-03T14:32:16+00:00",
+    "sandbox_PVC": "kaas-demo/kaas-r2-native-evidence",
+    "database": "/var/lib/r2/evidence-351528d-retest.sqlite",
+    "second_copy": "/home/gunger/Projects/kaas-solution/docs/testing/runs/r2-native-351528d-retest-20261126",
+    "export_sha256": "1b9125375cf3bd06c58f16b146edc77425f4d275a855b0473201ba64df528016",
+    "event_count": 140,
+    "workspace_copy_matches_sink_seal": true,
+    "previous_two_sealed_exports_preserved": true,
+    "credentials_exported": false,
+    "automatic_cleanup": false
+  },
+  "publication": "LOCAL_UNCOMMITTED",
+  "limitations": [
+    "Not full R2 acceptance",
+    "No capacity, 2MiB, recovery or production qualification",
+    "One bounded fixture, not five minutes of sustained traffic",
+    "No automatic retry or extra live execution"
+  ]
+}

@@ -1,0 +1,99 @@
+
+         /\      Grafana   /‾‾/
+    /\  /  \     |\  __   /  /
+   /  \/    \    | |/ /  /   ‾‾\
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/
+
+
+     execution: local
+        script: /r2/entrypoint.js
+        output: -
+
+     scenarios: (100.00%) 1 scenario, 1 max VUs, 4m30s max duration (incl. graceful stop):
+              * fixture: 1 iterations shared among 1 VUs (maxDuration: 4m30s)
+
+
+running (0m00.8s), 1/1 VUs, 0 complete and 0 interrupted iterations
+fixture   [   0% ] 1 VUs  0m00.8s/4m30s  0/1 shared iters
+
+running (0m01.8s), 1/1 VUs, 0 complete and 0 interrupted iterations
+fixture   [   0% ] 1 VUs  0m01.8s/4m30s  0/1 shared iters
+
+running (0m02.8s), 1/1 VUs, 0 complete and 0 interrupted iterations
+fixture   [   0% ] 1 VUs  0m02.8s/4m30s  0/1 shared iters
+
+running (0m03.8s), 1/1 VUs, 0 complete and 0 interrupted iterations
+fixture   [   0% ] 1 VUs  0m03.8s/4m30s  0/1 shared iters
+
+running (0m04.8s), 1/1 VUs, 0 complete and 0 interrupted iterations
+fixture   [   0% ] 1 VUs  0m04.8s/4m30s  0/1 shared iters
+
+running (0m05.8s), 1/1 VUs, 0 complete and 0 interrupted iterations
+fixture   [   0% ] 1 VUs  0m05.8s/4m30s  0/1 shared iters
+
+running (0m06.8s), 1/1 VUs, 0 complete and 0 interrupted iterations
+fixture   [   0% ] 1 VUs  0m06.8s/4m30s  0/1 shared iters
+
+running (0m07.8s), 1/1 VUs, 0 complete and 0 interrupted iterations
+fixture   [   0% ] 1 VUs  0m07.8s/4m30s  0/1 shared iters
+
+running (0m08.8s), 1/1 VUs, 0 complete and 0 interrupted iterations
+fixture   [   0% ] 1 VUs  0m08.8s/4m30s  0/1 shared iters
+
+running (0m09.8s), 1/1 VUs, 0 complete and 0 interrupted iterations
+fixture   [   0% ] 1 VUs  0m09.8s/4m30s  0/1 shared iters
+
+running (0m10.8s), 1/1 VUs, 0 complete and 0 interrupted iterations
+fixture   [   0% ] 1 VUs  0m10.8s/4m30s  0/1 shared iters
+
+running (0m11.8s), 1/1 VUs, 0 complete and 0 interrupted iterations
+fixture   [   0% ] 1 VUs  0m11.8s/4m30s  0/1 shared iters
+
+running (0m12.8s), 1/1 VUs, 0 complete and 0 interrupted iterations
+fixture   [   0% ] 1 VUs  0m12.8s/4m30s  0/1 shared iters
+
+running (0m13.8s), 1/1 VUs, 0 complete and 0 interrupted iterations
+fixture   [   0% ] 1 VUs  0m13.8s/4m30s  0/1 shared iters
+
+running (0m14.8s), 1/1 VUs, 0 complete and 0 interrupted iterations
+fixture   [   0% ] 1 VUs  0m14.8s/4m30s  0/1 shared iters
+
+running (0m15.8s), 1/1 VUs, 0 complete and 0 interrupted iterations
+fixture   [   0% ] 1 VUs  0m15.8s/4m30s  0/1 shared iters
+
+running (0m16.8s), 1/1 VUs, 0 complete and 0 interrupted iterations
+fixture   [   0% ] 1 VUs  0m16.8s/4m30s  0/1 shared iters
+
+running (0m17.8s), 1/1 VUs, 0 complete and 0 interrupted iterations
+fixture   [   0% ] 1 VUs  0m17.8s/4m30s  0/1 shared iters
+
+running (0m18.8s), 1/1 VUs, 0 complete and 0 interrupted iterations
+fixture   [   0% ] 1 VUs  0m18.8s/4m30s  0/1 shared iters
+time="2026-11-26T14:32:16Z" level=info msg="{\"run_id\":\"r2-native-20261125\",\"status\":\"NATIVE_INCOMPLETE\",\"duration_ms\":23083,\"cleanup_complete\":true}" source=console
+
+
+  █ TOTAL RESULTS
+
+    HTTP
+    http_req_duration..............: avg=4.51ms min=4.1ms med=4.48ms max=5.97ms p(90)=4.73ms p(95)=4.8ms
+      { expected_response:true }...: avg=4.51ms min=4.1ms med=4.48ms max=5.97ms p(90)=4.73ms p(95)=4.8ms
+    http_req_failed................: 0.00%  0 out of 140
+    http_reqs......................: 140    7.250732/s
+
+    EXECUTION
+    iteration_duration.............: avg=19.3s  min=19.3s med=19.3s  max=19.3s  p(90)=19.3s  p(95)=19.3s
+    iterations.....................: 1      0.051791/s
+    vus............................: 1      min=1        max=1
+    vus_max........................: 1      min=1        max=1
+
+    NETWORK
+    data_received..................: 459 kB 24 kB/s
+    data_sent......................: 370 kB 19 kB/s
+
+
+
+
+running (0m19.5s), 0/1 VUs, 0 complete and 1 interrupted iterations
+fixture ✗ [ 100% ] 1 VUs  0m19.3s/4m30s  1/1 shared iters
+time="2026-11-26T14:32:16Z" level=error msg="test aborted: tenant_fixture_incomplete at default (file:///r2/entrypoint.js:38:54(77))"

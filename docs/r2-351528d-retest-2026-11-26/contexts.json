@@ -1,0 +1,41 @@
+{
+  "runner": {
+    "path": "/tmp/kaas-r2-runner-351528d-contexts/runner-context.tar.gz",
+    "sha256": "f9148896f06e26a27731af177a1873113641383f84840e64065d11cfa7785c79",
+    "bytes": 36656933,
+    "archive_entries_verified": 17,
+    "actual_image_build": "NOT_RUN",
+    "files": {
+      "Dockerfile": "92de2cf0984df8e3f7bf6ffc7b8782dbe7b5ee5a931bd3df8481e2cee7f372ba",
+      "k6": "e0294b2a2916408eb61805fbbeffcf785066c75105f665b61c325e7401ee3be3",
+      "client-guard.sh": "670ca07eea099b3501c48995f7a9c9ddd495534bae29501a6a4cc04566199010",
+      "r2/ascii.mjs": "82cd918785535d42816db487e392933f9421254ad0b784858ad17068fd951740",
+      "r2/audit.mjs": "ac083b0c457354d76ff6e5e6319b4d05ebccc958a94178bee543e16e7bc349f2",
+      "r2/binder.mjs": "ceb660995148a9472f7e9072e7d2b2afb540e43d4cb05b7a2fc9c7273ddf0a93",
+      "r2/engine.mjs": "9dfd82483c4516be3ee017d51454c1a2e1f2bd7a2efaab9cb6a34e783cd35daa",
+      "r2/entrypoint.js": "b4f1d3f555ebf9e16f1d27d3b389b26f0a5e7328ac8777aa05917d85244def5b",
+      "r2/native-policy.mjs": "3ff0aada8bda81fceef96d7beb6a6f3a5b04ff44ac121cd292860b5d27e02bcf",
+      "r2/plan.json": "1810a8b73d29bdd192f7265b3b86a14a7dce3baa8d04d01d9dc3ed4ed487f19a",
+      "r2/projection-lock.mjs": "bf2a1a53d566d00b74115f319f979047d59ed74385635cd2a3f5b0df04b48c22",
+      "r2/source-integrity.mjs": "02de316cb33b5999198bf0de8ccd8c4857204b0519ff6550ff4c69d3d12977ec",
+      "r2/strict-json.mjs": "63b26dea5cd81e04b74fa71dbe70e4567dfd3c0fd039529987aa708ed79a0ae7",
+      "r2/transport.mjs": "54defef5bb8574a6e210872e103052fea4e27ab04923f0329cde28a4af0df80b",
+      "r2/runtime-source-manifest.json": "a8ff40449e28da9f46aded0bca19b669c4d5dc8c2fa53fc5fc3d9e396270877e",
+      "r2/inspect.js": "fe3da5a614b6a01f9a9b603362e4b2dd3308b9cc0b20e954062d98c558ada867"
+    }
+  },
+  "sink": {
+    "path": "/tmp/kaas-r2-runner-351528d-contexts/sink-context.tar.gz",
+    "sha256": "0a0ed052b17f5a2fc56b7833f4ca7e85a5b61c12f4829432bbfc68b8f099b1cf",
+    "bytes": 6649,
+    "archive_entries_verified": 6,
+    "actual_image_build": "NOT_RUN",
+    "files": {
+      "Dockerfile": "aef9a110be39933d6b902a9411cb3c4f38bcf403d0a02b123df623fa5f6a30a5",
+      "sink-guard.sh": "869ff6a6e8cc3dbf67d98508478fcd87344f3cfa4bc7d9211996dfe341e04781",
+      "sink/server.py": "52433378434fc85d5dc54ef6198135a485faa6441fca3e2deec144fcd4ceb04d",
+      "sink/store.py": "510f45b93990a00d54d55cf6e64245d4d36c3752c3a5fbed0c8dad0dc6472e57",
+      "sink/verify_export.py": "94739ff3bbf302de4fb1a76a6935e914dbbb500dd54477b76f7b58d119632396"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "command": "python -m unittest discover -s packaging/r2-native -p test_package.py -v",
+  "tests": 16,
+  "exit_code": 0,
+  "result": "PASS",
+  "initial_failure": "New image reference was updated before embedded runtime image_digest; validator correctly rejected mismatch. Runtime digest aligned and all16passed before launch.",
+  "cluster_operations": false
+}

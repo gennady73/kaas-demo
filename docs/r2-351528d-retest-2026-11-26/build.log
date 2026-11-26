@@ -1,0 +1,104 @@
+Receiving source from STDIN as archive ...
+time="2026-11-26T14:27:27Z" level=info msg="Not using native diff for overlay, this may cause degraded performance for building images: kernel has CONFIG_OVERLAY_FS_REDIRECT_DIR enabled"
+I1126 14:27:27.658531       1 defaults.go:112] Defaulting to storage driver "overlay" with options [mountopt=metacopy=on].
+Caching blobs under "/var/cache/blobs".
+
+Pulling image registry.redhat.io/amq-streams/kafka-42-rhel9@sha256:ce7dc91b664600c6f06e1df3d6b56a4684bb779865d9c28b4df648addd89189d ...
+Trying to pull registry.redhat.io/amq-streams/kafka-42-rhel9@sha256:ce7dc91b664600c6f06e1df3d6b56a4684bb779865d9c28b4df648addd89189d...
+Getting image source signatures
+Copying blob sha256:f6215d8452014177de1c29955bb0edd38f9ae59d3f720975f75450a940b44391
+Copying blob sha256:b02c58b1810d6d9c787b6e23d8ac6f4f454a1969867e2c1d9e78cbe380cfab0a
+Copying config sha256:4016b5f3d4e1c2ef06ac5895c471bb5c893d6b49010cbd8982d6781e83a6928c
+Writing manifest to image destination
+Adding transient rw bind mount for /run/secrets/rhsm
+STEP 1/14: FROM registry.redhat.io/amq-streams/kafka-42-rhel9@sha256:ce7dc91b664600c6f06e1df3d6b56a4684bb779865d9c28b4df648addd89189d
+STEP 2/14: USER 0
+--> f357046f004c
+STEP 3/14: COPY k6 /usr/local/bin/k6
+--> 7554d525a214
+STEP 4/14: COPY r2 /r2
+--> 1f311d2bc707
+STEP 5/14: COPY client-guard.sh /opt/r2/client-guard.sh
+--> 8622f9c94f4b
+STEP 6/14: RUN chmod 0555 /usr/local/bin/k6 /opt/r2/client-guard.sh && chmod -R a+rX /r2 && command -v timeout && printf '%s  %s\n' 'e0294b2a2916408eb61805fbbeffcf785066c75105f665b61c325e7401ee3be3' /usr/local/bin/k6 | sha256sum -c -
+/usr/bin/timeout
+/usr/local/bin/k6: OK
+--> 3cd4b46cd1cb
+STEP 7/14: ENV HOME=/tmp K6_NO_USAGE_REPORT=true
+--> 55c7a6db0f63
+STEP 8/14: RUN /usr/local/bin/k6 inspect /r2/inspect.js
+time="2026-11-26T14:28:53Z" level=info msg="R2_NATIVE_IDENTITY {\"mapping_id\":\"KAAS_R2_CONFLUENT_2_14_V1\",\"native_version\":\"2.14.0\",\"binary_sha256\":\"e0294b2a2916408eb61805fbbeffcf785066c75105f665b61c325e7401ee3be3\",\"ok\":true}" source=console
+{
+  "paused": null,
+  "vus": 1,
+  "duration": null,
+  "iterations": 1,
+  "stages": null,
+  "scenarios": null,
+  "executionSegment": null,
+  "executionSegmentSequence": null,
+  "noSetup": null,
+  "setupTimeout": null,
+  "noTeardown": null,
+  "teardownTimeout": null,
+  "rps": null,
+  "dns": {
+    "ttl": null,
+    "select": null,
+    "policy": null
+  },
+  "maxRedirects": null,
+  "userAgent": null,
+  "batch": null,
+  "batchPerHost": null,
+  "httpDebug": null,
+  "insecureSkipTLSVerify": null,
+  "tlsCipherSuites": null,
+  "tlsVersion": null,
+  "tlsAuth": null,
+  "throw": null,
+  "thresholds": null,
+  "blacklistIPs": null,
+  "blockHostnames": null,
+  "hosts": null,
+  "noConnectionReuse": null,
+  "noVUConnectionReuse": null,
+  "minIterationDuration": null,
+  "ext": null,
+  "summaryTrendStats": null,
+  "summaryTimeUnit": null,
+  "systemTags": null,
+  "tags": null,
+  "metricSamplesBufferSize": null,
+  "noCookiesReset": null,
+  "discardResponseBodies": null
+}--> b5df61535bef
+STEP 9/14: USER 1001:0
+--> abc21050a3f4
+STEP 10/14: WORKDIR /tmp
+--> d186afdc87af
+STEP 11/14: ENTRYPOINT ["/opt/r2/client-guard.sh"]
+--> 9f8d4b68272d
+STEP 12/14: CMD null
+--> 50072e581bab
+STEP 13/14: ENV "OPENSHIFT_BUILD_NAME"="kaas-r2-runner-351528d-1" "OPENSHIFT_BUILD_NAMESPACE"="kaas-demo"
+--> 244f830c915d
+STEP 14/14: LABEL "io.openshift.build.name"="kaas-r2-runner-351528d-1" "io.openshift.build.namespace"="kaas-demo"
+COMMIT temp.builder.openshift.io/kaas-demo/kaas-r2-runner-351528d-1:7f628c67
+--> 2ef5fd86255e
+Successfully tagged temp.builder.openshift.io/kaas-demo/kaas-r2-runner-351528d-1:7f628c67
+2ef5fd86255e412fef64fdcd0ac2f62bf8e1087300975e7ce11df32b19e15bee
+
+Pushing image image-registry.openshift-image-registry.svc:5000/kaas-demo/kaas-r2-runner-351528d:verified-351528d ...
+Getting image source signatures
+Copying blob sha256:4f1458c2ab8950adeef640a59506f8a993e3d0ae02c72c111f71b4bc2af280ec
+Copying blob sha256:f6215d8452014177de1c29955bb0edd38f9ae59d3f720975f75450a940b44391
+Copying blob sha256:472107a5f3e5bb30c678d3498a14c9123900bca6a5aad18fcbeb3226f75ca792
+Copying blob sha256:b02c58b1810d6d9c787b6e23d8ac6f4f454a1969867e2c1d9e78cbe380cfab0a
+Copying blob sha256:2bf2b3e3529d4c5c35541aca0af29e14a7c08988292871d8c4f3c9d37e4e2885
+Copying blob sha256:c10150f3e4f9d545fa9cec6df83e9c6752d20fdcbb21deceddaa9c48269d4331
+Copying blob sha256:ef4db80f3f48a9c20f7d4757d48b0ccdf816a99ca1bf619976241295d890197d
+Copying config sha256:2ef5fd86255e412fef64fdcd0ac2f62bf8e1087300975e7ce11df32b19e15bee
+Writing manifest to image destination
+Successfully pushed image-registry.openshift-image-registry.svc:5000/kaas-demo/kaas-r2-runner-351528d@sha256:7773f3ed708cbf8ab07703ed978afd478f05d9afcb13f888a27ef4159124b1af
+Push successful

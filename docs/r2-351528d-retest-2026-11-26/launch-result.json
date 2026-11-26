@@ -1,0 +1,9 @@
+{
+  "status": "JOB_FAILED_INCOMPLETE",
+  "forced_stop": false,
+  "job": "kaas-r2-native-client-351528d-r2",
+  "job_uid": "ad6736b3-8df4-41f8-bc94-2adb6a7d4a0e",
+  "job_start_UTC": "2026-11-26T14:31:53Z",
+  "external_observed_UTC": "2026-11-26T14:32:20.503784+00:00",
+  "external_elapsed_ms": 27503
+}

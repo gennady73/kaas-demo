@@ -39,7 +39,7 @@ data:
   runtime.json: "{\n  \"protocol\": \"kaas-r2-execution-v1\",\n  \"execution_authorized\"\
     : false,\n  \"tests_enabled\": false,\n  \"authority_reference\": null,\n  \"\
     plan_sha256\": \"78e427f79f510efe87834000371584394fc44ccd0ed4e0a903f919d31edca13d\"\
-    ,\n  \"image_digest\": \"sha256:d82a1444de832a824a135d66eef9c7486d8587299b54b5c490bccc194c42dabe\",\n  \"package_sha256\": \"a8ff40449e28da9f46aded0bca19b669c4d5dc8c2fa53fc5fc3d9e396270877e\"\
+    ,\n  \"image_digest\": \"sha256:7773f3ed708cbf8ab07703ed978afd478f05d9afcb13f888a27ef4159124b1af\",\n  \"package_sha256\": \"a8ff40449e28da9f46aded0bca19b669c4d5dc8c2fa53fc5fc3d9e396270877e\"\
     ,\n  \"job_start_unix_ms\": null,\n  \"sink_origin\": \"https://kaas-r2-evidence.kaas-demo.svc:8443\"\
     ,\n  \"exclusive_fixture_groups\": [],\n  \"gates\": {\n    \"native_image_and_source\"\
     : \"OPEN\",\n    \"C3_changed_source_review\": \"OPEN\",\n    \"C6_changed_source_review\"\
@@ -47,7 +47,7 @@ data:
     : \"OPEN\",\n    \"namespace_network_SCC\": \"OPEN\",\n    \"fixture_group_ownership\"\
     : \"OPEN\",\n    \"sink_TLS_auth_persistence\": \"OPEN\",\n    \"custody_retention_second_copy\"\
     : \"OPEN\",\n    \"native_cancellation_close_bounds\": \"OPEN\",\n    \"independent_export_auditor\"\
-    : \"OPEN\"\n  },\n  \"binary_sha256\": \"71430df6e0a407e241c570a63759f7ebd915cb36c81f5ac5e1d82c31d2057f9f\"\
+    : \"OPEN\"\n  },\n  \"binary_sha256\": \"e0294b2a2916408eb61805fbbeffcf785066c75105f665b61c325e7401ee3be3\"\
     \n}\n"
 ---
 apiVersion: v1
@@ -121,7 +121,7 @@ spec:
       terminationGracePeriodSeconds: 0
       containers:
       - name: native-client
-        image: image-registry.openshift-image-registry.svc:5000/kaas-demo/kaas-r2-runner-02e2e2f@sha256:d82a1444de832a824a135d66eef9c7486d8587299b54b5c490bccc194c42dabe
+        image: image-registry.openshift-image-registry.svc:5000/kaas-demo/kaas-r2-runner-351528d@sha256:7773f3ed708cbf8ab07703ed978afd478f05d9afcb13f888a27ef4159124b1af
         imagePullPolicy: IfNotPresent
         command:
         - /opt/r2/client-guard.sh

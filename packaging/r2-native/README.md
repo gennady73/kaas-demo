@@ -1,3 +1,5 @@
+Latest execution: [351528d verified image and bounded retest](../../docs/r2-351528d-retest-2026-11-26/README.md): all16positive messages reconciled, one/eightnegative cases passed; R2 incomplete (R2-LIVE-03). All three client Jobs suspended. The user authorized publication of these pins/results as an incomplete R2 checkpoint; prior status notes below are historical.
+
 Latest result: [Revised runner build and bounded retest](../../docs/r2-revised-runner-2026-11-26/README.md). Revised image built; exit handling confirmed live, initial-position check still incomplete. Both client Jobs are suspended.
 
 Latest code status: [R2-LIVE-01/02 fixes validated offline](../../docs/r2-live-fixes-2026-11-26/README.md). Revised image not built or deployed; no live rerun.

@@ -1,0 +1,180 @@
+{
+  "status": "ALL16_POSITIVE_MESSAGES_AND_OFFSETS_RECONCILED",
+  "positive_planned": 16,
+  "positive_attempted": 16,
+  "positive_acknowledged": 16,
+  "receipts": 16,
+  "durable_receipt_acks": 16,
+  "commits": 16,
+  "missing_positive_messages": 0,
+  "duplicate_receipts": 0,
+  "negative_cases_passed": 1,
+  "negative_cases_planned": 8,
+  "negative_write_attempts": 1,
+  "negative_write_outcome": "typed topic_authorization_denied; definitive_not_accepted",
+  "attempted_original_value_bytes": 17000,
+  "positive_original_value_bytes": 16000,
+  "definitively_rejected_value_bytes": 1000,
+  "unresolved_value_bytes": 0,
+  "planned_original_value_bytes": 20000,
+  "unattempted_original_value_bytes": 3000,
+  "rows": [
+    {
+      "topic": "kaas-sbx-a-events",
+      "group": "kaas-sbx-a-events-group",
+      "before": {
+        "committed_offset": null,
+        "group_absent": true,
+        "log_end_offset": 0,
+        "log_start_offset": 0,
+        "members": 0,
+        "membership_observed": true,
+        "ok": true
+      },
+      "after": {
+        "committed_offset": 4,
+        "group_absent": false,
+        "log_end_offset": 4,
+        "log_start_offset": 0,
+        "members": 0,
+        "membership_observed": true,
+        "ok": true
+      },
+      "positive_attempts": 4,
+      "receipt_offsets": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "missing_ids": [],
+      "duplicate_receipts": 0,
+      "checks": {
+        "all4_acknowledged": true,
+        "all4_delivered_and_committed": true,
+        "checksum_match": true,
+        "receipt_offsets_exact_0_to3": true,
+        "external_log_delta4": true,
+        "external_committed4_idle": true
+      }
+    },
+    {
+      "topic": "kaas-sbx-a-audit",
+      "group": "kaas-sbx-a-audit-group",
+      "before": {
+        "committed_offset": null,
+        "group_absent": true,
+        "log_end_offset": 0,
+        "log_start_offset": 0,
+        "members": 0,
+        "membership_observed": true,
+        "ok": true
+      },
+      "after": {
+        "committed_offset": 4,
+        "group_absent": false,
+        "log_end_offset": 4,
+        "log_start_offset": 0,
+        "members": 0,
+        "membership_observed": true,
+        "ok": true
+      },
+      "positive_attempts": 4,
+      "receipt_offsets": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "missing_ids": [],
+      "duplicate_receipts": 0,
+      "checks": {
+        "all4_acknowledged": true,
+        "all4_delivered_and_committed": true,
+        "checksum_match": true,
+        "receipt_offsets_exact_0_to3": true,
+        "external_log_delta4": true,
+        "external_committed4_idle": true
+      }
+    },
+    {
+      "topic": "kaas-sbx-b-events",
+      "group": "kaas-sbx-b-events-group",
+      "before": {
+        "committed_offset": null,
+        "group_absent": true,
+        "log_end_offset": 0,
+        "log_start_offset": 0,
+        "members": 0,
+        "membership_observed": true,
+        "ok": true
+      },
+      "after": {
+        "committed_offset": 4,
+        "group_absent": false,
+        "log_end_offset": 4,
+        "log_start_offset": 0,
+        "members": 0,
+        "membership_observed": true,
+        "ok": true
+      },
+      "positive_attempts": 4,
+      "receipt_offsets": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "missing_ids": [],
+      "duplicate_receipts": 0,
+      "checks": {
+        "all4_acknowledged": true,
+        "all4_delivered_and_committed": true,
+        "checksum_match": true,
+        "receipt_offsets_exact_0_to3": true,
+        "external_log_delta4": true,
+        "external_committed4_idle": true
+      }
+    },
+    {
+      "topic": "kaas-sbx-b-audit",
+      "group": "kaas-sbx-b-audit-group",
+      "before": {
+        "committed_offset": null,
+        "group_absent": true,
+        "log_end_offset": 0,
+        "log_start_offset": 0,
+        "members": 0,
+        "membership_observed": true,
+        "ok": true
+      },
+      "after": {
+        "committed_offset": 4,
+        "group_absent": false,
+        "log_end_offset": 4,
+        "log_start_offset": 0,
+        "members": 0,
+        "membership_observed": true,
+        "ok": true
+      },
+      "positive_attempts": 4,
+      "receipt_offsets": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "missing_ids": [],
+      "duplicate_receipts": 0,
+      "checks": {
+        "all4_acknowledged": true,
+        "all4_delivered_and_committed": true,
+        "checksum_match": true,
+        "receipt_offsets_exact_0_to3": true,
+        "external_log_delta4": true,
+        "external_committed4_idle": true
+      }
+    }
+  ],
+  "limit": "Positive accounting is complete; seven negative cases lack passing evidence; no complete R2 acceptance"
+}
