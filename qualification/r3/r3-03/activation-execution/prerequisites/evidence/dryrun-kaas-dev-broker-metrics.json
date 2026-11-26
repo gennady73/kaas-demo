@@ -1,0 +1,10 @@
+{
+  "metadata": {
+    "name": "kaas-dev-broker-metrics",
+    "namespace": "kaas-kafka",
+    "uid": "ec198be4-f33c-4b59-b027-4faaaa54fe04",
+    "resourceVersion": null
+  },
+  "kind": "PodMonitor",
+  "admission_dryRun_only": true
+}

@@ -1,0 +1,316 @@
+apiVersion: monitoring.coreos.com/v1
+kind: Prometheus
+metadata:
+  annotations:
+    operator.prometheus.io/controller-id: openshift-user-workload-monitoring/prometheus-operator
+  labels:
+    app.kubernetes.io/component: prometheus
+    app.kubernetes.io/instance: user-workload
+    app.kubernetes.io/managed-by: cluster-monitoring-operator
+    app.kubernetes.io/name: prometheus
+    app.kubernetes.io/part-of: openshift-monitoring
+    app.kubernetes.io/version: 3.7.3
+  name: user-workload
+  namespace: openshift-user-workload-monitoring
+spec:
+  additionalArgs:
+  - name: scrape.timestamp-tolerance
+    value: 15ms
+  affinity:
+    podAntiAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+      - labelSelector:
+          matchLabels:
+            app.kubernetes.io/component: prometheus
+            app.kubernetes.io/instance: user-workload
+            app.kubernetes.io/name: prometheus
+            app.kubernetes.io/part-of: openshift-monitoring
+        namespaces:
+        - openshift-user-workload-monitoring
+        topologyKey: kubernetes.io/hostname
+  alerting:
+    alertmanagers:
+    - apiVersion: v2
+      bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
+      name: alertmanager-main
+      namespace: openshift-monitoring
+      port: web
+      scheme: https
+      tlsConfig:
+        caFile: /etc/prometheus/configmaps/serving-certs-ca-bundle/service-ca.crt
+        serverName: alertmanager-main.openshift-monitoring.svc
+  arbitraryFSAccessThroughSMs:
+    deny: true
+  configMaps:
+  - serving-certs-ca-bundle
+  - metrics-client-ca
+  containers:
+  - args:
+    - --secure-listen-address=0.0.0.0:9092
+    - --upstream=http://127.0.0.1:9090
+    - --allow-paths=/federate
+    - --config-file=/etc/kube-rbac-proxy/config.yaml
+    - --tls-cert-file=/etc/tls/private/tls.crt
+    - --tls-private-key-file=/etc/tls/private/tls.key
+    - --client-ca-file=/etc/tls/client/client-ca.crt
+    - --tls-cipher-suites=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305
+    image: ""
+    name: kube-rbac-proxy-federate
+    ports:
+    - containerPort: 9092
+      name: federate
+    resources:
+      requests:
+        cpu: 1m
+        memory: 10Mi
+    securityContext:
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop:
+        - ALL
+    terminationMessagePolicy: FallbackToLogsOnError
+    volumeMounts:
+    - mountPath: /etc/tls/private
+      name: secret-prometheus-user-workload-tls
+    - mountPath: /etc/tls/client
+      name: configmap-metrics-client-ca
+      readOnly: true
+    - mountPath: /etc/kube-rbac-proxy
+      name: secret-kube-rbac-proxy-federate
+  - args:
+    - --secure-listen-address=0.0.0.0:9091
+    - --upstream=http://127.0.0.1:9090
+    - --allow-paths=/metrics
+    - --config-file=/etc/kube-rbac-proxy/config.yaml
+    - --tls-cert-file=/etc/tls/private/tls.crt
+    - --tls-private-key-file=/etc/tls/private/tls.key
+    - --client-ca-file=/etc/tls/client/client-ca.crt
+    - --tls-cipher-suites=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305
+    image: ""
+    name: kube-rbac-proxy-metrics
+    ports:
+    - containerPort: 9091
+      name: metrics
+    resources:
+      requests:
+        cpu: 1m
+        memory: 10Mi
+    securityContext:
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop:
+        - ALL
+    terminationMessagePolicy: FallbackToLogsOnError
+    volumeMounts:
+    - mountPath: /etc/tls/private
+      name: secret-prometheus-user-workload-tls
+    - mountPath: /etc/tls/client
+      name: configmap-metrics-client-ca
+      readOnly: true
+    - mountPath: /etc/kube-rbac-proxy
+      name: secret-kube-rbac-proxy-metrics
+  - args:
+    - --secure-listen-address=[$(POD_IP)]:10903
+    - --upstream=http://127.0.0.1:10902
+    - --tls-cert-file=/etc/tls/private/tls.crt
+    - --tls-private-key-file=/etc/tls/private/tls.key
+    - --client-ca-file=/etc/tls/client/client-ca.crt
+    - --tls-cipher-suites=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305
+    - --allow-paths=/metrics
+    - --config-file=/etc/kube-rbac-proxy/config.yaml
+    env:
+    - name: POD_IP
+      valueFrom:
+        fieldRef:
+          fieldPath: status.podIP
+    image: ""
+    name: kube-rbac-proxy-thanos
+    ports:
+    - containerPort: 10903
+      name: thanos-proxy
+    resources:
+      requests:
+        cpu: 1m
+        memory: 10Mi
+    securityContext:
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop:
+        - ALL
+    terminationMessagePolicy: FallbackToLogsOnError
+    volumeMounts:
+    - mountPath: /etc/tls/private
+      name: secret-prometheus-user-workload-thanos-sidecar-tls
+    - mountPath: /etc/tls/client
+      name: configmap-metrics-client-ca
+      readOnly: true
+    - mountPath: /etc/kube-rbac-proxy
+      name: secret-kube-rbac-proxy-metrics
+  - args:
+    - sidecar
+    - --prometheus.url=http://localhost:9090/
+    - --tsdb.path=/prometheus
+    - --http-address=127.0.0.1:10902
+    - --grpc-server-tls-cert=/etc/tls/grpc/server.crt
+    - --grpc-server-tls-key=/etc/tls/grpc/server.key
+    - --grpc-server-tls-client-ca=/etc/tls/grpc/ca.crt
+    image: ""
+    name: thanos-sidecar
+    resources:
+      requests:
+        cpu: 1m
+        memory: 17Mi
+    securityContext:
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop:
+        - ALL
+    terminationMessagePolicy: FallbackToLogsOnError
+    volumeMounts:
+    - mountPath: /etc/tls/grpc
+      name: secret-grpc-tls
+  - env:
+    - name: HTTP_PROXY
+      value: ""
+    - name: HTTPS_PROXY
+      value: ""
+    - name: NO_PROXY
+      value: ""
+    image: ""
+    name: prometheus
+    terminationMessagePolicy: FallbackToLogsOnError
+    volumeMounts:
+    - mountPath: /etc/pki/ca-trust/extracted/pem/
+      name: prometheus-user-workload-trusted-ca-bundle
+  enableFeatures:
+  - extra-scrape-metrics
+  - delayed-compaction
+  - use-uncached-io
+  enforcedNamespaceLabel: namespace
+  externalLabels: {}
+  ignoreNamespaceSelectors: true
+  image: ""
+  listenLocal: true
+  nodeSelector:
+    kubernetes.io/os: linux
+  overrideHonorLabels: true
+  overrideHonorTimestamps: true
+  podMetadata:
+    annotations:
+      openshift.io/required-scc: nonroot-v2
+      target.workload.openshift.io/management: '{"effect": "PreferredDuringScheduling"}'
+    labels:
+      app.kubernetes.io/component: prometheus
+      app.kubernetes.io/instance: user-workload
+      app.kubernetes.io/name: prometheus
+      app.kubernetes.io/part-of: openshift-monitoring
+      app.kubernetes.io/version: 3.7.3
+  podMonitorNamespaceSelector:
+    matchExpressions:
+    - key: openshift.io/cluster-monitoring
+      operator: NotIn
+      values:
+      - "true"
+    - key: openshift.io/user-monitoring
+      operator: NotIn
+      values:
+      - "false"
+  podMonitorSelector:
+    matchExpressions:
+    - key: openshift.io/user-monitoring
+      operator: NotIn
+      values:
+      - "false"
+  priorityClassName: openshift-user-critical
+  probeNamespaceSelector:
+    matchExpressions:
+    - key: openshift.io/cluster-monitoring
+      operator: NotIn
+      values:
+      - "true"
+    - key: openshift.io/user-monitoring
+      operator: NotIn
+      values:
+      - "false"
+  probeSelector:
+    matchExpressions:
+    - key: openshift.io/user-monitoring
+      operator: NotIn
+      values:
+      - "false"
+  replicas: 2
+  resources:
+    requests:
+      cpu: 6m
+      memory: 30Mi
+  ruleNamespaceSelector:
+    matchExpressions:
+    - key: openshift.io/cluster-monitoring
+      operator: NotIn
+      values:
+      - "true"
+    - key: openshift.io/user-monitoring
+      operator: NotIn
+      values:
+      - "false"
+  ruleSelector:
+    matchExpressions:
+    - key: openshift.io/user-monitoring
+      operator: NotIn
+      values:
+      - "false"
+    - key: openshift.io/prometheus-rule-evaluation-scope
+      operator: In
+      values:
+      - leaf-prometheus
+  scrapeClasses:
+  - default: true
+    fallbackScrapeProtocol: PrometheusText1.0.0
+    name: global-config
+  scrapeConfigNamespaceSelector: null
+  scrapeConfigSelector: null
+  secrets:
+  - prometheus-user-workload-tls
+  - prometheus-user-workload-thanos-sidecar-tls
+  - kube-rbac-proxy-metrics
+  - kube-rbac-proxy-federate
+  securityContext:
+    fsGroup: 65534
+    runAsNonRoot: true
+    runAsUser: 65534
+    seccompProfile:
+      type: RuntimeDefault
+  serviceAccountName: prometheus-user-workload
+  serviceDiscoveryRole: Endpoints
+  serviceMonitorNamespaceSelector:
+    matchExpressions:
+    - key: openshift.io/cluster-monitoring
+      operator: NotIn
+      values:
+      - "true"
+    - key: openshift.io/user-monitoring
+      operator: NotIn
+      values:
+      - "false"
+  serviceMonitorSelector:
+    matchExpressions:
+    - key: openshift.io/user-monitoring
+      operator: NotIn
+      values:
+      - "false"
+  shards: 1
+  thanos:
+    image: ""
+    resources:
+      requests:
+        cpu: 1m
+        memory: 100Mi
+    version: 0.39.2
+  version: 3.7.3
+  volumes:
+  - configMap:
+      items:
+      - key: ca-bundle.crt
+        path: tls-ca-bundle.pem
+      name: prometheus-user-workload-trusted-ca-bundle
+    name: prometheus-user-workload-trusted-ca-bundle

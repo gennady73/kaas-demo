@@ -1,0 +1,21 @@
+{
+  "status": "PUBLICATION_SCOPE_AND_LOCAL_VALIDATION_PASS",
+  "base_commit": "c1096073ca79dec38c3e7f1c96a436591359c31c",
+  "scope": [
+    "docs/r3-03-collection-only-activation-2026-11-26.md",
+    "docs/r3-service-qualification-2026-11-26.md",
+    "qualification/r3/progress.json",
+    "qualification/r3/r3-03/activation-execution/"
+  ],
+  "local_consistency_command": "python qualification/r3/r3-03/activation-execution/validate_preparation.py",
+  "local_consistency_exit_code": 0,
+  "original_frozen_hashes_verified": 60,
+  "email_routing_and_live_alert_rules_enabled": false,
+  "registration_or_deployment_enabled": false,
+  "cluster_access_during_publication": false,
+  "client_Jobs_changed": false,
+  "producer_consumer_tests_run": false,
+  "test_emails_sent": false,
+  "prior_rule_fixture_receipts": "PRESERVED_NOT_RERUN_DURING_PUBLICATION",
+  "runtime_image_or_source_pins_changed": false
+}

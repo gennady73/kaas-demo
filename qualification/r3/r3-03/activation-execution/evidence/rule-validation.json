@@ -1,0 +1,21 @@
+{
+  "status": "OFFLINE_RULE_PARSE_AND_12_FIXTURES_PASS",
+  "commands": [
+    "promtool --version",
+    "promtool check rules broker.rules.yaml sink.rules.yaml",
+    "promtool test rules fixtures.yaml"
+  ],
+  "cwd": "qualification/r3/r3-03/activation-execution/rule-tests",
+  "tool_version": "3.7.3",
+  "tool_revision": "0a41f0000705c69ab8e0f9a723fc73e39ed62b07",
+  "exit_code": 0,
+  "rules": 10,
+  "fixtures": 12,
+  "stdout": "Checking broker.rules.yaml: SUCCESS: 6 rules found; Checking sink.rules.yaml: SUCCESS: 4 rules found; test rules: SUCCESS",
+  "cluster_access": false,
+  "live_rule_evaluation_or_notification_tested": false,
+  "limitations": [
+    "Offline Prometheus semantics only; not OpenShift CEL/admission, actual evaluator series visibility, live MBean exposure or routing acceptance",
+    "Official upstream tool is not asserted to equal installed Red Hat Prometheus build"
+  ]
+}

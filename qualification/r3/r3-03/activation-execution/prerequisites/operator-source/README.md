@@ -1,0 +1,3 @@
+# Supporting reloader source
+
+Official upstream `prometheus-operator/prometheus-operator` tag `v0.87.1`, downloaded 2026-11-26. Three paths retain their upstream names with slashes replaced by double underscores. URLs use `https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/v0.87.1/` followed by the original path. Live core operator build_info reports version0.87.1/revision8bd3234f; resolving that short revision through downstream/upstream GitHub APIs failed. This tag is supporting generation reference, not proof of the downstream exact source. Exact installed CMO YAML provenance is separately established by direct /assets reads tied to its image digest.

@@ -1,0 +1,53 @@
+{
+  "status": "CONSERVATIVE_PREACTIVATION_PLANNING_PROJECTION_WITHIN_ACCEPTED_ALLOWANCE",
+  "installed_CMO_asset_provenance": "VERIFIED_DIRECTLY_FROM_RUNNING_PINNED_IMAGE",
+  "asset_hashes": {
+    "prometheus-operator-user-workload__deployment.yaml": "44f24334a91d7561a936e867ef0689ff672c25af9e114c21eb0be16016e18bc3",
+    "prometheus-user-workload__prometheus.yaml": "1f3d24be01084b69c99b4fa96586007977438be796882841d90f5244fa56702f",
+    "thanos-ruler__thanos-ruler.yaml": "fb1a4a63c16f67d9262e42b603b0988dbb129c225c6a26d765e92e49ed732658"
+  },
+  "main_requests": {
+    "cpu_m": 800,
+    "memory_MiB": 5376
+  },
+  "known_auxiliary_conservative_sum": {
+    "cpu_m": 15,
+    "memory_MiB": 358
+  },
+  "reloader_model": {
+    "containers_including_init": 6,
+    "each_cpu_m": 1,
+    "each_memory_MiB": 10,
+    "source": "Installed UWM operator asset flags and core operator live flags; official upstream v0.87.1 source generation reference",
+    "limits": "Source tag is supporting reference; observed downstream revision8bd3234f did not resolve via GitHub API; not claimed exact downstream source proof"
+  },
+  "projected_UWM": {
+    "cpu_m": 821,
+    "memory_MiB": 5794
+  },
+  "accepted_UWM_planning_allowance": {
+    "cpu_m": 1000,
+    "memory_MiB": 6144
+  },
+  "projected_total_with_broker_utilization_allowance": {
+    "cpu_m": 971,
+    "memory_MiB": 6178
+  },
+  "conservative_change_window_with_1_5_UWM_factor": {
+    "cpu_m": 1381.5,
+    "memory_MiB": 9075.0
+  },
+  "accepted_total_steady": {
+    "cpu_m": 1250,
+    "memory_MiB": 6656
+  },
+  "accepted_total_change": {
+    "cpu_m": 1750,
+    "memory_MiB": 9728
+  },
+  "not_measured_usage_or_hard_limit": true,
+  "actual_generated_Pod_observation": "REQUIRED_AT_A1_EXIT_BEFORE_BROKER_PROMOTION",
+  "conservative_doublecount": "Thanos container resource entry plus override both counted; init reloader requests also summed",
+  "new_PVCs": 4,
+  "requested_GiB": 24
+}

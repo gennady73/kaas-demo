@@ -1,0 +1,16 @@
+{
+  "name": "cluster-monitoring-operator-68f54fd848-wz47d",
+  "uid": "77f42427-81e3-4495-83e7-4297db9f3aa0",
+  "resourceVersion": "1139511",
+  "image": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:4aae77bd4739acfa0dfa1689a24cd86b44a36787772c3495df82a6c44b30ad4f",
+  "containerStatus": [
+    {
+      "name": "cluster-monitoring-operator",
+      "image": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:4aae77bd4739acfa0dfa1689a24cd86b44a36787772c3495df82a6c44b30ad4f",
+      "imageID": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:4aae77bd4739acfa0dfa1689a24cd86b44a36787772c3495df82a6c44b30ad4f",
+      "containerID": "cri-o://bf8e1486c918e28579401133e924a1e94ed9430488121c6ef7555c1fc3ddd1b8",
+      "ready": true,
+      "restartCount": 7
+    }
+  ]
+}

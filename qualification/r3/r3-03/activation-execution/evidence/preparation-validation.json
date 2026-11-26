@@ -1,0 +1,19 @@
+{
+  "status": "SELECTED_CONFIG_RENDER_OWNERSHIP_AND_FROZEN_PACKAGE_PRESERVATION_PASS",
+  "rendered_objects": 4,
+  "new_selected_PVCs": 4,
+  "new_selected_GiB": 24,
+  "prior_package_hashes_verified": 48,
+  "prior_plan_hashes_verified": 12,
+  "four_Jobs_suspended_in_fresh_GET_evidence": true,
+  "rules_have_no_active_include": true,
+  "registration_pins": "RESOURCE_COMMIT_PLACEHOLDER_NOT_REGISTERED",
+  "remaining": [
+    "Immutable source publication and concrete registration pins",
+    "Narrow PodMonitor grant admission/application and effective permission refresh",
+    "Fresh health/compare-before-write; actual managed Pods at A1 exit"
+  ],
+  "cluster_resources_changed": false,
+  "workloads_run": false,
+  "independent_review": "NOT_CLAIMED"
+}

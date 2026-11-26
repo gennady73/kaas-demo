@@ -1,0 +1,31 @@
+{
+  "status": "DEFERRED_BY_USER",
+  "recipient": "gunger@redhat.com",
+  "purpose": "R3-03 sandbox monitoring alert destination",
+  "backup": "NONE_EXPLICIT_USER_CHOICE",
+  "existing_Alertmanager_reused": true,
+  "existing_receiver_name": null,
+  "SMTP_relay_host_port": null,
+  "sender_address": null,
+  "TLS_mode_required": "STARTTLS",
+  "credential_or_trust_reference": null,
+  "credentials_requested_or_saved": false,
+  "test_email_authorized": false,
+  "test_email_sent": false,
+  "routing_applied": false,
+  "live_rules_enabled": false,
+  "source_checked": "Fresh base and generated Alertmanager configuration, projected in memory; prerequisites/evidence/alertmanager-*-configuration.json",
+  "primary_reference": "https://docs.redhat.com/en/documentation/monitoring_stack_for_red_hat_openshift/4.21/html-single/configuring_core_platform_monitoring/index",
+  "evidence_limit": "Both configs have no smarthost, sender or email integration; existing Default/Watchdog/Critical receivers have no integration. No SMTP connection or notification attempted.",
+  "remaining": "None for email disposition in collection-only scope. Future email/rule activation requires separately resolved SMTP and routing; no new SMTP request pending.",
+  "routing_candidate": "prerequisites/email-routing.proposed.yaml.template",
+  "routing_precedence": "Scoped KaaS branch must precede existing severity critical catch-all; original routes/receivers/inhibition preserved",
+  "disposition": {
+    "authority": "Explicit user reply: defer email",
+    "recorded_UTC": "2026-11-26T21:27:00.615003+00:00",
+    "SMTP_required_for_current_collection_only_scope": false,
+    "routing_activation_enabled": false,
+    "live_rule_activation_enabled": false,
+    "future_email_destination_preserved": "gunger@redhat.com"
+  }
+}

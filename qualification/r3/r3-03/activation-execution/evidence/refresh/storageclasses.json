@@ -1,0 +1,26 @@
+{
+  "items": [
+    {
+      "name": "gp2-csi",
+      "provisioner": "ebs.csi.aws.com",
+      "volumeBindingMode": "WaitForFirstConsumer",
+      "allowVolumeExpansion": true,
+      "parameters": {
+        "encrypted": "true",
+        "type": "gp2"
+      },
+      "reclaimPolicy": "Delete"
+    },
+    {
+      "name": "gp3-csi",
+      "provisioner": "ebs.csi.aws.com",
+      "volumeBindingMode": "WaitForFirstConsumer",
+      "allowVolumeExpansion": true,
+      "parameters": {
+        "encrypted": "true",
+        "type": "gp3"
+      },
+      "reclaimPolicy": "Delete"
+    }
+  ]
+}

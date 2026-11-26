@@ -1,0 +1,211 @@
+{
+  "status": "COMPLETE",
+  "stop_reason": null,
+  "elapsed_seconds": 14.527,
+  "requests": 28,
+  "response_bytes": 102025,
+  "queries": [
+    {
+      "name": "identity",
+      "method": "GET",
+      "path": "/apis/user.openshift.io/v1/users/~",
+      "at_UTC": "2026-11-26T21:20:01.834156+00:00",
+      "http": 200
+    },
+    {
+      "name": "job-kaas-r2-native-client",
+      "method": "GET",
+      "path": "/apis/batch/v1/namespaces/kaas-demo/jobs/kaas-r2-native-client",
+      "at_UTC": "2026-11-26T21:20:02.431342+00:00",
+      "http": 200
+    },
+    {
+      "name": "job-kaas-r2-native-client-02e2e2f-r2",
+      "method": "GET",
+      "path": "/apis/batch/v1/namespaces/kaas-demo/jobs/kaas-r2-native-client-02e2e2f-r2",
+      "at_UTC": "2026-11-26T21:20:02.954326+00:00",
+      "http": 200
+    },
+    {
+      "name": "job-kaas-r2-native-client-351528d-r2",
+      "method": "GET",
+      "path": "/apis/batch/v1/namespaces/kaas-demo/jobs/kaas-r2-native-client-351528d-r2",
+      "at_UTC": "2026-11-26T21:20:03.456187+00:00",
+      "http": 200
+    },
+    {
+      "name": "job-kaas-r2-native-client-05a3f2d-r2",
+      "method": "GET",
+      "path": "/apis/batch/v1/namespaces/kaas-demo/jobs/kaas-r2-native-client-05a3f2d-r2",
+      "at_UTC": "2026-11-26T21:20:03.963083+00:00",
+      "http": 200
+    },
+    {
+      "name": "alertmanager",
+      "method": "GET",
+      "path": "/apis/monitoring.coreos.com/v1/namespaces/openshift-monitoring/alertmanagers/main",
+      "at_UTC": "2026-11-26T21:20:04.473651+00:00",
+      "http": 200
+    },
+    {
+      "name": "alertmanager-base-configuration",
+      "method": "GET",
+      "path": "/api/v1/namespaces/openshift-monitoring/secrets/alertmanager-main",
+      "at_UTC": "2026-11-26T21:20:05.136229+00:00",
+      "http": 200
+    },
+    {
+      "name": "alertmanager-effective-configuration",
+      "method": "GET",
+      "path": "/api/v1/namespaces/openshift-monitoring/secrets/alertmanager-main-generated",
+      "at_UTC": "2026-11-26T21:20:05.650180+00:00",
+      "http": 200
+    },
+    {
+      "name": "CMO-image-metadata",
+      "method": "GET",
+      "path": "/apis/image.openshift.io/v1/images/sha256:4aae77bd4739acfa0dfa1689a24cd86b44a36787772c3495df82a6c44b30ad4f",
+      "at_UTC": "2026-11-26T21:20:06.155266+00:00",
+      "http": 404
+    },
+    {
+      "name": "monitoring-operator",
+      "method": "GET",
+      "path": "/apis/apps/v1/namespaces/openshift-monitoring/deployments/cluster-monitoring-operator",
+      "at_UTC": "2026-11-26T21:20:06.653213+00:00",
+      "http": 200
+    },
+    {
+      "name": "prometheus-operator",
+      "method": "GET",
+      "path": "/apis/apps/v1/namespaces/openshift-monitoring/deployments/prometheus-operator",
+      "at_UTC": "2026-11-26T21:20:07.152593+00:00",
+      "http": 200
+    },
+    {
+      "name": "core-prometheus",
+      "method": "GET",
+      "path": "/apis/monitoring.coreos.com/v1/namespaces/openshift-monitoring/prometheuses/k8s",
+      "at_UTC": "2026-11-26T21:20:07.644892+00:00",
+      "http": 200
+    },
+    {
+      "name": "ingress-CA",
+      "method": "GET",
+      "path": "/api/v1/namespaces/openshift-config-managed/configmaps/default-ingress-cert",
+      "at_UTC": "2026-11-26T21:20:08.326875+00:00",
+      "http": 200
+    },
+    {
+      "name": "CMO-build",
+      "method": "GET",
+      "path": "/api/v1/query?query=%7Bnamespace%3D%22openshift-monitoring%22%2Cpod%3D~%22cluster-monitoring-operator-.%2A%22%2C__name__%3D~%22.%2Abuild_info%22%7D",
+      "at_UTC": "2026-11-26T21:20:08.831974+00:00",
+      "http": 200
+    },
+    {
+      "name": "operator-build",
+      "method": "GET",
+      "path": "/api/v1/query?query=%7Bnamespace%3D%22openshift-monitoring%22%2Cpod%3D~%22prometheus-operator-.%2A%22%2C__name__%3D~%22.%2Abuild_info%22%7D",
+      "at_UTC": "2026-11-26T21:20:09.403654+00:00",
+      "http": 200
+    },
+    {
+      "name": "controller-role",
+      "method": "GET",
+      "path": "/apis/rbac.authorization.k8s.io/v1/clusterroles/openshift-gitops-openshift-gitops-argocd-application-controller",
+      "at_UTC": "2026-11-26T21:20:09.903908+00:00",
+      "http": 200
+    },
+    {
+      "name": "controller-kaas-kafka-podmonitors-create",
+      "method": "POST",
+      "path": "/apis/authorization.k8s.io/v1/subjectaccessreviews",
+      "at_UTC": "2026-11-26T21:20:10.398666+00:00",
+      "http": 201
+    },
+    {
+      "name": "controller-kaas-kafka-podmonitors-patch",
+      "method": "POST",
+      "path": "/apis/authorization.k8s.io/v1/subjectaccessreviews",
+      "at_UTC": "2026-11-26T21:20:10.885185+00:00",
+      "http": 201
+    },
+    {
+      "name": "controller-kaas-kafka-configmaps-create",
+      "method": "POST",
+      "path": "/apis/authorization.k8s.io/v1/subjectaccessreviews",
+      "at_UTC": "2026-11-26T21:20:11.382123+00:00",
+      "http": 201
+    },
+    {
+      "name": "controller-kaas-kafka-configmaps-patch",
+      "method": "POST",
+      "path": "/apis/authorization.k8s.io/v1/subjectaccessreviews",
+      "at_UTC": "2026-11-26T21:20:11.870705+00:00",
+      "http": 201
+    },
+    {
+      "name": "controller-openshift-monitoring-configmaps-create",
+      "method": "POST",
+      "path": "/apis/authorization.k8s.io/v1/subjectaccessreviews",
+      "at_UTC": "2026-11-26T21:20:12.369153+00:00",
+      "http": 201
+    },
+    {
+      "name": "controller-openshift-monitoring-configmaps-patch",
+      "method": "POST",
+      "path": "/apis/authorization.k8s.io/v1/subjectaccessreviews",
+      "at_UTC": "2026-11-26T21:20:12.871543+00:00",
+      "http": 201
+    },
+    {
+      "name": "controller-openshift-user-workload-monitoring-configmaps-create",
+      "method": "POST",
+      "path": "/apis/authorization.k8s.io/v1/subjectaccessreviews",
+      "at_UTC": "2026-11-26T21:20:13.372014+00:00",
+      "http": 201
+    },
+    {
+      "name": "controller-openshift-user-workload-monitoring-configmaps-patch",
+      "method": "POST",
+      "path": "/apis/authorization.k8s.io/v1/subjectaccessreviews",
+      "at_UTC": "2026-11-26T21:20:13.876237+00:00",
+      "http": 201
+    },
+    {
+      "name": "dryrun-cluster-monitoring-config",
+      "method": "POST",
+      "path": "/api/v1/namespaces/openshift-monitoring/configmaps?dryRun=All&fieldManager=kaas-r3-prerequisite",
+      "at_UTC": "2026-11-26T21:20:14.367638+00:00",
+      "http": 201
+    },
+    {
+      "name": "dryrun-user-workload-monitoring-config",
+      "method": "POST",
+      "path": "/api/v1/namespaces/openshift-user-workload-monitoring/configmaps?dryRun=All&fieldManager=kaas-r3-prerequisite",
+      "at_UTC": "2026-11-26T21:20:14.868658+00:00",
+      "http": 201
+    },
+    {
+      "name": "dryrun-kaas-dev-r3-jmx-metrics",
+      "method": "POST",
+      "path": "/api/v1/namespaces/kaas-kafka/configmaps?dryRun=All&fieldManager=kaas-r3-prerequisite",
+      "at_UTC": "2026-11-26T21:20:15.364990+00:00",
+      "http": 201
+    },
+    {
+      "name": "dryrun-kaas-dev-broker-metrics",
+      "method": "POST",
+      "path": "/apis/monitoring.coreos.com/v1/namespaces/kaas-kafka/podmonitors?dryRun=All&fieldManager=kaas-r3-prerequisite",
+      "at_UTC": "2026-11-26T21:20:15.868825+00:00",
+      "http": 201
+    }
+  ],
+  "Alertmanager_configuration_Secret_reads": 2,
+  "credential_values_saved": false,
+  "raw_Secret_data_saved": false,
+  "resource_changes": false,
+  "workloads_run": false,
+  "emails_sent": false
+}

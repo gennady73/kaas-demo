@@ -1,0 +1,10 @@
+{
+  "metadata": {
+    "name": "cluster-monitoring-config",
+    "namespace": "openshift-monitoring",
+    "uid": "5f633eb2-1bc7-46d7-9d2d-386bc199ab18",
+    "resourceVersion": null
+  },
+  "kind": "ConfigMap",
+  "admission_dryRun_only": true
+}

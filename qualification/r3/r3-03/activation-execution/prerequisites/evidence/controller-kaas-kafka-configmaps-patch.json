@@ -1,0 +1,19 @@
+{
+  "spec": {
+    "resourceAttributes": {
+      "namespace": "kaas-kafka",
+      "verb": "patch",
+      "resource": "configmaps"
+    },
+    "user": "system:serviceaccount:openshift-gitops:openshift-gitops-argocd-application-controller",
+    "groups": [
+      "system:authenticated",
+      "system:serviceaccounts",
+      "system:serviceaccounts:openshift-gitops"
+    ]
+  },
+  "status": {
+    "allowed": true,
+    "reason": "RBAC: allowed by ClusterRoleBinding \"openshift-gitops-openshift-gitops-argocd-application-controller\" of ClusterRole \"openshift-gitops-openshift-gitops-argocd-application-controller\" to ServiceAccount \"openshift-gitops-argocd-application-controller/openshift-gitops\""
+  }
+}

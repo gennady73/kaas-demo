@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: kaas-demo-monitoring-platform
+  namespace: openshift-gitops
+spec:
+  description: Manual platform-owner UWM configuration only; no tenant or Kafka resources
+  sourceRepos:
+  - https://github.com/gennady73/kaas-demo.git
+  destinations:
+  - namespace: openshift-monitoring
+    server: https://kubernetes.default.svc
+  - namespace: openshift-user-workload-monitoring
+    server: https://kubernetes.default.svc
+  clusterResourceWhitelist: []
+  namespaceResourceWhitelist:
+  - group: ''
+    kind: ConfigMap

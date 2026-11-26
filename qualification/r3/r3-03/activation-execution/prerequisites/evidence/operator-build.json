@@ -1,0 +1,33 @@
+{
+  "status": "success",
+  "data": {
+    "resultType": "vector",
+    "result": [
+      {
+        "metric": {
+          "__name__": "prometheus_operator_build_info",
+          "branch": "HEAD",
+          "container": "kube-rbac-proxy",
+          "endpoint": "https",
+          "goarch": "amd64",
+          "goos": "linux",
+          "goversion": "go1.24.13 (Red Hat 1.24.13-15.el9) X:strictfipsruntime",
+          "instance": "10.130.0.23:8443",
+          "job": "prometheus-operator",
+          "namespace": "openshift-monitoring",
+          "pod": "prometheus-operator-79f655b55b-4sg7r",
+          "prometheus": "openshift-monitoring/k8s",
+          "revision": "8bd3234f",
+          "service": "prometheus-operator",
+          "tags": "strictfipsruntime",
+          "version": "0.87.1"
+        },
+        "value": [
+          1795728009.814,
+          "1"
+        ]
+      }
+    ],
+    "analysis": {}
+  }
+}

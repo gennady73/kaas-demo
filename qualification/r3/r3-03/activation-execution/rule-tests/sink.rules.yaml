@@ -1,0 +1,51 @@
+groups:
+- name: kaas-r2-evidence-health
+  rules:
+  - alert: KaaSEvidenceSpaceWarning
+    expr: kubelet_volume_stats_available_bytes{namespace="kaas-demo",persistentvolumeclaim="kaas-r2-native-evidence"}
+      < 134217728
+    for: 5m
+    labels:
+      severity: warning
+      kaas_service: kaas-dev
+      kaas_phase: r3-03
+    annotations:
+      summary: Proposed warning at128MiB free; sink admission floor is64MiB
+      action: Inspect evidence and stop dependent work; no automatic restart, scale,
+        ISR/retention change or deletion.
+  - alert: KaaSEvidenceSpaceCritical
+    expr: kubelet_volume_stats_available_bytes{namespace="kaas-demo",persistentvolumeclaim="kaas-r2-native-evidence"}
+      < 67108864
+    for: 1m
+    labels:
+      severity: critical
+      kaas_service: kaas-dev
+      kaas_phase: r3-03
+    annotations:
+      summary: Filesystem free below existing64MiB sink admission floor
+      action: Inspect evidence and stop dependent work; no automatic restart, scale,
+        ISR/retention change or deletion.
+  - alert: KaaSEvidenceMetricsMissing
+    expr: absent(kubelet_volume_stats_available_bytes{namespace="kaas-demo",persistentvolumeclaim="kaas-r2-native-evidence"})
+      or absent(kube_deployment_status_replicas_available{namespace="kaas-demo",deployment="kaas-r2-evidence"})
+    for: 5m
+    labels:
+      severity: warning
+      kaas_service: kaas-dev
+      kaas_phase: r3-03
+    annotations:
+      summary: Kubernetes sink/evidence metric missing from rule evaluation plane
+      action: Inspect evidence and stop dependent work; no automatic restart, scale,
+        ISR/retention change or deletion.
+  - alert: KaaSEvidenceDeploymentUnavailable
+    expr: kube_deployment_status_replicas_available{namespace="kaas-demo",deployment="kaas-r2-evidence"}
+      < 1
+    for: 2m
+    labels:
+      severity: critical
+      kaas_service: kaas-dev
+      kaas_phase: r3-03
+    annotations:
+      summary: Existing evidence sink deployment has no available replica
+      action: Inspect evidence and stop dependent work; no automatic restart, scale,
+        ISR/retention change or deletion.

@@ -1,0 +1,51 @@
+apiVersion: v1
+data:
+  config.yaml: |
+    enableUserWorkload: true
+kind: ConfigMap
+metadata:
+  name: cluster-monitoring-config
+  namespace: openshift-monitoring
+---
+apiVersion: v1
+data:
+  config.yaml: |
+    prometheus:
+      retention: 24h
+      resources:
+        requests:
+          cpu: 250m
+          memory: 2Gi
+      volumeClaimTemplate:
+        spec:
+          storageClassName: gp3-csi
+          accessModes:
+          - ReadWriteOnce
+          volumeMode: Filesystem
+          resources:
+            requests:
+              storage: 10Gi
+    thanosRuler:
+      retention: 24h
+      resources:
+        requests:
+          cpu: 100m
+          memory: 512Mi
+      volumeClaimTemplate:
+        spec:
+          storageClassName: gp3-csi
+          accessModes:
+          - ReadWriteOnce
+          volumeMode: Filesystem
+          resources:
+            requests:
+              storage: 2Gi
+    prometheusOperator:
+      resources:
+        requests:
+          cpu: 100m
+          memory: 256Mi
+kind: ConfigMap
+metadata:
+  name: user-workload-monitoring-config
+  namespace: openshift-user-workload-monitoring

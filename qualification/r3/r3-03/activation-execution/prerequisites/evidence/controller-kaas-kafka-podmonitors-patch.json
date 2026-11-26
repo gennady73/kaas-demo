@@ -1,0 +1,19 @@
+{
+  "spec": {
+    "resourceAttributes": {
+      "namespace": "kaas-kafka",
+      "verb": "patch",
+      "group": "monitoring.coreos.com",
+      "resource": "podmonitors"
+    },
+    "user": "system:serviceaccount:openshift-gitops:openshift-gitops-argocd-application-controller",
+    "groups": [
+      "system:authenticated",
+      "system:serviceaccounts",
+      "system:serviceaccounts:openshift-gitops"
+    ]
+  },
+  "status": {
+    "allowed": false
+  }
+}

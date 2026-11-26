@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kaas-demo-observability
+  namespace: openshift-gitops
+spec:
+  project: kaas-demo-observability
+  source:
+    repoURL: https://github.com/gennady73/kaas-demo.git
+    targetRevision: ${RESOURCE_COMMIT}
+    path: qualification/r3/r3-03/activation-execution/candidate/broker-scrape
+  destination:
+    namespace: kaas-kafka
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    syncOptions:
+    - FailOnSharedResource=true

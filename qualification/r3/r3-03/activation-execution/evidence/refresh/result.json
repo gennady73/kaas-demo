@@ -1,0 +1,100 @@
+{
+  "status": "COMPLETE",
+  "reason": null,
+  "elapsed_seconds": 10.037,
+  "queries": [
+    {
+      "name": "identity",
+      "path": "/apis/user.openshift.io/v1/users/~",
+      "at": "2026-11-26T21:07:41.954735+00:00",
+      "http": 200
+    },
+    {
+      "name": "kaas-r2-native-client",
+      "path": "/apis/batch/v1/namespaces/kaas-demo/jobs/kaas-r2-native-client",
+      "at": "2026-11-26T21:07:42.540738+00:00",
+      "http": 200
+    },
+    {
+      "name": "kaas-r2-native-client-02e2e2f-r2",
+      "path": "/apis/batch/v1/namespaces/kaas-demo/jobs/kaas-r2-native-client-02e2e2f-r2",
+      "at": "2026-11-26T21:07:43.052512+00:00",
+      "http": 200
+    },
+    {
+      "name": "kaas-r2-native-client-351528d-r2",
+      "path": "/apis/batch/v1/namespaces/kaas-demo/jobs/kaas-r2-native-client-351528d-r2",
+      "at": "2026-11-26T21:07:43.575386+00:00",
+      "http": 200
+    },
+    {
+      "name": "kaas-r2-native-client-05a3f2d-r2",
+      "path": "/apis/batch/v1/namespaces/kaas-demo/jobs/kaas-r2-native-client-05a3f2d-r2",
+      "at": "2026-11-26T21:07:44.059551+00:00",
+      "http": 200
+    },
+    {
+      "name": "cluster-monitoring-config",
+      "path": "/api/v1/namespaces/openshift-monitoring/configmaps/cluster-monitoring-config",
+      "at": "2026-11-26T21:07:44.559912+00:00",
+      "http": 404
+    },
+    {
+      "name": "user-workload-monitoring-config",
+      "path": "/api/v1/namespaces/openshift-user-workload-monitoring/configmaps/user-workload-monitoring-config",
+      "at": "2026-11-26T21:07:45.052962+00:00",
+      "http": 404
+    },
+    {
+      "name": "monitoring-operator",
+      "path": "/apis/apps/v1/namespaces/openshift-monitoring/deployments/cluster-monitoring-operator",
+      "at": "2026-11-26T21:07:45.555441+00:00",
+      "http": 200
+    },
+    {
+      "name": "version",
+      "path": "/apis/config.openshift.io/v1/clusterversions/version",
+      "at": "2026-11-26T21:07:46.048219+00:00",
+      "http": 200
+    },
+    {
+      "name": "nodes",
+      "path": "/api/v1/nodes?limit=100",
+      "at": "2026-11-26T21:07:46.538148+00:00",
+      "http": 200
+    },
+    {
+      "name": "pod-requests",
+      "path": "/api/v1/pods?limit=1000",
+      "at": "2026-11-26T21:07:47.546543+00:00",
+      "http": 200
+    },
+    {
+      "name": "storageclasses",
+      "path": "/apis/storage.k8s.io/v1/storageclasses?limit=100",
+      "at": "2026-11-26T21:07:49.994439+00:00",
+      "http": 200
+    },
+    {
+      "name": "quota-openshift-user-workload-monitoring",
+      "path": "/api/v1/namespaces/openshift-user-workload-monitoring/resourcequotas?limit=100",
+      "at": "2026-11-26T21:07:50.499077+00:00",
+      "http": 200
+    },
+    {
+      "name": "quota-kaas-kafka",
+      "path": "/api/v1/namespaces/kaas-kafka/resourcequotas?limit=100",
+      "at": "2026-11-26T21:07:50.996404+00:00",
+      "http": 200
+    },
+    {
+      "name": "kafka",
+      "path": "/apis/kafka.strimzi.io/v1/namespaces/kaas-kafka/kafkas/kaas-dev",
+      "at": "2026-11-26T21:07:51.496835+00:00",
+      "http": 200
+    }
+  ],
+  "resource_writes": 0,
+  "workloads_run": false,
+  "credentials_saved": false
+}

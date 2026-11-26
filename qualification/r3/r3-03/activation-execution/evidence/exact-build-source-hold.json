@@ -1,0 +1,10 @@
+{
+  "status": "OPEN",
+  "installed_CMO_image": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:4aae77bd4739acfa0dfa1689a24cd86b44a36787772c3495df82a6c44b30ad4f",
+  "attempt": "skopeo inspect --config (read-only image metadata)",
+  "result": "Registry unauthorized; no image obtained, no container run",
+  "fallback": "Immutable release-4.21 upstream source archived as reference only",
+  "release_changelog_attempt": "Public 4.21.42 changelog unavailable (HTTP error); not used as evidence",
+  "remaining": "Obtain exact-build assets/defaults from an authorized source and reconcile all managed containers (including injected reloaders) within accepted budget before A1",
+  "credentials_read_or_saved": false
+}

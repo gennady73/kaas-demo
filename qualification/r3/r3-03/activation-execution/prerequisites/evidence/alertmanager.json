@@ -1,0 +1,40 @@
+{
+  "metadata": {
+    "name": "main",
+    "namespace": "openshift-monitoring",
+    "uid": "1961f911-d92e-4c9b-876e-a056f5a924c3",
+    "resourceVersion": "1137501"
+  },
+  "spec": {
+    "configSecret": null,
+    "replicas": 2,
+    "alertmanagerConfigSelector": null,
+    "alertmanagerConfigNamespaceSelector": null
+  },
+  "status": {
+    "availableReplicas": 2,
+    "conditions": [
+      {
+        "lastTransitionTime": "2026-11-26T17:08:49Z",
+        "message": "",
+        "observedGeneration": 1,
+        "reason": "",
+        "status": "True",
+        "type": "Available"
+      },
+      {
+        "lastTransitionTime": "2026-11-26T17:08:42Z",
+        "message": "",
+        "observedGeneration": 1,
+        "reason": "",
+        "status": "True",
+        "type": "Reconciled"
+      }
+    ],
+    "paused": false,
+    "replicas": 2,
+    "selector": "alertmanager=main,app.kubernetes.io/instance=main,app.kubernetes.io/managed-by=prometheus-operator,app.kubernetes.io/name=alertmanager",
+    "unavailableReplicas": 0,
+    "updatedReplicas": 2
+  }
+}

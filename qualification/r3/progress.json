@@ -1,5 +1,5 @@
 {
-  "revision": "0.8",
+  "revision": "0.11",
   "date": "2026-11-26",
   "plan_commit": "0f9df49fc0dfb3632c9c7f4eb32fb7e6d3aec1e6",
   "execution_enabled": false,
@@ -55,10 +55,52 @@
         "deployment_enabled": false,
         "workloads_enabled": false,
         "publication": "PUBLISHED_BY_OWNING_COMMIT_PLAN_ONLY"
+      },
+      "activation_execution": {
+        "status": "ACCEPTED_PERSISTENT_OPTION_PREPARED_A0_PARTIAL_NO_LIVE_CHANGES",
+        "record": "r3-03/activation-execution/README.md",
+        "resource_budget_approved": true,
+        "storage_selected": "PERSISTENT_4PVC_24Gi",
+        "metrics_retention": "24h",
+        "change_window_budget_minutes": 90,
+        "primary_responder_and_custodian": "user",
+        "backup": "none explicitly selected for sandbox",
+        "receiver_reference": {
+          "type": "email",
+          "to": "gunger@redhat.com",
+          "transport_status": "UNVERIFIED_NOT_CONFIGURED_BY_THIS_WORK"
+        },
+        "offline_rule_validation": "10_RULES_PARSE_12_FIXTURES_PASS",
+        "readiness_GET_requests": 15,
+        "four_client_Jobs": "FRESHLY_OBSERVED_SUSPENDED_ACTIVE0_2026_11_26T21_07Z",
+        "live_window_started": false,
+        "deployment_enabled": false,
+        "workloads_enabled": false,
+        "prerequisites": {
+          "record": "r3-03/activation-execution/prerequisites/README.md",
+          "status": "ADVANCED_SMTP_INPUT_PENDING",
+          "installed_CMO_asset_provenance": "VERIFIED_DIRECT_RUNNING_IMAGE",
+          "resource_projection": "821m5794Mi_UWM_WITHIN_ALLOWANCE_ACTUAL_PODS_PENDING_A1",
+          "server_dryruns_passed": 4,
+          "PodMonitor_controller_permission": "DENIED_NARROW_OFFLINE_GRANT_PREPARED",
+          "SMTP": "NO_RELAY_SENDER_EMAIL_INTEGRATION_IN_ACTUAL_BASE_AND_GENERATED_CONFIG",
+          "jobs": "FOUR_SUSPENDED_ACTIVE0_FRESH_21_20UTC",
+          "live_changes": false,
+          "current_disposition": "COLLECTION_ONLY_PREPARATION_NO_PENDING_USER_INPUT_EMAIL_AND_RULES_DEFERRED"
+        },
+        "email_disposition": "DEFERRED_BY_USER_NOT_A_COLLECTION_BLOCKER",
+        "selected_stages": [
+          "A0",
+          "A1",
+          "A2",
+          "A3",
+          "A7"
+        ],
+        "selection_record": "r3-03/activation-execution/selection.disabled.json"
       }
     }
   },
-  "remaining_cases": "R3-03stagedactivation/resource/rollbackplanpreparedoffline,unapproved. Userbudget/storage/window-and-impact/contactchoicesandtechnicalmergedsource/managed-footprint/rulevalidationjoinsneededbeforeanyactivation. Noautomaticdeployment,notificationorworkload;existingR1/R2andpriorofflinepassesunchanged.",
+  "remaining_cases": "R3-03 collection-only stages A0/A1/A2/A3/A7 selected; email/routing/live rules A4-A6 deferred explicitly. No pending SMTP question. Before activation: immutable source publication/pins, narrow PodMonitor permission server-check/application/effective-rights refresh, final health/compare-before-write. Actual managed resources checked at A1 exit. No test workloads or emails.",
   "note": "Progress overlay supersedes pre-correction OPEN labels only for this exact offline source/result; does not arm any planned case",
   "coordination_sync": {
     "date": "2026-11-26",

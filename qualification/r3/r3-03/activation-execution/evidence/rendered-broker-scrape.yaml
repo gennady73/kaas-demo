@@ -1,0 +1,42 @@
+apiVersion: v1
+data:
+  metrics.yml: |
+    lowercaseOutputName: true
+    rules:
+    - pattern: kafka.server<type=ReplicaManager, name=(UnderReplicatedPartitions|UnderMinIsrPartitionCount|OfflineReplicaCount)><>Value
+      name: kafka_server_replicamanager_$1
+      type: GAUGE
+    - pattern: kafka.controller<type=KafkaController, name=(ActiveControllerCount|OfflinePartitionsCount)><>Value
+      name: kafka_controller_kafkacontroller_$1
+      type: GAUGE
+kind: ConfigMap
+metadata:
+  name: kaas-dev-r3-jmx-metrics
+  namespace: kaas-kafka
+---
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  labels:
+    kaas.example.com/monitoring: r3-03
+  name: kaas-dev-broker-metrics
+  namespace: kaas-kafka
+spec:
+  namespaceSelector:
+    matchNames:
+    - kaas-kafka
+  podMetricsEndpoints:
+  - interval: 30s
+    path: /metrics
+    port: tcp-prometheus
+    relabelings:
+    - replacement: kaas-dev
+      targetLabel: kaas_cluster
+    - replacement: broker
+      targetLabel: kaas_component
+    scrapeTimeout: 10s
+  selector:
+    matchLabels:
+      strimzi.io/cluster: kaas-dev
+      strimzi.io/component-type: kafka
+      strimzi.io/name: kaas-dev-kafka

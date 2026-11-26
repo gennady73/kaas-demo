@@ -1,3 +1,5 @@
+Current R3-03 collection-only package: [accepted choices, installed-build verification, disabled candidates and remaining steps](r3-03-collection-only-activation-2026-11-26.md). Email is explicitly deferred; registration/deployment and live rules remain disabled. This update supersedes earlier pending-contact/SMTP descriptions for the current scope.
+
 Offline activation proposal: [stages, estimates, impact, rollback and remaining inputs](r3-03-activation-plan-2026-11-26.md). No rollout or workloads; all action flags remain disabled.
 
 Latest R3-03 preparation: [coverage discovery and disabled monitoring/routing configuration](r3-03-monitoring-preparation-2026-11-26.md). Existing infrastructure telemetry verified; Kafka-specific pipeline gap identified. Two operational contact/reference bundles needed; no deployment/workload/notification occurred.

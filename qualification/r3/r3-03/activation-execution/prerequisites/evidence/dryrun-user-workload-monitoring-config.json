@@ -1,0 +1,10 @@
+{
+  "metadata": {
+    "name": "user-workload-monitoring-config",
+    "namespace": "openshift-user-workload-monitoring",
+    "uid": "3151f98e-7009-448c-b2ba-91e2077c9ac2",
+    "resourceVersion": null
+  },
+  "kind": "ConfigMap",
+  "admission_dryRun_only": true
+}

@@ -1,0 +1,13 @@
+{
+  "status": "INSTALLED_ASSET_PROVENANCE_GATE_CLOSED",
+  "image": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:4aae77bd4739acfa0dfa1689a24cd86b44a36787772c3495df82a6c44b30ad4f",
+  "identity_record": "installed-assets/identity.json",
+  "method": "Three explicit cat diagnostics in existing container; no image pull or new workload",
+  "asset_hashes": {
+    "prometheus-operator-user-workload__deployment.yaml": "44f24334a91d7561a936e867ef0689ff672c25af9e114c21eb0be16016e18bc3",
+    "prometheus-user-workload__prometheus.yaml": "1f3d24be01084b69c99b4fa96586007977438be796882841d90f5244fa56702f",
+    "thanos-ruler__thanos-ruler.yaml": "fb1a4a63c16f67d9262e42b603b0988dbb129c225c6a26d765e92e49ed732658"
+  },
+  "supersedes": "../evidence/exact-build-source-hold.json for packaged manifest provenance only; original failed-registry receipt preserved",
+  "runtime_resource_acceptance": "PENDING_A1_LIVE_GENERATED_PODS_NOT_PRESENT_YET"
+}

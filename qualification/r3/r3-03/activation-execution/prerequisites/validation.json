@@ -1,0 +1,15 @@
+{
+  "status": "PREREQUISITE_EVIDENCE_ARITHMETIC_SCOPE_AND_PRESERVATION_PASS",
+  "independent_auxiliary_sum": {
+    "cpu_m": 15,
+    "MiB": 358
+  },
+  "four_server_dryruns": "PASS",
+  "four_suspended_Job_evidence": "PASS",
+  "narrow_RBAC_static_scope": "PASS_NOT_SERVER_TESTED_OR_APPLIED",
+  "frozen_monitoring_and_plan_hashes_verified": 60,
+  "SMTP_configuration_absence_confirmed_in_both_saved_documents": true,
+  "emails_sent": false,
+  "resources_changed": false,
+  "independent_reviewer": "NOT_CLAIMED"
+}

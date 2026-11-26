@@ -1,0 +1,49 @@
+{
+  "classification": "DERIVED_REQUEST_ACCOUNTING_NOT_MEASURED_USAGE_OR_SCHEDULING_GUARANTEE",
+  "method": "Sum all regular and init container requests plus overhead for assigned nonterminal Pods (conservative for sequential init). Pod-level resource field not captured; actual operator requests/placement remain to reconcile.",
+  "pod_records": 352,
+  "nodes": {
+    "ip-10-0-26-44.us-east-2.compute.internal": {
+      "allocatable_cpu_m": 15500.0,
+      "allocatable_memory_MiB": 61812.01171875,
+      "conservative_requested_cpu_m": 3517.0,
+      "conservative_requested_memory_MiB": 13999.0,
+      "remaining_cpu_m": 11983.0,
+      "remaining_memory_MiB": 47813.012
+    },
+    "ip-10-0-29-133.us-east-2.compute.internal": {
+      "allocatable_cpu_m": 15500.0,
+      "allocatable_memory_MiB": 58968.03515625,
+      "conservative_requested_cpu_m": 390.0,
+      "conservative_requested_memory_MiB": 3034.0,
+      "remaining_cpu_m": 15110.0,
+      "remaining_memory_MiB": 55934.035
+    },
+    "ip-10-0-38-189.us-east-2.compute.internal": {
+      "allocatable_cpu_m": 15500.0,
+      "allocatable_memory_MiB": 61812.03125,
+      "conservative_requested_cpu_m": 3332.0,
+      "conservative_requested_memory_MiB": 12959.0,
+      "remaining_cpu_m": 12168.0,
+      "remaining_memory_MiB": 48853.031
+    },
+    "ip-10-0-50-65.us-east-2.compute.internal": {
+      "allocatable_cpu_m": 15500.0,
+      "allocatable_memory_MiB": 58968.0390625,
+      "conservative_requested_cpu_m": 3366.0,
+      "conservative_requested_memory_MiB": 8680.0,
+      "remaining_cpu_m": 12134.0,
+      "remaining_memory_MiB": 50288.039
+    },
+    "ip-10-0-89-147.us-east-2.compute.internal": {
+      "allocatable_cpu_m": 15500.0,
+      "allocatable_memory_MiB": 61812.02734375,
+      "conservative_requested_cpu_m": 2992.0,
+      "conservative_requested_memory_MiB": 11673.0,
+      "remaining_cpu_m": 12508.0,
+      "remaining_memory_MiB": 50139.027
+    }
+  },
+  "cluster_remaining_cpu_m": 63903.0,
+  "cluster_remaining_memory_MiB": 253027.144
+}

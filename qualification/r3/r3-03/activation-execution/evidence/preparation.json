@@ -1,0 +1,11 @@
+{
+  "status": "SELECTED_PERSISTENT_CONFIG_AND_NARROW_SCRAPE_OWNERSHIP_PREPARED",
+  "source_plan_commit": "c1096073ca79dec38c3e7f1c96a436591359c31c",
+  "four_PVC_total_GiB": 24,
+  "rule_cases": 12,
+  "receiver_reference": null,
+  "rule_activation_held": true,
+  "resource_commit_pin": "NOT_PUBLISHED",
+  "whole_Pod_exact_build_resources": "OPEN_INSTALLED_IMAGE_METADATA_REGISTRY_UNAUTHORIZED",
+  "cluster_changes": false
+}

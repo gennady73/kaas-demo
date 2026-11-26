@@ -1,0 +1,64 @@
+{
+  "metadata": {
+    "name": "alertmanager-main",
+    "namespace": "openshift-monitoring",
+    "uid": "eaa796f0-b031-4f94-b954-5ec9e68e6387",
+    "resourceVersion": "25756"
+  },
+  "config_key_found": true,
+  "SMTP_global": {
+    "smarthost": null,
+    "from": null,
+    "require_tls": true,
+    "auth_configured": false
+  },
+  "receivers": [
+    {
+      "name": "Default",
+      "integration_types": [],
+      "email_settings": []
+    },
+    {
+      "name": "Watchdog",
+      "integration_types": [],
+      "email_settings": []
+    },
+    {
+      "name": "Critical",
+      "integration_types": [],
+      "email_settings": []
+    }
+  ],
+  "route": {
+    "receiver": "Default",
+    "matchers": [],
+    "match": {},
+    "match_re": {},
+    "continue": false,
+    "routes": [
+      {
+        "receiver": "Watchdog",
+        "matchers": [
+          "alertname = Watchdog"
+        ],
+        "match": {},
+        "match_re": {},
+        "continue": false,
+        "routes": []
+      },
+      {
+        "receiver": "Critical",
+        "matchers": [
+          "severity = critical"
+        ],
+        "match": {},
+        "match_re": {},
+        "continue": false,
+        "routes": []
+      }
+    ]
+  },
+  "inhibit_rule_count": 2,
+  "config_raw_saved": false,
+  "credential_values_saved": false
+}

@@ -1,0 +1,10 @@
+{
+  "metadata": {
+    "name": "kaas-dev-r3-jmx-metrics",
+    "namespace": "kaas-kafka",
+    "uid": "3b8617f7-e774-4a27-a075-a6f8c81e1ec6",
+    "resourceVersion": null
+  },
+  "kind": "ConfigMap",
+  "admission_dryRun_only": true
+}

@@ -1,0 +1,31 @@
+{
+  "status": "TECHNICAL_PREREQUISITES_ADVANCED_SMTP_INPUT_PENDING",
+  "API_packet": {
+    "requests": 28,
+    "seconds": 14.527,
+    "Alertmanager_config_Secret_GETs": 2,
+    "raw_configs_or_credentials_saved": false,
+    "access_reviews": 8,
+    "candidate_server_dryruns_passed": 4
+  },
+  "installed_assets": "3 actual packaged manifests read from exact installed image with3cat diagnostics and1PodGET",
+  "image_provenance": "CLOSED_FOR_INSTALLED_ASSETS",
+  "resource_projection": "WITHIN_ACCEPTED_BUDGET_ACTUAL_PODS_REQUIRED_AT_A1_EXIT",
+  "Argo_controller_configmap_create_patch": "ALLOWED_IN_ALL3_TARGET_NAMESPACES",
+  "Argo_controller_podmonitor_create_patch": "DENIED",
+  "prepared_RBAC": "podmonitor-controller-rbac.yaml.disabled; create namespace-limited, update/patch exact resourceName, no delete/wildcard grant; not applied or server-tested",
+  "SMTP": "NO_RELAY_SENDER_OR_EMAIL_INTEGRATION_IN_BASE_OR_GENERATED_CONFIG",
+  "recipient": "gunger@redhat.com",
+  "routing": "PREPARED_NOT_APPLIED_SCOPED_BRANCH_BEFORE_CRITICAL_CATCHALL",
+  "remaining_prerequisites": [
+    "Approved SMTP transport references or explicit defer disposition",
+    "Publish and freeze resource/registration commits",
+    "Server dry-run and authorized application of narrow PodMonitor Role/Binding; refresh effective rights",
+    "Final compare-before-write/current health gates before activation window"
+  ],
+  "Jobs": "ALL4_SUSPENDED_ACTIVE0_IN_FRESH_2026_11_26T21_20Z_GETS",
+  "client_tests_run": false,
+  "test_emails_sent": false,
+  "resource_changes": false,
+  "live_window_started": false
+}

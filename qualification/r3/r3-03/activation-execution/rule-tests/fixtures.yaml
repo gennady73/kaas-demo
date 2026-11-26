@@ -1,0 +1,463 @@
+rule_files:
+- broker.rules.yaml
+- sink.rules.yaml
+evaluation_interval: 1m
+tests:
+- name: healthy brokers and sink
+  interval: 1m
+  input_series:
+  - &id001
+    series: up{namespace="kaas-kafka",kaas_cluster="kaas-dev",kaas_component="broker",pod="broker-0"}
+    values: 1+0x12
+  - &id002
+    series: kafka_server_replicamanager_underminisrpartitioncount{namespace="kaas-kafka",kaas_cluster="kaas-dev",kaas_component="broker",pod="broker-0"}
+    values: 0+0x12
+  - &id003
+    series: kafka_server_replicamanager_underreplicatedpartitions{namespace="kaas-kafka",kaas_cluster="kaas-dev",kaas_component="broker",pod="broker-0"}
+    values: 0+0x12
+  - &id004
+    series: kafka_controller_kafkacontroller_offlinepartitionscount{namespace="kaas-kafka",kaas_cluster="kaas-dev",kaas_component="broker",pod="broker-0"}
+    values: 0+0x12
+  - &id005
+    series: kafka_controller_kafkacontroller_activecontrollercount{namespace="kaas-kafka",kaas_cluster="kaas-dev",kaas_component="broker",pod="broker-0"}
+    values: 1+0x12
+  - &id006
+    series: up{namespace="kaas-kafka",kaas_cluster="kaas-dev",kaas_component="broker",pod="broker-1"}
+    values: 1+0x12
+  - &id007
+    series: kafka_server_replicamanager_underminisrpartitioncount{namespace="kaas-kafka",kaas_cluster="kaas-dev",kaas_component="broker",pod="broker-1"}
+    values: 0+0x12
+  - &id008
+    series: kafka_server_replicamanager_underreplicatedpartitions{namespace="kaas-kafka",kaas_cluster="kaas-dev",kaas_component="broker",pod="broker-1"}
+    values: 0+0x12
+  - &id009
+    series: kafka_controller_kafkacontroller_offlinepartitionscount{namespace="kaas-kafka",kaas_cluster="kaas-dev",kaas_component="broker",pod="broker-1"}
+    values: 0+0x12
+  - &id010
+    series: kafka_controller_kafkacontroller_activecontrollercount{namespace="kaas-kafka",kaas_cluster="kaas-dev",kaas_component="broker",pod="broker-1"}
+    values: 0+0x12
+  - &id018
+    series: up{namespace="kaas-kafka",kaas_cluster="kaas-dev",kaas_component="broker",pod="broker-2"}
+    values: 1+0x12
+  - &id011
+    series: kafka_server_replicamanager_underminisrpartitioncount{namespace="kaas-kafka",kaas_cluster="kaas-dev",kaas_component="broker",pod="broker-2"}
+    values: 0+0x12
+  - &id012
+    series: kafka_server_replicamanager_underreplicatedpartitions{namespace="kaas-kafka",kaas_cluster="kaas-dev",kaas_component="broker",pod="broker-2"}
+    values: 0+0x12
+  - &id013
+    series: kafka_controller_kafkacontroller_offlinepartitionscount{namespace="kaas-kafka",kaas_cluster="kaas-dev",kaas_component="broker",pod="broker-2"}
+    values: 0+0x12
+  - &id014
+    series: kafka_controller_kafkacontroller_activecontrollercount{namespace="kaas-kafka",kaas_cluster="kaas-dev",kaas_component="broker",pod="broker-2"}
+    values: 0+0x12
+  - &id015
+    series: kubelet_volume_stats_available_bytes{namespace="kaas-demo",persistentvolumeclaim="kaas-r2-native-evidence"}
+    values: 999993344+0x12
+  - &id016
+    series: kube_deployment_status_replicas_available{namespace="kaas-demo",deployment="kaas-r2-evidence"}
+    values: 1+0x12
+  alert_rule_test:
+  - eval_time: 10m
+    alertname: KaaSBrokerMetricsUnavailable
+    exp_alerts: []
+  - eval_time: 10m
+    alertname: KaaSBrokerRequiredSeriesMissing
+    exp_alerts: []
+  - eval_time: 10m
+    alertname: KaaSBelowMinISR
+    exp_alerts: []
+  - eval_time: 10m
+    alertname: KaaSUnderReplicatedPartitions
+    exp_alerts: []
+  - eval_time: 10m
+    alertname: KaaSOfflinePartitions
+    exp_alerts: []
+  - eval_time: 10m
+    alertname: KaaSControllerCountUnexpected
+    exp_alerts: []
+  - eval_time: 10m
+    alertname: KaaSEvidenceSpaceWarning
+    exp_alerts: []
+  - eval_time: 10m
+    alertname: KaaSEvidenceSpaceCritical
+    exp_alerts: []
+  - eval_time: 10m
+    alertname: KaaSEvidenceMetricsMissing
+    exp_alerts: []
+  - eval_time: 10m
+    alertname: KaaSEvidenceDeploymentUnavailable
+    exp_alerts: []
+- name: one scrape down
+  interval: 1m
+  input_series:
+  - *id001
+  - *id002
+  - *id003
+  - *id004
+  - *id005
+  - *id006
+  - *id007
+  - *id008
+  - *id009
+  - *id010
+  - series: up{namespace="kaas-kafka",kaas_cluster="kaas-dev",kaas_component="broker",pod="broker-2"}
+    values: 0+0x12
+  - *id011
+  - *id012
+  - *id013
+  - *id014
+  - *id015
+  - *id016
+  alert_rule_test:
+  - eval_time: 10m
+    alertname: KaaSBrokerMetricsUnavailable
+    exp_alerts:
+    - exp_labels:
+        severity: warning
+        kaas_service: kaas-dev
+        kaas_phase: r3-03
+      exp_annotations: &id017
+        summary: One or more of three sandbox broker scrape targets missing/down
+        action: Inspect evidence and stop dependent work; no automatic restart, scale,
+          ISR/retention change or deletion.
+- name: all scrape targets absent
+  interval: 1m
+  input_series:
+  - *id002
+  - *id003
+  - *id004
+  - *id005
+  - *id007
+  - *id008
+  - *id009
+  - *id010
+  - *id011
+  - *id012
+  - *id013
+  - *id014
+  - *id015
+  - *id016
+  alert_rule_test:
+  - eval_time: 10m
+    alertname: KaaSBrokerMetricsUnavailable
+    exp_alerts:
+    - exp_labels:
+        severity: warning
+        kaas_service: kaas-dev
+        kaas_phase: r3-03
+        namespace: kaas-kafka
+        kaas_cluster: kaas-dev
+        kaas_component: broker
+      exp_annotations: *id017
+- name: required family absent
+  interval: 1m
+  input_series:
+  - *id001
+  - *id003
+  - *id004
+  - *id005
+  - *id006
+  - *id008
+  - *id009
+  - *id010
+  - *id018
+  - *id012
+  - *id013
+  - *id014
+  - *id015
+  - *id016
+  alert_rule_test:
+  - eval_time: 10m
+    alertname: KaaSBrokerRequiredSeriesMissing
+    exp_alerts:
+    - exp_labels:
+        severity: warning
+        kaas_service: kaas-dev
+        kaas_phase: r3-03
+        namespace: kaas-kafka
+        kaas_cluster: kaas-dev
+        kaas_component: broker
+      exp_annotations:
+        summary: Required Kafka metric family missing; cannot infer healthy zero
+        action: Inspect evidence and stop dependent work; no automatic restart, scale,
+          ISR/retention change or deletion.
+- name: KaaSBelowMinISR
+  interval: 1m
+  input_series:
+  - *id001
+  - series: kafka_server_replicamanager_underminisrpartitioncount{namespace="kaas-kafka",kaas_cluster="kaas-dev",kaas_component="broker",pod="broker-0"}
+    values: 1+0x12
+  - *id003
+  - *id004
+  - *id005
+  - *id006
+  - series: kafka_server_replicamanager_underminisrpartitioncount{namespace="kaas-kafka",kaas_cluster="kaas-dev",kaas_component="broker",pod="broker-1"}
+    values: 1+0x12
+  - *id008
+  - *id009
+  - *id010
+  - *id018
+  - series: kafka_server_replicamanager_underminisrpartitioncount{namespace="kaas-kafka",kaas_cluster="kaas-dev",kaas_component="broker",pod="broker-2"}
+    values: 1+0x12
+  - *id012
+  - *id013
+  - *id014
+  - *id015
+  - *id016
+  alert_rule_test:
+  - eval_time: 10m
+    alertname: KaaSBelowMinISR
+    exp_alerts:
+    - exp_labels:
+        severity: critical
+        kaas_service: kaas-dev
+        kaas_phase: r3-03
+      exp_annotations:
+        summary: Partitions below configured minimum ISR
+        action: Inspect evidence and stop dependent work; no automatic restart, scale,
+          ISR/retention change or deletion.
+- name: KaaSUnderReplicatedPartitions
+  interval: 1m
+  input_series:
+  - *id001
+  - *id002
+  - series: kafka_server_replicamanager_underreplicatedpartitions{namespace="kaas-kafka",kaas_cluster="kaas-dev",kaas_component="broker",pod="broker-0"}
+    values: 1+0x12
+  - *id004
+  - *id005
+  - *id006
+  - *id007
+  - series: kafka_server_replicamanager_underreplicatedpartitions{namespace="kaas-kafka",kaas_cluster="kaas-dev",kaas_component="broker",pod="broker-1"}
+    values: 1+0x12
+  - *id009
+  - *id010
+  - *id018
+  - *id011
+  - series: kafka_server_replicamanager_underreplicatedpartitions{namespace="kaas-kafka",kaas_cluster="kaas-dev",kaas_component="broker",pod="broker-2"}
+    values: 1+0x12
+  - *id013
+  - *id014
+  - *id015
+  - *id016
+  alert_rule_test:
+  - eval_time: 10m
+    alertname: KaaSUnderReplicatedPartitions
+    exp_alerts:
+    - exp_labels:
+        severity: warning
+        kaas_service: kaas-dev
+        kaas_phase: r3-03
+      exp_annotations:
+        summary: Kafka replicas not fully in sync
+        action: Inspect evidence and stop dependent work; no automatic restart, scale,
+          ISR/retention change or deletion.
+- name: KaaSOfflinePartitions
+  interval: 1m
+  input_series:
+  - *id001
+  - *id002
+  - *id003
+  - series: kafka_controller_kafkacontroller_offlinepartitionscount{namespace="kaas-kafka",kaas_cluster="kaas-dev",kaas_component="broker",pod="broker-0"}
+    values: 1+0x12
+  - *id005
+  - *id006
+  - *id007
+  - *id008
+  - series: kafka_controller_kafkacontroller_offlinepartitionscount{namespace="kaas-kafka",kaas_cluster="kaas-dev",kaas_component="broker",pod="broker-1"}
+    values: 1+0x12
+  - *id010
+  - *id018
+  - *id011
+  - *id012
+  - series: kafka_controller_kafkacontroller_offlinepartitionscount{namespace="kaas-kafka",kaas_cluster="kaas-dev",kaas_component="broker",pod="broker-2"}
+    values: 1+0x12
+  - *id014
+  - *id015
+  - *id016
+  alert_rule_test:
+  - eval_time: 10m
+    alertname: KaaSOfflinePartitions
+    exp_alerts:
+    - exp_labels:
+        severity: critical
+        kaas_service: kaas-dev
+        kaas_phase: r3-03
+      exp_annotations:
+        summary: Controller reports offline partitions
+        action: Inspect evidence and stop dependent work; no automatic restart, scale,
+          ISR/retention change or deletion.
+- name: zero active controllers
+  interval: 1m
+  input_series:
+  - *id001
+  - *id002
+  - *id003
+  - *id004
+  - series: kafka_controller_kafkacontroller_activecontrollercount{namespace="kaas-kafka",kaas_cluster="kaas-dev",kaas_component="broker",pod="broker-0"}
+    values: 0+0x12
+  - *id006
+  - *id007
+  - *id008
+  - *id009
+  - series: kafka_controller_kafkacontroller_activecontrollercount{namespace="kaas-kafka",kaas_cluster="kaas-dev",kaas_component="broker",pod="broker-1"}
+    values: 0+0x12
+  - *id018
+  - *id011
+  - *id012
+  - *id013
+  - series: kafka_controller_kafkacontroller_activecontrollercount{namespace="kaas-kafka",kaas_cluster="kaas-dev",kaas_component="broker",pod="broker-2"}
+    values: 0+0x12
+  - *id015
+  - *id016
+  alert_rule_test:
+  - eval_time: 10m
+    alertname: KaaSControllerCountUnexpected
+    exp_alerts:
+    - exp_labels:
+        severity: critical
+        kaas_service: kaas-dev
+        kaas_phase: r3-03
+      exp_annotations:
+        summary: Expected exactly one active controller in the observed dual-role
+          cluster
+        action: Inspect evidence and stop dependent work; no automatic restart, scale,
+          ISR/retention change or deletion.
+- name: KaaSEvidenceSpaceWarning
+  interval: 1m
+  input_series:
+  - *id001
+  - *id002
+  - *id003
+  - *id004
+  - *id005
+  - *id006
+  - *id007
+  - *id008
+  - *id009
+  - *id010
+  - *id018
+  - *id011
+  - *id012
+  - *id013
+  - *id014
+  - series: kubelet_volume_stats_available_bytes{namespace="kaas-demo",persistentvolumeclaim="kaas-r2-native-evidence"}
+    values: 100000000+0x12
+  - *id016
+  alert_rule_test:
+  - eval_time: 10m
+    alertname: KaaSEvidenceSpaceWarning
+    exp_alerts:
+    - exp_labels:
+        severity: warning
+        kaas_service: kaas-dev
+        kaas_phase: r3-03
+        namespace: kaas-demo
+        persistentvolumeclaim: kaas-r2-native-evidence
+      exp_annotations:
+        summary: Proposed warning at128MiB free; sink admission floor is64MiB
+        action: Inspect evidence and stop dependent work; no automatic restart, scale,
+          ISR/retention change or deletion.
+- name: KaaSEvidenceSpaceCritical
+  interval: 1m
+  input_series:
+  - *id001
+  - *id002
+  - *id003
+  - *id004
+  - *id005
+  - *id006
+  - *id007
+  - *id008
+  - *id009
+  - *id010
+  - *id018
+  - *id011
+  - *id012
+  - *id013
+  - *id014
+  - series: kubelet_volume_stats_available_bytes{namespace="kaas-demo",persistentvolumeclaim="kaas-r2-native-evidence"}
+    values: 60000000+0x12
+  - *id016
+  alert_rule_test:
+  - eval_time: 10m
+    alertname: KaaSEvidenceSpaceCritical
+    exp_alerts:
+    - exp_labels:
+        severity: critical
+        kaas_service: kaas-dev
+        kaas_phase: r3-03
+        namespace: kaas-demo
+        persistentvolumeclaim: kaas-r2-native-evidence
+      exp_annotations:
+        summary: Filesystem free below existing64MiB sink admission floor
+        action: Inspect evidence and stop dependent work; no automatic restart, scale,
+          ISR/retention change or deletion.
+- name: sink unavailable
+  interval: 1m
+  input_series:
+  - *id001
+  - *id002
+  - *id003
+  - *id004
+  - *id005
+  - *id006
+  - *id007
+  - *id008
+  - *id009
+  - *id010
+  - *id018
+  - *id011
+  - *id012
+  - *id013
+  - *id014
+  - *id015
+  - series: kube_deployment_status_replicas_available{namespace="kaas-demo",deployment="kaas-r2-evidence"}
+    values: 0+0x12
+  alert_rule_test:
+  - eval_time: 10m
+    alertname: KaaSEvidenceDeploymentUnavailable
+    exp_alerts:
+    - exp_labels:
+        severity: critical
+        kaas_service: kaas-dev
+        kaas_phase: r3-03
+        namespace: kaas-demo
+        deployment: kaas-r2-evidence
+      exp_annotations:
+        summary: Existing evidence sink deployment has no available replica
+        action: Inspect evidence and stop dependent work; no automatic restart, scale,
+          ISR/retention change or deletion.
+- name: sink PVC series missing
+  interval: 1m
+  input_series:
+  - *id001
+  - *id002
+  - *id003
+  - *id004
+  - *id005
+  - *id006
+  - *id007
+  - *id008
+  - *id009
+  - *id010
+  - *id018
+  - *id011
+  - *id012
+  - *id013
+  - *id014
+  - *id016
+  alert_rule_test:
+  - eval_time: 10m
+    alertname: KaaSEvidenceMetricsMissing
+    exp_alerts:
+    - exp_labels:
+        severity: warning
+        kaas_service: kaas-dev
+        kaas_phase: r3-03
+        namespace: kaas-demo
+        persistentvolumeclaim: kaas-r2-native-evidence
+      exp_annotations:
+        summary: Kubernetes sink/evidence metric missing from rule evaluation plane
+        action: Inspect evidence and stop dependent work; no automatic restart, scale,
+          ISR/retention change or deletion.

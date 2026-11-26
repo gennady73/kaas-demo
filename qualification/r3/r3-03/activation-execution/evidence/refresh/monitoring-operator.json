@@ -1,0 +1,184 @@
+{
+  "spec": {
+    "replicas": 1,
+    "selector": {
+      "matchLabels": {
+        "app": "cluster-monitoring-operator"
+      }
+    },
+    "template": {
+      "metadata": {
+        "labels": {
+          "app": "cluster-monitoring-operator",
+          "app.kubernetes.io/name": "cluster-monitoring-operator",
+          "app.kubernetes.io/part-of": "openshift-monitoring"
+        },
+        "annotations": {
+          "openshift.io/required-scc": "restricted-v2",
+          "target.workload.openshift.io/management": "{\"effect\": \"PreferredDuringScheduling\"}"
+        }
+      },
+      "spec": {
+        "volumes": [
+          {
+            "name": "telemetry-config",
+            "configMap": {
+              "name": "telemetry-config",
+              "defaultMode": 420
+            }
+          },
+          {
+            "name": "cluster-monitoring-operator-tls",
+            "secret": {
+              "secretName": "cluster-monitoring-operator-tls",
+              "defaultMode": 420
+            }
+          }
+        ],
+        "containers": [
+          {
+            "name": "cluster-monitoring-operator",
+            "image": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:4aae77bd4739acfa0dfa1689a24cd86b44a36787772c3495df82a6c44b30ad4f",
+            "args": [
+              "-namespace=openshift-monitoring",
+              "-namespace-user-workload=openshift-user-workload-monitoring",
+              "-configmap=cluster-monitoring-config",
+              "-release-version=$(RELEASE_VERSION)",
+              "-v=2",
+              "-cert-file=/etc/tls/private/tls.crt",
+              "-key-file=/etc/tls/private/tls.key",
+              "-images=prometheus-operator=quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:02aa9fd5ad7cdd1094039833d238e2e376ba2d04c366942139ca6450f06f83ed",
+              "-images=prometheus-config-reloader=quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:efe496413e1d47b4fd7fb60992f62b2e45407209b52cdf30b7be47f4ccb80cad",
+              "-images=prometheus-operator-admission-webhook=quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:6093ddd62894cf5f07af20002338f36c97e0bc1d86ee75274a7ae83a8fa3b4dd",
+              "-images=configmap-reloader=quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:a8dcb894e7e3f3beb3f62910eb1ffd775c9fbf51d937ba5ba78b1dd62a93e33d",
+              "-images=prometheus=quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:cb9e2117e3ae6731487ac096a581fa36c59b25ef85b8cb3de6ac696ec90dab67",
+              "-images=alertmanager=quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:17a34c0756588d878a0c1de6ab548f3a90f6bd80f7bffafd130bed5f47880252",
+              "-images=node-exporter=quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:24267fdb1e3b0ef48af5d461afd0566c89d22116b7bb7cf13e84d6f22aa54495",
+              "-images=kube-state-metrics=quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:6c51524ae1741787a1005052323edb18a27dd5b504322baef9ad746c6329dabf",
+              "-images=openshift-state-metrics=quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:a1b57bb826bcbd2a0c9cbb781f78070552ba1de961e6748bc45134aa271a4549",
+              "-images=kube-rbac-proxy=quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:9081bd341e8efa55d05b292caf1785a4f0d5931099ed4cc489a57840331fb869",
+              "-images=telemeter-client=quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:5a14581f838850399c4fed3d1b730ee909d3513d99368f29c7cb311a11adc5c8",
+              "-images=prom-label-proxy=quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:e7a83f0ab3465ef1068170866d671f6de4e6818f118c7aa9012e7befad8fb60d",
+              "-images=thanos=quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:f1ae57b261f4207628f0b29d9c48e0605ae9114e807ed52845f98297a92172f5",
+              "-images=monitoring-plugin=quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:9594009e4030254765fd14c35d7ce23fd3260d52bfaed6fc66b05298ed5832c6",
+              "-images=kube-metrics-server=quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:4690c296d5ed381266951876cd258eafef77c337a0ad9d53e035caa2c6267efc"
+            ],
+            "ports": [
+              {
+                "name": "https",
+                "containerPort": 8443,
+                "protocol": "TCP"
+              }
+            ],
+            "env": [
+              {
+                "name": "RELEASE_VERSION",
+                "value": "4.21.42"
+              },
+              {
+                "name": "POD_NAME",
+                "valueFrom": {
+                  "fieldRef": {
+                    "apiVersion": "v1",
+                    "fieldPath": "metadata.name"
+                  }
+                }
+              }
+            ],
+            "resources": {
+              "requests": {
+                "cpu": "10m",
+                "memory": "75Mi"
+              }
+            },
+            "volumeMounts": [
+              {
+                "name": "cluster-monitoring-operator-tls",
+                "readOnly": true,
+                "mountPath": "/etc/tls/private"
+              },
+              {
+                "name": "telemetry-config",
+                "readOnly": true,
+                "mountPath": "/etc/cluster-monitoring-operator/telemetry"
+              }
+            ],
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "FallbackToLogsOnError",
+            "imagePullPolicy": "IfNotPresent"
+          }
+        ],
+        "restartPolicy": "Always",
+        "terminationGracePeriodSeconds": 30,
+        "dnsPolicy": "ClusterFirst",
+        "nodeSelector": {
+          "kubernetes.io/os": "linux",
+          "node-role.kubernetes.io/master": ""
+        },
+        "serviceAccountName": "cluster-monitoring-operator",
+        "serviceAccount": "cluster-monitoring-operator",
+        "securityContext": {},
+        "schedulerName": "default-scheduler",
+        "tolerations": [
+          {
+            "key": "node.kubernetes.io/memory-pressure",
+            "operator": "Exists",
+            "effect": "NoSchedule"
+          },
+          {
+            "key": "node-role.kubernetes.io/master",
+            "operator": "Exists",
+            "effect": "NoSchedule"
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 120
+          },
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 120
+          }
+        ],
+        "priorityClassName": "system-cluster-critical"
+      }
+    },
+    "strategy": {
+      "type": "RollingUpdate",
+      "rollingUpdate": {
+        "maxUnavailable": "25%",
+        "maxSurge": "25%"
+      }
+    },
+    "revisionHistoryLimit": 10,
+    "progressDeadlineSeconds": 600
+  },
+  "status": {
+    "observedGeneration": 1,
+    "replicas": 1,
+    "updatedReplicas": 1,
+    "readyReplicas": 1,
+    "availableReplicas": 1,
+    "conditions": [
+      {
+        "type": "Progressing",
+        "status": "True",
+        "lastUpdateTime": "2026-11-17T17:18:58Z",
+        "lastTransitionTime": "2026-11-17T17:16:37Z",
+        "reason": "NewReplicaSetAvailable",
+        "message": "ReplicaSet \"cluster-monitoring-operator-68f54fd848\" has successfully progressed."
+      },
+      {
+        "type": "Available",
+        "status": "True",
+        "lastUpdateTime": "2026-11-26T17:11:37Z",
+        "lastTransitionTime": "2026-11-26T17:11:37Z",
+        "reason": "MinimumReplicasAvailable",
+        "message": "Deployment has minimum availability."
+      }
+    ]
+  }
+}

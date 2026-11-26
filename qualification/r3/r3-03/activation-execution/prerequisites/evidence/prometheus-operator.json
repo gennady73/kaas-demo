@@ -1,0 +1,188 @@
+{
+  "metadata": {
+    "name": "prometheus-operator",
+    "namespace": "openshift-monitoring",
+    "uid": "77fea0e1-5268-4e6c-86f9-310068156e01",
+    "resourceVersion": "1020975"
+  },
+  "template": {
+    "metadata": {
+      "labels": {
+        "app.kubernetes.io/component": "controller",
+        "app.kubernetes.io/managed-by": "cluster-monitoring-operator",
+        "app.kubernetes.io/name": "prometheus-operator",
+        "app.kubernetes.io/part-of": "openshift-monitoring",
+        "app.kubernetes.io/version": "0.87.0"
+      },
+      "annotations": {
+        "kubectl.kubernetes.io/default-container": "prometheus-operator",
+        "openshift.io/required-scc": "restricted-v2",
+        "target.workload.openshift.io/management": "{\"effect\": \"PreferredDuringScheduling\"}"
+      }
+    },
+    "spec": {
+      "volumes": [
+        {
+          "name": "prometheus-operator-tls",
+          "secret": {
+            "secretName": "prometheus-operator-tls",
+            "defaultMode": 420
+          }
+        },
+        {
+          "name": "prometheus-operator-kube-rbac-proxy-config",
+          "secret": {
+            "secretName": "prometheus-operator-kube-rbac-proxy-config",
+            "defaultMode": 420
+          }
+        },
+        {
+          "name": "metrics-client-ca",
+          "configMap": {
+            "name": "metrics-client-ca",
+            "defaultMode": 420
+          }
+        }
+      ],
+      "containers": [
+        {
+          "name": "prometheus-operator",
+          "image": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:02aa9fd5ad7cdd1094039833d238e2e376ba2d04c366942139ca6450f06f83ed",
+          "args": [
+            "--kubelet-service=kube-system/kubelet",
+            "--prometheus-config-reloader=quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:efe496413e1d47b4fd7fb60992f62b2e45407209b52cdf30b7be47f4ccb80cad",
+            "--kubelet-endpoints=true",
+            "--kubelet-endpointslice=true",
+            "--watch-referenced-objects-in-all-namespaces=true",
+            "--prometheus-instance-namespaces=openshift-monitoring",
+            "--thanos-ruler-instance-namespaces=openshift-monitoring",
+            "--alertmanager-instance-namespaces=openshift-monitoring",
+            "--config-reloader-cpu-limit=0",
+            "--config-reloader-memory-limit=0",
+            "--config-reloader-cpu-request=1m",
+            "--config-reloader-memory-request=10Mi",
+            "--web.listen-address=127.0.0.1:8080",
+            "--controller-id=openshift-monitoring/prometheus-operator"
+          ],
+          "env": [
+            {
+              "name": "GOGC",
+              "value": "30"
+            }
+          ],
+          "resources": {
+            "requests": {
+              "cpu": "5m",
+              "memory": "150Mi"
+            }
+          },
+          "terminationMessagePath": "/dev/termination-log",
+          "terminationMessagePolicy": "FallbackToLogsOnError",
+          "imagePullPolicy": "IfNotPresent",
+          "securityContext": {
+            "capabilities": {
+              "drop": [
+                "ALL"
+              ]
+            },
+            "readOnlyRootFilesystem": true,
+            "allowPrivilegeEscalation": false
+          }
+        },
+        {
+          "name": "kube-rbac-proxy",
+          "image": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:9081bd341e8efa55d05b292caf1785a4f0d5931099ed4cc489a57840331fb869",
+          "args": [
+            "--secure-listen-address=:8443",
+            "--tls-cipher-suites=TLS_AES_128_GCM_SHA256,TLS_AES_256_GCM_SHA384,TLS_CHACHA20_POLY1305_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256",
+            "--upstream=http://localhost:8080/",
+            "--tls-cert-file=/etc/tls/private/tls.crt",
+            "--tls-private-key-file=/etc/tls/private/tls.key",
+            "--client-ca-file=/etc/tls/client/client-ca.crt",
+            "--config-file=/etc/kube-rbac-policy/config.yaml",
+            "--tls-min-version=VersionTLS12"
+          ],
+          "ports": [
+            {
+              "name": "https",
+              "containerPort": 8443,
+              "protocol": "TCP"
+            }
+          ],
+          "resources": {
+            "requests": {
+              "cpu": "1m",
+              "memory": "15Mi"
+            }
+          },
+          "volumeMounts": [
+            {
+              "name": "prometheus-operator-tls",
+              "readOnly": true,
+              "mountPath": "/etc/tls/private"
+            },
+            {
+              "name": "metrics-client-ca",
+              "readOnly": true,
+              "mountPath": "/etc/tls/client"
+            },
+            {
+              "name": "prometheus-operator-kube-rbac-proxy-config",
+              "readOnly": true,
+              "mountPath": "/etc/kube-rbac-policy"
+            }
+          ],
+          "terminationMessagePath": "/dev/termination-log",
+          "terminationMessagePolicy": "FallbackToLogsOnError",
+          "imagePullPolicy": "IfNotPresent",
+          "securityContext": {}
+        }
+      ],
+      "restartPolicy": "Always",
+      "terminationGracePeriodSeconds": 30,
+      "dnsPolicy": "ClusterFirst",
+      "nodeSelector": {
+        "kubernetes.io/os": "linux",
+        "node-role.kubernetes.io/master": ""
+      },
+      "serviceAccountName": "prometheus-operator",
+      "serviceAccount": "prometheus-operator",
+      "automountServiceAccountToken": true,
+      "securityContext": {},
+      "schedulerName": "default-scheduler",
+      "tolerations": [
+        {
+          "key": "node-role.kubernetes.io/master",
+          "operator": "Exists",
+          "effect": "NoSchedule"
+        }
+      ],
+      "priorityClassName": "system-cluster-critical"
+    }
+  },
+  "status": {
+    "observedGeneration": 1,
+    "replicas": 1,
+    "updatedReplicas": 1,
+    "readyReplicas": 1,
+    "availableReplicas": 1,
+    "conditions": [
+      {
+        "type": "Progressing",
+        "status": "True",
+        "lastUpdateTime": "2026-11-17T17:19:21Z",
+        "lastTransitionTime": "2026-11-17T17:19:07Z",
+        "reason": "NewReplicaSetAvailable",
+        "message": "ReplicaSet \"prometheus-operator-79f655b55b\" has successfully progressed."
+      },
+      {
+        "type": "Available",
+        "status": "True",
+        "lastUpdateTime": "2026-11-26T10:09:53Z",
+        "lastTransitionTime": "2026-11-26T10:09:53Z",
+        "reason": "MinimumReplicasAvailable",
+        "message": "Deployment has minimum availability."
+      }
+    ]
+  }
+}

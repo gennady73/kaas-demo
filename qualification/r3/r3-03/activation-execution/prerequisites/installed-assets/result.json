@@ -1,0 +1,30 @@
+{
+  "status": "COMPLETE",
+  "reason": null,
+  "at_UTC": "2026-11-26T21:21:49.296170+00:00",
+  "elapsed_seconds": 6.995,
+  "asset_reads": [
+    {
+      "path": "/assets/prometheus-operator-user-workload/deployment.yaml",
+      "exit_code": 0,
+      "stdout_bytes": 4454
+    },
+    {
+      "path": "/assets/prometheus-user-workload/prometheus.yaml",
+      "exit_code": 0,
+      "stdout_bytes": 9585
+    },
+    {
+      "path": "/assets/thanos-ruler/thanos-ruler.yaml",
+      "exit_code": 0,
+      "stdout_bytes": 4879
+    }
+  ],
+  "method": "GET Pod identity, then oc exec cat of three exact /assets YAML paths in existing CMO container",
+  "diagnostic_exec_processes": 3,
+  "client_workloads_run": false,
+  "Jobs_changed": false,
+  "emails_sent": false,
+  "credentials_saved": false,
+  "kubeconfig_storage": "anonymous RAM memfd only; closed on exit; no filesystem credential file"
+}

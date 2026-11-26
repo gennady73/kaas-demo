@@ -1,0 +1,43 @@
+import datetime,getpass,json,ssl,time,urllib.request,urllib.error
+from pathlib import Path
+R=Path('/home/gunger/Projects/kaas-solution'); O=R/'kaas-demo/qualification/r3/r3-03/activation-execution/evidence/refresh'; O.mkdir(parents=True,exist_ok=False)
+token=getpass.getpass('Sandbox token (memory only): '); t=time.monotonic(); receipts=[]
+ctx=ssl.create_default_context(cafile=str(R/'config/environments/certificates/ocp-rddgh-api-ca.crt'))
+class NoRedirect(urllib.request.HTTPRedirectHandler):
+ def redirect_request(self,*a,**k):return None
+op=urllib.request.build_opener(urllib.request.ProxyHandler({}),urllib.request.HTTPSHandler(context=ctx),NoRedirect())
+def get(n,p,proj=lambda x:x,optional=False):
+ if len(receipts)>=30 or time.monotonic()-t>300: raise RuntimeError('budget')
+ q={'name':n,'path':p,'at':datetime.datetime.now(datetime.timezone.utc).isoformat()};receipts.append(q)
+ try:
+  with op.open(urllib.request.Request('https://api.ocp.rddgh.sandbox3088.opentlc.com:6443'+p,headers={'Authorization':'Bearer '+token}),timeout=12) as r:b=r.read(8388609);q['http']=r.status
+  if len(b)>8388608:raise RuntimeError('size')
+  d=json.loads(b)
+  if d.get('metadata',{}).get('continue'):raise RuntimeError('pagination')
+  s=json.dumps(proj(d),indent=2)+'\n'
+  if token in s:raise RuntimeError('redaction')
+  (O/(n+'.json')).write_text(s);return d
+ except urllib.error.HTTPError as e:
+  q['http']=e.code
+  if optional and e.code==404:return None
+  raise RuntimeError(n+'_http_'+str(e.code)) from None
+try:
+ d=get('identity','/apis/user.openshift.io/v1/users/~',lambda d:{'name':d['metadata']['name']})
+ if d['metadata']['name']!='admin':raise RuntimeError('identity')
+ for n in ['kaas-r2-native-client','kaas-r2-native-client-02e2e2f-r2','kaas-r2-native-client-351528d-r2','kaas-r2-native-client-05a3f2d-r2']:
+  d=get(n,'/apis/batch/v1/namespaces/kaas-demo/jobs/'+n,lambda d:{'name':d['metadata']['name'],'uid':d['metadata']['uid'],'suspend':d['spec'].get('suspend'),'active':d.get('status',{}).get('active',0)})
+  if d['spec'].get('suspend') is not True or d.get('status',{}).get('active',0):raise RuntimeError('Job_state')
+ for ns,n in [('openshift-monitoring','cluster-monitoring-config'),('openshift-user-workload-monitoring','user-workload-monitoring-config')]:
+  get(n,'/api/v1/namespaces/'+ns+'/configmaps/'+n,lambda d:{'metadata':{k:d['metadata'].get(k) for k in ['name','namespace','resourceVersion','uid','managedFields']},'data':d.get('data',{})},True)
+ get('monitoring-operator','/apis/apps/v1/namespaces/openshift-monitoring/deployments/cluster-monitoring-operator',lambda d:{'spec':d['spec'],'status':d.get('status')})
+ get('version','/apis/config.openshift.io/v1/clusterversions/version',lambda d:{'desired':d['status'].get('desired'),'history':d['status'].get('history',[])[:2]})
+ get('nodes','/api/v1/nodes?limit=100',lambda d:{'items':[{'name':x['metadata']['name'],'labels':{k:v for k,v in x['metadata'].get('labels',{}).items() if k.startswith(('node-role.kubernetes.io/','topology.kubernetes.io/'))},'taints':x['spec'].get('taints',[]),'unschedulable':x['spec'].get('unschedulable',False),'allocatable':x['status']['allocatable'],'conditions':[c for c in x['status']['conditions'] if c['type']=='Ready']} for x in d['items']]})
+ get('pod-requests','/api/v1/pods?limit=1000',lambda d:{'items':[{'namespace':x['metadata']['namespace'],'name':x['metadata']['name'],'nodeName':x['spec'].get('nodeName'),'phase':x['status'].get('phase'),'overhead':x['spec'].get('overhead',{}),'containers':[{'name':c['name'],'resources':c.get('resources',{})} for c in x['spec']['containers']],'initContainers':[{'name':c['name'],'restartPolicy':c.get('restartPolicy'),'resources':c.get('resources',{})} for c in x['spec'].get('initContainers',[])]} for x in d['items']]})
+ get('storageclasses','/apis/storage.k8s.io/v1/storageclasses?limit=100',lambda d:{'items':[{'name':x['metadata']['name'],'provisioner':x['provisioner'],'volumeBindingMode':x.get('volumeBindingMode'),'allowVolumeExpansion':x.get('allowVolumeExpansion'),'parameters':x.get('parameters'),'reclaimPolicy':x.get('reclaimPolicy')} for x in d['items']]})
+ for ns in ['openshift-user-workload-monitoring','kaas-kafka']:
+  get('quota-'+ns,'/api/v1/namespaces/'+ns+'/resourcequotas?limit=100',lambda d:{'items':[{'name':x['metadata']['name'],'spec':x['spec'],'status':x.get('status')} for x in d['items']]})
+ get('kafka','/apis/kafka.strimzi.io/v1/namespaces/kaas-kafka/kafkas/kaas-dev',lambda d:{'spec':d['spec'],'status':d.get('status'),'metadata':{k:d['metadata'].get(k) for k in ['uid','generation','resourceVersion','annotations','labels']}})
+ status='COMPLETE';reason=None
+except Exception as e: status='STOPPED';reason=str(e) if isinstance(e,RuntimeError) else type(e).__name__
+finally:
+ token=''; out={'status':status,'reason':reason,'elapsed_seconds':round(time.monotonic()-t,3),'queries':receipts,'resource_writes':0,'workloads_run':False,'credentials_saved':False};(O/'result.json').write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out))

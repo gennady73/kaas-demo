@@ -1,0 +1,13 @@
+apiVersion: kafka.strimzi.io/v1
+kind: Kafka
+metadata:
+  name: kaas-dev
+  namespace: kaas-kafka
+spec:
+  kafka:
+    metricsConfig:
+      type: jmxPrometheusExporter
+      valueFrom:
+        configMapKeyRef:
+          name: kaas-dev-r3-jmx-metrics
+          key: metrics.yml

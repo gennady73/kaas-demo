@@ -1,0 +1,37 @@
+{
+  "source_plan_commit": "c1096073ca79dec38c3e7f1c96a436591359c31c",
+  "authority": "Previously accepted activation plan plus explicit defer email disposition",
+  "scope": "COLLECTION_ONLY",
+  "selected_stages": [
+    "A0",
+    "A1",
+    "A2",
+    "A3",
+    "A7"
+  ],
+  "deferred_stages": {
+    "A4": "Email transport/routing explicitly deferred",
+    "A5": "Broker live rules remain disabled",
+    "A6": "Sink live rules remain disabled"
+  },
+  "approved_window_budget_minutes": 90,
+  "selected_stage_planning_minutes": 75,
+  "unused_budget_minutes": 15,
+  "deployment_enabled": false,
+  "registration_enabled": false,
+  "automatic_sync_enabled": false,
+  "prune_enabled": false,
+  "force_or_replace_enabled": false,
+  "email_routing_enabled": false,
+  "live_alert_rules_enabled": false,
+  "test_email_enabled": false,
+  "client_Jobs_must_remain_suspended": true,
+  "producer_consumer_tests_enabled": false,
+  "full_R3_03_notification_qualification": "DEFERRED_NOT_PASSED",
+  "remaining_before_live_window": [
+    "Publish immutable resource/registration source pins",
+    "Server-dry-run and apply narrowly scoped PodMonitor controller permission under controlled bootstrap; refresh effective rights",
+    "Fresh compare-before-write and health checks"
+  ],
+  "actual_managed_whole_Pod_resources": "Observe at A1 exit before A2 promotion; hold if footprint exceeds accepted allowance"
+}

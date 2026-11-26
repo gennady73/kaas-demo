@@ -1,0 +1,169 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ThanosRuler
+metadata:
+  annotations:
+    operator.prometheus.io/controller-id: openshift-user-workload-monitoring/prometheus-operator
+  labels:
+    app.kubernetes.io/managed-by: cluster-monitoring-operator
+    app.kubernetes.io/part-of: openshift-monitoring
+    thanosRulerName: user-workload
+  name: user-workload
+  namespace: openshift-user-workload-monitoring
+spec:
+  affinity:
+    podAntiAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+      - labelSelector:
+          matchLabels:
+            app.kubernetes.io/name: thanos-ruler
+            thanos-ruler: user-workload
+        namespaces:
+        - openshift-user-workload-monitoring
+        topologyKey: kubernetes.io/hostname
+  alertmanagersConfig:
+    key: alertmanagers.yaml
+    name: thanos-ruler-alertmanagers-config
+  containers:
+  - image: ""
+    name: thanos-ruler
+    securityContext:
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop:
+        - ALL
+    terminationMessagePolicy: FallbackToLogsOnError
+    volumeMounts:
+    - mountPath: /etc/tls/private
+      name: secret-thanos-ruler-tls
+    - mountPath: /etc/tls/grpc
+      name: secret-grpc-tls
+    - mountPath: /etc/prometheus/configmaps/serving-certs-ca-bundle
+      name: serving-certs-ca-bundle
+  - args:
+    - --secure-listen-address=0.0.0.0:9091
+    - --upstream=http://127.0.0.1:10902
+    - --config-file=/etc/kube-rbac-proxy/config.yaml
+    - --tls-cert-file=/etc/tls/private/tls.crt
+    - --tls-private-key-file=/etc/tls/private/tls.key
+    image: ""
+    name: kube-rbac-proxy-web
+    ports:
+    - containerPort: 9091
+      name: web
+    resources:
+      requests:
+        cpu: 1m
+        memory: 12Mi
+    securityContext:
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop:
+        - ALL
+    terminationMessagePolicy: FallbackToLogsOnError
+    volumeMounts:
+    - mountPath: /etc/tls/private
+      name: secret-thanos-ruler-tls
+      readOnly: true
+    - mountPath: /etc/kube-rbac-proxy
+      name: secret-thanos-user-workload-kube-rbac-proxy-web
+      readOnly: true
+  - args:
+    - --secure-listen-address=0.0.0.0:9092
+    - --upstream=http://127.0.0.1:10902
+    - --config-file=/etc/kube-rbac-proxy/config.yaml
+    - --tls-cert-file=/etc/tls/private/tls.crt
+    - --tls-private-key-file=/etc/tls/private/tls.key
+    - --client-ca-file=/etc/tls/client/client-ca.crt
+    - --allow-paths=/metrics
+    image: ""
+    name: kube-rbac-proxy-metrics
+    ports:
+    - containerPort: 9092
+      name: metrics
+    resources:
+      requests:
+        cpu: 1m
+        memory: 15Mi
+    securityContext:
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop:
+        - ALL
+    terminationMessagePolicy: FallbackToLogsOnError
+    volumeMounts:
+    - mountPath: /etc/tls/private
+      name: secret-thanos-ruler-tls
+    - mountPath: /etc/kube-rbac-proxy
+      name: secret-thanos-ruler-kube-rbac-proxy-metrics
+    - mountPath: /etc/tls/client
+      name: metrics-client-ca
+      readOnly: true
+  enforcedNamespaceLabel: namespace
+  grpcServerTlsConfig:
+    caFile: /etc/tls/grpc/ca.crt
+    certFile: /etc/tls/grpc/server.crt
+    keyFile: /etc/tls/grpc/server.key
+  image: ""
+  listenLocal: true
+  podMetadata:
+    annotations:
+      openshift.io/required-scc: nonroot-v2
+      target.workload.openshift.io/management: '{"effect": "PreferredDuringScheduling"}'
+    labels:
+      app.kubernetes.io/part-of: openshift-monitoring
+  priorityClassName: openshift-user-critical
+  queryConfig:
+    key: query.yaml
+    name: thanos-ruler-query-config
+  replicas: 2
+  resources:
+    requests:
+      cpu: 1m
+      memory: 21Mi
+  ruleNamespaceSelector:
+    matchExpressions:
+    - key: openshift.io/cluster-monitoring
+      operator: NotIn
+      values:
+      - "true"
+    - key: openshift.io/user-monitoring
+      operator: NotIn
+      values:
+      - "false"
+  ruleSelector:
+    matchExpressions:
+    - key: openshift.io/user-monitoring
+      operator: NotIn
+      values:
+      - "false"
+    - key: openshift.io/prometheus-rule-evaluation-scope
+      operator: NotIn
+      values:
+      - leaf-prometheus
+  securityContext:
+    fsGroup: 65534
+    runAsNonRoot: true
+    runAsUser: 65534
+    seccompProfile:
+      type: RuntimeDefault
+  serviceAccountName: thanos-ruler
+  version: 0.39.2
+  volumes:
+  - configmap:
+      items:
+      - key: service-ca.crt
+        path: service-ca.crt
+      name: serving-certs-ca-bundle
+    name: serving-certs-ca-bundle
+  - name: secret-thanos-ruler-tls
+    secret:
+      secretName: thanos-ruler-tls
+  - name: secret-thanos-ruler-kube-rbac-proxy-metrics
+    secret:
+      secretName: thanos-ruler-kube-rbac-proxy-metrics
+  - name: secret-thanos-user-workload-kube-rbac-proxy-web
+    secret:
+      secretName: thanos-user-workload-kube-rbac-proxy-web
+  - configMap:
+      name: metrics-client-ca
+    name: metrics-client-ca

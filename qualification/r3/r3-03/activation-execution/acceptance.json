@@ -1,0 +1,50 @@
+{
+  "at_utc": "2026-11-26T21:04:58.993358+00:00",
+  "authority": "User: All accepted. proceed",
+  "accepted": {
+    "resource_planning_reservation": {
+      "steady_cpu_m": 1250,
+      "steady_memory_MiB": 6656,
+      "change_window_cpu_m": 1750,
+      "change_window_memory_MiB": 9728
+    },
+    "metrics_retention": "24h",
+    "change_window_budget_minutes": 90,
+    "conditional_broker_write_disruption": "ACCEPTED_PLAN_IMPACT",
+    "executor_proposal": "Existing API admin/C0 authorized GitOps path",
+    "primary_responder_and_evidence_custodian": "user per accepted suggested sandbox roles",
+    "storage": {
+      "type": "persistent",
+      "new_PVCs": 4,
+      "total_GiB": 24,
+      "prometheus_each_GiB": 10,
+      "thanos_ruler_each_GiB": 2,
+      "replicas_each": 2,
+      "storageClass": "gp3-csi (verify availability)"
+    },
+    "backup_or_escalation_contact": "NONE_FOR_THIS_SANDBOX_EXPLICIT_USER_CHOICE",
+    "alert_destination": {
+      "type": "email",
+      "to": "gunger@redhat.com",
+      "authority": "Explicit user reply to alert receiver question",
+      "recorded_UTC": "2026-11-26T21:15:17.708293+00:00"
+    },
+    "email_disposition": "DEFERRED_EXPLICIT_USER_CHOICE"
+  },
+  "still_required_concrete_values": {},
+  "notification_tests_authorized": false,
+  "client_Job_unsuspend_authorized": false,
+  "current_status": "COLLECTION_ONLY_SCOPE_PREPARED_EMAIL_ROUTING_AND_RULES_DEFERRED",
+  "live_90minute_window_started": false,
+  "cluster_resources_changed": false,
+  "workloads_run": false,
+  "no_reconfirmation_of_accepted_budget_retention_or_window_budget_needed": true,
+  "question_timeout_policy": "Suspend dependent processing if unanswered beyond5minutes; never treat silence as selection",
+  "input_questions_started_UTC": "2026-11-26T21:04:44Z",
+  "input_questions_resolved": "All current user choices supplied; email deferred; no question pending",
+  "readiness_refresh": "15 GETs complete, all four Jobs suspended and inactive; see evidence/refresh/result.json",
+  "cluster_accessed": true,
+  "A0_status": "TECHNICAL_PUBLICATION_AND_PERMISSION_STEPS_REMAIN",
+  "A1_through_A7": "NOT_EXECUTED",
+  "technical_delivery_status": "DEFERRED_NOT_QUALIFIED_NOT_A_COLLECTION_ONLY_BLOCKER"
+}

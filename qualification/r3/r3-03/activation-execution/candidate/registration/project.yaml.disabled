@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: kaas-demo-observability
+  namespace: openshift-gitops
+spec:
+  description: R3-03 manual broker metrics ConfigMap and PodMonitor only
+  sourceRepos:
+  - https://github.com/gennady73/kaas-demo.git
+  destinations:
+  - namespace: kaas-kafka
+    server: https://kubernetes.default.svc
+  clusterResourceWhitelist: []
+  namespaceResourceWhitelist:
+  - group: ''
+    kind: ConfigMap
+  - group: monitoring.coreos.com
+    kind: PodMonitor

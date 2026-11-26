@@ -1,0 +1,260 @@
+{
+  "metadata": {
+    "name": "k8s",
+    "namespace": "openshift-monitoring",
+    "uid": "d4bdc106-ae33-4584-ac63-ba58149fb355",
+    "resourceVersion": "1206432"
+  },
+  "spec": {
+    "version": "3.7.3",
+    "image": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:cb9e2117e3ae6731487ac096a581fa36c59b25ef85b8cb3de6ac696ec90dab67",
+    "resources": {
+      "requests": {
+        "cpu": "70m",
+        "memory": "1Gi"
+      }
+    },
+    "containers": [
+      {
+        "args": [
+          "--secure-listen-address=0.0.0.0:9091",
+          "--upstream=http://127.0.0.1:9090",
+          "--config-file=/etc/kube-rbac-proxy/config.yaml",
+          "--tls-cert-file=/etc/tls/private/tls.crt",
+          "--tls-private-key-file=/etc/tls/private/tls.key",
+          "--tls-cipher-suites=TLS_AES_128_GCM_SHA256,TLS_AES_256_GCM_SHA384,TLS_CHACHA20_POLY1305_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256",
+          "--ignore-paths=/-/healthy,/-/ready",
+          "--tls-min-version=VersionTLS12"
+        ],
+        "image": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:9081bd341e8efa55d05b292caf1785a4f0d5931099ed4cc489a57840331fb869",
+        "name": "kube-rbac-proxy-web",
+        "ports": [
+          {
+            "containerPort": 9091,
+            "name": "web",
+            "protocol": "TCP"
+          }
+        ],
+        "resources": {
+          "requests": {
+            "cpu": "1m",
+            "memory": "15Mi"
+          }
+        },
+        "securityContext": {
+          "allowPrivilegeEscalation": false,
+          "capabilities": {
+            "drop": [
+              "ALL"
+            ]
+          }
+        },
+        "terminationMessagePolicy": "FallbackToLogsOnError",
+        "volumeMounts": [
+          {
+            "mountPath": "/etc/tls/private",
+            "name": "secret-prometheus-k8s-tls"
+          },
+          {
+            "mountPath": "/etc/kube-rbac-proxy",
+            "name": "secret-prometheus-k8s-kube-rbac-proxy-web"
+          }
+        ]
+      },
+      {
+        "args": [
+          "--secure-listen-address=0.0.0.0:9092",
+          "--upstream=http://127.0.0.1:9090",
+          "--allow-paths=/metrics,/federate",
+          "--config-file=/etc/kube-rbac-proxy/config.yaml",
+          "--tls-cert-file=/etc/tls/private/tls.crt",
+          "--tls-private-key-file=/etc/tls/private/tls.key",
+          "--client-ca-file=/etc/tls/client/client-ca.crt",
+          "--tls-cipher-suites=TLS_AES_128_GCM_SHA256,TLS_AES_256_GCM_SHA384,TLS_CHACHA20_POLY1305_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256",
+          "--tls-min-version=VersionTLS12"
+        ],
+        "image": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:9081bd341e8efa55d05b292caf1785a4f0d5931099ed4cc489a57840331fb869",
+        "name": "kube-rbac-proxy",
+        "ports": [
+          {
+            "containerPort": 9092,
+            "name": "metrics",
+            "protocol": "TCP"
+          }
+        ],
+        "resources": {
+          "requests": {
+            "cpu": "1m",
+            "memory": "15Mi"
+          }
+        },
+        "terminationMessagePolicy": "FallbackToLogsOnError",
+        "volumeMounts": [
+          {
+            "mountPath": "/etc/tls/private",
+            "name": "secret-prometheus-k8s-tls"
+          },
+          {
+            "mountPath": "/etc/tls/client",
+            "name": "configmap-metrics-client-ca",
+            "readOnly": true
+          },
+          {
+            "mountPath": "/etc/kube-rbac-proxy",
+            "name": "secret-kube-rbac-proxy"
+          }
+        ]
+      },
+      {
+        "args": [
+          "--secure-listen-address=[$(POD_IP)]:10903",
+          "--upstream=http://127.0.0.1:10902",
+          "--tls-cert-file=/etc/tls/private/tls.crt",
+          "--tls-private-key-file=/etc/tls/private/tls.key",
+          "--client-ca-file=/etc/tls/client/client-ca.crt",
+          "--config-file=/etc/kube-rbac-proxy/config.yaml",
+          "--tls-cipher-suites=TLS_AES_128_GCM_SHA256,TLS_AES_256_GCM_SHA384,TLS_CHACHA20_POLY1305_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256",
+          "--allow-paths=/metrics",
+          "--tls-min-version=VersionTLS12"
+        ],
+        "env": [
+          {
+            "name": "POD_IP",
+            "valueFrom": {
+              "fieldRef": {
+                "fieldPath": "status.podIP"
+              }
+            }
+          }
+        ],
+        "image": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:9081bd341e8efa55d05b292caf1785a4f0d5931099ed4cc489a57840331fb869",
+        "name": "kube-rbac-proxy-thanos",
+        "ports": [
+          {
+            "containerPort": 10903,
+            "name": "thanos-proxy",
+            "protocol": "TCP"
+          }
+        ],
+        "resources": {
+          "requests": {
+            "cpu": "1m",
+            "memory": "10Mi"
+          }
+        },
+        "terminationMessagePolicy": "FallbackToLogsOnError",
+        "volumeMounts": [
+          {
+            "mountPath": "/etc/tls/private",
+            "name": "secret-prometheus-k8s-thanos-sidecar-tls",
+            "readOnly": true
+          },
+          {
+            "mountPath": "/etc/kube-rbac-proxy",
+            "name": "secret-kube-rbac-proxy",
+            "readOnly": true
+          },
+          {
+            "mountPath": "/etc/tls/client",
+            "name": "configmap-metrics-client-ca",
+            "readOnly": true
+          }
+        ]
+      },
+      {
+        "args": [
+          "sidecar",
+          "--prometheus.url=http://localhost:9090/",
+          "--tsdb.path=/prometheus",
+          "--http-address=127.0.0.1:10902",
+          "--grpc-server-tls-cert=/etc/tls/grpc/server.crt",
+          "--grpc-server-tls-key=/etc/tls/grpc/server.key",
+          "--grpc-server-tls-client-ca=/etc/tls/grpc/ca.crt"
+        ],
+        "name": "thanos-sidecar",
+        "resources": {
+          "requests": {
+            "cpu": "1m",
+            "memory": "25Mi"
+          }
+        },
+        "terminationMessagePolicy": "FallbackToLogsOnError",
+        "volumeMounts": [
+          {
+            "mountPath": "/etc/tls/grpc",
+            "name": "secret-grpc-tls"
+          }
+        ]
+      },
+      {
+        "env": [
+          {
+            "name": "HTTP_PROXY"
+          },
+          {
+            "name": "HTTPS_PROXY"
+          },
+          {
+            "name": "NO_PROXY"
+          }
+        ],
+        "name": "prometheus",
+        "resources": {},
+        "terminationMessagePolicy": "FallbackToLogsOnError",
+        "volumeMounts": [
+          {
+            "mountPath": "/etc/pki/ca-trust/extracted/pem/",
+            "name": "prometheus-trusted-ca-bundle"
+          }
+        ]
+      }
+    ],
+    "thanos": {
+      "blockSize": "2h",
+      "image": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:f1ae57b261f4207628f0b29d9c48e0605ae9114e807ed52845f98297a92172f5",
+      "resources": {
+        "requests": {
+          "cpu": "1m",
+          "memory": "100Mi"
+        }
+      },
+      "version": "0.39.2"
+    }
+  },
+  "status": {
+    "availableReplicas": 2,
+    "conditions": [
+      {
+        "lastTransitionTime": "2026-11-26T20:45:02Z",
+        "message": "",
+        "observedGeneration": 1,
+        "reason": "",
+        "status": "True",
+        "type": "Available"
+      },
+      {
+        "lastTransitionTime": "2026-11-26T20:45:02Z",
+        "message": "",
+        "observedGeneration": 1,
+        "reason": "",
+        "status": "True",
+        "type": "Reconciled"
+      }
+    ],
+    "paused": false,
+    "replicas": 2,
+    "selector": "app.kubernetes.io/instance=k8s,app.kubernetes.io/managed-by=prometheus-operator,app.kubernetes.io/name=prometheus,operator.prometheus.io/name=k8s,prometheus=k8s",
+    "shardStatuses": [
+      {
+        "availableReplicas": 2,
+        "replicas": 2,
+        "shardID": "0",
+        "unavailableReplicas": 0,
+        "updatedReplicas": 2
+      }
+    ],
+    "shards": 1,
+    "unavailableReplicas": 0,
+    "updatedReplicas": 2
+  }
+}

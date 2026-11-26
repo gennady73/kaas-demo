@@ -1,0 +1,119 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/component: controller
+    app.kubernetes.io/managed-by: cluster-monitoring-operator
+    app.kubernetes.io/name: prometheus-operator
+    app.kubernetes.io/part-of: openshift-monitoring
+    app.kubernetes.io/version: 0.87.0
+  name: prometheus-operator
+  namespace: openshift-user-workload-monitoring
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: controller
+      app.kubernetes.io/name: prometheus-operator
+      app.kubernetes.io/part-of: openshift-monitoring
+  template:
+    metadata:
+      annotations:
+        kubectl.kubernetes.io/default-container: prometheus-operator
+        openshift.io/required-scc: restricted-v2
+        target.workload.openshift.io/management: '{"effect": "PreferredDuringScheduling"}'
+      labels:
+        app.kubernetes.io/component: controller
+        app.kubernetes.io/managed-by: cluster-monitoring-operator
+        app.kubernetes.io/name: prometheus-operator
+        app.kubernetes.io/part-of: openshift-monitoring
+        app.kubernetes.io/version: 0.87.0
+    spec:
+      automountServiceAccountToken: true
+      containers:
+      - args:
+        - --prometheus-config-reloader=quay.io/prometheus-operator/prometheus-config-reloader:v0.87.0
+        - --kubelet-endpoints=true
+        - --kubelet-endpointslice=true
+        - --prometheus-instance-namespaces=openshift-user-workload-monitoring
+        - --alertmanager-instance-namespaces=openshift-user-workload-monitoring
+        - --thanos-ruler-instance-namespaces=openshift-user-workload-monitoring
+        - --config-reloader-cpu-limit=0
+        - --config-reloader-memory-limit=0
+        - --config-reloader-cpu-request=1m
+        - --config-reloader-memory-request=10Mi
+        - --web.listen-address=127.0.0.1:8080
+        - --controller-id=openshift-user-workload-monitoring/prometheus-operator
+        env:
+        - name: GOGC
+          value: "30"
+        image: ""
+        name: prometheus-operator
+        ports: []
+        resources:
+          requests:
+            cpu: 1m
+            memory: 17Mi
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          readOnlyRootFilesystem: true
+        terminationMessagePolicy: FallbackToLogsOnError
+      - args:
+        - --secure-listen-address=:8443
+        - --tls-cipher-suites=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305
+        - --upstream=http://127.0.0.1:8080/
+        - --tls-cert-file=/etc/tls/private/tls.crt
+        - --tls-private-key-file=/etc/tls/private/tls.key
+        - --config-file=/etc/kube-rbac-policy/config.yaml
+        - --client-ca-file=/etc/tls/client/client-ca.crt
+        image: ""
+        name: kube-rbac-proxy
+        ports:
+        - containerPort: 8443
+          name: https
+        resources:
+          requests:
+            cpu: 1m
+            memory: 10Mi
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+        terminationMessagePolicy: FallbackToLogsOnError
+        volumeMounts:
+        - mountPath: /etc/tls/private
+          name: prometheus-operator-user-workload-tls
+          readOnly: true
+        - mountPath: /etc/kube-rbac-policy
+          name: prometheus-operator-uwm-kube-rbac-proxy-config
+          readOnly: true
+        - mountPath: /etc/tls/client
+          name: metrics-client-ca
+          readOnly: true
+      nodeSelector:
+        kubernetes.io/os: linux
+        node-role.kubernetes.io/master: ""
+      priorityClassName: openshift-user-critical
+      securityContext:
+        runAsNonRoot: true
+        seccompProfile:
+          type: RuntimeDefault
+      serviceAccountName: prometheus-operator
+      tolerations:
+      - effect: NoSchedule
+        key: node-role.kubernetes.io/master
+        operator: Exists
+      volumes:
+      - name: prometheus-operator-user-workload-tls
+        secret:
+          secretName: prometheus-operator-user-workload-tls
+      - name: prometheus-operator-uwm-kube-rbac-proxy-config
+        secret:
+          secretName: prometheus-operator-uwm-kube-rbac-proxy-config
+      - configMap:
+          name: metrics-client-ca
+        name: metrics-client-ca

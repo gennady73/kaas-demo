@@ -1,0 +1,26 @@
+insertion_policy: PREPEND scoped route before existing severity=critical branch; preserve
+  all existing sibling routes/receivers/inhibition
+receiver:
+  name: kaas-sandbox-email
+  email_configs:
+  - to: gunger@redhat.com
+    from: ${APPROVED_SMTP_FROM}
+    smarthost: ${APPROVED_SMTP_HOST_PORT}
+    require_tls: true
+route:
+  matchers:
+  - kaas_service="kaas-dev"
+  - namespace=~"kaas-kafka|kaas-demo"
+  receiver: kaas-sandbox-email
+  group_by:
+  - alertname
+  - namespace
+  - kaas_service
+  group_wait: 30s
+  group_interval: 5m
+  repeat_interval: 4h
+  continue: false
+credential_policy: Authentication/CA references must be delivered by existing platform
+  secret workflow; do not place passwords in Git
+enabled: false
+test_email_enabled: false
