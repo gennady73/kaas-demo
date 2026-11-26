@@ -1,0 +1,446 @@
+{
+  "schema": "kaas-r3-service-qualification-plan/v1",
+  "revision": "0.1",
+  "date": "2026-11-26",
+  "status": "OFFLINE_PLAN_NOT_EXECUTION_PACKAGE",
+  "execution_enabled": false,
+  "deployment_enabled": false,
+  "registration_enabled": false,
+  "workloads_enabled": false,
+  "fault_injection_enabled": false,
+  "automatic_sync_enabled": false,
+  "prune_enabled": false,
+  "owner_approver": "user (accepted sandbox owner)",
+  "run_owner": null,
+  "execution_window": null,
+  "new_runner_image": null,
+  "target": {
+    "scope": "OpenShift sandbox shared-first existingkaas-dev",
+    "namespace": "kaas-kafka",
+    "client_namespace": "kaas-demo",
+    "rf": 2,
+    "min_isr": 2,
+    "retention_ms": 21600000,
+    "storage": "sandboxgp3-csi; productionVSAN/plannedODF unchanged",
+    "new_brokers": 0,
+    "new_PVCs_for_offline_plan": 0
+  },
+  "baseline": {
+    "published_evidence_commit": "072eb185b32ca39b6ecaebf5b6c78e9569145d2e",
+    "native_source_commit": "05a3f2dcb551c7aa7ed12b4108c7ef488113aed9",
+    "R2_runtime_result": "PASS_16_POSITIVE_8_NEGATIVE",
+    "R2_independent_auditor_assurance": "CHANGES_REQUESTED_C3_NW_01_AND_02",
+    "image_reference": "image-registry.openshift-image-registry.svc:5000/kaas-demo/kaas-r2-runner-05a3f2d@sha256:41f328c85ee3d3e9d8834ce12e516b5ef52506067117b1c4f1145511b493998a",
+    "source_refs_sha256": {
+      "docs/r2-05a3f2d-retest-2026-11-26/results.json": "fd6b4fc42125e251a2e69ac0377263ce08c575ee33a9954501851e1bd94a011f",
+      "docs/r2-05a3f2d-retest-2026-11-26/r2-closeout.json": "d1c536187e864b986145127cf0b9c6d47d7804450f0f4f5be1b3da20ed4b6e85",
+      "docs/r2-05a3f2d-retest-2026-11-26/message-offset-reconciliation.json": "8228330eccedd5133c2f8d6353167a24e6aec23a4ea3eb4c01ac7dc56910df5d",
+      "docs/r2-05a3f2d-retest-2026-11-26/seal.json": "ae1c14450520f6dbacd36d5002c494369d2be7489ec655a7b746fce2282d8cdf",
+      "docs/r2-05a3f2d-retest-2026-11-26/events.ndjson": "18ba064608624da60e80101aaea81af9f0e8bfe9f4edbed126cc5903dd66c96e",
+      "docs/r2-05a3f2d-retest-2026-11-26/semantic-audit.json": "e9325dfb5a780914e1ca762e7d3d3613da8374c013108c7241a6f0130eb27f7a",
+      "docs/r2-05a3f2d-retest-2026-11-26/byte-integrity.json": "a250a70431517004bd048b04d13a7399cbdaa1d5c6ac48fb57f5ae962712e513",
+      "docs/r2-05a3f2d-retest-2026-11-26/external-observation.json": "209aa553489576a47efc9c184c19f360dfdcc93294bfa122cca694516969792a",
+      "docs/r2-05a3f2d-retest-2026-11-26/final-resources.json": "18677ce4fd6967b42ffea8da076c5bd3dcd6600c5579b55ecbbd701f68a918db",
+      "docs/r2-05a3f2d-retest-2026-11-26/build-verification.json": "8a69f9cf00ea8c37af2c1afaa649b8416bd0acaa6be8ac831fbf57cf9fd4df8e"
+    },
+    "export_sha256": "18ba064608624da60e80101aaea81af9f0e8bfe9f4edbed126cc5903dd66c96e",
+    "observed_final_offsets": 8,
+    "final_offsets_note": "Historical saved observation, not a future start offset or fresh health claim",
+    "C3_bounded_R2_review": "ACCEPTED in C3handoff0.9 and c3-r2-closeout-r3-next-2026-11-26; NW01/02 remain separate tooling robustness work"
+  },
+  "protected_client_Jobs": [
+    "kaas-r2-native-client",
+    "kaas-r2-native-client-02e2e2f-r2",
+    "kaas-r2-native-client-351528d-r2",
+    "kaas-r2-native-client-05a3f2d-r2"
+  ],
+  "cases": [
+    {
+      "id": "R3-00",
+      "title": "Auditor assurance and re-audit of preserved R2 export",
+      "owners": [
+        "C2",
+        "C3",
+        "C6",
+        "C0"
+      ],
+      "depends_on": [],
+      "scope": "offline-first",
+      "status": "PLANNED_NOT_EXECUTED",
+      "execution_enabled": false,
+      "acceptance": [
+        "Close C3-NW-01 required/optional schema/type/case-record-link validation with fully rehashed omission mutations",
+        "Close C3-NW-02 nonnegative safe-integer offset/partition domains with boolean/fraction/sentinel/boundary mutations",
+        "Unmodified182-event real R2 export passes corrected versioned auditor and byte/chain verifier; malformed transcripts fail",
+        "Retain original R2 export, original audit outputs and tool/source hashes; no new live fixture"
+      ],
+      "future_budget_proposal": null,
+      "implementation_or_evidence_needed": [
+        "Auditor source correction and regression tests are a later implementation task, not performed in this plan"
+      ]
+    },
+    {
+      "id": "R3-10",
+      "title": "Evidence sink failure-boundary coverage",
+      "owners": [
+        "C2",
+        "C1",
+        "C3",
+        "C7"
+      ],
+      "depends_on": [
+        "R3-00"
+      ],
+      "scope": "offline-assurance-and-selected-containment",
+      "status": "PLANNED_NOT_EXECUTED",
+      "execution_enabled": false,
+      "acceptance": [
+        "Map existing18sink tests and exact source hashes to beforeDBcommit,aftercommit-before-response,afterACK, exactretry/conflict, diskfull/read-only,partialexport and version/identity mismatch",
+        "Reuse existing passing crash-boundary/ACK/reopen tests; add only genuinely uncovered case for selected new adapter/protocol",
+        "No false durable ACK or Kafka commit, no lost preserved evidence; distinguish local process persistence from infrastructure survival"
+      ],
+      "future_budget_proposal": null,
+      "implementation_or_evidence_needed": [
+        "Source/coverage map and any missing protocol/version evidence; no automatic repeat suite or sandbox fault"
+      ]
+    },
+    {
+      "id": "R3-11",
+      "title": "Deadline, late-call and ambiguous-outcome containment",
+      "owners": [
+        "C2",
+        "C3",
+        "C4",
+        "C7"
+      ],
+      "depends_on": [
+        "R3-00"
+      ],
+      "scope": "offline-assurance-and-selected-containment",
+      "status": "PLANNED_NOT_EXECUTED",
+      "execution_enabled": false,
+      "acceptance": [
+        "Map existing bounded/quarantine/late-success and process-exit regressions; normal R2exit0 is not timeout-path proof",
+        "For selected new harness, cover stalled send/poll/commit/sink/close, cutoff and startup-inclusive process/Job/external termination with no new sends after stop",
+        "Report wait-timed-out versus SDKcancelled distinctly; preserve lateACK/uncertaincommit/offset disposition and never pass forced-exit fixture"
+      ],
+      "future_budget_proposal": null,
+      "implementation_or_evidence_needed": [
+        "Coverage of actual external failure-path containment on selected new image remains separate from offline fakes; later explicit action scope if a workload is required"
+      ]
+    },
+    {
+      "id": "R3-01",
+      "title": "Configuration, authority and GitOps service contract",
+      "owners": [
+        "C1",
+        "C4",
+        "C6",
+        "C7"
+      ],
+      "depends_on": [
+        "R3-00"
+      ],
+      "scope": "sandbox-core",
+      "status": "PLANNED_NOT_EXECUTED",
+      "execution_enabled": false,
+      "acceptance": [
+        "Reuse R1 creation at3211df9 and exact R2 source/image; retain manual sync/no prune",
+        "Resolve C4-NR-05 old pod contract versus actual Job/service-CA mount in documentation",
+        "Offline invalid tenant/ACL/naming/quota changes rejected; effective Git/Argo/Kubernetes authority assessed separately",
+        "Later live lifecycle changes use a distinct disposable canary and exact reversible diff; no deletion or mutation of existing fixtures assumed"
+      ],
+      "future_budget_proposal": null,
+      "implementation_or_evidence_needed": [
+        "Actual requester/reviewer/sync and lifecycle-revocation policy beyond admin-owned sandbox",
+        "Later authorized read-only effective rights/config refresh; no fresh rights claim now"
+      ]
+    },
+    {
+      "id": "R3-02",
+      "title": "Credential, trust and network boundary qualification",
+      "owners": [
+        "C6",
+        "C1",
+        "C4",
+        "C3"
+      ],
+      "depends_on": [
+        "R3-00",
+        "R3-01",
+        "R3-10",
+        "R3-11"
+      ],
+      "scope": "sandbox-core",
+      "status": "PLANNED_NOT_EXECUTED",
+      "execution_enabled": false,
+      "acceptance": [
+        "Reuse eight R2typed role/topic/group denials and healthy client paths",
+        "Add only uncovered wrong-password/CA/hostname, metadata/admin and actual forbidden-peer cases with positive controls and intended-layer evidence",
+        "Distinguish broker ACLs from hostile Pod/Secret isolation; four credentials in trusted harness do not prove latter",
+        "All acknowledged originals reconcile; cold sessions and any revocation test have explicit copies/session scope"
+      ],
+      "future_budget_proposal": {
+        "maximum_client_seconds": 300,
+        "maximum_original_value_bytes": 20000,
+        "maximum_payload_bytes": 1000,
+        "new_live_attempts_automatically_authorized": 0
+      },
+      "implementation_or_evidence_needed": [
+        "Additive reviewed negative-path adapter/probe; current R2 fixed plan cannot be promoted",
+        "Network expected outcomes must follow all actual policies; an unlabeled Pod is not assumed blocked",
+        "Credential rotation/revocation requires explicit disposable identity and change authority"
+      ]
+    },
+    {
+      "id": "R3-03",
+      "title": "Observability and support/custody qualification",
+      "owners": [
+        "C1",
+        "C7",
+        "C3",
+        "C4"
+      ],
+      "depends_on": [
+        "R3-01"
+      ],
+      "scope": "sandbox-core",
+      "status": "PLANNED_NOT_EXECUTED",
+      "execution_enabled": false,
+      "acceptance": [
+        "Map existing exporters/metrics/rules/retention and receiver to Kafka health,ISR,lag,auth,quota,CPU/disk and evidence failures",
+        "Named sandbox owner remains user; assign actual run executor/custodian/stop path in each later record",
+        "Demonstrate actionable signal and approved test receiver delivery with bounded safe stimulus; no message sent under this plan",
+        "Seven-day sandbox plus verified shared-workspace evidence copy; no automatic deletion or legal-hold assumption"
+      ],
+      "future_budget_proposal": null,
+      "implementation_or_evidence_needed": [
+        "Saved monitoring configuration/queries and concrete receiver/support mapping",
+        "Later alert notification test destination/authority; no invented monitoring absence"
+      ]
+    },
+    {
+      "id": "R3-04",
+      "title": "Payload boundary for current tenant path",
+      "owners": [
+        "C2",
+        "C3",
+        "C1",
+        "C4"
+      ],
+      "depends_on": [
+        "R3-00",
+        "R3-02"
+      ],
+      "scope": "conditional-sandbox-payload",
+      "status": "PLANNED_NOT_EXECUTED",
+      "execution_enabled": false,
+      "acceptance": [
+        "Reuse Nov24smoke16deliveries including2MiB as historical path-specific evidence",
+        "If claiming2MiB on new tenant path, exact reviewed capable client delivers four2MiB values plus declared controls with identity/checksum/offset reconciliation",
+        "Reject invalid profile/size combinations offline; no unapproved live oversized payload or claim-check introduced"
+      ],
+      "future_budget_proposal": {
+        "maximum_client_seconds": 300,
+        "maximum_original_value_bytes": 10000000,
+        "maximum_payload_bytes": 2097152,
+        "proposed_large_records": 4,
+        "large_record_value_bytes": 8388608
+      },
+      "implementation_or_evidence_needed": [
+        "R2native len(value)==1000/20send guard and frozen plan require a separately reviewed capable adapter/image; no existing capability claimed"
+      ]
+    },
+    {
+      "id": "R3-05",
+      "title": "Quota scope and bounded two-tenant interference",
+      "owners": [
+        "C2",
+        "C3",
+        "C6",
+        "C1",
+        "C7"
+      ],
+      "depends_on": [
+        "R3-00",
+        "R3-02",
+        "R3-03"
+      ],
+      "scope": "conditional-sandbox-quota",
+      "status": "PLANNED_NOT_EXECUTED",
+      "execution_enabled": false,
+      "acceptance": [
+        "Measure effective per-principal/client/broker quota scope and throttle metrics; configured quota is not tenant-global admission proof",
+        "Use bounded Aoffered-over-quota case with low-rate Bcontrol; exact schedule/fairness and lag limits agreed before execution",
+        "Reconcile all acknowledged values and stop on unresolved evidence or agreed Bimpact boundary"
+      ],
+      "future_budget_proposal": {
+        "maximum_client_seconds": 300,
+        "maximum_original_value_bytes": 4000000,
+        "maximum_payload_bytes": 1000,
+        "configured_quota_Bps_saved": 65536,
+        "offered_rate_and_duration": null,
+        "fairness_acceptance": null
+      },
+      "implementation_or_evidence_needed": [
+        "Current R2twenty-record guard and1024event/32MiB sink cannot silently support this larger fixture",
+        "Candidate bounded adapter/evidence/event budget and agreed fairness/overload thresholds"
+      ]
+    },
+    {
+      "id": "R3-06",
+      "title": "Registry and isolated OIDC service qualification",
+      "owners": [
+        "C5",
+        "C6",
+        "C4",
+        "C7",
+        "C3"
+      ],
+      "depends_on": [
+        "R3-00",
+        "R3-03"
+      ],
+      "scope": "conditional-governance",
+      "status": "PLANNED_NOT_EXECUTED",
+      "execution_enabled": false,
+      "acceptance": [
+        "Use corrected bootstrap707da20 with resource Apps pinned d8dac19; no repin to moving main",
+        "After separately approved budget/Secrets/import/window: operator,PostgreSQL,isolatedrealm,registry gates",
+        "Preserve existing OpenShift SSO; compatible/incompatible schema and explicit role/audience/ownership tests; no broker-side validation inferred",
+        "Verify persistence/restore/serialization/replay and outage behavior for the selected service claim"
+      ],
+      "future_budget_proposal": null,
+      "implementation_or_evidence_needed": [
+        "Budget/operational acceptance for950mCPU1152Mi requests,3CPU2816Mi limits,10GiPVC; import overlap1050m/1408Mi requests,3.5CPU3328Mi limits excludes OLM/rollout overhead",
+        "External Secrets/trust named delivery owner; admin one-shot creation-only realm import/window",
+        "C5 retained CRD ownership and Routehost source fix resolved; effective install/RBAC/admission/network/runtime remain untested"
+      ]
+    },
+    {
+      "id": "R3-07",
+      "title": "Kafka recovery categories and no-loss integration",
+      "owners": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C6",
+        "C7"
+      ],
+      "depends_on": [
+        "R3-00",
+        "R3-02",
+        "R3-03",
+        "R3-10",
+        "R3-11"
+      ],
+      "scope": "separately-authorized-recovery",
+      "status": "PLANNED_NOT_EXECUTED",
+      "execution_enabled": false,
+      "acceptance": [
+        "Preserve no-loss objective and recovery<=10800s for each approved category/variant; RF2/minISR2/6h retained",
+        "Controlled single broker first; rolling/full Kafka only after preceding result reviewed; infrastructure integration reuses DEP-PERSIST-01",
+        "Clock includes disruption through service/quorum/requiredISR,catch-up,reconciliation and approved stable window; avoid double-counting catch-up",
+        "Track acknowledged/ambiguous/unsent/received/committed/replayed sets and receipt-before-commit uncertainty; no offset reset to latest",
+        "Evidence/source buffer survives relevant failure domain; no retention expiry waiver"
+      ],
+      "future_budget_proposal": null,
+      "implementation_or_evidence_needed": [
+        "Exact versioned non-delete stop/restore package and user-approved disruption window/variant",
+        "R2 fail-on-first-error fixture is not a recovery/replay harness; source buffering and uncertain-send handling required",
+        "DEP-PERSIST-01 supplying project/reference/owner/failure scope/evidence; no duplicate infrastructure campaign",
+        "Stability window proposal300s and accepted-record/replay boundaries require approval before recovery claim"
+      ]
+    },
+    {
+      "id": "R3-08",
+      "title": "Low-volume continuity and target workload qualification",
+      "owners": [
+        "C2",
+        "C3",
+        "C1",
+        "C7"
+      ],
+      "depends_on": [
+        "R3-00",
+        "R3-03",
+        "R3-10",
+        "R3-11"
+      ],
+      "scope": "deferred-final-continuity-and-target",
+      "status": "PLANNED_NOT_EXECUTED",
+      "execution_enabled": false,
+      "acceptance": [
+        "Keep previous stopped16011record run as STOPPED_BY_USER_RECONCILED, not24hPASS",
+        "At final phase only, later approved24h100000000original-byte continuity profile with appropriate durable streaming evidence and consumer schedule",
+        "2TB and20TB are separate later24hprofiles on real preproduction, operating envelopes not fixed burst factors; resource/capacity results measured",
+        "Six-hour retention requires continuous consumption/accounting and bounded lag/drain; do not reread expired day data at end"
+      ],
+      "future_budget_proposal": null,
+      "implementation_or_evidence_needed": [
+        "No 24h100MB run requested here; use distinct reviewed continuity harness, not1024event tenant sink",
+        "WP-A topic size mix1k\u201310M versus current3MiB ceiling remains target message-size feasibility work; no implicit offloading",
+        "VSAN target/storage/budget/application and numerical latency/overload envelope; no sandbox TB transfer"
+      ]
+    },
+    {
+      "id": "R3-09",
+      "title": "Configuration-specific release and handoff decision",
+      "owners": [
+        "C0",
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7"
+      ],
+      "depends_on": [
+        "R3-00",
+        "R3-01",
+        "R3-02",
+        "R3-03",
+        "R3-10",
+        "R3-11"
+      ],
+      "scope": "sandbox-core",
+      "status": "PLANNED_NOT_EXECUTED",
+      "execution_enabled": false,
+      "acceptance": [
+        "Release assessment distinguishes verified sandbox-core, conditional payload/quota/governance, deferred continuity/recovery/target combinations",
+        "List remaining obligations explicitly; no full service/production PASS from sandbox-core alone",
+        "Keep historical C7matrix unchanged; add current coordinator overlay and owner evidence references",
+        "No claim propagation across dedicated/shared, storage,versions,security,topology or payload paths without applicable evidence"
+      ],
+      "future_budget_proposal": null,
+      "implementation_or_evidence_needed": [
+        "Selected release scope and actual acceptance thresholds; unresolved mandatory target requirements remain unqualified"
+      ]
+    }
+  ],
+  "execution_rules": [
+    "Planning only; no Job/Application/Build/Secret is generated or armed",
+    "Leave all four old Jobs suspended; later scenarios use distinct reviewed run/source/image/Job/database identities",
+    "No automatic full matrix or repeated R2run; auditor repair requires offline re-audit of original sealed bytes first",
+    "Select only applicable next case and explicit run authority; no source,permission,quota,retention or credential changes implied",
+    "Final evidence export/termination and preservation take priority over further traffic; failed/inconclusive cases stop subsequent live work",
+    "No automatic sync/prune/deletion,operatorupgrade,restart,notification,24h/TBload,SSO/realm change or publication"
+  ],
+  "deferred": [
+    "Gravitino user-deferred",
+    "Helm evaluation deferred; Kustomizecurrent",
+    "ODF migration execution",
+    "VM/baremetal Kafka provisioning and independent cluster interconnection outofscope",
+    "Productionqualification and dedicated-mode execution not inherited from sandboxshared"
+  ],
+  "user_decisions_for_later": [
+    "Choose whether/when governance branch joins sandbox milestone and approve its explicit extra budget/delivery/import window",
+    "Approve exact recovery category/variant/window and proposed clock/stability definition before any disruption",
+    "Choose applicable payload/quota/externalclient/target release claims and approve their concrete boundaries/SLOs before tests requiring them",
+    "Supply/confirm DEP-PERSIST-01 evidence owner/reference when recovery/target scope is selected; no duplicate infrastructure tests"
+  ],
+  "no_user_input_required_to_finish_this_offline_plan": true,
+  "concurrent_source_note": "Working auditor/source-manifest edits observed outside C0 plan scope; not validated here. Published072eb18baseline remains reference. Consume completed owner fix/test handoff for R3-00, no duplicate implementation."
+}

@@ -1,0 +1,61 @@
+{
+  "status": "OFFLINE_R3_PLAN_VALIDATED_WITH_EXCLUDED_CONCURRENT_SOURCE_EDITS",
+  "date": "2026-11-26",
+  "command": "python kaas-demo/qualification/r3/validate_plan.py plus local source/link/hash/JSON/preservation checks",
+  "plan_check": {
+    "status": "OFFLINE_PLAN_VALIDATED",
+    "cases": 12,
+    "R2_saved_event_count": 182,
+    "R2_seal_hash_verified": true,
+    "specific_C3_reported_field_and_offset_shapes_in_real_export": "VALID",
+    "C3_NW_01_02_general_auditor_findings": "OPEN_NOT_FIXED_BY_THIS_VALIDATOR",
+    "saved_jobs_suspended": 4,
+    "live_state_refreshed": false,
+    "execution_enabled": false,
+    "workloads_executed": false,
+    "limitation": "Plan and preserved-data inspection only; not an independent full auditor or R3 runtime qualification"
+  },
+  "owner_handoff_related_sources_verified": 23,
+  "existing_tracked_demo_files_unchanged": 507,
+  "concurrent_tracked_deltas_excluded": {
+    "tests/tenant-r2-native/README.md": {
+      "before": "f02fc596a81ba87330e0c32f2ea63d58ebefbf7dbdfa8c745493300d011ae694",
+      "observed_after": "9cc4db9d2b894d0d29536a0510f2f5161f01521f3a0f95116ab8643f5cf3f33c"
+    },
+    "tests/tenant-r2-native/audit.mjs": {
+      "before": "2175c7ee63ace318bd6e6000f59a396adfb4776832e8a2c59291da72357c374e",
+      "observed_after": "7ecbc6155d60ce49390fb8b50e0c442eca5b75a959d0e99ad5595ec819bdd31f"
+    },
+    "tests/tenant-r2-native/check_offline.py": {
+      "before": "31441b4db68f9426e9b31cdb0950e418c313411c9a78450c3f3af29f138d03fb",
+      "observed_after": "9dd844df2fa2d63a17969fdde24a0dddc8f5cec868df9315c3735860c7358bd5"
+    },
+    "tests/tenant-r2-native/runtime-source-manifest.json": {
+      "before": "07f7bd428716626f2d0ca3a229fd4d4d346c5a5a5ff8dff92fa119827ee27b59",
+      "observed_after": "b02b218699ed144c98b95dcc1e126862a36edc1b813d9525a793da9162d17e44"
+    }
+  },
+  "published_native_source_fingerprints_verified": 42,
+  "working_native_package_certified": false,
+  "new_artifacts_sha256": {
+    "kaas-demo/docs/r3-service-qualification-2026-11-26.md": "fdb014c1cc04556fdf76119d7f5eef4f28f42d5a58302cc8604c0da5d556d9fc",
+    "kaas-demo/qualification/r3/plan.json": "b41852bbbbc4c2822ef19c74b7e93852326d0b616fddfa9e18e9f5658bea5292",
+    "kaas-demo/qualification/r3/validate_plan.py": "2b7d334add21de18c1fe798aaa62985b883fa93bdf8cab90872a5fa15519873e",
+    "kaas-demo/qualification/r3/handoff-review.md": "de61ef579992dec933785f6ccbe1e6e16f06e24c978266fcb29065c5856d0879",
+    "kaas-demo/qualification/r3/validation.json": "1d63a9651d865794e74cc8d55d8224409076639c80a1609125960f6e4ce47dcd"
+  },
+  "calculations": "Decimal6hRF2payloads1TB/10TB; sandboxallocation64424509440bytes;4x2MiB=8388608bytes within10Mproposal",
+  "cluster_access": false,
+  "workloads_run": false,
+  "faults_injected": false,
+  "C3_findings_fixed_by_this_task": false,
+  "new_implementation_or_live_acceptance": false,
+  "publication": "LOCAL_UNCOMMITTED",
+  "limitations": [
+    "Saved Job states, not fresh cluster observations",
+    "Specific actual-export field inspection is not a full standalone auditor repair",
+    "Concurrent native-package edits preserved/excluded; no owner/validation inferred",
+    "C3boundedR2concurrence inspected; no independent human signature invented and no chats contacted",
+    "Runtime budgets are proposals; service/production qualification remains open"
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "status": "STATIC_PUBLICATION_CHECKS_PASS",
+  "cases_disabled": 12,
+  "portable_validator": {
+    "status": "OFFLINE_PLAN_VALIDATED",
+    "cases": 12,
+    "R2_saved_event_count": 182,
+    "R2_seal_hash_verified": true,
+    "specific_C3_reported_field_and_offset_shapes_in_real_export": "VALID",
+    "C3_NW_01_02_general_auditor_findings": "OPEN_NOT_FIXED_BY_THIS_VALIDATOR",
+    "saved_jobs_suspended": 4,
+    "live_state_refreshed": false,
+    "execution_enabled": false,
+    "workloads_executed": false,
+    "limitation": "Plan and preserved-data inspection only; not an independent full auditor or R3 runtime qualification"
+  },
+  "cluster_access": false,
+  "workloads_run": false,
+  "excluded_native_files": [
+    "tests/tenant-r2-native/README.md",
+    "tests/tenant-r2-native/audit.mjs",
+    "tests/tenant-r2-native/check_offline.py",
+    "tests/tenant-r2-native/runtime-source-manifest.json",
+    "tests/tenant-r2-native/test-audit-schema.mjs"
+  ],
+  "selection": "R3 planning/review/validation only; no native or active manifests",
+  "original_R2_evidence_unchanged": true
+}

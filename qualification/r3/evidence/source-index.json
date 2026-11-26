@@ -1,0 +1,59 @@
+{
+  "date": "2026-11-26",
+  "inspection": "Shared files only; no chats contacted, API queried or specialist-owned files rewritten",
+  "repo_HEAD": "072eb185b32ca39b6ecaebf5b6c78e9569145d2e",
+  "workspace_sources_sha256": {
+    "docs/kaas-system-requirements-specification.md": "e438dd18b7426aa242ba94968fc56656bf745b531af481c3dc652c158c73e4e2",
+    "docs/chat-coordination-plan.md": "e928a15aa15985001899f7cb969085984de40bc4f8b18d6355c69a550954395e",
+    "docs/handoffs/C1-environment.md": "26524d349b32dbeca656607795c456c22af49b27826c3682d8092e3e623cc972",
+    "docs/handoffs/C2-xk6-implementation.md": "4479dff6131b3ca232724fa293df282ee7ecee357164a6e1bec96609f9de4395",
+    "docs/handoffs/C3-validation.md": "634c7139f06eef4b0a54086cfafdc62dc6a4d3a9cb24fd008ef176eaa7a9eef4",
+    "docs/handoffs/C4-kafka-platform-gitops.md": "0b093261d921d4dec49de3c7fc8e85e1c1ff5c5a6a8569ad944712ee426598b3",
+    "docs/handoffs/C5-schema-registry-gravitino.md": "24ea143c0eef67ac32ad00236bef41c9b4bc1b370722ff4329bf3da4b4488253",
+    "docs/handoffs/C6-identity-connectivity-isolation.md": "be5870cf57a93818d429a534819f935344f7752d61f8f75298b4ecd3462db8f2",
+    "docs/handoffs/C7-operations-release.md": "04d683baafd023f1c132b07e59417bec16de7dca35939fad11a166d7fad1c7dc",
+    "docs/handoffs/C7-C0-summary-2026-11-25.md": "1f22db8eb4946678ae1bdcc585fa344f6fedf0bc83fd5f7cd2caf6dbdef3b114",
+    "docs/testing/c3-native-wiring-review-2026-11-26/README.md": "f7987b2577ddde31fc34ded0cec64ebc2857bf9eccfff06c6346e52aa21aaa64",
+    "docs/testing/c3-native-wiring-review-2026-11-26/auditor-probes.json": "d7ac6567dc5d892bfd8ef0e1351d395c5fb357af4ede7b53722e19b79bf7362a",
+    "docs/security/c1-native-review-2026-11-26/README.md": "b7a6fe5c97705a1841dc98f8dae0d3a9e7338af1bfbc2f96efa83ee3a8328511",
+    "docs/operations/release-matrix.json": "c3f92032437fbd4ba0fea3332334d8deeccf6fabe330a2f448e36b446378d3d2",
+    "docs/operations/input-checklist.md": "508bbd273a63524b928147979e63d466978d5a20443719e8d414ae67dff7d647",
+    "docs/operations/recovery-qualification.md": "82d14fb0a91e16a09ea25ccec1cb27f1805092cbe70e2e8ac31618a600049fa0",
+    "docs/operations/capacity-and-evidence-budgets.md": "db2f2c1b5811ea73cebe1aee034df07c92fbcea36f20cfd9770d97b21db6cd36",
+    "docs/governance/apicurio-deployment-plan.md": "79bd40c0d12549e555e664e77e0efbdfbf76ada7de454d96ae55a052b84da2c0",
+    "docs/governance/c5-rollout-prerequisites-2026-11-25/resource-approval.json": "890a33b51d9fb933350a87eb497ace8e4ee4b05a9ad48c2a555bdb223c85f422",
+    "docs/security/c6-access-isolation-contract.md": "c72abec69913eed12060a901d38362cea492bc6bfcd79dec651ed56d50a59aa2",
+    "docs/reviews/r2-05a3f2d-image-2026-11-26/publication.json": "bac432a515d245bd5ec428adf3b590a1909bc655744e6ba4f92b9fa62535c27e",
+    "docs/testing/c3-r2-closeout-r3-next-2026-11-26/README.md": "98512f645bf8ca41582fd55dfe02ef455a7211e465a77305eebd240f9eb96b89",
+    "docs/testing/c3-r2-closeout-r3-next-2026-11-26/validation.json": "93dc108775587e6b3dda3387b2a73f1bd14a5f7d988f6ce6dcb756ee81870734"
+  },
+  "primary_sources": [
+    {
+      "url": "https://kafka.apache.org/42/configuration/topic-configs/",
+      "version": "4.2",
+      "checked": "2026-11-26",
+      "applies_to": "minISR/acks and retention semantics; no target compatibility certification"
+    },
+    {
+      "url": "https://kafka.apache.org/42/security/authorization-and-acls/",
+      "version": "4.2",
+      "checked": "2026-11-26",
+      "applies_to": "Group/topic authorization boundaries; OffsetFetch permissions"
+    },
+    {
+      "url": "https://kafka.apache.org/42/operations/basic-kafka-operations/",
+      "version": "4.2",
+      "checked": "2026-11-26",
+      "applies_to": "Quota entity scope and accounting configuration"
+    }
+  ],
+  "kafka_load_test_local_HEAD": "888276c20ad5eecdaaa2f40a98592118acc4a184",
+  "source_refresh_during_preparation": [
+    {
+      "path": "docs/handoffs/C3-validation.md",
+      "initial_sha256": "c06706953de305070561327acba39b0abcfc1baffaec56ae3d26bf2eb6958f19",
+      "refreshed_sha256": "634c7139f06eef4b0a54086cfafdc62dc6a4d3a9cb24fd008ef176eaa7a9eef4",
+      "reason": "Ownerpublished0.9boundedR2acceptance during preparation; new closeout reviewed and plan reconciled"
+    }
+  ]
+}

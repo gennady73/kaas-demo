@@ -1,0 +1,33 @@
+{
+  "status": "OBSERVED_OUTSIDE_C0_PLAN_EDIT_SCOPE_NOT_VALIDATED",
+  "files": {
+    "tests/tenant-r2-native/audit.mjs": {
+      "before": "2175c7ee63ace318bd6e6000f59a396adfb4776832e8a2c59291da72357c374e",
+      "observed_after": "3a0896c16194fcf762b8efa775e2485e002422c1cd9ff4f457307d7c23884d99"
+    },
+    "tests/tenant-r2-native/runtime-source-manifest.json": {
+      "before": "07f7bd428716626f2d0ca3a229fd4d4d346c5a5a5ff8dff92fa119827ee27b59",
+      "observed_after": "92c1ae3a56dc419215911b61f3464d4f29f3941daee61c73bcaaec1d47ee3012"
+    }
+  },
+  "disposition": "Preserve/exclude; use published072eb18/05a3f2d baseline, require completed candidate regression/review and unchanged-export re-audit; no attribution or acceptance inferred",
+  "final_validation_tracked_deltas": {
+    "tests/tenant-r2-native/README.md": {
+      "before": "f02fc596a81ba87330e0c32f2ea63d58ebefbf7dbdfa8c745493300d011ae694",
+      "observed_after": "9cc4db9d2b894d0d29536a0510f2f5161f01521f3a0f95116ab8643f5cf3f33c"
+    },
+    "tests/tenant-r2-native/audit.mjs": {
+      "before": "2175c7ee63ace318bd6e6000f59a396adfb4776832e8a2c59291da72357c374e",
+      "observed_after": "7ecbc6155d60ce49390fb8b50e0c442eca5b75a959d0e99ad5595ec819bdd31f"
+    },
+    "tests/tenant-r2-native/check_offline.py": {
+      "before": "31441b4db68f9426e9b31cdb0950e418c313411c9a78450c3f3af29f138d03fb",
+      "observed_after": "9dd844df2fa2d63a17969fdde24a0dddc8f5cec868df9315c3735860c7358bd5"
+    },
+    "tests/tenant-r2-native/runtime-source-manifest.json": {
+      "before": "07f7bd428716626f2d0ca3a229fd4d4d346c5a5a5ff8dff92fa119827ee27b59",
+      "observed_after": "b02b218699ed144c98b95dcc1e126862a36edc1b813d9525a793da9162d17e44"
+    }
+  },
+  "note": "Additional native README/checker edits and untracked schema-test candidate appeared while preparing; excluded from this plan review. Final validation records published source hashes only."
+}
