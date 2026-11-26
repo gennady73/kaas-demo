@@ -1,0 +1,23 @@
+test_kill_contains_term_ignoring_stub_and_never_reports_pass (test_guard_containment.GuardContainment.test_kill_contains_term_ignoring_stub_and_never_reports_pass) ... ok
+test_term_stops_local_stub_and_never_reports_pass (test_guard_containment.GuardContainment.test_term_stops_local_stub_and_never_reports_pass) ... ok
+test_boolean_counters (test_package.Checks.test_boolean_counters) ... ok
+test_disabled_package (test_package.Checks.test_disabled_package) ... ok
+test_flags (test_package.Checks.test_flags) ... ok
+test_mutable_base (test_package.Checks.test_mutable_base) ... ok
+test_no_reused_continuity_storage (test_package.Checks.test_no_reused_continuity_storage) ... ok
+test_no_wildcard_egress (test_package.Checks.test_no_wildcard_egress) ... ok
+test_owner_secret_not_on_client (test_package.Checks.test_owner_secret_not_on_client) ... ok
+test_privilege (test_package.Checks.test_privilege) ... ok
+test_replicas (test_package.Checks.test_replicas) ... ok
+test_trigger (test_package.Checks.test_trigger) ... ok
+test_unsuspend (test_package.Checks.test_unsuspend) ... ok
+test_wrong_password_mount (test_package.Checks.test_wrong_password_mount) ... ok
+test_guards_refuse_without_invoking_process (test_package.GuardAndBuildChecks.test_guards_refuse_without_invoking_process) ... ok
+test_runner_checksum_line_executes_correctly (test_package.GuardAndBuildChecks.test_runner_checksum_line_executes_correctly) ... ok
+test_runtime_flags_cannot_be_armed (test_package.GuardAndBuildChecks.test_runtime_flags_cannot_be_armed) ... ok
+test_sink_cannot_unpause (test_package.GuardAndBuildChecks.test_sink_cannot_unpause) ... ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 2.673s
+
+OK

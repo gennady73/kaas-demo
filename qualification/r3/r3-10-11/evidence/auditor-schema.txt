@@ -1,0 +1,2235 @@
+TAP version 13
+# Subtest: control: complete synthetic export still matches
+ok 1 - control: complete synthetic export still matches
+  ---
+  duration_ms: 55.018509
+  ...
+# Subtest: NW01 required fixture_start.version
+ok 2 - NW01 required fixture_start.version
+  ---
+  duration_ms: 28.087048
+  ...
+# Subtest: NW01 required fixture_start.run_id
+ok 3 - NW01 required fixture_start.run_id
+  ---
+  duration_ms: 28.709615
+  ...
+# Subtest: NW01 required fixture_start.plan_sha256
+ok 4 - NW01 required fixture_start.plan_sha256
+  ---
+  duration_ms: 27.754934
+  ...
+# Subtest: NW01 required fixture_start.client_id
+ok 5 - NW01 required fixture_start.client_id
+  ---
+  duration_ms: 22.920085
+  ...
+# Subtest: NW01 required fixture_start.event_id
+ok 6 - NW01 required fixture_start.event_id
+  ---
+  duration_ms: 21.136396
+  ...
+# Subtest: NW01 required fixture_start.type
+ok 7 - NW01 required fixture_start.type
+  ---
+  duration_ms: 20.452221
+  ...
+# Subtest: NW01 required fixture_start.at_ms
+ok 8 - NW01 required fixture_start.at_ms
+  ---
+  duration_ms: 20.962113
+  ...
+# Subtest: NW01 required fixture_start.previous_event_sha256
+ok 9 - NW01 required fixture_start.previous_event_sha256
+  ---
+  duration_ms: 21.16378
+  ...
+# Subtest: NW01 required fixture_start.job_start_ms
+ok 10 - NW01 required fixture_start.job_start_ms
+  ---
+  duration_ms: 19.031289
+  ...
+# Subtest: NW01 required fixture_start.deadline_ms
+ok 11 - NW01 required fixture_start.deadline_ms
+  ---
+  duration_ms: 18.636437
+  ...
+# Subtest: NW01 required fixture_start.mode
+ok 12 - NW01 required fixture_start.mode
+  ---
+  duration_ms: 19.14064
+  ...
+# Subtest: NW01 required phase_start.version
+ok 13 - NW01 required phase_start.version
+  ---
+  duration_ms: 19.047444
+  ...
+# Subtest: NW01 required phase_start.run_id
+ok 14 - NW01 required phase_start.run_id
+  ---
+  duration_ms: 18.899131
+  ...
+# Subtest: NW01 required phase_start.plan_sha256
+ok 15 - NW01 required phase_start.plan_sha256
+  ---
+  duration_ms: 17.846605
+  ...
+# Subtest: NW01 required phase_start.client_id
+ok 16 - NW01 required phase_start.client_id
+  ---
+  duration_ms: 20.403205
+  ...
+# Subtest: NW01 required phase_start.event_id
+ok 17 - NW01 required phase_start.event_id
+  ---
+  duration_ms: 22.417024
+  ...
+# Subtest: NW01 required phase_start.type
+ok 18 - NW01 required phase_start.type
+  ---
+  duration_ms: 23.257995
+  ...
+# Subtest: NW01 required phase_start.at_ms
+ok 19 - NW01 required phase_start.at_ms
+  ---
+  duration_ms: 22.165794
+  ...
+# Subtest: NW01 required phase_start.previous_event_sha256
+ok 20 - NW01 required phase_start.previous_event_sha256
+  ---
+  duration_ms: 22.943075
+  ...
+# Subtest: NW01 required phase_start.phase
+ok 21 - NW01 required phase_start.phase
+  ---
+  duration_ms: 20.258895
+  ...
+# Subtest: NW01 required phase_start.deadline_ms
+ok 22 - NW01 required phase_start.deadline_ms
+  ---
+  duration_ms: 19.351361
+  ...
+# Subtest: NW01 required phase_start.positive_cutoff_ms
+ok 23 - NW01 required phase_start.positive_cutoff_ms
+  ---
+  duration_ms: 19.669884
+  ...
+# Subtest: NW01 required case_start.version
+ok 24 - NW01 required case_start.version
+  ---
+  duration_ms: 18.242843
+  ...
+# Subtest: NW01 required case_start.run_id
+ok 25 - NW01 required case_start.run_id
+  ---
+  duration_ms: 20.646097
+  ...
+# Subtest: NW01 required case_start.plan_sha256
+ok 26 - NW01 required case_start.plan_sha256
+  ---
+  duration_ms: 17.649853
+  ...
+# Subtest: NW01 required case_start.client_id
+ok 27 - NW01 required case_start.client_id
+  ---
+  duration_ms: 23.419539
+  ...
+# Subtest: NW01 required case_start.event_id
+ok 28 - NW01 required case_start.event_id
+  ---
+  duration_ms: 19.990562
+  ...
+# Subtest: NW01 required case_start.type
+ok 29 - NW01 required case_start.type
+  ---
+  duration_ms: 26.465966
+  ...
+# Subtest: NW01 required case_start.at_ms
+ok 30 - NW01 required case_start.at_ms
+  ---
+  duration_ms: 21.561077
+  ...
+# Subtest: NW01 required case_start.previous_event_sha256
+ok 31 - NW01 required case_start.previous_event_sha256
+  ---
+  duration_ms: 25.292256
+  ...
+# Subtest: NW01 required case_start.case_id
+ok 32 - NW01 required case_start.case_id
+  ---
+  duration_ms: 23.683848
+  ...
+# Subtest: NW01 required case_start.case_kind
+ok 33 - NW01 required case_start.case_kind
+  ---
+  duration_ms: 32.7921
+  ...
+# Subtest: NW01 required case_start.topic
+ok 34 - NW01 required case_start.topic
+  ---
+  duration_ms: 25.897013
+  ...
+# Subtest: NW01 required case_start.group_id
+ok 35 - NW01 required case_start.group_id
+  ---
+  duration_ms: 22.433844
+  ...
+# Subtest: NW01 required group_state.version
+ok 36 - NW01 required group_state.version
+  ---
+  duration_ms: 21.887268
+  ...
+# Subtest: NW01 required group_state.run_id
+ok 37 - NW01 required group_state.run_id
+  ---
+  duration_ms: 17.493816
+  ...
+# Subtest: NW01 required group_state.plan_sha256
+ok 38 - NW01 required group_state.plan_sha256
+  ---
+  duration_ms: 19.172662
+  ...
+# Subtest: NW01 required group_state.client_id
+ok 39 - NW01 required group_state.client_id
+  ---
+  duration_ms: 17.403674
+  ...
+# Subtest: NW01 required group_state.event_id
+ok 40 - NW01 required group_state.event_id
+  ---
+  duration_ms: 19.167715
+  ...
+# Subtest: NW01 required group_state.type
+ok 41 - NW01 required group_state.type
+  ---
+  duration_ms: 17.148561
+  ...
+# Subtest: NW01 required group_state.at_ms
+ok 42 - NW01 required group_state.at_ms
+  ---
+  duration_ms: 19.290264
+  ...
+# Subtest: NW01 required group_state.previous_event_sha256
+ok 43 - NW01 required group_state.previous_event_sha256
+  ---
+  duration_ms: 17.700928
+  ...
+# Subtest: NW01 required group_state.case_id
+ok 44 - NW01 required group_state.case_id
+  ---
+  duration_ms: 18.641737
+  ...
+# Subtest: NW01 required group_state.group_id
+ok 45 - NW01 required group_state.group_id
+  ---
+  duration_ms: 32.155738
+  ...
+# Subtest: NW01 required group_state.topic
+ok 46 - NW01 required group_state.topic
+  ---
+  duration_ms: 24.314858
+  ...
+# Subtest: NW01 required group_state.stage
+ok 47 - NW01 required group_state.stage
+  ---
+  duration_ms: 17.945594
+  ...
+# Subtest: NW01 required group_state.committed_offset
+ok 48 - NW01 required group_state.committed_offset
+  ---
+  duration_ms: 19.023106
+  ...
+# Subtest: NW01 required group_state.log_end_offset
+ok 49 - NW01 required group_state.log_end_offset
+  ---
+  duration_ms: 21.395339
+  ...
+# Subtest: NW01 required group_state.members
+ok 50 - NW01 required group_state.members
+  ---
+  duration_ms: 25.856555
+  ...
+# Subtest: NW01 required group_state.membership_observed
+ok 51 - NW01 required group_state.membership_observed
+  ---
+  duration_ms: 31.984556
+  ...
+# Subtest: NW01 required client_open.version
+ok 52 - NW01 required client_open.version
+  ---
+  duration_ms: 28.024438
+  ...
+# Subtest: NW01 required client_open.run_id
+ok 53 - NW01 required client_open.run_id
+  ---
+  duration_ms: 19.469423
+  ...
+# Subtest: NW01 required client_open.plan_sha256
+ok 54 - NW01 required client_open.plan_sha256
+  ---
+  duration_ms: 17.772308
+  ...
+# Subtest: NW01 required client_open.client_id
+ok 55 - NW01 required client_open.client_id
+  ---
+  duration_ms: 19.280494
+  ...
+# Subtest: NW01 required client_open.event_id
+ok 56 - NW01 required client_open.event_id
+  ---
+  duration_ms: 18.262203
+  ...
+# Subtest: NW01 required client_open.type
+ok 57 - NW01 required client_open.type
+  ---
+  duration_ms: 19.65436
+  ...
+# Subtest: NW01 required client_open.at_ms
+ok 58 - NW01 required client_open.at_ms
+  ---
+  duration_ms: 24.783052
+  ...
+# Subtest: NW01 required client_open.previous_event_sha256
+ok 59 - NW01 required client_open.previous_event_sha256
+  ---
+  duration_ms: 18.636894
+  ...
+# Subtest: NW01 required client_open.case_id
+ok 60 - NW01 required client_open.case_id
+  ---
+  duration_ms: 18.02417
+  ...
+# Subtest: NW01 required client_open.binding_id
+ok 61 - NW01 required client_open.binding_id
+  ---
+  duration_ms: 23.458106
+  ...
+# Subtest: NW01 required client_open.client_role
+ok 62 - NW01 required client_open.client_role
+  ---
+  duration_ms: 19.105787
+  ...
+# Subtest: NW01 required client_open.topic
+ok 63 - NW01 required client_open.topic
+  ---
+  duration_ms: 19.725632
+  ...
+# Subtest: NW01 required client_open.group_id
+ok 64 - NW01 required client_open.group_id
+  ---
+  duration_ms: 17.212517
+  ...
+# Subtest: NW01 required client_open.auto_commit
+ok 65 - NW01 required client_open.auto_commit
+  ---
+  duration_ms: 18.138398
+  ...
+# Subtest: NW01 required client_open.commit_on_close
+ok 66 - NW01 required client_open.commit_on_close
+  ---
+  duration_ms: 17.58555
+  ...
+# Subtest: NW01 required client_open.write_settings_signature
+ok 67 - NW01 required client_open.write_settings_signature
+  ---
+  duration_ms: 17.337897
+  ...
+# Subtest: NW01 required client_close.version
+ok 68 - NW01 required client_close.version
+  ---
+  duration_ms: 19.053393
+  ...
+# Subtest: NW01 required client_close.run_id
+ok 69 - NW01 required client_close.run_id
+  ---
+  duration_ms: 29.311788
+  ...
+# Subtest: NW01 required client_close.plan_sha256
+ok 70 - NW01 required client_close.plan_sha256
+  ---
+  duration_ms: 25.75881
+  ...
+# Subtest: NW01 required client_close.client_id
+ok 71 - NW01 required client_close.client_id
+  ---
+  duration_ms: 29.376034
+  ...
+# Subtest: NW01 required client_close.event_id
+ok 72 - NW01 required client_close.event_id
+  ---
+  duration_ms: 32.865516
+  ...
+# Subtest: NW01 required client_close.type
+ok 73 - NW01 required client_close.type
+  ---
+  duration_ms: 21.422753
+  ...
+# Subtest: NW01 required client_close.at_ms
+ok 74 - NW01 required client_close.at_ms
+  ---
+  duration_ms: 25.61285
+  ...
+# Subtest: NW01 required client_close.previous_event_sha256
+ok 75 - NW01 required client_close.previous_event_sha256
+  ---
+  duration_ms: 26.087131
+  ...
+# Subtest: NW01 required client_close.case_id
+ok 76 - NW01 required client_close.case_id
+  ---
+  duration_ms: 20.724309
+  ...
+# Subtest: NW01 required client_close.binding_id
+ok 77 - NW01 required client_close.binding_id
+  ---
+  duration_ms: 17.871256
+  ...
+# Subtest: NW01 required client_close.client_role
+ok 78 - NW01 required client_close.client_role
+  ---
+  duration_ms: 20.36649
+  ...
+# Subtest: NW01 required client_close.closed
+ok 79 - NW01 required client_close.closed
+  ---
+  duration_ms: 18.604475
+  ...
+# Subtest: NW01 required client_close.within_reserve
+ok 80 - NW01 required client_close.within_reserve
+  ---
+  duration_ms: 17.678837
+  ...
+# Subtest: NW01 required close_skipped.version
+ok 81 - NW01 required close_skipped.version
+  ---
+  duration_ms: 19.935094
+  ...
+# Subtest: NW01 required close_skipped.run_id
+ok 82 - NW01 required close_skipped.run_id
+  ---
+  duration_ms: 17.72732
+  ...
+# Subtest: NW01 required close_skipped.plan_sha256
+ok 83 - NW01 required close_skipped.plan_sha256
+  ---
+  duration_ms: 19.259282
+  ...
+# Subtest: NW01 required close_skipped.client_id
+ok 84 - NW01 required close_skipped.client_id
+  ---
+  duration_ms: 17.45548
+  ...
+# Subtest: NW01 required close_skipped.event_id
+ok 85 - NW01 required close_skipped.event_id
+  ---
+  duration_ms: 18.803512
+  ...
+# Subtest: NW01 required close_skipped.type
+ok 86 - NW01 required close_skipped.type
+  ---
+  duration_ms: 17.693132
+  ...
+# Subtest: NW01 required close_skipped.at_ms
+ok 87 - NW01 required close_skipped.at_ms
+  ---
+  duration_ms: 19.310398
+  ...
+# Subtest: NW01 required close_skipped.previous_event_sha256
+ok 88 - NW01 required close_skipped.previous_event_sha256
+  ---
+  duration_ms: 17.795329
+  ...
+# Subtest: NW01 required close_skipped.case_id
+ok 89 - NW01 required close_skipped.case_id
+  ---
+  duration_ms: 24.762417
+  ...
+# Subtest: NW01 required close_skipped.binding_id
+ok 90 - NW01 required close_skipped.binding_id
+  ---
+  duration_ms: 30.55761
+  ...
+# Subtest: NW01 required close_skipped.reason
+ok 91 - NW01 required close_skipped.reason
+  ---
+  duration_ms: 25.493346
+  ...
+# Subtest: NW01 required attempt_intent.version
+ok 92 - NW01 required attempt_intent.version
+  ---
+  duration_ms: 25.30446
+  ...
+# Subtest: NW01 required attempt_intent.run_id
+ok 93 - NW01 required attempt_intent.run_id
+  ---
+  duration_ms: 25.455925
+  ...
+# Subtest: NW01 required attempt_intent.plan_sha256
+ok 94 - NW01 required attempt_intent.plan_sha256
+  ---
+  duration_ms: 25.954618
+  ...
+# Subtest: NW01 required attempt_intent.client_id
+ok 95 - NW01 required attempt_intent.client_id
+  ---
+  duration_ms: 21.763227
+  ...
+# Subtest: NW01 required attempt_intent.event_id
+ok 96 - NW01 required attempt_intent.event_id
+  ---
+  duration_ms: 19.798119
+  ...
+# Subtest: NW01 required attempt_intent.type
+ok 97 - NW01 required attempt_intent.type
+  ---
+  duration_ms: 17.059343
+  ...
+# Subtest: NW01 required attempt_intent.at_ms
+ok 98 - NW01 required attempt_intent.at_ms
+  ---
+  duration_ms: 28.605415
+  ...
+# Subtest: NW01 required attempt_intent.previous_event_sha256
+ok 99 - NW01 required attempt_intent.previous_event_sha256
+  ---
+  duration_ms: 17.93391
+  ...
+# Subtest: NW01 required attempt_intent.case_id
+ok 100 - NW01 required attempt_intent.case_id
+  ---
+  duration_ms: 18.833213
+  ...
+# Subtest: NW01 required attempt_intent.id
+ok 101 - NW01 required attempt_intent.id
+  ---
+  duration_ms: 17.665082
+  ...
+# Subtest: NW01 required attempt_intent.topic
+ok 102 - NW01 required attempt_intent.topic
+  ---
+  duration_ms: 19.152506
+  ...
+# Subtest: NW01 required attempt_intent.value_bytes
+ok 103 - NW01 required attempt_intent.value_bytes
+  ---
+  duration_ms: 17.712366
+  ...
+# Subtest: NW01 required attempt_intent.checksum
+ok 104 - NW01 required attempt_intent.checksum
+  ---
+  duration_ms: 17.998088
+  ...
+# Subtest: NW01 required attempt_intent.negative
+ok 105 - NW01 required attempt_intent.negative
+  ---
+  duration_ms: 17.308214
+  ...
+# Subtest: NW01 required not_sent.version
+ok 106 - NW01 required not_sent.version
+  ---
+  duration_ms: 17.894746
+  ...
+# Subtest: NW01 required not_sent.run_id
+ok 107 - NW01 required not_sent.run_id
+  ---
+  duration_ms: 17.488612
+  ...
+# Subtest: NW01 required not_sent.plan_sha256
+ok 108 - NW01 required not_sent.plan_sha256
+  ---
+  duration_ms: 18.267621
+  ...
+# Subtest: NW01 required not_sent.client_id
+ok 109 - NW01 required not_sent.client_id
+  ---
+  duration_ms: 17.398723
+  ...
+# Subtest: NW01 required not_sent.event_id
+ok 110 - NW01 required not_sent.event_id
+  ---
+  duration_ms: 20.937358
+  ...
+# Subtest: NW01 required not_sent.type
+ok 111 - NW01 required not_sent.type
+  ---
+  duration_ms: 17.926123
+  ...
+# Subtest: NW01 required not_sent.at_ms
+ok 112 - NW01 required not_sent.at_ms
+  ---
+  duration_ms: 16.92774
+  ...
+# Subtest: NW01 required not_sent.previous_event_sha256
+ok 113 - NW01 required not_sent.previous_event_sha256
+  ---
+  duration_ms: 17.944682
+  ...
+# Subtest: NW01 required not_sent.case_id
+ok 114 - NW01 required not_sent.case_id
+  ---
+  duration_ms: 17.243265
+  ...
+# Subtest: NW01 required not_sent.id
+ok 115 - NW01 required not_sent.id
+  ---
+  duration_ms: 17.738694
+  ...
+# Subtest: NW01 required not_sent.reason
+ok 116 - NW01 required not_sent.reason
+  ---
+  duration_ms: 18.702614
+  ...
+# Subtest: NW01 required send_outcome.version
+ok 117 - NW01 required send_outcome.version
+  ---
+  duration_ms: 21.067019
+  ...
+# Subtest: NW01 required send_outcome.run_id
+ok 118 - NW01 required send_outcome.run_id
+  ---
+  duration_ms: 19.628964
+  ...
+# Subtest: NW01 required send_outcome.plan_sha256
+ok 119 - NW01 required send_outcome.plan_sha256
+  ---
+  duration_ms: 19.538097
+  ...
+# Subtest: NW01 required send_outcome.client_id
+ok 120 - NW01 required send_outcome.client_id
+  ---
+  duration_ms: 21.280817
+  ...
+# Subtest: NW01 required send_outcome.event_id
+ok 121 - NW01 required send_outcome.event_id
+  ---
+  duration_ms: 25.401762
+  ...
+# Subtest: NW01 required send_outcome.type
+ok 122 - NW01 required send_outcome.type
+  ---
+  duration_ms: 20.921562
+  ...
+# Subtest: NW01 required send_outcome.at_ms
+ok 123 - NW01 required send_outcome.at_ms
+  ---
+  duration_ms: 24.677982
+  ...
+# Subtest: NW01 required send_outcome.previous_event_sha256
+ok 124 - NW01 required send_outcome.previous_event_sha256
+  ---
+  duration_ms: 20.962235
+  ...
+# Subtest: NW01 required send_outcome.case_id
+ok 125 - NW01 required send_outcome.case_id
+  ---
+  duration_ms: 24.677289
+  ...
+# Subtest: NW01 required send_outcome.id
+ok 126 - NW01 required send_outcome.id
+  ---
+  duration_ms: 23.895131
+  ...
+# Subtest: NW01 required send_outcome.topic
+ok 127 - NW01 required send_outcome.topic
+  ---
+  duration_ms: 21.535922
+  ...
+# Subtest: NW01 required send_outcome.value_bytes
+ok 128 - NW01 required send_outcome.value_bytes
+  ---
+  duration_ms: 25.026374
+  ...
+# Subtest: NW01 required send_outcome.checksum
+ok 129 - NW01 required send_outcome.checksum
+  ---
+  duration_ms: 25.179986
+  ...
+# Subtest: NW01 required send_outcome.outcome
+ok 130 - NW01 required send_outcome.outcome
+  ---
+  duration_ms: 21.050152
+  ...
+# Subtest: NW01 required send_outcome.negative
+ok 131 - NW01 required send_outcome.negative
+  ---
+  duration_ms: 21.012577
+  ...
+# Subtest: NW01 required send_outcome.intent_event_id
+ok 132 - NW01 required send_outcome.intent_event_id
+  ---
+  duration_ms: 19.877706
+  ...
+# Subtest: NW01 required receipt.version
+ok 133 - NW01 required receipt.version
+  ---
+  duration_ms: 18.800482
+  ...
+# Subtest: NW01 required receipt.run_id
+ok 134 - NW01 required receipt.run_id
+  ---
+  duration_ms: 19.925875
+  ...
+# Subtest: NW01 required receipt.plan_sha256
+ok 135 - NW01 required receipt.plan_sha256
+  ---
+  duration_ms: 29.396751
+  ...
+# Subtest: NW01 required receipt.client_id
+ok 136 - NW01 required receipt.client_id
+  ---
+  duration_ms: 33.630743
+  ...
+# Subtest: NW01 required receipt.event_id
+ok 137 - NW01 required receipt.event_id
+  ---
+  duration_ms: 22.068258
+  ...
+# Subtest: NW01 required receipt.type
+ok 138 - NW01 required receipt.type
+  ---
+  duration_ms: 28.430475
+  ...
+# Subtest: NW01 required receipt.at_ms
+ok 139 - NW01 required receipt.at_ms
+  ---
+  duration_ms: 30.713404
+  ...
+# Subtest: NW01 required receipt.previous_event_sha256
+ok 140 - NW01 required receipt.previous_event_sha256
+  ---
+  duration_ms: 25.44045
+  ...
+# Subtest: NW01 required receipt.case_id
+ok 141 - NW01 required receipt.case_id
+  ---
+  duration_ms: 20.311482
+  ...
+# Subtest: NW01 required receipt.id
+ok 142 - NW01 required receipt.id
+  ---
+  duration_ms: 18.99255
+  ...
+# Subtest: NW01 required receipt.topic
+ok 143 - NW01 required receipt.topic
+  ---
+  duration_ms: 31.727871
+  ...
+# Subtest: NW01 required receipt.group_id
+ok 144 - NW01 required receipt.group_id
+  ---
+  duration_ms: 22.609523
+  ...
+# Subtest: NW01 required receipt.value_bytes
+ok 145 - NW01 required receipt.value_bytes
+  ---
+  duration_ms: 20.606852
+  ...
+# Subtest: NW01 required receipt.checksum
+ok 146 - NW01 required receipt.checksum
+  ---
+  duration_ms: 17.662335
+  ...
+# Subtest: NW01 required receipt.partition
+ok 147 - NW01 required receipt.partition
+  ---
+  duration_ms: 19.050107
+  ...
+# Subtest: NW01 required receipt.offset
+ok 148 - NW01 required receipt.offset
+  ---
+  duration_ms: 18.021401
+  ...
+# Subtest: NW01 required durable_receipt_ack.version
+ok 149 - NW01 required durable_receipt_ack.version
+  ---
+  duration_ms: 18.96328
+  ...
+# Subtest: NW01 required durable_receipt_ack.run_id
+ok 150 - NW01 required durable_receipt_ack.run_id
+  ---
+  duration_ms: 26.34727
+  ...
+# Subtest: NW01 required durable_receipt_ack.plan_sha256
+ok 151 - NW01 required durable_receipt_ack.plan_sha256
+  ---
+  duration_ms: 29.338745
+  ...
+# Subtest: NW01 required durable_receipt_ack.client_id
+ok 152 - NW01 required durable_receipt_ack.client_id
+  ---
+  duration_ms: 18.058978
+  ...
+# Subtest: NW01 required durable_receipt_ack.event_id
+ok 153 - NW01 required durable_receipt_ack.event_id
+  ---
+  duration_ms: 18.659804
+  ...
+# Subtest: NW01 required durable_receipt_ack.type
+ok 154 - NW01 required durable_receipt_ack.type
+  ---
+  duration_ms: 18.031622
+  ...
+# Subtest: NW01 required durable_receipt_ack.at_ms
+ok 155 - NW01 required durable_receipt_ack.at_ms
+  ---
+  duration_ms: 17.726732
+  ...
+# Subtest: NW01 required durable_receipt_ack.previous_event_sha256
+ok 156 - NW01 required durable_receipt_ack.previous_event_sha256
+  ---
+  duration_ms: 18.745068
+  ...
+# Subtest: NW01 required durable_receipt_ack.case_id
+ok 157 - NW01 required durable_receipt_ack.case_id
+  ---
+  duration_ms: 17.960587
+  ...
+# Subtest: NW01 required durable_receipt_ack.id
+ok 158 - NW01 required durable_receipt_ack.id
+  ---
+  duration_ms: 18.451521
+  ...
+# Subtest: NW01 required durable_receipt_ack.receipt_event_id
+ok 159 - NW01 required durable_receipt_ack.receipt_event_id
+  ---
+  duration_ms: 17.437223
+  ...
+# Subtest: NW01 required commit_intent.version
+ok 160 - NW01 required commit_intent.version
+  ---
+  duration_ms: 20.010434
+  ...
+# Subtest: NW01 required commit_intent.run_id
+ok 161 - NW01 required commit_intent.run_id
+  ---
+  duration_ms: 19.042782
+  ...
+# Subtest: NW01 required commit_intent.plan_sha256
+ok 162 - NW01 required commit_intent.plan_sha256
+  ---
+  duration_ms: 19.244944
+  ...
+# Subtest: NW01 required commit_intent.client_id
+ok 163 - NW01 required commit_intent.client_id
+  ---
+  duration_ms: 18.292739
+  ...
+# Subtest: NW01 required commit_intent.event_id
+ok 164 - NW01 required commit_intent.event_id
+  ---
+  duration_ms: 18.856584
+  ...
+# Subtest: NW01 required commit_intent.type
+ok 165 - NW01 required commit_intent.type
+  ---
+  duration_ms: 17.629862
+  ...
+# Subtest: NW01 required commit_intent.at_ms
+ok 166 - NW01 required commit_intent.at_ms
+  ---
+  duration_ms: 18.94175
+  ...
+# Subtest: NW01 required commit_intent.previous_event_sha256
+ok 167 - NW01 required commit_intent.previous_event_sha256
+  ---
+  duration_ms: 17.565724
+  ...
+# Subtest: NW01 required commit_intent.case_id
+ok 168 - NW01 required commit_intent.case_id
+  ---
+  duration_ms: 19.184827
+  ...
+# Subtest: NW01 required commit_intent.id
+ok 169 - NW01 required commit_intent.id
+  ---
+  duration_ms: 17.601373
+  ...
+# Subtest: NW01 required commit_intent.receipt_event_id
+ok 170 - NW01 required commit_intent.receipt_event_id
+  ---
+  duration_ms: 18.045911
+  ...
+# Subtest: NW01 required commit_intent.durable_event_id
+ok 171 - NW01 required commit_intent.durable_event_id
+  ---
+  duration_ms: 19.277784
+  ...
+# Subtest: NW01 required commit_intent.group_id
+ok 172 - NW01 required commit_intent.group_id
+  ---
+  duration_ms: 23.069017
+  ...
+# Subtest: NW01 required commit_intent.partition
+ok 173 - NW01 required commit_intent.partition
+  ---
+  duration_ms: 31.31072
+  ...
+# Subtest: NW01 required commit_intent.offset
+ok 174 - NW01 required commit_intent.offset
+  ---
+  duration_ms: 21.320531
+  ...
+# Subtest: NW01 required commit.version
+ok 175 - NW01 required commit.version
+  ---
+  duration_ms: 23.658885
+  ...
+# Subtest: NW01 required commit.run_id
+ok 176 - NW01 required commit.run_id
+  ---
+  duration_ms: 19.53047
+  ...
+# Subtest: NW01 required commit.plan_sha256
+ok 177 - NW01 required commit.plan_sha256
+  ---
+  duration_ms: 19.363605
+  ...
+# Subtest: NW01 required commit.client_id
+ok 178 - NW01 required commit.client_id
+  ---
+  duration_ms: 17.545504
+  ...
+# Subtest: NW01 required commit.event_id
+ok 179 - NW01 required commit.event_id
+  ---
+  duration_ms: 18.389315
+  ...
+# Subtest: NW01 required commit.type
+ok 180 - NW01 required commit.type
+  ---
+  duration_ms: 18.37647
+  ...
+# Subtest: NW01 required commit.at_ms
+ok 181 - NW01 required commit.at_ms
+  ---
+  duration_ms: 19.910437
+  ...
+# Subtest: NW01 required commit.previous_event_sha256
+ok 182 - NW01 required commit.previous_event_sha256
+  ---
+  duration_ms: 17.669663
+  ...
+# Subtest: NW01 required commit.case_id
+ok 183 - NW01 required commit.case_id
+  ---
+  duration_ms: 20.066209
+  ...
+# Subtest: NW01 required commit.id
+ok 184 - NW01 required commit.id
+  ---
+  duration_ms: 18.447952
+  ...
+# Subtest: NW01 required commit.receipt_event_id
+ok 185 - NW01 required commit.receipt_event_id
+  ---
+  duration_ms: 17.810121
+  ...
+# Subtest: NW01 required commit.durable_event_id
+ok 186 - NW01 required commit.durable_event_id
+  ---
+  duration_ms: 19.24004
+  ...
+# Subtest: NW01 required commit.group_id
+ok 187 - NW01 required commit.group_id
+  ---
+  duration_ms: 17.07955
+  ...
+# Subtest: NW01 required commit.partition
+ok 188 - NW01 required commit.partition
+  ---
+  duration_ms: 20.80983
+  ...
+# Subtest: NW01 required commit.offset
+ok 189 - NW01 required commit.offset
+  ---
+  duration_ms: 17.834318
+  ...
+# Subtest: NW01 required commit_uncertain.version
+ok 190 - NW01 required commit_uncertain.version
+  ---
+  duration_ms: 23.795513
+  ...
+# Subtest: NW01 required commit_uncertain.run_id
+ok 191 - NW01 required commit_uncertain.run_id
+  ---
+  duration_ms: 17.400797
+  ...
+# Subtest: NW01 required commit_uncertain.plan_sha256
+ok 192 - NW01 required commit_uncertain.plan_sha256
+  ---
+  duration_ms: 18.765312
+  ...
+# Subtest: NW01 required commit_uncertain.client_id
+ok 193 - NW01 required commit_uncertain.client_id
+  ---
+  duration_ms: 16.839894
+  ...
+# Subtest: NW01 required commit_uncertain.event_id
+ok 194 - NW01 required commit_uncertain.event_id
+  ---
+  duration_ms: 18.454412
+  ...
+# Subtest: NW01 required commit_uncertain.type
+ok 195 - NW01 required commit_uncertain.type
+  ---
+  duration_ms: 16.696321
+  ...
+# Subtest: NW01 required commit_uncertain.at_ms
+ok 196 - NW01 required commit_uncertain.at_ms
+  ---
+  duration_ms: 18.985892
+  ...
+# Subtest: NW01 required commit_uncertain.previous_event_sha256
+ok 197 - NW01 required commit_uncertain.previous_event_sha256
+  ---
+  duration_ms: 17.699068
+  ...
+# Subtest: NW01 required commit_uncertain.case_id
+ok 198 - NW01 required commit_uncertain.case_id
+  ---
+  duration_ms: 23.302729
+  ...
+# Subtest: NW01 required commit_uncertain.id
+ok 199 - NW01 required commit_uncertain.id
+  ---
+  duration_ms: 18.074438
+  ...
+# Subtest: NW01 required commit_uncertain.receipt_event_id
+ok 200 - NW01 required commit_uncertain.receipt_event_id
+  ---
+  duration_ms: 17.838049
+  ...
+# Subtest: NW01 required case_end.version
+ok 201 - NW01 required case_end.version
+  ---
+  duration_ms: 18.190542
+  ...
+# Subtest: NW01 required case_end.run_id
+ok 202 - NW01 required case_end.run_id
+  ---
+  duration_ms: 17.394491
+  ...
+# Subtest: NW01 required case_end.plan_sha256
+ok 203 - NW01 required case_end.plan_sha256
+  ---
+  duration_ms: 18.214973
+  ...
+# Subtest: NW01 required case_end.client_id
+ok 204 - NW01 required case_end.client_id
+  ---
+  duration_ms: 17.058606
+  ...
+# Subtest: NW01 required case_end.event_id
+ok 205 - NW01 required case_end.event_id
+  ---
+  duration_ms: 25.170597
+  ...
+# Subtest: NW01 required case_end.type
+ok 206 - NW01 required case_end.type
+  ---
+  duration_ms: 30.609404
+  ...
+# Subtest: NW01 required case_end.at_ms
+ok 207 - NW01 required case_end.at_ms
+  ---
+  duration_ms: 23.295938
+  ...
+# Subtest: NW01 required case_end.previous_event_sha256
+ok 208 - NW01 required case_end.previous_event_sha256
+  ---
+  duration_ms: 17.575604
+  ...
+# Subtest: NW01 required case_end.case_id
+ok 209 - NW01 required case_end.case_id
+  ---
+  duration_ms: 18.816509
+  ...
+# Subtest: NW01 required case_end.status
+ok 210 - NW01 required case_end.status
+  ---
+  duration_ms: 17.453532
+  ...
+# Subtest: NW01 required denial_result.version
+ok 211 - NW01 required denial_result.version
+  ---
+  duration_ms: 18.006504
+  ...
+# Subtest: NW01 required denial_result.run_id
+ok 212 - NW01 required denial_result.run_id
+  ---
+  duration_ms: 17.453913
+  ...
+# Subtest: NW01 required denial_result.plan_sha256
+ok 213 - NW01 required denial_result.plan_sha256
+  ---
+  duration_ms: 19.242791
+  ...
+# Subtest: NW01 required denial_result.client_id
+ok 214 - NW01 required denial_result.client_id
+  ---
+  duration_ms: 19.1226
+  ...
+# Subtest: NW01 required denial_result.event_id
+ok 215 - NW01 required denial_result.event_id
+  ---
+  duration_ms: 16.503431
+  ...
+# Subtest: NW01 required denial_result.type
+ok 216 - NW01 required denial_result.type
+  ---
+  duration_ms: 19.532978
+  ...
+# Subtest: NW01 required denial_result.at_ms
+ok 217 - NW01 required denial_result.at_ms
+  ---
+  duration_ms: 18.173665
+  ...
+# Subtest: NW01 required denial_result.previous_event_sha256
+ok 218 - NW01 required denial_result.previous_event_sha256
+  ---
+  duration_ms: 19.034521
+  ...
+# Subtest: NW01 required denial_result.case_id
+ok 219 - NW01 required denial_result.case_id
+  ---
+  duration_ms: 19.223075
+  ...
+# Subtest: NW01 required denial_result.status
+ok 220 - NW01 required denial_result.status
+  ---
+  duration_ms: 23.718
+  ...
+# Subtest: NW01 required denial_result.category
+ok 221 - NW01 required denial_result.category
+  ---
+  duration_ms: 23.569974
+  ...
+# Subtest: NW01 required denial_result.failure_stage
+ok 222 - NW01 required denial_result.failure_stage
+  ---
+  duration_ms: 26.759338
+  ...
+# Subtest: NW01 required denial_result.typed
+ok 223 - NW01 required denial_result.typed
+  ---
+  duration_ms: 24.548986
+  ...
+# Subtest: NW01 required denial_result.control_ids
+ok 224 - NW01 required denial_result.control_ids
+  ---
+  duration_ms: 25.416493
+  ...
+# Subtest: NW01 required denial_result.write_path_control_id
+ok 225 - NW01 required denial_result.write_path_control_id
+  ---
+  duration_ms: 21.021004
+  ...
+# Subtest: NW01 required denial_result.consumer_write_confounded
+ok 226 - NW01 required denial_result.consumer_write_confounded
+  ---
+  duration_ms: 27.655799
+  ...
+# Subtest: NW01 required denial_result.confound_resolution
+ok 227 - NW01 required denial_result.confound_resolution
+  ---
+  duration_ms: 18.181024
+  ...
+# Subtest: NW01 required unexpected_record.version
+ok 228 - NW01 required unexpected_record.version
+  ---
+  duration_ms: 19.454274
+  ...
+# Subtest: NW01 required unexpected_record.run_id
+ok 229 - NW01 required unexpected_record.run_id
+  ---
+  duration_ms: 17.713584
+  ...
+# Subtest: NW01 required unexpected_record.plan_sha256
+ok 230 - NW01 required unexpected_record.plan_sha256
+  ---
+  duration_ms: 18.95124
+  ...
+# Subtest: NW01 required unexpected_record.client_id
+ok 231 - NW01 required unexpected_record.client_id
+  ---
+  duration_ms: 22.200782
+  ...
+# Subtest: NW01 required unexpected_record.event_id
+ok 232 - NW01 required unexpected_record.event_id
+  ---
+  duration_ms: 17.806375
+  ...
+# Subtest: NW01 required unexpected_record.type
+ok 233 - NW01 required unexpected_record.type
+  ---
+  duration_ms: 22.562122
+  ...
+# Subtest: NW01 required unexpected_record.at_ms
+ok 234 - NW01 required unexpected_record.at_ms
+  ---
+  duration_ms: 17.699262
+  ...
+# Subtest: NW01 required unexpected_record.previous_event_sha256
+ok 235 - NW01 required unexpected_record.previous_event_sha256
+  ---
+  duration_ms: 19.504957
+  ...
+# Subtest: NW01 required unexpected_record.case_id
+ok 236 - NW01 required unexpected_record.case_id
+  ---
+  duration_ms: 17.327046
+  ...
+# Subtest: NW01 required unexpected_record.topic
+ok 237 - NW01 required unexpected_record.topic
+  ---
+  duration_ms: 19.183431
+  ...
+# Subtest: NW01 required unexpected_record.observed_key_sha256
+ok 238 - NW01 required unexpected_record.observed_key_sha256
+  ---
+  duration_ms: 17.994397
+  ...
+# Subtest: NW01 required unexpected_record.checksum
+ok 239 - NW01 required unexpected_record.checksum
+  ---
+  duration_ms: 18.380735
+  ...
+# Subtest: NW01 required unexpected_access.version
+ok 240 - NW01 required unexpected_access.version
+  ---
+  duration_ms: 18.154697
+  ...
+# Subtest: NW01 required unexpected_access.run_id
+ok 241 - NW01 required unexpected_access.run_id
+  ---
+  duration_ms: 18.748559
+  ...
+# Subtest: NW01 required unexpected_access.plan_sha256
+ok 242 - NW01 required unexpected_access.plan_sha256
+  ---
+  duration_ms: 23.190754
+  ...
+# Subtest: NW01 required unexpected_access.client_id
+ok 243 - NW01 required unexpected_access.client_id
+  ---
+  duration_ms: 31.888252
+  ...
+# Subtest: NW01 required unexpected_access.event_id
+ok 244 - NW01 required unexpected_access.event_id
+  ---
+  duration_ms: 18.787639
+  ...
+# Subtest: NW01 required unexpected_access.type
+ok 245 - NW01 required unexpected_access.type
+  ---
+  duration_ms: 17.988204
+  ...
+# Subtest: NW01 required unexpected_access.at_ms
+ok 246 - NW01 required unexpected_access.at_ms
+  ---
+  duration_ms: 20.346944
+  ...
+# Subtest: NW01 required unexpected_access.previous_event_sha256
+ok 247 - NW01 required unexpected_access.previous_event_sha256
+  ---
+  duration_ms: 17.564301
+  ...
+# Subtest: NW01 required unexpected_access.case_id
+ok 248 - NW01 required unexpected_access.case_id
+  ---
+  duration_ms: 19.796652
+  ...
+# Subtest: NW01 required unexpected_access.topic
+ok 249 - NW01 required unexpected_access.topic
+  ---
+  duration_ms: 17.400942
+  ...
+# Subtest: NW01 required unexpected_access.group_id
+ok 250 - NW01 required unexpected_access.group_id
+  ---
+  duration_ms: 20.408563
+  ...
+# Subtest: NW01 required unexpected_access.kind
+ok 251 - NW01 required unexpected_access.kind
+  ---
+  duration_ms: 22.27589
+  ...
+# Subtest: NW01 required group_state_unavailable.version
+ok 252 - NW01 required group_state_unavailable.version
+  ---
+  duration_ms: 23.352353
+  ...
+# Subtest: NW01 required group_state_unavailable.run_id
+ok 253 - NW01 required group_state_unavailable.run_id
+  ---
+  duration_ms: 24.625487
+  ...
+# Subtest: NW01 required group_state_unavailable.plan_sha256
+ok 254 - NW01 required group_state_unavailable.plan_sha256
+  ---
+  duration_ms: 24.281852
+  ...
+# Subtest: NW01 required group_state_unavailable.client_id
+ok 255 - NW01 required group_state_unavailable.client_id
+  ---
+  duration_ms: 17.75449
+  ...
+# Subtest: NW01 required group_state_unavailable.event_id
+ok 256 - NW01 required group_state_unavailable.event_id
+  ---
+  duration_ms: 19.584937
+  ...
+# Subtest: NW01 required group_state_unavailable.type
+ok 257 - NW01 required group_state_unavailable.type
+  ---
+  duration_ms: 18.0172
+  ...
+# Subtest: NW01 required group_state_unavailable.at_ms
+ok 258 - NW01 required group_state_unavailable.at_ms
+  ---
+  duration_ms: 20.85221
+  ...
+# Subtest: NW01 required group_state_unavailable.previous_event_sha256
+ok 259 - NW01 required group_state_unavailable.previous_event_sha256
+  ---
+  duration_ms: 17.936461
+  ...
+# Subtest: NW01 required group_state_unavailable.case_id
+ok 260 - NW01 required group_state_unavailable.case_id
+  ---
+  duration_ms: 17.691158
+  ...
+# Subtest: NW01 required group_state_unavailable.topic
+ok 261 - NW01 required group_state_unavailable.topic
+  ---
+  duration_ms: 18.891516
+  ...
+# Subtest: NW01 required group_state_unavailable.group_id
+ok 262 - NW01 required group_state_unavailable.group_id
+  ---
+  duration_ms: 17.440353
+  ...
+# Subtest: NW01 required group_state_unavailable.reason
+ok 263 - NW01 required group_state_unavailable.reason
+  ---
+  duration_ms: 24.58675
+  ...
+# Subtest: NW01 required negative_state_violation.version
+ok 264 - NW01 required negative_state_violation.version
+  ---
+  duration_ms: 27.218681
+  ...
+# Subtest: NW01 required negative_state_violation.run_id
+ok 265 - NW01 required negative_state_violation.run_id
+  ---
+  duration_ms: 19.192717
+  ...
+# Subtest: NW01 required negative_state_violation.plan_sha256
+ok 266 - NW01 required negative_state_violation.plan_sha256
+  ---
+  duration_ms: 26.15237
+  ...
+# Subtest: NW01 required negative_state_violation.client_id
+ok 267 - NW01 required negative_state_violation.client_id
+  ---
+  duration_ms: 22.822414
+  ...
+# Subtest: NW01 required negative_state_violation.event_id
+ok 268 - NW01 required negative_state_violation.event_id
+  ---
+  duration_ms: 25.978039
+  ...
+# Subtest: NW01 required negative_state_violation.type
+ok 269 - NW01 required negative_state_violation.type
+  ---
+  duration_ms: 24.586878
+  ...
+# Subtest: NW01 required negative_state_violation.at_ms
+ok 270 - NW01 required negative_state_violation.at_ms
+  ---
+  duration_ms: 25.997295
+  ...
+# Subtest: NW01 required negative_state_violation.previous_event_sha256
+ok 271 - NW01 required negative_state_violation.previous_event_sha256
+  ---
+  duration_ms: 23.725795
+  ...
+# Subtest: NW01 required negative_state_violation.case_id
+ok 272 - NW01 required negative_state_violation.case_id
+  ---
+  duration_ms: 24.637779
+  ...
+# Subtest: NW01 required negative_state_violation.reason
+ok 273 - NW01 required negative_state_violation.reason
+  ---
+  duration_ms: 22.540445
+  ...
+# Subtest: NW01 required reconciliation_boundary.version
+ok 274 - NW01 required reconciliation_boundary.version
+  ---
+  duration_ms: 24.521968
+  ...
+# Subtest: NW01 required reconciliation_boundary.run_id
+ok 275 - NW01 required reconciliation_boundary.run_id
+  ---
+  duration_ms: 24.036699
+  ...
+# Subtest: NW01 required reconciliation_boundary.plan_sha256
+ok 276 - NW01 required reconciliation_boundary.plan_sha256
+  ---
+  duration_ms: 24.964874
+  ...
+# Subtest: NW01 required reconciliation_boundary.client_id
+ok 277 - NW01 required reconciliation_boundary.client_id
+  ---
+  duration_ms: 19.561182
+  ...
+# Subtest: NW01 required reconciliation_boundary.event_id
+ok 278 - NW01 required reconciliation_boundary.event_id
+  ---
+  duration_ms: 23.190566
+  ...
+# Subtest: NW01 required reconciliation_boundary.type
+ok 279 - NW01 required reconciliation_boundary.type
+  ---
+  duration_ms: 24.672152
+  ...
+# Subtest: NW01 required reconciliation_boundary.at_ms
+ok 280 - NW01 required reconciliation_boundary.at_ms
+  ---
+  duration_ms: 23.620916
+  ...
+# Subtest: NW01 required reconciliation_boundary.previous_event_sha256
+ok 281 - NW01 required reconciliation_boundary.previous_event_sha256
+  ---
+  duration_ms: 24.001977
+  ...
+# Subtest: NW01 required reconciliation_boundary.positive_cutoff_ms
+ok 282 - NW01 required reconciliation_boundary.positive_cutoff_ms
+  ---
+  duration_ms: 24.107734
+  ...
+# Subtest: NW01 required fixture_stop.version
+ok 283 - NW01 required fixture_stop.version
+  ---
+  duration_ms: 22.196593
+  ...
+# Subtest: NW01 required fixture_stop.run_id
+ok 284 - NW01 required fixture_stop.run_id
+  ---
+  duration_ms: 25.758108
+  ...
+# Subtest: NW01 required fixture_stop.plan_sha256
+ok 285 - NW01 required fixture_stop.plan_sha256
+  ---
+  duration_ms: 21.281164
+  ...
+# Subtest: NW01 required fixture_stop.client_id
+ok 286 - NW01 required fixture_stop.client_id
+  ---
+  duration_ms: 26.017813
+  ...
+# Subtest: NW01 required fixture_stop.event_id
+ok 287 - NW01 required fixture_stop.event_id
+  ---
+  duration_ms: 22.44046
+  ...
+# Subtest: NW01 required fixture_stop.type
+ok 288 - NW01 required fixture_stop.type
+  ---
+  duration_ms: 26.86807
+  ...
+# Subtest: NW01 required fixture_stop.at_ms
+ok 289 - NW01 required fixture_stop.at_ms
+  ---
+  duration_ms: 23.655308
+  ...
+# Subtest: NW01 required fixture_stop.previous_event_sha256
+ok 290 - NW01 required fixture_stop.previous_event_sha256
+  ---
+  duration_ms: 25.718778
+  ...
+# Subtest: NW01 required fixture_stop.reason
+ok 291 - NW01 required fixture_stop.reason
+  ---
+  duration_ms: 23.802923
+  ...
+# Subtest: NW01 required fixture_stop.status
+ok 292 - NW01 required fixture_stop.status
+  ---
+  duration_ms: 23.762681
+  ...
+# Subtest: NW01 required fixture_terminal.version
+ok 293 - NW01 required fixture_terminal.version
+  ---
+  duration_ms: 25.055087
+  ...
+# Subtest: NW01 required fixture_terminal.run_id
+ok 294 - NW01 required fixture_terminal.run_id
+  ---
+  duration_ms: 23.463554
+  ...
+# Subtest: NW01 required fixture_terminal.plan_sha256
+ok 295 - NW01 required fixture_terminal.plan_sha256
+  ---
+  duration_ms: 25.026131
+  ...
+# Subtest: NW01 required fixture_terminal.client_id
+ok 296 - NW01 required fixture_terminal.client_id
+  ---
+  duration_ms: 22.037177
+  ...
+# Subtest: NW01 required fixture_terminal.event_id
+ok 297 - NW01 required fixture_terminal.event_id
+  ---
+  duration_ms: 25.986723
+  ...
+# Subtest: NW01 required fixture_terminal.type
+ok 298 - NW01 required fixture_terminal.type
+  ---
+  duration_ms: 21.174826
+  ...
+# Subtest: NW01 required fixture_terminal.at_ms
+ok 299 - NW01 required fixture_terminal.at_ms
+  ---
+  duration_ms: 26.690191
+  ...
+# Subtest: NW01 required fixture_terminal.previous_event_sha256
+ok 300 - NW01 required fixture_terminal.previous_event_sha256
+  ---
+  duration_ms: 21.699106
+  ...
+# Subtest: NW01 required fixture_terminal.status
+ok 301 - NW01 required fixture_terminal.status
+  ---
+  duration_ms: 26.33638
+  ...
+# Subtest: NW01 required fixture_terminal.elapsed_ms
+ok 302 - NW01 required fixture_terminal.elapsed_ms
+  ---
+  duration_ms: 22.433768
+  ...
+# Subtest: NW01 required fixture_terminal.closed
+ok 303 - NW01 required fixture_terminal.closed
+  ---
+  duration_ms: 24.246618
+  ...
+# Subtest: NW01 required fixture_terminal.positive_cutoff_ms
+ok 304 - NW01 required fixture_terminal.positive_cutoff_ms
+  ---
+  duration_ms: 23.531282
+  ...
+# Subtest: NW01 conditional case_start.binding_id
+ok 305 - NW01 conditional case_start.binding_id
+  ---
+  duration_ms: 21.027835
+  ...
+# Subtest: NW01 conditional case_start.control_ids
+ok 306 - NW01 conditional case_start.control_ids
+  ---
+  duration_ms: 26.019022
+  ...
+# Subtest: NW01 conditional send_outcome.acknowledged_at_ms
+ok 307 - NW01 conditional send_outcome.acknowledged_at_ms
+  ---
+  duration_ms: 21.884287
+  ...
+# Subtest: NW01 conditional send_outcome.ack_bucket
+ok 308 - NW01 conditional send_outcome.ack_bucket
+  ---
+  duration_ms: 25.03956
+  ...
+# Subtest: NW01 conditional send_outcome.category
+ok 309 - NW01 conditional send_outcome.category
+  ---
+  duration_ms: 22.835369
+  ...
+# Subtest: NW01 conditional send_outcome.failure_stage
+ok 310 - NW01 conditional send_outcome.failure_stage
+  ---
+  duration_ms: 23.528493
+  ...
+# Subtest: NW01 conditional send_outcome.typed
+ok 311 - NW01 conditional send_outcome.typed
+  ---
+  duration_ms: 24.408789
+  ...
+# Subtest: NW01 field type case_start.case_kind
+ok 312 - NW01 field type case_start.case_kind
+  ---
+  duration_ms: 25.655167
+  ...
+# Subtest: NW01 field type case_start.case_id
+ok 313 - NW01 field type case_start.case_id
+  ---
+  duration_ms: 24.542492
+  ...
+# Subtest: NW01 field type case_start.control_ids
+ok 314 - NW01 field type case_start.control_ids
+  ---
+  duration_ms: 23.136067
+  ...
+# Subtest: NW01 field type durable_receipt_ack.receipt_event_id
+ok 315 - NW01 field type durable_receipt_ack.receipt_event_id
+  ---
+  duration_ms: 30.284945
+  ...
+# Subtest: NW01 field type client_open.auto_commit
+ok 316 - NW01 field type client_open.auto_commit
+  ---
+  duration_ms: 29.869823
+  ...
+# Subtest: NW01 field type client_close.closed
+ok 317 - NW01 field type client_close.closed
+  ---
+  duration_ms: 18.385582
+  ...
+# Subtest: NW01 field type send_outcome.typed
+ok 318 - NW01 field type send_outcome.typed
+  ---
+  duration_ms: 18.937634
+  ...
+# Subtest: NW01 field type denial_result.control_ids
+ok 319 - NW01 field type denial_result.control_ids
+  ---
+  duration_ms: 17.330989
+  ...
+# Subtest: NW01 field type receipt.checksum
+ok 320 - NW01 field type receipt.checksum
+  ---
+  duration_ms: 18.65775
+  ...
+# Subtest: NW01 field type fixture_terminal.elapsed_ms
+ok 321 - NW01 field type fixture_terminal.elapsed_ms
+  ---
+  duration_ms: 17.508356
+  ...
+# Subtest: NW01 field type group_state.membership_observed
+ok 322 - NW01 field type group_state.membership_observed
+  ---
+  duration_ms: 17.629211
+  ...
+# Subtest: NW01 field type group_state.members
+ok 323 - NW01 field type group_state.members
+  ---
+  duration_ms: 18.257505
+  ...
+# Subtest: NW01 durable_receipt_ack cannot switch record to another valid case
+ok 324 - NW01 durable_receipt_ack cannot switch record to another valid case
+  ---
+  duration_ms: 19.740934
+  ...
+# Subtest: NW01 commit_intent cannot switch record to another valid case
+ok 325 - NW01 commit_intent cannot switch record to another valid case
+  ---
+  duration_ms: 21.317463
+  ...
+# Subtest: NW01 commit cannot switch record to another valid case
+ok 326 - NW01 commit cannot switch record to another valid case
+  ---
+  duration_ms: 19.52053
+  ...
+# Subtest: NW01 case kind cannot bypass negative controls
+ok 327 - NW01 case kind cannot bypass negative controls
+  ---
+  duration_ms: 20.678034
+  ...
+# Subtest: NW02 receipt.offset rejects -4
+ok 328 - NW02 receipt.offset rejects -4
+  ---
+  duration_ms: 17.601695
+  ...
+# Subtest: NW02 receipt.offset rejects -1
+ok 329 - NW02 receipt.offset rejects -1
+  ---
+  duration_ms: 18.805555
+  ...
+# Subtest: NW02 receipt.offset rejects -2
+ok 330 - NW02 receipt.offset rejects -2
+  ---
+  duration_ms: 17.766583
+  ...
+# Subtest: NW02 receipt.offset rejects -1001
+ok 331 - NW02 receipt.offset rejects -1001
+  ---
+  duration_ms: 18.595423
+  ...
+# Subtest: NW02 receipt.offset rejects true
+ok 332 - NW02 receipt.offset rejects true
+  ---
+  duration_ms: 17.182671
+  ...
+# Subtest: NW02 receipt.offset rejects false
+ok 333 - NW02 receipt.offset rejects false
+  ---
+  duration_ms: 18.617428
+  ...
+# Subtest: NW02 receipt.offset rejects 0.5
+ok 334 - NW02 receipt.offset rejects 0.5
+  ---
+  duration_ms: 18.035882
+  ...
+# Subtest: NW02 receipt.offset rejects 9007199254740992
+ok 335 - NW02 receipt.offset rejects 9007199254740992
+  ---
+  duration_ms: 19.317707
+  ...
+# Subtest: NW02 receipt.offset rejects "0"
+ok 336 - NW02 receipt.offset rejects "0"
+  ---
+  duration_ms: 18.587438
+  ...
+# Subtest: NW02 receipt.offset rejects {}
+ok 337 - NW02 receipt.offset rejects {}
+  ---
+  duration_ms: 23.069465
+  ...
+# Subtest: NW02 receipt.offset rejects []
+ok 338 - NW02 receipt.offset rejects []
+  ---
+  duration_ms: 20.23037
+  ...
+# Subtest: NW02 receipt.partition rejects -4
+ok 339 - NW02 receipt.partition rejects -4
+  ---
+  duration_ms: 21.621697
+  ...
+# Subtest: NW02 receipt.partition rejects -1
+ok 340 - NW02 receipt.partition rejects -1
+  ---
+  duration_ms: 17.572503
+  ...
+# Subtest: NW02 receipt.partition rejects -2
+ok 341 - NW02 receipt.partition rejects -2
+  ---
+  duration_ms: 19.470019
+  ...
+# Subtest: NW02 receipt.partition rejects -1001
+ok 342 - NW02 receipt.partition rejects -1001
+  ---
+  duration_ms: 17.71451
+  ...
+# Subtest: NW02 receipt.partition rejects true
+ok 343 - NW02 receipt.partition rejects true
+  ---
+  duration_ms: 18.122038
+  ...
+# Subtest: NW02 receipt.partition rejects false
+ok 344 - NW02 receipt.partition rejects false
+  ---
+  duration_ms: 19.076223
+  ...
+# Subtest: NW02 receipt.partition rejects 0.5
+ok 345 - NW02 receipt.partition rejects 0.5
+  ---
+  duration_ms: 17.974089
+  ...
+# Subtest: NW02 receipt.partition rejects 9007199254740992
+ok 346 - NW02 receipt.partition rejects 9007199254740992
+  ---
+  duration_ms: 20.454454
+  ...
+# Subtest: NW02 receipt.partition rejects "0"
+ok 347 - NW02 receipt.partition rejects "0"
+  ---
+  duration_ms: 17.959113
+  ...
+# Subtest: NW02 receipt.partition rejects {}
+ok 348 - NW02 receipt.partition rejects {}
+  ---
+  duration_ms: 18.928114
+  ...
+# Subtest: NW02 receipt.partition rejects []
+ok 349 - NW02 receipt.partition rejects []
+  ---
+  duration_ms: 18.338128
+  ...
+# Subtest: NW02 commit_intent.offset rejects -4
+ok 350 - NW02 commit_intent.offset rejects -4
+  ---
+  duration_ms: 20.43127
+  ...
+# Subtest: NW02 commit_intent.offset rejects -1
+ok 351 - NW02 commit_intent.offset rejects -1
+  ---
+  duration_ms: 18.947427
+  ...
+# Subtest: NW02 commit_intent.offset rejects -2
+ok 352 - NW02 commit_intent.offset rejects -2
+  ---
+  duration_ms: 19.909312
+  ...
+# Subtest: NW02 commit_intent.offset rejects -1001
+ok 353 - NW02 commit_intent.offset rejects -1001
+  ---
+  duration_ms: 20.69102
+  ...
+# Subtest: NW02 commit_intent.offset rejects true
+ok 354 - NW02 commit_intent.offset rejects true
+  ---
+  duration_ms: 20.700994
+  ...
+# Subtest: NW02 commit_intent.offset rejects false
+ok 355 - NW02 commit_intent.offset rejects false
+  ---
+  duration_ms: 17.817338
+  ...
+# Subtest: NW02 commit_intent.offset rejects 0.5
+ok 356 - NW02 commit_intent.offset rejects 0.5
+  ---
+  duration_ms: 20.534197
+  ...
+# Subtest: NW02 commit_intent.offset rejects 9007199254740992
+ok 357 - NW02 commit_intent.offset rejects 9007199254740992
+  ---
+  duration_ms: 18.851053
+  ...
+# Subtest: NW02 commit_intent.offset rejects "0"
+ok 358 - NW02 commit_intent.offset rejects "0"
+  ---
+  duration_ms: 19.653412
+  ...
+# Subtest: NW02 commit_intent.offset rejects {}
+ok 359 - NW02 commit_intent.offset rejects {}
+  ---
+  duration_ms: 17.086586
+  ...
+# Subtest: NW02 commit_intent.offset rejects []
+ok 360 - NW02 commit_intent.offset rejects []
+  ---
+  duration_ms: 18.494416
+  ...
+# Subtest: NW02 commit.offset rejects -4
+ok 361 - NW02 commit.offset rejects -4
+  ---
+  duration_ms: 19.273213
+  ...
+# Subtest: NW02 commit.offset rejects -1
+ok 362 - NW02 commit.offset rejects -1
+  ---
+  duration_ms: 17.090395
+  ...
+# Subtest: NW02 commit.offset rejects -2
+ok 363 - NW02 commit.offset rejects -2
+  ---
+  duration_ms: 19.435831
+  ...
+# Subtest: NW02 commit.offset rejects -1001
+ok 364 - NW02 commit.offset rejects -1001
+  ---
+  duration_ms: 17.315446
+  ...
+# Subtest: NW02 commit.offset rejects true
+ok 365 - NW02 commit.offset rejects true
+  ---
+  duration_ms: 18.750887
+  ...
+# Subtest: NW02 commit.offset rejects false
+ok 366 - NW02 commit.offset rejects false
+  ---
+  duration_ms: 17.265878
+  ...
+# Subtest: NW02 commit.offset rejects 0.5
+ok 367 - NW02 commit.offset rejects 0.5
+  ---
+  duration_ms: 17.990532
+  ...
+# Subtest: NW02 commit.offset rejects 9007199254740992
+ok 368 - NW02 commit.offset rejects 9007199254740992
+  ---
+  duration_ms: 16.625148
+  ...
+# Subtest: NW02 commit.offset rejects "0"
+ok 369 - NW02 commit.offset rejects "0"
+  ---
+  duration_ms: 18.488077
+  ...
+# Subtest: NW02 commit.offset rejects {}
+ok 370 - NW02 commit.offset rejects {}
+  ---
+  duration_ms: 16.557624
+  ...
+# Subtest: NW02 commit.offset rejects []
+ok 371 - NW02 commit.offset rejects []
+  ---
+  duration_ms: 18.437598
+  ...
+# Subtest: NW02 commit_intent.partition rejects -4
+ok 372 - NW02 commit_intent.partition rejects -4
+  ---
+  duration_ms: 17.383639
+  ...
+# Subtest: NW02 commit_intent.partition rejects -1
+ok 373 - NW02 commit_intent.partition rejects -1
+  ---
+  duration_ms: 18.185187
+  ...
+# Subtest: NW02 commit_intent.partition rejects -2
+ok 374 - NW02 commit_intent.partition rejects -2
+  ---
+  duration_ms: 17.38331
+  ...
+# Subtest: NW02 commit_intent.partition rejects -1001
+ok 375 - NW02 commit_intent.partition rejects -1001
+  ---
+  duration_ms: 16.883413
+  ...
+# Subtest: NW02 commit_intent.partition rejects true
+ok 376 - NW02 commit_intent.partition rejects true
+  ---
+  duration_ms: 18.456407
+  ...
+# Subtest: NW02 commit_intent.partition rejects false
+ok 377 - NW02 commit_intent.partition rejects false
+  ---
+  duration_ms: 17.2148
+  ...
+# Subtest: NW02 commit_intent.partition rejects 0.5
+ok 378 - NW02 commit_intent.partition rejects 0.5
+  ---
+  duration_ms: 18.310115
+  ...
+# Subtest: NW02 commit_intent.partition rejects 9007199254740992
+ok 379 - NW02 commit_intent.partition rejects 9007199254740992
+  ---
+  duration_ms: 16.83782
+  ...
+# Subtest: NW02 commit_intent.partition rejects "0"
+ok 380 - NW02 commit_intent.partition rejects "0"
+  ---
+  duration_ms: 18.791206
+  ...
+# Subtest: NW02 commit_intent.partition rejects {}
+ok 381 - NW02 commit_intent.partition rejects {}
+  ---
+  duration_ms: 16.639586
+  ...
+# Subtest: NW02 commit_intent.partition rejects []
+ok 382 - NW02 commit_intent.partition rejects []
+  ---
+  duration_ms: 23.243628
+  ...
+# Subtest: NW02 commit.partition rejects -4
+ok 383 - NW02 commit.partition rejects -4
+  ---
+  duration_ms: 31.397977
+  ...
+# Subtest: NW02 commit.partition rejects -1
+ok 384 - NW02 commit.partition rejects -1
+  ---
+  duration_ms: 34.0149
+  ...
+# Subtest: NW02 commit.partition rejects -2
+ok 385 - NW02 commit.partition rejects -2
+  ---
+  duration_ms: 31.094563
+  ...
+# Subtest: NW02 commit.partition rejects -1001
+ok 386 - NW02 commit.partition rejects -1001
+  ---
+  duration_ms: 33.885056
+  ...
+# Subtest: NW02 commit.partition rejects true
+ok 387 - NW02 commit.partition rejects true
+  ---
+  duration_ms: 25.669828
+  ...
+# Subtest: NW02 commit.partition rejects false
+ok 388 - NW02 commit.partition rejects false
+  ---
+  duration_ms: 29.778621
+  ...
+# Subtest: NW02 commit.partition rejects 0.5
+ok 389 - NW02 commit.partition rejects 0.5
+  ---
+  duration_ms: 20.097967
+  ...
+# Subtest: NW02 commit.partition rejects 9007199254740992
+ok 390 - NW02 commit.partition rejects 9007199254740992
+  ---
+  duration_ms: 27.080689
+  ...
+# Subtest: NW02 commit.partition rejects "0"
+ok 391 - NW02 commit.partition rejects "0"
+  ---
+  duration_ms: 27.153268
+  ...
+# Subtest: NW02 commit.partition rejects {}
+ok 392 - NW02 commit.partition rejects {}
+  ---
+  duration_ms: 18.812161
+  ...
+# Subtest: NW02 commit.partition rejects []
+ok 393 - NW02 commit.partition rejects []
+  ---
+  duration_ms: 19.234784
+  ...
+# Subtest: NW02 group_state.committed_offset rejects -4
+ok 394 - NW02 group_state.committed_offset rejects -4
+  ---
+  duration_ms: 18.66987
+  ...
+# Subtest: NW02 group_state.committed_offset rejects -1
+ok 395 - NW02 group_state.committed_offset rejects -1
+  ---
+  duration_ms: 18.549342
+  ...
+# Subtest: NW02 group_state.committed_offset rejects -2
+ok 396 - NW02 group_state.committed_offset rejects -2
+  ---
+  duration_ms: 18.279668
+  ...
+# Subtest: NW02 group_state.committed_offset rejects -1001
+ok 397 - NW02 group_state.committed_offset rejects -1001
+  ---
+  duration_ms: 18.457191
+  ...
+# Subtest: NW02 group_state.committed_offset rejects true
+ok 398 - NW02 group_state.committed_offset rejects true
+  ---
+  duration_ms: 18.422041
+  ...
+# Subtest: NW02 group_state.committed_offset rejects false
+ok 399 - NW02 group_state.committed_offset rejects false
+  ---
+  duration_ms: 18.929022
+  ...
+# Subtest: NW02 group_state.committed_offset rejects 0.5
+ok 400 - NW02 group_state.committed_offset rejects 0.5
+  ---
+  duration_ms: 17.011045
+  ...
+# Subtest: NW02 group_state.committed_offset rejects 9007199254740992
+ok 401 - NW02 group_state.committed_offset rejects 9007199254740992
+  ---
+  duration_ms: 19.096343
+  ...
+# Subtest: NW02 group_state.committed_offset rejects "0"
+ok 402 - NW02 group_state.committed_offset rejects "0"
+  ---
+  duration_ms: 16.848892
+  ...
+# Subtest: NW02 group_state.committed_offset rejects {}
+ok 403 - NW02 group_state.committed_offset rejects {}
+  ---
+  duration_ms: 18.382625
+  ...
+# Subtest: NW02 group_state.committed_offset rejects []
+ok 404 - NW02 group_state.committed_offset rejects []
+  ---
+  duration_ms: 17.642006
+  ...
+# Subtest: NW02 group_state.log_end_offset rejects -4
+ok 405 - NW02 group_state.log_end_offset rejects -4
+  ---
+  duration_ms: 17.762371
+  ...
+# Subtest: NW02 group_state.log_end_offset rejects -1
+ok 406 - NW02 group_state.log_end_offset rejects -1
+  ---
+  duration_ms: 18.14811
+  ...
+# Subtest: NW02 group_state.log_end_offset rejects -2
+ok 407 - NW02 group_state.log_end_offset rejects -2
+  ---
+  duration_ms: 17.76011
+  ...
+# Subtest: NW02 group_state.log_end_offset rejects -1001
+ok 408 - NW02 group_state.log_end_offset rejects -1001
+  ---
+  duration_ms: 17.51174
+  ...
+# Subtest: NW02 group_state.log_end_offset rejects true
+ok 409 - NW02 group_state.log_end_offset rejects true
+  ---
+  duration_ms: 17.424735
+  ...
+# Subtest: NW02 group_state.log_end_offset rejects false
+ok 410 - NW02 group_state.log_end_offset rejects false
+  ---
+  duration_ms: 23.941698
+  ...
+# Subtest: NW02 group_state.log_end_offset rejects 0.5
+ok 411 - NW02 group_state.log_end_offset rejects 0.5
+  ---
+  duration_ms: 28.294545
+  ...
+# Subtest: NW02 group_state.log_end_offset rejects 9007199254740992
+ok 412 - NW02 group_state.log_end_offset rejects 9007199254740992
+  ---
+  duration_ms: 20.010079
+  ...
+# Subtest: NW02 group_state.log_end_offset rejects "0"
+ok 413 - NW02 group_state.log_end_offset rejects "0"
+  ---
+  duration_ms: 17.875472
+  ...
+# Subtest: NW02 group_state.log_end_offset rejects {}
+ok 414 - NW02 group_state.log_end_offset rejects {}
+  ---
+  duration_ms: 19.470532
+  ...
+# Subtest: NW02 group_state.log_end_offset rejects []
+ok 415 - NW02 group_state.log_end_offset rejects []
+  ---
+  duration_ms: 17.66825
+  ...
+# Subtest: NW02 group_state.members rejects -4
+ok 416 - NW02 group_state.members rejects -4
+  ---
+  duration_ms: 21.224578
+  ...
+# Subtest: NW02 group_state.members rejects -1
+ok 417 - NW02 group_state.members rejects -1
+  ---
+  duration_ms: 18.239607
+  ...
+# Subtest: NW02 group_state.members rejects -2
+ok 418 - NW02 group_state.members rejects -2
+  ---
+  duration_ms: 18.449786
+  ...
+# Subtest: NW02 group_state.members rejects -1001
+ok 419 - NW02 group_state.members rejects -1001
+  ---
+  duration_ms: 18.37852
+  ...
+# Subtest: NW02 group_state.members rejects true
+ok 420 - NW02 group_state.members rejects true
+  ---
+  duration_ms: 18.220538
+  ...
+# Subtest: NW02 group_state.members rejects false
+ok 421 - NW02 group_state.members rejects false
+  ---
+  duration_ms: 18.545046
+  ...
+# Subtest: NW02 group_state.members rejects 0.5
+ok 422 - NW02 group_state.members rejects 0.5
+  ---
+  duration_ms: 18.197619
+  ...
+# Subtest: NW02 group_state.members rejects 9007199254740992
+ok 423 - NW02 group_state.members rejects 9007199254740992
+  ---
+  duration_ms: 18.63862
+  ...
+# Subtest: NW02 group_state.members rejects "0"
+ok 424 - NW02 group_state.members rejects "0"
+  ---
+  duration_ms: 18.419824
+  ...
+# Subtest: NW02 group_state.members rejects {}
+ok 425 - NW02 group_state.members rejects {}
+  ---
+  duration_ms: 19.976051
+  ...
+# Subtest: NW02 group_state.members rejects []
+ok 426 - NW02 group_state.members rejects []
+  ---
+  duration_ms: 18.975309
+  ...
+# Subtest: NW02 internally consistent negative positive offsets are rejected
+ok 427 - NW02 internally consistent negative positive offsets are rejected
+  ---
+  duration_ms: 19.402955
+  ...
+# Subtest: NW02 valid null empty baselines and zero receipt offsets retained
+ok 428 - NW02 valid null empty baselines and zero receipt offsets retained
+  ---
+  duration_ms: 19.890823
+  ...
+# Subtest: NW02 established nonzero baseline four retained
+ok 429 - NW02 established nonzero baseline four retained
+  ---
+  duration_ms: 21.103291
+  ...
+# Subtest: NW02 safe integer upper boundary retained without next-offset overflow
+ok 430 - NW02 safe integer upper boundary retained without next-offset overflow
+  ---
+  duration_ms: 21.553694
+  ...
+# Subtest: NW02 committed offset above log end is rejected
+ok 431 - NW02 committed offset above log end is rejected
+  ---
+  duration_ms: 21.358607
+  ...
+# Subtest: NW02 nonfinite JSON token rejected: 1e999
+ok 432 - NW02 nonfinite JSON token rejected: 1e999
+  ---
+  duration_ms: 20.982658
+  ...
+# Subtest: NW02 nonfinite JSON token rejected: NaN
+ok 433 - NW02 nonfinite JSON token rejected: NaN
+  ---
+  duration_ms: 22.65178
+  ...
+# Subtest: NW02 nonfinite JSON token rejected: Infinity
+ok 434 - NW02 nonfinite JSON token rejected: Infinity
+  ---
+  duration_ms: 21.167477
+  ...
+# Subtest: NW02 receipt.offset cannot be null
+ok 435 - NW02 receipt.offset cannot be null
+  ---
+  duration_ms: 21.984438
+  ...
+# Subtest: NW02 receipt.partition cannot be null
+ok 436 - NW02 receipt.partition cannot be null
+  ---
+  duration_ms: 17.942301
+  ...
+# Subtest: NW02 commit_intent.offset cannot be null
+ok 437 - NW02 commit_intent.offset cannot be null
+  ---
+  duration_ms: 19.216623
+  ...
+# Subtest: NW02 commit_intent.partition cannot be null
+ok 438 - NW02 commit_intent.partition cannot be null
+  ---
+  duration_ms: 17.841042
+  ...
+# Subtest: NW02 commit.offset cannot be null
+ok 439 - NW02 commit.offset cannot be null
+  ---
+  duration_ms: 22.180667
+  ...
+# Subtest: NW02 commit.partition cannot be null
+ok 440 - NW02 commit.partition cannot be null
+  ---
+  duration_ms: 19.111306
+  ...
+# Subtest: NW02 group_state.log_end_offset cannot be null
+ok 441 - NW02 group_state.log_end_offset cannot be null
+  ---
+  duration_ms: 19.585866
+  ...
+# Subtest: NW02 negative baseline must retain established group position: fabricated null
+ok 442 - NW02 negative baseline must retain established group position: fabricated null
+  ---
+  duration_ms: 20.381281
+  ...
+# Subtest: NW02 negative baseline must retain established group position: fabricated zero
+ok 443 - NW02 negative baseline must retain established group position: fabricated zero
+  ---
+  duration_ms: 22.763923
+  ...
+# Subtest: NW02 negative baseline must retain established group position: stale offset
+ok 444 - NW02 negative baseline must retain established group position: stale offset
+  ---
+  duration_ms: 22.35687
+  ...
+# Subtest: NW02 negative phase cannot grow its observed fixture log without a planned write
+ok 445 - NW02 negative phase cannot grow its observed fixture log without a planned write
+  ---
+  duration_ms: 21.086393
+  ...
+1..445
+# tests 445
+# suites 0
+# pass 445
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 9546.348207

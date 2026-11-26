@@ -1,5 +1,5 @@
 {
-  "revision": "0.1",
+  "revision": "0.2",
   "date": "2026-11-26",
   "plan_commit": "0f9df49fc0dfb3632c9c7f4eb32fb7e6d3aec1e6",
   "execution_enabled": false,
@@ -9,8 +9,24 @@
       "status": "OFFLINE_FIX_REGRESSION_AND_SEALED_REAUDIT_PASS",
       "result": "r3-00/result.json",
       "review_scope": "C0technical; no C3/C6independent concurrence invented"
+    },
+    "R3-10": {
+      "status": "OFFLINE_COVERAGE_REVIEW_AND_REGRESSIONS_PASS",
+      "result": "r3-10-11/result.json",
+      "runtime_failure_path_qualification": "NOT_RUN",
+      "execution_enabled": false,
+      "workloads_enabled": false,
+      "review_scope": "C0 source/coverage review; no independent owner concurrence invented"
+    },
+    "R3-11": {
+      "status": "OFFLINE_COVERAGE_REVIEW_AND_REGRESSIONS_PASS",
+      "result": "r3-10-11/result.json",
+      "runtime_failure_path_qualification": "NOT_RUN",
+      "execution_enabled": false,
+      "workloads_enabled": false,
+      "review_scope": "C0 source/coverage review; no independent owner concurrence invented"
     }
   },
-  "remaining_cases": "Initial planning contract; not executed",
+  "remaining_cases": "R3-00/10/11 offline progress is recorded above; later service cases and selected target failure-path qualification remain unexecuted",
   "note": "Progress overlay supersedes pre-correction OPEN labels only for this exact offline source/result; does not arm any planned case"
 }

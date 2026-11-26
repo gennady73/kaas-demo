@@ -1,0 +1,44 @@
+{
+  "cases": [
+    "R3-10",
+    "R3-11"
+  ],
+  "date": "2026-11-26",
+  "source_base_commit": "94674205d6619e8c7060f5463338e00582f7ed4a",
+  "status": "OFFLINE_COVERAGE_REVIEW_AND_REGRESSIONS_PASS",
+  "publication": "LOCAL_UNCOMMITTED",
+  "source_scope": "Regression tests and offline check integration only; no production implementation/configuration changes",
+  "checks": {
+    "binding": 8,
+    "review": 37,
+    "auditor_schema": 445,
+    "containment_js": 11,
+    "sink": 23,
+    "Go_race_top_level": 26,
+    "native_helper_total": 550,
+    "packaging_including_local_guard": 18,
+    "combined_total": 568,
+    "new_regressions": 22
+  },
+  "binary_sha256": "0174513d51947fb65aa17ae70f85fea19f7ed5a605aae0ca6d016d8e1cd94cc0",
+  "runtime_manifest_sha256": "9af2ea57aaf851bb4855696ea0f9072ab7f4643a1b64441c9ea47f6bdf6627ff",
+  "runtime_sources_changed": false,
+  "production_guard_changed": false,
+  "actual_runtime_image_pins_changed": false,
+  "cluster_accessed": false,
+  "Kafka_clients_constructed": false,
+  "k6_run_invoked": false,
+  "workloads_enabled": false,
+  "deployment_enabled": false,
+  "jobs_changed": false,
+  "Jobs_status_basis": "All four Jobs untouched; last observed suspended, no fresh live observation",
+  "historical_R2_export_sha256": "18ba064608624da60e80101aaea81af9f0e8bfe9f4edbed126cc5903dd66c96e",
+  "runtime_failure_path_qualification": "NOT_RUN",
+  "open_boundaries": [
+    "Actual target image/SDK stalled send, poll, commit, sink and close behavior; facade wait bounds do not prove cancellation",
+    "Actual Kubernetes Job deadline/controller/external stop and process-tree termination under failure; local guard test uses shortened disposable copy",
+    "Observed TLS ACK delivery and infrastructure/PVC/power-loss persistence are not established by local SQLite/process tests",
+    "Late commit reconciliation still requires final externally observed group offsets in a later authorized failure fixture; no current offsets inferred"
+  ],
+  "independent_specialist_concurrence": "NOT_CLAIMED"
+}

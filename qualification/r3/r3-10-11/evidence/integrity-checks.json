@@ -1,0 +1,12 @@
+{
+  "status": "OFFLINE_SNAPSHOT_INTEGRITY_PASS",
+  "native_source_files_verified": 46,
+  "native_helper_regressions": 550,
+  "packaging_regressions": 18,
+  "sealed_R2_export_unchanged": true,
+  "runtime_manifest_production_guard_active_manifests_and_image_pins_unchanged": true,
+  "saved_job_suspension_reference_count": 4,
+  "cluster_accessed": false,
+  "live_state_refreshed": false,
+  "note": "Initial plan validator intentionally retains historical NW OPEN labels; progress overlay and R3-00 result provide current offline disposition"
+}

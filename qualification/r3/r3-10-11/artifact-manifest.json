@@ -1,0 +1,29 @@
+{
+  "algorithm": "sha256",
+  "scope": "Portable R3-10/11 evidence and documentation, excluding this manifest",
+  "files": {
+    "README.md": "3a870769c804ab0a91ffd534bc0150f3fb23dc4c5988565a2c3f299070d14557",
+    "evidence/auditor-schema.txt": "2c60e9dccb19cb55287567386d7900a93b4c90dbc2d1faa753a5615c12e5957c",
+    "evidence/binding.txt": "0a41405270074b6cfdfcb5b4aba8fb1dcb1701557ec93f184a183e017d107b99",
+    "evidence/build.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "evidence/buildinfo.txt": "3ec6f549ab637a829c1785deb8c1fce826726cf33b78dd52f6e503729b5ef294",
+    "evidence/containment.txt": "787c015ca0a9e294754384599340982f1e2640b010282ccc596634280acfd56f",
+    "evidence/empty-k6.json": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+    "evidence/go-race.txt": "27ea15ba19735e00f35c05485548339575b9714188a07aced05759b4e7bbdbf4",
+    "evidence/go-version.txt": "7ae85ca579b70c29982baf7def7120e7be497122076f66e3b30a0db90ca7f93a",
+    "evidence/inspect.txt": "b995204bab41bdea5fcdd74c32c2d8d86bd34e7dd6b7c8a54fbd062df68404e2",
+    "evidence/integrity-checks.json": "149111bfd2380bf0d8be96e6bfaf4fe3982e8342eb0b3230853dd84ba915ba51",
+    "evidence/package-tests.txt": "fb0cd75d3005ba665b934b075fa6ba45bb5a1dc13328ce0833b7590c68507230",
+    "evidence/package-validation.txt": "adc198ecdeaca813dec985b872ed9fb3291844aadd7b7765d0fd0f43901abbb2",
+    "evidence/packaging-source-hashes.json": "788962d20ab372316fada73de85587962a3f37ff5034f6c9062e375c75c67052",
+    "evidence/plan-validation.txt": "1d63a9651d865794e74cc8d55d8224409076639c80a1609125960f6e4ce47dcd",
+    "evidence/projection.txt": "cd8636c51c18d9344c0e8573b9747f16aaea42ae16089f01e025d781be3cf902",
+    "evidence/replay.txt": "ca6b1d7b5a338431861c66ecb9895da3d0966234ff0a8ffde4e469d56abfdc11",
+    "evidence/review.txt": "c8d3f257d75990e417f6247286e0796af848efbb18d2a2119e136e7639060c67",
+    "evidence/sibling-source-hashes.json": "10006eb16b9cba3f17dfda8d02b71e6c82a9b8a262673b5d8b89c4e156d93be7",
+    "evidence/sink.txt": "c4167292a3e323d008a4aa8298ebcb6c9166a80171d6124c5903bb889f343221",
+    "evidence/timeout-version.txt": "6ab9fd842ed5947d04428b1a14c60038865df31f53f292c3ccc5d42e2ebba277",
+    "evidence/validation.json": "a4f4327c82a21bc66f49a0093ed902d334e5faf86b14208d302c1b5ab550d412",
+    "result.json": "53a6b31efdcd750d8bc51f3f61a9d938da2e5bb6947f523705ce99d1417b4cef"
+  }
+}

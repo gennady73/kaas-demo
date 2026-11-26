@@ -1,0 +1,6 @@
+{
+  "packaging/r2-native/test_guard_containment.py": "047fc9f434494b320a95d01ec6cb2cfe86ce7e3e32f6487799decebfc87ea5bc",
+  "packaging/r2-native/build/client-guard.sh": "670ca07eea099b3501c48995f7a9c9ddd495534bae29501a6a4cc04566199010",
+  "packaging/r2-native/deploy/resources.yaml": "b96201731306d8e6497c9f7b06f202a4b66bb8f5295c6822a6d9cc34ebeb683c",
+  "packaging/r2-native/inputs.json": "cfaa8663d51a533e28b7f0f1fd2ae15680dedc91f76978d9a5d592841d5f455a"
+}

@@ -1,0 +1,7 @@
+{
+  "repository_head": "888276c20ad5eecdaaa2f40a98592118acc4a184",
+  "files": {
+    "../kafka-load-test/preflight/tenant/offline-fakes.mjs": "d626310a4915c062d7ea268ba43d2a6638d0458735daf3a474d1d215a4fff0ee",
+    "../kafka-load-test/preflight/tenant/policy.mjs": "17a850573071d4bcb58ca5b025bacb3325906a54908cee1eed89b6b8813488f8"
+  }
+}

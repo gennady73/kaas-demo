@@ -1,0 +1,65 @@
+TAP version 13
+# Subtest: late producer ACK is recorded as late, never retried or committed
+ok 1 - late producer ACK is recorded as late, never retried or committed
+  ---
+  duration_ms: 17.679833
+  ...
+# Subtest: persisted attempt_intent exhausting phase prevents the next native mutation
+ok 2 - persisted attempt_intent exhausting phase prevents the next native mutation
+  ---
+  duration_ms: 7.740701
+  ...
+# Subtest: persisted commit_intent exhausting phase prevents the next native mutation
+ok 3 - persisted commit_intent exhausting phase prevents the next native mutation
+  ---
+  duration_ms: 8.072399
+  ...
+# Subtest: stalled poll returning no records exhausts budget without another send or commit
+ok 4 - stalled poll returning no records exhausts budget without another send or commit
+  ---
+  duration_ms: 8.212524
+  ...
+# Subtest: commit timeout preserves uncertainty even when the fake broker offset advanced
+ok 5 - commit timeout preserves uncertainty even when the fake broker offset advanced
+  ---
+  duration_ms: 6.498795
+  ...
+# Subtest: close returning after reserve is incomplete and never starts the next case
+ok 6 - close returning after reserve is incomplete and never starts the next case
+  ---
+  duration_ms: 7.873945
+  ...
+# Subtest: startup delay is charged to the same total clock, before client construction
+ok 7 - startup delay is charged to the same total clock, before client construction
+  ---
+  duration_ms: 3.202299
+  ...
+# Subtest: sink response failure after 1201ms cannot extend retry admission
+ok 8 - sink response failure after 1201ms cannot extend retry admission
+  ---
+  duration_ms: 0.980665
+  ...
+# Subtest: sink response failure after 2001ms cannot extend retry admission
+ok 9 - sink response failure after 2001ms cannot extend retry admission
+  ---
+  duration_ms: 0.333644
+  ...
+# Subtest: durable ACK arriving beyond 2s is rejected even with matching identity
+ok 10 - durable ACK arriving beyond 2s is rejected even with matching identity
+  ---
+  duration_ms: 0.357465
+  ...
+# Subtest: failed receipt persistence prevents every Kafka commit and remains incomplete
+ok 11 - failed receipt persistence prevents every Kafka commit and remains incomplete
+  ---
+  duration_ms: 5.419671
+  ...
+1..11
+# tests 11
+# suites 0
+# pass 11
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 91.149032
