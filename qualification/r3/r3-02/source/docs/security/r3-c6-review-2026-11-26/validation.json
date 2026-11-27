@@ -1,0 +1,80 @@
+{
+  "date": "2026-11-27",
+  "completed_at_utc": "2026-11-27T07:48:48.764825+00:00",
+  "status": "READY_FOR_C0_OFFLINE_REVIEW",
+  "C6_NW_01": "CLOSED_OFFLINE_CONCUR_PUBLISHED_9467420",
+  "C6_NW_02": "CLOSED_OFFLINE_CONCUR_PUBLISHED_9467420",
+  "R3_01": "ACCEPTED_DOCUMENTED_OWNER_ONLY_SANDBOX_CONTRACT_WITH_ENFORCEMENT_LIMITS",
+  "R3_02": "TEN_UNCOVERED_BOUNDARIES_PREPARED_DISABLED_NOT_RUN",
+  "blocker_to_offline_completion": null,
+  "uncovered_boundary_count": 10,
+  "source_identity": {
+    "auditor_commit": "94674205d6619e8c7060f5463338e00582f7ed4a",
+    "r3_01_commit": "8490ea628580393fbed78dbbdecb65dfc2afacdb",
+    "observed_local_HEAD": "00bf3c3de36ba904cf5cd317507729ac85266d9a",
+    "blob_comparisons": 29,
+    "runtime_manifest_entries": 11,
+    "matches": true
+  },
+  "methods_executed": [
+    "Read local requirements/context/register/owner records and relevant implementation source",
+    "Compare 29 selected working source/package files with immutable local Git blobs; verify 11 runtime source entries",
+    "Hash preservation snapshot and original successful R2 sealed export",
+    "Check new JSON action flags, finite row/control/stop/authority completeness and local deliverable link consistency"
+  ],
+  "test_suites_run": 0,
+  "new_mutation_probes": 0,
+  "replays_or_reaudits": 0,
+  "C3_evidence_reused": {
+    "checks": 508,
+    "independent_probes": 88,
+    "saved_R2_events": 182,
+    "rerun": false
+  },
+  "R3_01_saved_evidence_reused": {
+    "checks_and_probes": 103,
+    "kustomize_renders": 2,
+    "rerun": false
+  },
+  "preservation": {
+    "files_snapshotted": 1575,
+    "unchanged": 1573,
+    "concurrent_C0_owned_baseline_changes": [
+      "docs/project-context.md",
+      "docs/validation-register.md"
+    ],
+    "C6_baseline_edits": false,
+    "source_continuity_runtime_packaging_evidence_changes": [],
+    "R2_export_sha256": "18ba064608624da60e80101aaea81af9f0e8bfe9f4edbed126cc5903dd66c96e"
+  },
+  "authority_sha256": "8afd6f26d0f0c28981210ef1c3625e307fc051e72e6883d00a075fa8aadb2e27",
+  "deployment_enabled": false,
+  "workloads_enabled": false,
+  "execution_enabled": false,
+  "jobs_changed": false,
+  "four_jobs_state": "Untouched; must remain suspended/active0; Nov27 saved closeout reused, no fresh live query",
+  "external_notifications_enabled": false,
+  "dashboard_rule_evaluation_policy": "Permitted by user; no activation or rule change in this assignment",
+  "network_or_API_access": false,
+  "credential_or_Secret_content_access": false,
+  "builds": false,
+  "publication_or_git_mutation": false,
+  "outbound_messages": false,
+  "artifact_sha256": {
+    "docs/security/r3-c6-review-2026-11-26/README.md": "1f4c390b37899e88baa1e890dbddd3b02d4aeea7eb3310c2501673e4accc8f71",
+    "docs/security/r3-c6-review-2026-11-26/source-review.json": "548e4b85c5177026b30fc37105231c9924023eb08976e34b498f58b4a49a86fc",
+    "docs/security/r3-c6-review-2026-11-26/security-matrix.disabled.json": "56a517929e3ea282cc0d99212ae46d391b806432fc90c4980c2ae6d640b13b7a",
+    "docs/security/r3-c6-review-2026-11-26/preservation-before.json": "9da842a309bf6f3197f6116a4b926f41b480970101d8dfc8b9751c358f4cbf12",
+    "docs/security/r3-02-gap-review-2026-11-27/README.md": "5d01620eb2f954aef48ac82807a2c2d4a5166efa01e345512582426a33d9f047",
+    "docs/handoffs/C6-identity-connectivity-isolation.md": "b7914114a25b8468f414935fa0d733f4c304c05d4f4ba7ecc703b741050fb56f"
+  },
+  "limitations": [
+    "Source inspection/hash checks and reuse of C3 tests; C6 did not execute tests or independently rerun probes.",
+    "Published status inherited from saved C0 receipts; no remote fetch.",
+    "Offline assurance does not create runtime provenance or general proof against forged evidence.",
+    "Historical image/runtime source pins unchanged; later probe capability/implementation and exact scoped live authority remain separate.",
+    "Kubernetes subject-policy review alone cannot attest hostile workload/Secret isolation.",
+    "Existing collection-only monitoring PASS preserved; notifications and broader security/service release unqualified."
+  ],
+  "next_owner": "C0 consolidate saved technical concurrence and finite disabled gap table; no automatic live work"
+}

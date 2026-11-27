@@ -1,0 +1,20 @@
+{
+  "status": "ACCEPTED_POLICY_NO_LIVE_ACTIVATION_IN_THIS_OFFLINE_TASK",
+  "user_allowed": "KaaS alert rules may evaluate and be visible on dashboards",
+  "external_notifications": "MUST_REMAIN_DISABLED_EMAIL_AND_ALL_OTHER_EXTERNAL_CHANNELS",
+  "SMTP_prerequisite_for_dashboard_evaluation": false,
+  "notification_delivery_qualification": "NOT_CLAIMED",
+  "current_scope": "C6 offline gap review; no tests or live changes",
+  "future_activation_boundary": [
+    "Freeze exact rule/permission/GitOps diff and existing owner source pins",
+    "Verify effective KaaS routing delivers to no external integrations, preserving unrelated platform routing",
+    "Evaluate rules/dashboard health without test messages; distinguish real existing state from induced tests"
+  ],
+  "scope_exclusions": [
+    "Changing unrelated platform alert routes",
+    "Adding SMTP/webhook/other delivery integrations",
+    "Sending synthetic or external notifications",
+    "Running producer/consumer tests or resuming any of four client Jobs"
+  ],
+  "current_rules_activated": false
+}

@@ -1,0 +1,15 @@
+{
+  "status": "PUBLICATION_SCOPE_COPY_INTEGRITY_LINKS_REDACTION_AND_DISABLED_FLAGS_PASS",
+  "source_base_commit": "00bf3c3de36ba904cf5cd317507729ac85266d9a",
+  "owner_and_C0_source_files_copied_exactly": 13,
+  "uncovered_disabled_subcases": 10,
+  "new_tests_or_source_execution": false,
+  "cluster_access": false,
+  "credentials_read": false,
+  "Jobs_changed": false,
+  "external_notifications_enabled": false,
+  "rules_activated": false,
+  "source_scans": "Credential patterns and structured JSON sensitive leaf scan PASS",
+  "links": "Portable entry and guide links resolve; archived original sources retain provenance links",
+  "original_owner_files_modified": false
+}

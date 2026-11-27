@@ -1,0 +1,32 @@
+{
+  "status": "C0_ACCEPTS_COMPLETED_C6_OFFLINE_GAP_REVIEW",
+  "C6_hold": "LIFTED_FOR_COMPLETED_OFFLINE_ASSIGNMENT",
+  "C6_turn": "01a21bf6-7269-7711-b446-c85fbf4c7acd",
+  "C6_completed_UTC": "2026-11-27T07:48:53Z",
+  "owner_output": "docs/security/r3-02-gap-review-2026-11-27/README.md",
+  "matrix": "docs/security/r3-c6-review-2026-11-26/security-matrix.disabled.json",
+  "uncovered_subcase_count": 10,
+  "new_top_level_cases": 0,
+  "eight_R2_denials_reused": true,
+  "C6_offline_auditor_concurrence": "CLOSED_OFFLINE_FOR_PUBLISHED9467420",
+  "C6_R3_01_concurrence": "ACCEPTED_DOCUMENTED_OWNER_ONLY_SCOPE_ENFORCEMENT_LIMITS_RETAINED",
+  "R3_02_runtime_security": "NOT_RUN_NOT_QUALIFIED",
+  "no_new_scoped_source_blocker": true,
+  "dashboard_only_rule_evaluation_permitted": true,
+  "SMTP_required_for_dashboard_only_rules": false,
+  "external_notifications_enabled": false,
+  "rules_activated_in_this_assignment": false,
+  "tests_builds_probes_reaudits_run": 0,
+  "cluster_or_credential_access": false,
+  "Jobs_changed": false,
+  "kaas_demo_changed": false,
+  "new_review_dispatches_or_live_attempts_authorized": 0,
+  "limitations": [
+    "Allowed Kafka namespaces are wholly permitted by saved ingress policy; same-namespace label denial must not be invented",
+    "Sink label selection depends on label/workload authority",
+    "Trusted four-credential harness does not establish hostile tenant/Secret isolation",
+    "These are offline expectations; no current runtime denial is proven by reviewing policies"
+  ],
+  "validation": "Owner artifact hashes,10rows/positive-controls/stops/actionflags,authority hash and clean source HEAD verified; no tests",
+  "C0_independent_runtime_testing": "NOT_CLAIMED"
+}

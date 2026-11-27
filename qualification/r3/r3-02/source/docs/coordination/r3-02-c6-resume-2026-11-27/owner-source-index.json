@@ -1,0 +1,13 @@
+{
+  "owner_files": {
+    "docs/security/r3-02-gap-review-2026-11-27/README.md": "5d01620eb2f954aef48ac82807a2c2d4a5166efa01e345512582426a33d9f047",
+    "docs/security/r3-02-gap-review-2026-11-27/result.json": "8521a4342beaf2a5908a673bed2e913f928b5ac8d943b573a4201640bfa1b8c6",
+    "docs/security/r3-c6-review-2026-11-26/README.md": "1f4c390b37899e88baa1e890dbddd3b02d4aeea7eb3310c2501673e4accc8f71",
+    "docs/security/r3-c6-review-2026-11-26/preservation-before.json": "9da842a309bf6f3197f6116a4b926f41b480970101d8dfc8b9751c358f4cbf12",
+    "docs/security/r3-c6-review-2026-11-26/security-matrix.disabled.json": "56a517929e3ea282cc0d99212ae46d391b806432fc90c4980c2ae6d640b13b7a",
+    "docs/security/r3-c6-review-2026-11-26/source-review.json": "548e4b85c5177026b30fc37105231c9924023eb08976e34b498f58b4a49a86fc",
+    "docs/security/r3-c6-review-2026-11-26/validation.json": "8f3802c26b60a72c1be29283094754d4b036c07e390ff0f3ad46d2e22ffcd634"
+  },
+  "C6_handoff_sha256": "b7914114a25b8468f414935fa0d733f4c304c05d4f4ba7ecc703b741050fb56f",
+  "C0_read_only_confirmation": "Owner artifact hashes,10rows/positive-controls/stops/actionflags,authority hash and clean source HEAD verified; no tests"
+}

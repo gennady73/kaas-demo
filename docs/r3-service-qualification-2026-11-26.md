@@ -1,3 +1,5 @@
+Current security review: [C6 R3-02 gap-only review, disabled matrix and offline concurrence](r3-02-c6-security-gap-review-2026-11-27.md). C6 hold is lifted for the completed offline assignment; ten subcases remain unexecuted. Dashboard rule evaluation is permitted with external notifications disabled; no rules or workloads are activated by this publication.
+
 Current R3-03 execution: [collection-only activation passed on27November](r3-03-collection-only-result-2026-11-27.md). Monitoring is active; email/KaaS live rules remain deferred and all four client Jobs suspended. Earlier disabled/preparation descriptions below remain historical.
 
 Current R3-03 collection-only package: [accepted choices, installed-build verification, disabled candidates and remaining steps](r3-03-collection-only-activation-2026-11-26.md). Email is explicitly deferred; registration/deployment and live rules remain disabled. This update supersedes earlier pending-contact/SMTP descriptions for the current scope.

@@ -1,0 +1,29 @@
+{
+  "date": "2026-11-27",
+  "status": "READY_FOR_C0_OFFLINE_REVIEW",
+  "uncovered_boundary_count": 10,
+  "gap_ids": [
+    "R3-02-AUTH",
+    "R3-02-KCA",
+    "R3-02-KHOST",
+    "R3-02-HCA",
+    "R3-02-HHOST",
+    "R3-02-META",
+    "R3-02-ADMIN",
+    "R3-02-NET-K",
+    "R3-02-NET-H",
+    "R3-02-SECRET"
+  ],
+  "source_head": "00bf3c3de36ba904cf5cd317507729ac85266d9a",
+  "detail_matrix": "../r3-c6-review-2026-11-26/security-matrix.disabled.json",
+  "technical_disposition": "../r3-c6-review-2026-11-26/validation.json",
+  "execution_enabled": false,
+  "deployment_enabled": false,
+  "workloads_enabled": false,
+  "jobs_mutation_enabled": false,
+  "external_notifications_enabled": false,
+  "tests_run": 0,
+  "network_or_API_access": false,
+  "real_blocker_to_offline_completion": null,
+  "next_sync": "C0 review only; live security qualification remains OPEN"
+}

@@ -1,0 +1,17 @@
+{
+  "authority": "Explicit human user instruction in C0 on2026-11-27",
+  "instruction": "Lift the C6 hold and proceed with the offline R3-02 security-gap review. Reuse existing evidence; list only uncovered cases, positive controls and stop conditions. Keep all four Jobs suspended, email and live rules disabled. No tests.",
+  "clarification": "Alert rules can evaluate and appear on dashboards without sending email or other external notifications in order to proceed.",
+  "C6_hold": "LIFTED_FOR_THIS_OFFLINE_REVIEW_BY_USER",
+  "scope": "Existing evidence review only; no tests/builds/re-audits/cluster access/deployment/Jobs/credential reads/new chats",
+  "notification_policy": {
+    "email_or_other_external_notifications_enabled": false,
+    "dashboard_only_rule_evaluation_permitted": true,
+    "rule_activation_in_this_offline_assignment": false,
+    "current_rules_changed": false
+  },
+  "source_commit": "00bf3c3de36ba904cf5cd317507729ac85266d9a",
+  "requested_output": "C6-owned finite gap-only table of uncovered cases, intended layers/positive controls/evidence/stop conditions; reuse completed8R2denials and prior12case map; no new broad suite",
+  "C0_owns_shared_baselines": true,
+  "at_UTC": "2026-11-27T07:46:35.269087+00:00"
+}

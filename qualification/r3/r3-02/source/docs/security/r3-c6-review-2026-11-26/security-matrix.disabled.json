@@ -1,0 +1,261 @@
+{
+  "schema": "kaas-c6-r3-02-disabled-security-matrix/v1",
+  "date": "2026-11-27",
+  "status": "READY_FOR_C0_OFFLINE_REVIEW_LIVE_DISABLED",
+  "source_disposition": "Published9467420 auditor accepted offline by C6; R3-01 at8490ea6 accepted as documented sandbox contract only",
+  "execution_enabled": false,
+  "deployment_enabled": false,
+  "workloads_enabled": false,
+  "registration_enabled": false,
+  "fault_injection_enabled": false,
+  "notification_enabled": false,
+  "jobs_mutation_enabled": false,
+  "automatic_sync_enabled": false,
+  "new_live_attempts_authorized": 0,
+  "run_owner": null,
+  "execution_window": null,
+  "probe_image": null,
+  "runtime_budget": null,
+  "byte_budget": {
+    "proposed_application_value_bytes": 0,
+    "note": "Connection/metadata/policy-only scope; not an approved network/request/CPU budget. No produce/consume/commit."
+  },
+  "protected_client_Jobs": [
+    "kaas-r2-native-client",
+    "kaas-r2-native-client-02e2e2f-r2",
+    "kaas-r2-native-client-351528d-r2",
+    "kaas-r2-native-client-05a3f2d-r2"
+  ],
+  "protected_jobs_required_state": {
+    "suspend": true,
+    "active": 0,
+    "mutation_allowed": false
+  },
+  "reused_R2_evidence": {
+    "status": "PASS_BOUNDED_16_POSITIVE_8_NEGATIVE",
+    "export_sha256": "18ba064608624da60e80101aaea81af9f0e8bfe9f4edbed126cc5903dd66c96e",
+    "cases": [
+      "A/B cross-topic write",
+      "A/B cross-topic read",
+      "A/B cross-group read",
+      "A/B consumer-role write"
+    ],
+    "repeat_required": false
+  },
+  "case_count": 10,
+  "cases": [
+    {
+      "id": "R3-02-AUTH",
+      "boundary": "Kafka authentication",
+      "status": "PROPOSED_DISABLED_NOT_RUN",
+      "execution_enabled": false,
+      "operation": "One valid tenant principal with deliberately invalid disposable password; valid TLS/hostname and allowed source unchanged. No produce, consume, group join or commit.",
+      "expected_failure_layer": "Typed SCRAM authentication failure after verified TLS, before authenticated Kafka operation. Local missing/invalid input is not broker authentication evidence.",
+      "positive_control": "Same principal, endpoint, SDK and peer using approved valid credential completes read-only own-topic metadata immediately around the negative.",
+      "required_evidence": "Reviewed code/config hashes; safe error enum/stage; TLS success; bounded control/negative timestamps; no secret, password hash or raw SDK logs.",
+      "capability_needed": "Additive narrow read-only authentication probe; frozen R2 engine has no approved credential-override scenario. Do not corrupt a mounted active Secret.",
+      "required_later_live_authorization": "Exact target, principal reference, disposable invalid input, image/config, allowed source, bounds, executor/window and credential-delivery procedure.",
+      "claim_limit": "Does not qualify rotation, retired credentials or existing-session revocation; do not brute force or retry automatically.",
+      "stop_conditions": [
+        "Unexpected forbidden success/access or any mutation",
+        "Positive control absent or wrong-layer failure",
+        "Unclassified/timeout-only outcome without intended-layer corroboration",
+        "Case deadline, evidence loss, source/configuration drift or unintended credential disclosure"
+      ]
+    },
+    {
+      "id": "R3-02-KCA",
+      "boundary": "Kafka CA trust",
+      "status": "PROPOSED_DISABLED_NOT_RUN",
+      "execution_enabled": false,
+      "operation": "Use a valid, current unrelated CA for one connection to the unchanged broker endpoint. Keep hostname and peer correct; do not disable verification.",
+      "expected_failure_layer": "TLS certificate-chain trust rejection before SCRAM; malformed/expired PEM rejected locally does not exercise this layer.",
+      "positive_control": "Correct Kafka CA on same endpoint/SDK/peer validates TLS and own-topic metadata.",
+      "required_evidence": "Safe certificate verification reason; correct-CA control; native verification and hostname settings; no fallback.",
+      "capability_needed": "Isolated trust fixture and reviewed TLS-capable probe; native fixed CA path must not be repurposed in current Jobs.",
+      "required_later_live_authorization": "Explicit disposable trust fixture and later bounded connection-only operation; no mutation of existing CA ConfigMaps/mounts.",
+      "claim_limit": "Broker trust only; no certificate lifecycle/expiry or infrastructure claim.",
+      "stop_conditions": [
+        "Unexpected forbidden success/access or any mutation",
+        "Positive control absent or wrong-layer failure",
+        "Unclassified/timeout-only outcome without intended-layer corroboration",
+        "Case deadline, evidence loss, source/configuration drift or unintended credential disclosure"
+      ]
+    },
+    {
+      "id": "R3-02-KHOST",
+      "boundary": "Kafka hostname",
+      "status": "PROPOSED_DISABLED_NOT_RUN",
+      "execution_enabled": false,
+      "operation": "Connect to the same permitted broker with correct issuing CA and a deliberately nonmatching verification name, without changing broker DNS/listener or disabling verification.",
+      "expected_failure_layer": "Explicit certificate-name mismatch at TLS verification. DNS lookup failure, connection refusal or server-side SNI rejection is inconclusive.",
+      "positive_control": "Correct verification name on the same reachable endpoint/CA/SDK passes.",
+      "required_evidence": "Allowed endpoint reachability, nonmatching SAN/name result, positive control and enabled verification setting.",
+      "capability_needed": "Probe supporting an independently controlled verification name/address with reviewed SDK mapping; fixed R2 bootstrap/API cannot silently supply this case.",
+      "required_later_live_authorization": "Exact alternate verification-name/address mapping, target, implementation and connection-only bounds; no cluster DNS/certificate change.",
+      "claim_limit": "No external-listener or all-advertised-broker qualification; bootstrap success alone would not prove those.",
+      "stop_conditions": [
+        "Unexpected forbidden success/access or any mutation",
+        "Positive control absent or wrong-layer failure",
+        "Unclassified/timeout-only outcome without intended-layer corroboration",
+        "Case deadline, evidence loss, source/configuration drift or unintended credential disclosure"
+      ]
+    },
+    {
+      "id": "R3-02-HCA",
+      "boundary": "Evidence HTTP CA trust",
+      "status": "PROPOSED_DISABLED_NOT_RUN",
+      "execution_enabled": false,
+      "operation": "TLS-only connection to existing sink endpoint using a valid unrelated CA; do not append/stop/seal/export or send a bearer.",
+      "expected_failure_layer": "HTTPS certificate-chain rejection before HTTP authorization.",
+      "positive_control": "Same sink endpoint with separate correct service CA completes TLS; harmless read-only endpoint only if later explicitly approved.",
+      "required_evidence": "Safe HTTP TLS failure stage plus control; explicit separation from Kafka ca.crt.",
+      "capability_needed": "Separate HTTPS TLS probe with per-process trust isolation; not a global SSL_CERT_FILE edit to current workloads.",
+      "required_later_live_authorization": "Named sink endpoint/trust fixture, bounded TLS-only operation and evidence path; no writer/owner credential use.",
+      "claim_limit": "Kafka CA negative cannot qualify this different HTTP TLS stack. Does not reopen already accepted sink persistence/ACK tests.",
+      "stop_conditions": [
+        "Unexpected forbidden success/access or any mutation",
+        "Positive control absent or wrong-layer failure",
+        "Unclassified/timeout-only outcome without intended-layer corroboration",
+        "Case deadline, evidence loss, source/configuration drift or unintended credential disclosure"
+      ]
+    },
+    {
+      "id": "R3-02-HHOST",
+      "boundary": "Evidence HTTP hostname",
+      "status": "PROPOSED_DISABLED_NOT_RUN",
+      "execution_enabled": false,
+      "operation": "Same sink endpoint and correct service CA, deliberately nonmatching verification name. No HTTP request or bearer is needed.",
+      "expected_failure_layer": "Explicit HTTPS certificate-name mismatch; DNS/transport/SNI error alone is not a pass.",
+      "positive_control": "Correct hostname to same endpoint/CA/HTTP TLS stack succeeds.",
+      "required_evidence": "Safe name-verification result, verified control and endpoint/config identity.",
+      "capability_needed": "Reviewed HTTP TLS probe with controlled verification name/address, separate from Kafka SDK.",
+      "required_later_live_authorization": "Exact name/address, endpoint, image and connection-only budget; preserve sink availability/data.",
+      "claim_limit": "Does not certify writer-versus-owner API authorization or CA rotation.",
+      "stop_conditions": [
+        "Unexpected forbidden success/access or any mutation",
+        "Positive control absent or wrong-layer failure",
+        "Unclassified/timeout-only outcome without intended-layer corroboration",
+        "Case deadline, evidence loss, source/configuration drift or unintended credential disclosure"
+      ]
+    },
+    {
+      "id": "R3-02-META",
+      "boundary": "Kafka metadata authorization",
+      "status": "PROPOSED_DISABLED_NOT_RUN",
+      "execution_enabled": false,
+      "operation": "Using a tenant identity, explicitly request metadata for one known foreign fixture topic without auto-creation; no wildcard inventory or payload fetch.",
+      "expected_failure_layer": "Expected explicit topic-authorization denial for foreign Describe; do not equate filtered listing, timeout or topic-not-found with typed denial.",
+      "positive_control": "Same principal/SDK/peer describes its known own topic. Owner-provided sanitized existence reference fixes the foreign target.",
+      "required_evidence": "Request type, literal public fixture name, typed broker error/stage and own-topic positive control; no message contents.",
+      "capability_needed": "Exact-topic read-only metadata operation that exposes per-topic authorization result; current R2 generic metadata baselines are not this negative case.",
+      "required_later_live_authorization": "Named tenant/own+foreign topic, exact Metadata request/no-auto-create settings, response projection and bounded control pair.",
+      "claim_limit": "No blanket metadata confidentiality promise. All-topics enumeration can have different visibility semantics; do not turn that into an unapproved service policy.",
+      "stop_conditions": [
+        "Unexpected forbidden success/access or any mutation",
+        "Positive control absent or wrong-layer failure",
+        "Unclassified/timeout-only outcome without intended-layer corroboration",
+        "Case deadline, evidence loss, source/configuration drift or unintended credential disclosure"
+      ]
+    },
+    {
+      "id": "R3-02-ADMIN",
+      "boundary": "Kafka administrative authorization",
+      "status": "PROPOSED_DISABLED_NOT_RUN",
+      "execution_enabled": false,
+      "operation": "Tenant attempts read-only DescribeConfigs on one approved fixture topic; never create/delete/alter topics, ACLs, quotas or configurations as a negative probe.",
+      "expected_failure_layer": "Expected topic/cluster authorization denial appropriate to exact DescribeConfigs request; wrong-level denial or unsupported request is inconclusive.",
+      "positive_control": "Same request/target succeeds under an explicitly approved owner-side observer, while tenant own-topic metadata authenticates successfully. Owner result projected to success only, no configuration values.",
+      "required_evidence": "Approved intended ACL mapping, safe typed result/stage, principal reference and positive controls; no privileged config values or credentials retained.",
+      "capability_needed": "Reviewed read-only Admin probe and narrowly projected observer; R2 exposes no general Admin negative API.",
+      "required_later_live_authorization": "Exact Admin API/resource/identity references, expected denial enum, privileged-observer authority and no-content projection.",
+      "claim_limit": "Read-only denial does not qualify every mutating Admin API. Broader create/delete/alter/ACL denial remains unqualified and would require a distinct disposable-canary scope, not active fixture mutations.",
+      "stop_conditions": [
+        "Unexpected forbidden success/access or any mutation",
+        "Positive control absent or wrong-layer failure",
+        "Unclassified/timeout-only outcome without intended-layer corroboration",
+        "Case deadline, evidence loss, source/configuration drift or unintended credential disclosure"
+      ]
+    },
+    {
+      "id": "R3-02-NET-K",
+      "boundary": "Kafka forbidden namespace peer",
+      "status": "PROPOSED_DISABLED_NOT_RUN",
+      "execution_enabled": false,
+      "operation": "One credential-free TCP connection attempt from a later approved ordinary Pod in a namespace outside the two allowed peers to existing broker9093; no hostNetwork/admin/node bypass.",
+      "expected_failure_layer": "Broker ingress network-policy boundary denies transport; Kafka authentication failure proves the peer reached Kafka and cannot pass this case.",
+      "positive_control": "Same destination/port reachable from approved ordinary peer; negative source has verified route/DNS and no independent source-egress block to destination.",
+      "required_evidence": "Applicable additive ingress/egress policies, source namespace/Pod labels and target labels; permitted control; bounded refusal/drop with policy/dataplane corroboration. Timeout alone is insufficient.",
+      "capability_needed": "Distinct reviewed connection-only probe placement. Existing four Jobs cannot be reused/unsuspended; no fixture namespace selected or created now.",
+      "required_later_live_authorization": "Exact source namespace/Pod creation if needed, label ownership/CNI path, endpoint, timing and evidence plan; no policy edit assumed.",
+      "claim_limit": "Saved broker ingress admits ALL Pods in kaas-demo/kaas-kafka on9093. An unlabelled same-namespace broker probe is not forbidden by that policy. No hostile same-namespace isolation claim.",
+      "stop_conditions": [
+        "Unexpected forbidden success/access or any mutation",
+        "Positive control absent or wrong-layer failure",
+        "Unclassified/timeout-only outcome without intended-layer corroboration",
+        "Case deadline, evidence loss, source/configuration drift or unintended credential disclosure"
+      ]
+    },
+    {
+      "id": "R3-02-NET-H",
+      "boundary": "Sink forbidden Pod peer",
+      "status": "PROPOSED_DISABLED_NOT_RUN",
+      "execution_enabled": false,
+      "operation": "Credential-free TCP connection from a later approved ordinary Pod in kaas-demo carrying neither r2-component=client nor r2-evidence-owner=true to sink8443.",
+      "expected_failure_layer": "Sink ingress policy denies transport; HTTP401/403 is API authorization, not a network denial.",
+      "positive_control": "Approved labelled source reaches same sink8443; negative source otherwise has working route and no confounding egress restriction.",
+      "required_evidence": "Saved and refreshed additive policies/Pod labels plus permitted control and intended-layer dataplane evidence; zero sink writes.",
+      "capability_needed": "Distinct connection-only probe; labels fixed by approved spec. Do not relabel any current Pod or alter NetworkPolicies.",
+      "required_later_live_authorization": "Exact Pod/namespace/labels/image/endpoint/bounds and narrowly scoped creation authority if needed.",
+      "claim_limit": "Policy trusts labels and their administrators. A user able to create owner-labelled Pods may bypass the selector; this is not hostile tenant isolation.",
+      "stop_conditions": [
+        "Unexpected forbidden success/access or any mutation",
+        "Positive control absent or wrong-layer failure",
+        "Unclassified/timeout-only outcome without intended-layer corroboration",
+        "Case deadline, evidence loss, source/configuration drift or unintended credential disclosure"
+      ]
+    },
+    {
+      "id": "R3-02-SECRET",
+      "boundary": "Kubernetes tenant/Secret boundary",
+      "status": "PROPOSED_DISABLED_NOT_RUN",
+      "execution_enabled": false,
+      "operation": "Policy-only access review for a selected unprivileged tenant service account: get/list/watch foreign credential Secrets and create/patch Pods/controllers or exec into credential holders that could expose foreign mounts. No Secret GET/list/watch contents, workload creation or token issuance in this matrix.",
+      "expected_failure_layer": "Expected Kubernetes RBAC/admission denial for forbidden identity/capability; missing service-account token is not authorization denial.",
+      "positive_control": "Explicit subject identity and scoped allowed nonsecret capability review; trusted observer confirms named review request allowed. No positive Secret read required.",
+      "required_evidence": "Sanitized subject/resource/verb/namespace authorization decisions; role/binding/admission and Pod-creation/mount/exec capability inventory; distinguish policy simulation from runtime enforcement.",
+      "capability_needed": "Nonpersistent subject-access reviews by approved observer and effective admission/ownership analysis; no tenant SA or tenant-separated workload model has been selected here.",
+      "required_later_live_authorization": "Select tenant principal/namespace and allowed versus forbidden control-plane contract first, then authorize exact read-only reviews only. Any actual hostile workload later is a different scope.",
+      "claim_limit": "Current kaas-r2-harness intentionally mounts all four tenant credentials; automount=false and Kafka ACLs do not prove hostile Secret isolation. AccessReview denial alone does not prove all mount/admission/impersonation paths closed.",
+      "stop_conditions": [
+        "Unexpected forbidden success/access or any mutation",
+        "Positive control absent or wrong-layer failure",
+        "Unclassified/timeout-only outcome without intended-layer corroboration",
+        "Case deadline, evidence loss, source/configuration drift or unintended credential disclosure"
+      ]
+    }
+  ],
+  "common_rules": [
+    "Planning data only; no Kubernetes resource, runnable client, arming file or executable invocation is supplied.",
+    "Do not relax native/frozen allowlists, alter current source/image pins, change trust/RBAC/ACL/network policies or mount invalid inputs into any existing workload.",
+    "Later selected finite packet must bind exact operation/source/image/identity/address/requests/deadline/resources/stop/termination/custody and user authorization. Authorization for one case does not authorize all rows.",
+    "Same-path positive controls must be fresh for that operation; reuse successful R2 denials as historical acceptance, not as a fresh negative-control sandwich.",
+    "No raw errors, log streams, passwords/password hashes, bearer tokens, private keys, Secret contents, payloads or configuration dumps in evidence; use reviewed enums/stages and nonsecret identity references.",
+    "A failure without intended-layer evidence is INCONCLUSIVE. Unexpected forbidden success stops the packet, retains sanitized evidence and grants no repair authority.",
+    "No automatic cleanup/deletion/retry; stop evidence retained separately by physical attempt, never overwrite historical R2 export.",
+    "All four existing client Jobs remain suspended and unchanged; any later live probe needs its own separately authorized identity and execution artifact."
+  ],
+  "not_selected": [
+    "Credential/CA rotation or session revocation",
+    "Destructive/mutating Admin negatives",
+    "Hostile Pod or Secret-exfiltration execution",
+    "New/external listener or dedicated cluster qualification",
+    "Quota fairness, payload/capacity, recovery/continuity",
+    "SMTP/live alert rules, registry/OIDC/Gravitino deployment"
+  ],
+  "decisions_needed_now": [],
+  "later_user_decisions": [
+    "Only when selecting live work: exact bounded operation/window/executor and any necessary disposable source placement/credential-reference authority.",
+    "Only for a hostile-tenant claim: select tenant namespace/service-account, workload-creation/admission and allowed Secret policy. No need to settle this to finish the offline package."
+  ]
+}

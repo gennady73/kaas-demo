@@ -1,0 +1,22 @@
+{
+  "source_base_commit": "00bf3c3de36ba904cf5cd317507729ac85266d9a",
+  "files": {
+    "README.md": "b11b2d4b583349aa31ebbb7a928d9d7b1f90bafb44da3b4cf0fb24739df177ab",
+    "publication-preparation.json": "a8c1149007bd80889abff3220de9b4e001511833d906166637c231cdc262cb7b",
+    "result.json": "104abbc7650376a4e6a33894dfb96de379d437da6d6007c5d066bdd685882824",
+    "source/docs/coordination/r3-02-c6-resume-2026-11-27/README.md": "2e98fad119af12fcc3cf1de26bc5e9dcccbadb3b04e23839cacb4bf4162b52a9",
+    "source/docs/coordination/r3-02-c6-resume-2026-11-27/authority.json": "8afd6f26d0f0c28981210ef1c3625e307fc051e72e6883d00a075fa8aadb2e27",
+    "source/docs/coordination/r3-02-c6-resume-2026-11-27/dashboard-alert-policy.json": "913069299ab2d3af360b5d6ab372dac3b36a52e7ef099351c5776378fcb99816",
+    "source/docs/coordination/r3-02-c6-resume-2026-11-27/owner-source-index.json": "daf52d62e8aedb059f5d7f35661c47d238d52db7bbdfa0eb2ffe78515e691424",
+    "source/docs/coordination/r3-02-c6-resume-2026-11-27/result.json": "82c77e70e88293459ddb77b17d5fd370a92f79d6bd1074a71a12d0c216b9cfd1",
+    "source/docs/handoffs/C6-identity-connectivity-isolation.md": "b7914114a25b8468f414935fa0d733f4c304c05d4f4ba7ecc703b741050fb56f",
+    "source/docs/security/r3-02-gap-review-2026-11-27/README.md": "5d01620eb2f954aef48ac82807a2c2d4a5166efa01e345512582426a33d9f047",
+    "source/docs/security/r3-02-gap-review-2026-11-27/result.json": "8521a4342beaf2a5908a673bed2e913f928b5ac8d943b573a4201640bfa1b8c6",
+    "source/docs/security/r3-c6-review-2026-11-26/README.md": "1f4c390b37899e88baa1e890dbddd3b02d4aeea7eb3310c2501673e4accc8f71",
+    "source/docs/security/r3-c6-review-2026-11-26/preservation-before.json": "9da842a309bf6f3197f6116a4b926f41b480970101d8dfc8b9751c358f4cbf12",
+    "source/docs/security/r3-c6-review-2026-11-26/security-matrix.disabled.json": "56a517929e3ea282cc0d99212ae46d391b806432fc90c4980c2ae6d640b13b7a",
+    "source/docs/security/r3-c6-review-2026-11-26/source-review.json": "548e4b85c5177026b30fc37105231c9924023eb08976e34b498f58b4a49a86fc",
+    "source/docs/security/r3-c6-review-2026-11-26/validation.json": "8f3802c26b60a72c1be29283094754d4b036c07e390ff0f3ad46d2e22ffcd634",
+    "source-index.json": "2e1339646339048fdef440bec6f74082541a65bda9e95909dda2d55ead69b932"
+  }
+}

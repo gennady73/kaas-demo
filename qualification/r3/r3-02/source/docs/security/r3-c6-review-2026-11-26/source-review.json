@@ -1,0 +1,275 @@
+{
+  "date": "2026-11-27",
+  "observed_local_HEAD": "00bf3c3de36ba904cf5cd317507729ac85266d9a",
+  "method": "Offline source inspection, local immutable Git blob comparison and saved receipt reuse only; no fresh remote verification",
+  "auditor_commit": "94674205d6619e8c7060f5463338e00582f7ed4a",
+  "r3_01_commit": "8490ea628580393fbed78dbbdecb65dfc2afacdb",
+  "blob_comparisons": [
+    {
+      "path": "kaas-demo/tests/tenant-r2-native/audit.mjs",
+      "commit": "94674205d6619e8c7060f5463338e00582f7ed4a",
+      "published_blob_sha256": "b6665f58cb03a06c872732b23aa1e1ec1ac267eba3fceb0b3acf8c669b37b77a",
+      "working_sha256": "b6665f58cb03a06c872732b23aa1e1ec1ac267eba3fceb0b3acf8c669b37b77a",
+      "matches": true
+    },
+    {
+      "path": "kaas-demo/tests/tenant-r2-native/runtime-source-manifest.json",
+      "commit": "94674205d6619e8c7060f5463338e00582f7ed4a",
+      "published_blob_sha256": "9af2ea57aaf851bb4855696ea0f9072ab7f4643a1b64441c9ea47f6bdf6627ff",
+      "working_sha256": "9af2ea57aaf851bb4855696ea0f9072ab7f4643a1b64441c9ea47f6bdf6627ff",
+      "matches": true
+    },
+    {
+      "path": "kaas-demo/qualification/r3/r3-01/README.md",
+      "commit": "8490ea628580393fbed78dbbdecb65dfc2afacdb",
+      "published_blob_sha256": "e28144403aba498ec6785dd8eaf15e5b3b91ebafd0ec01bee37295e7c580dd5d",
+      "working_sha256": "e28144403aba498ec6785dd8eaf15e5b3b91ebafd0ec01bee37295e7c580dd5d",
+      "matches": true
+    },
+    {
+      "path": "kaas-demo/qualification/r3/r3-01/artifact-manifest.json",
+      "commit": "8490ea628580393fbed78dbbdecb65dfc2afacdb",
+      "published_blob_sha256": "afe619adc9c245523dd0a072ec716faa77e9a80de4be02b5264cf8432e452291",
+      "working_sha256": "afe619adc9c245523dd0a072ec716faa77e9a80de4be02b5264cf8432e452291",
+      "matches": true
+    },
+    {
+      "path": "kaas-demo/qualification/r3/r3-01/evidence/authority-review.json",
+      "commit": "8490ea628580393fbed78dbbdecb65dfc2afacdb",
+      "published_blob_sha256": "ea62f893f9ba36e19ac8c981b9ae0952267f9ecffe8247f5fa1b3ec980e01d83",
+      "working_sha256": "ea62f893f9ba36e19ac8c981b9ae0952267f9ecffe8247f5fa1b3ec980e01d83",
+      "matches": true
+    },
+    {
+      "path": "kaas-demo/qualification/r3/r3-01/evidence/commands.json",
+      "commit": "8490ea628580393fbed78dbbdecb65dfc2afacdb",
+      "published_blob_sha256": "6ab28c2988f8e132190146aa5bd6c995e921e8235fded46c3983df07fca56d83",
+      "working_sha256": "6ab28c2988f8e132190146aa5bd6c995e921e8235fded46c3983df07fca56d83",
+      "matches": true
+    },
+    {
+      "path": "kaas-demo/qualification/r3/r3-01/evidence/integrity-checks.json",
+      "commit": "8490ea628580393fbed78dbbdecb65dfc2afacdb",
+      "published_blob_sha256": "23c9db762fa4d818596d7512d27937817057c9fc7d402aaa607f930e37786b55",
+      "working_sha256": "23c9db762fa4d818596d7512d27937817057c9fc7d402aaa607f930e37786b55",
+      "matches": true
+    },
+    {
+      "path": "kaas-demo/qualification/r3/r3-01/evidence/package-validation.stderr",
+      "commit": "8490ea628580393fbed78dbbdecb65dfc2afacdb",
+      "published_blob_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "working_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "path": "kaas-demo/qualification/r3/r3-01/evidence/package-validation.stdout",
+      "commit": "8490ea628580393fbed78dbbdecb65dfc2afacdb",
+      "published_blob_sha256": "adc198ecdeaca813dec985b872ed9fb3291844aadd7b7765d0fd0f43901abbb2",
+      "working_sha256": "adc198ecdeaca813dec985b872ed9fb3291844aadd7b7765d0fd0f43901abbb2",
+      "matches": true
+    },
+    {
+      "path": "kaas-demo/qualification/r3/r3-01/evidence/plan-validation.stderr",
+      "commit": "8490ea628580393fbed78dbbdecb65dfc2afacdb",
+      "published_blob_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "working_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "path": "kaas-demo/qualification/r3/r3-01/evidence/plan-validation.stdout",
+      "commit": "8490ea628580393fbed78dbbdecb65dfc2afacdb",
+      "published_blob_sha256": "1d63a9651d865794e74cc8d55d8224409076639c80a1609125960f6e4ce47dcd",
+      "working_sha256": "1d63a9651d865794e74cc8d55d8224409076639c80a1609125960f6e4ce47dcd",
+      "matches": true
+    },
+    {
+      "path": "kaas-demo/qualification/r3/r3-01/evidence/service-contract.stderr",
+      "commit": "8490ea628580393fbed78dbbdecb65dfc2afacdb",
+      "published_blob_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "working_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "path": "kaas-demo/qualification/r3/r3-01/evidence/service-contract.stdout",
+      "commit": "8490ea628580393fbed78dbbdecb65dfc2afacdb",
+      "published_blob_sha256": "b2b36807a8d95824eac8fb856257a20eda4479b975d0c66d9d6bd70072699b81",
+      "working_sha256": "b2b36807a8d95824eac8fb856257a20eda4479b975d0c66d9d6bd70072699b81",
+      "matches": true
+    },
+    {
+      "path": "kaas-demo/qualification/r3/r3-01/evidence/source-index.json",
+      "commit": "8490ea628580393fbed78dbbdecb65dfc2afacdb",
+      "published_blob_sha256": "f8361189fb0f15c97d0534db860e6cec147596c2dcb8f9c3b2c8f35d43c4912b",
+      "working_sha256": "f8361189fb0f15c97d0534db860e6cec147596c2dcb8f9c3b2c8f35d43c4912b",
+      "matches": true
+    },
+    {
+      "path": "kaas-demo/qualification/r3/r3-01/evidence/tenant-existing-c4-tests.stderr",
+      "commit": "8490ea628580393fbed78dbbdecb65dfc2afacdb",
+      "published_blob_sha256": "13979a5f1f9d9e2b2ce94f6159cf7f85c1f0ec2670b53c0ee565698c74f8f9e2",
+      "working_sha256": "13979a5f1f9d9e2b2ce94f6159cf7f85c1f0ec2670b53c0ee565698c74f8f9e2",
+      "matches": true
+    },
+    {
+      "path": "kaas-demo/qualification/r3/r3-01/evidence/tenant-existing-c4-tests.stdout",
+      "commit": "8490ea628580393fbed78dbbdecb65dfc2afacdb",
+      "published_blob_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "working_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "path": "kaas-demo/qualification/r3/r3-01/evidence/tenant-kubectl-client-version.stderr",
+      "commit": "8490ea628580393fbed78dbbdecb65dfc2afacdb",
+      "published_blob_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "working_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "path": "kaas-demo/qualification/r3/r3-01/evidence/tenant-kubectl-client-version.stdout",
+      "commit": "8490ea628580393fbed78dbbdecb65dfc2afacdb",
+      "published_blob_sha256": "e136409e7043ada7cfb36dc9be761a0dbae4a791fdbf04a9a4356953a548a353",
+      "working_sha256": "e136409e7043ada7cfb36dc9be761a0dbae4a791fdbf04a9a4356953a548a353",
+      "matches": true
+    },
+    {
+      "path": "kaas-demo/qualification/r3/r3-01/evidence/tenant-kustomize-0.stderr",
+      "commit": "8490ea628580393fbed78dbbdecb65dfc2afacdb",
+      "published_blob_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "working_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "path": "kaas-demo/qualification/r3/r3-01/evidence/tenant-kustomize-0.stdout",
+      "commit": "8490ea628580393fbed78dbbdecb65dfc2afacdb",
+      "published_blob_sha256": "88898d275c6193b0cb0edd22305d2c9b2b8486c6650ad9aa265840a6eade68c0",
+      "working_sha256": "88898d275c6193b0cb0edd22305d2c9b2b8486c6650ad9aa265840a6eade68c0",
+      "matches": true
+    },
+    {
+      "path": "kaas-demo/qualification/r3/r3-01/evidence/tenant-kustomize-1.stderr",
+      "commit": "8490ea628580393fbed78dbbdecb65dfc2afacdb",
+      "published_blob_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "working_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "path": "kaas-demo/qualification/r3/r3-01/evidence/tenant-kustomize-1.stdout",
+      "commit": "8490ea628580393fbed78dbbdecb65dfc2afacdb",
+      "published_blob_sha256": "58d1c68968234c559305e7dfad373e0f45b00191c164ee25afbbd298c144ba40",
+      "working_sha256": "58d1c68968234c559305e7dfad373e0f45b00191c164ee25afbbd298c144ba40",
+      "matches": true
+    },
+    {
+      "path": "kaas-demo/qualification/r3/r3-01/evidence/tenant-tenant-only-tests.stderr",
+      "commit": "8490ea628580393fbed78dbbdecb65dfc2afacdb",
+      "published_blob_sha256": "c24f260ac556ab9ee42d9bddcfbf1553b82be95bb777c52e340072f05a620d45",
+      "working_sha256": "c24f260ac556ab9ee42d9bddcfbf1553b82be95bb777c52e340072f05a620d45",
+      "matches": true
+    },
+    {
+      "path": "kaas-demo/qualification/r3/r3-01/evidence/tenant-tenant-only-tests.stdout",
+      "commit": "8490ea628580393fbed78dbbdecb65dfc2afacdb",
+      "published_blob_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "working_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "path": "kaas-demo/qualification/r3/r3-01/evidence/tenant-validation-result.json",
+      "commit": "8490ea628580393fbed78dbbdecb65dfc2afacdb",
+      "published_blob_sha256": "0a0f2edd0a3c830d35ffae6a3d75f01f74df6c17cd387a5450eadd79a85385fd",
+      "working_sha256": "0a0f2edd0a3c830d35ffae6a3d75f01f74df6c17cd387a5450eadd79a85385fd",
+      "matches": true
+    },
+    {
+      "path": "kaas-demo/qualification/r3/r3-01/mount-contract-reconciliation.md",
+      "commit": "8490ea628580393fbed78dbbdecb65dfc2afacdb",
+      "published_blob_sha256": "38776016e7d76b2cfeac7856343dcc5fcc30d9873a8dc8cb27699ea532522b4c",
+      "working_sha256": "38776016e7d76b2cfeac7856343dcc5fcc30d9873a8dc8cb27699ea532522b4c",
+      "matches": true
+    },
+    {
+      "path": "kaas-demo/qualification/r3/r3-01/result.json",
+      "commit": "8490ea628580393fbed78dbbdecb65dfc2afacdb",
+      "published_blob_sha256": "3f31da2d08f6a8c400ebd0308f25e3efb82281030108120d7ea0cc82cd66214a",
+      "working_sha256": "3f31da2d08f6a8c400ebd0308f25e3efb82281030108120d7ea0cc82cd66214a",
+      "matches": true
+    },
+    {
+      "path": "kaas-demo/qualification/r3/r3-01/service-contract.json",
+      "commit": "8490ea628580393fbed78dbbdecb65dfc2afacdb",
+      "published_blob_sha256": "cbc962b19d359b4e65415fae4aee1f8d331df778406b9f18f46e47821c732068",
+      "working_sha256": "cbc962b19d359b4e65415fae4aee1f8d331df778406b9f18f46e47821c732068",
+      "matches": true
+    },
+    {
+      "path": "kaas-demo/qualification/r3/r3-01/validate_offline.py",
+      "commit": "8490ea628580393fbed78dbbdecb65dfc2afacdb",
+      "published_blob_sha256": "ae6e7bd9bb4f759a011e33dc67e517229c5073ad7741461f4dde174c7517deb9",
+      "working_sha256": "ae6e7bd9bb4f759a011e33dc67e517229c5073ad7741461f4dde174c7517deb9",
+      "matches": true
+    }
+  ],
+  "runtime_manifest_entries_verified": 11,
+  "source_sha256": {
+    "docs/coordination/r3-03-activation-2026-11-27/README.md": "9cfc3910e2590f295b565a7a9ae03c0fb41a3de25a4b1317efc04e0bafa7c9b2",
+    "docs/coordination/r3-readonly-refresh-2026-11-26-resumed/README.md": "734edc6b6c708bbdd789ac19b9751db6d4140c07b9bd7c94e2058ee2c6b525bb",
+    "docs/coordination/r3-readonly-refresh-2026-11-26-resumed/evidence/controller-role.json": "f60695c9021f5f8d7474dc0c56a7f9b208cf328cdf373a9672bc509ba1a79c42",
+    "docs/coordination/r3-readonly-refresh-2026-11-26-resumed/evidence/networkpolicies-kaas-demo.json": "232c36945803e5ec3487d4aa34f91c73d1225c1cc191382f5979de49960bd5c5",
+    "docs/coordination/r3-readonly-refresh-2026-11-26-resumed/evidence/networkpolicies-kaas-kafka.json": "f1378dc9b1643db12e813d41c693f37b5118120541bd56223c862e532357605e",
+    "docs/handoffs/C6-identity-connectivity-isolation.md": "be5870cf57a93818d429a534819f935344f7752d61f8f75298b4ecd3462db8f2",
+    "docs/kaas-system-requirements-specification.md": "e438dd18b7426aa242ba94968fc56656bf745b531af481c3dc652c158c73e4e2",
+    "docs/project-context.md": "9608bc810a6e9aec7786801c187e2eed73afae6de6b593dce9c4c31707e22717",
+    "docs/reviews/r3-00-auditor-2026-11-26/publication.json": "a6bbb97d9a558a00ff88fafe33fb04a2b189aceff2eb6d19a7f6a9d2761bfe4b",
+    "docs/reviews/r3-01-2026-11-26/publication.json": "b5aeb810a10ab9cfbbd9bfa417c68578afc70c494e74c44e608f6a404bb7732b",
+    "docs/reviews/r3-remaining-2026-11-27/README.md": "3eff5db77b9c3f065263b66ad4e38e394a07129f6eec509df4f69cf75cbbf962",
+    "docs/reviews/r3-remaining-2026-11-27/matrix.json": "c7f29dc38641d96fabc6147941baf8701fc61b121f6bfc79bf1f7898366101a3",
+    "docs/security/c6-access-isolation-contract.md": "c72abec69913eed12060a901d38362cea492bc6bfcd79dec651ed56d50a59aa2",
+    "docs/testing/c3-latest-auditor-review-2026-11-26/README.md": "52ff9a238ad0f79e357e59f6f8a0f822cb7b43d7eac3765bdabb2f97d5ca5fa2",
+    "docs/testing/c3-latest-auditor-review-2026-11-26/auditor-v01-to-published.diff": "90067dd3a39eeaa39c75c2c35a6449342b931ac2338591c9c73e0bbdca379bcd",
+    "docs/testing/c3-latest-auditor-review-2026-11-26/validation.json": "4baac2a62f37b53afc0431e7327cc6c603fe20d245491029dc83c487d607d92e",
+    "docs/testing/r3-c3-exit-matrix-2026-11-26/exit-matrix.json": "1ad6aefd026d7eeb4670a323cab904f851f6368ebfb6eee4af012af8f8fdc935",
+    "docs/validation-register.md": "67dfffa4ae40f67ce8aa6fd222314643f2a65dca2a9fd7dd4585c24539a1e280",
+    "kaas-demo/docs/r2-05a3f2d-retest-2026-11-26/README.md": "c5b2f680878c3d77e5359b9dddfa4f99be42ad324eca5eec6c14f21e74d64910",
+    "kaas-demo/packaging/r2-native/deploy/resources.yaml": "b96201731306d8e6497c9f7b06f202a4b66bb8f5295c6822a6d9cc34ebeb683c",
+    "kaas-demo/qualification/r3/plan.json": "b41852bbbbc4c2822ef19c74b7e93852326d0b616fddfa9e18e9f5658bea5292",
+    "kaas-demo/qualification/r3/progress.json": "f7c8bd8cb85a4651e06571c02fd9a7011405ad65252b50c49f467c9d63cf7d66",
+    "kaas-demo/qualification/r3/r3-01/README.md": "e28144403aba498ec6785dd8eaf15e5b3b91ebafd0ec01bee37295e7c580dd5d",
+    "kaas-demo/qualification/r3/r3-01/artifact-manifest.json": "afe619adc9c245523dd0a072ec716faa77e9a80de4be02b5264cf8432e452291",
+    "kaas-demo/qualification/r3/r3-01/evidence/authority-review.json": "ea62f893f9ba36e19ac8c981b9ae0952267f9ecffe8247f5fa1b3ec980e01d83",
+    "kaas-demo/qualification/r3/r3-01/evidence/commands.json": "6ab28c2988f8e132190146aa5bd6c995e921e8235fded46c3983df07fca56d83",
+    "kaas-demo/qualification/r3/r3-01/evidence/integrity-checks.json": "23c9db762fa4d818596d7512d27937817057c9fc7d402aaa607f930e37786b55",
+    "kaas-demo/qualification/r3/r3-01/evidence/package-validation.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "kaas-demo/qualification/r3/r3-01/evidence/package-validation.stdout": "adc198ecdeaca813dec985b872ed9fb3291844aadd7b7765d0fd0f43901abbb2",
+    "kaas-demo/qualification/r3/r3-01/evidence/plan-validation.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "kaas-demo/qualification/r3/r3-01/evidence/plan-validation.stdout": "1d63a9651d865794e74cc8d55d8224409076639c80a1609125960f6e4ce47dcd",
+    "kaas-demo/qualification/r3/r3-01/evidence/service-contract.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "kaas-demo/qualification/r3/r3-01/evidence/service-contract.stdout": "b2b36807a8d95824eac8fb856257a20eda4479b975d0c66d9d6bd70072699b81",
+    "kaas-demo/qualification/r3/r3-01/evidence/source-index.json": "f8361189fb0f15c97d0534db860e6cec147596c2dcb8f9c3b2c8f35d43c4912b",
+    "kaas-demo/qualification/r3/r3-01/evidence/tenant-existing-c4-tests.stderr": "13979a5f1f9d9e2b2ce94f6159cf7f85c1f0ec2670b53c0ee565698c74f8f9e2",
+    "kaas-demo/qualification/r3/r3-01/evidence/tenant-existing-c4-tests.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "kaas-demo/qualification/r3/r3-01/evidence/tenant-kubectl-client-version.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "kaas-demo/qualification/r3/r3-01/evidence/tenant-kubectl-client-version.stdout": "e136409e7043ada7cfb36dc9be761a0dbae4a791fdbf04a9a4356953a548a353",
+    "kaas-demo/qualification/r3/r3-01/evidence/tenant-kustomize-0.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "kaas-demo/qualification/r3/r3-01/evidence/tenant-kustomize-0.stdout": "88898d275c6193b0cb0edd22305d2c9b2b8486c6650ad9aa265840a6eade68c0",
+    "kaas-demo/qualification/r3/r3-01/evidence/tenant-kustomize-1.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "kaas-demo/qualification/r3/r3-01/evidence/tenant-kustomize-1.stdout": "58d1c68968234c559305e7dfad373e0f45b00191c164ee25afbbd298c144ba40",
+    "kaas-demo/qualification/r3/r3-01/evidence/tenant-tenant-only-tests.stderr": "c24f260ac556ab9ee42d9bddcfbf1553b82be95bb777c52e340072f05a620d45",
+    "kaas-demo/qualification/r3/r3-01/evidence/tenant-tenant-only-tests.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "kaas-demo/qualification/r3/r3-01/evidence/tenant-validation-result.json": "0a0f2edd0a3c830d35ffae6a3d75f01f74df6c17cd387a5450eadd79a85385fd",
+    "kaas-demo/qualification/r3/r3-01/mount-contract-reconciliation.md": "38776016e7d76b2cfeac7856343dcc5fcc30d9873a8dc8cb27699ea532522b4c",
+    "kaas-demo/qualification/r3/r3-01/result.json": "3f31da2d08f6a8c400ebd0308f25e3efb82281030108120d7ea0cc82cd66214a",
+    "kaas-demo/qualification/r3/r3-01/service-contract.json": "cbc962b19d359b4e65415fae4aee1f8d331df778406b9f18f46e47821c732068",
+    "kaas-demo/qualification/r3/r3-01/validate_offline.py": "ae6e7bd9bb4f759a011e33dc67e517229c5073ad7741461f4dde174c7517deb9",
+    "kaas-demo/tests/tenant-r2-native/audit-export.mjs": "253687eb319676ecbd6468752a37c7bdf2cb38ab455b1c542b2fdd5278130ac3",
+    "kaas-demo/tests/tenant-r2-native/native/inputs.go": "06c3b2c2d77a5c58bbaeec58a62fc37a2e003ace3eac040b46b8387a536e2a2e",
+    "kaas-demo/tests/tenant-r2-native/native/module.go": "79d3d770eb25c4644db14b027ab42e8ae00292cae8aa26fc0f3c160b0b5592b3"
+  },
+  "C3_receipt_reused": {
+    "path": "docs/testing/c3-latest-auditor-review-2026-11-26/validation.json",
+    "tests": 508,
+    "independent_probes": 88,
+    "rerun_by_C6": false
+  },
+  "new_test_execution": false,
+  "network_access": false
+}
