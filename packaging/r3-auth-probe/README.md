@@ -1,4 +1,12 @@
-# R3-02 AUTH probe — offline preparation
+# R3-02 AUTH probe — compiled, disabled, classification blocked
+
+**COMPILE PASS; NOT TESTED, DEPLOYED OR RUN. R3-AUTH-SRC-02 blocks execution.** The exact SDK suppresses exception stack traces, so the originally proposed stack-origin classifier is unsupported. It has been removed; SASL errors remain unproven/inconclusive. Image and SDK provenance pins are populated, while authority/window/approved-profile inputs remain unset. Four existing Jobs are untouched and required suspended; external notifications disabled.
+
+See the current [compilation/source-review record](compile-review.md) and [machine receipt](evidence/compile-review.json). The original published preparation below is retained as historical design context; its uncompiled status,4.2.0 assumptions, null SDK pins and proposed stack-origin acceptance are superseded by this review. The sequence and origin requirement are still proposed acceptance criteria, not implemented runtime qualification.
+
+---
+
+# Historical offline preparation (ecf5809)
 
 **PREPARED CANDIDATE; NOT COMPILED, TESTED, DEPLOYED OR RUN.** User scope is wrong Kafka password with a valid-credential positive control, offline only. No existing Job, source/image pin, credentials, Kafka configuration, rule, route or collector changes. All four existing client Jobs remain protected/suspended. Email and all other external notifications remain disabled.
 

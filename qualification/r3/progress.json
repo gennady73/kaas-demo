@@ -1,5 +1,5 @@
 {
-  "revision": "0.14",
+  "revision": "0.15",
   "date": "2026-11-27",
   "plan_commit": "0f9df49fc0dfb3632c9c7f4eb32fb7e6d3aec1e6",
   "execution_enabled": false,
@@ -139,10 +139,18 @@
         "tests_run": 0,
         "runtime_security_qualification": "NOT_RUN_NOT_QUALIFIED",
         "publication": "INCLUDED_IN_OWNING_COMMIT_DISABLED_UNCOMPILED_UNTESTED"
+      },
+      "AUTH_compile_review": {
+        "status": "COMPILE_PASS_CLASSIFICATION_BLOCKED",
+        "record": "../../packaging/r3-auth-probe/compile-review.md",
+        "open_finding": "R3-AUTH-SRC-02",
+        "tests_run": 0,
+        "execution_enabled": false,
+        "deployment_enabled": false
       }
     }
   },
-  "remaining_cases": "R3-02 AUTH candidate source/profile/new suspended Job prepared offline, not compiled/tested; exact SDK jar/image/source classification/containment verification and per-run authorization remain before any execution. Other9securitysubcases unchanged/disabled. No existing Job changes, cluster access, notifications or tests. Dashboard evaluation permission remains separate; no rules changed.",
+  "remaining_cases": "AUTH compilation complete against exact base SDK4.2.1.redhat-00003; R3-AUTH-SRC-02 blocks origin classification. Resolve narrowly offline before behavioral validation or arming. Other9securitysubcases unchanged; no tests, cluster changes or notifications.",
   "note": "Progress overlay supersedes pre-correction OPEN labels only for this exact offline source/result; does not arm any planned case",
   "coordination_sync": {
     "date": "2026-11-26",

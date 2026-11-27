@@ -1,0 +1,67 @@
+{
+  "date": "2026-11-27",
+  "source_base_commit": "ecf58096b827e48547c538b50006e36f92ed1a1b",
+  "status": "COMPILE_PASS_SOURCE_REVIEW_BLOCKS_EXECUTION",
+  "compiler": "/usr/lib/jvm/java-25-temurin-jdk/bin/javac",
+  "compiler_version": "javac 25.0.5",
+  "compiler_flags": [
+    "-proc:none",
+    "--release",
+    "17",
+    "-Xlint:all"
+  ],
+  "classpath": "Extracted exact base-image kafka-clients and slf4j-api jars; no artifact code executed",
+  "compile_exit_code": 0,
+  "compiler_stderr_bytes": 0,
+  "source_sha256": "dd17c00eb0a9dc5b99adfc4e1673f0f90b7780836e61426e83b376e3f6d9fddd",
+  "class_sha256": "d89795d3268ce5b843e6c30c935303070a210a9e61e052452a280d9e38dd11ff",
+  "class_format": "Java17 target; local JDK25 compiler, not a target-JVM launcher test",
+  "sdk": {
+    "version": "4.2.1.redhat-00003",
+    "commitId": "6f44a337d1d1ec8a",
+    "jar": "kafka-clients-4.2.1.redhat-00003.jar",
+    "sha256": "5f13fa84c366c1b20388aadfea9b0539654563bc90bcacd2515c849e8d37e669",
+    "slf4j_api_sha256": "abaca57d174773370259c895b3eb7a594a088ced26ea4b34d4e349e6bdca1d61"
+  },
+  "image_verification": {
+    "base_index_sha256": "ce7dc91b664600c6f06e1df3d6b56a4684bb779865d9c28b4df648addd89189d",
+    "base_amd64_manifest_sha256": "ccca1fa9be261fac850b918c27cecdd31bc2bbe85baf9c8a268db96ee332aa05",
+    "base_compressed_layers_SHA256_checked": true,
+    "method": "Read-only skopeo manifest/copy from registry.redhat.io; selective tar member extraction, no container launch",
+    "runner_digest": "sha256:41f328c85ee3d3e9d8834ce12e516b5ef52506067117b1c4f1145511b493998a",
+    "runner_pin": "Matches saved Nov26 image/build receipts and unchanged Dockerfile; first two saved runner layers equal freshly hash-verified base layers. Dockerfile does not alter Kafka libs. SDK inheritance is derived from this lineage.",
+    "fresh_runner_registry_or_running_image_attestation": false,
+    "registry_signature_trust": "Not independently policy-validated; digest integrity is not signature verification"
+  },
+  "findings": [
+    {
+      "id": "R3-AUTH-SRC-01",
+      "status": "FIXED_STATIC_COMPILE",
+      "detail": "Published candidate hardcoded4.2.0 family, but exact pinned base contains4.2.1.redhat-00003. Java/Python exact version checks and disabled SDK pins corrected."
+    },
+    {
+      "id": "R3-AUTH-SRC-02",
+      "status": "OPEN_EXECUTION_BLOCKER_FAIL_CLOSED",
+      "detail": "Exact ApiException.fillInStackTrace returns this without collecting frames. receiveToken handles received errors, but SaslAuthenticationException carries no reliable origin stack. Removed impossible stack-origin acceptance; SASL exceptions remain LOCAL_OR_UNPROVEN_SASL_FAILURE. No wrong-password PASS is possible from current Java source. A reviewed non-text provenance mechanism or explicitly accepted narrower qualification claim is required before arming."
+    }
+  ],
+  "source_review": {
+    "operation": "One exact own-topic DescribeTopics call site; no producer/consumer/group/offset/mutation API",
+    "secrets": "Password input through anonymous stdin, RAM snapshot, no credential logging/hash; raw SDK stderr discarded",
+    "containment": "Three fresh process groups, bounded output/deadlines, signal stop and nonzero evidence-failure paths inspected only",
+    "evidence": "Final deadline/evidence failure can leave earlier observation file; outside exit0/normal termination and matching stdout/file/export remain mandatory",
+    "independent_review": false
+  },
+  "tests_run": 0,
+  "probe_executions": 0,
+  "containers_started": 0,
+  "cluster_requests": 0,
+  "deployments": 0,
+  "existing_Jobs": "Untouched; suspension required, no fresh live observation",
+  "external_notifications_enabled": false,
+  "remaining": [
+    "Resolve R3-AUTH-SRC-02 offline; do not arm current source",
+    "Specifically authorized behavior/classification/redaction/containment validation remains unrun",
+    "Fresh exact runner identity, runtime Java/Python launcher, nonroot mounts/TLS/network/readiness and immutable approved run/profile/window/custody checks before any execution"
+  ]
+}

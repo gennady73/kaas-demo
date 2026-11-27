@@ -1,0 +1,1177 @@
+Compiled from "SaslClientAuthenticator.java"
+public class org.apache.kafka.common.security.authenticator.SaslClientAuthenticator implements org.apache.kafka.common.network.Authenticator {
+  private static final short DISABLE_KAFKA_SASL_AUTHENTICATE_HEADER;
+
+  private static final java.util.Random RNG;
+
+  public static final int MAX_RESERVED_CORRELATION_ID;
+
+  public static final int MIN_RESERVED_CORRELATION_ID;
+
+  private final javax.security.auth.Subject subject;
+
+  private final java.lang.String servicePrincipal;
+
+  private final java.lang.String host;
+
+  private final java.lang.String node;
+
+  private final java.lang.String mechanism;
+
+  private final org.apache.kafka.common.network.TransportLayer transportLayer;
+
+  private final javax.security.sasl.SaslClient saslClient;
+
+  private final java.util.Map<java.lang.String, ?> configs;
+
+  private final java.lang.String clientPrincipalName;
+
+  private final org.apache.kafka.common.security.auth.AuthenticateCallbackHandler callbackHandler;
+
+  private final org.apache.kafka.common.utils.Time time;
+
+  private final org.slf4j.Logger log;
+
+  private final org.apache.kafka.common.security.authenticator.SaslClientAuthenticator$ReauthInfo reauthInfo;
+
+  private org.apache.kafka.common.network.NetworkReceive netInBuffer;
+
+  private org.apache.kafka.common.network.Send netOutBuffer;
+
+  private org.apache.kafka.common.security.authenticator.SaslClientAuthenticator$SaslState saslState;
+
+  private org.apache.kafka.common.security.authenticator.SaslClientAuthenticator$SaslState pendingSaslState;
+
+  private int correlationId;
+
+  private org.apache.kafka.common.requests.RequestHeader currentRequestHeader;
+
+  private short saslAuthenticateVersion;
+
+  private short saslHandshakeVersion;
+
+  public static boolean isReserved(int);
+    Code:
+         0: iload_0
+         1: ldc           #48                 // int 2147483640
+         3: if_icmplt     10
+         6: iconst_1
+         7: goto          11
+        10: iconst_0
+        11: ireturn
+
+  public org.apache.kafka.common.security.authenticator.SaslClientAuthenticator(java.util.Map<java.lang.String, ?>, org.apache.kafka.common.security.auth.AuthenticateCallbackHandler, java.lang.String, javax.security.auth.Subject, java.lang.String, java.lang.String, java.lang.String, org.apache.kafka.common.network.TransportLayer, org.apache.kafka.common.utils.Time, org.apache.kafka.common.utils.LogContext);
+    Code:
+         0: aload_0
+         1: invokespecial #93                 // Method java/lang/Object."<init>":()V
+         4: aload_0
+         5: aload_3
+         6: putfield      #95                 // Field node:Ljava/lang/String;
+         9: aload_0
+        10: aload         4
+        12: putfield      #97                 // Field subject:Ljavax/security/auth/Subject;
+        15: aload_0
+        16: aload_2
+        17: putfield      #99                 // Field callbackHandler:Lorg/apache/kafka/common/security/auth/AuthenticateCallbackHandler;
+        20: aload_0
+        21: aload         6
+        23: putfield      #101                // Field host:Ljava/lang/String;
+        26: aload_0
+        27: aload         5
+        29: putfield      #103                // Field servicePrincipal:Ljava/lang/String;
+        32: aload_0
+        33: aload         7
+        35: putfield      #105                // Field mechanism:Ljava/lang/String;
+        38: aload_0
+        39: iconst_0
+        40: putfield      #107                // Field correlationId:I
+        43: aload_0
+        44: aload         8
+        46: putfield      #109                // Field transportLayer:Lorg/apache/kafka/common/network/TransportLayer;
+        49: aload_0
+        50: aload_1
+        51: putfield      #111                // Field configs:Ljava/util/Map;
+        54: aload_0
+        55: iconst_m1
+        56: putfield      #113                // Field saslAuthenticateVersion:S
+        59: aload_0
+        60: aload         9
+        62: putfield      #115                // Field time:Lorg/apache/kafka/common/utils/Time;
+        65: aload_0
+        66: aload         10
+        68: aload_0
+        69: invokevirtual #119                // Method java/lang/Object.getClass:()Ljava/lang/Class;
+        72: invokevirtual #125                // Method org/apache/kafka/common/utils/LogContext.logger:(Ljava/lang/Class;)Lorg/slf4j/Logger;
+        75: putfield      #127                // Field log:Lorg/slf4j/Logger;
+        78: aload_0
+        79: new           #11                 // class org/apache/kafka/common/security/authenticator/SaslClientAuthenticator$ReauthInfo
+        82: dup
+        83: aload_0
+        84: invokespecial #130                // Method org/apache/kafka/common/security/authenticator/SaslClientAuthenticator$ReauthInfo."<init>":(Lorg/apache/kafka/common/security/authenticator/SaslClientAuthenticator;)V
+        87: putfield      #132                // Field reauthInfo:Lorg/apache/kafka/common/security/authenticator/SaslClientAuthenticator$ReauthInfo;
+        90: aload_0
+        91: getstatic     #135                // Field org/apache/kafka/common/security/authenticator/SaslClientAuthenticator$SaslState.SEND_APIVERSIONS_REQUEST:Lorg/apache/kafka/common/security/authenticator/SaslClientAuthenticator$SaslState;
+        94: invokevirtual #139                // Method setSaslState:(Lorg/apache/kafka/common/security/authenticator/SaslClientAuthenticator$SaslState;)V
+        97: aload         7
+        99: ldc           #141                // String GSSAPI
+       101: invokevirtual #147                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+       104: ifeq          119
+       107: aload_0
+       108: aload         4
+       110: invokestatic  #151                // Method firstPrincipal:(Ljavax/security/auth/Subject;)Ljava/lang/String;
+       113: putfield      #153                // Field clientPrincipalName:Ljava/lang/String;
+       116: goto          124
+       119: aload_0
+       120: aconst_null
+       121: putfield      #153                // Field clientPrincipalName:Ljava/lang/String;
+       124: aload_0
+       125: aload_0
+       126: invokevirtual #167                // Method createSaslClient:()Ljavax/security/sasl/SaslClient;
+       129: putfield      #169                // Field saslClient:Ljavax/security/sasl/SaslClient;
+       132: goto          149
+       135: astore        11
+       137: new           #171                // class org/apache/kafka/common/errors/SaslAuthenticationException
+       140: dup
+       141: ldc           #173                // String Failed to configure SaslClientAuthenticator
+       143: aload         11
+       145: invokespecial #176                // Method org/apache/kafka/common/errors/SaslAuthenticationException."<init>":(Ljava/lang/String;Ljava/lang/Throwable;)V
+       148: athrow
+       149: return
+      Exception table:
+         from    to  target type
+            90   132   135   Class java/lang/Exception
+
+  javax.security.sasl.SaslClient createSaslClient();
+    Code:
+         0: invokestatic  #190                // InterfaceMethod org/apache/kafka/common/internals/SecurityManagerCompatibility.get:()Lorg/apache/kafka/common/internals/SecurityManagerCompatibility;
+         3: aload_0
+         4: getfield      #97                 // Field subject:Ljavax/security/auth/Subject;
+         7: aload_0
+         8: invokedynamic #208,  0            // InvokeDynamic #0:call:(Lorg/apache/kafka/common/security/authenticator/SaslClientAuthenticator;)Ljava/util/concurrent/Callable;
+        13: invokeinterface #212,  3          // InterfaceMethod org/apache/kafka/common/internals/SecurityManagerCompatibility.callAs:(Ljavax/security/auth/Subject;Ljava/util/concurrent/Callable;)Ljava/lang/Object;
+        18: checkcast     #214                // class javax/security/sasl/SaslClient
+        21: areturn
+        22: astore_1
+        23: new           #171                // class org/apache/kafka/common/errors/SaslAuthenticationException
+        26: dup
+        27: aload_0
+        28: getfield      #105                // Field mechanism:Ljava/lang/String;
+        31: invokedynamic #226,  0            // InvokeDynamic #1:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+        36: aload_1
+        37: invokevirtual #230                // Method java/util/concurrent/CompletionException.getCause:()Ljava/lang/Throwable;
+        40: invokespecial #176                // Method org/apache/kafka/common/errors/SaslAuthenticationException."<init>":(Ljava/lang/String;Ljava/lang/Throwable;)V
+        43: athrow
+      Exception table:
+         from    to  target type
+             0    21    22   Class java/util/concurrent/CompletionException
+
+  public void authenticate() throws java.io.IOException;
+    Code:
+         0: aload_0
+         1: getfield      #236                // Field netOutBuffer:Lorg/apache/kafka/common/network/Send;
+         4: ifnull        15
+         7: aload_0
+         8: invokevirtual #240                // Method flushNetOutBufferAndUpdateInterestOps:()Z
+        11: ifne          15
+        14: return
+        15: getstatic     #244                // Field org/apache/kafka/common/security/authenticator/SaslClientAuthenticator$1.$SwitchMap$org$apache$kafka$common$security$authenticator$SaslClientAuthenticator$SaslState:[I
+        18: aload_0
+        19: getfield      #246                // Field saslState:Lorg/apache/kafka/common/security/authenticator/SaslClientAuthenticator$SaslState;
+        22: invokevirtual #250                // Method org/apache/kafka/common/security/authenticator/SaslClientAuthenticator$SaslState.ordinal:()I
+        25: iaload
+        26: tableswitch   { // 1 to 13
+                       1: 92
+                       2: 133
+                       3: 168
+                       4: 186
+                       5: 213
+                       6: 227
+                       7: 245
+                       8: 263
+                       9: 290
+                      10: 304
+                      11: 377
+                      12: 398
+                      13: 401
+                 default: 412
+            }
+        92: new           #17                 // class org/apache/kafka/common/requests/ApiVersionsRequest$Builder
+        95: dup
+        96: invokespecial #251                // Method org/apache/kafka/common/requests/ApiVersionsRequest$Builder."<init>":()V
+        99: iconst_0
+       100: invokevirtual #255                // Method org/apache/kafka/common/requests/ApiVersionsRequest$Builder.build:(S)Lorg/apache/kafka/common/requests/ApiVersionsRequest;
+       103: astore_1
+       104: aload_0
+       105: aload_1
+       106: aload_0
+       107: getstatic     #261                // Field org/apache/kafka/common/protocol/ApiKeys.API_VERSIONS:Lorg/apache/kafka/common/protocol/ApiKeys;
+       110: aload_1
+       111: invokevirtual #265                // Method org/apache/kafka/common/requests/ApiVersionsRequest.version:()S
+       114: invokevirtual #269                // Method nextRequestHeader:(Lorg/apache/kafka/common/protocol/ApiKeys;S)Lorg/apache/kafka/common/requests/RequestHeader;
+       117: invokevirtual #273                // Method org/apache/kafka/common/requests/ApiVersionsRequest.toSend:(Lorg/apache/kafka/common/requests/RequestHeader;)Lorg/apache/kafka/common/network/Send;
+       120: invokevirtual #277                // Method send:(Lorg/apache/kafka/common/network/Send;)V
+       123: aload_0
+       124: getstatic     #280                // Field org/apache/kafka/common/security/authenticator/SaslClientAuthenticator$SaslState.RECEIVE_APIVERSIONS_RESPONSE:Lorg/apache/kafka/common/security/authenticator/SaslClientAuthenticator$SaslState;
+       127: invokevirtual #139                // Method setSaslState:(Lorg/apache/kafka/common/security/authenticator/SaslClientAuthenticator$SaslState;)V
+       130: goto          412
+       133: aload_0
+       134: invokevirtual #284                // Method receiveKafkaResponse:()Lorg/apache/kafka/common/requests/AbstractResponse;
+       137: checkcast     #286                // class org/apache/kafka/common/requests/ApiVersionsResponse
+       140: astore_2
+       141: aload_2
+       142: ifnonnull     148
+       145: goto          412
+       148: aload_0
+       149: aload_2
+       150: invokevirtual #290                // Method setSaslAuthenticateAndHandshakeVersions:(Lorg/apache/kafka/common/requests/ApiVersionsResponse;)V
+       153: aload_0
+       154: getfield      #132                // Field reauthInfo:Lorg/apache/kafka/common/security/authenticator/SaslClientAuthenticator$ReauthInfo;
+       157: aload_2
+       158: putfield      #294                // Field org/apache/kafka/common/security/authenticator/SaslClientAuthenticator$ReauthInfo.apiVersionsResponseReceivedFromBroker:Lorg/apache/kafka/common/requests/ApiVersionsResponse;
+       161: aload_0
+       162: getstatic     #297                // Field org/apache/kafka/common/security/authenticator/SaslClientAuthenticator$SaslState.SEND_HANDSHAKE_REQUEST:Lorg/apache/kafka/common/security/authenticator/SaslClientAuthenticator$SaslState;
+       165: invokevirtual #139                // Method setSaslState:(Lorg/apache/kafka/common/security/authenticator/SaslClientAuthenticator$SaslState;)V
+       168: aload_0
+       169: aload_0
+       170: getfield      #299                // Field saslHandshakeVersion:S
+       173: invokevirtual #303                // Method sendHandshakeRequest:(S)V
+       176: aload_0
+       177: getstatic     #306                // Field org/apache/kafka/common/security/authenticator/SaslClientAuthenticator$SaslState.RECEIVE_HANDSHAKE_RESPONSE:Lorg/apache/kafka/common/security/authenticator/SaslClientAuthenticator$SaslState;
+       180: invokevirtual #139                // Method setSaslState:(Lorg/apache/kafka/common/security/authenticator/SaslClientAuthenticator$SaslState;)V
+       183: goto          412
+       186: aload_0
+       187: invokevirtual #284                // Method receiveKafkaResponse:()Lorg/apache/kafka/common/requests/AbstractResponse;
+       190: checkcast     #308                // class org/apache/kafka/common/requests/SaslHandshakeResponse
+       193: astore_3
+       194: aload_3
+       195: ifnonnull     201
+       198: goto          412
+       201: aload_0
+       202: aload_3
+       203: invokevirtual #312                // Method handleSaslHandshakeResponse:(Lorg/apache/kafka/common/requests/SaslHandshakeResponse;)V
+       206: aload_0
+       207: getstatic     #315                // Field org/apache/kafka/common/security/authenticator/SaslClientAuthenticator$SaslState.INITIAL:Lorg/apache/kafka/common/security/authenticator/SaslClientAuthenticator$SaslState;
+       210: invokevirtual #139                // Method setSaslState:(Lorg/apache/kafka/common/security/authenticator/SaslClientAuthenticator$SaslState;)V
+       213: aload_0
+       214: invokevirtual #318                // Method sendInitialToken:()V
+       217: aload_0
+       218: getstatic     #321                // Field org/apache/kafka/common/security/authenticator/SaslClientAuthenticator$SaslState.INTERMEDIATE:Lorg/apache/kafka/common/security/authenticator/SaslClientAuthenticator$SaslState;
+       221: invokevirtual #139                // Method setSaslState:(Lorg/apache/kafka/common/security/authenticator/SaslClientAuthenticator$SaslState;)V
+       224: goto          412
+       227: aload_0
+       228: aload_0
+       229: getfield      #132                // Field reauthInfo:Lorg/apache/kafka/common/security/authenticator/SaslClientAuthenticator$ReauthInfo;
+       232: getfield      #324                // Field org/apache/kafka/common/security/authenticator/SaslClientAuthenticator$ReauthInfo.apiVersionsResponseFromOriginalAuthentication:Lorg/apache/kafka/common/requests/ApiVersionsResponse;
+       235: invokevirtual #290                // Method setSaslAuthenticateAndHandshakeVersions:(Lorg/apache/kafka/common/requests/ApiVersionsResponse;)V
+       238: aload_0
+       239: getstatic     #327                // Field org/apache/kafka/common/security/authenticator/SaslClientAuthenticator$SaslState.REAUTH_SEND_HANDSHAKE_REQUEST:Lorg/apache/kafka/common/security/authenticator/SaslClientAuthenticator$SaslState;
+       242: invokevirtual #139                // Method setSaslState:(Lorg/apache/kafka/common/security/authenticator/SaslClientAuthenticator$SaslState;)V
+       245: aload_0
+       246: aload_0
+       247: getfield      #299                // Field saslHandshakeVersion:S
+       250: invokevirtual #303                // Method sendHandshakeRequest:(S)V
+       253: aload_0
+       254: getstatic     #330                // Field org/apache/kafka/common/security/authenticator/SaslClientAuthenticator$SaslState.REAUTH_RECEIVE_HANDSHAKE_OR_OTHER_RESPONSE:Lorg/apache/kafka/common/security/authenticator/SaslClientAuthenticator$SaslState;
+       257: invokevirtual #139                // Method setSaslState:(Lorg/apache/kafka/common/security/authenticator/SaslClientAuthenticator$SaslState;)V
+       260: goto          412
+       263: aload_0
+       264: invokevirtual #284                // Method receiveKafkaResponse:()Lorg/apache/kafka/common/requests/AbstractResponse;
+       267: checkcast     #308                // class org/apache/kafka/common/requests/SaslHandshakeResponse
+       270: astore_3
+       271: aload_3
+       272: ifnonnull     278
+       275: goto          412
+       278: aload_0
+       279: aload_3
+       280: invokevirtual #312                // Method handleSaslHandshakeResponse:(Lorg/apache/kafka/common/requests/SaslHandshakeResponse;)V
+       283: aload_0
+       284: getstatic     #333                // Field org/apache/kafka/common/security/authenticator/SaslClientAuthenticator$SaslState.REAUTH_INITIAL:Lorg/apache/kafka/common/security/authenticator/SaslClientAuthenticator$SaslState;
+       287: invokevirtual #139                // Method setSaslState:(Lorg/apache/kafka/common/security/authenticator/SaslClientAuthenticator$SaslState;)V
+       290: aload_0
+       291: invokevirtual #318                // Method sendInitialToken:()V
+       294: aload_0
+       295: getstatic     #321                // Field org/apache/kafka/common/security/authenticator/SaslClientAuthenticator$SaslState.INTERMEDIATE:Lorg/apache/kafka/common/security/authenticator/SaslClientAuthenticator$SaslState;
+       298: invokevirtual #139                // Method setSaslState:(Lorg/apache/kafka/common/security/authenticator/SaslClientAuthenticator$SaslState;)V
+       301: goto          412
+       304: aload_0
+       305: invokevirtual #337                // Method receiveToken:()[B
+       308: astore        4
+       310: aload         4
+       312: ifnull        329
+       315: aload_0
+       316: aload         4
+       318: iconst_0
+       319: invokevirtual #341                // Method sendSaslClientToken:([BZ)Z
+       322: ifne          329
+       325: iconst_1
+       326: goto          330
+       329: iconst_0
+       330: istore        5
+       332: aload_0
+       333: getfield      #169                // Field saslClient:Ljavax/security/sasl/SaslClient;
+       336: invokeinterface #346,  1          // InterfaceMethod javax/security/sasl/SaslClient.isComplete:()Z
+       341: ifeq          412
+       344: aload_0
+       345: getfield      #113                // Field saslAuthenticateVersion:S
+       348: iconst_m1
+       349: if_icmpeq     357
+       352: iload         5
+       354: ifeq          367
+       357: aload_0
+       358: getstatic     #349                // Field org/apache/kafka/common/security/authenticator/SaslClientAuthenticator$SaslState.COMPLETE:Lorg/apache/kafka/common/security/authenticator/SaslClientAuthenticator$SaslState;
+       361: invokevirtual #139                // Method setSaslState:(Lorg/apache/kafka/common/security/authenticator/SaslClientAuthenticator$SaslState;)V
+       364: goto          412
+       367: aload_0
+       368: getstatic     #352                // Field org/apache/kafka/common/security/authenticator/SaslClientAuthenticator$SaslState.CLIENT_COMPLETE:Lorg/apache/kafka/common/security/authenticator/SaslClientAuthenticator$SaslState;
+       371: invokevirtual #139                // Method setSaslState:(Lorg/apache/kafka/common/security/authenticator/SaslClientAuthenticator$SaslState;)V
+       374: goto          412
+       377: aload_0
+       378: invokevirtual #337                // Method receiveToken:()[B
+       381: astore        6
+       383: aload         6
+       385: ifnull        412
+       388: aload_0
+       389: getstatic     #349                // Field org/apache/kafka/common/security/authenticator/SaslClientAuthenticator$SaslState.COMPLETE:Lorg/apache/kafka/common/security/authenticator/SaslClientAuthenticator$SaslState;
+       392: invokevirtual #139                // Method setSaslState:(Lorg/apache/kafka/common/security/authenticator/SaslClientAuthenticator$SaslState;)V
+       395: goto          412
+       398: goto          412
+       401: new           #354                // class java/lang/IllegalStateException
+       404: dup
+       405: ldc_w         #356                // String SASL handshake has already failed
+       408: invokespecial #359                // Method java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+       411: athrow
+       412: return
+
+  private void sendHandshakeRequest(short) throws java.io.IOException;
+    Code:
+         0: aload_0
+         1: iload_1
+         2: invokevirtual #372                // Method createSaslHandshakeRequest:(S)Lorg/apache/kafka/common/requests/SaslHandshakeRequest;
+         5: astore_2
+         6: aload_0
+         7: aload_2
+         8: aload_0
+         9: getstatic     #375                // Field org/apache/kafka/common/protocol/ApiKeys.SASL_HANDSHAKE:Lorg/apache/kafka/common/protocol/ApiKeys;
+        12: aload_2
+        13: invokevirtual #376                // Method org/apache/kafka/common/requests/SaslHandshakeRequest.version:()S
+        16: invokevirtual #269                // Method nextRequestHeader:(Lorg/apache/kafka/common/protocol/ApiKeys;S)Lorg/apache/kafka/common/requests/RequestHeader;
+        19: invokevirtual #377                // Method org/apache/kafka/common/requests/SaslHandshakeRequest.toSend:(Lorg/apache/kafka/common/requests/RequestHeader;)Lorg/apache/kafka/common/network/Send;
+        22: invokevirtual #277                // Method send:(Lorg/apache/kafka/common/network/Send;)V
+        25: return
+
+  private void sendInitialToken() throws java.io.IOException;
+    Code:
+         0: aload_0
+         1: iconst_0
+         2: newarray       byte
+         4: iconst_1
+         5: invokevirtual #341                // Method sendSaslClientToken:([BZ)Z
+         8: pop
+         9: return
+
+  public void reauthenticate(org.apache.kafka.common.network.ReauthenticationContext) throws java.io.IOException;
+    Code:
+         0: aload_1
+         1: invokestatic  #387                // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+         4: checkcast     #389                // class org/apache/kafka/common/network/ReauthenticationContext
+         7: invokevirtual #393                // Method org/apache/kafka/common/network/ReauthenticationContext.previousAuthenticator:()Lorg/apache/kafka/common/network/Authenticator;
+        10: checkcast     #2                  // class org/apache/kafka/common/security/authenticator/SaslClientAuthenticator
+        13: astore_2
+        14: aload_2
+        15: getfield      #132                // Field reauthInfo:Lorg/apache/kafka/common/security/authenticator/SaslClientAuthenticator$ReauthInfo;
+        18: invokevirtual #396                // Method org/apache/kafka/common/security/authenticator/SaslClientAuthenticator$ReauthInfo.apiVersionsResponse:()Lorg/apache/kafka/common/requests/ApiVersionsResponse;
+        21: astore_3
+        22: aload_2
+        23: invokevirtual #399                // Method close:()V
+        26: aload_0
+        27: getfield      #132                // Field reauthInfo:Lorg/apache/kafka/common/security/authenticator/SaslClientAuthenticator$ReauthInfo;
+        30: aload_3
+        31: aload_1
+        32: invokevirtual #403                // Method org/apache/kafka/common/network/ReauthenticationContext.reauthenticationBeginNanos:()J
+        35: invokevirtual #407                // Method org/apache/kafka/common/security/authenticator/SaslClientAuthenticator$ReauthInfo.reauthenticating:(Lorg/apache/kafka/common/requests/ApiVersionsResponse;J)V
+        38: aload_0
+        39: aload_1
+        40: invokevirtual #411                // Method org/apache/kafka/common/network/ReauthenticationContext.networkReceive:()Lorg/apache/kafka/common/network/NetworkReceive;
+        43: putfield      #413                // Field netInBuffer:Lorg/apache/kafka/common/network/NetworkReceive;
+        46: aload_0
+        47: getstatic     #416                // Field org/apache/kafka/common/security/authenticator/SaslClientAuthenticator$SaslState.REAUTH_PROCESS_ORIG_APIVERSIONS_RESPONSE:Lorg/apache/kafka/common/security/authenticator/SaslClientAuthenticator$SaslState;
+        50: invokevirtual #139                // Method setSaslState:(Lorg/apache/kafka/common/security/authenticator/SaslClientAuthenticator$SaslState;)V
+        53: aload_0
+        54: invokevirtual #418                // Method authenticate:()V
+        57: return
+
+  public java.util.Optional<org.apache.kafka.common.network.NetworkReceive> pollResponseReceivedDuringReauthentication();
+    Code:
+         0: aload_0
+         1: getfield      #132                // Field reauthInfo:Lorg/apache/kafka/common/security/authenticator/SaslClientAuthenticator$ReauthInfo;
+         4: invokevirtual #426                // Method org/apache/kafka/common/security/authenticator/SaslClientAuthenticator$ReauthInfo.pollResponseReceivedDuringReauthentication:()Ljava/util/Optional;
+         7: areturn
+
+  public java.lang.Long clientSessionReauthenticationTimeNanos();
+    Code:
+         0: aload_0
+         1: getfield      #132                // Field reauthInfo:Lorg/apache/kafka/common/security/authenticator/SaslClientAuthenticator$ReauthInfo;
+         4: getfield      #431                // Field org/apache/kafka/common/security/authenticator/SaslClientAuthenticator$ReauthInfo.clientSessionReauthenticationTimeNanos:Ljava/lang/Long;
+         7: areturn
+
+  public java.lang.Long reauthenticationLatencyMs();
+    Code:
+         0: aload_0
+         1: getfield      #132                // Field reauthInfo:Lorg/apache/kafka/common/security/authenticator/SaslClientAuthenticator$ReauthInfo;
+         4: invokevirtual #434                // Method org/apache/kafka/common/security/authenticator/SaslClientAuthenticator$ReauthInfo.reauthenticationLatencyMs:()Ljava/lang/Long;
+         7: areturn
+
+  int nextCorrelationId();
+    Code:
+         0: aload_0
+         1: getfield      #107                // Field correlationId:I
+         4: invokestatic  #437                // Method isReserved:(I)Z
+         7: ifne          16
+        10: aload_0
+        11: ldc           #48                 // int 2147483640
+        13: putfield      #107                // Field correlationId:I
+        16: aload_0
+        17: dup
+        18: getfield      #107                // Field correlationId:I
+        21: dup_x1
+        22: iconst_1
+        23: iadd
+        24: putfield      #107                // Field correlationId:I
+        27: ireturn
+
+  private org.apache.kafka.common.requests.RequestHeader nextRequestHeader(org.apache.kafka.common.protocol.ApiKeys, short);
+    Code:
+         0: aload_0
+         1: getfield      #111                // Field configs:Ljava/util/Map;
+         4: ldc_w         #439                // String client.id
+         7: invokeinterface #441,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+        12: checkcast     #143                // class java/lang/String
+        15: astore_3
+        16: aload_1
+        17: getfield      #444                // Field org/apache/kafka/common/protocol/ApiKeys.id:S
+        20: istore        4
+        22: aload_0
+        23: new           #446                // class org/apache/kafka/common/requests/RequestHeader
+        26: dup
+        27: new           #448                // class org/apache/kafka/common/message/RequestHeaderData
+        30: dup
+        31: invokespecial #449                // Method org/apache/kafka/common/message/RequestHeaderData."<init>":()V
+        34: iload         4
+        36: invokevirtual #453                // Method org/apache/kafka/common/message/RequestHeaderData.setRequestApiKey:(S)Lorg/apache/kafka/common/message/RequestHeaderData;
+        39: iload_2
+        40: invokevirtual #456                // Method org/apache/kafka/common/message/RequestHeaderData.setRequestApiVersion:(S)Lorg/apache/kafka/common/message/RequestHeaderData;
+        43: aload_3
+        44: invokevirtual #460                // Method org/apache/kafka/common/message/RequestHeaderData.setClientId:(Ljava/lang/String;)Lorg/apache/kafka/common/message/RequestHeaderData;
+        47: aload_0
+        48: invokevirtual #462                // Method nextCorrelationId:()I
+        51: invokevirtual #466                // Method org/apache/kafka/common/message/RequestHeaderData.setCorrelationId:(I)Lorg/apache/kafka/common/message/RequestHeaderData;
+        54: aload_1
+        55: iload_2
+        56: invokevirtual #470                // Method org/apache/kafka/common/protocol/ApiKeys.requestHeaderVersion:(S)S
+        59: invokespecial #473                // Method org/apache/kafka/common/requests/RequestHeader."<init>":(Lorg/apache/kafka/common/message/RequestHeaderData;S)V
+        62: putfield      #475                // Field currentRequestHeader:Lorg/apache/kafka/common/requests/RequestHeader;
+        65: aload_0
+        66: getfield      #475                // Field currentRequestHeader:Lorg/apache/kafka/common/requests/RequestHeader;
+        69: areturn
+
+  protected org.apache.kafka.common.requests.SaslHandshakeRequest createSaslHandshakeRequest(short);
+    Code:
+         0: new           #22                 // class org/apache/kafka/common/requests/SaslHandshakeRequest$Builder
+         3: dup
+         4: new           #480                // class org/apache/kafka/common/message/SaslHandshakeRequestData
+         7: dup
+         8: invokespecial #481                // Method org/apache/kafka/common/message/SaslHandshakeRequestData."<init>":()V
+        11: aload_0
+        12: getfield      #105                // Field mechanism:Ljava/lang/String;
+        15: invokevirtual #485                // Method org/apache/kafka/common/message/SaslHandshakeRequestData.setMechanism:(Ljava/lang/String;)Lorg/apache/kafka/common/message/SaslHandshakeRequestData;
+        18: invokespecial #488                // Method org/apache/kafka/common/requests/SaslHandshakeRequest$Builder."<init>":(Lorg/apache/kafka/common/message/SaslHandshakeRequestData;)V
+        21: iload_1
+        22: invokevirtual #490                // Method org/apache/kafka/common/requests/SaslHandshakeRequest$Builder.build:(S)Lorg/apache/kafka/common/requests/SaslHandshakeRequest;
+        25: areturn
+
+  protected void setSaslAuthenticateAndHandshakeVersions(org.apache.kafka.common.requests.ApiVersionsResponse);
+    Code:
+         0: aload_1
+         1: getstatic     #493                // Field org/apache/kafka/common/protocol/ApiKeys.SASL_AUTHENTICATE:Lorg/apache/kafka/common/protocol/ApiKeys;
+         4: getfield      #444                // Field org/apache/kafka/common/protocol/ApiKeys.id:S
+         7: invokevirtual #497                // Method org/apache/kafka/common/requests/ApiVersionsResponse.apiVersion:(S)Lorg/apache/kafka/common/message/ApiVersionsResponseData$ApiVersion;
+        10: astore_2
+        11: aload_2
+        12: ifnull        33
+        15: aload_0
+        16: aload_2
+        17: invokevirtual #500                // Method org/apache/kafka/common/message/ApiVersionsResponseData$ApiVersion.maxVersion:()S
+        20: getstatic     #493                // Field org/apache/kafka/common/protocol/ApiKeys.SASL_AUTHENTICATE:Lorg/apache/kafka/common/protocol/ApiKeys;
+        23: invokevirtual #503                // Method org/apache/kafka/common/protocol/ApiKeys.latestVersion:()S
+        26: invokestatic  #509                // Method java/lang/Math.min:(II)I
+        29: i2s
+        30: putfield      #113                // Field saslAuthenticateVersion:S
+        33: aload_1
+        34: getstatic     #375                // Field org/apache/kafka/common/protocol/ApiKeys.SASL_HANDSHAKE:Lorg/apache/kafka/common/protocol/ApiKeys;
+        37: getfield      #444                // Field org/apache/kafka/common/protocol/ApiKeys.id:S
+        40: invokevirtual #497                // Method org/apache/kafka/common/requests/ApiVersionsResponse.apiVersion:(S)Lorg/apache/kafka/common/message/ApiVersionsResponseData$ApiVersion;
+        43: astore_3
+        44: aload_3
+        45: ifnull        66
+        48: aload_0
+        49: aload_3
+        50: invokevirtual #500                // Method org/apache/kafka/common/message/ApiVersionsResponseData$ApiVersion.maxVersion:()S
+        53: getstatic     #375                // Field org/apache/kafka/common/protocol/ApiKeys.SASL_HANDSHAKE:Lorg/apache/kafka/common/protocol/ApiKeys;
+        56: invokevirtual #503                // Method org/apache/kafka/common/protocol/ApiKeys.latestVersion:()S
+        59: invokestatic  #509                // Method java/lang/Math.min:(II)I
+        62: i2s
+        63: putfield      #299                // Field saslHandshakeVersion:S
+        66: return
+
+  private void setSaslState(org.apache.kafka.common.security.authenticator.SaslClientAuthenticator$SaslState);
+    Code:
+         0: aload_0
+         1: getfield      #236                // Field netOutBuffer:Lorg/apache/kafka/common/network/Send;
+         4: ifnull        27
+         7: aload_0
+         8: getfield      #236                // Field netOutBuffer:Lorg/apache/kafka/common/network/Send;
+        11: invokeinterface #517,  1          // InterfaceMethod org/apache/kafka/common/network/Send.completed:()Z
+        16: ifne          27
+        19: aload_0
+        20: aload_1
+        21: putfield      #519                // Field pendingSaslState:Lorg/apache/kafka/common/security/authenticator/SaslClientAuthenticator$SaslState;
+        24: goto          106
+        27: aload_0
+        28: aconst_null
+        29: putfield      #519                // Field pendingSaslState:Lorg/apache/kafka/common/security/authenticator/SaslClientAuthenticator$SaslState;
+        32: aload_0
+        33: aload_1
+        34: putfield      #246                // Field saslState:Lorg/apache/kafka/common/security/authenticator/SaslClientAuthenticator$SaslState;
+        37: aload_0
+        38: getfield      #127                // Field log:Lorg/slf4j/Logger;
+        41: ldc_w         #521                // String Set SASL client state to {}
+        44: aload_1
+        45: invokeinterface #527,  3          // InterfaceMethod org/slf4j/Logger.debug:(Ljava/lang/String;Ljava/lang/Object;)V
+        50: aload_1
+        51: getstatic     #349                // Field org/apache/kafka/common/security/authenticator/SaslClientAuthenticator$SaslState.COMPLETE:Lorg/apache/kafka/common/security/authenticator/SaslClientAuthenticator$SaslState;
+        54: if_acmpne     106
+        57: aload_0
+        58: getfield      #132                // Field reauthInfo:Lorg/apache/kafka/common/security/authenticator/SaslClientAuthenticator$ReauthInfo;
+        61: aload_0
+        62: getfield      #115                // Field time:Lorg/apache/kafka/common/utils/Time;
+        65: invokeinterface #530,  1          // InterfaceMethod org/apache/kafka/common/utils/Time.nanoseconds:()J
+        70: invokevirtual #534                // Method org/apache/kafka/common/security/authenticator/SaslClientAuthenticator$ReauthInfo.setAuthenticationEndAndSessionReauthenticationTimes:(J)V
+        73: aload_0
+        74: getfield      #132                // Field reauthInfo:Lorg/apache/kafka/common/security/authenticator/SaslClientAuthenticator$ReauthInfo;
+        77: invokevirtual #536                // Method org/apache/kafka/common/security/authenticator/SaslClientAuthenticator$ReauthInfo.reauthenticating:()Z
+        80: ifne          96
+        83: aload_0
+        84: getfield      #109                // Field transportLayer:Lorg/apache/kafka/common/network/TransportLayer;
+        87: iconst_4
+        88: invokeinterface #540,  2          // InterfaceMethod org/apache/kafka/common/network/TransportLayer.removeInterestOps:(I)V
+        93: goto          106
+        96: aload_0
+        97: getfield      #109                // Field transportLayer:Lorg/apache/kafka/common/network/TransportLayer;
+       100: iconst_4
+       101: invokeinterface #543,  2          // InterfaceMethod org/apache/kafka/common/network/TransportLayer.addInterestOps:(I)V
+       106: return
+
+  private boolean sendSaslClientToken(byte[], boolean) throws java.io.IOException;
+    Code:
+         0: aload_0
+         1: getfield      #169                // Field saslClient:Ljavax/security/sasl/SaslClient;
+         4: invokeinterface #346,  1          // InterfaceMethod javax/security/sasl/SaslClient.isComplete:()Z
+         9: ifne          108
+        12: aload_0
+        13: aload_1
+        14: iload_2
+        15: invokevirtual #547                // Method createSaslToken:([BZ)[B
+        18: astore_3
+        19: aload_3
+        20: ifnull        108
+        23: aload_3
+        24: invokestatic  #553                // Method java/nio/ByteBuffer.wrap:([B)Ljava/nio/ByteBuffer;
+        27: astore        4
+        29: aload_0
+        30: getfield      #113                // Field saslAuthenticateVersion:S
+        33: iconst_m1
+        34: if_icmpne     47
+        37: aload         4
+        39: invokestatic  #559                // Method org/apache/kafka/common/network/ByteBufferSend.sizePrefixed:(Ljava/nio/ByteBuffer;)Lorg/apache/kafka/common/network/ByteBufferSend;
+        42: astore        5
+        44: goto          100
+        47: new           #561                // class org/apache/kafka/common/message/SaslAuthenticateRequestData
+        50: dup
+        51: invokespecial #562                // Method org/apache/kafka/common/message/SaslAuthenticateRequestData."<init>":()V
+        54: aload         4
+        56: invokevirtual #565                // Method java/nio/ByteBuffer.array:()[B
+        59: invokevirtual #569                // Method org/apache/kafka/common/message/SaslAuthenticateRequestData.setAuthBytes:([B)Lorg/apache/kafka/common/message/SaslAuthenticateRequestData;
+        62: astore        6
+        64: new           #31                 // class org/apache/kafka/common/requests/SaslAuthenticateRequest$Builder
+        67: dup
+        68: aload         6
+        70: invokespecial #572                // Method org/apache/kafka/common/requests/SaslAuthenticateRequest$Builder."<init>":(Lorg/apache/kafka/common/message/SaslAuthenticateRequestData;)V
+        73: aload_0
+        74: getfield      #113                // Field saslAuthenticateVersion:S
+        77: invokevirtual #575                // Method org/apache/kafka/common/requests/SaslAuthenticateRequest$Builder.build:(S)Lorg/apache/kafka/common/requests/SaslAuthenticateRequest;
+        80: astore        7
+        82: aload         7
+        84: aload_0
+        85: getstatic     #493                // Field org/apache/kafka/common/protocol/ApiKeys.SASL_AUTHENTICATE:Lorg/apache/kafka/common/protocol/ApiKeys;
+        88: aload_0
+        89: getfield      #113                // Field saslAuthenticateVersion:S
+        92: invokevirtual #269                // Method nextRequestHeader:(Lorg/apache/kafka/common/protocol/ApiKeys;S)Lorg/apache/kafka/common/requests/RequestHeader;
+        95: invokevirtual #576                // Method org/apache/kafka/common/requests/SaslAuthenticateRequest.toSend:(Lorg/apache/kafka/common/requests/RequestHeader;)Lorg/apache/kafka/common/network/Send;
+        98: astore        5
+       100: aload_0
+       101: aload         5
+       103: invokevirtual #277                // Method send:(Lorg/apache/kafka/common/network/Send;)V
+       106: iconst_1
+       107: ireturn
+       108: iconst_0
+       109: ireturn
+
+  private void send(org.apache.kafka.common.network.Send) throws java.io.IOException;
+    Code:
+         0: aload_0
+         1: aload_1
+         2: putfield      #236                // Field netOutBuffer:Lorg/apache/kafka/common/network/Send;
+         5: aload_0
+         6: invokevirtual #240                // Method flushNetOutBufferAndUpdateInterestOps:()Z
+         9: pop
+        10: goto          23
+        13: astore_2
+        14: aload_0
+        15: getstatic     #587                // Field org/apache/kafka/common/security/authenticator/SaslClientAuthenticator$SaslState.FAILED:Lorg/apache/kafka/common/security/authenticator/SaslClientAuthenticator$SaslState;
+        18: invokevirtual #139                // Method setSaslState:(Lorg/apache/kafka/common/security/authenticator/SaslClientAuthenticator$SaslState;)V
+        21: aload_2
+        22: athrow
+        23: return
+      Exception table:
+         from    to  target type
+             0    10    13   Class java/io/IOException
+
+  private boolean flushNetOutBufferAndUpdateInterestOps() throws java.io.IOException;
+    Code:
+         0: aload_0
+         1: invokevirtual #591                // Method flushNetOutBuffer:()Z
+         4: istore_1
+         5: iload_1
+         6: ifeq          37
+         9: aload_0
+        10: getfield      #109                // Field transportLayer:Lorg/apache/kafka/common/network/TransportLayer;
+        13: iconst_4
+        14: invokeinterface #540,  2          // InterfaceMethod org/apache/kafka/common/network/TransportLayer.removeInterestOps:(I)V
+        19: aload_0
+        20: getfield      #519                // Field pendingSaslState:Lorg/apache/kafka/common/security/authenticator/SaslClientAuthenticator$SaslState;
+        23: ifnull        47
+        26: aload_0
+        27: aload_0
+        28: getfield      #519                // Field pendingSaslState:Lorg/apache/kafka/common/security/authenticator/SaslClientAuthenticator$SaslState;
+        31: invokevirtual #139                // Method setSaslState:(Lorg/apache/kafka/common/security/authenticator/SaslClientAuthenticator$SaslState;)V
+        34: goto          47
+        37: aload_0
+        38: getfield      #109                // Field transportLayer:Lorg/apache/kafka/common/network/TransportLayer;
+        41: iconst_4
+        42: invokeinterface #543,  2          // InterfaceMethod org/apache/kafka/common/network/TransportLayer.addInterestOps:(I)V
+        47: iload_1
+        48: ireturn
+
+  private byte[] receiveResponseOrToken() throws java.io.IOException;
+    Code:
+         0: aload_0
+         1: getfield      #413                // Field netInBuffer:Lorg/apache/kafka/common/network/NetworkReceive;
+         4: ifnonnull     22
+         7: aload_0
+         8: new           #595                // class org/apache/kafka/common/network/NetworkReceive
+        11: dup
+        12: aload_0
+        13: getfield      #95                 // Field node:Ljava/lang/String;
+        16: invokespecial #596                // Method org/apache/kafka/common/network/NetworkReceive."<init>":(Ljava/lang/String;)V
+        19: putfield      #413                // Field netInBuffer:Lorg/apache/kafka/common/network/NetworkReceive;
+        22: aload_0
+        23: getfield      #413                // Field netInBuffer:Lorg/apache/kafka/common/network/NetworkReceive;
+        26: aload_0
+        27: getfield      #109                // Field transportLayer:Lorg/apache/kafka/common/network/TransportLayer;
+        30: invokevirtual #600                // Method org/apache/kafka/common/network/NetworkReceive.readFrom:(Ljava/nio/channels/ScatteringByteChannel;)J
+        33: pop2
+        34: aconst_null
+        35: astore_1
+        36: aload_0
+        37: getfield      #413                // Field netInBuffer:Lorg/apache/kafka/common/network/NetworkReceive;
+        40: invokevirtual #603                // Method org/apache/kafka/common/network/NetworkReceive.complete:()Z
+        43: ifeq          90
+        46: aload_0
+        47: getfield      #413                // Field netInBuffer:Lorg/apache/kafka/common/network/NetworkReceive;
+        50: invokevirtual #607                // Method org/apache/kafka/common/network/NetworkReceive.payload:()Ljava/nio/ByteBuffer;
+        53: invokevirtual #610                // Method java/nio/ByteBuffer.rewind:()Ljava/nio/ByteBuffer;
+        56: pop
+        57: aload_0
+        58: getfield      #413                // Field netInBuffer:Lorg/apache/kafka/common/network/NetworkReceive;
+        61: invokevirtual #607                // Method org/apache/kafka/common/network/NetworkReceive.payload:()Ljava/nio/ByteBuffer;
+        64: invokevirtual #613                // Method java/nio/ByteBuffer.remaining:()I
+        67: newarray       byte
+        69: astore_1
+        70: aload_0
+        71: getfield      #413                // Field netInBuffer:Lorg/apache/kafka/common/network/NetworkReceive;
+        74: invokevirtual #607                // Method org/apache/kafka/common/network/NetworkReceive.payload:()Ljava/nio/ByteBuffer;
+        77: aload_1
+        78: iconst_0
+        79: aload_1
+        80: arraylength
+        81: invokevirtual #616                // Method java/nio/ByteBuffer.get:([BII)Ljava/nio/ByteBuffer;
+        84: pop
+        85: aload_0
+        86: aconst_null
+        87: putfield      #413                // Field netInBuffer:Lorg/apache/kafka/common/network/NetworkReceive;
+        90: aload_1
+        91: areturn
+
+  public org.apache.kafka.common.security.auth.KafkaPrincipal principal();
+    Code:
+         0: new           #621                // class org/apache/kafka/common/security/auth/KafkaPrincipal
+         3: dup
+         4: ldc_w         #623                // String User
+         7: aload_0
+         8: getfield      #153                // Field clientPrincipalName:Ljava/lang/String;
+        11: invokespecial #626                // Method org/apache/kafka/common/security/auth/KafkaPrincipal."<init>":(Ljava/lang/String;Ljava/lang/String;)V
+        14: areturn
+
+  public java.util.Optional<org.apache.kafka.common.security.auth.KafkaPrincipalSerde> principalSerde();
+    Code:
+         0: invokestatic  #633                // Method java/util/Optional.empty:()Ljava/util/Optional;
+         3: areturn
+
+  public boolean complete();
+    Code:
+         0: aload_0
+         1: getfield      #246                // Field saslState:Lorg/apache/kafka/common/security/authenticator/SaslClientAuthenticator$SaslState;
+         4: getstatic     #349                // Field org/apache/kafka/common/security/authenticator/SaslClientAuthenticator$SaslState.COMPLETE:Lorg/apache/kafka/common/security/authenticator/SaslClientAuthenticator$SaslState;
+         7: if_acmpne     14
+        10: iconst_1
+        11: goto          15
+        14: iconst_0
+        15: ireturn
+
+  public void close() throws java.io.IOException;
+    Code:
+         0: aload_0
+         1: getfield      #169                // Field saslClient:Ljavax/security/sasl/SaslClient;
+         4: ifnull        16
+         7: aload_0
+         8: getfield      #169                // Field saslClient:Ljavax/security/sasl/SaslClient;
+        11: invokeinterface #636,  1          // InterfaceMethod javax/security/sasl/SaslClient.dispose:()V
+        16: return
+
+  private byte[] receiveToken() throws java.io.IOException;
+    Code:
+         0: aload_0
+         1: getfield      #113                // Field saslAuthenticateVersion:S
+         4: iconst_m1
+         5: if_icmpne     13
+         8: aload_0
+         9: invokevirtual #638                // Method receiveResponseOrToken:()[B
+        12: areturn
+        13: aload_0
+        14: invokevirtual #284                // Method receiveKafkaResponse:()Lorg/apache/kafka/common/requests/AbstractResponse;
+        17: checkcast     #640                // class org/apache/kafka/common/requests/SaslAuthenticateResponse
+        20: astore_1
+        21: aload_1
+        22: ifnull        96
+        25: aload_1
+        26: invokevirtual #644                // Method org/apache/kafka/common/requests/SaslAuthenticateResponse.error:()Lorg/apache/kafka/common/protocol/Errors;
+        29: astore_2
+        30: aload_2
+        31: getstatic     #650                // Field org/apache/kafka/common/protocol/Errors.NONE:Lorg/apache/kafka/common/protocol/Errors;
+        34: if_acmpeq     66
+        37: aload_0
+        38: getstatic     #587                // Field org/apache/kafka/common/security/authenticator/SaslClientAuthenticator$SaslState.FAILED:Lorg/apache/kafka/common/security/authenticator/SaslClientAuthenticator$SaslState;
+        41: invokevirtual #139                // Method setSaslState:(Lorg/apache/kafka/common/security/authenticator/SaslClientAuthenticator$SaslState;)V
+        44: aload_1
+        45: invokevirtual #654                // Method org/apache/kafka/common/requests/SaslAuthenticateResponse.errorMessage:()Ljava/lang/String;
+        48: astore_3
+        49: aload_3
+        50: ifnonnull     60
+        53: aload_2
+        54: invokevirtual #658                // Method org/apache/kafka/common/protocol/Errors.exception:()Lorg/apache/kafka/common/errors/ApiException;
+        57: goto          65
+        60: aload_2
+        61: aload_3
+        62: invokevirtual #661                // Method org/apache/kafka/common/protocol/Errors.exception:(Ljava/lang/String;)Lorg/apache/kafka/common/errors/ApiException;
+        65: athrow
+        66: aload_1
+        67: invokevirtual #666                // Method org/apache/kafka/common/requests/SaslAuthenticateResponse.sessionLifetimeMs:()J
+        70: lstore_3
+        71: lload_3
+        72: lconst_0
+        73: lcmp
+        74: ifle          88
+        77: aload_0
+        78: getfield      #132                // Field reauthInfo:Lorg/apache/kafka/common/security/authenticator/SaslClientAuthenticator$ReauthInfo;
+        81: lload_3
+        82: invokestatic  #672                // Method java/lang/Long.valueOf:(J)Ljava/lang/Long;
+        85: putfield      #675                // Field org/apache/kafka/common/security/authenticator/SaslClientAuthenticator$ReauthInfo.positiveSessionLifetimeMs:Ljava/lang/Long;
+        88: aload_1
+        89: invokevirtual #678                // Method org/apache/kafka/common/requests/SaslAuthenticateResponse.saslAuthBytes:()[B
+        92: invokestatic  #684                // Method org/apache/kafka/common/utils/Utils.copyArray:([B)[B
+        95: areturn
+        96: aconst_null
+        97: areturn
+
+  private byte[] createSaslToken(byte[], boolean) throws javax.security.sasl.SaslException;
+    Code:
+         0: aload_1
+         1: ifnonnull     15
+         4: new           #692                // class org/apache/kafka/common/errors/IllegalSaslStateException
+         7: dup
+         8: ldc_w         #694                // String Error authenticating with the Kafka Broker: received a `null` saslToken.
+        11: invokespecial #695                // Method org/apache/kafka/common/errors/IllegalSaslStateException."<init>":(Ljava/lang/String;)V
+        14: athrow
+        15: iload_2
+        16: ifeq          33
+        19: aload_0
+        20: getfield      #169                // Field saslClient:Ljavax/security/sasl/SaslClient;
+        23: invokeinterface #698,  1          // InterfaceMethod javax/security/sasl/SaslClient.hasInitialResponse:()Z
+        28: ifne          33
+        31: aload_1
+        32: areturn
+        33: invokestatic  #190                // InterfaceMethod org/apache/kafka/common/internals/SecurityManagerCompatibility.get:()Lorg/apache/kafka/common/internals/SecurityManagerCompatibility;
+        36: aload_0
+        37: getfield      #97                 // Field subject:Ljavax/security/auth/Subject;
+        40: aload_0
+        41: aload_1
+        42: invokedynamic #706,  0            // InvokeDynamic #2:call:(Lorg/apache/kafka/common/security/authenticator/SaslClientAuthenticator;[B)Ljava/util/concurrent/Callable;
+        47: invokeinterface #212,  3          // InterfaceMethod org/apache/kafka/common/internals/SecurityManagerCompatibility.callAs:(Ljavax/security/auth/Subject;Ljava/util/concurrent/Callable;)Ljava/lang/Object;
+        52: checkcast     #343                // class "[B"
+        55: areturn
+        56: astore_3
+        57: aload_3
+        58: invokestatic  #709                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+        61: invokedynamic #712,  0            // InvokeDynamic #3:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+        66: astore        4
+        68: aload_3
+        69: invokestatic  #718                // Method org/apache/kafka/common/security/kerberos/KerberosError.fromException:(Ljava/lang/Exception;)Lorg/apache/kafka/common/security/kerberos/KerberosError;
+        72: astore        5
+        74: aload         5
+        76: getstatic     #722                // Field org/apache/kafka/common/security/kerberos/KerberosError.SERVER_NOT_FOUND:Lorg/apache/kafka/common/security/kerberos/KerberosError;
+        79: if_acmpne     91
+        82: aload         4
+        84: invokedynamic #725,  0            // InvokeDynamic #4:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+        89: astore        4
+        91: aload_3
+        92: invokevirtual #230                // Method java/util/concurrent/CompletionException.getCause:()Ljava/lang/Throwable;
+        95: astore        6
+        97: aload         5
+        99: ifnull        110
+       102: aload         5
+       104: invokevirtual #728                // Method org/apache/kafka/common/security/kerberos/KerberosError.retriable:()Z
+       107: ifne          122
+       110: aload         5
+       112: ifnonnull     143
+       115: aload_3
+       116: invokestatic  #734                // Method org/apache/kafka/common/security/kerberos/KerberosError.isRetriableClientGssException:(Ljava/lang/Exception;)Z
+       119: ifeq          143
+       122: aload         4
+       124: invokedynamic #737,  0            // InvokeDynamic #5:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+       129: astore        4
+       131: new           #690                // class javax/security/sasl/SaslException
+       134: dup
+       135: aload         4
+       137: aload         6
+       139: invokespecial #738                // Method javax/security/sasl/SaslException."<init>":(Ljava/lang/String;Ljava/lang/Throwable;)V
+       142: athrow
+       143: aload         4
+       145: invokedynamic #741,  0            // InvokeDynamic #6:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+       150: astore        4
+       152: new           #171                // class org/apache/kafka/common/errors/SaslAuthenticationException
+       155: dup
+       156: aload         4
+       158: aload         6
+       160: invokespecial #176                // Method org/apache/kafka/common/errors/SaslAuthenticationException."<init>":(Ljava/lang/String;Ljava/lang/Throwable;)V
+       163: athrow
+      Exception table:
+         from    to  target type
+            15    32    56   Class java/util/concurrent/CompletionException
+            33    55    56   Class java/util/concurrent/CompletionException
+
+  private boolean flushNetOutBuffer() throws java.io.IOException;
+    Code:
+         0: aload_0
+         1: getfield      #236                // Field netOutBuffer:Lorg/apache/kafka/common/network/Send;
+         4: invokeinterface #517,  1          // InterfaceMethod org/apache/kafka/common/network/Send.completed:()Z
+         9: ifne          26
+        12: aload_0
+        13: getfield      #236                // Field netOutBuffer:Lorg/apache/kafka/common/network/Send;
+        16: aload_0
+        17: getfield      #109                // Field transportLayer:Lorg/apache/kafka/common/network/TransportLayer;
+        20: invokeinterface #748,  2          // InterfaceMethod org/apache/kafka/common/network/Send.writeTo:(Lorg/apache/kafka/common/network/TransferableChannel;)J
+        25: pop2
+        26: aload_0
+        27: getfield      #236                // Field netOutBuffer:Lorg/apache/kafka/common/network/Send;
+        30: invokeinterface #517,  1          // InterfaceMethod org/apache/kafka/common/network/Send.completed:()Z
+        35: ireturn
+
+  private org.apache.kafka.common.requests.AbstractResponse receiveKafkaResponse() throws java.io.IOException;
+    Code:
+         0: aload_0
+         1: getfield      #413                // Field netInBuffer:Lorg/apache/kafka/common/network/NetworkReceive;
+         4: ifnonnull     22
+         7: aload_0
+         8: new           #595                // class org/apache/kafka/common/network/NetworkReceive
+        11: dup
+        12: aload_0
+        13: getfield      #95                 // Field node:Ljava/lang/String;
+        16: invokespecial #596                // Method org/apache/kafka/common/network/NetworkReceive."<init>":(Ljava/lang/String;)V
+        19: putfield      #413                // Field netInBuffer:Lorg/apache/kafka/common/network/NetworkReceive;
+        22: aload_0
+        23: getfield      #413                // Field netInBuffer:Lorg/apache/kafka/common/network/NetworkReceive;
+        26: astore_1
+        27: aload_0
+        28: invokevirtual #638                // Method receiveResponseOrToken:()[B
+        31: astore_2
+        32: aload_2
+        33: ifnonnull     38
+        36: aconst_null
+        37: areturn
+        38: aload_2
+        39: invokestatic  #553                // Method java/nio/ByteBuffer.wrap:([B)Ljava/nio/ByteBuffer;
+        42: aload_0
+        43: getfield      #475                // Field currentRequestHeader:Lorg/apache/kafka/common/requests/RequestHeader;
+        46: invokestatic  #760                // Method org/apache/kafka/clients/NetworkClient.parseResponse:(Ljava/nio/ByteBuffer;Lorg/apache/kafka/common/requests/RequestHeader;)Lorg/apache/kafka/common/requests/AbstractResponse;
+        49: astore_3
+        50: aload_0
+        51: aconst_null
+        52: putfield      #475                // Field currentRequestHeader:Lorg/apache/kafka/common/requests/RequestHeader;
+        55: aload_3
+        56: areturn
+        57: astore_2
+        58: aload_0
+        59: getfield      #132                // Field reauthInfo:Lorg/apache/kafka/common/security/authenticator/SaslClientAuthenticator$ReauthInfo;
+        62: invokevirtual #536                // Method org/apache/kafka/common/security/authenticator/SaslClientAuthenticator$ReauthInfo.reauthenticating:()Z
+        65: ifeq          92
+        68: aload_1
+        69: invokevirtual #607                // Method org/apache/kafka/common/network/NetworkReceive.payload:()Ljava/nio/ByteBuffer;
+        72: invokevirtual #610                // Method java/nio/ByteBuffer.rewind:()Ljava/nio/ByteBuffer;
+        75: pop
+        76: aload_0
+        77: getfield      #132                // Field reauthInfo:Lorg/apache/kafka/common/security/authenticator/SaslClientAuthenticator$ReauthInfo;
+        80: getfield      #766                // Field org/apache/kafka/common/security/authenticator/SaslClientAuthenticator$ReauthInfo.pendingAuthenticatedReceives:Ljava/util/List;
+        83: aload_1
+        84: invokeinterface #771,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+        89: pop
+        90: aconst_null
+        91: areturn
+        92: aload_0
+        93: getfield      #127                // Field log:Lorg/slf4j/Logger;
+        96: ldc_w         #773                // String Invalid SASL mechanism response, server may be expecting only GSSAPI tokens
+        99: invokeinterface #775,  2          // InterfaceMethod org/slf4j/Logger.debug:(Ljava/lang/String;)V
+       104: aload_0
+       105: getstatic     #587                // Field org/apache/kafka/common/security/authenticator/SaslClientAuthenticator$SaslState.FAILED:Lorg/apache/kafka/common/security/authenticator/SaslClientAuthenticator$SaslState;
+       108: invokevirtual #139                // Method setSaslState:(Lorg/apache/kafka/common/security/authenticator/SaslClientAuthenticator$SaslState;)V
+       111: new           #692                // class org/apache/kafka/common/errors/IllegalSaslStateException
+       114: dup
+       115: ldc_w         #777                // String Invalid SASL mechanism response, server may be expecting a different protocol
+       118: aload_2
+       119: invokespecial #778                // Method org/apache/kafka/common/errors/IllegalSaslStateException."<init>":(Ljava/lang/String;Ljava/lang/Throwable;)V
+       122: athrow
+      Exception table:
+         from    to  target type
+            27    37    57   Class java/nio/BufferUnderflowException
+            27    37    57   Class org/apache/kafka/common/protocol/types/SchemaException
+            27    37    57   Class java/lang/IllegalArgumentException
+            38    56    57   Class java/nio/BufferUnderflowException
+            38    56    57   Class org/apache/kafka/common/protocol/types/SchemaException
+            38    56    57   Class java/lang/IllegalArgumentException
+
+  private void handleSaslHandshakeResponse(org.apache.kafka.common.requests.SaslHandshakeResponse);
+    Code:
+         0: aload_1
+         1: invokevirtual #783                // Method org/apache/kafka/common/requests/SaslHandshakeResponse.error:()Lorg/apache/kafka/common/protocol/Errors;
+         4: astore_2
+         5: aload_2
+         6: getstatic     #650                // Field org/apache/kafka/common/protocol/Errors.NONE:Lorg/apache/kafka/common/protocol/Errors;
+         9: if_acmpeq     19
+        12: aload_0
+        13: getstatic     #587                // Field org/apache/kafka/common/security/authenticator/SaslClientAuthenticator$SaslState.FAILED:Lorg/apache/kafka/common/security/authenticator/SaslClientAuthenticator$SaslState;
+        16: invokevirtual #139                // Method setSaslState:(Lorg/apache/kafka/common/security/authenticator/SaslClientAuthenticator$SaslState;)V
+        19: getstatic     #786                // Field org/apache/kafka/common/security/authenticator/SaslClientAuthenticator$1.$SwitchMap$org$apache$kafka$common$protocol$Errors:[I
+        22: aload_2
+        23: invokevirtual #787                // Method org/apache/kafka/common/protocol/Errors.ordinal:()I
+        26: iaload
+        27: tableswitch   { // 1 to 3
+                       1: 52
+                       2: 55
+                       3: 87
+                 default: 119
+            }
+        52: goto          158
+        55: new           #789                // class org/apache/kafka/common/errors/UnsupportedSaslMechanismException
+        58: dup
+        59: ldc_w         #791                // String Client SASL mechanism \'%s\' not enabled in the server, enabled mechanisms are %s
+        62: iconst_2
+        63: anewarray     #4                  // class java/lang/Object
+        66: dup
+        67: iconst_0
+        68: aload_0
+        69: getfield      #105                // Field mechanism:Ljava/lang/String;
+        72: aastore
+        73: dup
+        74: iconst_1
+        75: aload_1
+        76: invokevirtual #795                // Method org/apache/kafka/common/requests/SaslHandshakeResponse.enabledMechanisms:()Ljava/util/List;
+        79: aastore
+        80: invokestatic  #799                // Method java/lang/String.format:(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+        83: invokespecial #800                // Method org/apache/kafka/common/errors/UnsupportedSaslMechanismException."<init>":(Ljava/lang/String;)V
+        86: athrow
+        87: new           #692                // class org/apache/kafka/common/errors/IllegalSaslStateException
+        90: dup
+        91: ldc_w         #802                // String Unexpected handshake request with client mechanism %s, enabled mechanisms are %s
+        94: iconst_2
+        95: anewarray     #4                  // class java/lang/Object
+        98: dup
+        99: iconst_0
+       100: aload_0
+       101: getfield      #105                // Field mechanism:Ljava/lang/String;
+       104: aastore
+       105: dup
+       106: iconst_1
+       107: aload_1
+       108: invokevirtual #795                // Method org/apache/kafka/common/requests/SaslHandshakeResponse.enabledMechanisms:()Ljava/util/List;
+       111: aastore
+       112: invokestatic  #799                // Method java/lang/String.format:(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+       115: invokespecial #695                // Method org/apache/kafka/common/errors/IllegalSaslStateException."<init>":(Ljava/lang/String;)V
+       118: athrow
+       119: new           #692                // class org/apache/kafka/common/errors/IllegalSaslStateException
+       122: dup
+       123: ldc_w         #804                // String Unknown error code %s, client mechanism is %s, enabled mechanisms are %s
+       126: iconst_3
+       127: anewarray     #4                  // class java/lang/Object
+       130: dup
+       131: iconst_0
+       132: aload_1
+       133: invokevirtual #783                // Method org/apache/kafka/common/requests/SaslHandshakeResponse.error:()Lorg/apache/kafka/common/protocol/Errors;
+       136: aastore
+       137: dup
+       138: iconst_1
+       139: aload_0
+       140: getfield      #105                // Field mechanism:Ljava/lang/String;
+       143: aastore
+       144: dup
+       145: iconst_2
+       146: aload_1
+       147: invokevirtual #795                // Method org/apache/kafka/common/requests/SaslHandshakeResponse.enabledMechanisms:()Ljava/util/List;
+       150: aastore
+       151: invokestatic  #799                // Method java/lang/String.format:(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+       154: invokespecial #695                // Method org/apache/kafka/common/errors/IllegalSaslStateException."<init>":(Ljava/lang/String;)V
+       157: athrow
+       158: return
+
+  public static java.lang.String firstPrincipal(javax.security.auth.Subject);
+    Code:
+         0: aload_0
+         1: invokevirtual #808                // Method javax/security/auth/Subject.getPrincipals:()Ljava/util/Set;
+         4: astore_1
+         5: aload_1
+         6: dup
+         7: astore_2
+         8: monitorenter
+         9: aload_1
+        10: invokeinterface #814,  1          // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+        15: astore_3
+        16: aload_3
+        17: invokeinterface #819,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+        22: ifeq          42
+        25: aload_3
+        26: invokeinterface #822,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        31: checkcast     #824                // class java/security/Principal
+        34: invokeinterface #827,  1          // InterfaceMethod java/security/Principal.getName:()Ljava/lang/String;
+        39: aload_2
+        40: monitorexit
+        41: areturn
+        42: new           #829                // class org/apache/kafka/common/KafkaException
+        45: dup
+        46: ldc_w         #831                // String Principal could not be determined from Subject, this may be a transient failure due to Kerberos re-login
+        49: invokespecial #832                // Method org/apache/kafka/common/KafkaException."<init>":(Ljava/lang/String;)V
+        52: athrow
+        53: astore        4
+        55: aload_2
+        56: monitorexit
+        57: aload         4
+        59: athrow
+      Exception table:
+         from    to  target type
+             9    41    53   any
+            42    57    53   any
+
+  private byte[] lambda$createSaslToken$1(byte[]) throws java.lang.Exception;
+    Code:
+         0: aload_0
+         1: getfield      #169                // Field saslClient:Ljavax/security/sasl/SaslClient;
+         4: aload_1
+         5: invokeinterface #840,  2          // InterfaceMethod javax/security/sasl/SaslClient.evaluateChallenge:([B)[B
+        10: areturn
+
+  private javax.security.sasl.SaslClient lambda$createSaslClient$0() throws java.lang.Exception;
+    Code:
+         0: iconst_1
+         1: anewarray     #143                // class java/lang/String
+         4: dup
+         5: iconst_0
+         6: aload_0
+         7: getfield      #105                // Field mechanism:Ljava/lang/String;
+        10: aastore
+        11: astore_1
+        12: aload_0
+        13: getfield      #127                // Field log:Lorg/slf4j/Logger;
+        16: ldc_w         #842                // String Creating SaslClient: client={};service={};serviceHostname={};mechs={}
+        19: iconst_4
+        20: anewarray     #4                  // class java/lang/Object
+        23: dup
+        24: iconst_0
+        25: aload_0
+        26: getfield      #153                // Field clientPrincipalName:Ljava/lang/String;
+        29: aastore
+        30: dup
+        31: iconst_1
+        32: aload_0
+        33: getfield      #103                // Field servicePrincipal:Ljava/lang/String;
+        36: aastore
+        37: dup
+        38: iconst_2
+        39: aload_0
+        40: getfield      #101                // Field host:Ljava/lang/String;
+        43: aastore
+        44: dup
+        45: iconst_3
+        46: aload_1
+        47: invokestatic  #848                // Method java/util/Arrays.toString:([Ljava/lang/Object;)Ljava/lang/String;
+        50: aastore
+        51: invokeinterface #851,  3          // InterfaceMethod org/slf4j/Logger.debug:(Ljava/lang/String;[Ljava/lang/Object;)V
+        56: aload_1
+        57: aload_0
+        58: getfield      #153                // Field clientPrincipalName:Ljava/lang/String;
+        61: aload_0
+        62: getfield      #103                // Field servicePrincipal:Ljava/lang/String;
+        65: aload_0
+        66: getfield      #101                // Field host:Ljava/lang/String;
+        69: aload_0
+        70: getfield      #111                // Field configs:Ljava/util/Map;
+        73: aload_0
+        74: getfield      #99                 // Field callbackHandler:Lorg/apache/kafka/common/security/auth/AuthenticateCallbackHandler;
+        77: invokestatic  #856                // Method javax/security/sasl/Sasl.createSaslClient:([Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Ljavax/security/auth/callback/CallbackHandler;)Ljavax/security/sasl/SaslClient;
+        80: astore_2
+        81: aload_2
+        82: ifnonnull     102
+        85: new           #171                // class org/apache/kafka/common/errors/SaslAuthenticationException
+        88: dup
+        89: aload_0
+        90: getfield      #105                // Field mechanism:Ljava/lang/String;
+        93: invokedynamic #226,  0            // InvokeDynamic #1:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+        98: invokespecial #857                // Method org/apache/kafka/common/errors/SaslAuthenticationException."<init>":(Ljava/lang/String;)V
+       101: athrow
+       102: aload_2
+       103: areturn
+
+  static {};
+    Code:
+         0: new           #864                // class java/util/Random
+         3: dup
+         4: invokespecial #865                // Method java/util/Random."<init>":()V
+         7: putstatic     #867                // Field RNG:Ljava/util/Random;
+        10: return
+}

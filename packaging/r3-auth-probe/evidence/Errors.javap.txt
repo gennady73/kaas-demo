@@ -1,0 +1,2408 @@
+Compiled from "Errors.java"
+public final class org.apache.kafka.common.protocol.Errors extends java.lang.Enum<org.apache.kafka.common.protocol.Errors> {
+  public static final org.apache.kafka.common.protocol.Errors UNKNOWN_SERVER_ERROR;
+
+  public static final org.apache.kafka.common.protocol.Errors NONE;
+
+  public static final org.apache.kafka.common.protocol.Errors OFFSET_OUT_OF_RANGE;
+
+  public static final org.apache.kafka.common.protocol.Errors CORRUPT_MESSAGE;
+
+  public static final org.apache.kafka.common.protocol.Errors UNKNOWN_TOPIC_OR_PARTITION;
+
+  public static final org.apache.kafka.common.protocol.Errors INVALID_FETCH_SIZE;
+
+  public static final org.apache.kafka.common.protocol.Errors LEADER_NOT_AVAILABLE;
+
+  public static final org.apache.kafka.common.protocol.Errors NOT_LEADER_OR_FOLLOWER;
+
+  public static final org.apache.kafka.common.protocol.Errors REQUEST_TIMED_OUT;
+
+  public static final org.apache.kafka.common.protocol.Errors BROKER_NOT_AVAILABLE;
+
+  public static final org.apache.kafka.common.protocol.Errors REPLICA_NOT_AVAILABLE;
+
+  public static final org.apache.kafka.common.protocol.Errors MESSAGE_TOO_LARGE;
+
+  public static final org.apache.kafka.common.protocol.Errors STALE_CONTROLLER_EPOCH;
+
+  public static final org.apache.kafka.common.protocol.Errors OFFSET_METADATA_TOO_LARGE;
+
+  public static final org.apache.kafka.common.protocol.Errors NETWORK_EXCEPTION;
+
+  public static final org.apache.kafka.common.protocol.Errors COORDINATOR_LOAD_IN_PROGRESS;
+
+  public static final org.apache.kafka.common.protocol.Errors COORDINATOR_NOT_AVAILABLE;
+
+  public static final org.apache.kafka.common.protocol.Errors NOT_COORDINATOR;
+
+  public static final org.apache.kafka.common.protocol.Errors INVALID_TOPIC_EXCEPTION;
+
+  public static final org.apache.kafka.common.protocol.Errors RECORD_LIST_TOO_LARGE;
+
+  public static final org.apache.kafka.common.protocol.Errors NOT_ENOUGH_REPLICAS;
+
+  public static final org.apache.kafka.common.protocol.Errors NOT_ENOUGH_REPLICAS_AFTER_APPEND;
+
+  public static final org.apache.kafka.common.protocol.Errors INVALID_REQUIRED_ACKS;
+
+  public static final org.apache.kafka.common.protocol.Errors ILLEGAL_GENERATION;
+
+  public static final org.apache.kafka.common.protocol.Errors INCONSISTENT_GROUP_PROTOCOL;
+
+  public static final org.apache.kafka.common.protocol.Errors INVALID_GROUP_ID;
+
+  public static final org.apache.kafka.common.protocol.Errors UNKNOWN_MEMBER_ID;
+
+  public static final org.apache.kafka.common.protocol.Errors INVALID_SESSION_TIMEOUT;
+
+  public static final org.apache.kafka.common.protocol.Errors REBALANCE_IN_PROGRESS;
+
+  public static final org.apache.kafka.common.protocol.Errors INVALID_COMMIT_OFFSET_SIZE;
+
+  public static final org.apache.kafka.common.protocol.Errors TOPIC_AUTHORIZATION_FAILED;
+
+  public static final org.apache.kafka.common.protocol.Errors GROUP_AUTHORIZATION_FAILED;
+
+  public static final org.apache.kafka.common.protocol.Errors CLUSTER_AUTHORIZATION_FAILED;
+
+  public static final org.apache.kafka.common.protocol.Errors INVALID_TIMESTAMP;
+
+  public static final org.apache.kafka.common.protocol.Errors UNSUPPORTED_SASL_MECHANISM;
+
+  public static final org.apache.kafka.common.protocol.Errors ILLEGAL_SASL_STATE;
+
+  public static final org.apache.kafka.common.protocol.Errors UNSUPPORTED_VERSION;
+
+  public static final org.apache.kafka.common.protocol.Errors TOPIC_ALREADY_EXISTS;
+
+  public static final org.apache.kafka.common.protocol.Errors INVALID_PARTITIONS;
+
+  public static final org.apache.kafka.common.protocol.Errors INVALID_REPLICATION_FACTOR;
+
+  public static final org.apache.kafka.common.protocol.Errors INVALID_REPLICA_ASSIGNMENT;
+
+  public static final org.apache.kafka.common.protocol.Errors INVALID_CONFIG;
+
+  public static final org.apache.kafka.common.protocol.Errors NOT_CONTROLLER;
+
+  public static final org.apache.kafka.common.protocol.Errors INVALID_REQUEST;
+
+  public static final org.apache.kafka.common.protocol.Errors UNSUPPORTED_FOR_MESSAGE_FORMAT;
+
+  public static final org.apache.kafka.common.protocol.Errors POLICY_VIOLATION;
+
+  public static final org.apache.kafka.common.protocol.Errors OUT_OF_ORDER_SEQUENCE_NUMBER;
+
+  public static final org.apache.kafka.common.protocol.Errors DUPLICATE_SEQUENCE_NUMBER;
+
+  public static final org.apache.kafka.common.protocol.Errors INVALID_PRODUCER_EPOCH;
+
+  public static final org.apache.kafka.common.protocol.Errors INVALID_TXN_STATE;
+
+  public static final org.apache.kafka.common.protocol.Errors INVALID_PRODUCER_ID_MAPPING;
+
+  public static final org.apache.kafka.common.protocol.Errors INVALID_TRANSACTION_TIMEOUT;
+
+  public static final org.apache.kafka.common.protocol.Errors CONCURRENT_TRANSACTIONS;
+
+  public static final org.apache.kafka.common.protocol.Errors TRANSACTION_COORDINATOR_FENCED;
+
+  public static final org.apache.kafka.common.protocol.Errors TRANSACTIONAL_ID_AUTHORIZATION_FAILED;
+
+  public static final org.apache.kafka.common.protocol.Errors SECURITY_DISABLED;
+
+  public static final org.apache.kafka.common.protocol.Errors OPERATION_NOT_ATTEMPTED;
+
+  public static final org.apache.kafka.common.protocol.Errors KAFKA_STORAGE_ERROR;
+
+  public static final org.apache.kafka.common.protocol.Errors LOG_DIR_NOT_FOUND;
+
+  public static final org.apache.kafka.common.protocol.Errors SASL_AUTHENTICATION_FAILED;
+
+  public static final org.apache.kafka.common.protocol.Errors UNKNOWN_PRODUCER_ID;
+
+  public static final org.apache.kafka.common.protocol.Errors REASSIGNMENT_IN_PROGRESS;
+
+  public static final org.apache.kafka.common.protocol.Errors DELEGATION_TOKEN_AUTH_DISABLED;
+
+  public static final org.apache.kafka.common.protocol.Errors DELEGATION_TOKEN_NOT_FOUND;
+
+  public static final org.apache.kafka.common.protocol.Errors DELEGATION_TOKEN_OWNER_MISMATCH;
+
+  public static final org.apache.kafka.common.protocol.Errors DELEGATION_TOKEN_REQUEST_NOT_ALLOWED;
+
+  public static final org.apache.kafka.common.protocol.Errors DELEGATION_TOKEN_AUTHORIZATION_FAILED;
+
+  public static final org.apache.kafka.common.protocol.Errors DELEGATION_TOKEN_EXPIRED;
+
+  public static final org.apache.kafka.common.protocol.Errors INVALID_PRINCIPAL_TYPE;
+
+  public static final org.apache.kafka.common.protocol.Errors NON_EMPTY_GROUP;
+
+  public static final org.apache.kafka.common.protocol.Errors GROUP_ID_NOT_FOUND;
+
+  public static final org.apache.kafka.common.protocol.Errors FETCH_SESSION_ID_NOT_FOUND;
+
+  public static final org.apache.kafka.common.protocol.Errors INVALID_FETCH_SESSION_EPOCH;
+
+  public static final org.apache.kafka.common.protocol.Errors LISTENER_NOT_FOUND;
+
+  public static final org.apache.kafka.common.protocol.Errors TOPIC_DELETION_DISABLED;
+
+  public static final org.apache.kafka.common.protocol.Errors FENCED_LEADER_EPOCH;
+
+  public static final org.apache.kafka.common.protocol.Errors UNKNOWN_LEADER_EPOCH;
+
+  public static final org.apache.kafka.common.protocol.Errors UNSUPPORTED_COMPRESSION_TYPE;
+
+  public static final org.apache.kafka.common.protocol.Errors STALE_BROKER_EPOCH;
+
+  public static final org.apache.kafka.common.protocol.Errors OFFSET_NOT_AVAILABLE;
+
+  public static final org.apache.kafka.common.protocol.Errors MEMBER_ID_REQUIRED;
+
+  public static final org.apache.kafka.common.protocol.Errors PREFERRED_LEADER_NOT_AVAILABLE;
+
+  public static final org.apache.kafka.common.protocol.Errors GROUP_MAX_SIZE_REACHED;
+
+  public static final org.apache.kafka.common.protocol.Errors FENCED_INSTANCE_ID;
+
+  public static final org.apache.kafka.common.protocol.Errors ELIGIBLE_LEADERS_NOT_AVAILABLE;
+
+  public static final org.apache.kafka.common.protocol.Errors ELECTION_NOT_NEEDED;
+
+  public static final org.apache.kafka.common.protocol.Errors NO_REASSIGNMENT_IN_PROGRESS;
+
+  public static final org.apache.kafka.common.protocol.Errors GROUP_SUBSCRIBED_TO_TOPIC;
+
+  public static final org.apache.kafka.common.protocol.Errors INVALID_RECORD;
+
+  public static final org.apache.kafka.common.protocol.Errors UNSTABLE_OFFSET_COMMIT;
+
+  public static final org.apache.kafka.common.protocol.Errors THROTTLING_QUOTA_EXCEEDED;
+
+  public static final org.apache.kafka.common.protocol.Errors PRODUCER_FENCED;
+
+  public static final org.apache.kafka.common.protocol.Errors RESOURCE_NOT_FOUND;
+
+  public static final org.apache.kafka.common.protocol.Errors DUPLICATE_RESOURCE;
+
+  public static final org.apache.kafka.common.protocol.Errors UNACCEPTABLE_CREDENTIAL;
+
+  public static final org.apache.kafka.common.protocol.Errors INCONSISTENT_VOTER_SET;
+
+  public static final org.apache.kafka.common.protocol.Errors INVALID_UPDATE_VERSION;
+
+  public static final org.apache.kafka.common.protocol.Errors FEATURE_UPDATE_FAILED;
+
+  public static final org.apache.kafka.common.protocol.Errors PRINCIPAL_DESERIALIZATION_FAILURE;
+
+  public static final org.apache.kafka.common.protocol.Errors SNAPSHOT_NOT_FOUND;
+
+  public static final org.apache.kafka.common.protocol.Errors POSITION_OUT_OF_RANGE;
+
+  public static final org.apache.kafka.common.protocol.Errors UNKNOWN_TOPIC_ID;
+
+  public static final org.apache.kafka.common.protocol.Errors DUPLICATE_BROKER_REGISTRATION;
+
+  public static final org.apache.kafka.common.protocol.Errors BROKER_ID_NOT_REGISTERED;
+
+  public static final org.apache.kafka.common.protocol.Errors INCONSISTENT_TOPIC_ID;
+
+  public static final org.apache.kafka.common.protocol.Errors INCONSISTENT_CLUSTER_ID;
+
+  public static final org.apache.kafka.common.protocol.Errors TRANSACTIONAL_ID_NOT_FOUND;
+
+  public static final org.apache.kafka.common.protocol.Errors FETCH_SESSION_TOPIC_ID_ERROR;
+
+  public static final org.apache.kafka.common.protocol.Errors INELIGIBLE_REPLICA;
+
+  public static final org.apache.kafka.common.protocol.Errors NEW_LEADER_ELECTED;
+
+  public static final org.apache.kafka.common.protocol.Errors OFFSET_MOVED_TO_TIERED_STORAGE;
+
+  public static final org.apache.kafka.common.protocol.Errors FENCED_MEMBER_EPOCH;
+
+  public static final org.apache.kafka.common.protocol.Errors UNRELEASED_INSTANCE_ID;
+
+  public static final org.apache.kafka.common.protocol.Errors UNSUPPORTED_ASSIGNOR;
+
+  public static final org.apache.kafka.common.protocol.Errors STALE_MEMBER_EPOCH;
+
+  public static final org.apache.kafka.common.protocol.Errors MISMATCHED_ENDPOINT_TYPE;
+
+  public static final org.apache.kafka.common.protocol.Errors UNSUPPORTED_ENDPOINT_TYPE;
+
+  public static final org.apache.kafka.common.protocol.Errors UNKNOWN_CONTROLLER_ID;
+
+  public static final org.apache.kafka.common.protocol.Errors UNKNOWN_SUBSCRIPTION_ID;
+
+  public static final org.apache.kafka.common.protocol.Errors TELEMETRY_TOO_LARGE;
+
+  public static final org.apache.kafka.common.protocol.Errors INVALID_REGISTRATION;
+
+  public static final org.apache.kafka.common.protocol.Errors TRANSACTION_ABORTABLE;
+
+  public static final org.apache.kafka.common.protocol.Errors INVALID_RECORD_STATE;
+
+  public static final org.apache.kafka.common.protocol.Errors SHARE_SESSION_NOT_FOUND;
+
+  public static final org.apache.kafka.common.protocol.Errors INVALID_SHARE_SESSION_EPOCH;
+
+  public static final org.apache.kafka.common.protocol.Errors FENCED_STATE_EPOCH;
+
+  public static final org.apache.kafka.common.protocol.Errors INVALID_VOTER_KEY;
+
+  public static final org.apache.kafka.common.protocol.Errors DUPLICATE_VOTER;
+
+  public static final org.apache.kafka.common.protocol.Errors VOTER_NOT_FOUND;
+
+  public static final org.apache.kafka.common.protocol.Errors INVALID_REGULAR_EXPRESSION;
+
+  public static final org.apache.kafka.common.protocol.Errors REBOOTSTRAP_REQUIRED;
+
+  public static final org.apache.kafka.common.protocol.Errors STREAMS_INVALID_TOPOLOGY;
+
+  public static final org.apache.kafka.common.protocol.Errors STREAMS_INVALID_TOPOLOGY_EPOCH;
+
+  public static final org.apache.kafka.common.protocol.Errors STREAMS_TOPOLOGY_FENCED;
+
+  public static final org.apache.kafka.common.protocol.Errors SHARE_SESSION_LIMIT_REACHED;
+
+  private static final org.slf4j.Logger log;
+
+  private static final java.util.Map<java.lang.Class<?>, org.apache.kafka.common.protocol.Errors> CLASS_TO_ERROR;
+
+  private static final java.util.Map<java.lang.Short, org.apache.kafka.common.protocol.Errors> CODE_TO_ERROR;
+
+  private final short code;
+
+  private final java.util.function.Function<java.lang.String, org.apache.kafka.common.errors.ApiException> builder;
+
+  private final org.apache.kafka.common.errors.ApiException exception;
+
+  private static final org.apache.kafka.common.protocol.Errors[] $VALUES;
+
+  public static org.apache.kafka.common.protocol.Errors[] values();
+    Code:
+         0: getstatic     #167                // Field $VALUES:[Lorg/apache/kafka/common/protocol/Errors;
+         3: invokevirtual #172                // Method "[Lorg/apache/kafka/common/protocol/Errors;".clone:()Ljava/lang/Object;
+         6: checkcast     #168                // class "[Lorg/apache/kafka/common/protocol/Errors;"
+         9: areturn
+
+  public static org.apache.kafka.common.protocol.Errors valueOf(java.lang.String);
+    Code:
+         0: ldc           #2                  // class org/apache/kafka/common/protocol/Errors
+         2: aload_0
+         3: invokestatic  #177                // Method java/lang/Enum.valueOf:(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Enum;
+         6: checkcast     #2                  // class org/apache/kafka/common/protocol/Errors
+         9: areturn
+
+  private org.apache.kafka.common.protocol.Errors(int, java.lang.String, java.util.function.Function<java.lang.String, org.apache.kafka.common.errors.ApiException>);
+    Code:
+         0: aload_0
+         1: aload_1
+         2: iload_2
+         3: invokespecial #185                // Method java/lang/Enum."<init>":(Ljava/lang/String;I)V
+         6: aload_0
+         7: iload_3
+         8: i2s
+         9: putfield      #187                // Field code:S
+        12: aload_0
+        13: aload         5
+        15: putfield      #189                // Field builder:Ljava/util/function/Function;
+        18: aload_0
+        19: aload         5
+        21: aload         4
+        23: invokeinterface #195,  2          // InterfaceMethod java/util/function/Function.apply:(Ljava/lang/Object;)Ljava/lang/Object;
+        28: checkcast     #197                // class org/apache/kafka/common/errors/ApiException
+        31: putfield      #199                // Field exception:Lorg/apache/kafka/common/errors/ApiException;
+        34: return
+
+  public org.apache.kafka.common.errors.ApiException exception();
+    Code:
+         0: aload_0
+         1: getfield      #199                // Field exception:Lorg/apache/kafka/common/errors/ApiException;
+         4: areturn
+
+  public org.apache.kafka.common.errors.ApiException exception(java.lang.String);
+    Code:
+         0: aload_1
+         1: ifnonnull     9
+         4: aload_0
+         5: getfield      #199                // Field exception:Lorg/apache/kafka/common/errors/ApiException;
+         8: areturn
+         9: aload_0
+        10: getfield      #189                // Field builder:Ljava/util/function/Function;
+        13: aload_1
+        14: invokeinterface #195,  2          // InterfaceMethod java/util/function/Function.apply:(Ljava/lang/Object;)Ljava/lang/Object;
+        19: checkcast     #197                // class org/apache/kafka/common/errors/ApiException
+        22: areturn
+
+  public java.lang.String exceptionName();
+    Code:
+         0: aload_0
+         1: getfield      #199                // Field exception:Lorg/apache/kafka/common/errors/ApiException;
+         4: ifnonnull     11
+         7: aconst_null
+         8: goto          21
+        11: aload_0
+        12: getfield      #199                // Field exception:Lorg/apache/kafka/common/errors/ApiException;
+        15: invokevirtual #213                // Method java/lang/Object.getClass:()Ljava/lang/Class;
+        18: invokevirtual #218                // Method java/lang/Class.getName:()Ljava/lang/String;
+        21: areturn
+
+  public short code();
+    Code:
+         0: aload_0
+         1: getfield      #187                // Field code:S
+         4: ireturn
+
+  public void maybeThrow();
+    Code:
+         0: aload_0
+         1: getfield      #199                // Field exception:Lorg/apache/kafka/common/errors/ApiException;
+         4: ifnull        12
+         7: aload_0
+         8: getfield      #199                // Field exception:Lorg/apache/kafka/common/errors/ApiException;
+        11: athrow
+        12: return
+
+  public java.lang.String message();
+    Code:
+         0: aload_0
+         1: getfield      #199                // Field exception:Lorg/apache/kafka/common/errors/ApiException;
+         4: ifnull        15
+         7: aload_0
+         8: getfield      #199                // Field exception:Lorg/apache/kafka/common/errors/ApiException;
+        11: invokevirtual #226                // Method org/apache/kafka/common/errors/ApiException.getMessage:()Ljava/lang/String;
+        14: areturn
+        15: aload_0
+        16: invokevirtual #229                // Method toString:()Ljava/lang/String;
+        19: areturn
+
+  public static org.apache.kafka.common.protocol.Errors forCode(short);
+    Code:
+         0: getstatic     #233                // Field CODE_TO_ERROR:Ljava/util/Map;
+         3: iload_0
+         4: invokestatic  #238                // Method java/lang/Short.valueOf:(S)Ljava/lang/Short;
+         7: invokeinterface #243,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+        12: checkcast     #2                  // class org/apache/kafka/common/protocol/Errors
+        15: astore_1
+        16: aload_1
+        17: ifnull        22
+        20: aload_1
+        21: areturn
+        22: getstatic     #245                // Field log:Lorg/slf4j/Logger;
+        25: ldc           #247                // String Unexpected error code: {}.
+        27: iload_0
+        28: invokestatic  #238                // Method java/lang/Short.valueOf:(S)Ljava/lang/Short;
+        31: invokeinterface #253,  3          // InterfaceMethod org/slf4j/Logger.warn:(Ljava/lang/String;Ljava/lang/Object;)V
+        36: getstatic     #255                // Field UNKNOWN_SERVER_ERROR:Lorg/apache/kafka/common/protocol/Errors;
+        39: areturn
+
+  public static org.apache.kafka.common.protocol.Errors forException(java.lang.Throwable);
+    Code:
+         0: aload_0
+         1: invokestatic  #262                // Method maybeUnwrapException:(Ljava/lang/Throwable;)Ljava/lang/Throwable;
+         4: astore_1
+         5: aload_1
+         6: invokevirtual #213                // Method java/lang/Object.getClass:()Ljava/lang/Class;
+         9: astore_2
+        10: aload_2
+        11: ifnull        41
+        14: getstatic     #266                // Field CLASS_TO_ERROR:Ljava/util/Map;
+        17: aload_2
+        18: invokeinterface #243,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+        23: checkcast     #2                  // class org/apache/kafka/common/protocol/Errors
+        26: astore_3
+        27: aload_3
+        28: ifnull        33
+        31: aload_3
+        32: areturn
+        33: aload_2
+        34: invokevirtual #269                // Method java/lang/Class.getSuperclass:()Ljava/lang/Class;
+        37: astore_2
+        38: goto          10
+        41: getstatic     #255                // Field UNKNOWN_SERVER_ERROR:Lorg/apache/kafka/common/protocol/Errors;
+        44: areturn
+
+  public static java.lang.Throwable maybeUnwrapException(java.lang.Throwable);
+    Code:
+         0: aload_0
+         1: instanceof    #277                // class java/util/concurrent/CompletionException
+         4: ifne          14
+         7: aload_0
+         8: instanceof    #279                // class java/util/concurrent/ExecutionException
+        11: ifeq          19
+        14: aload_0
+        15: invokevirtual #283                // Method java/lang/Throwable.getCause:()Ljava/lang/Throwable;
+        18: areturn
+        19: aload_0
+        20: areturn
+
+  private static java.lang.String toHtml();
+    Code:
+         0: new           #286                // class java/lang/StringBuilder
+         3: dup
+         4: invokespecial #288                // Method java/lang/StringBuilder."<init>":()V
+         7: astore_0
+         8: aload_0
+         9: ldc_w         #290                // String <table class=\"data-table\"><tbody>\n
+        12: invokevirtual #294                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        15: pop
+        16: aload_0
+        17: ldc_w         #296                // String <tr>
+        20: invokevirtual #294                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        23: pop
+        24: aload_0
+        25: ldc_w         #298                // String <th>Error</th>\n
+        28: invokevirtual #294                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        31: pop
+        32: aload_0
+        33: ldc_w         #300                // String <th>Code</th>\n
+        36: invokevirtual #294                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        39: pop
+        40: aload_0
+        41: ldc_w         #302                // String <th>Retriable</th>\n
+        44: invokevirtual #294                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        47: pop
+        48: aload_0
+        49: ldc_w         #304                // String <th>Description</th>\n
+        52: invokevirtual #294                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        55: pop
+        56: aload_0
+        57: ldc_w         #306                // String </tr>\n
+        60: invokevirtual #294                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        63: pop
+        64: invokestatic  #308                // Method values:()[Lorg/apache/kafka/common/protocol/Errors;
+        67: astore_1
+        68: aload_1
+        69: arraylength
+        70: istore_2
+        71: iconst_0
+        72: istore_3
+        73: iload_3
+        74: iload_2
+        75: if_icmpge     249
+        78: aload_1
+        79: iload_3
+        80: aaload
+        81: astore        4
+        83: aload_0
+        84: ldc_w         #296                // String <tr>
+        87: invokevirtual #294                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        90: pop
+        91: aload_0
+        92: ldc_w         #310                // String <td>
+        95: invokevirtual #294                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        98: pop
+        99: aload_0
+       100: aload         4
+       102: invokevirtual #312                // Method name:()Ljava/lang/String;
+       105: invokevirtual #294                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+       108: pop
+       109: aload_0
+       110: ldc_w         #314                // String </td>
+       113: invokevirtual #294                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+       116: pop
+       117: aload_0
+       118: ldc_w         #310                // String <td>
+       121: invokevirtual #294                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+       124: pop
+       125: aload_0
+       126: aload         4
+       128: invokevirtual #316                // Method code:()S
+       131: invokevirtual #319                // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+       134: pop
+       135: aload_0
+       136: ldc_w         #314                // String </td>
+       139: invokevirtual #294                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+       142: pop
+       143: aload_0
+       144: ldc_w         #310                // String <td>
+       147: invokevirtual #294                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+       150: pop
+       151: aload_0
+       152: aload         4
+       154: invokevirtual #321                // Method exception:()Lorg/apache/kafka/common/errors/ApiException;
+       157: ifnull        177
+       160: aload         4
+       162: invokevirtual #321                // Method exception:()Lorg/apache/kafka/common/errors/ApiException;
+       165: instanceof    #323                // class org/apache/kafka/common/errors/RetriableException
+       168: ifeq          177
+       171: ldc_w         #325                // String True
+       174: goto          180
+       177: ldc_w         #327                // String False
+       180: invokevirtual #294                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+       183: pop
+       184: aload_0
+       185: ldc_w         #314                // String </td>
+       188: invokevirtual #294                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+       191: pop
+       192: aload_0
+       193: ldc_w         #310                // String <td>
+       196: invokevirtual #294                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+       199: pop
+       200: aload_0
+       201: aload         4
+       203: invokevirtual #321                // Method exception:()Lorg/apache/kafka/common/errors/ApiException;
+       206: ifnull        220
+       209: aload         4
+       211: invokevirtual #321                // Method exception:()Lorg/apache/kafka/common/errors/ApiException;
+       214: invokevirtual #226                // Method org/apache/kafka/common/errors/ApiException.getMessage:()Ljava/lang/String;
+       217: goto          223
+       220: ldc_w         #329                // String
+       223: invokevirtual #294                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+       226: pop
+       227: aload_0
+       228: ldc_w         #314                // String </td>
+       231: invokevirtual #294                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+       234: pop
+       235: aload_0
+       236: ldc_w         #306                // String </tr>\n
+       239: invokevirtual #294                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+       242: pop
+       243: iinc          3, 1
+       246: goto          73
+       249: aload_0
+       250: ldc_w         #331                // String </tbody></table>\n
+       253: invokevirtual #294                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+       256: pop
+       257: aload_0
+       258: invokevirtual #332                // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+       261: areturn
+
+  public static void main(java.lang.String[]);
+    Code:
+         0: getstatic     #342                // Field java/lang/System.out:Ljava/io/PrintStream;
+         3: invokestatic  #344                // Method toHtml:()Ljava/lang/String;
+         6: invokevirtual #350                // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+         9: return
+
+  private static org.apache.kafka.common.errors.ApiException lambda$static$0(java.lang.String);
+    Code:
+         0: aconst_null
+         1: areturn
+
+  private static org.apache.kafka.common.protocol.Errors[] $values();
+    Code:
+         0: sipush        135
+         3: anewarray     #2                  // class org/apache/kafka/common/protocol/Errors
+         6: dup
+         7: iconst_0
+         8: getstatic     #255                // Field UNKNOWN_SERVER_ERROR:Lorg/apache/kafka/common/protocol/Errors;
+        11: aastore
+        12: dup
+        13: iconst_1
+        14: getstatic     #356                // Field NONE:Lorg/apache/kafka/common/protocol/Errors;
+        17: aastore
+        18: dup
+        19: iconst_2
+        20: getstatic     #358                // Field OFFSET_OUT_OF_RANGE:Lorg/apache/kafka/common/protocol/Errors;
+        23: aastore
+        24: dup
+        25: iconst_3
+        26: getstatic     #360                // Field CORRUPT_MESSAGE:Lorg/apache/kafka/common/protocol/Errors;
+        29: aastore
+        30: dup
+        31: iconst_4
+        32: getstatic     #362                // Field UNKNOWN_TOPIC_OR_PARTITION:Lorg/apache/kafka/common/protocol/Errors;
+        35: aastore
+        36: dup
+        37: iconst_5
+        38: getstatic     #364                // Field INVALID_FETCH_SIZE:Lorg/apache/kafka/common/protocol/Errors;
+        41: aastore
+        42: dup
+        43: bipush        6
+        45: getstatic     #366                // Field LEADER_NOT_AVAILABLE:Lorg/apache/kafka/common/protocol/Errors;
+        48: aastore
+        49: dup
+        50: bipush        7
+        52: getstatic     #368                // Field NOT_LEADER_OR_FOLLOWER:Lorg/apache/kafka/common/protocol/Errors;
+        55: aastore
+        56: dup
+        57: bipush        8
+        59: getstatic     #370                // Field REQUEST_TIMED_OUT:Lorg/apache/kafka/common/protocol/Errors;
+        62: aastore
+        63: dup
+        64: bipush        9
+        66: getstatic     #372                // Field BROKER_NOT_AVAILABLE:Lorg/apache/kafka/common/protocol/Errors;
+        69: aastore
+        70: dup
+        71: bipush        10
+        73: getstatic     #374                // Field REPLICA_NOT_AVAILABLE:Lorg/apache/kafka/common/protocol/Errors;
+        76: aastore
+        77: dup
+        78: bipush        11
+        80: getstatic     #376                // Field MESSAGE_TOO_LARGE:Lorg/apache/kafka/common/protocol/Errors;
+        83: aastore
+        84: dup
+        85: bipush        12
+        87: getstatic     #378                // Field STALE_CONTROLLER_EPOCH:Lorg/apache/kafka/common/protocol/Errors;
+        90: aastore
+        91: dup
+        92: bipush        13
+        94: getstatic     #380                // Field OFFSET_METADATA_TOO_LARGE:Lorg/apache/kafka/common/protocol/Errors;
+        97: aastore
+        98: dup
+        99: bipush        14
+       101: getstatic     #382                // Field NETWORK_EXCEPTION:Lorg/apache/kafka/common/protocol/Errors;
+       104: aastore
+       105: dup
+       106: bipush        15
+       108: getstatic     #384                // Field COORDINATOR_LOAD_IN_PROGRESS:Lorg/apache/kafka/common/protocol/Errors;
+       111: aastore
+       112: dup
+       113: bipush        16
+       115: getstatic     #386                // Field COORDINATOR_NOT_AVAILABLE:Lorg/apache/kafka/common/protocol/Errors;
+       118: aastore
+       119: dup
+       120: bipush        17
+       122: getstatic     #388                // Field NOT_COORDINATOR:Lorg/apache/kafka/common/protocol/Errors;
+       125: aastore
+       126: dup
+       127: bipush        18
+       129: getstatic     #390                // Field INVALID_TOPIC_EXCEPTION:Lorg/apache/kafka/common/protocol/Errors;
+       132: aastore
+       133: dup
+       134: bipush        19
+       136: getstatic     #392                // Field RECORD_LIST_TOO_LARGE:Lorg/apache/kafka/common/protocol/Errors;
+       139: aastore
+       140: dup
+       141: bipush        20
+       143: getstatic     #394                // Field NOT_ENOUGH_REPLICAS:Lorg/apache/kafka/common/protocol/Errors;
+       146: aastore
+       147: dup
+       148: bipush        21
+       150: getstatic     #396                // Field NOT_ENOUGH_REPLICAS_AFTER_APPEND:Lorg/apache/kafka/common/protocol/Errors;
+       153: aastore
+       154: dup
+       155: bipush        22
+       157: getstatic     #398                // Field INVALID_REQUIRED_ACKS:Lorg/apache/kafka/common/protocol/Errors;
+       160: aastore
+       161: dup
+       162: bipush        23
+       164: getstatic     #400                // Field ILLEGAL_GENERATION:Lorg/apache/kafka/common/protocol/Errors;
+       167: aastore
+       168: dup
+       169: bipush        24
+       171: getstatic     #402                // Field INCONSISTENT_GROUP_PROTOCOL:Lorg/apache/kafka/common/protocol/Errors;
+       174: aastore
+       175: dup
+       176: bipush        25
+       178: getstatic     #404                // Field INVALID_GROUP_ID:Lorg/apache/kafka/common/protocol/Errors;
+       181: aastore
+       182: dup
+       183: bipush        26
+       185: getstatic     #406                // Field UNKNOWN_MEMBER_ID:Lorg/apache/kafka/common/protocol/Errors;
+       188: aastore
+       189: dup
+       190: bipush        27
+       192: getstatic     #408                // Field INVALID_SESSION_TIMEOUT:Lorg/apache/kafka/common/protocol/Errors;
+       195: aastore
+       196: dup
+       197: bipush        28
+       199: getstatic     #410                // Field REBALANCE_IN_PROGRESS:Lorg/apache/kafka/common/protocol/Errors;
+       202: aastore
+       203: dup
+       204: bipush        29
+       206: getstatic     #412                // Field INVALID_COMMIT_OFFSET_SIZE:Lorg/apache/kafka/common/protocol/Errors;
+       209: aastore
+       210: dup
+       211: bipush        30
+       213: getstatic     #414                // Field TOPIC_AUTHORIZATION_FAILED:Lorg/apache/kafka/common/protocol/Errors;
+       216: aastore
+       217: dup
+       218: bipush        31
+       220: getstatic     #416                // Field GROUP_AUTHORIZATION_FAILED:Lorg/apache/kafka/common/protocol/Errors;
+       223: aastore
+       224: dup
+       225: bipush        32
+       227: getstatic     #418                // Field CLUSTER_AUTHORIZATION_FAILED:Lorg/apache/kafka/common/protocol/Errors;
+       230: aastore
+       231: dup
+       232: bipush        33
+       234: getstatic     #420                // Field INVALID_TIMESTAMP:Lorg/apache/kafka/common/protocol/Errors;
+       237: aastore
+       238: dup
+       239: bipush        34
+       241: getstatic     #422                // Field UNSUPPORTED_SASL_MECHANISM:Lorg/apache/kafka/common/protocol/Errors;
+       244: aastore
+       245: dup
+       246: bipush        35
+       248: getstatic     #424                // Field ILLEGAL_SASL_STATE:Lorg/apache/kafka/common/protocol/Errors;
+       251: aastore
+       252: dup
+       253: bipush        36
+       255: getstatic     #426                // Field UNSUPPORTED_VERSION:Lorg/apache/kafka/common/protocol/Errors;
+       258: aastore
+       259: dup
+       260: bipush        37
+       262: getstatic     #428                // Field TOPIC_ALREADY_EXISTS:Lorg/apache/kafka/common/protocol/Errors;
+       265: aastore
+       266: dup
+       267: bipush        38
+       269: getstatic     #430                // Field INVALID_PARTITIONS:Lorg/apache/kafka/common/protocol/Errors;
+       272: aastore
+       273: dup
+       274: bipush        39
+       276: getstatic     #432                // Field INVALID_REPLICATION_FACTOR:Lorg/apache/kafka/common/protocol/Errors;
+       279: aastore
+       280: dup
+       281: bipush        40
+       283: getstatic     #434                // Field INVALID_REPLICA_ASSIGNMENT:Lorg/apache/kafka/common/protocol/Errors;
+       286: aastore
+       287: dup
+       288: bipush        41
+       290: getstatic     #436                // Field INVALID_CONFIG:Lorg/apache/kafka/common/protocol/Errors;
+       293: aastore
+       294: dup
+       295: bipush        42
+       297: getstatic     #438                // Field NOT_CONTROLLER:Lorg/apache/kafka/common/protocol/Errors;
+       300: aastore
+       301: dup
+       302: bipush        43
+       304: getstatic     #440                // Field INVALID_REQUEST:Lorg/apache/kafka/common/protocol/Errors;
+       307: aastore
+       308: dup
+       309: bipush        44
+       311: getstatic     #442                // Field UNSUPPORTED_FOR_MESSAGE_FORMAT:Lorg/apache/kafka/common/protocol/Errors;
+       314: aastore
+       315: dup
+       316: bipush        45
+       318: getstatic     #444                // Field POLICY_VIOLATION:Lorg/apache/kafka/common/protocol/Errors;
+       321: aastore
+       322: dup
+       323: bipush        46
+       325: getstatic     #446                // Field OUT_OF_ORDER_SEQUENCE_NUMBER:Lorg/apache/kafka/common/protocol/Errors;
+       328: aastore
+       329: dup
+       330: bipush        47
+       332: getstatic     #448                // Field DUPLICATE_SEQUENCE_NUMBER:Lorg/apache/kafka/common/protocol/Errors;
+       335: aastore
+       336: dup
+       337: bipush        48
+       339: getstatic     #450                // Field INVALID_PRODUCER_EPOCH:Lorg/apache/kafka/common/protocol/Errors;
+       342: aastore
+       343: dup
+       344: bipush        49
+       346: getstatic     #452                // Field INVALID_TXN_STATE:Lorg/apache/kafka/common/protocol/Errors;
+       349: aastore
+       350: dup
+       351: bipush        50
+       353: getstatic     #454                // Field INVALID_PRODUCER_ID_MAPPING:Lorg/apache/kafka/common/protocol/Errors;
+       356: aastore
+       357: dup
+       358: bipush        51
+       360: getstatic     #456                // Field INVALID_TRANSACTION_TIMEOUT:Lorg/apache/kafka/common/protocol/Errors;
+       363: aastore
+       364: dup
+       365: bipush        52
+       367: getstatic     #458                // Field CONCURRENT_TRANSACTIONS:Lorg/apache/kafka/common/protocol/Errors;
+       370: aastore
+       371: dup
+       372: bipush        53
+       374: getstatic     #460                // Field TRANSACTION_COORDINATOR_FENCED:Lorg/apache/kafka/common/protocol/Errors;
+       377: aastore
+       378: dup
+       379: bipush        54
+       381: getstatic     #462                // Field TRANSACTIONAL_ID_AUTHORIZATION_FAILED:Lorg/apache/kafka/common/protocol/Errors;
+       384: aastore
+       385: dup
+       386: bipush        55
+       388: getstatic     #464                // Field SECURITY_DISABLED:Lorg/apache/kafka/common/protocol/Errors;
+       391: aastore
+       392: dup
+       393: bipush        56
+       395: getstatic     #466                // Field OPERATION_NOT_ATTEMPTED:Lorg/apache/kafka/common/protocol/Errors;
+       398: aastore
+       399: dup
+       400: bipush        57
+       402: getstatic     #468                // Field KAFKA_STORAGE_ERROR:Lorg/apache/kafka/common/protocol/Errors;
+       405: aastore
+       406: dup
+       407: bipush        58
+       409: getstatic     #470                // Field LOG_DIR_NOT_FOUND:Lorg/apache/kafka/common/protocol/Errors;
+       412: aastore
+       413: dup
+       414: bipush        59
+       416: getstatic     #472                // Field SASL_AUTHENTICATION_FAILED:Lorg/apache/kafka/common/protocol/Errors;
+       419: aastore
+       420: dup
+       421: bipush        60
+       423: getstatic     #474                // Field UNKNOWN_PRODUCER_ID:Lorg/apache/kafka/common/protocol/Errors;
+       426: aastore
+       427: dup
+       428: bipush        61
+       430: getstatic     #476                // Field REASSIGNMENT_IN_PROGRESS:Lorg/apache/kafka/common/protocol/Errors;
+       433: aastore
+       434: dup
+       435: bipush        62
+       437: getstatic     #478                // Field DELEGATION_TOKEN_AUTH_DISABLED:Lorg/apache/kafka/common/protocol/Errors;
+       440: aastore
+       441: dup
+       442: bipush        63
+       444: getstatic     #480                // Field DELEGATION_TOKEN_NOT_FOUND:Lorg/apache/kafka/common/protocol/Errors;
+       447: aastore
+       448: dup
+       449: bipush        64
+       451: getstatic     #482                // Field DELEGATION_TOKEN_OWNER_MISMATCH:Lorg/apache/kafka/common/protocol/Errors;
+       454: aastore
+       455: dup
+       456: bipush        65
+       458: getstatic     #484                // Field DELEGATION_TOKEN_REQUEST_NOT_ALLOWED:Lorg/apache/kafka/common/protocol/Errors;
+       461: aastore
+       462: dup
+       463: bipush        66
+       465: getstatic     #486                // Field DELEGATION_TOKEN_AUTHORIZATION_FAILED:Lorg/apache/kafka/common/protocol/Errors;
+       468: aastore
+       469: dup
+       470: bipush        67
+       472: getstatic     #488                // Field DELEGATION_TOKEN_EXPIRED:Lorg/apache/kafka/common/protocol/Errors;
+       475: aastore
+       476: dup
+       477: bipush        68
+       479: getstatic     #490                // Field INVALID_PRINCIPAL_TYPE:Lorg/apache/kafka/common/protocol/Errors;
+       482: aastore
+       483: dup
+       484: bipush        69
+       486: getstatic     #492                // Field NON_EMPTY_GROUP:Lorg/apache/kafka/common/protocol/Errors;
+       489: aastore
+       490: dup
+       491: bipush        70
+       493: getstatic     #494                // Field GROUP_ID_NOT_FOUND:Lorg/apache/kafka/common/protocol/Errors;
+       496: aastore
+       497: dup
+       498: bipush        71
+       500: getstatic     #496                // Field FETCH_SESSION_ID_NOT_FOUND:Lorg/apache/kafka/common/protocol/Errors;
+       503: aastore
+       504: dup
+       505: bipush        72
+       507: getstatic     #498                // Field INVALID_FETCH_SESSION_EPOCH:Lorg/apache/kafka/common/protocol/Errors;
+       510: aastore
+       511: dup
+       512: bipush        73
+       514: getstatic     #500                // Field LISTENER_NOT_FOUND:Lorg/apache/kafka/common/protocol/Errors;
+       517: aastore
+       518: dup
+       519: bipush        74
+       521: getstatic     #502                // Field TOPIC_DELETION_DISABLED:Lorg/apache/kafka/common/protocol/Errors;
+       524: aastore
+       525: dup
+       526: bipush        75
+       528: getstatic     #504                // Field FENCED_LEADER_EPOCH:Lorg/apache/kafka/common/protocol/Errors;
+       531: aastore
+       532: dup
+       533: bipush        76
+       535: getstatic     #506                // Field UNKNOWN_LEADER_EPOCH:Lorg/apache/kafka/common/protocol/Errors;
+       538: aastore
+       539: dup
+       540: bipush        77
+       542: getstatic     #508                // Field UNSUPPORTED_COMPRESSION_TYPE:Lorg/apache/kafka/common/protocol/Errors;
+       545: aastore
+       546: dup
+       547: bipush        78
+       549: getstatic     #510                // Field STALE_BROKER_EPOCH:Lorg/apache/kafka/common/protocol/Errors;
+       552: aastore
+       553: dup
+       554: bipush        79
+       556: getstatic     #512                // Field OFFSET_NOT_AVAILABLE:Lorg/apache/kafka/common/protocol/Errors;
+       559: aastore
+       560: dup
+       561: bipush        80
+       563: getstatic     #514                // Field MEMBER_ID_REQUIRED:Lorg/apache/kafka/common/protocol/Errors;
+       566: aastore
+       567: dup
+       568: bipush        81
+       570: getstatic     #516                // Field PREFERRED_LEADER_NOT_AVAILABLE:Lorg/apache/kafka/common/protocol/Errors;
+       573: aastore
+       574: dup
+       575: bipush        82
+       577: getstatic     #518                // Field GROUP_MAX_SIZE_REACHED:Lorg/apache/kafka/common/protocol/Errors;
+       580: aastore
+       581: dup
+       582: bipush        83
+       584: getstatic     #520                // Field FENCED_INSTANCE_ID:Lorg/apache/kafka/common/protocol/Errors;
+       587: aastore
+       588: dup
+       589: bipush        84
+       591: getstatic     #522                // Field ELIGIBLE_LEADERS_NOT_AVAILABLE:Lorg/apache/kafka/common/protocol/Errors;
+       594: aastore
+       595: dup
+       596: bipush        85
+       598: getstatic     #524                // Field ELECTION_NOT_NEEDED:Lorg/apache/kafka/common/protocol/Errors;
+       601: aastore
+       602: dup
+       603: bipush        86
+       605: getstatic     #526                // Field NO_REASSIGNMENT_IN_PROGRESS:Lorg/apache/kafka/common/protocol/Errors;
+       608: aastore
+       609: dup
+       610: bipush        87
+       612: getstatic     #528                // Field GROUP_SUBSCRIBED_TO_TOPIC:Lorg/apache/kafka/common/protocol/Errors;
+       615: aastore
+       616: dup
+       617: bipush        88
+       619: getstatic     #530                // Field INVALID_RECORD:Lorg/apache/kafka/common/protocol/Errors;
+       622: aastore
+       623: dup
+       624: bipush        89
+       626: getstatic     #532                // Field UNSTABLE_OFFSET_COMMIT:Lorg/apache/kafka/common/protocol/Errors;
+       629: aastore
+       630: dup
+       631: bipush        90
+       633: getstatic     #534                // Field THROTTLING_QUOTA_EXCEEDED:Lorg/apache/kafka/common/protocol/Errors;
+       636: aastore
+       637: dup
+       638: bipush        91
+       640: getstatic     #536                // Field PRODUCER_FENCED:Lorg/apache/kafka/common/protocol/Errors;
+       643: aastore
+       644: dup
+       645: bipush        92
+       647: getstatic     #538                // Field RESOURCE_NOT_FOUND:Lorg/apache/kafka/common/protocol/Errors;
+       650: aastore
+       651: dup
+       652: bipush        93
+       654: getstatic     #540                // Field DUPLICATE_RESOURCE:Lorg/apache/kafka/common/protocol/Errors;
+       657: aastore
+       658: dup
+       659: bipush        94
+       661: getstatic     #542                // Field UNACCEPTABLE_CREDENTIAL:Lorg/apache/kafka/common/protocol/Errors;
+       664: aastore
+       665: dup
+       666: bipush        95
+       668: getstatic     #544                // Field INCONSISTENT_VOTER_SET:Lorg/apache/kafka/common/protocol/Errors;
+       671: aastore
+       672: dup
+       673: bipush        96
+       675: getstatic     #546                // Field INVALID_UPDATE_VERSION:Lorg/apache/kafka/common/protocol/Errors;
+       678: aastore
+       679: dup
+       680: bipush        97
+       682: getstatic     #548                // Field FEATURE_UPDATE_FAILED:Lorg/apache/kafka/common/protocol/Errors;
+       685: aastore
+       686: dup
+       687: bipush        98
+       689: getstatic     #550                // Field PRINCIPAL_DESERIALIZATION_FAILURE:Lorg/apache/kafka/common/protocol/Errors;
+       692: aastore
+       693: dup
+       694: bipush        99
+       696: getstatic     #552                // Field SNAPSHOT_NOT_FOUND:Lorg/apache/kafka/common/protocol/Errors;
+       699: aastore
+       700: dup
+       701: bipush        100
+       703: getstatic     #554                // Field POSITION_OUT_OF_RANGE:Lorg/apache/kafka/common/protocol/Errors;
+       706: aastore
+       707: dup
+       708: bipush        101
+       710: getstatic     #556                // Field UNKNOWN_TOPIC_ID:Lorg/apache/kafka/common/protocol/Errors;
+       713: aastore
+       714: dup
+       715: bipush        102
+       717: getstatic     #558                // Field DUPLICATE_BROKER_REGISTRATION:Lorg/apache/kafka/common/protocol/Errors;
+       720: aastore
+       721: dup
+       722: bipush        103
+       724: getstatic     #560                // Field BROKER_ID_NOT_REGISTERED:Lorg/apache/kafka/common/protocol/Errors;
+       727: aastore
+       728: dup
+       729: bipush        104
+       731: getstatic     #562                // Field INCONSISTENT_TOPIC_ID:Lorg/apache/kafka/common/protocol/Errors;
+       734: aastore
+       735: dup
+       736: bipush        105
+       738: getstatic     #564                // Field INCONSISTENT_CLUSTER_ID:Lorg/apache/kafka/common/protocol/Errors;
+       741: aastore
+       742: dup
+       743: bipush        106
+       745: getstatic     #566                // Field TRANSACTIONAL_ID_NOT_FOUND:Lorg/apache/kafka/common/protocol/Errors;
+       748: aastore
+       749: dup
+       750: bipush        107
+       752: getstatic     #568                // Field FETCH_SESSION_TOPIC_ID_ERROR:Lorg/apache/kafka/common/protocol/Errors;
+       755: aastore
+       756: dup
+       757: bipush        108
+       759: getstatic     #570                // Field INELIGIBLE_REPLICA:Lorg/apache/kafka/common/protocol/Errors;
+       762: aastore
+       763: dup
+       764: bipush        109
+       766: getstatic     #572                // Field NEW_LEADER_ELECTED:Lorg/apache/kafka/common/protocol/Errors;
+       769: aastore
+       770: dup
+       771: bipush        110
+       773: getstatic     #574                // Field OFFSET_MOVED_TO_TIERED_STORAGE:Lorg/apache/kafka/common/protocol/Errors;
+       776: aastore
+       777: dup
+       778: bipush        111
+       780: getstatic     #576                // Field FENCED_MEMBER_EPOCH:Lorg/apache/kafka/common/protocol/Errors;
+       783: aastore
+       784: dup
+       785: bipush        112
+       787: getstatic     #578                // Field UNRELEASED_INSTANCE_ID:Lorg/apache/kafka/common/protocol/Errors;
+       790: aastore
+       791: dup
+       792: bipush        113
+       794: getstatic     #580                // Field UNSUPPORTED_ASSIGNOR:Lorg/apache/kafka/common/protocol/Errors;
+       797: aastore
+       798: dup
+       799: bipush        114
+       801: getstatic     #582                // Field STALE_MEMBER_EPOCH:Lorg/apache/kafka/common/protocol/Errors;
+       804: aastore
+       805: dup
+       806: bipush        115
+       808: getstatic     #584                // Field MISMATCHED_ENDPOINT_TYPE:Lorg/apache/kafka/common/protocol/Errors;
+       811: aastore
+       812: dup
+       813: bipush        116
+       815: getstatic     #586                // Field UNSUPPORTED_ENDPOINT_TYPE:Lorg/apache/kafka/common/protocol/Errors;
+       818: aastore
+       819: dup
+       820: bipush        117
+       822: getstatic     #588                // Field UNKNOWN_CONTROLLER_ID:Lorg/apache/kafka/common/protocol/Errors;
+       825: aastore
+       826: dup
+       827: bipush        118
+       829: getstatic     #590                // Field UNKNOWN_SUBSCRIPTION_ID:Lorg/apache/kafka/common/protocol/Errors;
+       832: aastore
+       833: dup
+       834: bipush        119
+       836: getstatic     #592                // Field TELEMETRY_TOO_LARGE:Lorg/apache/kafka/common/protocol/Errors;
+       839: aastore
+       840: dup
+       841: bipush        120
+       843: getstatic     #594                // Field INVALID_REGISTRATION:Lorg/apache/kafka/common/protocol/Errors;
+       846: aastore
+       847: dup
+       848: bipush        121
+       850: getstatic     #596                // Field TRANSACTION_ABORTABLE:Lorg/apache/kafka/common/protocol/Errors;
+       853: aastore
+       854: dup
+       855: bipush        122
+       857: getstatic     #598                // Field INVALID_RECORD_STATE:Lorg/apache/kafka/common/protocol/Errors;
+       860: aastore
+       861: dup
+       862: bipush        123
+       864: getstatic     #600                // Field SHARE_SESSION_NOT_FOUND:Lorg/apache/kafka/common/protocol/Errors;
+       867: aastore
+       868: dup
+       869: bipush        124
+       871: getstatic     #602                // Field INVALID_SHARE_SESSION_EPOCH:Lorg/apache/kafka/common/protocol/Errors;
+       874: aastore
+       875: dup
+       876: bipush        125
+       878: getstatic     #604                // Field FENCED_STATE_EPOCH:Lorg/apache/kafka/common/protocol/Errors;
+       881: aastore
+       882: dup
+       883: bipush        126
+       885: getstatic     #606                // Field INVALID_VOTER_KEY:Lorg/apache/kafka/common/protocol/Errors;
+       888: aastore
+       889: dup
+       890: bipush        127
+       892: getstatic     #608                // Field DUPLICATE_VOTER:Lorg/apache/kafka/common/protocol/Errors;
+       895: aastore
+       896: dup
+       897: sipush        128
+       900: getstatic     #610                // Field VOTER_NOT_FOUND:Lorg/apache/kafka/common/protocol/Errors;
+       903: aastore
+       904: dup
+       905: sipush        129
+       908: getstatic     #612                // Field INVALID_REGULAR_EXPRESSION:Lorg/apache/kafka/common/protocol/Errors;
+       911: aastore
+       912: dup
+       913: sipush        130
+       916: getstatic     #614                // Field REBOOTSTRAP_REQUIRED:Lorg/apache/kafka/common/protocol/Errors;
+       919: aastore
+       920: dup
+       921: sipush        131
+       924: getstatic     #616                // Field STREAMS_INVALID_TOPOLOGY:Lorg/apache/kafka/common/protocol/Errors;
+       927: aastore
+       928: dup
+       929: sipush        132
+       932: getstatic     #618                // Field STREAMS_INVALID_TOPOLOGY_EPOCH:Lorg/apache/kafka/common/protocol/Errors;
+       935: aastore
+       936: dup
+       937: sipush        133
+       940: getstatic     #620                // Field STREAMS_TOPOLOGY_FENCED:Lorg/apache/kafka/common/protocol/Errors;
+       943: aastore
+       944: dup
+       945: sipush        134
+       948: getstatic     #622                // Field SHARE_SESSION_LIMIT_REACHED:Lorg/apache/kafka/common/protocol/Errors;
+       951: aastore
+       952: areturn
+
+  static {};
+    Code:
+         0: new           #2                  // class org/apache/kafka/common/protocol/Errors
+         3: dup
+         4: ldc_w         #624                // String UNKNOWN_SERVER_ERROR
+         7: iconst_0
+         8: iconst_m1
+         9: ldc_w         #626                // String The server experienced an unexpected error when processing the request.
+        12: invokedynamic #643,  0            // InvokeDynamic #0:apply:()Ljava/util/function/Function;
+        17: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+        20: putstatic     #255                // Field UNKNOWN_SERVER_ERROR:Lorg/apache/kafka/common/protocol/Errors;
+        23: new           #2                  // class org/apache/kafka/common/protocol/Errors
+        26: dup
+        27: ldc_w         #646                // String NONE
+        30: iconst_1
+        31: iconst_0
+        32: aconst_null
+        33: invokedynamic #650,  0            // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+        38: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+        41: putstatic     #356                // Field NONE:Lorg/apache/kafka/common/protocol/Errors;
+        44: new           #2                  // class org/apache/kafka/common/protocol/Errors
+        47: dup
+        48: ldc_w         #651                // String OFFSET_OUT_OF_RANGE
+        51: iconst_2
+        52: iconst_1
+        53: ldc_w         #653                // String The requested offset is not within the range of offsets maintained by the server.
+        56: invokedynamic #658,  0            // InvokeDynamic #2:apply:()Ljava/util/function/Function;
+        61: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+        64: putstatic     #358                // Field OFFSET_OUT_OF_RANGE:Lorg/apache/kafka/common/protocol/Errors;
+        67: new           #2                  // class org/apache/kafka/common/protocol/Errors
+        70: dup
+        71: ldc_w         #659                // String CORRUPT_MESSAGE
+        74: iconst_3
+        75: iconst_2
+        76: ldc_w         #661                // String This message has failed its CRC checksum, exceeds the valid size, has a null key for a compacted topic, or is otherwise corrupt.
+        79: invokedynamic #666,  0            // InvokeDynamic #3:apply:()Ljava/util/function/Function;
+        84: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+        87: putstatic     #360                // Field CORRUPT_MESSAGE:Lorg/apache/kafka/common/protocol/Errors;
+        90: new           #2                  // class org/apache/kafka/common/protocol/Errors
+        93: dup
+        94: ldc_w         #667                // String UNKNOWN_TOPIC_OR_PARTITION
+        97: iconst_4
+        98: iconst_3
+        99: ldc_w         #669                // String This server does not host this topic-partition.
+       102: invokedynamic #674,  0            // InvokeDynamic #4:apply:()Ljava/util/function/Function;
+       107: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+       110: putstatic     #362                // Field UNKNOWN_TOPIC_OR_PARTITION:Lorg/apache/kafka/common/protocol/Errors;
+       113: new           #2                  // class org/apache/kafka/common/protocol/Errors
+       116: dup
+       117: ldc_w         #675                // String INVALID_FETCH_SIZE
+       120: iconst_5
+       121: iconst_4
+       122: ldc_w         #677                // String The requested fetch size is invalid.
+       125: invokedynamic #682,  0            // InvokeDynamic #5:apply:()Ljava/util/function/Function;
+       130: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+       133: putstatic     #364                // Field INVALID_FETCH_SIZE:Lorg/apache/kafka/common/protocol/Errors;
+       136: new           #2                  // class org/apache/kafka/common/protocol/Errors
+       139: dup
+       140: ldc_w         #683                // String LEADER_NOT_AVAILABLE
+       143: bipush        6
+       145: iconst_5
+       146: ldc_w         #685                // String There is no leader for this topic-partition as we are in the middle of a leadership election.
+       149: invokedynamic #690,  0            // InvokeDynamic #6:apply:()Ljava/util/function/Function;
+       154: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+       157: putstatic     #366                // Field LEADER_NOT_AVAILABLE:Lorg/apache/kafka/common/protocol/Errors;
+       160: new           #2                  // class org/apache/kafka/common/protocol/Errors
+       163: dup
+       164: ldc_w         #691                // String NOT_LEADER_OR_FOLLOWER
+       167: bipush        7
+       169: bipush        6
+       171: ldc_w         #693                // String For requests intended only for the leader, this error indicates that the broker is not the current leader. For requests intended for any replica, this error indicates that the broker is not a replica of the topic partition.
+       174: invokedynamic #698,  0            // InvokeDynamic #7:apply:()Ljava/util/function/Function;
+       179: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+       182: putstatic     #368                // Field NOT_LEADER_OR_FOLLOWER:Lorg/apache/kafka/common/protocol/Errors;
+       185: new           #2                  // class org/apache/kafka/common/protocol/Errors
+       188: dup
+       189: ldc_w         #699                // String REQUEST_TIMED_OUT
+       192: bipush        8
+       194: bipush        7
+       196: ldc_w         #701                // String The request timed out.
+       199: invokedynamic #706,  0            // InvokeDynamic #8:apply:()Ljava/util/function/Function;
+       204: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+       207: putstatic     #370                // Field REQUEST_TIMED_OUT:Lorg/apache/kafka/common/protocol/Errors;
+       210: new           #2                  // class org/apache/kafka/common/protocol/Errors
+       213: dup
+       214: ldc_w         #707                // String BROKER_NOT_AVAILABLE
+       217: bipush        9
+       219: bipush        8
+       221: ldc_w         #709                // String The broker is not available.
+       224: invokedynamic #714,  0            // InvokeDynamic #9:apply:()Ljava/util/function/Function;
+       229: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+       232: putstatic     #372                // Field BROKER_NOT_AVAILABLE:Lorg/apache/kafka/common/protocol/Errors;
+       235: new           #2                  // class org/apache/kafka/common/protocol/Errors
+       238: dup
+       239: ldc_w         #715                // String REPLICA_NOT_AVAILABLE
+       242: bipush        10
+       244: bipush        9
+       246: ldc_w         #717                // String The replica is not available for the requested topic-partition. Produce/Fetch requests and other requests intended only for the leader or follower return NOT_LEADER_OR_FOLLOWER if the broker is not a replica of the topic-partition.
+       249: invokedynamic #722,  0            // InvokeDynamic #10:apply:()Ljava/util/function/Function;
+       254: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+       257: putstatic     #374                // Field REPLICA_NOT_AVAILABLE:Lorg/apache/kafka/common/protocol/Errors;
+       260: new           #2                  // class org/apache/kafka/common/protocol/Errors
+       263: dup
+       264: ldc_w         #723                // String MESSAGE_TOO_LARGE
+       267: bipush        11
+       269: bipush        10
+       271: ldc_w         #725                // String The request included a message larger than the max message size the server will accept.
+       274: invokedynamic #730,  0            // InvokeDynamic #11:apply:()Ljava/util/function/Function;
+       279: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+       282: putstatic     #376                // Field MESSAGE_TOO_LARGE:Lorg/apache/kafka/common/protocol/Errors;
+       285: new           #2                  // class org/apache/kafka/common/protocol/Errors
+       288: dup
+       289: ldc_w         #731                // String STALE_CONTROLLER_EPOCH
+       292: bipush        12
+       294: bipush        11
+       296: ldc_w         #733                // String The controller moved to another broker.
+       299: invokedynamic #738,  0            // InvokeDynamic #12:apply:()Ljava/util/function/Function;
+       304: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+       307: putstatic     #378                // Field STALE_CONTROLLER_EPOCH:Lorg/apache/kafka/common/protocol/Errors;
+       310: new           #2                  // class org/apache/kafka/common/protocol/Errors
+       313: dup
+       314: ldc_w         #739                // String OFFSET_METADATA_TOO_LARGE
+       317: bipush        13
+       319: bipush        12
+       321: ldc_w         #741                // String The metadata field of the offset request was too large.
+       324: invokedynamic #746,  0            // InvokeDynamic #13:apply:()Ljava/util/function/Function;
+       329: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+       332: putstatic     #380                // Field OFFSET_METADATA_TOO_LARGE:Lorg/apache/kafka/common/protocol/Errors;
+       335: new           #2                  // class org/apache/kafka/common/protocol/Errors
+       338: dup
+       339: ldc_w         #747                // String NETWORK_EXCEPTION
+       342: bipush        14
+       344: bipush        13
+       346: ldc_w         #749                // String The server disconnected before a response was received.
+       349: invokedynamic #754,  0            // InvokeDynamic #14:apply:()Ljava/util/function/Function;
+       354: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+       357: putstatic     #382                // Field NETWORK_EXCEPTION:Lorg/apache/kafka/common/protocol/Errors;
+       360: new           #2                  // class org/apache/kafka/common/protocol/Errors
+       363: dup
+       364: ldc_w         #755                // String COORDINATOR_LOAD_IN_PROGRESS
+       367: bipush        15
+       369: bipush        14
+       371: ldc_w         #757                // String The coordinator is loading and hence can\'t process requests.
+       374: invokedynamic #762,  0            // InvokeDynamic #15:apply:()Ljava/util/function/Function;
+       379: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+       382: putstatic     #384                // Field COORDINATOR_LOAD_IN_PROGRESS:Lorg/apache/kafka/common/protocol/Errors;
+       385: new           #2                  // class org/apache/kafka/common/protocol/Errors
+       388: dup
+       389: ldc_w         #763                // String COORDINATOR_NOT_AVAILABLE
+       392: bipush        16
+       394: bipush        15
+       396: ldc_w         #765                // String The coordinator is not available.
+       399: invokedynamic #770,  0            // InvokeDynamic #16:apply:()Ljava/util/function/Function;
+       404: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+       407: putstatic     #386                // Field COORDINATOR_NOT_AVAILABLE:Lorg/apache/kafka/common/protocol/Errors;
+       410: new           #2                  // class org/apache/kafka/common/protocol/Errors
+       413: dup
+       414: ldc_w         #771                // String NOT_COORDINATOR
+       417: bipush        17
+       419: bipush        16
+       421: ldc_w         #773                // String This is not the correct coordinator.
+       424: invokedynamic #778,  0            // InvokeDynamic #17:apply:()Ljava/util/function/Function;
+       429: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+       432: putstatic     #388                // Field NOT_COORDINATOR:Lorg/apache/kafka/common/protocol/Errors;
+       435: new           #2                  // class org/apache/kafka/common/protocol/Errors
+       438: dup
+       439: ldc_w         #779                // String INVALID_TOPIC_EXCEPTION
+       442: bipush        18
+       444: bipush        17
+       446: ldc_w         #781                // String The request attempted to perform an operation on an invalid topic.
+       449: invokedynamic #786,  0            // InvokeDynamic #18:apply:()Ljava/util/function/Function;
+       454: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+       457: putstatic     #390                // Field INVALID_TOPIC_EXCEPTION:Lorg/apache/kafka/common/protocol/Errors;
+       460: new           #2                  // class org/apache/kafka/common/protocol/Errors
+       463: dup
+       464: ldc_w         #787                // String RECORD_LIST_TOO_LARGE
+       467: bipush        19
+       469: bipush        18
+       471: ldc_w         #789                // String The request included message batch larger than the configured segment size on the server.
+       474: invokedynamic #794,  0            // InvokeDynamic #19:apply:()Ljava/util/function/Function;
+       479: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+       482: putstatic     #392                // Field RECORD_LIST_TOO_LARGE:Lorg/apache/kafka/common/protocol/Errors;
+       485: new           #2                  // class org/apache/kafka/common/protocol/Errors
+       488: dup
+       489: ldc_w         #795                // String NOT_ENOUGH_REPLICAS
+       492: bipush        20
+       494: bipush        19
+       496: ldc_w         #797                // String Messages are rejected since there are fewer in-sync replicas than required.
+       499: invokedynamic #802,  0            // InvokeDynamic #20:apply:()Ljava/util/function/Function;
+       504: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+       507: putstatic     #394                // Field NOT_ENOUGH_REPLICAS:Lorg/apache/kafka/common/protocol/Errors;
+       510: new           #2                  // class org/apache/kafka/common/protocol/Errors
+       513: dup
+       514: ldc_w         #803                // String NOT_ENOUGH_REPLICAS_AFTER_APPEND
+       517: bipush        21
+       519: bipush        20
+       521: ldc_w         #805                // String Messages are written to the log, but to fewer in-sync replicas than required.
+       524: invokedynamic #810,  0            // InvokeDynamic #21:apply:()Ljava/util/function/Function;
+       529: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+       532: putstatic     #396                // Field NOT_ENOUGH_REPLICAS_AFTER_APPEND:Lorg/apache/kafka/common/protocol/Errors;
+       535: new           #2                  // class org/apache/kafka/common/protocol/Errors
+       538: dup
+       539: ldc_w         #811                // String INVALID_REQUIRED_ACKS
+       542: bipush        22
+       544: bipush        21
+       546: ldc_w         #813                // String Produce request specified an invalid value for required acks.
+       549: invokedynamic #818,  0            // InvokeDynamic #22:apply:()Ljava/util/function/Function;
+       554: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+       557: putstatic     #398                // Field INVALID_REQUIRED_ACKS:Lorg/apache/kafka/common/protocol/Errors;
+       560: new           #2                  // class org/apache/kafka/common/protocol/Errors
+       563: dup
+       564: ldc_w         #819                // String ILLEGAL_GENERATION
+       567: bipush        23
+       569: bipush        22
+       571: ldc_w         #821                // String Specified group generation id is not valid.
+       574: invokedynamic #826,  0            // InvokeDynamic #23:apply:()Ljava/util/function/Function;
+       579: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+       582: putstatic     #400                // Field ILLEGAL_GENERATION:Lorg/apache/kafka/common/protocol/Errors;
+       585: new           #2                  // class org/apache/kafka/common/protocol/Errors
+       588: dup
+       589: ldc_w         #827                // String INCONSISTENT_GROUP_PROTOCOL
+       592: bipush        24
+       594: bipush        23
+       596: ldc_w         #829                // String The group member\'s supported protocols are incompatible with those of existing members or first group member tried to join with empty protocol type or empty protocol list.
+       599: invokedynamic #834,  0            // InvokeDynamic #24:apply:()Ljava/util/function/Function;
+       604: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+       607: putstatic     #402                // Field INCONSISTENT_GROUP_PROTOCOL:Lorg/apache/kafka/common/protocol/Errors;
+       610: new           #2                  // class org/apache/kafka/common/protocol/Errors
+       613: dup
+       614: ldc_w         #835                // String INVALID_GROUP_ID
+       617: bipush        25
+       619: bipush        24
+       621: ldc_w         #837                // String The group id is invalid.
+       624: invokedynamic #842,  0            // InvokeDynamic #25:apply:()Ljava/util/function/Function;
+       629: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+       632: putstatic     #404                // Field INVALID_GROUP_ID:Lorg/apache/kafka/common/protocol/Errors;
+       635: new           #2                  // class org/apache/kafka/common/protocol/Errors
+       638: dup
+       639: ldc_w         #843                // String UNKNOWN_MEMBER_ID
+       642: bipush        26
+       644: bipush        25
+       646: ldc_w         #845                // String The coordinator is not aware of this member.
+       649: invokedynamic #850,  0            // InvokeDynamic #26:apply:()Ljava/util/function/Function;
+       654: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+       657: putstatic     #406                // Field UNKNOWN_MEMBER_ID:Lorg/apache/kafka/common/protocol/Errors;
+       660: new           #2                  // class org/apache/kafka/common/protocol/Errors
+       663: dup
+       664: ldc_w         #851                // String INVALID_SESSION_TIMEOUT
+       667: bipush        27
+       669: bipush        26
+       671: ldc_w         #853                // String The session timeout is not within the range allowed by the broker (as configured by group.min.session.timeout.ms and group.max.session.timeout.ms).
+       674: invokedynamic #858,  0            // InvokeDynamic #27:apply:()Ljava/util/function/Function;
+       679: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+       682: putstatic     #408                // Field INVALID_SESSION_TIMEOUT:Lorg/apache/kafka/common/protocol/Errors;
+       685: new           #2                  // class org/apache/kafka/common/protocol/Errors
+       688: dup
+       689: ldc_w         #859                // String REBALANCE_IN_PROGRESS
+       692: bipush        28
+       694: bipush        27
+       696: ldc_w         #861                // String The group is rebalancing, so a rejoin is needed.
+       699: invokedynamic #866,  0            // InvokeDynamic #28:apply:()Ljava/util/function/Function;
+       704: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+       707: putstatic     #410                // Field REBALANCE_IN_PROGRESS:Lorg/apache/kafka/common/protocol/Errors;
+       710: new           #2                  // class org/apache/kafka/common/protocol/Errors
+       713: dup
+       714: ldc_w         #867                // String INVALID_COMMIT_OFFSET_SIZE
+       717: bipush        29
+       719: bipush        28
+       721: ldc_w         #869                // String The committing offset data size is not valid.
+       724: invokedynamic #874,  0            // InvokeDynamic #29:apply:()Ljava/util/function/Function;
+       729: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+       732: putstatic     #412                // Field INVALID_COMMIT_OFFSET_SIZE:Lorg/apache/kafka/common/protocol/Errors;
+       735: new           #2                  // class org/apache/kafka/common/protocol/Errors
+       738: dup
+       739: ldc_w         #875                // String TOPIC_AUTHORIZATION_FAILED
+       742: bipush        30
+       744: bipush        29
+       746: ldc_w         #877                // String Topic authorization failed.
+       749: invokedynamic #882,  0            // InvokeDynamic #30:apply:()Ljava/util/function/Function;
+       754: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+       757: putstatic     #414                // Field TOPIC_AUTHORIZATION_FAILED:Lorg/apache/kafka/common/protocol/Errors;
+       760: new           #2                  // class org/apache/kafka/common/protocol/Errors
+       763: dup
+       764: ldc_w         #883                // String GROUP_AUTHORIZATION_FAILED
+       767: bipush        31
+       769: bipush        30
+       771: ldc_w         #885                // String Group authorization failed.
+       774: invokedynamic #890,  0            // InvokeDynamic #31:apply:()Ljava/util/function/Function;
+       779: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+       782: putstatic     #416                // Field GROUP_AUTHORIZATION_FAILED:Lorg/apache/kafka/common/protocol/Errors;
+       785: new           #2                  // class org/apache/kafka/common/protocol/Errors
+       788: dup
+       789: ldc_w         #891                // String CLUSTER_AUTHORIZATION_FAILED
+       792: bipush        32
+       794: bipush        31
+       796: ldc_w         #893                // String Cluster authorization failed.
+       799: invokedynamic #898,  0            // InvokeDynamic #32:apply:()Ljava/util/function/Function;
+       804: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+       807: putstatic     #418                // Field CLUSTER_AUTHORIZATION_FAILED:Lorg/apache/kafka/common/protocol/Errors;
+       810: new           #2                  // class org/apache/kafka/common/protocol/Errors
+       813: dup
+       814: ldc_w         #899                // String INVALID_TIMESTAMP
+       817: bipush        33
+       819: bipush        32
+       821: ldc_w         #901                // String The timestamp of the message is out of acceptable range.
+       824: invokedynamic #906,  0            // InvokeDynamic #33:apply:()Ljava/util/function/Function;
+       829: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+       832: putstatic     #420                // Field INVALID_TIMESTAMP:Lorg/apache/kafka/common/protocol/Errors;
+       835: new           #2                  // class org/apache/kafka/common/protocol/Errors
+       838: dup
+       839: ldc_w         #907                // String UNSUPPORTED_SASL_MECHANISM
+       842: bipush        34
+       844: bipush        33
+       846: ldc_w         #909                // String The broker does not support the requested SASL mechanism.
+       849: invokedynamic #914,  0            // InvokeDynamic #34:apply:()Ljava/util/function/Function;
+       854: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+       857: putstatic     #422                // Field UNSUPPORTED_SASL_MECHANISM:Lorg/apache/kafka/common/protocol/Errors;
+       860: new           #2                  // class org/apache/kafka/common/protocol/Errors
+       863: dup
+       864: ldc_w         #915                // String ILLEGAL_SASL_STATE
+       867: bipush        35
+       869: bipush        34
+       871: ldc_w         #917                // String Request is not valid given the current SASL state.
+       874: invokedynamic #922,  0            // InvokeDynamic #35:apply:()Ljava/util/function/Function;
+       879: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+       882: putstatic     #424                // Field ILLEGAL_SASL_STATE:Lorg/apache/kafka/common/protocol/Errors;
+       885: new           #2                  // class org/apache/kafka/common/protocol/Errors
+       888: dup
+       889: ldc_w         #923                // String UNSUPPORTED_VERSION
+       892: bipush        36
+       894: bipush        35
+       896: ldc_w         #925                // String The version of API is not supported.
+       899: invokedynamic #930,  0            // InvokeDynamic #36:apply:()Ljava/util/function/Function;
+       904: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+       907: putstatic     #426                // Field UNSUPPORTED_VERSION:Lorg/apache/kafka/common/protocol/Errors;
+       910: new           #2                  // class org/apache/kafka/common/protocol/Errors
+       913: dup
+       914: ldc_w         #931                // String TOPIC_ALREADY_EXISTS
+       917: bipush        37
+       919: bipush        36
+       921: ldc_w         #933                // String Topic with this name already exists.
+       924: invokedynamic #938,  0            // InvokeDynamic #37:apply:()Ljava/util/function/Function;
+       929: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+       932: putstatic     #428                // Field TOPIC_ALREADY_EXISTS:Lorg/apache/kafka/common/protocol/Errors;
+       935: new           #2                  // class org/apache/kafka/common/protocol/Errors
+       938: dup
+       939: ldc_w         #939                // String INVALID_PARTITIONS
+       942: bipush        38
+       944: bipush        37
+       946: ldc_w         #941                // String Number of partitions is below 1.
+       949: invokedynamic #946,  0            // InvokeDynamic #38:apply:()Ljava/util/function/Function;
+       954: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+       957: putstatic     #430                // Field INVALID_PARTITIONS:Lorg/apache/kafka/common/protocol/Errors;
+       960: new           #2                  // class org/apache/kafka/common/protocol/Errors
+       963: dup
+       964: ldc_w         #947                // String INVALID_REPLICATION_FACTOR
+       967: bipush        39
+       969: bipush        38
+       971: ldc_w         #949                // String Replication factor is below 1 or larger than the number of available brokers.
+       974: invokedynamic #954,  0            // InvokeDynamic #39:apply:()Ljava/util/function/Function;
+       979: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+       982: putstatic     #432                // Field INVALID_REPLICATION_FACTOR:Lorg/apache/kafka/common/protocol/Errors;
+       985: new           #2                  // class org/apache/kafka/common/protocol/Errors
+       988: dup
+       989: ldc_w         #955                // String INVALID_REPLICA_ASSIGNMENT
+       992: bipush        40
+       994: bipush        39
+       996: ldc_w         #957                // String Replica assignment is invalid.
+       999: invokedynamic #962,  0            // InvokeDynamic #40:apply:()Ljava/util/function/Function;
+      1004: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      1007: putstatic     #434                // Field INVALID_REPLICA_ASSIGNMENT:Lorg/apache/kafka/common/protocol/Errors;
+      1010: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      1013: dup
+      1014: ldc_w         #963                // String INVALID_CONFIG
+      1017: bipush        41
+      1019: bipush        40
+      1021: ldc_w         #965                // String Configuration is invalid.
+      1024: invokedynamic #970,  0            // InvokeDynamic #41:apply:()Ljava/util/function/Function;
+      1029: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      1032: putstatic     #436                // Field INVALID_CONFIG:Lorg/apache/kafka/common/protocol/Errors;
+      1035: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      1038: dup
+      1039: ldc_w         #971                // String NOT_CONTROLLER
+      1042: bipush        42
+      1044: bipush        41
+      1046: ldc_w         #973                // String This is not the correct controller for this cluster.
+      1049: invokedynamic #978,  0            // InvokeDynamic #42:apply:()Ljava/util/function/Function;
+      1054: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      1057: putstatic     #438                // Field NOT_CONTROLLER:Lorg/apache/kafka/common/protocol/Errors;
+      1060: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      1063: dup
+      1064: ldc_w         #979                // String INVALID_REQUEST
+      1067: bipush        43
+      1069: bipush        42
+      1071: ldc_w         #981                // String This most likely occurs because of a request being malformed by the client library or the message was sent to an incompatible broker. See the broker logs for more details.
+      1074: invokedynamic #986,  0            // InvokeDynamic #43:apply:()Ljava/util/function/Function;
+      1079: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      1082: putstatic     #440                // Field INVALID_REQUEST:Lorg/apache/kafka/common/protocol/Errors;
+      1085: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      1088: dup
+      1089: ldc_w         #987                // String UNSUPPORTED_FOR_MESSAGE_FORMAT
+      1092: bipush        44
+      1094: bipush        43
+      1096: ldc_w         #989                // String The message format version on the broker does not support the request.
+      1099: invokedynamic #994,  0            // InvokeDynamic #44:apply:()Ljava/util/function/Function;
+      1104: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      1107: putstatic     #442                // Field UNSUPPORTED_FOR_MESSAGE_FORMAT:Lorg/apache/kafka/common/protocol/Errors;
+      1110: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      1113: dup
+      1114: ldc_w         #995                // String POLICY_VIOLATION
+      1117: bipush        45
+      1119: bipush        44
+      1121: ldc_w         #997                // String Request parameters do not satisfy the configured policy.
+      1124: invokedynamic #1002,  0           // InvokeDynamic #45:apply:()Ljava/util/function/Function;
+      1129: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      1132: putstatic     #444                // Field POLICY_VIOLATION:Lorg/apache/kafka/common/protocol/Errors;
+      1135: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      1138: dup
+      1139: ldc_w         #1003               // String OUT_OF_ORDER_SEQUENCE_NUMBER
+      1142: bipush        46
+      1144: bipush        45
+      1146: ldc_w         #1005               // String The broker received an out of order sequence number.
+      1149: invokedynamic #1010,  0           // InvokeDynamic #46:apply:()Ljava/util/function/Function;
+      1154: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      1157: putstatic     #446                // Field OUT_OF_ORDER_SEQUENCE_NUMBER:Lorg/apache/kafka/common/protocol/Errors;
+      1160: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      1163: dup
+      1164: ldc_w         #1011               // String DUPLICATE_SEQUENCE_NUMBER
+      1167: bipush        47
+      1169: bipush        46
+      1171: ldc_w         #1013               // String The broker received a duplicate sequence number.
+      1174: invokedynamic #1018,  0           // InvokeDynamic #47:apply:()Ljava/util/function/Function;
+      1179: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      1182: putstatic     #448                // Field DUPLICATE_SEQUENCE_NUMBER:Lorg/apache/kafka/common/protocol/Errors;
+      1185: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      1188: dup
+      1189: ldc_w         #1019               // String INVALID_PRODUCER_EPOCH
+      1192: bipush        48
+      1194: bipush        47
+      1196: ldc_w         #1021               // String Producer attempted to produce with an old epoch.
+      1199: invokedynamic #1026,  0           // InvokeDynamic #48:apply:()Ljava/util/function/Function;
+      1204: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      1207: putstatic     #450                // Field INVALID_PRODUCER_EPOCH:Lorg/apache/kafka/common/protocol/Errors;
+      1210: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      1213: dup
+      1214: ldc_w         #1027               // String INVALID_TXN_STATE
+      1217: bipush        49
+      1219: bipush        48
+      1221: ldc_w         #1029               // String The producer attempted a transactional operation in an invalid state.
+      1224: invokedynamic #1034,  0           // InvokeDynamic #49:apply:()Ljava/util/function/Function;
+      1229: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      1232: putstatic     #452                // Field INVALID_TXN_STATE:Lorg/apache/kafka/common/protocol/Errors;
+      1235: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      1238: dup
+      1239: ldc_w         #1035               // String INVALID_PRODUCER_ID_MAPPING
+      1242: bipush        50
+      1244: bipush        49
+      1246: ldc_w         #1037               // String The producer attempted to use a producer id which is not currently assigned to its transactional id.
+      1249: invokedynamic #1042,  0           // InvokeDynamic #50:apply:()Ljava/util/function/Function;
+      1254: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      1257: putstatic     #454                // Field INVALID_PRODUCER_ID_MAPPING:Lorg/apache/kafka/common/protocol/Errors;
+      1260: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      1263: dup
+      1264: ldc_w         #1043               // String INVALID_TRANSACTION_TIMEOUT
+      1267: bipush        51
+      1269: bipush        50
+      1271: ldc_w         #1045               // String The transaction timeout is larger than the maximum value allowed by the broker (as configured by transaction.max.timeout.ms).
+      1274: invokedynamic #1050,  0           // InvokeDynamic #51:apply:()Ljava/util/function/Function;
+      1279: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      1282: putstatic     #456                // Field INVALID_TRANSACTION_TIMEOUT:Lorg/apache/kafka/common/protocol/Errors;
+      1285: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      1288: dup
+      1289: ldc_w         #1051               // String CONCURRENT_TRANSACTIONS
+      1292: bipush        52
+      1294: bipush        51
+      1296: ldc_w         #1053               // String The producer attempted to update a transaction while another concurrent operation on the same transaction was ongoing.
+      1299: invokedynamic #1058,  0           // InvokeDynamic #52:apply:()Ljava/util/function/Function;
+      1304: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      1307: putstatic     #458                // Field CONCURRENT_TRANSACTIONS:Lorg/apache/kafka/common/protocol/Errors;
+      1310: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      1313: dup
+      1314: ldc_w         #1059               // String TRANSACTION_COORDINATOR_FENCED
+      1317: bipush        53
+      1319: bipush        52
+      1321: ldc_w         #1061               // String Indicates that the transaction coordinator sending a WriteTxnMarker is no longer the current coordinator for a given producer.
+      1324: invokedynamic #1066,  0           // InvokeDynamic #53:apply:()Ljava/util/function/Function;
+      1329: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      1332: putstatic     #460                // Field TRANSACTION_COORDINATOR_FENCED:Lorg/apache/kafka/common/protocol/Errors;
+      1335: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      1338: dup
+      1339: ldc_w         #1067               // String TRANSACTIONAL_ID_AUTHORIZATION_FAILED
+      1342: bipush        54
+      1344: bipush        53
+      1346: ldc_w         #1069               // String Transactional Id authorization failed.
+      1349: invokedynamic #1074,  0           // InvokeDynamic #54:apply:()Ljava/util/function/Function;
+      1354: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      1357: putstatic     #462                // Field TRANSACTIONAL_ID_AUTHORIZATION_FAILED:Lorg/apache/kafka/common/protocol/Errors;
+      1360: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      1363: dup
+      1364: ldc_w         #1075               // String SECURITY_DISABLED
+      1367: bipush        55
+      1369: bipush        54
+      1371: ldc_w         #1077               // String Security features are disabled.
+      1374: invokedynamic #1082,  0           // InvokeDynamic #55:apply:()Ljava/util/function/Function;
+      1379: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      1382: putstatic     #464                // Field SECURITY_DISABLED:Lorg/apache/kafka/common/protocol/Errors;
+      1385: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      1388: dup
+      1389: ldc_w         #1083               // String OPERATION_NOT_ATTEMPTED
+      1392: bipush        56
+      1394: bipush        55
+      1396: ldc_w         #1085               // String The broker did not attempt to execute this operation. This may happen for batched RPCs where some operations in the batch failed, causing the broker to respond without trying the rest.
+      1399: invokedynamic #1090,  0           // InvokeDynamic #56:apply:()Ljava/util/function/Function;
+      1404: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      1407: putstatic     #466                // Field OPERATION_NOT_ATTEMPTED:Lorg/apache/kafka/common/protocol/Errors;
+      1410: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      1413: dup
+      1414: ldc_w         #1091               // String KAFKA_STORAGE_ERROR
+      1417: bipush        57
+      1419: bipush        56
+      1421: ldc_w         #1093               // String Disk error when trying to access log file on the disk.
+      1424: invokedynamic #1098,  0           // InvokeDynamic #57:apply:()Ljava/util/function/Function;
+      1429: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      1432: putstatic     #468                // Field KAFKA_STORAGE_ERROR:Lorg/apache/kafka/common/protocol/Errors;
+      1435: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      1438: dup
+      1439: ldc_w         #1099               // String LOG_DIR_NOT_FOUND
+      1442: bipush        58
+      1444: bipush        57
+      1446: ldc_w         #1101               // String The user-specified log directory is not found in the broker config.
+      1449: invokedynamic #1106,  0           // InvokeDynamic #58:apply:()Ljava/util/function/Function;
+      1454: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      1457: putstatic     #470                // Field LOG_DIR_NOT_FOUND:Lorg/apache/kafka/common/protocol/Errors;
+      1460: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      1463: dup
+      1464: ldc_w         #1107               // String SASL_AUTHENTICATION_FAILED
+      1467: bipush        59
+      1469: bipush        58
+      1471: ldc_w         #1109               // String SASL Authentication failed.
+      1474: invokedynamic #1114,  0           // InvokeDynamic #59:apply:()Ljava/util/function/Function;
+      1479: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      1482: putstatic     #472                // Field SASL_AUTHENTICATION_FAILED:Lorg/apache/kafka/common/protocol/Errors;
+      1485: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      1488: dup
+      1489: ldc_w         #1115               // String UNKNOWN_PRODUCER_ID
+      1492: bipush        60
+      1494: bipush        59
+      1496: ldc_w         #1117               // String This exception is raised by the broker if it could not locate the producer metadata associated with the producerId in question. This could happen if, for instance, the producer\'s records were deleted because their retention time had elapsed. Once the last records of the producerId are removed, the producer\'s metadata is removed from the broker, and future appends by the producer will return this exception.
+      1499: invokedynamic #1122,  0           // InvokeDynamic #60:apply:()Ljava/util/function/Function;
+      1504: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      1507: putstatic     #474                // Field UNKNOWN_PRODUCER_ID:Lorg/apache/kafka/common/protocol/Errors;
+      1510: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      1513: dup
+      1514: ldc_w         #1123               // String REASSIGNMENT_IN_PROGRESS
+      1517: bipush        61
+      1519: bipush        60
+      1521: ldc_w         #1125               // String A partition reassignment is in progress.
+      1524: invokedynamic #1130,  0           // InvokeDynamic #61:apply:()Ljava/util/function/Function;
+      1529: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      1532: putstatic     #476                // Field REASSIGNMENT_IN_PROGRESS:Lorg/apache/kafka/common/protocol/Errors;
+      1535: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      1538: dup
+      1539: ldc_w         #1131               // String DELEGATION_TOKEN_AUTH_DISABLED
+      1542: bipush        62
+      1544: bipush        61
+      1546: ldc_w         #1133               // String Delegation Token feature is not enabled.
+      1549: invokedynamic #1138,  0           // InvokeDynamic #62:apply:()Ljava/util/function/Function;
+      1554: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      1557: putstatic     #478                // Field DELEGATION_TOKEN_AUTH_DISABLED:Lorg/apache/kafka/common/protocol/Errors;
+      1560: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      1563: dup
+      1564: ldc_w         #1139               // String DELEGATION_TOKEN_NOT_FOUND
+      1567: bipush        63
+      1569: bipush        62
+      1571: ldc_w         #1141               // String Delegation Token is not found on server.
+      1574: invokedynamic #1146,  0           // InvokeDynamic #63:apply:()Ljava/util/function/Function;
+      1579: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      1582: putstatic     #480                // Field DELEGATION_TOKEN_NOT_FOUND:Lorg/apache/kafka/common/protocol/Errors;
+      1585: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      1588: dup
+      1589: ldc_w         #1147               // String DELEGATION_TOKEN_OWNER_MISMATCH
+      1592: bipush        64
+      1594: bipush        63
+      1596: ldc_w         #1149               // String Specified Principal is not valid Owner/Renewer.
+      1599: invokedynamic #1154,  0           // InvokeDynamic #64:apply:()Ljava/util/function/Function;
+      1604: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      1607: putstatic     #482                // Field DELEGATION_TOKEN_OWNER_MISMATCH:Lorg/apache/kafka/common/protocol/Errors;
+      1610: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      1613: dup
+      1614: ldc_w         #1155               // String DELEGATION_TOKEN_REQUEST_NOT_ALLOWED
+      1617: bipush        65
+      1619: bipush        64
+      1621: ldc_w         #1157               // String Delegation Token requests are not allowed on PLAINTEXT/1-way SSL channels and on delegation token authenticated channels.
+      1624: invokedynamic #1162,  0           // InvokeDynamic #65:apply:()Ljava/util/function/Function;
+      1629: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      1632: putstatic     #484                // Field DELEGATION_TOKEN_REQUEST_NOT_ALLOWED:Lorg/apache/kafka/common/protocol/Errors;
+      1635: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      1638: dup
+      1639: ldc_w         #1163               // String DELEGATION_TOKEN_AUTHORIZATION_FAILED
+      1642: bipush        66
+      1644: bipush        65
+      1646: ldc_w         #1165               // String Delegation Token authorization failed.
+      1649: invokedynamic #1170,  0           // InvokeDynamic #66:apply:()Ljava/util/function/Function;
+      1654: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      1657: putstatic     #486                // Field DELEGATION_TOKEN_AUTHORIZATION_FAILED:Lorg/apache/kafka/common/protocol/Errors;
+      1660: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      1663: dup
+      1664: ldc_w         #1171               // String DELEGATION_TOKEN_EXPIRED
+      1667: bipush        67
+      1669: bipush        66
+      1671: ldc_w         #1173               // String Delegation Token is expired.
+      1674: invokedynamic #1178,  0           // InvokeDynamic #67:apply:()Ljava/util/function/Function;
+      1679: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      1682: putstatic     #488                // Field DELEGATION_TOKEN_EXPIRED:Lorg/apache/kafka/common/protocol/Errors;
+      1685: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      1688: dup
+      1689: ldc_w         #1179               // String INVALID_PRINCIPAL_TYPE
+      1692: bipush        68
+      1694: bipush        67
+      1696: ldc_w         #1181               // String Supplied principalType is not supported.
+      1699: invokedynamic #1186,  0           // InvokeDynamic #68:apply:()Ljava/util/function/Function;
+      1704: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      1707: putstatic     #490                // Field INVALID_PRINCIPAL_TYPE:Lorg/apache/kafka/common/protocol/Errors;
+      1710: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      1713: dup
+      1714: ldc_w         #1187               // String NON_EMPTY_GROUP
+      1717: bipush        69
+      1719: bipush        68
+      1721: ldc_w         #1189               // String The group is not empty.
+      1724: invokedynamic #1194,  0           // InvokeDynamic #69:apply:()Ljava/util/function/Function;
+      1729: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      1732: putstatic     #492                // Field NON_EMPTY_GROUP:Lorg/apache/kafka/common/protocol/Errors;
+      1735: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      1738: dup
+      1739: ldc_w         #1195               // String GROUP_ID_NOT_FOUND
+      1742: bipush        70
+      1744: bipush        69
+      1746: ldc_w         #1197               // String The group id does not exist.
+      1749: invokedynamic #1202,  0           // InvokeDynamic #70:apply:()Ljava/util/function/Function;
+      1754: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      1757: putstatic     #494                // Field GROUP_ID_NOT_FOUND:Lorg/apache/kafka/common/protocol/Errors;
+      1760: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      1763: dup
+      1764: ldc_w         #1203               // String FETCH_SESSION_ID_NOT_FOUND
+      1767: bipush        71
+      1769: bipush        70
+      1771: ldc_w         #1205               // String The fetch session ID was not found.
+      1774: invokedynamic #1210,  0           // InvokeDynamic #71:apply:()Ljava/util/function/Function;
+      1779: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      1782: putstatic     #496                // Field FETCH_SESSION_ID_NOT_FOUND:Lorg/apache/kafka/common/protocol/Errors;
+      1785: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      1788: dup
+      1789: ldc_w         #1211               // String INVALID_FETCH_SESSION_EPOCH
+      1792: bipush        72
+      1794: bipush        71
+      1796: ldc_w         #1213               // String The fetch session epoch is invalid.
+      1799: invokedynamic #1218,  0           // InvokeDynamic #72:apply:()Ljava/util/function/Function;
+      1804: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      1807: putstatic     #498                // Field INVALID_FETCH_SESSION_EPOCH:Lorg/apache/kafka/common/protocol/Errors;
+      1810: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      1813: dup
+      1814: ldc_w         #1219               // String LISTENER_NOT_FOUND
+      1817: bipush        73
+      1819: bipush        72
+      1821: ldc_w         #1221               // String There is no listener on the leader broker that matches the listener on which metadata request was processed.
+      1824: invokedynamic #1226,  0           // InvokeDynamic #73:apply:()Ljava/util/function/Function;
+      1829: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      1832: putstatic     #500                // Field LISTENER_NOT_FOUND:Lorg/apache/kafka/common/protocol/Errors;
+      1835: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      1838: dup
+      1839: ldc_w         #1227               // String TOPIC_DELETION_DISABLED
+      1842: bipush        74
+      1844: bipush        73
+      1846: ldc_w         #1229               // String Topic deletion is disabled.
+      1849: invokedynamic #1234,  0           // InvokeDynamic #74:apply:()Ljava/util/function/Function;
+      1854: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      1857: putstatic     #502                // Field TOPIC_DELETION_DISABLED:Lorg/apache/kafka/common/protocol/Errors;
+      1860: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      1863: dup
+      1864: ldc_w         #1235               // String FENCED_LEADER_EPOCH
+      1867: bipush        75
+      1869: bipush        74
+      1871: ldc_w         #1237               // String The leader epoch in the request is older than the epoch on the broker.
+      1874: invokedynamic #1242,  0           // InvokeDynamic #75:apply:()Ljava/util/function/Function;
+      1879: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      1882: putstatic     #504                // Field FENCED_LEADER_EPOCH:Lorg/apache/kafka/common/protocol/Errors;
+      1885: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      1888: dup
+      1889: ldc_w         #1243               // String UNKNOWN_LEADER_EPOCH
+      1892: bipush        76
+      1894: bipush        75
+      1896: ldc_w         #1245               // String The leader epoch in the request is newer than the epoch on the broker.
+      1899: invokedynamic #1250,  0           // InvokeDynamic #76:apply:()Ljava/util/function/Function;
+      1904: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      1907: putstatic     #506                // Field UNKNOWN_LEADER_EPOCH:Lorg/apache/kafka/common/protocol/Errors;
+      1910: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      1913: dup
+      1914: ldc_w         #1251               // String UNSUPPORTED_COMPRESSION_TYPE
+      1917: bipush        77
+      1919: bipush        76
+      1921: ldc_w         #1253               // String The requesting client does not support the compression type of given partition.
+      1924: invokedynamic #1258,  0           // InvokeDynamic #77:apply:()Ljava/util/function/Function;
+      1929: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      1932: putstatic     #508                // Field UNSUPPORTED_COMPRESSION_TYPE:Lorg/apache/kafka/common/protocol/Errors;
+      1935: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      1938: dup
+      1939: ldc_w         #1259               // String STALE_BROKER_EPOCH
+      1942: bipush        78
+      1944: bipush        77
+      1946: ldc_w         #1261               // String Broker epoch has changed.
+      1949: invokedynamic #1266,  0           // InvokeDynamic #78:apply:()Ljava/util/function/Function;
+      1954: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      1957: putstatic     #510                // Field STALE_BROKER_EPOCH:Lorg/apache/kafka/common/protocol/Errors;
+      1960: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      1963: dup
+      1964: ldc_w         #1267               // String OFFSET_NOT_AVAILABLE
+      1967: bipush        79
+      1969: bipush        78
+      1971: ldc_w         #1269               // String The leader high watermark has not caught up from a recent leader election so the offsets cannot be guaranteed to be monotonically increasing.
+      1974: invokedynamic #1274,  0           // InvokeDynamic #79:apply:()Ljava/util/function/Function;
+      1979: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      1982: putstatic     #512                // Field OFFSET_NOT_AVAILABLE:Lorg/apache/kafka/common/protocol/Errors;
+      1985: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      1988: dup
+      1989: ldc_w         #1275               // String MEMBER_ID_REQUIRED
+      1992: bipush        80
+      1994: bipush        79
+      1996: ldc_w         #1277               // String The group member needs to have a valid member id before actually entering a consumer group.
+      1999: invokedynamic #1282,  0           // InvokeDynamic #80:apply:()Ljava/util/function/Function;
+      2004: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      2007: putstatic     #514                // Field MEMBER_ID_REQUIRED:Lorg/apache/kafka/common/protocol/Errors;
+      2010: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      2013: dup
+      2014: ldc_w         #1283               // String PREFERRED_LEADER_NOT_AVAILABLE
+      2017: bipush        81
+      2019: bipush        80
+      2021: ldc_w         #1285               // String The preferred leader was not available.
+      2024: invokedynamic #1290,  0           // InvokeDynamic #81:apply:()Ljava/util/function/Function;
+      2029: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      2032: putstatic     #516                // Field PREFERRED_LEADER_NOT_AVAILABLE:Lorg/apache/kafka/common/protocol/Errors;
+      2035: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      2038: dup
+      2039: ldc_w         #1291               // String GROUP_MAX_SIZE_REACHED
+      2042: bipush        82
+      2044: bipush        81
+      2046: ldc_w         #1293               // String The group has reached its maximum size.
+      2049: invokedynamic #1298,  0           // InvokeDynamic #82:apply:()Ljava/util/function/Function;
+      2054: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      2057: putstatic     #518                // Field GROUP_MAX_SIZE_REACHED:Lorg/apache/kafka/common/protocol/Errors;
+      2060: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      2063: dup
+      2064: ldc_w         #1299               // String FENCED_INSTANCE_ID
+      2067: bipush        83
+      2069: bipush        82
+      2071: ldc_w         #1301               // String The broker rejected this static consumer since another consumer with the same group.instance.id has registered with a different member.id.
+      2074: invokedynamic #1306,  0           // InvokeDynamic #83:apply:()Ljava/util/function/Function;
+      2079: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      2082: putstatic     #520                // Field FENCED_INSTANCE_ID:Lorg/apache/kafka/common/protocol/Errors;
+      2085: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      2088: dup
+      2089: ldc_w         #1307               // String ELIGIBLE_LEADERS_NOT_AVAILABLE
+      2092: bipush        84
+      2094: bipush        83
+      2096: ldc_w         #1309               // String Eligible topic partition leaders are not available.
+      2099: invokedynamic #1314,  0           // InvokeDynamic #84:apply:()Ljava/util/function/Function;
+      2104: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      2107: putstatic     #522                // Field ELIGIBLE_LEADERS_NOT_AVAILABLE:Lorg/apache/kafka/common/protocol/Errors;
+      2110: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      2113: dup
+      2114: ldc_w         #1315               // String ELECTION_NOT_NEEDED
+      2117: bipush        85
+      2119: bipush        84
+      2121: ldc_w         #1317               // String Leader election not needed for topic partition.
+      2124: invokedynamic #1322,  0           // InvokeDynamic #85:apply:()Ljava/util/function/Function;
+      2129: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      2132: putstatic     #524                // Field ELECTION_NOT_NEEDED:Lorg/apache/kafka/common/protocol/Errors;
+      2135: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      2138: dup
+      2139: ldc_w         #1323               // String NO_REASSIGNMENT_IN_PROGRESS
+      2142: bipush        86
+      2144: bipush        85
+      2146: ldc_w         #1325               // String No partition reassignment is in progress.
+      2149: invokedynamic #1330,  0           // InvokeDynamic #86:apply:()Ljava/util/function/Function;
+      2154: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      2157: putstatic     #526                // Field NO_REASSIGNMENT_IN_PROGRESS:Lorg/apache/kafka/common/protocol/Errors;
+      2160: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      2163: dup
+      2164: ldc_w         #1331               // String GROUP_SUBSCRIBED_TO_TOPIC
+      2167: bipush        87
+      2169: bipush        86
+      2171: ldc_w         #1333               // String Deleting offsets of a topic is forbidden while the consumer group is actively subscribed to it.
+      2174: invokedynamic #1338,  0           // InvokeDynamic #87:apply:()Ljava/util/function/Function;
+      2179: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      2182: putstatic     #528                // Field GROUP_SUBSCRIBED_TO_TOPIC:Lorg/apache/kafka/common/protocol/Errors;
+      2185: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      2188: dup
+      2189: ldc_w         #1339               // String INVALID_RECORD
+      2192: bipush        88
+      2194: bipush        87
+      2196: ldc_w         #1341               // String This record has failed the validation on broker and hence will be rejected.
+      2199: invokedynamic #1346,  0           // InvokeDynamic #88:apply:()Ljava/util/function/Function;
+      2204: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      2207: putstatic     #530                // Field INVALID_RECORD:Lorg/apache/kafka/common/protocol/Errors;
+      2210: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      2213: dup
+      2214: ldc_w         #1347               // String UNSTABLE_OFFSET_COMMIT
+      2217: bipush        89
+      2219: bipush        88
+      2221: ldc_w         #1349               // String There are unstable offsets that need to be cleared.
+      2224: invokedynamic #1354,  0           // InvokeDynamic #89:apply:()Ljava/util/function/Function;
+      2229: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      2232: putstatic     #532                // Field UNSTABLE_OFFSET_COMMIT:Lorg/apache/kafka/common/protocol/Errors;
+      2235: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      2238: dup
+      2239: ldc_w         #1355               // String THROTTLING_QUOTA_EXCEEDED
+      2242: bipush        90
+      2244: bipush        89
+      2246: ldc_w         #1357               // String The throttling quota has been exceeded.
+      2249: invokedynamic #1362,  0           // InvokeDynamic #90:apply:()Ljava/util/function/Function;
+      2254: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      2257: putstatic     #534                // Field THROTTLING_QUOTA_EXCEEDED:Lorg/apache/kafka/common/protocol/Errors;
+      2260: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      2263: dup
+      2264: ldc_w         #1363               // String PRODUCER_FENCED
+      2267: bipush        91
+      2269: bipush        90
+      2271: ldc_w         #1365               // String There is a newer producer with the same transactionalId which fences the current one.
+      2274: invokedynamic #1370,  0           // InvokeDynamic #91:apply:()Ljava/util/function/Function;
+      2279: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      2282: putstatic     #536                // Field PRODUCER_FENCED:Lorg/apache/kafka/common/protocol/Errors;
+      2285: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      2288: dup
+      2289: ldc_w         #1371               // String RESOURCE_NOT_FOUND
+      2292: bipush        92
+      2294: bipush        91
+      2296: ldc_w         #1373               // String A request illegally referred to a resource that does not exist.
+      2299: invokedynamic #1378,  0           // InvokeDynamic #92:apply:()Ljava/util/function/Function;
+      2304: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      2307: putstatic     #538                // Field RESOURCE_NOT_FOUND:Lorg/apache/kafka/common/protocol/Errors;
+      2310: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      2313: dup
+      2314: ldc_w         #1379               // String DUPLICATE_RESOURCE
+      2317: bipush        93
+      2319: bipush        92
+      2321: ldc_w         #1381               // String A request illegally referred to the same resource twice.
+      2324: invokedynamic #1386,  0           // InvokeDynamic #93:apply:()Ljava/util/function/Function;
+      2329: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      2332: putstatic     #540                // Field DUPLICATE_RESOURCE:Lorg/apache/kafka/common/protocol/Errors;
+      2335: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      2338: dup
+      2339: ldc_w         #1387               // String UNACCEPTABLE_CREDENTIAL
+      2342: bipush        94
+      2344: bipush        93
+      2346: ldc_w         #1389               // String Requested credential would not meet criteria for acceptability.
+      2349: invokedynamic #1394,  0           // InvokeDynamic #94:apply:()Ljava/util/function/Function;
+      2354: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      2357: putstatic     #542                // Field UNACCEPTABLE_CREDENTIAL:Lorg/apache/kafka/common/protocol/Errors;
+      2360: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      2363: dup
+      2364: ldc_w         #1395               // String INCONSISTENT_VOTER_SET
+      2367: bipush        95
+      2369: bipush        94
+      2371: ldc_w         #1397               // String Indicates that the either the sender or recipient of a voter-only request is not one of the expected voters.
+      2374: invokedynamic #1402,  0           // InvokeDynamic #95:apply:()Ljava/util/function/Function;
+      2379: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      2382: putstatic     #544                // Field INCONSISTENT_VOTER_SET:Lorg/apache/kafka/common/protocol/Errors;
+      2385: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      2388: dup
+      2389: ldc_w         #1403               // String INVALID_UPDATE_VERSION
+      2392: bipush        96
+      2394: bipush        95
+      2396: ldc_w         #1405               // String The given update version was invalid.
+      2399: invokedynamic #1410,  0           // InvokeDynamic #96:apply:()Ljava/util/function/Function;
+      2404: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      2407: putstatic     #546                // Field INVALID_UPDATE_VERSION:Lorg/apache/kafka/common/protocol/Errors;
+      2410: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      2413: dup
+      2414: ldc_w         #1411               // String FEATURE_UPDATE_FAILED
+      2417: bipush        97
+      2419: bipush        96
+      2421: ldc_w         #1413               // String Unable to update finalized features due to an unexpected server error.
+      2424: invokedynamic #1418,  0           // InvokeDynamic #97:apply:()Ljava/util/function/Function;
+      2429: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      2432: putstatic     #548                // Field FEATURE_UPDATE_FAILED:Lorg/apache/kafka/common/protocol/Errors;
+      2435: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      2438: dup
+      2439: ldc_w         #1419               // String PRINCIPAL_DESERIALIZATION_FAILURE
+      2442: bipush        98
+      2444: bipush        97
+      2446: ldc_w         #1421               // String Request principal deserialization failed during forwarding. This indicates an internal error on the broker cluster security setup.
+      2449: invokedynamic #1426,  0           // InvokeDynamic #98:apply:()Ljava/util/function/Function;
+      2454: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      2457: putstatic     #550                // Field PRINCIPAL_DESERIALIZATION_FAILURE:Lorg/apache/kafka/common/protocol/Errors;
+      2460: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      2463: dup
+      2464: ldc_w         #1427               // String SNAPSHOT_NOT_FOUND
+      2467: bipush        99
+      2469: bipush        98
+      2471: ldc_w         #1429               // String Requested snapshot was not found.
+      2474: invokedynamic #1434,  0           // InvokeDynamic #99:apply:()Ljava/util/function/Function;
+      2479: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      2482: putstatic     #552                // Field SNAPSHOT_NOT_FOUND:Lorg/apache/kafka/common/protocol/Errors;
+      2485: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      2488: dup
+      2489: ldc_w         #1435               // String POSITION_OUT_OF_RANGE
+      2492: bipush        100
+      2494: bipush        99
+      2496: ldc_w         #1437               // String Requested position is not greater than or equal to zero, and less than the size of the snapshot.
+      2499: invokedynamic #1442,  0           // InvokeDynamic #100:apply:()Ljava/util/function/Function;
+      2504: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      2507: putstatic     #554                // Field POSITION_OUT_OF_RANGE:Lorg/apache/kafka/common/protocol/Errors;
+      2510: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      2513: dup
+      2514: ldc_w         #1443               // String UNKNOWN_TOPIC_ID
+      2517: bipush        101
+      2519: bipush        100
+      2521: ldc_w         #1445               // String This server does not host this topic ID.
+      2524: invokedynamic #1450,  0           // InvokeDynamic #101:apply:()Ljava/util/function/Function;
+      2529: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      2532: putstatic     #556                // Field UNKNOWN_TOPIC_ID:Lorg/apache/kafka/common/protocol/Errors;
+      2535: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      2538: dup
+      2539: ldc_w         #1451               // String DUPLICATE_BROKER_REGISTRATION
+      2542: bipush        102
+      2544: bipush        101
+      2546: ldc_w         #1453               // String This broker ID is already in use.
+      2549: invokedynamic #1458,  0           // InvokeDynamic #102:apply:()Ljava/util/function/Function;
+      2554: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      2557: putstatic     #558                // Field DUPLICATE_BROKER_REGISTRATION:Lorg/apache/kafka/common/protocol/Errors;
+      2560: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      2563: dup
+      2564: ldc_w         #1459               // String BROKER_ID_NOT_REGISTERED
+      2567: bipush        103
+      2569: bipush        102
+      2571: ldc_w         #1461               // String The given broker ID was not registered.
+      2574: invokedynamic #1466,  0           // InvokeDynamic #103:apply:()Ljava/util/function/Function;
+      2579: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      2582: putstatic     #560                // Field BROKER_ID_NOT_REGISTERED:Lorg/apache/kafka/common/protocol/Errors;
+      2585: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      2588: dup
+      2589: ldc_w         #1467               // String INCONSISTENT_TOPIC_ID
+      2592: bipush        104
+      2594: bipush        103
+      2596: ldc_w         #1469               // String The log\'s topic ID did not match the topic ID in the request.
+      2599: invokedynamic #1474,  0           // InvokeDynamic #104:apply:()Ljava/util/function/Function;
+      2604: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      2607: putstatic     #562                // Field INCONSISTENT_TOPIC_ID:Lorg/apache/kafka/common/protocol/Errors;
+      2610: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      2613: dup
+      2614: ldc_w         #1475               // String INCONSISTENT_CLUSTER_ID
+      2617: bipush        105
+      2619: bipush        104
+      2621: ldc_w         #1477               // String The clusterId in the request does not match that found on the server.
+      2624: invokedynamic #1482,  0           // InvokeDynamic #105:apply:()Ljava/util/function/Function;
+      2629: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      2632: putstatic     #564                // Field INCONSISTENT_CLUSTER_ID:Lorg/apache/kafka/common/protocol/Errors;
+      2635: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      2638: dup
+      2639: ldc_w         #1483               // String TRANSACTIONAL_ID_NOT_FOUND
+      2642: bipush        106
+      2644: bipush        105
+      2646: ldc_w         #1485               // String The transactionalId could not be found.
+      2649: invokedynamic #1490,  0           // InvokeDynamic #106:apply:()Ljava/util/function/Function;
+      2654: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      2657: putstatic     #566                // Field TRANSACTIONAL_ID_NOT_FOUND:Lorg/apache/kafka/common/protocol/Errors;
+      2660: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      2663: dup
+      2664: ldc_w         #1491               // String FETCH_SESSION_TOPIC_ID_ERROR
+      2667: bipush        107
+      2669: bipush        106
+      2671: ldc_w         #1493               // String The fetch session encountered inconsistent topic ID usage.
+      2674: invokedynamic #1498,  0           // InvokeDynamic #107:apply:()Ljava/util/function/Function;
+      2679: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      2682: putstatic     #568                // Field FETCH_SESSION_TOPIC_ID_ERROR:Lorg/apache/kafka/common/protocol/Errors;
+      2685: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      2688: dup
+      2689: ldc_w         #1499               // String INELIGIBLE_REPLICA
+      2692: bipush        108
+      2694: bipush        107
+      2696: ldc_w         #1501               // String The new ISR contains at least one ineligible replica.
+      2699: invokedynamic #1506,  0           // InvokeDynamic #108:apply:()Ljava/util/function/Function;
+      2704: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      2707: putstatic     #570                // Field INELIGIBLE_REPLICA:Lorg/apache/kafka/common/protocol/Errors;
+      2710: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      2713: dup
+      2714: ldc_w         #1507               // String NEW_LEADER_ELECTED
+      2717: bipush        109
+      2719: bipush        108
+      2721: ldc_w         #1509               // String The AlterPartition request successfully updated the partition state but the leader has changed.
+      2724: invokedynamic #1514,  0           // InvokeDynamic #109:apply:()Ljava/util/function/Function;
+      2729: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      2732: putstatic     #572                // Field NEW_LEADER_ELECTED:Lorg/apache/kafka/common/protocol/Errors;
+      2735: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      2738: dup
+      2739: ldc_w         #1515               // String OFFSET_MOVED_TO_TIERED_STORAGE
+      2742: bipush        110
+      2744: bipush        109
+      2746: ldc_w         #1517               // String The requested offset is moved to tiered storage.
+      2749: invokedynamic #1522,  0           // InvokeDynamic #110:apply:()Ljava/util/function/Function;
+      2754: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      2757: putstatic     #574                // Field OFFSET_MOVED_TO_TIERED_STORAGE:Lorg/apache/kafka/common/protocol/Errors;
+      2760: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      2763: dup
+      2764: ldc_w         #1523               // String FENCED_MEMBER_EPOCH
+      2767: bipush        111
+      2769: bipush        110
+      2771: ldc_w         #1525               // String The member epoch is fenced by the group coordinator. The member must abandon all its partitions and rejoin.
+      2774: invokedynamic #1530,  0           // InvokeDynamic #111:apply:()Ljava/util/function/Function;
+      2779: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      2782: putstatic     #576                // Field FENCED_MEMBER_EPOCH:Lorg/apache/kafka/common/protocol/Errors;
+      2785: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      2788: dup
+      2789: ldc_w         #1531               // String UNRELEASED_INSTANCE_ID
+      2792: bipush        112
+      2794: bipush        111
+      2796: ldc_w         #1533               // String The instance ID is still used by another member in the consumer group. That member must leave first.
+      2799: invokedynamic #1538,  0           // InvokeDynamic #112:apply:()Ljava/util/function/Function;
+      2804: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      2807: putstatic     #578                // Field UNRELEASED_INSTANCE_ID:Lorg/apache/kafka/common/protocol/Errors;
+      2810: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      2813: dup
+      2814: ldc_w         #1539               // String UNSUPPORTED_ASSIGNOR
+      2817: bipush        113
+      2819: bipush        112
+      2821: ldc_w         #1541               // String The assignor or its version range is not supported by the consumer group.
+      2824: invokedynamic #1546,  0           // InvokeDynamic #113:apply:()Ljava/util/function/Function;
+      2829: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      2832: putstatic     #580                // Field UNSUPPORTED_ASSIGNOR:Lorg/apache/kafka/common/protocol/Errors;
+      2835: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      2838: dup
+      2839: ldc_w         #1547               // String STALE_MEMBER_EPOCH
+      2842: bipush        114
+      2844: bipush        113
+      2846: ldc_w         #1549               // String The member epoch is stale. The member must retry after receiving its updated member epoch via the ConsumerGroupHeartbeat API.
+      2849: invokedynamic #1554,  0           // InvokeDynamic #114:apply:()Ljava/util/function/Function;
+      2854: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      2857: putstatic     #582                // Field STALE_MEMBER_EPOCH:Lorg/apache/kafka/common/protocol/Errors;
+      2860: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      2863: dup
+      2864: ldc_w         #1555               // String MISMATCHED_ENDPOINT_TYPE
+      2867: bipush        115
+      2869: bipush        114
+      2871: ldc_w         #1557               // String The request was sent to an endpoint of the wrong type.
+      2874: invokedynamic #1562,  0           // InvokeDynamic #115:apply:()Ljava/util/function/Function;
+      2879: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      2882: putstatic     #584                // Field MISMATCHED_ENDPOINT_TYPE:Lorg/apache/kafka/common/protocol/Errors;
+      2885: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      2888: dup
+      2889: ldc_w         #1563               // String UNSUPPORTED_ENDPOINT_TYPE
+      2892: bipush        116
+      2894: bipush        115
+      2896: ldc_w         #1565               // String This endpoint type is not supported yet.
+      2899: invokedynamic #1570,  0           // InvokeDynamic #116:apply:()Ljava/util/function/Function;
+      2904: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      2907: putstatic     #586                // Field UNSUPPORTED_ENDPOINT_TYPE:Lorg/apache/kafka/common/protocol/Errors;
+      2910: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      2913: dup
+      2914: ldc_w         #1571               // String UNKNOWN_CONTROLLER_ID
+      2917: bipush        117
+      2919: bipush        116
+      2921: ldc_w         #1573               // String This controller ID is not known.
+      2924: invokedynamic #1578,  0           // InvokeDynamic #117:apply:()Ljava/util/function/Function;
+      2929: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      2932: putstatic     #588                // Field UNKNOWN_CONTROLLER_ID:Lorg/apache/kafka/common/protocol/Errors;
+      2935: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      2938: dup
+      2939: ldc_w         #1579               // String UNKNOWN_SUBSCRIPTION_ID
+      2942: bipush        118
+      2944: bipush        117
+      2946: ldc_w         #1581               // String Client sent a push telemetry request with an invalid or outdated subscription ID.
+      2949: invokedynamic #1586,  0           // InvokeDynamic #118:apply:()Ljava/util/function/Function;
+      2954: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      2957: putstatic     #590                // Field UNKNOWN_SUBSCRIPTION_ID:Lorg/apache/kafka/common/protocol/Errors;
+      2960: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      2963: dup
+      2964: ldc_w         #1587               // String TELEMETRY_TOO_LARGE
+      2967: bipush        119
+      2969: bipush        118
+      2971: ldc_w         #1589               // String Client sent a push telemetry request larger than the maximum size the broker will accept.
+      2974: invokedynamic #1594,  0           // InvokeDynamic #119:apply:()Ljava/util/function/Function;
+      2979: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      2982: putstatic     #592                // Field TELEMETRY_TOO_LARGE:Lorg/apache/kafka/common/protocol/Errors;
+      2985: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      2988: dup
+      2989: ldc_w         #1595               // String INVALID_REGISTRATION
+      2992: bipush        120
+      2994: bipush        119
+      2996: ldc_w         #1597               // String The controller has considered the broker registration to be invalid.
+      2999: invokedynamic #1602,  0           // InvokeDynamic #120:apply:()Ljava/util/function/Function;
+      3004: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      3007: putstatic     #594                // Field INVALID_REGISTRATION:Lorg/apache/kafka/common/protocol/Errors;
+      3010: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      3013: dup
+      3014: ldc_w         #1603               // String TRANSACTION_ABORTABLE
+      3017: bipush        121
+      3019: bipush        120
+      3021: ldc_w         #1605               // String The server encountered an error with the transaction. The client can abort the transaction to continue using this transactional ID.
+      3024: invokedynamic #1610,  0           // InvokeDynamic #121:apply:()Ljava/util/function/Function;
+      3029: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      3032: putstatic     #596                // Field TRANSACTION_ABORTABLE:Lorg/apache/kafka/common/protocol/Errors;
+      3035: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      3038: dup
+      3039: ldc_w         #1611               // String INVALID_RECORD_STATE
+      3042: bipush        122
+      3044: bipush        121
+      3046: ldc_w         #1613               // String The record state is invalid. The acknowledgement of delivery could not be completed.
+      3049: invokedynamic #1618,  0           // InvokeDynamic #122:apply:()Ljava/util/function/Function;
+      3054: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      3057: putstatic     #598                // Field INVALID_RECORD_STATE:Lorg/apache/kafka/common/protocol/Errors;
+      3060: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      3063: dup
+      3064: ldc_w         #1619               // String SHARE_SESSION_NOT_FOUND
+      3067: bipush        123
+      3069: bipush        122
+      3071: ldc_w         #1621               // String The share session was not found.
+      3074: invokedynamic #1626,  0           // InvokeDynamic #123:apply:()Ljava/util/function/Function;
+      3079: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      3082: putstatic     #600                // Field SHARE_SESSION_NOT_FOUND:Lorg/apache/kafka/common/protocol/Errors;
+      3085: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      3088: dup
+      3089: ldc_w         #1627               // String INVALID_SHARE_SESSION_EPOCH
+      3092: bipush        124
+      3094: bipush        123
+      3096: ldc_w         #1629               // String The share session epoch is invalid.
+      3099: invokedynamic #1634,  0           // InvokeDynamic #124:apply:()Ljava/util/function/Function;
+      3104: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      3107: putstatic     #602                // Field INVALID_SHARE_SESSION_EPOCH:Lorg/apache/kafka/common/protocol/Errors;
+      3110: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      3113: dup
+      3114: ldc_w         #1635               // String FENCED_STATE_EPOCH
+      3117: bipush        125
+      3119: bipush        124
+      3121: ldc_w         #1637               // String The share coordinator rejected the request because the share-group state epoch did not match.
+      3124: invokedynamic #1642,  0           // InvokeDynamic #125:apply:()Ljava/util/function/Function;
+      3129: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      3132: putstatic     #604                // Field FENCED_STATE_EPOCH:Lorg/apache/kafka/common/protocol/Errors;
+      3135: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      3138: dup
+      3139: ldc_w         #1643               // String INVALID_VOTER_KEY
+      3142: bipush        126
+      3144: bipush        125
+      3146: ldc_w         #1645               // String The voter key doesn\'t match the receiving replica\'s key.
+      3149: invokedynamic #1650,  0           // InvokeDynamic #126:apply:()Ljava/util/function/Function;
+      3154: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      3157: putstatic     #606                // Field INVALID_VOTER_KEY:Lorg/apache/kafka/common/protocol/Errors;
+      3160: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      3163: dup
+      3164: ldc_w         #1651               // String DUPLICATE_VOTER
+      3167: bipush        127
+      3169: bipush        126
+      3171: ldc_w         #1653               // String The voter is already part of the set of voters.
+      3174: invokedynamic #1658,  0           // InvokeDynamic #127:apply:()Ljava/util/function/Function;
+      3179: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      3182: putstatic     #608                // Field DUPLICATE_VOTER:Lorg/apache/kafka/common/protocol/Errors;
+      3185: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      3188: dup
+      3189: ldc_w         #1659               // String VOTER_NOT_FOUND
+      3192: sipush        128
+      3195: bipush        127
+      3197: ldc_w         #1661               // String The voter is not part of the set of voters.
+      3200: invokedynamic #1666,  0           // InvokeDynamic #128:apply:()Ljava/util/function/Function;
+      3205: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      3208: putstatic     #610                // Field VOTER_NOT_FOUND:Lorg/apache/kafka/common/protocol/Errors;
+      3211: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      3214: dup
+      3215: ldc_w         #1667               // String INVALID_REGULAR_EXPRESSION
+      3218: sipush        129
+      3221: sipush        128
+      3224: ldc_w         #1669               // String The regular expression is not valid.
+      3227: invokedynamic #1674,  0           // InvokeDynamic #129:apply:()Ljava/util/function/Function;
+      3232: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      3235: putstatic     #612                // Field INVALID_REGULAR_EXPRESSION:Lorg/apache/kafka/common/protocol/Errors;
+      3238: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      3241: dup
+      3242: ldc_w         #1675               // String REBOOTSTRAP_REQUIRED
+      3245: sipush        130
+      3248: sipush        129
+      3251: ldc_w         #1677               // String Client metadata is stale. The client should rebootstrap to obtain new metadata.
+      3254: invokedynamic #1682,  0           // InvokeDynamic #130:apply:()Ljava/util/function/Function;
+      3259: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      3262: putstatic     #614                // Field REBOOTSTRAP_REQUIRED:Lorg/apache/kafka/common/protocol/Errors;
+      3265: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      3268: dup
+      3269: ldc_w         #1683               // String STREAMS_INVALID_TOPOLOGY
+      3272: sipush        131
+      3275: sipush        130
+      3278: ldc_w         #1685               // String The supplied topology is invalid.
+      3281: invokedynamic #1690,  0           // InvokeDynamic #131:apply:()Ljava/util/function/Function;
+      3286: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      3289: putstatic     #616                // Field STREAMS_INVALID_TOPOLOGY:Lorg/apache/kafka/common/protocol/Errors;
+      3292: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      3295: dup
+      3296: ldc_w         #1691               // String STREAMS_INVALID_TOPOLOGY_EPOCH
+      3299: sipush        132
+      3302: sipush        131
+      3305: ldc_w         #1693               // String The supplied topology epoch is invalid.
+      3308: invokedynamic #1698,  0           // InvokeDynamic #132:apply:()Ljava/util/function/Function;
+      3313: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      3316: putstatic     #618                // Field STREAMS_INVALID_TOPOLOGY_EPOCH:Lorg/apache/kafka/common/protocol/Errors;
+      3319: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      3322: dup
+      3323: ldc_w         #1699               // String STREAMS_TOPOLOGY_FENCED
+      3326: sipush        133
+      3329: sipush        132
+      3332: ldc_w         #1701               // String The supplied topology epoch is outdated.
+      3335: invokedynamic #1706,  0           // InvokeDynamic #133:apply:()Ljava/util/function/Function;
+      3340: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      3343: putstatic     #620                // Field STREAMS_TOPOLOGY_FENCED:Lorg/apache/kafka/common/protocol/Errors;
+      3346: new           #2                  // class org/apache/kafka/common/protocol/Errors
+      3349: dup
+      3350: ldc_w         #1707               // String SHARE_SESSION_LIMIT_REACHED
+      3353: sipush        134
+      3356: sipush        133
+      3359: ldc_w         #1709               // String The limit of share sessions has been reached.
+      3362: invokedynamic #1714,  0           // InvokeDynamic #134:apply:()Ljava/util/function/Function;
+      3367: invokespecial #645                // Method "<init>":(Ljava/lang/String;IILjava/lang/String;Ljava/util/function/Function;)V
+      3370: putstatic     #622                // Field SHARE_SESSION_LIMIT_REACHED:Lorg/apache/kafka/common/protocol/Errors;
+      3373: invokestatic  #1716               // Method $values:()[Lorg/apache/kafka/common/protocol/Errors;
+      3376: putstatic     #167                // Field $VALUES:[Lorg/apache/kafka/common/protocol/Errors;
+      3379: ldc           #2                  // class org/apache/kafka/common/protocol/Errors
+      3381: invokestatic  #1722               // Method org/slf4j/LoggerFactory.getLogger:(Ljava/lang/Class;)Lorg/slf4j/Logger;
+      3384: putstatic     #245                // Field log:Lorg/slf4j/Logger;
+      3387: new           #1724               // class java/util/HashMap
+      3390: dup
+      3391: invokespecial #1725               // Method java/util/HashMap."<init>":()V
+      3394: putstatic     #266                // Field CLASS_TO_ERROR:Ljava/util/Map;
+      3397: new           #1724               // class java/util/HashMap
+      3400: dup
+      3401: invokespecial #1725               // Method java/util/HashMap."<init>":()V
+      3404: putstatic     #233                // Field CODE_TO_ERROR:Ljava/util/Map;
+      3407: invokestatic  #308                // Method values:()[Lorg/apache/kafka/common/protocol/Errors;
+      3410: astore_0
+      3411: aload_0
+      3412: arraylength
+      3413: istore_1
+      3414: iconst_0
+      3415: istore_2
+      3416: iload_2
+      3417: iload_1
+      3418: if_icmpge     3495
+      3421: aload_0
+      3422: iload_2
+      3423: aaload
+      3424: astore_3
+      3425: getstatic     #233                // Field CODE_TO_ERROR:Ljava/util/Map;
+      3428: aload_3
+      3429: invokevirtual #316                // Method code:()S
+      3432: invokestatic  #238                // Method java/lang/Short.valueOf:(S)Ljava/lang/Short;
+      3435: aload_3
+      3436: invokeinterface #1729,  3         // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      3441: ifnull        3465
+      3444: new           #1731               // class java/lang/ExceptionInInitializerError
+      3447: dup
+      3448: aload_3
+      3449: invokevirtual #316                // Method code:()S
+      3452: aload_3
+      3453: invokestatic  #1734               // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+      3456: invokedynamic #1746,  0           // InvokeDynamic #135:makeConcatWithConstants:(SLjava/lang/String;)Ljava/lang/String;
+      3461: invokespecial #1747               // Method java/lang/ExceptionInInitializerError."<init>":(Ljava/lang/String;)V
+      3464: athrow
+      3465: aload_3
+      3466: getfield      #199                // Field exception:Lorg/apache/kafka/common/errors/ApiException;
+      3469: ifnull        3489
+      3472: getstatic     #266                // Field CLASS_TO_ERROR:Ljava/util/Map;
+      3475: aload_3
+      3476: getfield      #199                // Field exception:Lorg/apache/kafka/common/errors/ApiException;
+      3479: invokevirtual #213                // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      3482: aload_3
+      3483: invokeinterface #1729,  3         // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      3488: pop
+      3489: iinc          2, 1
+      3492: goto          3416
+      3495: return
+}

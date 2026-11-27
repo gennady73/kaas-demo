@@ -1,14 +1,12 @@
-// Candidate only: not compiled or executed in the offline preparation assignment.
+// Metadata-only AUTH candidate. Compilation does not authorize execution.
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.Duration;
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 import javax.net.ssl.SSLException;
 import org.apache.kafka.clients.admin.Admin;
@@ -24,25 +22,22 @@ class AuthMetadataProbe {
   static final String PRINCIPAL = "kaas-sbx-a-producer";
   static final String TOPIC = "kaas-sbx-a-events";
   static final Path CA = Path.of("/credentials/cluster-ca/ca.crt");
-  static final String AUTHENTICATOR = "org.apache.kafka.common.security.authenticator.SaslClientAuthenticator";
 
   static String quote(String s) {
     return "\"" + s.replace("\\", "\\\\").replace("\"", "\\\"") + "\"";
   }
   static String safeOutcome(Throwable error) {
     // Never emit an exception message, class dump, stack trace or configuration.
-    // SASL_AUTHENTICATION_FAILED can also originate locally. Only the pinned
-    // Kafka receiveToken path is accepted as a received SASL response here.
+    // Exact downstream ApiException.fillInStackTrace() is a no-op. The
+    // exception type alone cannot distinguish local errors from broker replies.
+    // Keep this candidate nonpassing until a reviewed origin channel exists.
     boolean sasl = false;
     int depth = 0;
     for (Throwable t = error; t != null && depth++ < 16; t = t.getCause()) {
       if (t instanceof SSLException) return "TLS_FAILURE";
       if (t instanceof SaslAuthenticationException) {
         sasl = true;
-        for (StackTraceElement frame : t.getStackTrace()) {
-          if (AUTHENTICATOR.equals(frame.getClassName()) && "receiveToken".equals(frame.getMethodName()))
-            return "BROKER_SASL_REJECTED";
-        }
+
       }
       if (t instanceof AuthorizationException) return "AUTHORIZATION_FAILURE";
       if (t instanceof java.util.concurrent.TimeoutException || t instanceof org.apache.kafka.common.errors.TimeoutException)
@@ -64,7 +59,7 @@ class AuthMetadataProbe {
       phase = args[0];
       // Version equality is an independent future arming input; no family-only
       // fallback or automatic allowance for an unreviewed downstream build.
-      if (!args[1].equals(AppInfoParser.getVersion()) || !args[1].matches("4\\.2\\.0[A-Za-z0-9_.-]*"))
+      if (!"4.2.1.redhat-00003".equals(args[1]) || !args[1].equals(AppInfoParser.getVersion()))
         throw new IllegalArgumentException();
       byte[] supplied;
       try (InputStream input = System.in) { supplied = input.readNBytes(4097); }

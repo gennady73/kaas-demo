@@ -1,5 +1,5 @@
 {
-  "status": "AUTH_PROBE_CANDIDATE_PREPARED_OFFLINE_NOT_COMPILED_OR_TESTED",
+  "status": "COMPILE_PASS_SOURCE_REVIEW_BLOCKS_EXECUTION",
   "date": "2026-11-27",
   "source_base_commit": "c9aba5af22612da0e5d2f7ba4d9b825b3df4b26d",
   "case": "R3-02-AUTH",
@@ -11,10 +11,10 @@
     "valid_control_after"
   ],
   "positive_and_negative_same_Java_SDK_principal_endpoint_CA_hostname_settings": true,
-  "expected_negative": "typed SaslAuthenticationException with received-response origin receiveToken; otherwise nonpassing",
+  "expected_negative": "BLOCKED: SDK suppresses origin stack; current candidate fails closed",
   "negative_password": "Generated only in RAM; anonymous stdin; never persisted or hashed",
   "application_value_bytes": 0,
-  "candidate_image": "Existing pinned05a3f2dR2image; toolchain jar/version not yet verified",
+  "candidate_image": "Pinned41f runner matches saved build evidence; exact base SDK inspected; no fresh runner runtime attestation",
   "execution_enabled": false,
   "deployment_enabled": false,
   "Job_suspended": true,
@@ -26,13 +26,13 @@
   ],
   "external_notifications_enabled": false,
   "tests_run": 0,
-  "Java_compilation": "NOT_RUN; local javac unavailable; no alternate compile/build attempted",
+  "Java_compilation": "PASS: javac25.0.5 --release17 -proc:none; exact base SDK4.2.1.redhat-00003; no warnings",
   "probe_or_fake_broker_execution": "NOT_RUN",
-  "new_image_build_or_pull": "NOT_RUN",
+  "new_image_build_or_pull": "No new image built; pinned base layers downloaded/extracted for compilation only; no container started",
   "cluster_or_Secret_access": false,
   "primary_documentation_browsed": true,
-  "source_inspection_only": true,
-  "static_inspection": "Python3.9AST parsing, YAML/JSON/source-lock equality, fixed operation/no-mutation API source scan, disabled/newJob scope, source hash/redaction/preservation",
+  "source_inspection_only": false,
+  "static_inspection": "See evidence/compile-review.json; original static-inspection/publication receipts are historical",
   "not_runtime_verification": [
     "Typed error propagation and downstream origin-frame contract",
     "JVM source launcher/classpath compatibility",
@@ -41,12 +41,12 @@
     "SCC/mount/network/CA/credential readiness and actual image identity"
   ],
   "future_execution_inputs": [
-    "Source review/compile and specifically authorized validation of classification/redaction/containment",
-    "Exact candidate image and Kafka Java jar/version/SHA plus origin mapping",
-    "Immutable per-run profile/ConfigMap/Job and approved profile hash; run/authority/window unset",
-    "Applicable fresh metadata-only readiness, nonroot Secret/CA access, endpoint/policy/Job/resource/custody/export checks"
+    "Resolve R3-AUTH-SRC-02 offline; do not arm current source",
+    "Specifically authorized behavior/classification/redaction/containment validation remains unrun",
+    "Fresh exact runner identity, runtime Java/Python launcher, nonroot mounts/TLS/network/readiness and immutable approved run/profile/window/custody checks before any execution"
   ],
   "runtime_AUTH_qualification": "NOT_RUN_NOT_QUALIFIED",
   "publication": "INCLUDED_IN_OWNING_COMMIT_CANDIDATE_ONLY_NO_DEPLOYMENT_OR_TESTS",
-  "new_source_review_concurrence": "NOT_CLAIMED"
+  "new_source_review_concurrence": "NOT_CLAIMED",
+  "compile_review": "evidence/compile-review.json"
 }

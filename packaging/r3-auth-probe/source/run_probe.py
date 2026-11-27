@@ -204,9 +204,9 @@ def main():
         deadline = min(deadline, started + profile['window_end_epoch'] - now)
         version = profile['expected_sdk_version']
         jar = profile['expected_sdk_jar']
-        if not isinstance(version, str) or not re.fullmatch(r'4\.2\.0[A-Za-z0-9_.-]*', version):
+        if not isinstance(version, str) or version != '4.2.1.redhat-00003':
             raise Stop('SDK_IDENTITY_MISSING')
-        if not isinstance(jar, str) or not re.fullmatch(r'kafka-clients-4\.2\.0[A-Za-z0-9_.-]*\.jar', jar):
+        if not isinstance(jar, str) or jar != 'kafka-clients-4.2.1.redhat-00003.jar':
             raise Stop('SDK_IDENTITY_MISSING')
         digest = profile['expected_sdk_jar_sha256']
         if not isinstance(digest, str) or not re.fullmatch(r'[0-9a-f]{64}', digest):

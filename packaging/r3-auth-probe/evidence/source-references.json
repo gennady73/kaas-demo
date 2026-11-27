@@ -23,5 +23,5 @@
     "tests/tenant-r2-native/native/module.go": "79d3d770eb25c4644db14b027ab42e8ae00292cae8aa26fc0f3c160b0b5592b3",
     "qualification/r3/r3-02/source/docs/security/r3-c6-review-2026-11-26/security-matrix.disabled.json": "56a517929e3ea282cc0d99212ae46d391b806432fc90c4980c2ae6d640b13b7a"
   },
-  "limits": "Upstream source is not proof of exact installed downstream jar origin frames. Exact Java client jar/version/hash and runtime failure propagation remain unverified future gates."
+  "limits": "Superseded by evidence/compile-review.json: exact downstream4.2.1.redhat-00003 ApiException suppresses stack traces. Origin classifier BLOCKED; no runtime qualification."
 }

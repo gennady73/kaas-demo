@@ -1,4 +1,8 @@
-# R3-02 AUTH probe prepared offline
+# R3-02 AUTH probe: current compilation review
+
+**Compilation passed; R3-AUTH-SRC-02 blocks execution.** See the [current source/SDK/image review](../packaging/r3-auth-probe/compile-review.md). Exact SDK4.2.1.redhat-00003 pins are populated; origin classification remains fail-closed. No tests or deployments occurred. The following preparation entry is historical and superseded where noted in that review.
+
+## Original preparation
 
 [Candidate source, disabled configuration and limits](../packaging/r3-auth-probe/README.md) implement only the selected AUTH subcase: wrong Kafka password bracketed by valid-credential own-topic metadata controls. No existing R2 fixture or runtime is changed.
 

@@ -1,17 +1,27 @@
 {
-  "source_review_commit": "c9aba5af22612da0e5d2f7ba4d9b825b3df4b26d",
+  "source_review_commit": "ecf58096b827e48547c538b50006e36f92ed1a1b",
   "files": {
-    "README.md": "7b0723f886bbb98a833cbe536eeb09282c3fcec2e6c47aaac2bb5717d31ef309",
-    "disabled/resources.yaml.disabled": "ab913609cac9c26381c33b73f6acb0903f70e6c698e51da30085222da1eee69b",
+    "README.md": "1b14c7fb82120eb954099d0b4c9bf9250796624b51e73250689bfd5511c50480",
+    "compile-review.md": "77958ffc801c2ba727661a9306d388a4389f2eecb5046038b8aefcdea0b7339d",
+    "disabled/resources.yaml.disabled": "d2c5bc70bb45197684bde13e8d2843f9d999bdfce5292545c23b590f0013743b",
+    "evidence/Errors.javap.txt": "f81eff16253e0734c66176a73a34c16af8657aed11f31e1a369f9b6299d1a523",
+    "evidence/Exceptions.javap.txt": "c53654f8aaec95855650777578771e7f408d22cfd4271917bb68229f7c8b350d",
+    "evidence/SaslClientAuthenticator.javap.txt": "1e2b4f6b1cf270c90b1559978696a270e880bf3a9cc61e946e98c8478a8b0a2a",
+    "evidence/base-amd64-manifest.json": "ccca1fa9be261fac850b918c27cecdd31bc2bbe85baf9c8a268db96ee332aa05",
+    "evidence/base-index.json": "ce7dc91b664600c6f06e1df3d6b56a4684bb779865d9c28b4df648addd89189d",
+    "evidence/compile-review.json": "155645f04f51d7bdde2eb9fd5ef0048743c4ca0289994bc3c1834d60b370a865",
+    "evidence/compile-static-inspection.json": "01825e322ad2f5edf28178a4a141cc1fba5f4fc975b1d11cf341ee72d3582804",
+    "evidence/javac.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "evidence/javac.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "evidence/publication-preparation.json": "64aefb3d8d157b7e32b3f68973da40a6b7d46f28ec807e3e23c7a3b7a0df8d0d",
-    "evidence/source-references.json": "7390cc5c9fff86b12fd217708ef7a1887b233b5d004142a6e72c9f5067ac0443",
+    "evidence/source-references.json": "4ff82e18b66386a6abe2428a43665a7589202ecf1599686f4d682d23da7a1fad",
     "evidence/static-inspection.json": "82ab588eb08c21aa8f42335ed295205f0a89e834c5f57cc1ac95199a95c932b7",
-    "prepare_disabled.py": "5df2a507ebb2bc970cf4542d0df974c90de754831530cc18c00df454ecd7647c",
-    "profile.disabled.json": "13902c9ff457234c75de3b0e16e090f7efbd355f681306f5c71f1d2153c6384f",
-    "result.json": "4a7038bc9cfae1911d7dd0c7b6670e5052bd307d1994af3e966c8a41eedbf162",
-    "source/AuthMetadataProbe.java": "d06c32dd6e902a48c3b660961b1abe8bca720f55e7791ca5e54c1d0fdac886b5",
+    "prepare_disabled.py": "e50f0493c98dbd2bbc4fce69e984edef4665aa936aed71cc4783e00fe88fb2a3",
+    "profile.disabled.json": "5f9bb597a546bd1e2b2e2539ca2eab7313dc63ded39affa5ff0c8101d76ff370",
+    "result.json": "9b9dfac82d3f4e65f8dab7b2b45c4b74358fc1128168d427b0b36f4f9a53b31e",
+    "source/AuthMetadataProbe.java": "dd17c00eb0a9dc5b99adfc4e1673f0f90b7780836e61426e83b376e3f6d9fddd",
     "source/log4j2.properties": "a10f28bc03e2804ca55bfe6e7ca17be4d0c7763b822bf37d01a120e77b4bb576",
-    "source/run_probe.py": "f5d844cf3e48ad4477bdcaa80b8bb8254af446444abe8175158dc859ebae1102",
-    "source/source-lock.json": "78a8542b4ecc286403f89c13162309060c7ea0fb6b85963db9f17bbaf5fa02ca"
+    "source/run_probe.py": "38fb53a02a60b1e198543575542d0f24ab975bac7291506e9889d6c16bf7edbf",
+    "source/source-lock.json": "74f87692b750cb77462fbac1cac15d286015f331e8d3c76edc48bce3953eaceb"
   }
 }

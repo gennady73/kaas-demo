@@ -16,11 +16,10 @@ metadata:
     kaas.example.com/r3-probe: auth
   name: kaas-r3-auth-probe-disabled
 data:
-  AuthMetadataProbe.java: "// Candidate only: not compiled or executed in the offline\
-    \ preparation assignment.\nimport java.io.InputStream;\nimport java.nio.charset.StandardCharsets;\n\
+  AuthMetadataProbe.java: "// Metadata-only AUTH candidate. Compilation does not authorize\
+    \ execution.\nimport java.io.InputStream;\nimport java.nio.charset.StandardCharsets;\n\
     import java.nio.file.Files;\nimport java.nio.file.Path;\nimport java.time.Duration;\n\
-    import java.util.Collection;\nimport java.util.List;\nimport java.util.Map;\n\
-    import java.util.Properties;\nimport java.util.concurrent.ExecutionException;\n\
+    import java.util.List;\nimport java.util.Map;\nimport java.util.Properties;\n\
     import java.util.concurrent.TimeUnit;\nimport javax.net.ssl.SSLException;\nimport\
     \ org.apache.kafka.clients.admin.Admin;\nimport org.apache.kafka.clients.admin.DescribeTopicsOptions;\n\
     import org.apache.kafka.clients.admin.TopicDescription;\nimport org.apache.kafka.common.errors.AuthenticationException;\n\
@@ -29,23 +28,20 @@ data:
     \ {\n  static final String ENDPOINT = \"kaas-dev-kafka-bootstrap.kaas-kafka.svc:9093\"\
     ;\n  static final String PRINCIPAL = \"kaas-sbx-a-producer\";\n  static final\
     \ String TOPIC = \"kaas-sbx-a-events\";\n  static final Path CA = Path.of(\"/credentials/cluster-ca/ca.crt\"\
-    );\n  static final String AUTHENTICATOR = \"org.apache.kafka.common.security.authenticator.SaslClientAuthenticator\"\
-    ;\n\n  static String quote(String s) {\n    return \"\\\"\" + s.replace(\"\\\\\
+    );\n\n  static String quote(String s) {\n    return \"\\\"\" + s.replace(\"\\\\\
     \", \"\\\\\\\\\").replace(\"\\\"\", \"\\\\\\\"\") + \"\\\"\";\n  }\n  static String\
     \ safeOutcome(Throwable error) {\n    // Never emit an exception message, class\
-    \ dump, stack trace or configuration.\n    // SASL_AUTHENTICATION_FAILED can also\
-    \ originate locally. Only the pinned\n    // Kafka receiveToken path is accepted\
-    \ as a received SASL response here.\n    boolean sasl = false;\n    int depth\
-    \ = 0;\n    for (Throwable t = error; t != null && depth++ < 16; t = t.getCause())\
-    \ {\n      if (t instanceof SSLException) return \"TLS_FAILURE\";\n      if (t\
-    \ instanceof SaslAuthenticationException) {\n        sasl = true;\n        for\
-    \ (StackTraceElement frame : t.getStackTrace()) {\n          if (AUTHENTICATOR.equals(frame.getClassName())\
-    \ && \"receiveToken\".equals(frame.getMethodName()))\n            return \"BROKER_SASL_REJECTED\"\
-    ;\n        }\n      }\n      if (t instanceof AuthorizationException) return \"\
-    AUTHORIZATION_FAILURE\";\n      if (t instanceof java.util.concurrent.TimeoutException\
-    \ || t instanceof org.apache.kafka.common.errors.TimeoutException)\n        return\
-    \ \"TIMEOUT\";\n      if (t instanceof AuthenticationException && !(t instanceof\
-    \ SaslAuthenticationException))\n        return \"OTHER_AUTHENTICATION_FAILURE\"\
+    \ dump, stack trace or configuration.\n    // Exact downstream ApiException.fillInStackTrace()\
+    \ is a no-op. The\n    // exception type alone cannot distinguish local errors\
+    \ from broker replies.\n    // Keep this candidate nonpassing until a reviewed\
+    \ origin channel exists.\n    boolean sasl = false;\n    int depth = 0;\n    for\
+    \ (Throwable t = error; t != null && depth++ < 16; t = t.getCause()) {\n     \
+    \ if (t instanceof SSLException) return \"TLS_FAILURE\";\n      if (t instanceof\
+    \ SaslAuthenticationException) {\n        sasl = true;\n\n      }\n      if (t\
+    \ instanceof AuthorizationException) return \"AUTHORIZATION_FAILURE\";\n     \
+    \ if (t instanceof java.util.concurrent.TimeoutException || t instanceof org.apache.kafka.common.errors.TimeoutException)\n\
+    \        return \"TIMEOUT\";\n      if (t instanceof AuthenticationException &&\
+    \ !(t instanceof SaslAuthenticationException))\n        return \"OTHER_AUTHENTICATION_FAILURE\"\
     ;\n      if (t.getCause() == t) break;\n    }\n    return sasl ? \"LOCAL_OR_UNPROVEN_SASL_FAILURE\"\
     \ : \"UNCLASSIFIED_FAILURE\";\n  }\n  public static void main(String[] args) {\n\
     \    String phase = \"invalid\";\n    String outcome = \"INPUT_INVALID\";\n  \
@@ -54,17 +50,17 @@ data:
     \        throw new IllegalArgumentException();\n      phase = args[0];\n     \
     \ // Version equality is an independent future arming input; no family-only\n\
     \      // fallback or automatic allowance for an unreviewed downstream build.\n\
-    \      if (!args[1].equals(AppInfoParser.getVersion()) || !args[1].matches(\"\
-    4\\\\.2\\\\.0[A-Za-z0-9_.-]*\"))\n        throw new IllegalArgumentException();\n\
-    \      byte[] supplied;\n      try (InputStream input = System.in) { supplied\
-    \ = input.readNBytes(4097); }\n      if (supplied.length == 0 || supplied.length\
-    \ > 4096) throw new IllegalArgumentException();\n      String password = new String(supplied,\
-    \ StandardCharsets.UTF_8);\n      java.util.Arrays.fill(supplied, (byte) 0);\n\
-    \      if (password.indexOf('\\n') >= 0 || password.indexOf('\\r') >= 0 || password.indexOf(0)\
-    \ >= 0)\n        throw new IllegalArgumentException();\n      Properties config\
-    \ = new Properties();\n      config.put(\"bootstrap.servers\", ENDPOINT);\n  \
-    \    config.put(\"security.protocol\", \"SASL_SSL\");\n      config.put(\"sasl.mechanism\"\
-    , \"SCRAM-SHA-512\");\n      config.put(\"sasl.jaas.config\", \"org.apache.kafka.common.security.scram.ScramLoginModule\
+    \      if (!\"4.2.1.redhat-00003\".equals(args[1]) || !args[1].equals(AppInfoParser.getVersion()))\n\
+    \        throw new IllegalArgumentException();\n      byte[] supplied;\n     \
+    \ try (InputStream input = System.in) { supplied = input.readNBytes(4097); }\n\
+    \      if (supplied.length == 0 || supplied.length > 4096) throw new IllegalArgumentException();\n\
+    \      String password = new String(supplied, StandardCharsets.UTF_8);\n     \
+    \ java.util.Arrays.fill(supplied, (byte) 0);\n      if (password.indexOf('\\n')\
+    \ >= 0 || password.indexOf('\\r') >= 0 || password.indexOf(0) >= 0)\n        throw\
+    \ new IllegalArgumentException();\n      Properties config = new Properties();\n\
+    \      config.put(\"bootstrap.servers\", ENDPOINT);\n      config.put(\"security.protocol\"\
+    , \"SASL_SSL\");\n      config.put(\"sasl.mechanism\", \"SCRAM-SHA-512\");\n \
+    \     config.put(\"sasl.jaas.config\", \"org.apache.kafka.common.security.scram.ScramLoginModule\
     \ required username=\"\n          + quote(PRINCIPAL) + \" password=\" + quote(password)\
     \ + \";\");\n      config.put(\"ssl.truststore.type\", \"PEM\");\n      config.put(\"\
     ssl.truststore.certificates\", Files.readString(CA));\n      config.put(\"ssl.endpoint.identification.algorithm\"\
@@ -205,10 +201,9 @@ data:
     \ <= 600):\n            raise Stop('WINDOW_MISMATCH')\n        deadline = min(deadline,\
     \ started + profile['window_end_epoch'] - now)\n        version = profile['expected_sdk_version']\n\
     \        jar = profile['expected_sdk_jar']\n        if not isinstance(version,\
-    \ str) or not re.fullmatch(r'4\\.2\\.0[A-Za-z0-9_.-]*', version):\n          \
-    \  raise Stop('SDK_IDENTITY_MISSING')\n        if not isinstance(jar, str) or\
-    \ not re.fullmatch(r'kafka-clients-4\\.2\\.0[A-Za-z0-9_.-]*\\.jar', jar):\n  \
-    \          raise Stop('SDK_IDENTITY_MISSING')\n        digest = profile['expected_sdk_jar_sha256']\n\
+    \ str) or version != '4.2.1.redhat-00003':\n            raise Stop('SDK_IDENTITY_MISSING')\n\
+    \        if not isinstance(jar, str) or jar != 'kafka-clients-4.2.1.redhat-00003.jar':\n\
+    \            raise Stop('SDK_IDENTITY_MISSING')\n        digest = profile['expected_sdk_jar_sha256']\n\
     \        if not isinstance(digest, str) or not re.fullmatch(r'[0-9a-f]{64}', digest):\n\
     \            raise Stop('SDK_IDENTITY_MISSING')\n        jar_files = list(Path('/opt/kafka/libs').glob('kafka-clients-*.jar'))\n\
     \        if len(jar_files) != 1 or jar_files[0].name != jar:\n            raise\
@@ -271,21 +266,23 @@ data:
 
     '
   source-lock.json: "{\n  \"schema\": \"kaas-r3-auth-source-lock/v1\",\n  \"files\"\
-    : {\n    \"AuthMetadataProbe.java\": \"d06c32dd6e902a48c3b660961b1abe8bca720f55e7791ca5e54c1d0fdac886b5\"\
-    ,\n    \"run_probe.py\": \"f5d844cf3e48ad4477bdcaa80b8bb8254af446444abe8175158dc859ebae1102\"\
+    : {\n    \"AuthMetadataProbe.java\": \"dd17c00eb0a9dc5b99adfc4e1673f0f90b7780836e61426e83b376e3f6d9fddd\"\
+    ,\n    \"run_probe.py\": \"38fb53a02a60b1e198543575542d0f24ab975bac7291506e9889d6c16bf7edbf\"\
     ,\n    \"log4j2.properties\": \"a10f28bc03e2804ca55bfe6e7ca17be4d0c7763b822bf37d01a120e77b4bb576\"\
     \n  }\n}\n"
   profile.json: "{\n  \"schema\": \"kaas-r3-auth-profile/v1\",\n  \"case\": \"R3-02-AUTH\"\
-    ,\n  \"status\": \"PREPARED_DISABLED_NOT_COMPILED_OR_TESTED\",\n  \"source_review_commit\"\
+    ,\n  \"status\": \"COMPILED_DISABLED_ORIGIN_CLASSIFIER_BLOCKED\",\n  \"source_review_commit\"\
     : \"c9aba5af22612da0e5d2f7ba4d9b825b3df4b26d\",\n  \"execution_enabled\": false,\n\
     \  \"deployment_enabled\": false,\n  \"external_notifications_enabled\": false,\n\
     \  \"protected_Jobs_must_remain_suspended\": true,\n  \"run_id\": null,\n  \"\
     authorization_reference\": null,\n  \"window_start_epoch\": null,\n  \"window_end_epoch\"\
-    : null,\n  \"runtime_image_reference\": null,\n  \"candidate_existing_image\"\
-    : \"image-registry.openshift-image-registry.svc:5000/kaas-demo/kaas-r2-runner-05a3f2d@sha256:41f328c85ee3d3e9d8834ce12e516b5ef52506067117b1c4f1145511b493998a\"\
-    ,\n  \"expected_sdk_version\": null,\n  \"expected_sdk_jar\": null,\n  \"expected_sdk_jar_sha256\"\
-    : null,\n  \"fixed_scope\": {\n    \"bootstrap\": \"kaas-dev-kafka-bootstrap.kaas-kafka.svc:9093\"\
-    ,\n    \"principal\": \"kaas-sbx-a-producer\",\n    \"topic\": \"kaas-sbx-a-events\"\
+    : null,\n  \"runtime_image_reference\": \"image-registry.openshift-image-registry.svc:5000/kaas-demo/kaas-r2-runner-05a3f2d@sha256:41f328c85ee3d3e9d8834ce12e516b5ef52506067117b1c4f1145511b493998a\"\
+    ,\n  \"candidate_existing_image\": \"image-registry.openshift-image-registry.svc:5000/kaas-demo/kaas-r2-runner-05a3f2d@sha256:41f328c85ee3d3e9d8834ce12e516b5ef52506067117b1c4f1145511b493998a\"\
+    ,\n  \"expected_sdk_version\": \"4.2.1.redhat-00003\",\n  \"expected_sdk_jar\"\
+    : \"kafka-clients-4.2.1.redhat-00003.jar\",\n  \"expected_sdk_jar_sha256\": \"\
+    5f13fa84c366c1b20388aadfea9b0539654563bc90bcacd2515c849e8d37e669\",\n  \"fixed_scope\"\
+    : {\n    \"bootstrap\": \"kaas-dev-kafka-bootstrap.kaas-kafka.svc:9093\",\n  \
+    \  \"principal\": \"kaas-sbx-a-producer\",\n    \"topic\": \"kaas-sbx-a-events\"\
     ,\n    \"TLS\": \"REQUIRED_CA_AND_HOSTNAME_VERIFICATION\",\n    \"SASL\": \"SCRAM-SHA-512\"\
     ,\n    \"credential_file\": \"/credentials/principal/password\",\n    \"cluster_CA_file\"\
     : \"/credentials/cluster-ca/ca.crt\"\n  },\n  \"sequence\": [\n    \"positive_before\"\

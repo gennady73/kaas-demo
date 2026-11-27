@@ -1,0 +1,9 @@
+{
+  "status": "STATIC_CONSISTENCY_INSPECTED",
+  "inactive_objects": 4,
+  "new_Job_suspended": true,
+  "profile_disabled": true,
+  "source_lock_embedded_CM_equal": true,
+  "Python3_9_AST": "Parsed only, no import or execution",
+  "tests_run": 0
+}
