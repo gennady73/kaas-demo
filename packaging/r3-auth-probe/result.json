@@ -1,5 +1,5 @@
 {
-  "status": "AUTH_CLASSIFIER_RESOLVED_OFFLINE_COMPILE_PASS_RUNTIME_UNQUALIFIED",
+  "status": "AUTH_OFFLINE_BEHAVIOR_40_PASS_LIVE_UNQUALIFIED",
   "date": "2026-11-27",
   "source_base_commit": "c9aba5af22612da0e5d2f7ba4d9b825b3df4b26d",
   "case": "R3-02-AUTH",
@@ -25,27 +25,27 @@
     "kaas-r2-native-client-05a3f2d-r2"
   ],
   "external_notifications_enabled": false,
-  "tests_run": 0,
-  "Java_compilation": "PASS: javac25.0.5 --release17 -proc:none -Xlint:all; exact SDK4.2.1.redhat-00003; no diagnostics",
-  "probe_or_fake_broker_execution": "NOT_RUN",
+  "tests_run": 40,
+  "Java_compilation": "Final source compile PASS, Java17 target, no diagnostics",
+  "probe_or_fake_broker_execution": "18 local TLS/protocol cases +22 supervisor cases; synthetic fixtures only; no real Kafka endpoint",
   "new_image_build_or_pull": "No new image built; pinned base layers downloaded/extracted for compilation only; no container started",
   "cluster_or_Secret_access": false,
   "primary_documentation_browsed": true,
   "source_inspection_only": false,
-  "static_inspection": "See evidence/compile-review.json; original static-inspection/publication receipts are historical",
+  "static_inspection": "Source/profile/source-lock/embedded CM inspected; behavioral coverage in evidence/behavioral-tests/result.json",
   "not_runtime_verification": [
-    "Direct protocol framing/correlation/negative classification, redaction and actual wire behavior",
-    "Target JVM source launcher/classpath and runtime fit",
-    "Supervision, process containment, deadlines and evidence handling",
-    "Fresh image/SCC/mount/network/CA/credential readiness"
+    "Actual target runner/source-launcher and SCC/credential/CA mounts",
+    "Live service TLS/SCRAM response and network-policy/readiness",
+    "Kubernetes scheduling/termination, real-broker and full-service qualification"
   ],
   "future_execution_inputs": [
-    "Publish pinned revision",
-    "Authorized focused behavior validation, not run here",
-    "Fresh applicable readiness and immutable approved run/authority/window/profile/evidence package"
+    "Publish current source/tests/disabled package at pinned revision",
+    "Fresh applicable live readiness and approved unique run/authority/window/profile/evidence package",
+    "Separate authorization for deployment and bounded AUTH execution"
   ],
   "runtime_AUTH_qualification": "NOT_RUN_NOT_QUALIFIED",
-  "publication": "LOCAL_UNCOMMITTED_SOURCE_CORRECTION_NO_DEPLOYMENT_OR_TESTS",
+  "publication": "LOCAL_UNCOMMITTED_OFFLINE_TEST_EVIDENCE_NO_DEPLOYMENT",
   "new_source_review_concurrence": "NOT_CLAIMED",
-  "compile_review": "evidence/classifier-review.json"
+  "compile_review": "evidence/behavioral-tests/result.json",
+  "behavioral_review": "behavioral-review.md"
 }

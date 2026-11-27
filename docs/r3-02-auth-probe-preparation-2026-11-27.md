@@ -1,9 +1,7 @@
-# R3-02 AUTH diagnostic readiness
+# R3-02 AUTH readiness
 
-**Source blocker resolved offline; compilation PASS; not deployed or tested.**
+**Compilation and40/40 offline behavioral tests PASS; live AUTH not yet run.**
 
-See the [current classifier review and remaining deployment steps](../packaging/r3-auth-probe/classifier-review.md) and [bound compilation evidence](../packaging/r3-auth-probe/evidence/classifier-review.json).
+See the [behavioral review](../packaging/r3-auth-probe/behavioral-review.md) and [source-bound results](../packaging/r3-auth-probe/evidence/behavioral-tests/result.json). Coverage includes real loopback TLS/SCRAM, correlation/error classification, credential redaction and actual local process-tree/signal containment. The first-phase SIGTERM status defect was corrected to INCONCLUSIVE.
 
-The candidate replaces unavailable exception-origin stacks with a direct correlation-checked SaslAuthenticate response over verified TLS. Only numeric error58 after SCRAM client-final proof establishes broker rejection. It uses the same pinned SDK SCRAM/protocol path for both positive controls and the wrong password; positive authentication includes server-signature verification and exact own-topic metadata without auto-creation. This is not AdminClient/xk6 exception mapping qualification.
-
-Package remains disabled, with no authority/run/window/profile approval. All four previous client Jobs stay protected/suspended; external notifications disabled. No test or cluster change occurred. Before a bounded run: publish the revision, obtain authorization for remaining behavioral validation, refresh applicable live readiness and freeze the unique approved run package. No repeated R2 payload fixture or24-hour soak is required for this source correction.
+Keep the profile/new Job disabled, all four old client Jobs suspended and external notifications disabled. No deployment or sandbox access occurred. The remaining selected step is publication followed by separately authorized applicable live readiness and a unique approved bounded AUTH run package. No repeated R2 payload test or24-hour soak is needed for this change.

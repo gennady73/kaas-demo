@@ -1,0 +1,45 @@
+test_actual_wrong_password_rejected (test_auth_behavior.ProtocolTests.test_actual_wrong_password_rejected) ... ok
+test_authorization_is_distinct (test_auth_behavior.ProtocolTests.test_authorization_is_distinct) ... ok
+test_bad_server_signature_cannot_pass (test_auth_behavior.ProtocolTests.test_bad_server_signature_cannot_pass) ... ok
+test_early58_cannot_pass (test_auth_behavior.ProtocolTests.test_early58_cannot_pass) ... ok
+test_empty_server_final_cannot_pass (test_auth_behavior.ProtocolTests.test_empty_server_final_cannot_pass) ... ok
+test_excessive_iteration_work_rejected (test_auth_behavior.ProtocolTests.test_excessive_iteration_work_rejected) ... ok
+test_other_error_cannot_pass (test_auth_behavior.ProtocolTests.test_other_error_cannot_pass) ... ok
+test_oversized_frame_cannot_pass (test_auth_behavior.ProtocolTests.test_oversized_frame_cannot_pass) ... ok
+test_read_timeout_cannot_pass (test_auth_behavior.ProtocolTests.test_read_timeout_cannot_pass) ... ok
+test_received58_not_error_text (test_auth_behavior.ProtocolTests.test_received58_not_error_text) ... ok
+test_tls_hostname_mismatch_cannot_pass (test_auth_behavior.ProtocolTests.test_tls_hostname_mismatch_cannot_pass) ... ok
+test_trailing_bytes_cannot_pass (test_auth_behavior.ProtocolTests.test_trailing_bytes_cannot_pass) ... ok
+test_truncated_frame_cannot_pass (test_auth_behavior.ProtocolTests.test_truncated_frame_cannot_pass) ... ok
+test_untrusted_ca_cannot_pass (test_auth_behavior.ProtocolTests.test_untrusted_ca_cannot_pass) ... ok
+test_valid_scram_and_own_metadata (test_auth_behavior.ProtocolTests.test_valid_scram_and_own_metadata) ... ok
+test_wrong_correlation_cannot_pass (test_auth_behavior.ProtocolTests.test_wrong_correlation_cannot_pass) ... ok
+test_wrong_nonce_cannot_pass (test_auth_behavior.ProtocolTests.test_wrong_nonce_cannot_pass) ... ok
+test_wrong_topic_cannot_pass (test_auth_behavior.ProtocolTests.test_wrong_topic_cannot_pass) ... ok
+test_credential_drift_stops_before_next_phase (test_supervisor.SupervisorTests.test_credential_drift_stops_before_next_phase) ... ok
+test_deadline_kills_parent_and_grandchild (test_supervisor.SupervisorTests.test_deadline_kills_parent_and_grandchild) ... ok
+test_disabled_profile_starts_no_child (test_supervisor.SupervisorTests.test_disabled_profile_starts_no_child) ... ok
+test_evidence_write_failure_is_nonzero (test_supervisor.SupervisorTests.test_evidence_write_failure_is_nonzero) ... ok
+test_expired_window_stops (test_supervisor.SupervisorTests.test_expired_window_stops) ... ok
+test_external_stop_kills_active_process_group (test_supervisor.SupervisorTests.test_external_stop_kills_active_process_group) ... ok
+test_output_overflow_stops_and_reaps (test_supervisor.SupervisorTests.test_output_overflow_stops_and_reaps) ... ok
+test_parent_JVM_environment_is_not_inherited (test_supervisor.SupervisorTests.test_parent_JVM_environment_is_not_inherited) ... ok
+test_parent_exit_does_not_leave_pipe_holding_grandchild (test_supervisor.SupervisorTests.test_parent_exit_does_not_leave_pipe_holding_grandchild) ... ok
+test_positive_failure_stops_before_negative (test_supervisor.SupervisorTests.test_positive_failure_stops_before_negative) ... ok
+test_profile_hash_drift_stops (test_supervisor.SupervisorTests.test_profile_hash_drift_stops) ... ok
+test_protocol_contract_drift_stops (test_supervisor.SupervisorTests.test_protocol_contract_drift_stops) ... ok
+test_raw_stdout_secret_never_exported (test_supervisor.SupervisorTests.test_raw_stdout_secret_never_exported) ... ok
+test_real_SIGTERM_delivery_is_nonpassing_and_kills_group (test_supervisor.SupervisorTests.test_real_SIGTERM_delivery_is_nonpassing_and_kills_group) ... ok
+test_source_drift_stops_before_child (test_supervisor.SupervisorTests.test_source_drift_stops_before_child) ... ok
+test_stderr_overflow_stops_and_reaps (test_supervisor.SupervisorTests.test_stderr_overflow_stops_and_reaps) ... ok
+test_stderr_secret_and_hash_discarded (test_supervisor.SupervisorTests.test_stderr_secret_and_hash_discarded) ... ok
+test_three_phase_sequence_and_matching_evidence (test_supervisor.SupervisorTests.test_three_phase_sequence_and_matching_evidence) ... ok
+test_unexpected_negative_success_stops_before_post_control (test_supervisor.SupervisorTests.test_unexpected_negative_success_stops_before_post_control) ... ok
+test_unknown_outcome_never_exported (test_supervisor.SupervisorTests.test_unknown_outcome_never_exported) ... ok
+test_wrong_exit_code_fails_closed (test_supervisor.SupervisorTests.test_wrong_exit_code_fails_closed) ... ok
+test_wrong_phase_fails_closed (test_supervisor.SupervisorTests.test_wrong_phase_fails_closed) ... ok
+
+----------------------------------------------------------------------
+Ran 40 tests in 26.012s
+
+OK

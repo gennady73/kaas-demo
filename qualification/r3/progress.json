@@ -1,5 +1,5 @@
 {
-  "revision": "0.16",
+  "revision": "0.17",
   "date": "2026-11-27",
   "plan_commit": "0f9df49fc0dfb3632c9c7f4eb32fb7e6d3aec1e6",
   "execution_enabled": false,
@@ -154,10 +154,21 @@
         "execution_enabled": false,
         "deployment_enabled": false,
         "tests_run": 0
+      },
+      "AUTH_offline_behavior": {
+        "status": "40_OFFLINE_CASES_PASS_LIVE_UNQUALIFIED",
+        "record": "../../packaging/r3-auth-probe/behavioral-review.md",
+        "tests_run": 40,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "execution_enabled": false,
+        "deployment_enabled": false,
+        "correction": "R3-AUTH-BEH-01 first-phase SIGTERM status now INCONCLUSIVE"
       }
     }
   },
-  "remaining_cases": "AUTH source blocker resolved offline; direct TLS/correlation/error-code classifier compiles. No runtime qualification. Publish, authorize focused behavior validation and refresh applicable bounded-run readiness. Other security/scope cases unchanged.",
+  "remaining_cases": "Selected AUTH offline behavior gate complete (40PASS); publish then separately authorized fresh live readiness/approved bounded run. No existing Job changes or notifications. Live AUTH and other R3 service/security scope remain unqualified.",
   "note": "Progress overlay supersedes pre-correction OPEN labels only for this exact offline source/result; does not arm any planned case",
   "coordination_sync": {
     "date": "2026-11-26",

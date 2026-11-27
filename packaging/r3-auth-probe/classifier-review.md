@@ -1,3 +1,5 @@
+> Current local behavioral evidence: [behavioral-review.md](behavioral-review.md),40/40 covered cases PASS. The original dated compilation/source review below is historical; live AUTH remains unqualified.
+
 # AUTH broker-rejection classifier, 2026-11-27
 
 **R3-AUTH-SRC-02 resolved in source; compilation PASS. Runtime qualification remains NOT RUN.** No test, probe/class/container execution, deployment, sandbox API/Secret access, external notification, or change to an existing Job occurred. This is one C0 source review, not independent concurrence. The four existing Jobs must remain suspended.

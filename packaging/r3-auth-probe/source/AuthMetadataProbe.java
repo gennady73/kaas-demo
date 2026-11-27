@@ -54,11 +54,12 @@ class AuthMetadataProbe {
   static String quote(String s) {
     return "\"" + s.replace("\\", "\\\\").replace("\"", "\\\"") + "\"";
   }
-  static SSLContext trustContext() throws Exception {
+  static SSLContext trustContext() throws Exception { return trustContext(CA); }
+  static SSLContext trustContext(Path ca) throws Exception {
     KeyStore trust = KeyStore.getInstance(KeyStore.getDefaultType());
     trust.load(null, null);
     int count = 0;
-    try (InputStream input = Files.newInputStream(CA)) {
+    try (InputStream input = Files.newInputStream(ca)) {
       for (java.security.cert.Certificate certificate : CertificateFactory.getInstance("X.509").generateCertificates(input))
         trust.setCertificateEntry("ca-" + count++, certificate);
     }
@@ -111,6 +112,16 @@ class AuthMetadataProbe {
   }
   static String observe(char[] password) throws Exception {
     SSLContext context = trustContext();
+    try (Socket raw = new Socket()) {
+      raw.connect(new InetSocketAddress(HOST, 9093), 5000);
+      try (SSLSocket socket = (SSLSocket) context.getSocketFactory().createSocket(raw, HOST, 9093, true)) {
+        return observeSocket(socket, password);
+      }
+    }
+  }
+  // Package-private transport boundary permits loopback fixtures without making
+  // the deployed main endpoint, trust path or profile configurable.
+  static String observeSocket(SSLSocket socket, char[] password) throws Exception {
     ScramSaslClient scram = new ScramSaslClient(ScramMechanism.SCRAM_SHA_512, callbacks -> {
       for (javax.security.auth.callback.Callback callback : callbacks) {
         if (callback instanceof NameCallback) ((NameCallback) callback).setName(PRINCIPAL);
@@ -118,9 +129,7 @@ class AuthMetadataProbe {
         else throw new UnsupportedCallbackException(callback);
       }
     });
-    try (Socket raw = new Socket()) {
-      raw.connect(new InetSocketAddress(HOST, 9093), 5000);
-      try (SSLSocket socket = (SSLSocket) context.getSocketFactory().createSocket(raw, HOST, 9093, true)) {
+    try {
         socket.setSoTimeout(5000);
         SSLParameters parameters = socket.getSSLParameters();
         parameters.setEndpointIdentificationAlgorithm("HTTPS");
@@ -159,8 +168,14 @@ class AuthMetadataProbe {
         for (var partition : topic.partitions())
           if (partition.errorCode() != 0 || partition.leaderId() < 0) return "METADATA_MISMATCH";
         return "OWN_METADATA_OK";
-      }
     } finally { scram.dispose(); }
+  }
+  static String safeOutcome(Throwable error) {
+    if (error instanceof IllegalArgumentException) return "INPUT_INVALID";
+    if (error instanceof SSLException) return "TLS_FAILURE";
+    if (error instanceof SocketTimeoutException) return "TIMEOUT";
+    if (error instanceof SaslException) return "LOCAL_OR_UNPROVEN_SASL_FAILURE";
+    return "UNCLASSIFIED_FAILURE";
   }
   public static void main(String[] args) {
     String phase = "invalid", outcome = "INPUT_INVALID";
@@ -181,11 +196,7 @@ class AuthMetadataProbe {
       } finally { Arrays.fill(supplied, (byte) 0); }
       outcome = observe(password);
       code = outcome.equals("OWN_METADATA_OK") ? 0 : (outcome.equals("BROKER_SASL_REJECTED") ? 20 : 21);
-    } catch (IllegalArgumentException error) { outcome = "INPUT_INVALID";
-    } catch (SSLException error) { outcome = "TLS_FAILURE";
-    } catch (SocketTimeoutException error) { outcome = "TIMEOUT";
-    } catch (SaslException error) { outcome = "LOCAL_OR_UNPROVEN_SASL_FAILURE";
-    } catch (Throwable error) { outcome = "UNCLASSIFIED_FAILURE";
+    } catch (Throwable error) { outcome = safeOutcome(error);
     } finally { if (password != null) Arrays.fill(password, '\0'); }
     System.out.println("{\"schema\":\"kaas-r3-auth-phase/v1\",\"phase\":" + quote(phase)
         + ",\"outcome\":" + quote(outcome) + "}");

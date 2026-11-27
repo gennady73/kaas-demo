@@ -1,0 +1,7 @@
+{
+  "tests/r3-auth/LoopbackAuth.java": "2738fb94cf753f4733a45d2589409d65b57000afe60f671fe57d48d7bc4e91e0",
+  "tests/r3-auth/README.md": "eb8b899dd985d880cd4982a6ea1733a6b2d8d7e3348276b420cb50ce6a7e9bcb",
+  "tests/r3-auth/run_offline.py": "4bd743f51491840fbd692f05949186161b6abf57ff687d68f4196fe638b6f524",
+  "tests/r3-auth/test_auth_behavior.py": "b9d98dc2867617247514d507db245bdb667e1ce6284ab07192a60d531d882f43",
+  "tests/r3-auth/test_supervisor.py": "271d95458e1284458622ab53ad573ce7e5ce7e0697925bb444406bb0469f9673"
+}

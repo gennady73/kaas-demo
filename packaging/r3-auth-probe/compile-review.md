@@ -1,3 +1,5 @@
+> Current local behavioral evidence: [behavioral-review.md](behavioral-review.md),40/40 covered cases PASS. The original dated compilation/source review below is historical; live AUTH remains unqualified.
+
 > Superseded for current source by [classifier-review.md](classifier-review.md): R3-AUTH-SRC-02 resolved offline through direct protocol classification; runtime remains untested. The following record is historical.
 
 # R3-02 AUTH compilation and source review, 2026-11-27

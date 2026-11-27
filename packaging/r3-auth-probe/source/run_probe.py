@@ -1,4 +1,4 @@
-"""Disabled candidate supervisor. No network calls except reviewed child Admin client.
+"""Disabled candidate supervisor. Network calls exist only in the reviewed child protocol probe.
 Do not execute during offline preparation; the future profile must be explicitly armed.
 """
 import hashlib
@@ -263,7 +263,7 @@ def main():
         exit_code = 0
     except Stop as error:
         record['reason'] = str(error)  # Only local fixed enum strings reach Stop.
-        if record['status'] == 'NOT_RUN' and record['events']:
+        if record['status'] == 'NOT_RUN' and (record['events'] or str(error) == 'EXTERNAL_STOP'):
             record['status'] = 'INCONCLUSIVE'
     except Exception:
         record.update(status='INCONCLUSIVE', reason='LOCAL_PRECONDITION_ERROR')

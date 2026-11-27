@@ -1,7 +1,7 @@
 {
   "schema": "kaas-r3-auth-profile/v1",
   "case": "R3-02-AUTH",
-  "status": "COMPILED_DISABLED_DIRECT_PROTOCOL_CLASSIFIER_UNTESTED",
+  "status": "OFFLINE_BEHAVIOR_PASS_DISABLED_LIVE_UNQUALIFIED",
   "source_review_commit": "c9aba5af22612da0e5d2f7ba4d9b825b3df4b26d",
   "execution_enabled": false,
   "deployment_enabled": false,

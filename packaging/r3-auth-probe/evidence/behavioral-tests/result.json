@@ -1,0 +1,209 @@
+{
+  "status": "PASS_OFFLINE_FIXTURES_ONLY",
+  "completed_UTC": "2026-11-27T11:12:38.253779+00:00",
+  "python": "3.15.0",
+  "tests_run": 40,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "cases": [
+    {
+      "id": "test_auth_behavior.ProtocolTests.test_actual_wrong_password_rejected",
+      "status": "PASS"
+    },
+    {
+      "id": "test_auth_behavior.ProtocolTests.test_authorization_is_distinct",
+      "status": "PASS"
+    },
+    {
+      "id": "test_auth_behavior.ProtocolTests.test_bad_server_signature_cannot_pass",
+      "status": "PASS"
+    },
+    {
+      "id": "test_auth_behavior.ProtocolTests.test_early58_cannot_pass",
+      "status": "PASS"
+    },
+    {
+      "id": "test_auth_behavior.ProtocolTests.test_empty_server_final_cannot_pass",
+      "status": "PASS"
+    },
+    {
+      "id": "test_auth_behavior.ProtocolTests.test_excessive_iteration_work_rejected",
+      "status": "PASS"
+    },
+    {
+      "id": "test_auth_behavior.ProtocolTests.test_other_error_cannot_pass",
+      "status": "PASS"
+    },
+    {
+      "id": "test_auth_behavior.ProtocolTests.test_oversized_frame_cannot_pass",
+      "status": "PASS"
+    },
+    {
+      "id": "test_auth_behavior.ProtocolTests.test_read_timeout_cannot_pass",
+      "status": "PASS"
+    },
+    {
+      "id": "test_auth_behavior.ProtocolTests.test_received58_not_error_text",
+      "status": "PASS"
+    },
+    {
+      "id": "test_auth_behavior.ProtocolTests.test_tls_hostname_mismatch_cannot_pass",
+      "status": "PASS"
+    },
+    {
+      "id": "test_auth_behavior.ProtocolTests.test_trailing_bytes_cannot_pass",
+      "status": "PASS"
+    },
+    {
+      "id": "test_auth_behavior.ProtocolTests.test_truncated_frame_cannot_pass",
+      "status": "PASS"
+    },
+    {
+      "id": "test_auth_behavior.ProtocolTests.test_untrusted_ca_cannot_pass",
+      "status": "PASS"
+    },
+    {
+      "id": "test_auth_behavior.ProtocolTests.test_valid_scram_and_own_metadata",
+      "status": "PASS"
+    },
+    {
+      "id": "test_auth_behavior.ProtocolTests.test_wrong_correlation_cannot_pass",
+      "status": "PASS"
+    },
+    {
+      "id": "test_auth_behavior.ProtocolTests.test_wrong_nonce_cannot_pass",
+      "status": "PASS"
+    },
+    {
+      "id": "test_auth_behavior.ProtocolTests.test_wrong_topic_cannot_pass",
+      "status": "PASS"
+    },
+    {
+      "id": "test_supervisor.SupervisorTests.test_credential_drift_stops_before_next_phase",
+      "status": "PASS"
+    },
+    {
+      "id": "test_supervisor.SupervisorTests.test_deadline_kills_parent_and_grandchild",
+      "status": "PASS"
+    },
+    {
+      "id": "test_supervisor.SupervisorTests.test_disabled_profile_starts_no_child",
+      "status": "PASS"
+    },
+    {
+      "id": "test_supervisor.SupervisorTests.test_evidence_write_failure_is_nonzero",
+      "status": "PASS"
+    },
+    {
+      "id": "test_supervisor.SupervisorTests.test_expired_window_stops",
+      "status": "PASS"
+    },
+    {
+      "id": "test_supervisor.SupervisorTests.test_external_stop_kills_active_process_group",
+      "status": "PASS"
+    },
+    {
+      "id": "test_supervisor.SupervisorTests.test_output_overflow_stops_and_reaps",
+      "status": "PASS"
+    },
+    {
+      "id": "test_supervisor.SupervisorTests.test_parent_JVM_environment_is_not_inherited",
+      "status": "PASS"
+    },
+    {
+      "id": "test_supervisor.SupervisorTests.test_parent_exit_does_not_leave_pipe_holding_grandchild",
+      "status": "PASS"
+    },
+    {
+      "id": "test_supervisor.SupervisorTests.test_positive_failure_stops_before_negative",
+      "status": "PASS"
+    },
+    {
+      "id": "test_supervisor.SupervisorTests.test_profile_hash_drift_stops",
+      "status": "PASS"
+    },
+    {
+      "id": "test_supervisor.SupervisorTests.test_protocol_contract_drift_stops",
+      "status": "PASS"
+    },
+    {
+      "id": "test_supervisor.SupervisorTests.test_raw_stdout_secret_never_exported",
+      "status": "PASS"
+    },
+    {
+      "id": "test_supervisor.SupervisorTests.test_real_SIGTERM_delivery_is_nonpassing_and_kills_group",
+      "status": "PASS"
+    },
+    {
+      "id": "test_supervisor.SupervisorTests.test_source_drift_stops_before_child",
+      "status": "PASS"
+    },
+    {
+      "id": "test_supervisor.SupervisorTests.test_stderr_overflow_stops_and_reaps",
+      "status": "PASS"
+    },
+    {
+      "id": "test_supervisor.SupervisorTests.test_stderr_secret_and_hash_discarded",
+      "status": "PASS"
+    },
+    {
+      "id": "test_supervisor.SupervisorTests.test_three_phase_sequence_and_matching_evidence",
+      "status": "PASS"
+    },
+    {
+      "id": "test_supervisor.SupervisorTests.test_unexpected_negative_success_stops_before_post_control",
+      "status": "PASS"
+    },
+    {
+      "id": "test_supervisor.SupervisorTests.test_unknown_outcome_never_exported",
+      "status": "PASS"
+    },
+    {
+      "id": "test_supervisor.SupervisorTests.test_wrong_exit_code_fails_closed",
+      "status": "PASS"
+    },
+    {
+      "id": "test_supervisor.SupervisorTests.test_wrong_phase_fails_closed",
+      "status": "PASS"
+    }
+  ],
+  "source_fingerprints": {
+    "packaging/r3-auth-probe/source/AuthMetadataProbe.java": "3ba175ee740fc7d991b29a776a6c416fde360269fb6b31fb4cb73857a224564c",
+    "packaging/r3-auth-probe/source/log4j2.properties": "a10f28bc03e2804ca55bfe6e7ca17be4d0c7763b822bf37d01a120e77b4bb576",
+    "packaging/r3-auth-probe/source/run_probe.py": "18dd220f1999c2ce6a6f2a3942c5243e3e5041f2b131b982cdaca8ceb5e4a1fe",
+    "packaging/r3-auth-probe/source/source-lock.json": "e556bee685013f2db0fdf09bd5fb86e9bc878e84e41a10fb266e1f08092fe0ca",
+    "tests/r3-auth/LoopbackAuth.java": "2738fb94cf753f4733a45d2589409d65b57000afe60f671fe57d48d7bc4e91e0",
+    "tests/r3-auth/run_offline.py": "4bd743f51491840fbd692f05949186161b6abf57ff687d68f4196fe638b6f524",
+    "tests/r3-auth/test_auth_behavior.py": "b9d98dc2867617247514d507db245bdb667e1ce6284ab07192a60d531d882f43",
+    "tests/r3-auth/test_supervisor.py": "271d95458e1284458622ab53ad573ce7e5ce7e0697925bb444406bb0469f9673"
+  },
+  "network_scope": "Fake broker listeners bound only to127.0.0.1; Java fixture connects only to127.0.0.1. No sandbox API or real Kafka endpoint.",
+  "synthetic_credentials_only": true,
+  "deployments": 0,
+  "external_notifications": false,
+  "limits": "Local JDK25/Python environment, exact extracted SDK jars, synthetic TLS/SCRAM server. Supervisor uses a stand-in java executable; no claim about target image launcher/SCC/mounts or deployed service.",
+  "compile": {
+    "compiler": "Temurin javac25.0.5",
+    "flags": [
+      "-proc:none",
+      "--release",
+      "17",
+      "-Xlint:all"
+    ],
+    "exit_code": 0,
+    "diagnostics_bytes": 0,
+    "classes": {
+      "AuthMetadataProbe$InvalidProtocol.class": "5624f41d6bd5f5a84f41c09a3949c4af897a6126ae6e12a1df5752d2d9a9b247",
+      "AuthMetadataProbe$Wire.class": "8782e27f10d8440169344c66fc4d3349fcf96ddc137bbfdb99927f036b961207",
+      "AuthMetadataProbe.class": "5b4afb2954d5fe9985f8ba133b520637b1cc1acb2089f6d1292302e1795f5c14"
+    }
+  },
+  "finding": {
+    "id": "R3-AUTH-BEH-01",
+    "status": "FIXED_REGRESSION_PASS",
+    "detail": "Actual SIGTERM during first child phase was safely nonzero but mislabeled NOT_RUN; now INCONCLUSIVE. Regression sends real SIGTERM and confirms descendants no longer running."
+  },
+  "source_refactor": "Package-private trust-context/socket/error-classification boundaries for loopback fixtures; production main retains fixed endpoint and CA, without test CLI/env controls.",
+  "initial_attempts": "Restricted socket creation initially denied; repeated with loopback access. First supervisor trial saw stale source lock after refactor, regenerated inert lock/ConfigMap. SIGTERM status regression then exposed R3-AUTH-BEH-01, corrected. Final40case run allPASS."
+}
