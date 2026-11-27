@@ -1,0 +1,52 @@
+{
+  "status": "AUTH_PROBE_CANDIDATE_PREPARED_OFFLINE_NOT_COMPILED_OR_TESTED",
+  "date": "2026-11-27",
+  "source_base_commit": "c9aba5af22612da0e5d2f7ba4d9b825b3df4b26d",
+  "case": "R3-02-AUTH",
+  "candidate_source": "source/AuthMetadataProbe.java + source/run_probe.py",
+  "selected_operation": "exact own-topic DescribeTopics only",
+  "sequence": [
+    "valid_control_before",
+    "wrong_password",
+    "valid_control_after"
+  ],
+  "positive_and_negative_same_Java_SDK_principal_endpoint_CA_hostname_settings": true,
+  "expected_negative": "typed SaslAuthenticationException with received-response origin receiveToken; otherwise nonpassing",
+  "negative_password": "Generated only in RAM; anonymous stdin; never persisted or hashed",
+  "application_value_bytes": 0,
+  "candidate_image": "Existing pinned05a3f2dR2image; toolchain jar/version not yet verified",
+  "execution_enabled": false,
+  "deployment_enabled": false,
+  "Job_suspended": true,
+  "protected_existing_Jobs": [
+    "kaas-r2-native-client",
+    "kaas-r2-native-client-02e2e2f-r2",
+    "kaas-r2-native-client-351528d-r2",
+    "kaas-r2-native-client-05a3f2d-r2"
+  ],
+  "external_notifications_enabled": false,
+  "tests_run": 0,
+  "Java_compilation": "NOT_RUN; local javac unavailable; no alternate compile/build attempted",
+  "probe_or_fake_broker_execution": "NOT_RUN",
+  "new_image_build_or_pull": "NOT_RUN",
+  "cluster_or_Secret_access": false,
+  "primary_documentation_browsed": true,
+  "source_inspection_only": true,
+  "static_inspection": "Python3.9AST parsing, YAML/JSON/source-lock equality, fixed operation/no-mutation API source scan, disabled/newJob scope, source hash/redaction/preservation",
+  "not_runtime_verification": [
+    "Typed error propagation and downstream origin-frame contract",
+    "JVM source launcher/classpath compatibility",
+    "Logging suppression and output/evidence/termination behavior",
+    "Actual deadlines/negative connections and process-tree stop",
+    "SCC/mount/network/CA/credential readiness and actual image identity"
+  ],
+  "future_execution_inputs": [
+    "Source review/compile and specifically authorized validation of classification/redaction/containment",
+    "Exact candidate image and Kafka Java jar/version/SHA plus origin mapping",
+    "Immutable per-run profile/ConfigMap/Job and approved profile hash; run/authority/window unset",
+    "Applicable fresh metadata-only readiness, nonroot Secret/CA access, endpoint/policy/Job/resource/custody/export checks"
+  ],
+  "runtime_AUTH_qualification": "NOT_RUN_NOT_QUALIFIED",
+  "publication": "INCLUDED_IN_OWNING_COMMIT_CANDIDATE_ONLY_NO_DEPLOYMENT_OR_TESTS",
+  "new_source_review_concurrence": "NOT_CLAIMED"
+}

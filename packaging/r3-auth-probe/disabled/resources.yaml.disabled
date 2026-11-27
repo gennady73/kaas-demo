@@ -1,0 +1,451 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  namespace: kaas-demo
+  labels:
+    kaas.example.com/r3-probe: auth
+  name: kaas-r3-auth-probe
+automountServiceAccountToken: false
+---
+apiVersion: v1
+kind: ConfigMap
+immutable: true
+metadata:
+  namespace: kaas-demo
+  labels:
+    kaas.example.com/r3-probe: auth
+  name: kaas-r3-auth-probe-disabled
+data:
+  AuthMetadataProbe.java: "// Candidate only: not compiled or executed in the offline\
+    \ preparation assignment.\nimport java.io.InputStream;\nimport java.nio.charset.StandardCharsets;\n\
+    import java.nio.file.Files;\nimport java.nio.file.Path;\nimport java.time.Duration;\n\
+    import java.util.Collection;\nimport java.util.List;\nimport java.util.Map;\n\
+    import java.util.Properties;\nimport java.util.concurrent.ExecutionException;\n\
+    import java.util.concurrent.TimeUnit;\nimport javax.net.ssl.SSLException;\nimport\
+    \ org.apache.kafka.clients.admin.Admin;\nimport org.apache.kafka.clients.admin.DescribeTopicsOptions;\n\
+    import org.apache.kafka.clients.admin.TopicDescription;\nimport org.apache.kafka.common.errors.AuthenticationException;\n\
+    import org.apache.kafka.common.errors.AuthorizationException;\nimport org.apache.kafka.common.errors.SaslAuthenticationException;\n\
+    import org.apache.kafka.common.utils.AppInfoParser;\n\nclass AuthMetadataProbe\
+    \ {\n  static final String ENDPOINT = \"kaas-dev-kafka-bootstrap.kaas-kafka.svc:9093\"\
+    ;\n  static final String PRINCIPAL = \"kaas-sbx-a-producer\";\n  static final\
+    \ String TOPIC = \"kaas-sbx-a-events\";\n  static final Path CA = Path.of(\"/credentials/cluster-ca/ca.crt\"\
+    );\n  static final String AUTHENTICATOR = \"org.apache.kafka.common.security.authenticator.SaslClientAuthenticator\"\
+    ;\n\n  static String quote(String s) {\n    return \"\\\"\" + s.replace(\"\\\\\
+    \", \"\\\\\\\\\").replace(\"\\\"\", \"\\\\\\\"\") + \"\\\"\";\n  }\n  static String\
+    \ safeOutcome(Throwable error) {\n    // Never emit an exception message, class\
+    \ dump, stack trace or configuration.\n    // SASL_AUTHENTICATION_FAILED can also\
+    \ originate locally. Only the pinned\n    // Kafka receiveToken path is accepted\
+    \ as a received SASL response here.\n    boolean sasl = false;\n    int depth\
+    \ = 0;\n    for (Throwable t = error; t != null && depth++ < 16; t = t.getCause())\
+    \ {\n      if (t instanceof SSLException) return \"TLS_FAILURE\";\n      if (t\
+    \ instanceof SaslAuthenticationException) {\n        sasl = true;\n        for\
+    \ (StackTraceElement frame : t.getStackTrace()) {\n          if (AUTHENTICATOR.equals(frame.getClassName())\
+    \ && \"receiveToken\".equals(frame.getMethodName()))\n            return \"BROKER_SASL_REJECTED\"\
+    ;\n        }\n      }\n      if (t instanceof AuthorizationException) return \"\
+    AUTHORIZATION_FAILURE\";\n      if (t instanceof java.util.concurrent.TimeoutException\
+    \ || t instanceof org.apache.kafka.common.errors.TimeoutException)\n        return\
+    \ \"TIMEOUT\";\n      if (t instanceof AuthenticationException && !(t instanceof\
+    \ SaslAuthenticationException))\n        return \"OTHER_AUTHENTICATION_FAILURE\"\
+    ;\n      if (t.getCause() == t) break;\n    }\n    return sasl ? \"LOCAL_OR_UNPROVEN_SASL_FAILURE\"\
+    \ : \"UNCLASSIFIED_FAILURE\";\n  }\n  public static void main(String[] args) {\n\
+    \    String phase = \"invalid\";\n    String outcome = \"INPUT_INVALID\";\n  \
+    \  Admin admin = null;\n    int code = 21;\n    try {\n      if (args.length !=\
+    \ 2 || !List.of(\"positive_before\", \"negative\", \"positive_after\").contains(args[0]))\n\
+    \        throw new IllegalArgumentException();\n      phase = args[0];\n     \
+    \ // Version equality is an independent future arming input; no family-only\n\
+    \      // fallback or automatic allowance for an unreviewed downstream build.\n\
+    \      if (!args[1].equals(AppInfoParser.getVersion()) || !args[1].matches(\"\
+    4\\\\.2\\\\.0[A-Za-z0-9_.-]*\"))\n        throw new IllegalArgumentException();\n\
+    \      byte[] supplied;\n      try (InputStream input = System.in) { supplied\
+    \ = input.readNBytes(4097); }\n      if (supplied.length == 0 || supplied.length\
+    \ > 4096) throw new IllegalArgumentException();\n      String password = new String(supplied,\
+    \ StandardCharsets.UTF_8);\n      java.util.Arrays.fill(supplied, (byte) 0);\n\
+    \      if (password.indexOf('\\n') >= 0 || password.indexOf('\\r') >= 0 || password.indexOf(0)\
+    \ >= 0)\n        throw new IllegalArgumentException();\n      Properties config\
+    \ = new Properties();\n      config.put(\"bootstrap.servers\", ENDPOINT);\n  \
+    \    config.put(\"security.protocol\", \"SASL_SSL\");\n      config.put(\"sasl.mechanism\"\
+    , \"SCRAM-SHA-512\");\n      config.put(\"sasl.jaas.config\", \"org.apache.kafka.common.security.scram.ScramLoginModule\
+    \ required username=\"\n          + quote(PRINCIPAL) + \" password=\" + quote(password)\
+    \ + \";\");\n      config.put(\"ssl.truststore.type\", \"PEM\");\n      config.put(\"\
+    ssl.truststore.certificates\", Files.readString(CA));\n      config.put(\"ssl.endpoint.identification.algorithm\"\
+    , \"https\");\n      config.put(\"client.id\", \"kaas-r3-auth-metadata\"); //\
+    \ Identical for all phases.\n      config.put(\"enable.metrics.push\", \"false\"\
+    );\n      config.put(\"default.api.timeout.ms\", \"8000\");\n      config.put(\"\
+    request.timeout.ms\", \"5000\");\n      config.put(\"socket.connection.setup.timeout.ms\"\
+    , \"5000\");\n      config.put(\"socket.connection.setup.timeout.max.ms\", \"\
+    5000\");\n      config.put(\"retries\", \"0\");\n      config.put(\"reconnect.backoff.ms\"\
+    , \"60000\");\n      config.put(\"reconnect.backoff.max.ms\", \"60000\");\n  \
+    \    admin = Admin.create(config);\n      // One exact-topic read-only operation.\
+    \ No listing, produce, consume,\n      // group join, offset mutation or topic/configuration\
+    \ creation API exists.\n      Map<String, TopicDescription> topics = admin.describeTopics(List.of(TOPIC),\n\
+    \          new DescribeTopicsOptions().timeoutMs(8000)).allTopicNames().get(10,\
+    \ TimeUnit.SECONDS);\n      if (topics.size() != 1 || !topics.containsKey(TOPIC)\
+    \ || topics.get(TOPIC).partitions().isEmpty())\n        outcome = \"METADATA_MISMATCH\"\
+    ;\n      else { outcome = \"OWN_METADATA_OK\"; code = 0; }\n    } catch (IllegalArgumentException\
+    \ error) {\n      outcome = \"INPUT_INVALID\";\n    } catch (Throwable error)\
+    \ {\n      outcome = safeOutcome(error);\n      if (outcome.equals(\"BROKER_SASL_REJECTED\"\
+    )) code = 20;\n    } finally {\n      if (admin != null) {\n        try { admin.close(Duration.ofSeconds(2));\
+    \ }\n        catch (Throwable ignored) { outcome = \"CLOSE_FAILED\"; code = 21;\
+    \ }\n      }\n    }\n    // Fixed schema and whitelist only; SDK stdout/stderr\
+    \ is bounded and discarded\n    // by the parent unless stdout is exactly this\
+    \ one reviewed structured row.\n    System.out.println(\"{\\\"schema\\\":\\\"\
+    kaas-r3-auth-phase/v1\\\",\\\"phase\\\":\" + quote(phase)\n        + \",\\\"outcome\\\
+    \":\" + quote(outcome) + \"}\");\n    System.exit(code);\n  }\n}\n"
+  run_probe.py: "\"\"\"Disabled candidate supervisor. No network calls except reviewed\
+    \ child Admin client.\nDo not execute during offline preparation; the future profile\
+    \ must be explicitly armed.\n\"\"\"\nimport hashlib\nimport hmac\nimport json\n\
+    import os\nfrom pathlib import Path\nimport re\nimport secrets\nimport selectors\n\
+    import signal\nimport subprocess\nimport time\n\nROOT = Path('/probe')\nPASSWORD\
+    \ = Path('/credentials/principal/password')\nCA = Path('/credentials/cluster-ca/ca.crt')\n\
+    EVIDENCE = Path('/evidence')\nACTIVE_PROCESS = None\nPHASES = ('positive_before',\
+    \ 'negative', 'positive_after')\nOUTCOMES = {'OWN_METADATA_OK', 'BROKER_SASL_REJECTED',\
+    \ 'TLS_FAILURE', 'AUTHORIZATION_FAILURE',\n            'TIMEOUT', 'OTHER_AUTHENTICATION_FAILURE',\
+    \ 'LOCAL_OR_UNPROVEN_SASL_FAILURE',\n            'UNCLASSIFIED_FAILURE', 'INPUT_INVALID',\
+    \ 'METADATA_MISMATCH', 'CLOSE_FAILED'}\n\nclass Stop(Exception):\n    pass\n\n\
+    def strict_json(raw):\n    def pairs(items):\n        result = {}\n        for\
+    \ key, value in items:\n            if key in result:\n                raise Stop('DUPLICATE_JSON_KEY')\n\
+    \            result[key] = value\n        return result\n    return json.loads(raw,\
+    \ object_pairs_hook=pairs, parse_constant=lambda _: (_ for _ in ()).throw(Stop('INVALID_JSON_NUMBER')))\n\
+    \ndef file_bytes(path, maximum):\n    with path.open('rb') as stream:\n      \
+    \  data = stream.read(maximum + 1)\n    if len(data) > maximum:\n        raise\
+    \ Stop('INPUT_SIZE')\n    return data\n\ndef source_lock():\n    lock = strict_json(file_bytes(ROOT\
+    \ / 'source-lock.json', 8192))\n    expected = {'AuthMetadataProbe.java', 'run_probe.py',\
+    \ 'log4j2.properties'}\n    if set(lock['files']) != expected:\n        raise\
+    \ Stop('SOURCE_LOCK_SHAPE')\n    for name, digest in lock['files'].items():\n\
+    \        if not re.fullmatch(r'[0-9a-f]{64}', digest) or hashlib.sha256(file_bytes(ROOT\
+    \ / name, 65536)).hexdigest() != digest:\n            raise Stop('SOURCE_DRIFT')\n\
+    \    return hashlib.sha256(file_bytes(ROOT / 'source-lock.json', 8192)).hexdigest()\n\
+    \ndef kill_group(process):\n    # Any timeout/forced termination is nonpassing.\
+    \ Killing a wait never proves\n    # SDK cancellation; termination itself must\
+    \ be externally observed later.\n    try:\n        os.killpg(process.pid, signal.SIGTERM)\n\
+    \    except ProcessLookupError:\n        pass\n    try:\n        process.wait(timeout=1)\n\
+    \    except subprocess.TimeoutExpired:\n        pass\n    try:\n        os.killpg(process.pid,\
+    \ signal.SIGKILL)\n    except ProcessLookupError:\n        pass\n    try:\n  \
+    \      process.wait(timeout=1)\n    except subprocess.TimeoutExpired:\n      \
+    \  raise Stop('PROCESS_TERMINATION_UNCONFIRMED')\n\ndef child_phase(phase, supplied_password,\
+    \ sdk_version, deadline):\n    global ACTIVE_PROCESS\n    remaining = deadline\
+    \ - time.monotonic()\n    if remaining < 3:\n        raise Stop('OVERALL_DEADLINE')\n\
+    \    end = time.monotonic() + min(20, remaining - 2)\n    command = ['java', '-Xms32m',\
+    \ '-Xmx128m', '-XX:MaxMetaspaceSize=128m',\n               '-XX:ReservedCodeCacheSize=32m',\
+    \ '-XX:ActiveProcessorCount=1',\n               '-Djava.io.tmpdir=/tmp', '-Dlog4j2.configurationFile=file:/probe/log4j2.properties',\n\
+    \               '-Dlog4j2.statusLoggerLevel=OFF', '--source', '17', '--class-path',\
+    \ '/opt/kafka/libs/*',\n               '/probe/AuthMetadataProbe.java', phase,\
+    \ sdk_version]\n    # No credentials in argv/environment/config files. Only this\
+    \ anonymous stdin\n    # pipe carries the selected password. JVM options from\
+    \ the parent are removed.\n    child_env = {'PATH': os.environ.get('PATH', '/usr/bin:/bin'),\
+    \ 'HOME': '/tmp', 'LANG': 'C.UTF-8'}\n    if 'JAVA_HOME' in os.environ:\n    \
+    \    child_env['JAVA_HOME'] = os.environ['JAVA_HOME']\n    previous_mask = signal.pthread_sigmask(signal.SIG_BLOCK,\
+    \ {signal.SIGTERM, signal.SIGINT})\n    try:\n        process = subprocess.Popen(command,\
+    \ stdin=subprocess.PIPE, stdout=subprocess.PIPE,\n                           \
+    \        stderr=subprocess.PIPE, start_new_session=True, env=child_env)\n    \
+    \    ACTIVE_PROCESS = process\n    finally:\n        signal.pthread_sigmask(signal.SIG_SETMASK,\
+    \ previous_mask)\n    streams = selectors.DefaultSelector()\n    output = bytearray()\n\
+    \    error_count = 0\n    try:\n        process.stdin.write(supplied_password)\n\
+    \        process.stdin.close()\n        for stream, tag in [(process.stdout, 'out'),\
+    \ (process.stderr, 'err')]:\n            os.set_blocking(stream.fileno(), False)\n\
+    \            streams.register(stream, selectors.EVENT_READ, tag)\n        while\
+    \ streams.get_map():\n            if time.monotonic() >= end:\n              \
+    \  raise Stop('PHASE_DEADLINE')\n            for key, _ in streams.select(timeout=min(.1,\
+    \ max(0, end - time.monotonic()))):\n                chunk = os.read(key.fileobj.fileno(),\
+    \ 4096)\n                if not chunk:\n                    streams.unregister(key.fileobj)\n\
+    \                    continue\n                if key.data == 'out':\n       \
+    \             output.extend(chunk)\n                    if len(output) > 8192:\n\
+    \                        raise Stop('OUTPUT_LIMIT')\n                else:\n \
+    \                   error_count += len(chunk)  # Discard SDK text, never retain\
+    \ it.\n                    if error_count > 65536:\n                        raise\
+    \ Stop('OUTPUT_LIMIT')\n        code = process.wait(timeout=max(.01, end - time.monotonic()))\n\
+    \        event = strict_json(output)\n        if set(event) != {'schema', 'phase',\
+    \ 'outcome'} or event['schema'] != 'kaas-r3-auth-phase/v1' or event['phase'] !=\
+    \ phase or event['outcome'] not in OUTCOMES:\n            raise Stop('INVALID_PHASE_RESULT')\n\
+    \        expected_code = 0 if event['outcome'] == 'OWN_METADATA_OK' else (20 if\
+    \ event['outcome'] == 'BROKER_SASL_REJECTED' else 21)\n        if code != expected_code\
+    \ or time.monotonic() > deadline:\n            raise Stop('PHASE_EXIT_OR_DEADLINE')\n\
+    \        return {'phase': phase, 'outcome': event['outcome'], 'sdk_stderr_bytes_discarded':\
+    \ error_count}\n    except Stop:\n        kill_group(process)\n        raise\n\
+    \    except Exception:\n        kill_group(process)\n        raise Stop('CHILD_PROCESS_ERROR')\
+    \ from None\n    finally:\n        ACTIVE_PROCESS = None\n        streams.close()\n\
+    \        for stream in [process.stdout, process.stderr]:\n            stream.close()\n\
+    \        output[:] = b''\n\ndef atomic_evidence(name, data):\n    temp = EVIDENCE\
+    \ / ('.' + name + '.partial')\n    target = EVIDENCE / name\n    fd = os.open(temp,\
+    \ os.O_WRONLY | os.O_CREAT | os.O_EXCL | os.O_NOFOLLOW, 0o600)\n    try:\n   \
+    \     with os.fdopen(fd, 'wb') as stream:\n            stream.write(data)\n  \
+    \          stream.flush()\n            os.fsync(stream.fileno())\n        os.replace(temp,\
+    \ target)\n        parent = os.open(EVIDENCE, os.O_RDONLY | os.O_DIRECTORY)\n\
+    \        try:\n            os.fsync(parent)\n        finally:\n            os.close(parent)\n\
+    \    except Exception:\n        raise Stop('EVIDENCE_WRITE_FAILED') from None\n\
+    \ndef termination_evidence(data):\n    # Kubernetes can bind-mount the termination\
+    \ file. Renaming over that mount\n    # can fail with EBUSY; write this bounded\
+    \ nonsecret summary in place.\n    fd = os.open(EVIDENCE / 'termination.json',\
+    \ os.O_WRONLY | os.O_TRUNC | os.O_NOFOLLOW)\n    try:\n        with os.fdopen(fd,\
+    \ 'wb') as stream:\n            stream.write(data)\n            stream.flush()\n\
+    \            os.fsync(stream.fileno())\n    except Exception:\n        raise Stop('EVIDENCE_WRITE_FAILED')\
+    \ from None\n\ndef main():\n    started = time.monotonic()\n    deadline = started\
+    \ + 90\n    record = {'schema': 'kaas-r3-auth-result/v1', 'status': 'NOT_RUN',\
+    \ 'reason': 'GATE_DISABLED',\n              'events': [], 'application_value_bytes':\
+    \ 0, 'producer_consumer_operations': 0,\n              'credential_values_or_hashes_recorded':\
+    \ False, 'external_notifications': False}\n    exit_code = 100\n    try:\n   \
+    \     raw = file_bytes(ROOT / 'profile.json', 16384)\n        profile = strict_json(raw)\n\
+    \        if profile.get('execution_enabled') is not True or profile.get('deployment_enabled')\
+    \ is not True:\n            raise Stop('GATE_DISABLED')\n        approval = os.environ.get('R3_AUTH_APPROVED_PROFILE_SHA256',\
+    \ '')\n        if not re.fullmatch(r'[0-9a-f]{64}', approval) or hashlib.sha256(raw).hexdigest()\
+    \ != approval:\n            raise Stop('PROFILE_APPROVAL_MISMATCH')\n        if\
+    \ profile['case'] != 'R3-02-AUTH' or profile['external_notifications_enabled']\
+    \ is not False or profile['protected_Jobs_must_remain_suspended'] is not True:\n\
+    \            raise Stop('SCOPE_MISMATCH')\n        fixed = {'bootstrap': 'kaas-dev-kafka-bootstrap.kaas-kafka.svc:9093',\
+    \ 'principal': 'kaas-sbx-a-producer',\n                 'topic': 'kaas-sbx-a-events',\
+    \ 'TLS': 'REQUIRED_CA_AND_HOSTNAME_VERIFICATION',\n                 'SASL': 'SCRAM-SHA-512',\
+    \ 'credential_file': '/credentials/principal/password',\n                 'cluster_CA_file':\
+    \ '/credentials/cluster-ca/ca.crt'}\n        if profile['fixed_scope'] != fixed:\n\
+    \            raise Stop('SCOPE_MISMATCH')\n        if not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9_.-]{0,63}',\
+    \ profile['run_id'] or '') or not isinstance(profile['authorization_reference'],\
+    \ str) or not profile['authorization_reference']:\n            raise Stop('AUTHORIZATION_MISSING')\n\
+    \        now = time.time()\n        if not (type(profile['window_start_epoch'])\
+    \ is int and type(profile['window_end_epoch']) is int and\n                profile['window_start_epoch']\
+    \ <= now < profile['window_end_epoch'] and 0 < profile['window_end_epoch'] - profile['window_start_epoch']\
+    \ <= 600):\n            raise Stop('WINDOW_MISMATCH')\n        deadline = min(deadline,\
+    \ started + profile['window_end_epoch'] - now)\n        version = profile['expected_sdk_version']\n\
+    \        jar = profile['expected_sdk_jar']\n        if not isinstance(version,\
+    \ str) or not re.fullmatch(r'4\\.2\\.0[A-Za-z0-9_.-]*', version):\n          \
+    \  raise Stop('SDK_IDENTITY_MISSING')\n        if not isinstance(jar, str) or\
+    \ not re.fullmatch(r'kafka-clients-4\\.2\\.0[A-Za-z0-9_.-]*\\.jar', jar):\n  \
+    \          raise Stop('SDK_IDENTITY_MISSING')\n        digest = profile['expected_sdk_jar_sha256']\n\
+    \        if not isinstance(digest, str) or not re.fullmatch(r'[0-9a-f]{64}', digest):\n\
+    \            raise Stop('SDK_IDENTITY_MISSING')\n        jar_files = list(Path('/opt/kafka/libs').glob('kafka-clients-*.jar'))\n\
+    \        if len(jar_files) != 1 or jar_files[0].name != jar:\n            raise\
+    \ Stop('SDK_IDENTITY_MISMATCH')\n        jar_digest = hashlib.sha256()\n     \
+    \   with jar_files[0].open('rb') as stream:\n            for chunk in iter(lambda:\
+    \ stream.read(1048576), b''):\n                jar_digest.update(chunk)\n    \
+    \    if jar_digest.hexdigest() != digest:\n            raise Stop('SDK_IDENTITY_MISMATCH')\n\
+    \        if not profile['runtime_image_reference'] or not re.fullmatch(r'.+@sha256:[0-9a-f]{64}',\
+    \ profile['runtime_image_reference']):\n            raise Stop('IMAGE_IDENTITY_MISSING')\n\
+    \        record['source_lock_sha256'] = source_lock()\n        record['run_id']\
+    \ = profile['run_id']\n        record['profile_sha256'] = approval\n        record['runtime_image_reference_configured_not_attested']\
+    \ = profile['runtime_image_reference']\n        record['sdk_version_expected']\
+    \ = version\n        password = file_bytes(PASSWORD, 4096)\n        if not password\
+    \ or any(c in password for c in [b'\\n', b'\\r', b'\\x00']):\n            raise\
+    \ Stop('CREDENTIAL_INPUT_INVALID')\n        try:\n            password.decode('utf-8',\
+    \ errors='strict')\n        except UnicodeDecodeError:\n            raise Stop('CREDENTIAL_INPUT_INVALID')\
+    \ from None\n        # Fixed source facts, no arbitrary client endpoint/principal/topic\
+    \ inputs.\n        ca_start = file_bytes(CA, 131072)\n        if b'-----BEGIN\
+    \ CERTIFICATE-----' not in ca_start:\n            raise Stop('TRUST_INPUT_INVALID')\n\
+    \        bad_password = secrets.token_urlsafe(32).encode('ascii')\n        if\
+    \ hmac.compare_digest(password, bad_password):\n            raise Stop('NEGATIVE_INPUT_COLLISION')\n\
+    \        for phase in PHASES:\n            if not hmac.compare_digest(file_bytes(PASSWORD,\
+    \ 4096), password) or file_bytes(CA, 131072) != ca_start:\n                raise\
+    \ Stop('CREDENTIAL_OR_TRUST_CHANGED')\n            event = child_phase(phase,\
+    \ bad_password if phase == 'negative' else password, version, deadline)\n    \
+    \        record['events'].append(event)\n            wanted = 'BROKER_SASL_REJECTED'\
+    \ if phase == 'negative' else 'OWN_METADATA_OK'\n            if event['outcome']\
+    \ != wanted:\n                record['status'] = 'FAIL' if phase == 'negative'\
+    \ and event['outcome'] in ['OWN_METADATA_OK', 'AUTHORIZATION_FAILURE'] else 'INCONCLUSIVE'\n\
+    \                raise Stop('UNEXPECTED_NEGATIVE_SUCCESS_OR_WRONG_LAYER' if phase\
+    \ == 'negative' else 'POSITIVE_CONTROL_FAILED')\n        if not hmac.compare_digest(file_bytes(PASSWORD,\
+    \ 4096), password) or file_bytes(CA, 131072) != ca_start:\n            raise Stop('CREDENTIAL_OR_TRUST_CHANGED')\n\
+    \        if time.monotonic() >= deadline:\n            raise Stop('OVERALL_DEADLINE')\n\
+    \        record.update(status='AUTH_PAIR_OBSERVED', reason='CONTROLS_AND_BROKER_SASL_REJECTION')\n\
+    \        exit_code = 0\n    except Stop as error:\n        record['reason'] =\
+    \ str(error)  # Only local fixed enum strings reach Stop.\n        if record['status']\
+    \ == 'NOT_RUN' and record['events']:\n            record['status'] = 'INCONCLUSIVE'\n\
+    \    except Exception:\n        record.update(status='INCONCLUSIVE', reason='LOCAL_PRECONDITION_ERROR')\n\
+    \    record['elapsed_ms'] = round((time.monotonic() - started) * 1000)\n    data\
+    \ = (json.dumps(record, sort_keys=True, separators=(',', ':')) + '\\n').encode()\n\
+    \    if len(data) > 3000:\n        record.update(status='INCONCLUSIVE', reason='RESULT_SIZE_LIMIT',\
+    \ events=[])\n        exit_code = 101\n        data = (json.dumps(record, sort_keys=True,\
+    \ separators=(',', ':')) + '\\n').encode()\n    try:\n        atomic_evidence('result.json',\
+    \ data)\n        termination_evidence(data)\n        if exit_code == 0 and time.monotonic()\
+    \ >= deadline:\n            raise Stop('OVERALL_DEADLINE')\n    except Exception:\n\
+    \        print('{\"schema\":\"kaas-r3-auth-result/v1\",\"status\":\"INCONCLUSIVE\"\
+    ,\"reason\":\"EVIDENCE_OR_FINAL_DEADLINE_FAILED\"}', flush=True)\n        return\
+    \ 101\n    print(data.decode(), end='', flush=True)\n    return exit_code\n\n\
+    def external_stop(signum, frame):\n    if ACTIVE_PROCESS is not None:\n      \
+    \  try:\n            os.killpg(ACTIVE_PROCESS.pid, signal.SIGKILL)\n        except\
+    \ ProcessLookupError:\n            pass\n    raise Stop('EXTERNAL_STOP')\n\nif\
+    \ __name__ == '__main__':\n    signal.signal(signal.SIGTERM, external_stop)\n\
+    \    signal.signal(signal.SIGINT, external_stop)\n    try:\n        code = main()\n\
+    \    except BaseException:\n        print('{\"schema\":\"kaas-r3-auth-result/v1\"\
+    ,\"status\":\"INCONCLUSIVE\",\"reason\":\"EXTERNAL_STOP_OR_SUPERVISOR_ERROR\"\
+    }', flush=True)\n        code = 101\n    raise SystemExit(code)\n"
+  log4j2.properties: 'status = OFF
+
+    rootLogger.level = OFF
+
+    '
+  source-lock.json: "{\n  \"schema\": \"kaas-r3-auth-source-lock/v1\",\n  \"files\"\
+    : {\n    \"AuthMetadataProbe.java\": \"d06c32dd6e902a48c3b660961b1abe8bca720f55e7791ca5e54c1d0fdac886b5\"\
+    ,\n    \"run_probe.py\": \"f5d844cf3e48ad4477bdcaa80b8bb8254af446444abe8175158dc859ebae1102\"\
+    ,\n    \"log4j2.properties\": \"a10f28bc03e2804ca55bfe6e7ca17be4d0c7763b822bf37d01a120e77b4bb576\"\
+    \n  }\n}\n"
+  profile.json: "{\n  \"schema\": \"kaas-r3-auth-profile/v1\",\n  \"case\": \"R3-02-AUTH\"\
+    ,\n  \"status\": \"PREPARED_DISABLED_NOT_COMPILED_OR_TESTED\",\n  \"source_review_commit\"\
+    : \"c9aba5af22612da0e5d2f7ba4d9b825b3df4b26d\",\n  \"execution_enabled\": false,\n\
+    \  \"deployment_enabled\": false,\n  \"external_notifications_enabled\": false,\n\
+    \  \"protected_Jobs_must_remain_suspended\": true,\n  \"run_id\": null,\n  \"\
+    authorization_reference\": null,\n  \"window_start_epoch\": null,\n  \"window_end_epoch\"\
+    : null,\n  \"runtime_image_reference\": null,\n  \"candidate_existing_image\"\
+    : \"image-registry.openshift-image-registry.svc:5000/kaas-demo/kaas-r2-runner-05a3f2d@sha256:41f328c85ee3d3e9d8834ce12e516b5ef52506067117b1c4f1145511b493998a\"\
+    ,\n  \"expected_sdk_version\": null,\n  \"expected_sdk_jar\": null,\n  \"expected_sdk_jar_sha256\"\
+    : null,\n  \"fixed_scope\": {\n    \"bootstrap\": \"kaas-dev-kafka-bootstrap.kaas-kafka.svc:9093\"\
+    ,\n    \"principal\": \"kaas-sbx-a-producer\",\n    \"topic\": \"kaas-sbx-a-events\"\
+    ,\n    \"TLS\": \"REQUIRED_CA_AND_HOSTNAME_VERIFICATION\",\n    \"SASL\": \"SCRAM-SHA-512\"\
+    ,\n    \"credential_file\": \"/credentials/principal/password\",\n    \"cluster_CA_file\"\
+    : \"/credentials/cluster-ca/ca.crt\"\n  },\n  \"sequence\": [\n    \"positive_before\"\
+    ,\n    \"negative\",\n    \"positive_after\"\n  ],\n  \"proposal_bounds\": {\n\
+    \    \"maximum_client_seconds\": 90,\n    \"maximum_phase_seconds\": 20,\n   \
+    \ \"Job_activeDeadlineSeconds\": 120,\n    \"maximum_phase_processes\": 3,\n \
+    \   \"maximum_metadata_API_calls\": 3,\n    \"maximum_negative_processes\": 1,\n\
+    \    \"automatic_case_retries\": 0,\n    \"original_application_value_bytes\"\
+    : 0,\n    \"maximum_stdout_bytes_per_phase\": 8192,\n    \"maximum_stderr_bytes_discarded_per_phase\"\
+    : 65536,\n    \"maximum_sanitized_result_bytes\": 3000\n  },\n  \"bound_note\"\
+    : \"These are proposed application/client limits, not approved wire request/byte\
+    \ counts or measured timing. SDK protocol negotiation/connection attempts may\
+    \ exceed one exchange; no live attempt is authorized.\"\n}\n"
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  namespace: kaas-demo
+  labels: &id001
+    kaas.example.com/r3-probe: auth
+  name: kaas-r3-auth-proposed
+spec:
+  podSelector:
+    matchLabels: *id001
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress: []
+  egress:
+  - to:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: openshift-dns
+      podSelector:
+        matchLabels:
+          dns.operator.openshift.io/daemonset-dns: default
+    ports:
+    - protocol: UDP
+      port: 53
+    - protocol: UDP
+      port: 5353
+    - protocol: TCP
+      port: 53
+    - protocol: TCP
+      port: 5353
+  - to:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: kaas-kafka
+      podSelector:
+        matchLabels:
+          strimzi.io/cluster: kaas-dev
+          strimzi.io/name: kaas-dev-kafka
+    ports:
+    - protocol: TCP
+      port: 9093
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  namespace: kaas-demo
+  labels: &id001
+    kaas.example.com/r3-probe: auth
+  name: kaas-r3-auth-proposed
+spec:
+  suspend: true
+  backoffLimit: 0
+  activeDeadlineSeconds: 120
+  parallelism: 1
+  completions: 1
+  template:
+    metadata:
+      labels: *id001
+    spec:
+      serviceAccountName: kaas-r3-auth-probe
+      automountServiceAccountToken: false
+      hostNetwork: false
+      restartPolicy: Never
+      terminationGracePeriodSeconds: 3
+      securityContext:
+        runAsNonRoot: true
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+      - name: auth-probe
+        image: image-registry.openshift-image-registry.svc:5000/kaas-demo/kaas-r2-runner-05a3f2d@sha256:41f328c85ee3d3e9d8834ce12e516b5ef52506067117b1c4f1145511b493998a
+        imagePullPolicy: IfNotPresent
+        command:
+        - timeout
+        - --signal=TERM
+        - --kill-after=2s
+        - 90s
+        - python3
+        - -I
+        - /probe/run_probe.py
+        env:
+        - name: R3_AUTH_APPROVED_PROFILE_SHA256
+          value: ''
+        - name: PYTHONDONTWRITEBYTECODE
+          value: '1'
+        - name: PYTHONUNBUFFERED
+          value: '1'
+        - name: HOME
+          value: /tmp
+        resources:
+          requests:
+            cpu: 100m
+            memory: 256Mi
+          limits:
+            cpu: 500m
+            memory: 512Mi
+        securityContext:
+          runAsNonRoot: true
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+          capabilities:
+            drop:
+            - ALL
+          seccompProfile:
+            type: RuntimeDefault
+        volumeMounts:
+        - name: source
+          mountPath: /probe
+          readOnly: true
+        - name: principal
+          mountPath: /credentials/principal
+          readOnly: true
+        - name: cluster-ca
+          mountPath: /credentials/cluster-ca
+          readOnly: true
+        - name: tmp
+          mountPath: /tmp
+        - name: evidence
+          mountPath: /evidence
+        terminationMessagePath: /evidence/termination.json
+        terminationMessagePolicy: File
+      volumes:
+      - name: source
+        configMap:
+          name: kaas-r3-auth-probe-disabled
+          defaultMode: 292
+      - name: principal
+        secret:
+          secretName: kaas-sbx-a-producer
+          items:
+          - key: password
+            path: password
+          defaultMode: 288
+      - name: cluster-ca
+        configMap:
+          name: kaas-r2-cluster-ca
+          items:
+          - key: ca.crt
+            path: ca.crt
+          defaultMode: 292
+      - name: tmp
+        emptyDir:
+          medium: Memory
+          sizeLimit: 64Mi
+      - name: evidence
+        emptyDir:
+          medium: Memory
+          sizeLimit: 1Mi

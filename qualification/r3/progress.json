@@ -1,5 +1,5 @@
 {
-  "revision": "0.13",
+  "revision": "0.14",
   "date": "2026-11-27",
   "plan_commit": "0f9df49fc0dfb3632c9c7f4eb32fb7e6d3aec1e6",
   "execution_enabled": false,
@@ -129,10 +129,20 @@
       "workloads_enabled": false,
       "tests_run": 0,
       "C6_hold": "LIFTED_FOR_COMPLETED_OFFLINE_ASSIGNMENT",
-      "publication": "INCLUDED_IN_OWNING_RESULT_PUBLICATION_COMMIT_NO_NEW_LIVE_EXECUTION"
+      "publication": "INCLUDED_IN_OWNING_RESULT_PUBLICATION_COMMIT_NO_NEW_LIVE_EXECUTION",
+      "AUTH_probe_preparation": {
+        "status": "CANDIDATE_SOURCE_AND_DISABLED_PACKAGE_PREPARED_NO_COMPILE_OR_TESTS",
+        "result": "../../packaging/r3-auth-probe/result.json",
+        "scope": "Valid/wrong-password/valid exact own-topic JavaAdminmetadata controls; no application records",
+        "execution_enabled": false,
+        "deployment_enabled": false,
+        "tests_run": 0,
+        "runtime_security_qualification": "NOT_RUN_NOT_QUALIFIED",
+        "publication": "INCLUDED_IN_OWNING_COMMIT_DISABLED_UNCOMPILED_UNTESTED"
+      }
     }
   },
-  "remaining_cases": "R3-02 C6 review/concurrence complete offline;10subcases disabled/notrun. R3-00/01 C6 offline concurrence now recorded; broader security/service release unqualified. Dashboard-only rule evaluation permitted, external notifications disabled; actual rules unchanged. Four clients remain suspended; no further tests/rollout/cleanup.",
+  "remaining_cases": "R3-02 AUTH candidate source/profile/new suspended Job prepared offline, not compiled/tested; exact SDK jar/image/source classification/containment verification and per-run authorization remain before any execution. Other9securitysubcases unchanged/disabled. No existing Job changes, cluster access, notifications or tests. Dashboard evaluation permission remains separate; no rules changed.",
   "note": "Progress overlay supersedes pre-correction OPEN labels only for this exact offline source/result; does not arm any planned case",
   "coordination_sync": {
     "date": "2026-11-26",

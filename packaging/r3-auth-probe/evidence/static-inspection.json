@@ -1,0 +1,16 @@
+{
+  "status": "STATIC_PREPARATION_INSPECTION_PASS_NOT_A_TEST_OR_BUILD_RESULT",
+  "Python_syntax": "AST_PARSED_TARGET3.9_NO_IMPORT_OR_EXECUTION",
+  "YAML_JSON_source_lock": "CONSISTENT",
+  "fixed_Admin_operation": "ONE_DESCRIBETOPICS_CALL_SITE_NO_MUTATION_PRODUCER_CONSUMER_GROUP_API",
+  "inactive_objects": 4,
+  "new_Job_suspended": true,
+  "single_Secret_reference_only": true,
+  "no_existing_Job_or_runtime_change": true,
+  "old_R3_02_and_R3_03_artifact_hashes_unchanged": true,
+  "primary_refs": "evidence/source-references.json",
+  "credential_pattern_scan": "PASS",
+  "tests_or_probe_compilation_execution": 0,
+  "schema_admission": "NOT_RUN",
+  "independent_reviewer": "NOT_CLAIMED"
+}

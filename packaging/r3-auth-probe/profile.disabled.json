@@ -1,0 +1,47 @@
+{
+  "schema": "kaas-r3-auth-profile/v1",
+  "case": "R3-02-AUTH",
+  "status": "PREPARED_DISABLED_NOT_COMPILED_OR_TESTED",
+  "source_review_commit": "c9aba5af22612da0e5d2f7ba4d9b825b3df4b26d",
+  "execution_enabled": false,
+  "deployment_enabled": false,
+  "external_notifications_enabled": false,
+  "protected_Jobs_must_remain_suspended": true,
+  "run_id": null,
+  "authorization_reference": null,
+  "window_start_epoch": null,
+  "window_end_epoch": null,
+  "runtime_image_reference": null,
+  "candidate_existing_image": "image-registry.openshift-image-registry.svc:5000/kaas-demo/kaas-r2-runner-05a3f2d@sha256:41f328c85ee3d3e9d8834ce12e516b5ef52506067117b1c4f1145511b493998a",
+  "expected_sdk_version": null,
+  "expected_sdk_jar": null,
+  "expected_sdk_jar_sha256": null,
+  "fixed_scope": {
+    "bootstrap": "kaas-dev-kafka-bootstrap.kaas-kafka.svc:9093",
+    "principal": "kaas-sbx-a-producer",
+    "topic": "kaas-sbx-a-events",
+    "TLS": "REQUIRED_CA_AND_HOSTNAME_VERIFICATION",
+    "SASL": "SCRAM-SHA-512",
+    "credential_file": "/credentials/principal/password",
+    "cluster_CA_file": "/credentials/cluster-ca/ca.crt"
+  },
+  "sequence": [
+    "positive_before",
+    "negative",
+    "positive_after"
+  ],
+  "proposal_bounds": {
+    "maximum_client_seconds": 90,
+    "maximum_phase_seconds": 20,
+    "Job_activeDeadlineSeconds": 120,
+    "maximum_phase_processes": 3,
+    "maximum_metadata_API_calls": 3,
+    "maximum_negative_processes": 1,
+    "automatic_case_retries": 0,
+    "original_application_value_bytes": 0,
+    "maximum_stdout_bytes_per_phase": 8192,
+    "maximum_stderr_bytes_discarded_per_phase": 65536,
+    "maximum_sanitized_result_bytes": 3000
+  },
+  "bound_note": "These are proposed application/client limits, not approved wire request/byte counts or measured timing. SDK protocol negotiation/connection attempts may exceed one exchange; no live attempt is authorized."
+}

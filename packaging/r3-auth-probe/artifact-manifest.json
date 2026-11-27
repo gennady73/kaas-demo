@@ -1,0 +1,17 @@
+{
+  "source_review_commit": "c9aba5af22612da0e5d2f7ba4d9b825b3df4b26d",
+  "files": {
+    "README.md": "7b0723f886bbb98a833cbe536eeb09282c3fcec2e6c47aaac2bb5717d31ef309",
+    "disabled/resources.yaml.disabled": "ab913609cac9c26381c33b73f6acb0903f70e6c698e51da30085222da1eee69b",
+    "evidence/publication-preparation.json": "64aefb3d8d157b7e32b3f68973da40a6b7d46f28ec807e3e23c7a3b7a0df8d0d",
+    "evidence/source-references.json": "7390cc5c9fff86b12fd217708ef7a1887b233b5d004142a6e72c9f5067ac0443",
+    "evidence/static-inspection.json": "82ab588eb08c21aa8f42335ed295205f0a89e834c5f57cc1ac95199a95c932b7",
+    "prepare_disabled.py": "5df2a507ebb2bc970cf4542d0df974c90de754831530cc18c00df454ecd7647c",
+    "profile.disabled.json": "13902c9ff457234c75de3b0e16e090f7efbd355f681306f5c71f1d2153c6384f",
+    "result.json": "4a7038bc9cfae1911d7dd0c7b6670e5052bd307d1994af3e966c8a41eedbf162",
+    "source/AuthMetadataProbe.java": "d06c32dd6e902a48c3b660961b1abe8bca720f55e7791ca5e54c1d0fdac886b5",
+    "source/log4j2.properties": "a10f28bc03e2804ca55bfe6e7ca17be4d0c7763b822bf37d01a120e77b4bb576",
+    "source/run_probe.py": "f5d844cf3e48ad4477bdcaa80b8bb8254af446444abe8175158dc859ebae1102",
+    "source/source-lock.json": "78a8542b4ecc286403f89c13162309060c7ea0fb6b85963db9f17bbaf5fa02ca"
+  }
+}

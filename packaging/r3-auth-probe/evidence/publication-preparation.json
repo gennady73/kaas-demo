@@ -1,0 +1,15 @@
+{
+  "status": "PUBLICATION_HASH_REDACTION_DISABLED_FLAGS_AND_SOURCE_COPY_INSPECTION_PASS",
+  "base_commit": "c9aba5af22612da0e5d2f7ba4d9b825b3df4b26d",
+  "original_artifact_hashes_verified": 11,
+  "source_and_embedded_immutable_ConfigMap_sources": "MATCH",
+  "execution_enabled": false,
+  "deployment_enabled": false,
+  "new_proposed_Job_suspended": true,
+  "existing_Jobs_changed": false,
+  "external_notifications_enabled": false,
+  "tests_or_compilation_or_probe_run": false,
+  "image_or_cluster_or_credential_access": false,
+  "runtime_qualification": "NOT_RUN_NOT_QUALIFIED",
+  "publication_scope": "AUTH source, disabled package, reading guide and progress only"
+}
