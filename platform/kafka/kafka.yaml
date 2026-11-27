@@ -7,6 +7,12 @@ metadata:
     argocd.argoproj.io/sync-wave: '1'
 spec:
   kafka:
+    metricsConfig:
+      type: jmxPrometheusExporter
+      valueFrom:
+        configMapKeyRef:
+          name: kaas-dev-r3-jmx-metrics
+          key: metrics.yml
     version: 4.2.0
     image: registry.redhat.io/amq-streams/kafka-42-rhel9@sha256:ce7dc91b664600c6f06e1df3d6b56a4684bb779865d9c28b4df648addd89189d
     listeners:

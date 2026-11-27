@@ -1,0 +1,73 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: kaas-demo-monitoring-platform
+  namespace: openshift-gitops
+spec:
+  description: Manual platform-owner UWM configuration only; no tenant or Kafka resources
+  sourceRepos:
+  - https://github.com/gennady73/kaas-demo.git
+  destinations:
+  - namespace: openshift-monitoring
+    server: https://kubernetes.default.svc
+  - namespace: openshift-user-workload-monitoring
+    server: https://kubernetes.default.svc
+  clusterResourceWhitelist: []
+  namespaceResourceWhitelist:
+  - group: ''
+    kind: ConfigMap
+---
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: kaas-demo-observability
+  namespace: openshift-gitops
+spec:
+  description: R3-03 manual broker metrics ConfigMap and PodMonitor only
+  sourceRepos:
+  - https://github.com/gennady73/kaas-demo.git
+  destinations:
+  - namespace: kaas-kafka
+    server: https://kubernetes.default.svc
+  clusterResourceWhitelist: []
+  namespaceResourceWhitelist:
+  - group: ''
+    kind: ConfigMap
+  - group: monitoring.coreos.com
+    kind: PodMonitor
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kaas-demo-monitoring-platform
+  namespace: openshift-gitops
+spec:
+  project: kaas-demo-monitoring-platform
+  source:
+    repoURL: https://github.com/gennady73/kaas-demo.git
+    targetRevision: 5610bfa484b13599e3218b1bcdb366769deba13d
+    path: qualification/r3/r3-03/activation-execution/candidate/platform
+  destination:
+    namespace: openshift-monitoring
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    syncOptions:
+    - FailOnSharedResource=true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kaas-demo-observability
+  namespace: openshift-gitops
+spec:
+  project: kaas-demo-observability
+  source:
+    repoURL: https://github.com/gennady73/kaas-demo.git
+    targetRevision: 5610bfa484b13599e3218b1bcdb366769deba13d
+    path: qualification/r3/r3-03/activation-execution/candidate/broker-scrape
+  destination:
+    namespace: kaas-kafka
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    syncOptions:
+    - FailOnSharedResource=true
