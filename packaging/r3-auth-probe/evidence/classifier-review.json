@@ -1,0 +1,83 @@
+{
+  "date": "2026-11-27",
+  "source_base_commit": "bc368d6391c864c3babb02016582395f568bfef2",
+  "status": "R3_AUTH_SRC_02_RESOLVED_OFFLINE_COMPILE_PASS_RUNTIME_UNQUALIFIED",
+  "finding": "R3-AUTH-SRC-02",
+  "disposition": "Replaced unusable exception-stack classifier with explicit authenticated-TLS Kafka response parser; no weaker exception-only claim accepted",
+  "source_sha256": "8baad22272d838f8a7ee171d62d03deda49cb77cf3c39f64933ea5e1755026fb",
+  "supervisor_sha256": "960fd807e187d3a95ed3e99501e93966a3f0d4f76f3e74c931d74bc38869598e",
+  "compiler": "Temurin javac25.0.5",
+  "command": "javac -proc:none --release 17 -Xlint:all -classpath <exact extracted Kafka+slf4j jars> -d <temporary classes> AuthMetadataProbe.java",
+  "compile_exit_code": 0,
+  "compiler_diagnostics_bytes": 0,
+  "compiled_classes": {
+    "AuthMetadataProbe$InvalidProtocol.class": "5624f41d6bd5f5a84f41c09a3949c4af897a6126ae6e12a1df5752d2d9a9b247",
+    "AuthMetadataProbe$Wire.class": "8a2946acf633310efbd79917318d7b2d794628511b5965bb60f1b0d8c640c551",
+    "AuthMetadataProbe.class": "fda7d5c977fd40d5a16ce5049d5c6d0f0db0a9fdcd62dd3a6c1e33c9a6a506a1"
+  },
+  "SDK": {
+    "jar": "kafka-clients-4.2.1.redhat-00003.jar",
+    "sha256": "5f13fa84c366c1b20388aadfea9b0539654563bc90bcacd2515c849e8d37e669",
+    "image_pin_unchanged": "sha256:41f328c85ee3d3e9d8834ce12e516b5ef52506067117b1c4f1145511b493998a",
+    "image_provenance": "Reuse compile-review.json exact-base and saved runner lineage; no new fetch/runtime attestation"
+  },
+  "classification_contract": {
+    "transport": "One CA-only trust store and hostname-verified TLS socket to fixed bootstrap per phase",
+    "protocol_versions": {
+      "SaslHandshake": 1,
+      "SaslAuthenticate": 1,
+      "Metadata": 4
+    },
+    "broker_rejection": "Only parsed correlation-matched SaslAuthenticateResponse error58 after successful mechanism handshake/server-first validation and sent client-final proof",
+    "positive": "Same transport/code/SDK/principal, SCRAM server-signature verification then exact own-topic Metadata with allowAutoTopicCreation=false, expected nonempty error-free partitions",
+    "nonpassing": "Local SASL/TLS/DNS/socket/parse/correlation/EOF/other error/first-stage rejection, absent positive control, timeout/evidence failure",
+    "no_error_text_or_stack_matching": true,
+    "no_mutating_or_producer_consumer_group_offset_APIs": true,
+    "claim_limit": "Direct SDK SCRAM/protocol probe, not AdminClient or xk6 exception mapping qualification"
+  },
+  "bounds": {
+    "connections_per_phase": 1,
+    "RPCs_per_phase_max": 4,
+    "RPCs_all_three_phases_max": 12,
+    "metadata_calls_per_phase_max": 1,
+    "frame_bytes_max": 1048576,
+    "SCRAM_token_bytes_max": 16384,
+    "SCRAM_iterations_range": [
+      4096,
+      65536
+    ],
+    "socket_timeout_ms": 5000,
+    "phase_parent_deadline_seconds": 20,
+    "client_parent_deadline_seconds": 90,
+    "automatic_retries": 0,
+    "application_value_bytes": 0,
+    "note": "TCP/TLS packets and DNS queries are not equated with RPC budget; iteration outside range stops inconclusive, not policy drift."
+  },
+  "primary_evidence": "Exact SDK bytecode, retained disassembly and prior base manifests; no online claims/source fetch this task",
+  "disassembly": [
+    {
+      "file": "protocol.javap.txt",
+      "sha256": "c6f17636495238eb9b88c96de60a5a942b9d23506db000cc4279ab6f84f015d5",
+      "tool": "javap -c -p; no class execution"
+    },
+    {
+      "file": "RequestUtils.javap.txt",
+      "sha256": "8e2626c4c90b3354a555be08ce2110360b799e0f45fd0d754e72993f29d77421",
+      "tool": "javap -c -p; no class execution"
+    }
+  ],
+  "source_review": "Reviewed framing, correlation, SCRAM challenge/signature, negative location, fixed topic, parse consumption, bounded frames/iterations, trust/hostname, output whitelist, evidence/stop paths. Single C0 review; no independent reviewer claimed.",
+  "tests_run": 0,
+  "SDK_or_probe_executions": 0,
+  "containers_or_workloads_run": 0,
+  "cluster_requests": 0,
+  "deployment_enabled": false,
+  "external_notifications_enabled": false,
+  "four_existing_Jobs": "Untouched, required suspended; no fresh live inspection",
+  "remaining_before_execution": [
+    "Publish reviewed source/source-lock/disabled immutable profile and manifest at a pinned revision",
+    "Authorized focused classifier/redaction/containment behavior validation remains unrun; compilation is not runtime qualification",
+    "Fresh applicable health/image/toolchain/TLS/mount/network/custody checks and approved unique run/authority/window/profile hash",
+    "Deploy/execute only with explicit subsequent authorization; no existing Job unsuspension needed"
+  ]
+}

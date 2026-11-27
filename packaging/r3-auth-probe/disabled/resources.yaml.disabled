@@ -17,76 +17,131 @@ metadata:
   name: kaas-r3-auth-probe-disabled
 data:
   AuthMetadataProbe.java: "// Metadata-only AUTH candidate. Compilation does not authorize\
-    \ execution.\nimport java.io.InputStream;\nimport java.nio.charset.StandardCharsets;\n\
-    import java.nio.file.Files;\nimport java.nio.file.Path;\nimport java.time.Duration;\n\
-    import java.util.List;\nimport java.util.Map;\nimport java.util.Properties;\n\
-    import java.util.concurrent.TimeUnit;\nimport javax.net.ssl.SSLException;\nimport\
-    \ org.apache.kafka.clients.admin.Admin;\nimport org.apache.kafka.clients.admin.DescribeTopicsOptions;\n\
-    import org.apache.kafka.clients.admin.TopicDescription;\nimport org.apache.kafka.common.errors.AuthenticationException;\n\
-    import org.apache.kafka.common.errors.AuthorizationException;\nimport org.apache.kafka.common.errors.SaslAuthenticationException;\n\
-    import org.apache.kafka.common.utils.AppInfoParser;\n\nclass AuthMetadataProbe\
-    \ {\n  static final String ENDPOINT = \"kaas-dev-kafka-bootstrap.kaas-kafka.svc:9093\"\
-    ;\n  static final String PRINCIPAL = \"kaas-sbx-a-producer\";\n  static final\
-    \ String TOPIC = \"kaas-sbx-a-events\";\n  static final Path CA = Path.of(\"/credentials/cluster-ca/ca.crt\"\
-    );\n\n  static String quote(String s) {\n    return \"\\\"\" + s.replace(\"\\\\\
-    \", \"\\\\\\\\\").replace(\"\\\"\", \"\\\\\\\"\") + \"\\\"\";\n  }\n  static String\
-    \ safeOutcome(Throwable error) {\n    // Never emit an exception message, class\
-    \ dump, stack trace or configuration.\n    // Exact downstream ApiException.fillInStackTrace()\
-    \ is a no-op. The\n    // exception type alone cannot distinguish local errors\
-    \ from broker replies.\n    // Keep this candidate nonpassing until a reviewed\
-    \ origin channel exists.\n    boolean sasl = false;\n    int depth = 0;\n    for\
-    \ (Throwable t = error; t != null && depth++ < 16; t = t.getCause()) {\n     \
-    \ if (t instanceof SSLException) return \"TLS_FAILURE\";\n      if (t instanceof\
-    \ SaslAuthenticationException) {\n        sasl = true;\n\n      }\n      if (t\
-    \ instanceof AuthorizationException) return \"AUTHORIZATION_FAILURE\";\n     \
-    \ if (t instanceof java.util.concurrent.TimeoutException || t instanceof org.apache.kafka.common.errors.TimeoutException)\n\
-    \        return \"TIMEOUT\";\n      if (t instanceof AuthenticationException &&\
-    \ !(t instanceof SaslAuthenticationException))\n        return \"OTHER_AUTHENTICATION_FAILURE\"\
-    ;\n      if (t.getCause() == t) break;\n    }\n    return sasl ? \"LOCAL_OR_UNPROVEN_SASL_FAILURE\"\
-    \ : \"UNCLASSIFIED_FAILURE\";\n  }\n  public static void main(String[] args) {\n\
-    \    String phase = \"invalid\";\n    String outcome = \"INPUT_INVALID\";\n  \
-    \  Admin admin = null;\n    int code = 21;\n    try {\n      if (args.length !=\
-    \ 2 || !List.of(\"positive_before\", \"negative\", \"positive_after\").contains(args[0]))\n\
-    \        throw new IllegalArgumentException();\n      phase = args[0];\n     \
-    \ // Version equality is an independent future arming input; no family-only\n\
-    \      // fallback or automatic allowance for an unreviewed downstream build.\n\
-    \      if (!\"4.2.1.redhat-00003\".equals(args[1]) || !args[1].equals(AppInfoParser.getVersion()))\n\
-    \        throw new IllegalArgumentException();\n      byte[] supplied;\n     \
-    \ try (InputStream input = System.in) { supplied = input.readNBytes(4097); }\n\
-    \      if (supplied.length == 0 || supplied.length > 4096) throw new IllegalArgumentException();\n\
-    \      String password = new String(supplied, StandardCharsets.UTF_8);\n     \
-    \ java.util.Arrays.fill(supplied, (byte) 0);\n      if (password.indexOf('\\n')\
-    \ >= 0 || password.indexOf('\\r') >= 0 || password.indexOf(0) >= 0)\n        throw\
-    \ new IllegalArgumentException();\n      Properties config = new Properties();\n\
-    \      config.put(\"bootstrap.servers\", ENDPOINT);\n      config.put(\"security.protocol\"\
-    , \"SASL_SSL\");\n      config.put(\"sasl.mechanism\", \"SCRAM-SHA-512\");\n \
-    \     config.put(\"sasl.jaas.config\", \"org.apache.kafka.common.security.scram.ScramLoginModule\
-    \ required username=\"\n          + quote(PRINCIPAL) + \" password=\" + quote(password)\
-    \ + \";\");\n      config.put(\"ssl.truststore.type\", \"PEM\");\n      config.put(\"\
-    ssl.truststore.certificates\", Files.readString(CA));\n      config.put(\"ssl.endpoint.identification.algorithm\"\
-    , \"https\");\n      config.put(\"client.id\", \"kaas-r3-auth-metadata\"); //\
-    \ Identical for all phases.\n      config.put(\"enable.metrics.push\", \"false\"\
-    );\n      config.put(\"default.api.timeout.ms\", \"8000\");\n      config.put(\"\
-    request.timeout.ms\", \"5000\");\n      config.put(\"socket.connection.setup.timeout.ms\"\
-    , \"5000\");\n      config.put(\"socket.connection.setup.timeout.max.ms\", \"\
-    5000\");\n      config.put(\"retries\", \"0\");\n      config.put(\"reconnect.backoff.ms\"\
-    , \"60000\");\n      config.put(\"reconnect.backoff.max.ms\", \"60000\");\n  \
-    \    admin = Admin.create(config);\n      // One exact-topic read-only operation.\
-    \ No listing, produce, consume,\n      // group join, offset mutation or topic/configuration\
-    \ creation API exists.\n      Map<String, TopicDescription> topics = admin.describeTopics(List.of(TOPIC),\n\
-    \          new DescribeTopicsOptions().timeoutMs(8000)).allTopicNames().get(10,\
-    \ TimeUnit.SECONDS);\n      if (topics.size() != 1 || !topics.containsKey(TOPIC)\
-    \ || topics.get(TOPIC).partitions().isEmpty())\n        outcome = \"METADATA_MISMATCH\"\
-    ;\n      else { outcome = \"OWN_METADATA_OK\"; code = 0; }\n    } catch (IllegalArgumentException\
-    \ error) {\n      outcome = \"INPUT_INVALID\";\n    } catch (Throwable error)\
-    \ {\n      outcome = safeOutcome(error);\n      if (outcome.equals(\"BROKER_SASL_REJECTED\"\
-    )) code = 20;\n    } finally {\n      if (admin != null) {\n        try { admin.close(Duration.ofSeconds(2));\
-    \ }\n        catch (Throwable ignored) { outcome = \"CLOSE_FAILED\"; code = 21;\
-    \ }\n      }\n    }\n    // Fixed schema and whitelist only; SDK stdout/stderr\
-    \ is bounded and discarded\n    // by the parent unless stdout is exactly this\
-    \ one reviewed structured row.\n    System.out.println(\"{\\\"schema\\\":\\\"\
-    kaas-r3-auth-phase/v1\\\",\\\"phase\\\":\" + quote(phase)\n        + \",\\\"outcome\\\
-    \":\" + quote(outcome) + \"}\");\n    System.exit(code);\n  }\n}\n"
+    \ execution.\nimport java.io.DataInputStream;\nimport java.io.DataOutputStream;\n\
+    import java.io.InputStream;\nimport java.net.InetSocketAddress;\nimport java.net.Socket;\n\
+    import java.net.SocketTimeoutException;\nimport java.nio.ByteBuffer;\nimport java.nio.charset.StandardCharsets;\n\
+    import java.nio.file.Files;\nimport java.nio.file.Path;\nimport java.security.KeyStore;\n\
+    import java.security.cert.CertificateFactory;\nimport java.util.Arrays;\nimport\
+    \ java.util.List;\nimport javax.net.ssl.SSLContext;\nimport javax.net.ssl.SSLException;\n\
+    import javax.net.ssl.SSLParameters;\nimport javax.net.ssl.SSLSocket;\nimport javax.net.ssl.TrustManagerFactory;\n\
+    import javax.security.auth.callback.NameCallback;\nimport javax.security.auth.callback.PasswordCallback;\n\
+    import javax.security.auth.callback.UnsupportedCallbackException;\nimport javax.security.sasl.SaslException;\n\
+    import org.apache.kafka.common.message.MetadataRequestData;\nimport org.apache.kafka.common.message.SaslAuthenticateRequestData;\n\
+    import org.apache.kafka.common.message.SaslHandshakeRequestData;\nimport org.apache.kafka.common.protocol.Errors;\n\
+    import org.apache.kafka.common.requests.AbstractRequest;\nimport org.apache.kafka.common.requests.AbstractResponse;\n\
+    import org.apache.kafka.common.requests.MetadataRequest;\nimport org.apache.kafka.common.requests.MetadataResponse;\n\
+    import org.apache.kafka.common.requests.RequestHeader;\nimport org.apache.kafka.common.requests.SaslAuthenticateRequest;\n\
+    import org.apache.kafka.common.requests.SaslAuthenticateResponse;\nimport org.apache.kafka.common.requests.SaslHandshakeRequest;\n\
+    import org.apache.kafka.common.requests.SaslHandshakeResponse;\nimport org.apache.kafka.common.security.scram.internals.ScramMechanism;\n\
+    import org.apache.kafka.common.security.scram.internals.ScramMessages.ServerFirstMessage;\n\
+    import org.apache.kafka.common.security.scram.internals.ScramSaslClient;\nimport\
+    \ org.apache.kafka.common.utils.AppInfoParser;\n\nclass AuthMetadataProbe {\n\
+    \  static final String HOST = \"kaas-dev-kafka-bootstrap.kaas-kafka.svc\";\n \
+    \ static final String PRINCIPAL = \"kaas-sbx-a-producer\";\n  static final String\
+    \ TOPIC = \"kaas-sbx-a-events\";\n  static final String MECHANISM = \"SCRAM-SHA-512\"\
+    ;\n  static final Path CA = Path.of(\"/credentials/cluster-ca/ca.crt\");\n  static\
+    \ final int MAX_FRAME = 1048576;\n\n  static final class InvalidProtocol extends\
+    \ Exception {\n    private static final long serialVersionUID = 1L;\n  }\n  static\
+    \ String quote(String s) {\n    return \"\\\"\" + s.replace(\"\\\\\", \"\\\\\\\
+    \\\").replace(\"\\\"\", \"\\\\\\\"\") + \"\\\"\";\n  }\n  static SSLContext trustContext()\
+    \ throws Exception {\n    KeyStore trust = KeyStore.getInstance(KeyStore.getDefaultType());\n\
+    \    trust.load(null, null);\n    int count = 0;\n    try (InputStream input =\
+    \ Files.newInputStream(CA)) {\n      for (java.security.cert.Certificate certificate\
+    \ : CertificateFactory.getInstance(\"X.509\").generateCertificates(input))\n \
+    \       trust.setCertificateEntry(\"ca-\" + count++, certificate);\n    }\n  \
+    \  if (count == 0) throw new InvalidProtocol();\n    TrustManagerFactory managers\
+    \ = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());\n\
+    \    managers.init(trust);\n    SSLContext context = SSLContext.getInstance(\"\
+    TLS\");\n    context.init(null, managers.getTrustManagers(), null);\n    return\
+    \ context;\n  }\n  static final class Wire {\n    final DataInputStream input;\n\
+    \    final DataOutputStream output;\n    int correlation = 0;\n    Wire(SSLSocket\
+    \ socket) throws Exception {\n      input = new DataInputStream(socket.getInputStream());\n\
+    \      output = new DataOutputStream(socket.getOutputStream());\n    }\n    AbstractResponse\
+    \ exchange(AbstractRequest request) throws Exception {\n      if (++correlation\
+    \ > 4) throw new InvalidProtocol();\n      RequestHeader header = new RequestHeader(request.apiKey(),\
+    \ request.version(), \"kaas-r3-auth-metadata\", correlation);\n      ByteBuffer\
+    \ encoded = request.serializeWithHeader(header);\n      if (encoded.remaining()\
+    \ <= 0 || encoded.remaining() > MAX_FRAME) throw new InvalidProtocol();\n    \
+    \  byte[] body = new byte[encoded.remaining()];\n      encoded.get(body);\n  \
+    \    try {\n        output.writeInt(body.length);\n        output.write(body);\n\
+    \        output.flush();\n      } finally { Arrays.fill(body, (byte) 0); }\n \
+    \     int size = input.readInt();\n      if (size < 4 || size > MAX_FRAME) throw\
+    \ new InvalidProtocol();\n      byte[] response = input.readNBytes(size);\n  \
+    \    if (response.length != size) throw new InvalidProtocol();\n      try {\n\
+    \        ByteBuffer buffer = ByteBuffer.wrap(response);\n        // Pinned SDK\
+    \ verifies response correlation against this exact request.\n        AbstractResponse\
+    \ parsed = AbstractResponse.parseResponse(buffer, header);\n        if (buffer.hasRemaining())\
+    \ throw new InvalidProtocol();\n        return parsed;\n      } finally { Arrays.fill(response,\
+    \ (byte) 0); }\n    }\n    SaslAuthenticateResponse authenticate(byte[] token)\
+    \ throws Exception {\n      if (token == null || token.length > 16384) throw new\
+    \ InvalidProtocol();\n      try {\n        return (SaslAuthenticateResponse) exchange(new\
+    \ SaslAuthenticateRequest(\n            new SaslAuthenticateRequestData().setAuthBytes(token),\
+    \ (short) 1));\n      } finally { Arrays.fill(token, (byte) 0); }\n    }\n  }\n\
+    \  static String observe(char[] password) throws Exception {\n    SSLContext context\
+    \ = trustContext();\n    ScramSaslClient scram = new ScramSaslClient(ScramMechanism.SCRAM_SHA_512,\
+    \ callbacks -> {\n      for (javax.security.auth.callback.Callback callback :\
+    \ callbacks) {\n        if (callback instanceof NameCallback) ((NameCallback)\
+    \ callback).setName(PRINCIPAL);\n        else if (callback instanceof PasswordCallback)\
+    \ ((PasswordCallback) callback).setPassword(password);\n        else throw new\
+    \ UnsupportedCallbackException(callback);\n      }\n    });\n    try (Socket raw\
+    \ = new Socket()) {\n      raw.connect(new InetSocketAddress(HOST, 9093), 5000);\n\
+    \      try (SSLSocket socket = (SSLSocket) context.getSocketFactory().createSocket(raw,\
+    \ HOST, 9093, true)) {\n        socket.setSoTimeout(5000);\n        SSLParameters\
+    \ parameters = socket.getSSLParameters();\n        parameters.setEndpointIdentificationAlgorithm(\"\
+    HTTPS\");\n        socket.setSSLParameters(parameters);\n        socket.startHandshake();\n\
+    \        Wire wire = new Wire(socket);\n        SaslHandshakeResponse handshake\
+    \ = (SaslHandshakeResponse) wire.exchange(new SaslHandshakeRequest(\n        \
+    \    new SaslHandshakeRequestData().setMechanism(MECHANISM), (short) 1));\n  \
+    \      if (handshake.error() != Errors.NONE || !handshake.enabledMechanisms().contains(MECHANISM))\n\
+    \          return \"OTHER_AUTHENTICATION_FAILURE\";\n        SaslAuthenticateResponse\
+    \ first = wire.authenticate(scram.evaluateChallenge(new byte[0]));\n        if\
+    \ (first.error() != Errors.NONE) return \"LOCAL_OR_UNPROVEN_SASL_FAILURE\";\n\
+    \        byte[] challenge = first.saslAuthBytes();\n        if (challenge == null\
+    \ || challenge.length == 0 || challenge.length > 16384) throw new InvalidProtocol();\n\
+    \        int iterations = new ServerFirstMessage(challenge).iterations();\n  \
+    \      // Bound broker-controlled proof work before evaluating the challenge.\n\
+    \        if (iterations < 4096 || iterations > 65536) throw new InvalidProtocol();\n\
+    \        byte[] proof = scram.evaluateChallenge(challenge);\n        SaslAuthenticateResponse\
+    \ last = wire.authenticate(proof);\n        // Only a parsed, correlated response\
+    \ on verified TLS after client-final\n        // may establish broker rejection.\
+    \ Never inspect error text or stacks.\n        if (last.error() == Errors.SASL_AUTHENTICATION_FAILED)\
+    \ return \"BROKER_SASL_REJECTED\";\n        if (last.error() != Errors.NONE) return\
+    \ \"OTHER_AUTHENTICATION_FAILURE\";\n        byte[] serverFinal = last.saslAuthBytes();\n\
+    \        if (serverFinal == null || serverFinal.length == 0 || serverFinal.length\
+    \ > 16384) throw new InvalidProtocol();\n        scram.evaluateChallenge(serverFinal);\
+    \ // Verify server signature for positives.\n        if (!scram.isComplete())\
+    \ throw new InvalidProtocol();\n        MetadataResponse metadata = (MetadataResponse)\
+    \ wire.exchange(new MetadataRequest(\n            new MetadataRequestData().setTopics(MetadataRequest.convertToMetadataRequestTopic(List.of(TOPIC)))\n\
+    \                .setAllowAutoTopicCreation(false), (short) 4));\n        if (metadata.data().topics().size()\
+    \ != 1) return \"METADATA_MISMATCH\";\n        var topic = metadata.data().topics().iterator().next();\n\
+    \        if (topic.errorCode() == Errors.TOPIC_AUTHORIZATION_FAILED.code()) return\
+    \ \"AUTHORIZATION_FAILURE\";\n        if (!TOPIC.equals(topic.name()) || topic.errorCode()\
+    \ != 0 || topic.partitions().isEmpty())\n          return \"METADATA_MISMATCH\"\
+    ;\n        for (var partition : topic.partitions())\n          if (partition.errorCode()\
+    \ != 0 || partition.leaderId() < 0) return \"METADATA_MISMATCH\";\n        return\
+    \ \"OWN_METADATA_OK\";\n      }\n    } finally { scram.dispose(); }\n  }\n  public\
+    \ static void main(String[] args) {\n    String phase = \"invalid\", outcome =\
+    \ \"INPUT_INVALID\";\n    int code = 21;\n    char[] password = null;\n    try\
+    \ {\n      if (args.length != 2 || !List.of(\"positive_before\", \"negative\"\
+    , \"positive_after\").contains(args[0]))\n        throw new IllegalArgumentException();\n\
+    \      phase = args[0];\n      if (!\"4.2.1.redhat-00003\".equals(args[1]) ||\
+    \ !args[1].equals(AppInfoParser.getVersion()))\n        throw new IllegalArgumentException();\n\
+    \      byte[] supplied;\n      try (InputStream input = System.in) { supplied\
+    \ = input.readNBytes(4097); }\n      try {\n        if (supplied.length == 0 ||\
+    \ supplied.length > 4096) throw new IllegalArgumentException();\n        for (byte\
+    \ value : supplied) if (value == 0 || value == 10 || value == 13) throw new IllegalArgumentException();\n\
+    \        password = StandardCharsets.UTF_8.newDecoder().decode(ByteBuffer.wrap(supplied)).toString().toCharArray();\n\
+    \      } finally { Arrays.fill(supplied, (byte) 0); }\n      outcome = observe(password);\n\
+    \      code = outcome.equals(\"OWN_METADATA_OK\") ? 0 : (outcome.equals(\"BROKER_SASL_REJECTED\"\
+    ) ? 20 : 21);\n    } catch (IllegalArgumentException error) { outcome = \"INPUT_INVALID\"\
+    ;\n    } catch (SSLException error) { outcome = \"TLS_FAILURE\";\n    } catch\
+    \ (SocketTimeoutException error) { outcome = \"TIMEOUT\";\n    } catch (SaslException\
+    \ error) { outcome = \"LOCAL_OR_UNPROVEN_SASL_FAILURE\";\n    } catch (Throwable\
+    \ error) { outcome = \"UNCLASSIFIED_FAILURE\";\n    } finally { if (password !=\
+    \ null) Arrays.fill(password, '\\0'); }\n    System.out.println(\"{\\\"schema\\\
+    \":\\\"kaas-r3-auth-phase/v1\\\",\\\"phase\\\":\" + quote(phase)\n        + \"\
+    ,\\\"outcome\\\":\" + quote(outcome) + \"}\");\n    System.exit(code);\n  }\n\
+    }\n"
   run_probe.py: "\"\"\"Disabled candidate supervisor. No network calls except reviewed\
     \ child Admin client.\nDo not execute during offline preparation; the future profile\
     \ must be explicitly armed.\n\"\"\"\nimport hashlib\nimport hmac\nimport json\n\
@@ -187,9 +242,14 @@ data:
     \ != approval:\n            raise Stop('PROFILE_APPROVAL_MISMATCH')\n        if\
     \ profile['case'] != 'R3-02-AUTH' or profile['external_notifications_enabled']\
     \ is not False or profile['protected_Jobs_must_remain_suspended'] is not True:\n\
-    \            raise Stop('SCOPE_MISMATCH')\n        fixed = {'bootstrap': 'kaas-dev-kafka-bootstrap.kaas-kafka.svc:9093',\
-    \ 'principal': 'kaas-sbx-a-producer',\n                 'topic': 'kaas-sbx-a-events',\
-    \ 'TLS': 'REQUIRED_CA_AND_HOSTNAME_VERIFICATION',\n                 'SASL': 'SCRAM-SHA-512',\
+    \            raise Stop('SCOPE_MISMATCH')\n        contract = {'classifier': 'TLS_CORRELATED_SASL_AUTHENTICATE_V1_ERROR_58_AFTER_CLIENT_FINAL',\n\
+    \                    'SaslHandshake_version': 1, 'SaslAuthenticate_version': 1,\
+    \ 'Metadata_version': 4,\n                    'allow_auto_topic_creation': False,\
+    \ 'SDK': '4.2.1.redhat-00003'}\n        if profile.get('protocol_contract') !=\
+    \ contract:\n            raise Stop('PROTOCOL_CONTRACT_MISMATCH')\n        fixed\
+    \ = {'bootstrap': 'kaas-dev-kafka-bootstrap.kaas-kafka.svc:9093', 'principal':\
+    \ 'kaas-sbx-a-producer',\n                 'topic': 'kaas-sbx-a-events', 'TLS':\
+    \ 'REQUIRED_CA_AND_HOSTNAME_VERIFICATION',\n                 'SASL': 'SCRAM-SHA-512',\
     \ 'credential_file': '/credentials/principal/password',\n                 'cluster_CA_file':\
     \ '/credentials/cluster-ca/ca.crt'}\n        if profile['fixed_scope'] != fixed:\n\
     \            raise Stop('SCOPE_MISMATCH')\n        if not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9_.-]{0,63}',\
@@ -266,16 +326,16 @@ data:
 
     '
   source-lock.json: "{\n  \"schema\": \"kaas-r3-auth-source-lock/v1\",\n  \"files\"\
-    : {\n    \"AuthMetadataProbe.java\": \"dd17c00eb0a9dc5b99adfc4e1673f0f90b7780836e61426e83b376e3f6d9fddd\"\
-    ,\n    \"run_probe.py\": \"38fb53a02a60b1e198543575542d0f24ab975bac7291506e9889d6c16bf7edbf\"\
+    : {\n    \"AuthMetadataProbe.java\": \"8baad22272d838f8a7ee171d62d03deda49cb77cf3c39f64933ea5e1755026fb\"\
+    ,\n    \"run_probe.py\": \"960fd807e187d3a95ed3e99501e93966a3f0d4f76f3e74c931d74bc38869598e\"\
     ,\n    \"log4j2.properties\": \"a10f28bc03e2804ca55bfe6e7ca17be4d0c7763b822bf37d01a120e77b4bb576\"\
     \n  }\n}\n"
   profile.json: "{\n  \"schema\": \"kaas-r3-auth-profile/v1\",\n  \"case\": \"R3-02-AUTH\"\
-    ,\n  \"status\": \"COMPILED_DISABLED_ORIGIN_CLASSIFIER_BLOCKED\",\n  \"source_review_commit\"\
-    : \"c9aba5af22612da0e5d2f7ba4d9b825b3df4b26d\",\n  \"execution_enabled\": false,\n\
-    \  \"deployment_enabled\": false,\n  \"external_notifications_enabled\": false,\n\
-    \  \"protected_Jobs_must_remain_suspended\": true,\n  \"run_id\": null,\n  \"\
-    authorization_reference\": null,\n  \"window_start_epoch\": null,\n  \"window_end_epoch\"\
+    ,\n  \"status\": \"COMPILED_DISABLED_DIRECT_PROTOCOL_CLASSIFIER_UNTESTED\",\n\
+    \  \"source_review_commit\": \"c9aba5af22612da0e5d2f7ba4d9b825b3df4b26d\",\n \
+    \ \"execution_enabled\": false,\n  \"deployment_enabled\": false,\n  \"external_notifications_enabled\"\
+    : false,\n  \"protected_Jobs_must_remain_suspended\": true,\n  \"run_id\": null,\n\
+    \  \"authorization_reference\": null,\n  \"window_start_epoch\": null,\n  \"window_end_epoch\"\
     : null,\n  \"runtime_image_reference\": \"image-registry.openshift-image-registry.svc:5000/kaas-demo/kaas-r2-runner-05a3f2d@sha256:41f328c85ee3d3e9d8834ce12e516b5ef52506067117b1c4f1145511b493998a\"\
     ,\n  \"candidate_existing_image\": \"image-registry.openshift-image-registry.svc:5000/kaas-demo/kaas-r2-runner-05a3f2d@sha256:41f328c85ee3d3e9d8834ce12e516b5ef52506067117b1c4f1145511b493998a\"\
     ,\n  \"expected_sdk_version\": \"4.2.1.redhat-00003\",\n  \"expected_sdk_jar\"\
@@ -289,13 +349,19 @@ data:
     ,\n    \"negative\",\n    \"positive_after\"\n  ],\n  \"proposal_bounds\": {\n\
     \    \"maximum_client_seconds\": 90,\n    \"maximum_phase_seconds\": 20,\n   \
     \ \"Job_activeDeadlineSeconds\": 120,\n    \"maximum_phase_processes\": 3,\n \
-    \   \"maximum_metadata_API_calls\": 3,\n    \"maximum_negative_processes\": 1,\n\
-    \    \"automatic_case_retries\": 0,\n    \"original_application_value_bytes\"\
+    \   \"maximum_metadata_API_calls\": 3,\n    \"maximum_Kafka_RPCs_per_phase\":\
+    \ 4,\n    \"maximum_Kafka_RPCs_total\": 12,\n    \"maximum_response_frame_bytes\"\
+    : 1048576,\n    \"maximum_SCRAM_iterations\": 65536,\n    \"maximum_negative_processes\"\
+    : 1,\n    \"automatic_case_retries\": 0,\n    \"original_application_value_bytes\"\
     : 0,\n    \"maximum_stdout_bytes_per_phase\": 8192,\n    \"maximum_stderr_bytes_discarded_per_phase\"\
     : 65536,\n    \"maximum_sanitized_result_bytes\": 3000\n  },\n  \"bound_note\"\
     : \"These are proposed application/client limits, not approved wire request/byte\
     \ counts or measured timing. SDK protocol negotiation/connection attempts may\
-    \ exceed one exchange; no live attempt is authorized.\"\n}\n"
+    \ exceed one exchange; no live attempt is authorized.\",\n  \"protocol_contract\"\
+    : {\n    \"classifier\": \"TLS_CORRELATED_SASL_AUTHENTICATE_V1_ERROR_58_AFTER_CLIENT_FINAL\"\
+    ,\n    \"SaslHandshake_version\": 1,\n    \"SaslAuthenticate_version\": 1,\n \
+    \   \"Metadata_version\": 4,\n    \"allow_auto_topic_creation\": false,\n    \"\
+    SDK\": \"4.2.1.redhat-00003\"\n  }\n}\n"
 ---
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy

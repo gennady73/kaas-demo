@@ -1,0 +1,8 @@
+{
+  "status": "DISABLED_PACKAGE_SOURCE_LOCK_CM_AST_CONSISTENT",
+  "artifact_execution": "NONE",
+  "tests_run": 0,
+  "new_Job_suspended": true,
+  "protocol_profile_guard": "EXACT_MATCH_REQUIRED",
+  "per_run_authority_window": "UNSET"
+}

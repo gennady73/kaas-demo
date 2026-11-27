@@ -23,5 +23,9 @@
     "tests/tenant-r2-native/native/module.go": "79d3d770eb25c4644db14b027ab42e8ae00292cae8aa26fc0f3c160b0b5592b3",
     "qualification/r3/r3-02/source/docs/security/r3-c6-review-2026-11-26/security-matrix.disabled.json": "56a517929e3ea282cc0d99212ae46d391b806432fc90c4980c2ae6d640b13b7a"
   },
-  "limits": "Superseded by evidence/compile-review.json: exact downstream4.2.1.redhat-00003 ApiException suppresses stack traces. Origin classifier BLOCKED; no runtime qualification."
+  "limits": "Historical exception-stack design superseded by classifier-review.md and evidence/classifier-review.json. Exact SDK protocol/SCRAM bytecode inspected; direct response classifier compiled, not executed. No runtime qualification.",
+  "current_classifier": {
+    "source": "Exact base-image Kafka4.2.1.redhat-00003 jar, SHA5f13fa84c366c1b20388aadfea9b0539654563bc90bcacd2515c849e8d37e669",
+    "method": "javap-only: request header serialization excludes length prefix; response parser checks correlation; Errors numeric58; SCRAM server-signature check. See evidence/classifier-review.json; no SDK code execution."
+  }
 }

@@ -1,0 +1,677 @@
+Compiled from "AbstractResponse.java"
+public abstract class org.apache.kafka.common.requests.AbstractResponse implements org.apache.kafka.common.requests.AbstractRequestResponse {
+  public static final int DEFAULT_THROTTLE_TIME;
+
+  private final org.apache.kafka.common.protocol.ApiKeys apiKey;
+
+  protected org.apache.kafka.common.requests.AbstractResponse(org.apache.kafka.common.protocol.ApiKeys);
+    Code:
+         0: aload_0
+         1: invokespecial #24                 // Method java/lang/Object."<init>":()V
+         4: aload_0
+         5: aload_1
+         6: putfield      #26                 // Field apiKey:Lorg/apache/kafka/common/protocol/ApiKeys;
+         9: return
+
+  public final org.apache.kafka.common.network.Send toSend(org.apache.kafka.common.requests.ResponseHeader, short);
+    Code:
+         0: aload_1
+         1: aload_0
+         2: invokevirtual #34                 // Method data:()Lorg/apache/kafka/common/protocol/ApiMessage;
+         5: iload_2
+         6: invokestatic  #40                 // Method org/apache/kafka/common/protocol/SendBuilder.buildResponseSend:(Lorg/apache/kafka/common/requests/ResponseHeader;Lorg/apache/kafka/common/protocol/Message;S)Lorg/apache/kafka/common/network/Send;
+         9: areturn
+
+  final java.nio.ByteBuffer serializeWithHeader(org.apache.kafka.common.requests.ResponseHeader, short);
+    Code:
+         0: aload_1
+         1: invokevirtual #51                 // Method org/apache/kafka/common/requests/ResponseHeader.data:()Lorg/apache/kafka/common/message/ResponseHeaderData;
+         4: aload_1
+         5: invokevirtual #55                 // Method org/apache/kafka/common/requests/ResponseHeader.headerVersion:()S
+         8: aload_0
+         9: invokevirtual #34                 // Method data:()Lorg/apache/kafka/common/protocol/ApiMessage;
+        12: iload_2
+        13: invokestatic  #61                 // Method org/apache/kafka/common/requests/RequestUtils.serialize:(Lorg/apache/kafka/common/protocol/Message;SLorg/apache/kafka/common/protocol/Message;S)Ljava/nio/ByteBuffer;
+        16: areturn
+
+  final org.apache.kafka.common.protocol.ByteBufferAccessor serialize(short);
+    Code:
+         0: aload_0
+         1: invokevirtual #34                 // Method data:()Lorg/apache/kafka/common/protocol/ApiMessage;
+         4: iload_1
+         5: invokestatic  #68                 // Method org/apache/kafka/common/protocol/MessageUtil.toByteBufferAccessor:(Lorg/apache/kafka/common/protocol/Message;S)Lorg/apache/kafka/common/protocol/ByteBufferAccessor;
+         8: areturn
+
+  public abstract java.util.Map<org.apache.kafka.common.protocol.Errors, java.lang.Integer> errorCounts();
+
+  protected static java.util.Map<org.apache.kafka.common.protocol.Errors, java.lang.Integer> errorCounts(org.apache.kafka.common.protocol.Errors);
+    Code:
+         0: aload_0
+         1: iconst_1
+         2: invokestatic  #79                 // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+         5: invokestatic  #85                 // Method java/util/Collections.singletonMap:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/Map;
+         8: areturn
+
+  protected static java.util.Map<org.apache.kafka.common.protocol.Errors, java.lang.Integer> errorCounts(java.util.stream.Stream<org.apache.kafka.common.protocol.Errors>);
+    Code:
+         0: aload_0
+         1: invokedynamic #108,  0            // InvokeDynamic #0:apply:()Ljava/util/function/Function;
+         6: invokedynamic #120,  0            // InvokeDynamic #1:applyAsInt:()Ljava/util/function/ToIntFunction;
+        11: invokestatic  #126                // Method java/util/stream/Collectors.summingInt:(Ljava/util/function/ToIntFunction;)Ljava/util/stream/Collector;
+        14: invokestatic  #130                // Method java/util/stream/Collectors.groupingBy:(Ljava/util/function/Function;Ljava/util/stream/Collector;)Ljava/util/stream/Collector;
+        17: invokeinterface #136,  2          // InterfaceMethod java/util/stream/Stream.collect:(Ljava/util/stream/Collector;)Ljava/lang/Object;
+        22: checkcast     #138                // class java/util/Map
+        25: areturn
+
+  protected static java.util.Map<org.apache.kafka.common.protocol.Errors, java.lang.Integer> errorCounts(java.util.Collection<org.apache.kafka.common.protocol.Errors>);
+    Code:
+         0: new           #145                // class java/util/EnumMap
+         3: dup
+         4: ldc           #147                // class org/apache/kafka/common/protocol/Errors
+         6: invokespecial #150                // Method java/util/EnumMap."<init>":(Ljava/lang/Class;)V
+         9: astore_1
+        10: aload_0
+        11: invokeinterface #156,  1          // InterfaceMethod java/util/Collection.iterator:()Ljava/util/Iterator;
+        16: astore_2
+        17: aload_2
+        18: invokeinterface #162,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+        23: ifeq          44
+        26: aload_2
+        27: invokeinterface #166,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        32: checkcast     #147                // class org/apache/kafka/common/protocol/Errors
+        35: astore_3
+        36: aload_1
+        37: aload_3
+        38: invokestatic  #170                // Method updateErrorCounts:(Ljava/util/Map;Lorg/apache/kafka/common/protocol/Errors;)V
+        41: goto          17
+        44: aload_1
+        45: areturn
+
+  protected static java.util.Map<org.apache.kafka.common.protocol.Errors, java.lang.Integer> apiErrorCounts(java.util.Map<?, org.apache.kafka.common.requests.ApiError>);
+    Code:
+         0: new           #145                // class java/util/EnumMap
+         3: dup
+         4: ldc           #147                // class org/apache/kafka/common/protocol/Errors
+         6: invokespecial #150                // Method java/util/EnumMap."<init>":(Ljava/lang/Class;)V
+         9: astore_1
+        10: aload_0
+        11: invokeinterface #181,  1          // InterfaceMethod java/util/Map.values:()Ljava/util/Collection;
+        16: invokeinterface #156,  1          // InterfaceMethod java/util/Collection.iterator:()Ljava/util/Iterator;
+        21: astore_2
+        22: aload_2
+        23: invokeinterface #162,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+        28: ifeq          52
+        31: aload_2
+        32: invokeinterface #166,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        37: checkcast     #183                // class org/apache/kafka/common/requests/ApiError
+        40: astore_3
+        41: aload_1
+        42: aload_3
+        43: invokevirtual #186                // Method org/apache/kafka/common/requests/ApiError.error:()Lorg/apache/kafka/common/protocol/Errors;
+        46: invokestatic  #170                // Method updateErrorCounts:(Ljava/util/Map;Lorg/apache/kafka/common/protocol/Errors;)V
+        49: goto          22
+        52: aload_1
+        53: areturn
+
+  protected static void updateErrorCounts(java.util.Map<org.apache.kafka.common.protocol.Errors, java.lang.Integer>, org.apache.kafka.common.protocol.Errors);
+    Code:
+         0: aload_0
+         1: aload_1
+         2: iconst_0
+         3: invokestatic  #79                 // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+         6: invokeinterface #194,  3          // InterfaceMethod java/util/Map.getOrDefault:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+        11: checkcast     #75                 // class java/lang/Integer
+        14: astore_2
+        15: aload_0
+        16: aload_1
+        17: aload_2
+        18: invokevirtual #198                // Method java/lang/Integer.intValue:()I
+        21: iconst_1
+        22: iadd
+        23: invokestatic  #79                 // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+        26: invokeinterface #201,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+        31: pop
+        32: return
+
+  public static org.apache.kafka.common.requests.AbstractResponse parseResponse(java.nio.ByteBuffer, org.apache.kafka.common.requests.RequestHeader);
+    Code:
+         0: aload_1
+         1: invokevirtual #210                // Method org/apache/kafka/common/requests/RequestHeader.apiKey:()Lorg/apache/kafka/common/protocol/ApiKeys;
+         4: astore_2
+         5: aload_1
+         6: invokevirtual #213                // Method org/apache/kafka/common/requests/RequestHeader.apiVersion:()S
+         9: istore_3
+        10: aload_0
+        11: aload_2
+        12: iload_3
+        13: invokevirtual #219                // Method org/apache/kafka/common/protocol/ApiKeys.responseHeaderVersion:(S)S
+        16: invokestatic  #223                // Method org/apache/kafka/common/requests/ResponseHeader.parse:(Ljava/nio/ByteBuffer;S)Lorg/apache/kafka/common/requests/ResponseHeader;
+        19: astore        4
+        21: aload_1
+        22: invokevirtual #226                // Method org/apache/kafka/common/requests/RequestHeader.correlationId:()I
+        25: aload         4
+        27: invokevirtual #227                // Method org/apache/kafka/common/requests/ResponseHeader.correlationId:()I
+        30: if_icmpeq     68
+        33: new           #229                // class org/apache/kafka/common/requests/CorrelationIdMismatchException
+        36: dup
+        37: aload         4
+        39: invokevirtual #227                // Method org/apache/kafka/common/requests/ResponseHeader.correlationId:()I
+        42: aload_1
+        43: invokevirtual #226                // Method org/apache/kafka/common/requests/RequestHeader.correlationId:()I
+        46: aload_1
+        47: invokestatic  #234                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+        50: invokedynamic #246,  0            // InvokeDynamic #2:makeConcatWithConstants:(IILjava/lang/String;)Ljava/lang/String;
+        55: aload_1
+        56: invokevirtual #226                // Method org/apache/kafka/common/requests/RequestHeader.correlationId:()I
+        59: aload         4
+        61: invokevirtual #227                // Method org/apache/kafka/common/requests/ResponseHeader.correlationId:()I
+        64: invokespecial #249                // Method org/apache/kafka/common/requests/CorrelationIdMismatchException."<init>":(Ljava/lang/String;II)V
+        67: athrow
+        68: aload_2
+        69: new           #251                // class org/apache/kafka/common/protocol/ByteBufferAccessor
+        72: dup
+        73: aload_0
+        74: invokespecial #254                // Method org/apache/kafka/common/protocol/ByteBufferAccessor."<init>":(Ljava/nio/ByteBuffer;)V
+        77: iload_3
+        78: invokestatic  #257                // Method parseResponse:(Lorg/apache/kafka/common/protocol/ApiKeys;Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/AbstractResponse;
+        81: areturn
+
+  public static org.apache.kafka.common.requests.AbstractResponse parseResponse(org.apache.kafka.common.protocol.ApiKeys, org.apache.kafka.common.protocol.Readable, short);
+    Code:
+         0: getstatic     #266                // Field org/apache/kafka/common/requests/AbstractResponse$1.$SwitchMap$org$apache$kafka$common$protocol$ApiKeys:[I
+         3: aload_0
+         4: invokevirtual #269                // Method org/apache/kafka/common/protocol/ApiKeys.ordinal:()I
+         7: iaload
+         8: tableswitch   { // 1 to 89
+                       1: 380
+                       2: 386
+                       3: 392
+                       4: 398
+                       5: 404
+                       6: 410
+                       7: 416
+                       8: 422
+                       9: 428
+                      10: 434
+                      11: 440
+                      12: 446
+                      13: 452
+                      14: 458
+                      15: 464
+                      16: 470
+                      17: 476
+                      18: 482
+                      19: 488
+                      20: 494
+                      21: 500
+                      22: 506
+                      23: 512
+                      24: 518
+                      25: 524
+                      26: 530
+                      27: 536
+                      28: 542
+                      29: 548
+                      30: 554
+                      31: 560
+                      32: 566
+                      33: 572
+                      34: 578
+                      35: 584
+                      36: 590
+                      37: 596
+                      38: 602
+                      39: 608
+                      40: 614
+                      41: 620
+                      42: 626
+                      43: 632
+                      44: 638
+                      45: 644
+                      46: 650
+                      47: 656
+                      48: 662
+                      49: 668
+                      50: 674
+                      51: 680
+                      52: 686
+                      53: 692
+                      54: 698
+                      55: 704
+                      56: 710
+                      57: 716
+                      58: 722
+                      59: 728
+                      60: 734
+                      61: 740
+                      62: 746
+                      63: 752
+                      64: 758
+                      65: 764
+                      66: 770
+                      67: 776
+                      68: 782
+                      69: 788
+                      70: 794
+                      71: 800
+                      72: 806
+                      73: 812
+                      74: 818
+                      75: 824
+                      76: 830
+                      77: 836
+                      78: 842
+                      79: 848
+                      80: 854
+                      81: 860
+                      82: 866
+                      83: 872
+                      84: 878
+                      85: 884
+                      86: 890
+                      87: 896
+                      88: 902
+                      89: 908
+                 default: 914
+            }
+       380: aload_1
+       381: iload_2
+       382: invokestatic  #274                // Method org/apache/kafka/common/requests/ProduceResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/ProduceResponse;
+       385: areturn
+       386: aload_1
+       387: iload_2
+       388: invokestatic  #279                // Method org/apache/kafka/common/requests/FetchResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/FetchResponse;
+       391: areturn
+       392: aload_1
+       393: iload_2
+       394: invokestatic  #284                // Method org/apache/kafka/common/requests/ListOffsetsResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/ListOffsetsResponse;
+       397: areturn
+       398: aload_1
+       399: iload_2
+       400: invokestatic  #289                // Method org/apache/kafka/common/requests/MetadataResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/MetadataResponse;
+       403: areturn
+       404: aload_1
+       405: iload_2
+       406: invokestatic  #294                // Method org/apache/kafka/common/requests/OffsetCommitResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/OffsetCommitResponse;
+       409: areturn
+       410: aload_1
+       411: iload_2
+       412: invokestatic  #299                // Method org/apache/kafka/common/requests/OffsetFetchResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/OffsetFetchResponse;
+       415: areturn
+       416: aload_1
+       417: iload_2
+       418: invokestatic  #304                // Method org/apache/kafka/common/requests/FindCoordinatorResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/FindCoordinatorResponse;
+       421: areturn
+       422: aload_1
+       423: iload_2
+       424: invokestatic  #309                // Method org/apache/kafka/common/requests/JoinGroupResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/JoinGroupResponse;
+       427: areturn
+       428: aload_1
+       429: iload_2
+       430: invokestatic  #314                // Method org/apache/kafka/common/requests/HeartbeatResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/HeartbeatResponse;
+       433: areturn
+       434: aload_1
+       435: iload_2
+       436: invokestatic  #319                // Method org/apache/kafka/common/requests/LeaveGroupResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/LeaveGroupResponse;
+       439: areturn
+       440: aload_1
+       441: iload_2
+       442: invokestatic  #324                // Method org/apache/kafka/common/requests/SyncGroupResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/SyncGroupResponse;
+       445: areturn
+       446: aload_1
+       447: iload_2
+       448: invokestatic  #329                // Method org/apache/kafka/common/requests/DescribeGroupsResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/DescribeGroupsResponse;
+       451: areturn
+       452: aload_1
+       453: iload_2
+       454: invokestatic  #334                // Method org/apache/kafka/common/requests/ListGroupsResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/ListGroupsResponse;
+       457: areturn
+       458: aload_1
+       459: iload_2
+       460: invokestatic  #339                // Method org/apache/kafka/common/requests/SaslHandshakeResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/SaslHandshakeResponse;
+       463: areturn
+       464: aload_1
+       465: iload_2
+       466: invokestatic  #344                // Method org/apache/kafka/common/requests/ApiVersionsResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/ApiVersionsResponse;
+       469: areturn
+       470: aload_1
+       471: iload_2
+       472: invokestatic  #349                // Method org/apache/kafka/common/requests/CreateTopicsResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/CreateTopicsResponse;
+       475: areturn
+       476: aload_1
+       477: iload_2
+       478: invokestatic  #354                // Method org/apache/kafka/common/requests/DeleteTopicsResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/DeleteTopicsResponse;
+       481: areturn
+       482: aload_1
+       483: iload_2
+       484: invokestatic  #359                // Method org/apache/kafka/common/requests/DeleteRecordsResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/DeleteRecordsResponse;
+       487: areturn
+       488: aload_1
+       489: iload_2
+       490: invokestatic  #364                // Method org/apache/kafka/common/requests/InitProducerIdResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/InitProducerIdResponse;
+       493: areturn
+       494: aload_1
+       495: iload_2
+       496: invokestatic  #369                // Method org/apache/kafka/common/requests/OffsetsForLeaderEpochResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/OffsetsForLeaderEpochResponse;
+       499: areturn
+       500: aload_1
+       501: iload_2
+       502: invokestatic  #374                // Method org/apache/kafka/common/requests/AddPartitionsToTxnResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/AddPartitionsToTxnResponse;
+       505: areturn
+       506: aload_1
+       507: iload_2
+       508: invokestatic  #379                // Method org/apache/kafka/common/requests/AddOffsetsToTxnResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/AddOffsetsToTxnResponse;
+       511: areturn
+       512: aload_1
+       513: iload_2
+       514: invokestatic  #384                // Method org/apache/kafka/common/requests/EndTxnResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/EndTxnResponse;
+       517: areturn
+       518: aload_1
+       519: iload_2
+       520: invokestatic  #389                // Method org/apache/kafka/common/requests/WriteTxnMarkersResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/WriteTxnMarkersResponse;
+       523: areturn
+       524: aload_1
+       525: iload_2
+       526: invokestatic  #394                // Method org/apache/kafka/common/requests/TxnOffsetCommitResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/TxnOffsetCommitResponse;
+       529: areturn
+       530: aload_1
+       531: iload_2
+       532: invokestatic  #399                // Method org/apache/kafka/common/requests/DescribeAclsResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/DescribeAclsResponse;
+       535: areturn
+       536: aload_1
+       537: iload_2
+       538: invokestatic  #404                // Method org/apache/kafka/common/requests/CreateAclsResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/CreateAclsResponse;
+       541: areturn
+       542: aload_1
+       543: iload_2
+       544: invokestatic  #409                // Method org/apache/kafka/common/requests/DeleteAclsResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/DeleteAclsResponse;
+       547: areturn
+       548: aload_1
+       549: iload_2
+       550: invokestatic  #414                // Method org/apache/kafka/common/requests/DescribeConfigsResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/DescribeConfigsResponse;
+       553: areturn
+       554: aload_1
+       555: iload_2
+       556: invokestatic  #419                // Method org/apache/kafka/common/requests/AlterConfigsResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/AlterConfigsResponse;
+       559: areturn
+       560: aload_1
+       561: iload_2
+       562: invokestatic  #424                // Method org/apache/kafka/common/requests/AlterReplicaLogDirsResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/AlterReplicaLogDirsResponse;
+       565: areturn
+       566: aload_1
+       567: iload_2
+       568: invokestatic  #429                // Method org/apache/kafka/common/requests/DescribeLogDirsResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/DescribeLogDirsResponse;
+       571: areturn
+       572: aload_1
+       573: iload_2
+       574: invokestatic  #434                // Method org/apache/kafka/common/requests/SaslAuthenticateResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/SaslAuthenticateResponse;
+       577: areturn
+       578: aload_1
+       579: iload_2
+       580: invokestatic  #439                // Method org/apache/kafka/common/requests/CreatePartitionsResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/CreatePartitionsResponse;
+       583: areturn
+       584: aload_1
+       585: iload_2
+       586: invokestatic  #444                // Method org/apache/kafka/common/requests/CreateDelegationTokenResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/CreateDelegationTokenResponse;
+       589: areturn
+       590: aload_1
+       591: iload_2
+       592: invokestatic  #449                // Method org/apache/kafka/common/requests/RenewDelegationTokenResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/RenewDelegationTokenResponse;
+       595: areturn
+       596: aload_1
+       597: iload_2
+       598: invokestatic  #454                // Method org/apache/kafka/common/requests/ExpireDelegationTokenResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/ExpireDelegationTokenResponse;
+       601: areturn
+       602: aload_1
+       603: iload_2
+       604: invokestatic  #459                // Method org/apache/kafka/common/requests/DescribeDelegationTokenResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/DescribeDelegationTokenResponse;
+       607: areturn
+       608: aload_1
+       609: iload_2
+       610: invokestatic  #464                // Method org/apache/kafka/common/requests/DeleteGroupsResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/DeleteGroupsResponse;
+       613: areturn
+       614: aload_1
+       615: iload_2
+       616: invokestatic  #469                // Method org/apache/kafka/common/requests/ElectLeadersResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/ElectLeadersResponse;
+       619: areturn
+       620: aload_1
+       621: iload_2
+       622: invokestatic  #474                // Method org/apache/kafka/common/requests/IncrementalAlterConfigsResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/IncrementalAlterConfigsResponse;
+       625: areturn
+       626: aload_1
+       627: iload_2
+       628: invokestatic  #479                // Method org/apache/kafka/common/requests/AlterPartitionReassignmentsResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/AlterPartitionReassignmentsResponse;
+       631: areturn
+       632: aload_1
+       633: iload_2
+       634: invokestatic  #484                // Method org/apache/kafka/common/requests/ListPartitionReassignmentsResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/ListPartitionReassignmentsResponse;
+       637: areturn
+       638: aload_1
+       639: iload_2
+       640: invokestatic  #489                // Method org/apache/kafka/common/requests/OffsetDeleteResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/OffsetDeleteResponse;
+       643: areturn
+       644: aload_1
+       645: iload_2
+       646: invokestatic  #494                // Method org/apache/kafka/common/requests/DescribeClientQuotasResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/DescribeClientQuotasResponse;
+       649: areturn
+       650: aload_1
+       651: iload_2
+       652: invokestatic  #499                // Method org/apache/kafka/common/requests/AlterClientQuotasResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/AlterClientQuotasResponse;
+       655: areturn
+       656: aload_1
+       657: iload_2
+       658: invokestatic  #504                // Method org/apache/kafka/common/requests/DescribeUserScramCredentialsResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/DescribeUserScramCredentialsResponse;
+       661: areturn
+       662: aload_1
+       663: iload_2
+       664: invokestatic  #509                // Method org/apache/kafka/common/requests/AlterUserScramCredentialsResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/AlterUserScramCredentialsResponse;
+       667: areturn
+       668: aload_1
+       669: iload_2
+       670: invokestatic  #514                // Method org/apache/kafka/common/requests/VoteResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/VoteResponse;
+       673: areturn
+       674: aload_1
+       675: iload_2
+       676: invokestatic  #519                // Method org/apache/kafka/common/requests/BeginQuorumEpochResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/BeginQuorumEpochResponse;
+       679: areturn
+       680: aload_1
+       681: iload_2
+       682: invokestatic  #524                // Method org/apache/kafka/common/requests/EndQuorumEpochResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/EndQuorumEpochResponse;
+       685: areturn
+       686: aload_1
+       687: iload_2
+       688: invokestatic  #529                // Method org/apache/kafka/common/requests/DescribeQuorumResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/DescribeQuorumResponse;
+       691: areturn
+       692: aload_1
+       693: iload_2
+       694: invokestatic  #534                // Method org/apache/kafka/common/requests/AlterPartitionResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/AlterPartitionResponse;
+       697: areturn
+       698: aload_1
+       699: iload_2
+       700: invokestatic  #539                // Method org/apache/kafka/common/requests/UpdateFeaturesResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/UpdateFeaturesResponse;
+       703: areturn
+       704: aload_1
+       705: iload_2
+       706: invokestatic  #544                // Method org/apache/kafka/common/requests/EnvelopeResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/EnvelopeResponse;
+       709: areturn
+       710: aload_1
+       711: iload_2
+       712: invokestatic  #549                // Method org/apache/kafka/common/requests/FetchSnapshotResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/FetchSnapshotResponse;
+       715: areturn
+       716: aload_1
+       717: iload_2
+       718: invokestatic  #554                // Method org/apache/kafka/common/requests/DescribeClusterResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/DescribeClusterResponse;
+       721: areturn
+       722: aload_1
+       723: iload_2
+       724: invokestatic  #559                // Method org/apache/kafka/common/requests/DescribeProducersResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/DescribeProducersResponse;
+       727: areturn
+       728: aload_1
+       729: iload_2
+       730: invokestatic  #564                // Method org/apache/kafka/common/requests/BrokerRegistrationResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/BrokerRegistrationResponse;
+       733: areturn
+       734: aload_1
+       735: iload_2
+       736: invokestatic  #569                // Method org/apache/kafka/common/requests/BrokerHeartbeatResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/BrokerHeartbeatResponse;
+       739: areturn
+       740: aload_1
+       741: iload_2
+       742: invokestatic  #574                // Method org/apache/kafka/common/requests/UnregisterBrokerResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/UnregisterBrokerResponse;
+       745: areturn
+       746: aload_1
+       747: iload_2
+       748: invokestatic  #579                // Method org/apache/kafka/common/requests/DescribeTransactionsResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/DescribeTransactionsResponse;
+       751: areturn
+       752: aload_1
+       753: iload_2
+       754: invokestatic  #584                // Method org/apache/kafka/common/requests/ListTransactionsResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/ListTransactionsResponse;
+       757: areturn
+       758: aload_1
+       759: iload_2
+       760: invokestatic  #589                // Method org/apache/kafka/common/requests/AllocateProducerIdsResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/AllocateProducerIdsResponse;
+       763: areturn
+       764: aload_1
+       765: iload_2
+       766: invokestatic  #594                // Method org/apache/kafka/common/requests/ConsumerGroupHeartbeatResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/ConsumerGroupHeartbeatResponse;
+       769: areturn
+       770: aload_1
+       771: iload_2
+       772: invokestatic  #599                // Method org/apache/kafka/common/requests/ConsumerGroupDescribeResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/ConsumerGroupDescribeResponse;
+       775: areturn
+       776: aload_1
+       777: iload_2
+       778: invokestatic  #604                // Method org/apache/kafka/common/requests/ControllerRegistrationResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/ControllerRegistrationResponse;
+       781: areturn
+       782: aload_1
+       783: iload_2
+       784: invokestatic  #609                // Method org/apache/kafka/common/requests/GetTelemetrySubscriptionsResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/GetTelemetrySubscriptionsResponse;
+       787: areturn
+       788: aload_1
+       789: iload_2
+       790: invokestatic  #614                // Method org/apache/kafka/common/requests/PushTelemetryResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/PushTelemetryResponse;
+       793: areturn
+       794: aload_1
+       795: iload_2
+       796: invokestatic  #619                // Method org/apache/kafka/common/requests/AssignReplicasToDirsResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/AssignReplicasToDirsResponse;
+       799: areturn
+       800: aload_1
+       801: iload_2
+       802: invokestatic  #624                // Method org/apache/kafka/common/requests/ListConfigResourcesResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/ListConfigResourcesResponse;
+       805: areturn
+       806: aload_1
+       807: iload_2
+       808: invokestatic  #629                // Method org/apache/kafka/common/requests/DescribeTopicPartitionsResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/DescribeTopicPartitionsResponse;
+       811: areturn
+       812: aload_1
+       813: iload_2
+       814: invokestatic  #634                // Method org/apache/kafka/common/requests/ShareGroupHeartbeatResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/ShareGroupHeartbeatResponse;
+       817: areturn
+       818: aload_1
+       819: iload_2
+       820: invokestatic  #639                // Method org/apache/kafka/common/requests/ShareGroupDescribeResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/ShareGroupDescribeResponse;
+       823: areturn
+       824: aload_1
+       825: iload_2
+       826: invokestatic  #644                // Method org/apache/kafka/common/requests/ShareFetchResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/ShareFetchResponse;
+       829: areturn
+       830: aload_1
+       831: iload_2
+       832: invokestatic  #649                // Method org/apache/kafka/common/requests/ShareAcknowledgeResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/ShareAcknowledgeResponse;
+       835: areturn
+       836: aload_1
+       837: iload_2
+       838: invokestatic  #654                // Method org/apache/kafka/common/requests/AddRaftVoterResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/AddRaftVoterResponse;
+       841: areturn
+       842: aload_1
+       843: iload_2
+       844: invokestatic  #659                // Method org/apache/kafka/common/requests/RemoveRaftVoterResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/RemoveRaftVoterResponse;
+       847: areturn
+       848: aload_1
+       849: iload_2
+       850: invokestatic  #664                // Method org/apache/kafka/common/requests/UpdateRaftVoterResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/UpdateRaftVoterResponse;
+       853: areturn
+       854: aload_1
+       855: iload_2
+       856: invokestatic  #669                // Method org/apache/kafka/common/requests/InitializeShareGroupStateResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/InitializeShareGroupStateResponse;
+       859: areturn
+       860: aload_1
+       861: iload_2
+       862: invokestatic  #674                // Method org/apache/kafka/common/requests/ReadShareGroupStateResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/ReadShareGroupStateResponse;
+       865: areturn
+       866: aload_1
+       867: iload_2
+       868: invokestatic  #679                // Method org/apache/kafka/common/requests/WriteShareGroupStateResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/WriteShareGroupStateResponse;
+       871: areturn
+       872: aload_1
+       873: iload_2
+       874: invokestatic  #684                // Method org/apache/kafka/common/requests/DeleteShareGroupStateResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/DeleteShareGroupStateResponse;
+       877: areturn
+       878: aload_1
+       879: iload_2
+       880: invokestatic  #689                // Method org/apache/kafka/common/requests/ReadShareGroupStateSummaryResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/ReadShareGroupStateSummaryResponse;
+       883: areturn
+       884: aload_1
+       885: iload_2
+       886: invokestatic  #694                // Method org/apache/kafka/common/requests/StreamsGroupHeartbeatResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/StreamsGroupHeartbeatResponse;
+       889: areturn
+       890: aload_1
+       891: iload_2
+       892: invokestatic  #699                // Method org/apache/kafka/common/requests/StreamsGroupDescribeResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/StreamsGroupDescribeResponse;
+       895: areturn
+       896: aload_1
+       897: iload_2
+       898: invokestatic  #704                // Method org/apache/kafka/common/requests/DescribeShareGroupOffsetsResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/DescribeShareGroupOffsetsResponse;
+       901: areturn
+       902: aload_1
+       903: iload_2
+       904: invokestatic  #709                // Method org/apache/kafka/common/requests/AlterShareGroupOffsetsResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/AlterShareGroupOffsetsResponse;
+       907: areturn
+       908: aload_1
+       909: iload_2
+       910: invokestatic  #714                // Method org/apache/kafka/common/requests/DeleteShareGroupOffsetsResponse.parse:(Lorg/apache/kafka/common/protocol/Readable;S)Lorg/apache/kafka/common/requests/DeleteShareGroupOffsetsResponse;
+       913: areturn
+       914: new           #716                // class java/lang/AssertionError
+       917: dup
+       918: ldc_w         #718                // String ApiKey %s is not currently handled in `parseResponse`, the code should be updated to do so.
+       921: iconst_1
+       922: anewarray     #4                  // class java/lang/Object
+       925: dup
+       926: iconst_0
+       927: aload_0
+       928: aastore
+       929: invokestatic  #722                // Method java/lang/String.format:(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+       932: invokespecial #725                // Method java/lang/AssertionError."<init>":(Ljava/lang/Object;)V
+       935: athrow
+
+  public boolean shouldClientThrottle(short);
+    Code:
+         0: iconst_0
+         1: ireturn
+
+  public org.apache.kafka.common.protocol.ApiKeys apiKey();
+    Code:
+         0: aload_0
+         1: getfield      #26                 // Field apiKey:Lorg/apache/kafka/common/protocol/ApiKeys;
+         4: areturn
+
+  public abstract int throttleTimeMs();
+
+  public abstract void maybeSetThrottleTimeMs(int);
+
+  public java.lang.String toString();
+    Code:
+         0: aload_0
+         1: invokevirtual #34                 // Method data:()Lorg/apache/kafka/common/protocol/ApiMessage;
+         4: invokevirtual #736                // Method java/lang/Object.toString:()Ljava/lang/String;
+         7: areturn
+
+  private static int lambda$errorCounts$1(org.apache.kafka.common.protocol.Errors);
+    Code:
+         0: iconst_1
+         1: ireturn
+
+  private static org.apache.kafka.common.protocol.Errors lambda$errorCounts$0(org.apache.kafka.common.protocol.Errors);
+    Code:
+         0: aload_0
+         1: areturn
+}

@@ -1,7 +1,7 @@
 {
   "schema": "kaas-r3-auth-profile/v1",
   "case": "R3-02-AUTH",
-  "status": "COMPILED_DISABLED_ORIGIN_CLASSIFIER_BLOCKED",
+  "status": "COMPILED_DISABLED_DIRECT_PROTOCOL_CLASSIFIER_UNTESTED",
   "source_review_commit": "c9aba5af22612da0e5d2f7ba4d9b825b3df4b26d",
   "execution_enabled": false,
   "deployment_enabled": false,
@@ -36,6 +36,10 @@
     "Job_activeDeadlineSeconds": 120,
     "maximum_phase_processes": 3,
     "maximum_metadata_API_calls": 3,
+    "maximum_Kafka_RPCs_per_phase": 4,
+    "maximum_Kafka_RPCs_total": 12,
+    "maximum_response_frame_bytes": 1048576,
+    "maximum_SCRAM_iterations": 65536,
     "maximum_negative_processes": 1,
     "automatic_case_retries": 0,
     "original_application_value_bytes": 0,
@@ -43,5 +47,13 @@
     "maximum_stderr_bytes_discarded_per_phase": 65536,
     "maximum_sanitized_result_bytes": 3000
   },
-  "bound_note": "These are proposed application/client limits, not approved wire request/byte counts or measured timing. SDK protocol negotiation/connection attempts may exceed one exchange; no live attempt is authorized."
+  "bound_note": "These are proposed application/client limits, not approved wire request/byte counts or measured timing. SDK protocol negotiation/connection attempts may exceed one exchange; no live attempt is authorized.",
+  "protocol_contract": {
+    "classifier": "TLS_CORRELATED_SASL_AUTHENTICATE_V1_ERROR_58_AFTER_CLIENT_FINAL",
+    "SaslHandshake_version": 1,
+    "SaslAuthenticate_version": 1,
+    "Metadata_version": 4,
+    "allow_auto_topic_creation": false,
+    "SDK": "4.2.1.redhat-00003"
+  }
 }

@@ -1,5 +1,5 @@
 {
-  "revision": "0.15",
+  "revision": "0.16",
   "date": "2026-11-27",
   "plan_commit": "0f9df49fc0dfb3632c9c7f4eb32fb7e6d3aec1e6",
   "execution_enabled": false,
@@ -147,10 +147,17 @@
         "tests_run": 0,
         "execution_enabled": false,
         "deployment_enabled": false
+      },
+      "AUTH_classifier_resolution": {
+        "status": "R3_AUTH_SRC_02_RESOLVED_SOURCE_COMPILE_PASS_RUNTIME_UNQUALIFIED",
+        "record": "../../packaging/r3-auth-probe/classifier-review.md",
+        "execution_enabled": false,
+        "deployment_enabled": false,
+        "tests_run": 0
       }
     }
   },
-  "remaining_cases": "AUTH compilation complete against exact base SDK4.2.1.redhat-00003; R3-AUTH-SRC-02 blocks origin classification. Resolve narrowly offline before behavioral validation or arming. Other9securitysubcases unchanged; no tests, cluster changes or notifications.",
+  "remaining_cases": "AUTH source blocker resolved offline; direct TLS/correlation/error-code classifier compiles. No runtime qualification. Publish, authorize focused behavior validation and refresh applicable bounded-run readiness. Other security/scope cases unchanged.",
   "note": "Progress overlay supersedes pre-correction OPEN labels only for this exact offline source/result; does not arm any planned case",
   "coordination_sync": {
     "date": "2026-11-26",

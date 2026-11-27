@@ -1,3 +1,5 @@
+> Superseded for current source by [classifier-review.md](classifier-review.md): R3-AUTH-SRC-02 resolved offline through direct protocol classification; runtime remains untested. The following record is historical.
+
 # R3-02 AUTH compilation and source review, 2026-11-27
 
 **Compilation passed; execution remains blocked by R3-AUTH-SRC-02.** No tests, probe, container or workload ran. No sandbox API call or resource change occurred. The four client Jobs were untouched and must remain suspended; external notifications remain disabled. This is not a fresh observation of cluster state.

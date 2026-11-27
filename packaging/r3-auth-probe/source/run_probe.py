@@ -189,6 +189,11 @@ def main():
             raise Stop('PROFILE_APPROVAL_MISMATCH')
         if profile['case'] != 'R3-02-AUTH' or profile['external_notifications_enabled'] is not False or profile['protected_Jobs_must_remain_suspended'] is not True:
             raise Stop('SCOPE_MISMATCH')
+        contract = {'classifier': 'TLS_CORRELATED_SASL_AUTHENTICATE_V1_ERROR_58_AFTER_CLIENT_FINAL',
+                    'SaslHandshake_version': 1, 'SaslAuthenticate_version': 1, 'Metadata_version': 4,
+                    'allow_auto_topic_creation': False, 'SDK': '4.2.1.redhat-00003'}
+        if profile.get('protocol_contract') != contract:
+            raise Stop('PROTOCOL_CONTRACT_MISMATCH')
         fixed = {'bootstrap': 'kaas-dev-kafka-bootstrap.kaas-kafka.svc:9093', 'principal': 'kaas-sbx-a-producer',
                  'topic': 'kaas-sbx-a-events', 'TLS': 'REQUIRED_CA_AND_HOSTNAME_VERIFICATION',
                  'SASL': 'SCRAM-SHA-512', 'credential_file': '/credentials/principal/password',

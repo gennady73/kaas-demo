@@ -1,0 +1,454 @@
+Compiled from "ScramSaslClient.java"
+public class org.apache.kafka.common.security.scram.internals.ScramSaslClient implements javax.security.sasl.SaslClient {
+  private static final org.slf4j.Logger log;
+
+  private final org.apache.kafka.common.security.scram.internals.ScramMechanism mechanism;
+
+  private final javax.security.auth.callback.CallbackHandler callbackHandler;
+
+  private final org.apache.kafka.common.security.scram.internals.ScramFormatter formatter;
+
+  private java.lang.String clientNonce;
+
+  private org.apache.kafka.common.security.scram.internals.ScramSaslClient$State state;
+
+  private byte[] saltedPassword;
+
+  private org.apache.kafka.common.security.scram.internals.ScramMessages$ClientFirstMessage clientFirstMessage;
+
+  private org.apache.kafka.common.security.scram.internals.ScramMessages$ServerFirstMessage serverFirstMessage;
+
+  private org.apache.kafka.common.security.scram.internals.ScramMessages$ClientFinalMessage clientFinalMessage;
+
+  public org.apache.kafka.common.security.scram.internals.ScramSaslClient(org.apache.kafka.common.security.scram.internals.ScramMechanism, javax.security.auth.callback.CallbackHandler) throws java.security.NoSuchAlgorithmException;
+    Code:
+         0: aload_0
+         1: invokespecial #61                 // Method java/lang/Object."<init>":()V
+         4: aload_0
+         5: aload_1
+         6: putfield      #63                 // Field mechanism:Lorg/apache/kafka/common/security/scram/internals/ScramMechanism;
+         9: aload_0
+        10: aload_2
+        11: putfield      #65                 // Field callbackHandler:Ljavax/security/auth/callback/CallbackHandler;
+        14: aload_0
+        15: new           #67                 // class org/apache/kafka/common/security/scram/internals/ScramFormatter
+        18: dup
+        19: aload_1
+        20: invokespecial #70                 // Method org/apache/kafka/common/security/scram/internals/ScramFormatter."<init>":(Lorg/apache/kafka/common/security/scram/internals/ScramMechanism;)V
+        23: putfield      #72                 // Field formatter:Lorg/apache/kafka/common/security/scram/internals/ScramFormatter;
+        26: aload_0
+        27: getstatic     #75                 // Field org/apache/kafka/common/security/scram/internals/ScramSaslClient$State.SEND_CLIENT_FIRST_MESSAGE:Lorg/apache/kafka/common/security/scram/internals/ScramSaslClient$State;
+        30: invokevirtual #79                 // Method setState:(Lorg/apache/kafka/common/security/scram/internals/ScramSaslClient$State;)V
+        33: return
+
+  public java.lang.String getMechanismName();
+    Code:
+         0: aload_0
+         1: getfield      #63                 // Field mechanism:Lorg/apache/kafka/common/security/scram/internals/ScramMechanism;
+         4: invokevirtual #89                 // Method org/apache/kafka/common/security/scram/internals/ScramMechanism.mechanismName:()Ljava/lang/String;
+         7: areturn
+
+  public boolean hasInitialResponse();
+    Code:
+         0: iconst_1
+         1: ireturn
+
+  public byte[] evaluateChallenge(byte[]) throws javax.security.sasl.SaslException;
+    Code:
+         0: getstatic     #103                // Field org/apache/kafka/common/security/scram/internals/ScramSaslClient$1.$SwitchMap$org$apache$kafka$common$security$scram$internals$ScramSaslClient$State:[I
+         3: aload_0
+         4: getfield      #105                // Field state:Lorg/apache/kafka/common/security/scram/internals/ScramSaslClient$State;
+         7: invokevirtual #109                // Method org/apache/kafka/common/security/scram/internals/ScramSaslClient$State.ordinal:()I
+        10: iaload
+        11: tableswitch   { // 1 to 3
+                       1: 36
+                       2: 207
+                       3: 372
+                 default: 433
+            }
+        36: aload_1
+        37: ifnull        55
+        40: aload_1
+        41: arraylength
+        42: ifeq          55
+        45: new           #95                 // class javax/security/sasl/SaslException
+        48: dup
+        49: ldc           #111                // String Expected empty challenge
+        51: invokespecial #114                // Method javax/security/sasl/SaslException."<init>":(Ljava/lang/String;)V
+        54: athrow
+        55: aload_0
+        56: aload_0
+        57: getfield      #72                 // Field formatter:Lorg/apache/kafka/common/security/scram/internals/ScramFormatter;
+        60: invokevirtual #117                // Method org/apache/kafka/common/security/scram/internals/ScramFormatter.secureRandomString:()Ljava/lang/String;
+        63: putfield      #119                // Field clientNonce:Ljava/lang/String;
+        66: new           #121                // class javax/security/auth/callback/NameCallback
+        69: dup
+        70: ldc           #123                // String Name:
+        72: invokespecial #124                // Method javax/security/auth/callback/NameCallback."<init>":(Ljava/lang/String;)V
+        75: astore_2
+        76: new           #126                // class org/apache/kafka/common/security/scram/ScramExtensionsCallback
+        79: dup
+        80: invokespecial #127                // Method org/apache/kafka/common/security/scram/ScramExtensionsCallback."<init>":()V
+        83: astore_3
+        84: aload_0
+        85: getfield      #65                 // Field callbackHandler:Ljavax/security/auth/callback/CallbackHandler;
+        88: iconst_1
+        89: anewarray     #129                // class javax/security/auth/callback/Callback
+        92: dup
+        93: iconst_0
+        94: aload_2
+        95: aastore
+        96: invokeinterface #135,  2          // InterfaceMethod javax/security/auth/callback/CallbackHandler.handle:([Ljavax/security/auth/callback/Callback;)V
+       101: aload_0
+       102: getfield      #65                 // Field callbackHandler:Ljavax/security/auth/callback/CallbackHandler;
+       105: iconst_1
+       106: anewarray     #129                // class javax/security/auth/callback/Callback
+       109: dup
+       110: iconst_0
+       111: aload_3
+       112: aastore
+       113: invokeinterface #135,  2          // InterfaceMethod javax/security/auth/callback/CallbackHandler.handle:([Ljavax/security/auth/callback/Callback;)V
+       118: goto          137
+       121: astore        4
+       123: getstatic     #138                // Field log:Lorg/slf4j/Logger;
+       126: ldc           #140                // String Extensions callback is not supported by client callback handler {}, no extensions will be added
+       128: aload_0
+       129: getfield      #65                 // Field callbackHandler:Ljavax/security/auth/callback/CallbackHandler;
+       132: invokeinterface #146,  3          // InterfaceMethod org/slf4j/Logger.debug:(Ljava/lang/String;Ljava/lang/Object;)V
+       137: goto          154
+       140: astore        4
+       142: new           #95                 // class javax/security/sasl/SaslException
+       145: dup
+       146: ldc           #148                // String User name or extensions could not be obtained
+       148: aload         4
+       150: invokespecial #151                // Method javax/security/sasl/SaslException."<init>":(Ljava/lang/String;Ljava/lang/Throwable;)V
+       153: athrow
+       154: aload_2
+       155: invokevirtual #154                // Method javax/security/auth/callback/NameCallback.getName:()Ljava/lang/String;
+       158: astore        4
+       160: aload         4
+       162: invokestatic  #158                // Method org/apache/kafka/common/security/scram/internals/ScramFormatter.saslName:(Ljava/lang/String;)Ljava/lang/String;
+       165: astore        5
+       167: aload_3
+       168: invokevirtual #162                // Method org/apache/kafka/common/security/scram/ScramExtensionsCallback.extensions:()Ljava/util/Map;
+       171: astore        6
+       173: aload_0
+       174: new           #16                 // class org/apache/kafka/common/security/scram/internals/ScramMessages$ClientFirstMessage
+       177: dup
+       178: aload         5
+       180: aload_0
+       181: getfield      #119                // Field clientNonce:Ljava/lang/String;
+       184: aload         6
+       186: invokespecial #165                // Method org/apache/kafka/common/security/scram/internals/ScramMessages$ClientFirstMessage."<init>":(Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;)V
+       189: putfield      #167                // Field clientFirstMessage:Lorg/apache/kafka/common/security/scram/internals/ScramMessages$ClientFirstMessage;
+       192: aload_0
+       193: getstatic     #170                // Field org/apache/kafka/common/security/scram/internals/ScramSaslClient$State.RECEIVE_SERVER_FIRST_MESSAGE:Lorg/apache/kafka/common/security/scram/internals/ScramSaslClient$State;
+       196: invokevirtual #79                 // Method setState:(Lorg/apache/kafka/common/security/scram/internals/ScramSaslClient$State;)V
+       199: aload_0
+       200: getfield      #167                // Field clientFirstMessage:Lorg/apache/kafka/common/security/scram/internals/ScramMessages$ClientFirstMessage;
+       203: invokevirtual #174                // Method org/apache/kafka/common/security/scram/internals/ScramMessages$ClientFirstMessage.toBytes:()[B
+       206: areturn
+       207: aload_0
+       208: new           #21                 // class org/apache/kafka/common/security/scram/internals/ScramMessages$ServerFirstMessage
+       211: dup
+       212: aload_1
+       213: invokespecial #177                // Method org/apache/kafka/common/security/scram/internals/ScramMessages$ServerFirstMessage."<init>":([B)V
+       216: putfield      #179                // Field serverFirstMessage:Lorg/apache/kafka/common/security/scram/internals/ScramMessages$ServerFirstMessage;
+       219: aload_0
+       220: getfield      #179                // Field serverFirstMessage:Lorg/apache/kafka/common/security/scram/internals/ScramMessages$ServerFirstMessage;
+       223: invokevirtual #182                // Method org/apache/kafka/common/security/scram/internals/ScramMessages$ServerFirstMessage.nonce:()Ljava/lang/String;
+       226: aload_0
+       227: getfield      #119                // Field clientNonce:Ljava/lang/String;
+       230: invokevirtual #188                // Method java/lang/String.startsWith:(Ljava/lang/String;)Z
+       233: ifne          246
+       236: new           #95                 // class javax/security/sasl/SaslException
+       239: dup
+       240: ldc           #190                // String Invalid server nonce: does not start with client nonce
+       242: invokespecial #114                // Method javax/security/sasl/SaslException."<init>":(Ljava/lang/String;)V
+       245: athrow
+       246: aload_0
+       247: getfield      #179                // Field serverFirstMessage:Lorg/apache/kafka/common/security/scram/internals/ScramMessages$ServerFirstMessage;
+       250: invokevirtual #193                // Method org/apache/kafka/common/security/scram/internals/ScramMessages$ServerFirstMessage.iterations:()I
+       253: aload_0
+       254: getfield      #63                 // Field mechanism:Lorg/apache/kafka/common/security/scram/internals/ScramMechanism;
+       257: invokevirtual #196                // Method org/apache/kafka/common/security/scram/internals/ScramMechanism.minIterations:()I
+       260: if_icmpge     297
+       263: new           #95                 // class javax/security/sasl/SaslException
+       266: dup
+       267: aload_0
+       268: getfield      #179                // Field serverFirstMessage:Lorg/apache/kafka/common/security/scram/internals/ScramMessages$ServerFirstMessage;
+       271: invokevirtual #193                // Method org/apache/kafka/common/security/scram/internals/ScramMessages$ServerFirstMessage.iterations:()I
+       274: aload_0
+       275: getfield      #63                 // Field mechanism:Lorg/apache/kafka/common/security/scram/internals/ScramMechanism;
+       278: invokevirtual #196                // Method org/apache/kafka/common/security/scram/internals/ScramMechanism.minIterations:()I
+       281: aload_0
+       282: getfield      #63                 // Field mechanism:Lorg/apache/kafka/common/security/scram/internals/ScramMechanism;
+       285: invokestatic  #200                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+       288: invokedynamic #212,  0            // InvokeDynamic #0:makeConcatWithConstants:(IILjava/lang/String;)Ljava/lang/String;
+       293: invokespecial #114                // Method javax/security/sasl/SaslException."<init>":(Ljava/lang/String;)V
+       296: athrow
+       297: new           #214                // class javax/security/auth/callback/PasswordCallback
+       300: dup
+       301: ldc           #216                // String Password:
+       303: iconst_0
+       304: invokespecial #219                // Method javax/security/auth/callback/PasswordCallback."<init>":(Ljava/lang/String;Z)V
+       307: astore        7
+       309: aload_0
+       310: getfield      #65                 // Field callbackHandler:Ljavax/security/auth/callback/CallbackHandler;
+       313: iconst_1
+       314: anewarray     #129                // class javax/security/auth/callback/Callback
+       317: dup
+       318: iconst_0
+       319: aload         7
+       321: aastore
+       322: invokeinterface #135,  2          // InterfaceMethod javax/security/auth/callback/CallbackHandler.handle:([Ljavax/security/auth/callback/Callback;)V
+       327: goto          344
+       330: astore        8
+       332: new           #95                 // class javax/security/sasl/SaslException
+       335: dup
+       336: ldc           #221                // String User name could not be obtained
+       338: aload         8
+       340: invokespecial #151                // Method javax/security/sasl/SaslException."<init>":(Ljava/lang/String;Ljava/lang/Throwable;)V
+       343: athrow
+       344: aload_0
+       345: aload_0
+       346: aload         7
+       348: invokevirtual #225                // Method javax/security/auth/callback/PasswordCallback.getPassword:()[C
+       351: invokevirtual #229                // Method handleServerFirstMessage:([C)Lorg/apache/kafka/common/security/scram/internals/ScramMessages$ClientFinalMessage;
+       354: putfield      #231                // Field clientFinalMessage:Lorg/apache/kafka/common/security/scram/internals/ScramMessages$ClientFinalMessage;
+       357: aload_0
+       358: getstatic     #234                // Field org/apache/kafka/common/security/scram/internals/ScramSaslClient$State.RECEIVE_SERVER_FINAL_MESSAGE:Lorg/apache/kafka/common/security/scram/internals/ScramSaslClient$State;
+       361: invokevirtual #79                 // Method setState:(Lorg/apache/kafka/common/security/scram/internals/ScramSaslClient$State;)V
+       364: aload_0
+       365: getfield      #231                // Field clientFinalMessage:Lorg/apache/kafka/common/security/scram/internals/ScramMessages$ClientFinalMessage;
+       368: invokevirtual #235                // Method org/apache/kafka/common/security/scram/internals/ScramMessages$ClientFinalMessage.toBytes:()[B
+       371: areturn
+       372: new           #27                 // class org/apache/kafka/common/security/scram/internals/ScramMessages$ServerFinalMessage
+       375: dup
+       376: aload_1
+       377: invokespecial #236                // Method org/apache/kafka/common/security/scram/internals/ScramMessages$ServerFinalMessage."<init>":([B)V
+       380: astore        8
+       382: aload         8
+       384: invokevirtual #239                // Method org/apache/kafka/common/security/scram/internals/ScramMessages$ServerFinalMessage.error:()Ljava/lang/String;
+       387: ifnull        415
+       390: new           #95                 // class javax/security/sasl/SaslException
+       393: dup
+       394: aload_0
+       395: getfield      #63                 // Field mechanism:Lorg/apache/kafka/common/security/scram/internals/ScramMechanism;
+       398: invokestatic  #200                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+       401: aload         8
+       403: invokevirtual #239                // Method org/apache/kafka/common/security/scram/internals/ScramMessages$ServerFinalMessage.error:()Ljava/lang/String;
+       406: invokedynamic #244,  0            // InvokeDynamic #1:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+       411: invokespecial #114                // Method javax/security/sasl/SaslException."<init>":(Ljava/lang/String;)V
+       414: athrow
+       415: aload_0
+       416: aload         8
+       418: invokevirtual #247                // Method org/apache/kafka/common/security/scram/internals/ScramMessages$ServerFinalMessage.serverSignature:()[B
+       421: invokevirtual #250                // Method handleServerFinalMessage:([B)V
+       424: aload_0
+       425: getstatic     #253                // Field org/apache/kafka/common/security/scram/internals/ScramSaslClient$State.COMPLETE:Lorg/apache/kafka/common/security/scram/internals/ScramSaslClient$State;
+       428: invokevirtual #79                 // Method setState:(Lorg/apache/kafka/common/security/scram/internals/ScramSaslClient$State;)V
+       431: aconst_null
+       432: areturn
+       433: new           #255                // class org/apache/kafka/common/errors/IllegalSaslStateException
+       436: dup
+       437: aload_0
+       438: getfield      #105                // Field state:Lorg/apache/kafka/common/security/scram/internals/ScramSaslClient$State;
+       441: invokestatic  #200                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+       444: invokedynamic #259,  0            // InvokeDynamic #2:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+       449: invokespecial #260                // Method org/apache/kafka/common/errors/IllegalSaslStateException."<init>":(Ljava/lang/String;)V
+       452: athrow
+       453: astore_2
+       454: aload_0
+       455: getstatic     #263                // Field org/apache/kafka/common/security/scram/internals/ScramSaslClient$State.FAILED:Lorg/apache/kafka/common/security/scram/internals/ScramSaslClient$State;
+       458: invokevirtual #79                 // Method setState:(Lorg/apache/kafka/common/security/scram/internals/ScramSaslClient$State;)V
+       461: aload_2
+       462: athrow
+      Exception table:
+         from    to  target type
+           101   118   121   Class javax/security/auth/callback/UnsupportedCallbackException
+            84   137   140   Class java/lang/Throwable
+           309   327   330   Class java/lang/Throwable
+             0   206   453   Class javax/security/sasl/SaslException
+           207   371   453   Class javax/security/sasl/SaslException
+           372   432   453   Class javax/security/sasl/SaslException
+           433   453   453   Class javax/security/sasl/SaslException
+
+  public boolean isComplete();
+    Code:
+         0: aload_0
+         1: getfield      #105                // Field state:Lorg/apache/kafka/common/security/scram/internals/ScramSaslClient$State;
+         4: getstatic     #253                // Field org/apache/kafka/common/security/scram/internals/ScramSaslClient$State.COMPLETE:Lorg/apache/kafka/common/security/scram/internals/ScramSaslClient$State;
+         7: if_acmpne     14
+        10: iconst_1
+        11: goto          15
+        14: iconst_0
+        15: ireturn
+
+  public byte[] unwrap(byte[], int, int);
+    Code:
+         0: aload_0
+         1: invokevirtual #284                // Method isComplete:()Z
+         4: ifne          18
+         7: new           #286                // class java/lang/IllegalStateException
+        10: dup
+        11: ldc_w         #288                // String Authentication exchange has not completed
+        14: invokespecial #289                // Method java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+        17: athrow
+        18: new           #286                // class java/lang/IllegalStateException
+        21: dup
+        22: ldc_w         #291                // String SCRAM supports neither integrity nor privacy
+        25: invokespecial #289                // Method java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+        28: athrow
+
+  public byte[] wrap(byte[], int, int);
+    Code:
+         0: aload_0
+         1: invokevirtual #284                // Method isComplete:()Z
+         4: ifne          18
+         7: new           #286                // class java/lang/IllegalStateException
+        10: dup
+        11: ldc_w         #288                // String Authentication exchange has not completed
+        14: invokespecial #289                // Method java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+        17: athrow
+        18: new           #286                // class java/lang/IllegalStateException
+        21: dup
+        22: ldc_w         #291                // String SCRAM supports neither integrity nor privacy
+        25: invokespecial #289                // Method java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+        28: athrow
+
+  public java.lang.Object getNegotiatedProperty(java.lang.String);
+    Code:
+         0: aload_0
+         1: invokevirtual #284                // Method isComplete:()Z
+         4: ifne          18
+         7: new           #286                // class java/lang/IllegalStateException
+        10: dup
+        11: ldc_w         #288                // String Authentication exchange has not completed
+        14: invokespecial #289                // Method java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+        17: athrow
+        18: aconst_null
+        19: areturn
+
+  public void dispose();
+    Code:
+         0: return
+
+  private void setState(org.apache.kafka.common.security.scram.internals.ScramSaslClient$State);
+    Code:
+         0: getstatic     #138                // Field log:Lorg/slf4j/Logger;
+         3: ldc_w         #303                // String Setting SASL/{} client state to {}
+         6: aload_0
+         7: getfield      #63                 // Field mechanism:Lorg/apache/kafka/common/security/scram/internals/ScramMechanism;
+        10: aload_1
+        11: invokeinterface #306,  4          // InterfaceMethod org/slf4j/Logger.debug:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+        16: aload_0
+        17: aload_1
+        18: putfield      #105                // Field state:Lorg/apache/kafka/common/security/scram/internals/ScramSaslClient$State;
+        21: return
+
+  private org.apache.kafka.common.security.scram.internals.ScramMessages$ClientFinalMessage handleServerFirstMessage(char[]) throws javax.security.sasl.SaslException;
+    Code:
+         0: new           #184                // class java/lang/String
+         3: dup
+         4: aload_1
+         5: invokespecial #311                // Method java/lang/String."<init>":([C)V
+         8: invokestatic  #315                // Method org/apache/kafka/common/security/scram/internals/ScramFormatter.normalize:(Ljava/lang/String;)[B
+        11: astore_2
+        12: aload_0
+        13: aload_0
+        14: getfield      #72                 // Field formatter:Lorg/apache/kafka/common/security/scram/internals/ScramFormatter;
+        17: aload_2
+        18: aload_0
+        19: getfield      #179                // Field serverFirstMessage:Lorg/apache/kafka/common/security/scram/internals/ScramMessages$ServerFirstMessage;
+        22: invokevirtual #318                // Method org/apache/kafka/common/security/scram/internals/ScramMessages$ServerFirstMessage.salt:()[B
+        25: aload_0
+        26: getfield      #179                // Field serverFirstMessage:Lorg/apache/kafka/common/security/scram/internals/ScramMessages$ServerFirstMessage;
+        29: invokevirtual #193                // Method org/apache/kafka/common/security/scram/internals/ScramMessages$ServerFirstMessage.iterations:()I
+        32: invokevirtual #322                // Method org/apache/kafka/common/security/scram/internals/ScramFormatter.hi:([B[BI)[B
+        35: putfield      #324                // Field saltedPassword:[B
+        38: new           #24                 // class org/apache/kafka/common/security/scram/internals/ScramMessages$ClientFinalMessage
+        41: dup
+        42: ldc_w         #326                // String n,,
+        45: getstatic     #332                // Field java/nio/charset/StandardCharsets.UTF_8:Ljava/nio/charset/Charset;
+        48: invokevirtual #336                // Method java/lang/String.getBytes:(Ljava/nio/charset/Charset;)[B
+        51: aload_0
+        52: getfield      #179                // Field serverFirstMessage:Lorg/apache/kafka/common/security/scram/internals/ScramMessages$ServerFirstMessage;
+        55: invokevirtual #182                // Method org/apache/kafka/common/security/scram/internals/ScramMessages$ServerFirstMessage.nonce:()Ljava/lang/String;
+        58: invokespecial #339                // Method org/apache/kafka/common/security/scram/internals/ScramMessages$ClientFinalMessage."<init>":([BLjava/lang/String;)V
+        61: astore_3
+        62: aload_0
+        63: getfield      #72                 // Field formatter:Lorg/apache/kafka/common/security/scram/internals/ScramFormatter;
+        66: aload_0
+        67: getfield      #324                // Field saltedPassword:[B
+        70: aload_0
+        71: getfield      #167                // Field clientFirstMessage:Lorg/apache/kafka/common/security/scram/internals/ScramMessages$ClientFirstMessage;
+        74: aload_0
+        75: getfield      #179                // Field serverFirstMessage:Lorg/apache/kafka/common/security/scram/internals/ScramMessages$ServerFirstMessage;
+        78: aload_3
+        79: invokevirtual #343                // Method org/apache/kafka/common/security/scram/internals/ScramFormatter.clientProof:([BLorg/apache/kafka/common/security/scram/internals/ScramMessages$ClientFirstMessage;Lorg/apache/kafka/common/security/scram/internals/ScramMessages$ServerFirstMessage;Lorg/apache/kafka/common/security/scram/internals/ScramMessages$ClientFinalMessage;)[B
+        82: astore        4
+        84: aload_3
+        85: aload         4
+        87: invokevirtual #346                // Method org/apache/kafka/common/security/scram/internals/ScramMessages$ClientFinalMessage.proof:([B)V
+        90: aload_3
+        91: areturn
+        92: astore_2
+        93: new           #95                 // class javax/security/sasl/SaslException
+        96: dup
+        97: ldc_w         #348                // String Client final message could not be created
+       100: aload_2
+       101: invokespecial #151                // Method javax/security/sasl/SaslException."<init>":(Ljava/lang/String;Ljava/lang/Throwable;)V
+       104: athrow
+      Exception table:
+         from    to  target type
+             0    91    92   Class java/security/InvalidKeyException
+
+  private void handleServerFinalMessage(byte[]) throws javax.security.sasl.SaslException;
+    Code:
+         0: aload_0
+         1: getfield      #72                 // Field formatter:Lorg/apache/kafka/common/security/scram/internals/ScramFormatter;
+         4: aload_0
+         5: getfield      #324                // Field saltedPassword:[B
+         8: invokevirtual #355                // Method org/apache/kafka/common/security/scram/internals/ScramFormatter.serverKey:([B)[B
+        11: astore_2
+        12: aload_0
+        13: getfield      #72                 // Field formatter:Lorg/apache/kafka/common/security/scram/internals/ScramFormatter;
+        16: aload_2
+        17: aload_0
+        18: getfield      #167                // Field clientFirstMessage:Lorg/apache/kafka/common/security/scram/internals/ScramMessages$ClientFirstMessage;
+        21: aload_0
+        22: getfield      #179                // Field serverFirstMessage:Lorg/apache/kafka/common/security/scram/internals/ScramMessages$ServerFirstMessage;
+        25: aload_0
+        26: getfield      #231                // Field clientFinalMessage:Lorg/apache/kafka/common/security/scram/internals/ScramMessages$ClientFinalMessage;
+        29: invokevirtual #357                // Method org/apache/kafka/common/security/scram/internals/ScramFormatter.serverSignature:([BLorg/apache/kafka/common/security/scram/internals/ScramMessages$ClientFirstMessage;Lorg/apache/kafka/common/security/scram/internals/ScramMessages$ServerFirstMessage;Lorg/apache/kafka/common/security/scram/internals/ScramMessages$ClientFinalMessage;)[B
+        32: astore_3
+        33: aload_1
+        34: aload_3
+        35: invokestatic  #363                // Method java/security/MessageDigest.isEqual:([B[B)Z
+        38: ifne          52
+        41: new           #95                 // class javax/security/sasl/SaslException
+        44: dup
+        45: ldc_w         #365                // String Invalid server signature in server final message
+        48: invokespecial #114                // Method javax/security/sasl/SaslException."<init>":(Ljava/lang/String;)V
+        51: athrow
+        52: goto          68
+        55: astore_2
+        56: new           #95                 // class javax/security/sasl/SaslException
+        59: dup
+        60: ldc_w         #367                // String Sasl server signature verification failed
+        63: aload_2
+        64: invokespecial #151                // Method javax/security/sasl/SaslException."<init>":(Ljava/lang/String;Ljava/lang/Throwable;)V
+        67: athrow
+        68: return
+      Exception table:
+         from    to  target type
+             0    52    55   Class java/security/InvalidKeyException
+
+  static {};
+    Code:
+         0: ldc           #2                  // class org/apache/kafka/common/security/scram/internals/ScramSaslClient
+         2: invokestatic  #375                // Method org/slf4j/LoggerFactory.getLogger:(Ljava/lang/Class;)Lorg/slf4j/Logger;
+         5: putstatic     #138                // Field log:Lorg/slf4j/Logger;
+         8: return
+}
