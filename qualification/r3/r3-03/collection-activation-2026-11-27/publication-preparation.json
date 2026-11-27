@@ -1,0 +1,16 @@
+{
+  "status": "RESULT_PUBLICATION_SCOPE_INTEGRITY_AND_REDACTION_PASS",
+  "source_commit": "38ff7de3db7094c9b9661b2683544e556dd4f5ad",
+  "resource_pin": "5610bfa484b13599e3218b1bcdb366769deba13d",
+  "original_execution_package_hashes_verified_before_document_publication_update": 247,
+  "execution_receipts_changed": false,
+  "reading_copy_README_publication_status_updated": true,
+  "credential_pattern_and_structured_JSON_leaf_scan": "PASS",
+  "cluster_access_for_publication": false,
+  "live_configuration_changed": false,
+  "Job_changes": false,
+  "producer_consumer_tests_run": false,
+  "test_emails_sent": false,
+  "email_routing_and_KaaS_live_rules_enabled": false,
+  "new_validation_or_runtime_tests_run": false
+}

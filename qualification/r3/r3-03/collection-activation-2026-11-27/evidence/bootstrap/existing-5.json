@@ -1,0 +1,4 @@
+{
+  "http": 404,
+  "body": "{\"kind\":\"Status\",\"apiVersion\":\"v1\",\"metadata\":{},\"status\":\"Failure\",\"message\":\"applications.argoproj.io \\\"kaas-demo-observability\\\" not found\",\"reason\":\"NotFound\",\"details\":{\"name\":\"kaas-demo-observability\",\"group\":\"argoproj.io\",\"kind\":\"applications\"},\"code\":404}\n"
+}

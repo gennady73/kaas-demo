@@ -1,0 +1,95 @@
+{
+  "stage": "sync-kafka",
+  "status": "COMPLETE",
+  "reason": null,
+  "requests": [
+    {
+      "name": "identity",
+      "method": "GET",
+      "path": "/apis/user.openshift.io/v1/users/~",
+      "at_UTC": "2026-11-27T06:49:33.798443+00:00",
+      "http": 200
+    },
+    {
+      "name": "job-kaas-r2-native-client",
+      "method": "GET",
+      "path": "/apis/batch/v1/namespaces/kaas-demo/jobs/kaas-r2-native-client",
+      "at_UTC": "2026-11-27T06:49:34.309604+00:00",
+      "http": 200
+    },
+    {
+      "name": "job-kaas-r2-native-client-02e2e2f-r2",
+      "method": "GET",
+      "path": "/apis/batch/v1/namespaces/kaas-demo/jobs/kaas-r2-native-client-02e2e2f-r2",
+      "at_UTC": "2026-11-27T06:49:34.809411+00:00",
+      "http": 200
+    },
+    {
+      "name": "job-kaas-r2-native-client-351528d-r2",
+      "method": "GET",
+      "path": "/apis/batch/v1/namespaces/kaas-demo/jobs/kaas-r2-native-client-351528d-r2",
+      "at_UTC": "2026-11-27T06:49:35.304009+00:00",
+      "http": 200
+    },
+    {
+      "name": "job-kaas-r2-native-client-05a3f2d-r2",
+      "method": "GET",
+      "path": "/apis/batch/v1/namespaces/kaas-demo/jobs/kaas-r2-native-client-05a3f2d-r2",
+      "at_UTC": "2026-11-27T06:49:35.799964+00:00",
+      "http": 200
+    },
+    {
+      "name": "kafka",
+      "method": "GET",
+      "path": "/apis/kafka.strimzi.io/v1/namespaces/kaas-kafka/kafkas/kaas-dev",
+      "at_UTC": "2026-11-27T06:49:36.289979+00:00",
+      "http": 200
+    },
+    {
+      "name": "UWM-pods-before-broker-change",
+      "method": "GET",
+      "path": "/api/v1/namespaces/openshift-user-workload-monitoring/pods?limit=100",
+      "at_UTC": "2026-11-27T06:49:36.794872+00:00",
+      "http": 200
+    },
+    {
+      "name": "JMX-config-before-broker-change",
+      "method": "GET",
+      "path": "/api/v1/namespaces/kaas-kafka/configmaps/kaas-dev-r3-jmx-metrics",
+      "at_UTC": "2026-11-27T06:49:37.976818+00:00",
+      "http": 200
+    },
+    {
+      "name": "Kafka-App-before",
+      "method": "GET",
+      "path": "/apis/argoproj.io/v1alpha1/namespaces/openshift-gitops/applications/kaas-demo-kafka",
+      "at_UTC": "2026-11-27T06:49:38.475039+00:00",
+      "http": 200
+    },
+    {
+      "name": "Kafka-App-source-pinned",
+      "method": "PATCH",
+      "path": "/apis/argoproj.io/v1alpha1/namespaces/openshift-gitops/applications/kaas-demo-kafka",
+      "at_UTC": "2026-11-27T06:49:38.964784+00:00",
+      "http": 200
+    },
+    {
+      "name": "app-before",
+      "method": "GET",
+      "path": "/apis/argoproj.io/v1alpha1/namespaces/openshift-gitops/applications/kaas-demo-kafka",
+      "at_UTC": "2026-11-27T06:49:39.468875+00:00",
+      "http": 200
+    },
+    {
+      "name": "sync-request",
+      "method": "PATCH",
+      "path": "/apis/argoproj.io/v1alpha1/namespaces/openshift-gitops/applications/kaas-demo-kafka",
+      "at_UTC": "2026-11-27T06:49:39.986776+00:00",
+      "http": 200
+    }
+  ],
+  "elapsed_seconds": 6.702,
+  "producer_consumer_tests_run": false,
+  "test_emails_sent": false,
+  "credentials_saved": false
+}

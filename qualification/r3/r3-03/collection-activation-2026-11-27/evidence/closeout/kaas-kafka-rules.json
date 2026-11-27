@@ -1,0 +1,9 @@
+{
+  "apiVersion": "monitoring.coreos.com/v1",
+  "items": [],
+  "kind": "PrometheusRuleList",
+  "metadata": {
+    "continue": "",
+    "resourceVersion": "1244788"
+  }
+}

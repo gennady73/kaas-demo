@@ -1,0 +1,102 @@
+{
+  "stage": "uwm-status",
+  "status": "COMPLETE",
+  "reason": null,
+  "requests": [
+    {
+      "name": "identity",
+      "method": "GET",
+      "path": "/apis/user.openshift.io/v1/users/~",
+      "at_UTC": "2026-11-27T06:48:04.083554+00:00",
+      "http": 200
+    },
+    {
+      "name": "job-kaas-r2-native-client",
+      "method": "GET",
+      "path": "/apis/batch/v1/namespaces/kaas-demo/jobs/kaas-r2-native-client",
+      "at_UTC": "2026-11-27T06:48:04.689621+00:00",
+      "http": 200
+    },
+    {
+      "name": "job-kaas-r2-native-client-02e2e2f-r2",
+      "method": "GET",
+      "path": "/apis/batch/v1/namespaces/kaas-demo/jobs/kaas-r2-native-client-02e2e2f-r2",
+      "at_UTC": "2026-11-27T06:48:05.191666+00:00",
+      "http": 200
+    },
+    {
+      "name": "job-kaas-r2-native-client-351528d-r2",
+      "method": "GET",
+      "path": "/apis/batch/v1/namespaces/kaas-demo/jobs/kaas-r2-native-client-351528d-r2",
+      "at_UTC": "2026-11-27T06:48:05.681784+00:00",
+      "http": 200
+    },
+    {
+      "name": "job-kaas-r2-native-client-05a3f2d-r2",
+      "method": "GET",
+      "path": "/apis/batch/v1/namespaces/kaas-demo/jobs/kaas-r2-native-client-05a3f2d-r2",
+      "at_UTC": "2026-11-27T06:48:06.179935+00:00",
+      "http": 200
+    },
+    {
+      "name": "kafka",
+      "method": "GET",
+      "path": "/apis/kafka.strimzi.io/v1/namespaces/kaas-kafka/kafkas/kaas-dev",
+      "at_UTC": "2026-11-27T06:48:06.693904+00:00",
+      "http": 200
+    },
+    {
+      "name": "app",
+      "method": "GET",
+      "path": "/apis/argoproj.io/v1alpha1/namespaces/openshift-gitops/applications/kaas-demo-monitoring-platform",
+      "at_UTC": "2026-11-27T06:48:07.197008+00:00",
+      "http": 200
+    },
+    {
+      "name": "pods",
+      "method": "GET",
+      "path": "/api/v1/namespaces/openshift-user-workload-monitoring/pods?limit=100",
+      "at_UTC": "2026-11-27T06:48:07.706632+00:00",
+      "http": 200
+    },
+    {
+      "name": "persistentvolumeclaims",
+      "method": "GET",
+      "path": "/api/v1/namespaces/openshift-user-workload-monitoring/persistentvolumeclaims?limit=100",
+      "at_UTC": "2026-11-27T06:48:08.879228+00:00",
+      "http": 200
+    },
+    {
+      "name": "prometheuses",
+      "method": "GET",
+      "path": "/apis/monitoring.coreos.com/v1/namespaces/openshift-user-workload-monitoring/prometheuses/user-workload",
+      "at_UTC": "2026-11-27T06:48:09.370983+00:00",
+      "http": 200
+    },
+    {
+      "name": "thanosrulers",
+      "method": "GET",
+      "path": "/apis/monitoring.coreos.com/v1/namespaces/openshift-user-workload-monitoring/thanosrulers/user-workload",
+      "at_UTC": "2026-11-27T06:48:10.040273+00:00",
+      "http": 200
+    },
+    {
+      "name": "deployments",
+      "method": "GET",
+      "path": "/apis/apps/v1/namespaces/openshift-user-workload-monitoring/deployments/prometheus-operator",
+      "at_UTC": "2026-11-27T06:48:10.560924+00:00",
+      "http": 200
+    },
+    {
+      "name": "monitoring-clusteroperator",
+      "method": "GET",
+      "path": "/apis/config.openshift.io/v1/clusteroperators/monitoring",
+      "at_UTC": "2026-11-27T06:48:11.146972+00:00",
+      "http": 200
+    }
+  ],
+  "elapsed_seconds": 7.596,
+  "producer_consumer_tests_run": false,
+  "test_emails_sent": false,
+  "credentials_saved": false
+}

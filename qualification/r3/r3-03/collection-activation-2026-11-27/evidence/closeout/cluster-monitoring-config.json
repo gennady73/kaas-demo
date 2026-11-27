@@ -1,0 +1,40 @@
+{
+  "kind": "ConfigMap",
+  "apiVersion": "v1",
+  "metadata": {
+    "name": "cluster-monitoring-config",
+    "namespace": "openshift-monitoring",
+    "uid": "e8435e42-71ef-4536-a981-d16e0c6bdb4b",
+    "resourceVersion": "1240109",
+    "creationTimestamp": "2026-11-27T06:46:37Z",
+    "annotations": {
+      "argocd.argoproj.io/tracking-id": "kaas-demo-monitoring-platform:/ConfigMap:openshift-monitoring/cluster-monitoring-config",
+      "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"data\":{\"config.yaml\":\"enableUserWorkload: true\\n\"},\"kind\":\"ConfigMap\",\"metadata\":{\"annotations\":{\"argocd.argoproj.io/tracking-id\":\"kaas-demo-monitoring-platform:/ConfigMap:openshift-monitoring/cluster-monitoring-config\"},\"name\":\"cluster-monitoring-config\",\"namespace\":\"openshift-monitoring\"}}\n"
+    },
+    "managedFields": [
+      {
+        "manager": "argocd-controller",
+        "operation": "Update",
+        "apiVersion": "v1",
+        "time": "2026-11-27T06:46:37Z",
+        "fieldsType": "FieldsV1",
+        "fieldsV1": {
+          "f:data": {
+            ".": {},
+            "f:config.yaml": {}
+          },
+          "f:metadata": {
+            "f:annotations": {
+              ".": {},
+              "f:argocd.argoproj.io/tracking-id": {},
+              "f:kubectl.kubernetes.io/last-applied-configuration": {}
+            }
+          }
+        }
+      }
+    ]
+  },
+  "data": {
+    "config.yaml": "enableUserWorkload: true\n"
+  }
+}

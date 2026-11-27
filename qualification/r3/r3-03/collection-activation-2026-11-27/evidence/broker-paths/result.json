@@ -1,0 +1,12 @@
+{
+  "stage": "paths",
+  "at_UTC": "2026-11-27T06:47:33.050340+00:00",
+  "exit_code": 0,
+  "stdout": "controller.listener.names=CONTROLPLANE-9090\nlisteners=CONTROLPLANE-9090://0.0.0.0:9090,REPLICATION-9091://0.0.0.0:9091,TLS-9093://0.0.0.0:9093\nadvertised.listeners=CONTROLPLANE-9090://kaas-dev-dual-role-0.kaas-dev-kafka-brokers.kaas-kafka.svc:9090,REPLICATION-9091://kaas-dev-dual-role-0.kaas-dev-kafka-brokers.kaas-kafka.svc:9091,TLS-9093://kaas-dev-dual-role-0.kaas-dev-kafka-brokers.kaas-kafka.svc:9093\n",
+  "stderr_byte_count": 0,
+  "stderr_redacted": true,
+  "Pod_uid": "6999e7c8-9c3d-40cc-8b2d-e254454892b2",
+  "broker_configuration_changed": false,
+  "producer_consumer_tests_run": false,
+  "credentials_saved": false
+}

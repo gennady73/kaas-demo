@@ -1,0 +1,435 @@
+{
+  "kind": "PersistentVolumeClaimList",
+  "apiVersion": "v1",
+  "metadata": {
+    "resourceVersion": "1244782"
+  },
+  "items": [
+    {
+      "metadata": {
+        "name": "data-kaas-dev-dual-role-0",
+        "namespace": "kaas-kafka",
+        "uid": "c5de6469-b3e0-4c17-9e30-5c1d949b18fa",
+        "resourceVersion": "422174",
+        "creationTimestamp": "2026-11-23T11:32:41Z",
+        "labels": {
+          "app.kubernetes.io/instance": "kaas-dev",
+          "app.kubernetes.io/managed-by": "strimzi-cluster-operator",
+          "app.kubernetes.io/name": "kafka",
+          "app.kubernetes.io/part-of": "strimzi-kaas-dev",
+          "strimzi.io/cluster": "kaas-dev",
+          "strimzi.io/component-type": "kafka",
+          "strimzi.io/kind": "Kafka",
+          "strimzi.io/name": "kaas-dev-kafka",
+          "strimzi.io/pool-name": "dual-role"
+        },
+        "annotations": {
+          "pv.kubernetes.io/bind-completed": "yes",
+          "pv.kubernetes.io/bound-by-controller": "yes",
+          "strimzi.io/delete-claim": "false",
+          "volume.beta.kubernetes.io/storage-provisioner": "ebs.csi.aws.com",
+          "volume.kubernetes.io/selected-node": "ip-10-0-29-133.us-east-2.compute.internal",
+          "volume.kubernetes.io/storage-provisioner": "ebs.csi.aws.com"
+        },
+        "finalizers": [
+          "kubernetes.io/pvc-protection"
+        ],
+        "managedFields": [
+          {
+            "manager": "strimzi-kafka-operator",
+            "operation": "Apply",
+            "apiVersion": "v1",
+            "time": "2026-11-23T11:32:41Z",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:metadata": {
+                "f:annotations": {
+                  "f:strimzi.io/delete-claim": {}
+                },
+                "f:labels": {
+                  "f:app.kubernetes.io/instance": {},
+                  "f:app.kubernetes.io/managed-by": {},
+                  "f:app.kubernetes.io/name": {},
+                  "f:app.kubernetes.io/part-of": {},
+                  "f:strimzi.io/cluster": {},
+                  "f:strimzi.io/component-type": {},
+                  "f:strimzi.io/kind": {},
+                  "f:strimzi.io/name": {},
+                  "f:strimzi.io/pool-name": {}
+                }
+              },
+              "f:spec": {
+                "f:accessModes": {},
+                "f:resources": {
+                  "f:requests": {
+                    "f:storage": {}
+                  }
+                },
+                "f:storageClassName": {},
+                "f:volumeMode": {}
+              }
+            }
+          },
+          {
+            "manager": "kube-scheduler",
+            "operation": "Update",
+            "apiVersion": "v1",
+            "time": "2026-11-23T11:32:43Z",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:metadata": {
+                "f:annotations": {
+                  "f:volume.kubernetes.io/selected-node": {}
+                }
+              }
+            }
+          },
+          {
+            "manager": "kube-controller-manager",
+            "operation": "Update",
+            "apiVersion": "v1",
+            "time": "2026-11-23T11:32:45Z",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:metadata": {
+                "f:annotations": {
+                  "f:pv.kubernetes.io/bind-completed": {},
+                  "f:pv.kubernetes.io/bound-by-controller": {},
+                  "f:volume.beta.kubernetes.io/storage-provisioner": {},
+                  "f:volume.kubernetes.io/storage-provisioner": {}
+                }
+              },
+              "f:spec": {
+                "f:volumeName": {}
+              }
+            }
+          },
+          {
+            "manager": "kube-controller-manager",
+            "operation": "Update",
+            "apiVersion": "v1",
+            "time": "2026-11-23T11:32:45Z",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:status": {
+                "f:accessModes": {},
+                "f:capacity": {
+                  ".": {},
+                  "f:storage": {}
+                },
+                "f:phase": {}
+              }
+            },
+            "subresource": "status"
+          }
+        ]
+      },
+      "spec": {
+        "accessModes": [
+          "ReadWriteOnce"
+        ],
+        "resources": {
+          "requests": {
+            "storage": "20Gi"
+          }
+        },
+        "volumeName": "pvc-c5de6469-b3e0-4c17-9e30-5c1d949b18fa",
+        "storageClassName": "gp3-csi",
+        "volumeMode": "Filesystem"
+      },
+      "status": {
+        "phase": "Bound",
+        "accessModes": [
+          "ReadWriteOnce"
+        ],
+        "capacity": {
+          "storage": "20Gi"
+        }
+      }
+    },
+    {
+      "metadata": {
+        "name": "data-kaas-dev-dual-role-1",
+        "namespace": "kaas-kafka",
+        "uid": "c2bd7c96-78d0-442a-a4be-4559c943aa69",
+        "resourceVersion": "422178",
+        "creationTimestamp": "2026-11-23T11:32:41Z",
+        "labels": {
+          "app.kubernetes.io/instance": "kaas-dev",
+          "app.kubernetes.io/managed-by": "strimzi-cluster-operator",
+          "app.kubernetes.io/name": "kafka",
+          "app.kubernetes.io/part-of": "strimzi-kaas-dev",
+          "strimzi.io/cluster": "kaas-dev",
+          "strimzi.io/component-type": "kafka",
+          "strimzi.io/kind": "Kafka",
+          "strimzi.io/name": "kaas-dev-kafka",
+          "strimzi.io/pool-name": "dual-role"
+        },
+        "annotations": {
+          "pv.kubernetes.io/bind-completed": "yes",
+          "pv.kubernetes.io/bound-by-controller": "yes",
+          "strimzi.io/delete-claim": "false",
+          "volume.beta.kubernetes.io/storage-provisioner": "ebs.csi.aws.com",
+          "volume.kubernetes.io/selected-node": "ip-10-0-50-65.us-east-2.compute.internal",
+          "volume.kubernetes.io/storage-provisioner": "ebs.csi.aws.com"
+        },
+        "finalizers": [
+          "kubernetes.io/pvc-protection"
+        ],
+        "managedFields": [
+          {
+            "manager": "strimzi-kafka-operator",
+            "operation": "Apply",
+            "apiVersion": "v1",
+            "time": "2026-11-23T11:32:41Z",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:metadata": {
+                "f:annotations": {
+                  "f:strimzi.io/delete-claim": {}
+                },
+                "f:labels": {
+                  "f:app.kubernetes.io/instance": {},
+                  "f:app.kubernetes.io/managed-by": {},
+                  "f:app.kubernetes.io/name": {},
+                  "f:app.kubernetes.io/part-of": {},
+                  "f:strimzi.io/cluster": {},
+                  "f:strimzi.io/component-type": {},
+                  "f:strimzi.io/kind": {},
+                  "f:strimzi.io/name": {},
+                  "f:strimzi.io/pool-name": {}
+                }
+              },
+              "f:spec": {
+                "f:accessModes": {},
+                "f:resources": {
+                  "f:requests": {
+                    "f:storage": {}
+                  }
+                },
+                "f:storageClassName": {},
+                "f:volumeMode": {}
+              }
+            }
+          },
+          {
+            "manager": "kube-scheduler",
+            "operation": "Update",
+            "apiVersion": "v1",
+            "time": "2026-11-23T11:32:43Z",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:metadata": {
+                "f:annotations": {
+                  "f:volume.kubernetes.io/selected-node": {}
+                }
+              }
+            }
+          },
+          {
+            "manager": "kube-controller-manager",
+            "operation": "Update",
+            "apiVersion": "v1",
+            "time": "2026-11-23T11:32:45Z",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:metadata": {
+                "f:annotations": {
+                  "f:pv.kubernetes.io/bind-completed": {},
+                  "f:pv.kubernetes.io/bound-by-controller": {},
+                  "f:volume.beta.kubernetes.io/storage-provisioner": {},
+                  "f:volume.kubernetes.io/storage-provisioner": {}
+                }
+              },
+              "f:spec": {
+                "f:volumeName": {}
+              }
+            }
+          },
+          {
+            "manager": "kube-controller-manager",
+            "operation": "Update",
+            "apiVersion": "v1",
+            "time": "2026-11-23T11:32:45Z",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:status": {
+                "f:accessModes": {},
+                "f:capacity": {
+                  ".": {},
+                  "f:storage": {}
+                },
+                "f:phase": {}
+              }
+            },
+            "subresource": "status"
+          }
+        ]
+      },
+      "spec": {
+        "accessModes": [
+          "ReadWriteOnce"
+        ],
+        "resources": {
+          "requests": {
+            "storage": "20Gi"
+          }
+        },
+        "volumeName": "pvc-c2bd7c96-78d0-442a-a4be-4559c943aa69",
+        "storageClassName": "gp3-csi",
+        "volumeMode": "Filesystem"
+      },
+      "status": {
+        "phase": "Bound",
+        "accessModes": [
+          "ReadWriteOnce"
+        ],
+        "capacity": {
+          "storage": "20Gi"
+        }
+      }
+    },
+    {
+      "metadata": {
+        "name": "data-kaas-dev-dual-role-2",
+        "namespace": "kaas-kafka",
+        "uid": "75b00ccd-d16b-4c33-922d-2993dfab4352",
+        "resourceVersion": "422171",
+        "creationTimestamp": "2026-11-23T11:32:41Z",
+        "labels": {
+          "app.kubernetes.io/instance": "kaas-dev",
+          "app.kubernetes.io/managed-by": "strimzi-cluster-operator",
+          "app.kubernetes.io/name": "kafka",
+          "app.kubernetes.io/part-of": "strimzi-kaas-dev",
+          "strimzi.io/cluster": "kaas-dev",
+          "strimzi.io/component-type": "kafka",
+          "strimzi.io/kind": "Kafka",
+          "strimzi.io/name": "kaas-dev-kafka",
+          "strimzi.io/pool-name": "dual-role"
+        },
+        "annotations": {
+          "pv.kubernetes.io/bind-completed": "yes",
+          "pv.kubernetes.io/bound-by-controller": "yes",
+          "strimzi.io/delete-claim": "false",
+          "volume.beta.kubernetes.io/storage-provisioner": "ebs.csi.aws.com",
+          "volume.kubernetes.io/selected-node": "ip-10-0-89-147.us-east-2.compute.internal",
+          "volume.kubernetes.io/storage-provisioner": "ebs.csi.aws.com"
+        },
+        "finalizers": [
+          "kubernetes.io/pvc-protection"
+        ],
+        "managedFields": [
+          {
+            "manager": "strimzi-kafka-operator",
+            "operation": "Apply",
+            "apiVersion": "v1",
+            "time": "2026-11-23T11:32:41Z",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:metadata": {
+                "f:annotations": {
+                  "f:strimzi.io/delete-claim": {}
+                },
+                "f:labels": {
+                  "f:app.kubernetes.io/instance": {},
+                  "f:app.kubernetes.io/managed-by": {},
+                  "f:app.kubernetes.io/name": {},
+                  "f:app.kubernetes.io/part-of": {},
+                  "f:strimzi.io/cluster": {},
+                  "f:strimzi.io/component-type": {},
+                  "f:strimzi.io/kind": {},
+                  "f:strimzi.io/name": {},
+                  "f:strimzi.io/pool-name": {}
+                }
+              },
+              "f:spec": {
+                "f:accessModes": {},
+                "f:resources": {
+                  "f:requests": {
+                    "f:storage": {}
+                  }
+                },
+                "f:storageClassName": {},
+                "f:volumeMode": {}
+              }
+            }
+          },
+          {
+            "manager": "kube-scheduler",
+            "operation": "Update",
+            "apiVersion": "v1",
+            "time": "2026-11-23T11:32:43Z",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:metadata": {
+                "f:annotations": {
+                  "f:volume.kubernetes.io/selected-node": {}
+                }
+              }
+            }
+          },
+          {
+            "manager": "kube-controller-manager",
+            "operation": "Update",
+            "apiVersion": "v1",
+            "time": "2026-11-23T11:32:45Z",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:metadata": {
+                "f:annotations": {
+                  "f:pv.kubernetes.io/bind-completed": {},
+                  "f:pv.kubernetes.io/bound-by-controller": {},
+                  "f:volume.beta.kubernetes.io/storage-provisioner": {},
+                  "f:volume.kubernetes.io/storage-provisioner": {}
+                }
+              },
+              "f:spec": {
+                "f:volumeName": {}
+              }
+            }
+          },
+          {
+            "manager": "kube-controller-manager",
+            "operation": "Update",
+            "apiVersion": "v1",
+            "time": "2026-11-23T11:32:45Z",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:status": {
+                "f:accessModes": {},
+                "f:capacity": {
+                  ".": {},
+                  "f:storage": {}
+                },
+                "f:phase": {}
+              }
+            },
+            "subresource": "status"
+          }
+        ]
+      },
+      "spec": {
+        "accessModes": [
+          "ReadWriteOnce"
+        ],
+        "resources": {
+          "requests": {
+            "storage": "20Gi"
+          }
+        },
+        "volumeName": "pvc-75b00ccd-d16b-4c33-922d-2993dfab4352",
+        "storageClassName": "gp3-csi",
+        "volumeMode": "Filesystem"
+      },
+      "status": {
+        "phase": "Bound",
+        "accessModes": [
+          "ReadWriteOnce"
+        ],
+        "capacity": {
+          "storage": "20Gi"
+        }
+      }
+    }
+  ]
+}

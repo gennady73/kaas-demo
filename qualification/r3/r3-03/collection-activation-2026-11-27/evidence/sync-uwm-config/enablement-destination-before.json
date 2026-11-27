@@ -1,0 +1,4 @@
+{
+  "http": 404,
+  "body": "{\"kind\":\"Status\",\"apiVersion\":\"v1\",\"metadata\":{},\"status\":\"Failure\",\"message\":\"configmaps \\\"user-workload-monitoring-config\\\" not found\",\"reason\":\"NotFound\",\"details\":{\"name\":\"user-workload-monitoring-config\",\"kind\":\"configmaps\"},\"code\":404}\n"
+}

@@ -1,0 +1,7 @@
+{
+  "status": "ALL_58_PARTITIONS_FULL_ISR_AND_LEADERS_PRESENT",
+  "partition_count": 58,
+  "metadata_voters": 3,
+  "MaxFollowerLag": 0,
+  "Admin_describe_only": true
+}

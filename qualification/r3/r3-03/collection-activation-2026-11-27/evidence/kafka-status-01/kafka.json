@@ -1,0 +1,265 @@
+{
+  "apiVersion": "kafka.strimzi.io/v1",
+  "kind": "Kafka",
+  "metadata": {
+    "annotations": {
+      "argocd.argoproj.io/sync-wave": "1",
+      "argocd.argoproj.io/tracking-id": "kaas-demo-kafka:kafka.strimzi.io/Kafka:kaas-kafka/kaas-dev",
+      "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"kafka.strimzi.io/v1\",\"kind\":\"Kafka\",\"metadata\":{\"annotations\":{\"argocd.argoproj.io/sync-wave\":\"1\",\"argocd.argoproj.io/tracking-id\":\"kaas-demo-kafka:kafka.strimzi.io/Kafka:kaas-kafka/kaas-dev\"},\"name\":\"kaas-dev\",\"namespace\":\"kaas-kafka\"},\"spec\":{\"entityOperator\":{\"topicOperator\":{\"jvmOptions\":{\"-Xms\":\"128m\",\"-Xmx\":\"256m\"},\"resources\":{\"limits\":{\"cpu\":\"500m\",\"memory\":\"512Mi\"},\"requests\":{\"cpu\":\"100m\",\"memory\":\"256Mi\"}}},\"userOperator\":{\"jvmOptions\":{\"-Xms\":\"128m\",\"-Xmx\":\"256m\"},\"resources\":{\"limits\":{\"cpu\":\"500m\",\"memory\":\"512Mi\"},\"requests\":{\"cpu\":\"100m\",\"memory\":\"256Mi\"}}}},\"kafka\":{\"authorization\":{\"type\":\"simple\"},\"config\":{\"auto.create.topics.enable\":false,\"default.replication.factor\":2,\"log.retention.ms\":21600000,\"message.max.bytes\":3145728,\"min.insync.replicas\":2,\"offsets.topic.replication.factor\":2,\"replica.fetch.max.bytes\":4194304,\"transaction.state.log.min.isr\":2,\"transaction.state.log.replication.factor\":2,\"unclean.leader.election.enable\":false},\"image\":\"registry.redhat.io/amq-streams/kafka-42-rhel9@sha256:ce7dc91b664600c6f06e1df3d6b56a4684bb779865d9c28b4df648addd89189d\",\"listeners\":[{\"authentication\":{\"type\":\"scram-sha-512\"},\"name\":\"tls\",\"networkPolicyPeers\":[{\"namespaceSelector\":{\"matchLabels\":{\"kubernetes.io/metadata.name\":\"kaas-kafka\"}}},{\"namespaceSelector\":{\"matchLabels\":{\"kubernetes.io/metadata.name\":\"kaas-demo\"}}}],\"port\":9093,\"tls\":true,\"type\":\"internal\"}],\"metricsConfig\":{\"type\":\"jmxPrometheusExporter\",\"valueFrom\":{\"configMapKeyRef\":{\"key\":\"metrics.yml\",\"name\":\"kaas-dev-r3-jmx-metrics\"}}},\"version\":\"4.2.0\"}}}\n"
+    },
+    "creationTimestamp": "2026-11-23T11:32:38Z",
+    "generation": 2,
+    "managedFields": [
+      {
+        "apiVersion": "kafka.strimzi.io/v1beta2",
+        "fieldsType": "FieldsV1",
+        "fieldsV1": {
+          "f:status": {
+            ".": {},
+            "f:clusterId": {},
+            "f:conditions": {},
+            "f:kafkaMetadataVersion": {},
+            "f:kafkaNodePools": {},
+            "f:kafkaVersion": {},
+            "f:listeners": {},
+            "f:observedGeneration": {},
+            "f:operatorLastSuccessfulVersion": {}
+          }
+        },
+        "manager": "strimzi-cluster-operator",
+        "operation": "Update",
+        "subresource": "status",
+        "time": "2026-11-27T06:13:25Z"
+      },
+      {
+        "apiVersion": "kafka.strimzi.io/v1",
+        "fieldsType": "FieldsV1",
+        "fieldsV1": {
+          "f:metadata": {
+            "f:annotations": {
+              ".": {},
+              "f:argocd.argoproj.io/sync-wave": {},
+              "f:argocd.argoproj.io/tracking-id": {},
+              "f:kubectl.kubernetes.io/last-applied-configuration": {}
+            }
+          },
+          "f:spec": {
+            ".": {},
+            "f:entityOperator": {
+              ".": {},
+              "f:topicOperator": {
+                ".": {},
+                "f:jvmOptions": {
+                  ".": {},
+                  "f:-Xms": {},
+                  "f:-Xmx": {}
+                },
+                "f:resources": {
+                  ".": {},
+                  "f:limits": {
+                    ".": {},
+                    "f:cpu": {},
+                    "f:memory": {}
+                  },
+                  "f:requests": {
+                    ".": {},
+                    "f:cpu": {},
+                    "f:memory": {}
+                  }
+                }
+              },
+              "f:userOperator": {
+                ".": {},
+                "f:jvmOptions": {
+                  ".": {},
+                  "f:-Xms": {},
+                  "f:-Xmx": {}
+                },
+                "f:resources": {
+                  ".": {},
+                  "f:limits": {
+                    ".": {},
+                    "f:cpu": {},
+                    "f:memory": {}
+                  },
+                  "f:requests": {
+                    ".": {},
+                    "f:cpu": {},
+                    "f:memory": {}
+                  }
+                }
+              }
+            },
+            "f:kafka": {
+              ".": {},
+              "f:authorization": {
+                ".": {},
+                "f:type": {}
+              },
+              "f:config": {
+                ".": {},
+                "f:auto.create.topics.enable": {},
+                "f:default.replication.factor": {},
+                "f:log.retention.ms": {},
+                "f:message.max.bytes": {},
+                "f:min.insync.replicas": {},
+                "f:offsets.topic.replication.factor": {},
+                "f:replica.fetch.max.bytes": {},
+                "f:transaction.state.log.min.isr": {},
+                "f:transaction.state.log.replication.factor": {},
+                "f:unclean.leader.election.enable": {}
+              },
+              "f:image": {},
+              "f:listeners": {},
+              "f:metricsConfig": {
+                ".": {},
+                "f:type": {},
+                "f:valueFrom": {
+                  ".": {},
+                  "f:configMapKeyRef": {
+                    ".": {},
+                    "f:key": {},
+                    "f:name": {}
+                  }
+                }
+              },
+              "f:version": {}
+            }
+          }
+        },
+        "manager": "argocd-controller",
+        "operation": "Update",
+        "time": "2026-11-27T06:49:43Z"
+      }
+    ],
+    "name": "kaas-dev",
+    "namespace": "kaas-kafka",
+    "resourceVersion": "1242055",
+    "uid": "7cc0bbf7-2503-4a47-9e07-a694992a9b7d"
+  },
+  "spec": {
+    "entityOperator": {
+      "topicOperator": {
+        "jvmOptions": {
+          "-Xms": "128m",
+          "-Xmx": "256m"
+        },
+        "resources": {
+          "limits": {
+            "cpu": "500m",
+            "memory": "512Mi"
+          },
+          "requests": {
+            "cpu": "100m",
+            "memory": "256Mi"
+          }
+        }
+      },
+      "userOperator": {
+        "jvmOptions": {
+          "-Xms": "128m",
+          "-Xmx": "256m"
+        },
+        "resources": {
+          "limits": {
+            "cpu": "500m",
+            "memory": "512Mi"
+          },
+          "requests": {
+            "cpu": "100m",
+            "memory": "256Mi"
+          }
+        }
+      }
+    },
+    "kafka": {
+      "authorization": {
+        "type": "simple"
+      },
+      "config": {
+        "auto.create.topics.enable": false,
+        "default.replication.factor": 2,
+        "log.retention.ms": 21600000,
+        "message.max.bytes": 3145728,
+        "min.insync.replicas": 2,
+        "offsets.topic.replication.factor": 2,
+        "replica.fetch.max.bytes": 4194304,
+        "transaction.state.log.min.isr": 2,
+        "transaction.state.log.replication.factor": 2,
+        "unclean.leader.election.enable": false
+      },
+      "image": "registry.redhat.io/amq-streams/kafka-42-rhel9@sha256:ce7dc91b664600c6f06e1df3d6b56a4684bb779865d9c28b4df648addd89189d",
+      "listeners": [
+        {
+          "authentication": {
+            "type": "scram-sha-512"
+          },
+          "name": "tls",
+          "networkPolicyPeers": [
+            {
+              "namespaceSelector": {
+                "matchLabels": {
+                  "kubernetes.io/metadata.name": "kaas-kafka"
+                }
+              }
+            },
+            {
+              "namespaceSelector": {
+                "matchLabels": {
+                  "kubernetes.io/metadata.name": "kaas-demo"
+                }
+              }
+            }
+          ],
+          "port": 9093,
+          "tls": true,
+          "type": "internal"
+        }
+      ],
+      "metricsConfig": {
+        "type": "jmxPrometheusExporter",
+        "valueFrom": {
+          "configMapKeyRef": {
+            "key": "metrics.yml",
+            "name": "kaas-dev-r3-jmx-metrics"
+          }
+        }
+      },
+      "version": "4.2.0"
+    }
+  },
+  "status": {
+    "clusterId": "khWy7SrBR_-8_TyXY6jinQ",
+    "conditions": [
+      {
+        "lastTransitionTime": "2026-11-27T06:13:25.773048490Z",
+        "status": "True",
+        "type": "Ready"
+      }
+    ],
+    "kafkaMetadataVersion": "4.2-IV1",
+    "kafkaNodePools": [
+      {
+        "name": "dual-role"
+      }
+    ],
+    "kafkaVersion": "4.2.0",
+    "listeners": [
+      {
+        "addresses": [
+          {
+            "host": "kaas-dev-kafka-bootstrap.kaas-kafka.svc",
+            "port": 9093
+          }
+        ],
+        "bootstrapServers": "kaas-dev-kafka-bootstrap.kaas-kafka.svc:9093",
+        "certificates": [
+          "-----BEGIN CERTIFICATE-----\nMIIFLTCCAxWgAwIBAgIUTrgH32BmE83QOzf1IsniSgG0k6gwDQYJKoZIhvcNAQEN\nBQAwLTETMBEGA1UECgwKaW8uc3RyaW16aTEWMBQGA1UEAwwNY2x1c3Rlci1jYSB2\nMDAeFw0yNjExMjMxMTMyMzhaFw0yNzExMjMxMTMyMzhaMC0xEzARBgNVBAoMCmlv\nLnN0cmltemkxFjAUBgNVBAMMDWNsdXN0ZXItY2EgdjAwggIiMA0GCSqGSIb3DQEB\nAQUAA4ICDwAwggIKAoICAQCi1bo9YAVi4+t8IbN8bXTJqkpzL93NRk8oWVoQun9o\nPoKPZ6HxXgOvOATzkdk9iTQlN4PM6Xm8t+ME9wsVYwmZouWfz2gKwjOY6/IZzoAa\n6+p9OXyQdjQvI6qOIkDr6Z5Nq6EqPmqfw5A5XFD4dnGKHTAWQXSOBxvpR9kwjLVU\n9FRpUZ5kUd9EtsdNoTnrZ64snp4drl/sKC37hadaWPjwKdYJaqFxtgiJctQlq8XO\nfqZdlv7gQmHN3NZz5bS8ok8aUzVoO70cB+qHA1JHxjEvj7k+CTEfPWy4FUwDb9J5\n6o9Phl0JDRabk6eaC1gmNB5SyEayQsyPVGusKguPs9IEGXjUnEE0Oc+5ph1SEn0s\n/KaPjvYW8dWq/z55pjCme20diJDRPYTueKG8tae9ClWB3gcAnT5bLhMXI/8WElgp\nVe7/lgcGymIo+jjWFLMl6baHpRIHNRrMhFC8xfNUtW3hUfSv/h2b6V4Pka3FrASL\nueiEHRitI7Xf4jX6TKI1TAUN67e5nCkkqJf/BGw9Mexl8uxQe7Mdwij4T0Wh7q8p\nCcGjDdaTod/bpxQod/1wZkulJQ/64Zvu9290MePsIo+PLpVzvvYlw9FraizGYCPh\nYergYwj2hKdjV4teJaetk4vzz6jv6NuVh36dWy3BzlrXDXHZzODwhrTIy07HVJJc\nwQIDAQABo0UwQzAdBgNVHQ4EFgQUsYG9vPVrhuGhfBMvG4MCAOffvdcwEgYDVR0T\nAQH/BAgwBgEB/wIBADAOBgNVHQ8BAf8EBAMCAQYwDQYJKoZIhvcNAQENBQADggIB\nAFF2IPaqVhBf1QAT4+XWYv7i/YGd7KglIYPss+0Mwq9Wa2dqbbVEUrBYPZqVzEjH\nSa+aeAhUGjlUEwnH1DqDpQfsY4Sad9JhmzbJ842h/ctj31L4oRR6qMgdRmDYtJAI\nVN3/iVxXf0HHCECiqKoo97UVH8dQgcPXCP4eVhF1BxX67CT6O8IHkO3S+bMm1B4V\nhLS2kvI9pts0LWuX9OpMqWZ/OX63z28u93PlUjgTHdObaet7JgzMUvCEZLp1Qo2G\nhqe+iwERWLK4jbPO79yLHqD2ovFU8CzS1Mx59IxIOS25nlyqxpBPBHH7xisK7ywu\nJ3Uu5GWJO6y5uF8mCpGFud9A/9a/gmFFyqMiKGm/fq0Q6xfdBeQx6pCd4soNSb+6\nb1yhYbFPbYupNapMv1V2jjaKE7p/ugxgaZho1YAqsuW+LXxRALyd76rdn8Ga6OPp\nXaahuiIA0G25Oz3PLtBeHeaRTcOAmD1Sj6SNNsxMslv1WQziFeMAcCZmbEG81pWH\nNjeDo6W79KQU+MCR5P/YFIb70OOUEWF8L9acO27cxgPoE2xSNKDP8LISYYGO/OMT\n8ppNdngbf0pL6fTXY+sN+SrzcHMYBjPzDvnwddwJLkUaOUVySIyLrziGxFmbPOd7\nCim+k5GjsZypgnDeolzVcwiZrwTdzeUZJkU81GcyBAAL\n-----END CERTIFICATE-----\n"
+        ],
+        "name": "tls"
+      }
+    ],
+    "observedGeneration": 1,
+    "operatorLastSuccessfulVersion": "0.51.0.redhat-00015"
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "apiVersion": "argoproj.io/v1alpha1",
+  "kind": "Application",
+  "metadata": {
+    "creationTimestamp": "2026-11-27T06:45:07Z",
+    "generation": 1,
+    "managedFields": [
+      {
+        "apiVersion": "argoproj.io/v1alpha1",
+        "fieldsType": "FieldsV1",
+        "fieldsV1": {
+          "f:spec": {
+            ".": {},
+            "f:destination": {
+              ".": {},
+              "f:namespace": {},
+              "f:server": {}
+            },
+            "f:project": {},
+            "f:source": {
+              ".": {},
+              "f:path": {},
+              "f:repoURL": {},
+              "f:targetRevision": {}
+            },
+            "f:syncPolicy": {
+              ".": {},
+              "f:syncOptions": {}
+            }
+          }
+        },
+        "manager": "Python-urllib",
+        "operation": "Update",
+        "time": "2026-11-27T06:45:07Z"
+      }
+    ],
+    "name": "kaas-demo-monitoring-platform",
+    "namespace": "openshift-gitops",
+    "uid": "c28cd898-1571-4145-8929-8471a02a2098"
+  },
+  "spec": {
+    "destination": {
+      "namespace": "openshift-monitoring",
+      "server": "https://kubernetes.default.svc"
+    },
+    "project": "kaas-demo-monitoring-platform",
+    "source": {
+      "path": "qualification/r3/r3-03/activation-execution/candidate/platform",
+      "repoURL": "https://github.com/gennady73/kaas-demo.git",
+      "targetRevision": "5610bfa484b13599e3218b1bcdb366769deba13d"
+    },
+    "syncPolicy": {
+      "syncOptions": [
+        "FailOnSharedResource=true"
+      ]
+    }
+  }
+}

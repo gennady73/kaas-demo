@@ -1,0 +1,86 @@
+{
+  "status": "COLLECTION_ONLY_ACTIVATION_PASS",
+  "date_Asia_Jerusalem": "2026-11-27",
+  "closed_UTC": "2026-11-27T07:01:02.748896+00:00",
+  "resource_pin": "5610bfa484b13599e3218b1bcdb366769deba13d",
+  "published_bootstrap_and_Kafka_pin": "38ff7de3db7094c9b9661b2683544e556dd4f5ad",
+  "stages": {
+    "A0": "PASS_FRESH_HEALTH_NARROW_GRANT_PINNED_MANUAL_REGISTRATION",
+    "A1": "PASS_5READY_MANAGED_PODS_4BOUND_PVC_24H_RETENTION_WITHIN_BUDGET",
+    "A2": "PASS_METRICS_ONLY_THREE_BROKER_ROLL_FULL_ISR_QUORUM_RESTORED",
+    "A3": "PASS_THREE_TARGETS_FIVE_FAMILIES_326SECOND_STABILITY",
+    "A4_A5_A6": "DEFERRED_EMAIL_AND_KAAS_LIVE_RULES_DISABLED",
+    "A7": "PASS_CLOSEOUT_CUSTODY"
+  },
+  "live_window_started_UTC": "2026-11-27T06:45:08.960688+00:00",
+  "elapsed_minutes_to_documented_closeout": 15.9,
+  "approved_window_minutes": 90,
+  "Application_source_pins": {
+    "kaas-demo-kafka": "38ff7de3db7094c9b9661b2683544e556dd4f5ad",
+    "kaas-demo-monitoring-platform": "5610bfa484b13599e3218b1bcdb366769deba13d",
+    "kaas-demo-observability": "5610bfa484b13599e3218b1bcdb366769deba13d",
+    "kaas-sbx-tenants-a": "3211df93ae40d7d6f47c6334966ae6d1f658fee7",
+    "kaas-sbx-tenants-b": "3211df93ae40d7d6f47c6334966ae6d1f658fee7"
+  },
+  "automatic_sync": false,
+  "prune_force_replace": false,
+  "monitoring_actual_conservative_requests": {
+    "cpu_m": 819.0,
+    "memory_MiB": 5594.0,
+    "including_init_sum": true,
+    "not_measured_usage": true
+  },
+  "new_storage": {
+    "PVCs": 4,
+    "requested_GiB": 24,
+    "class": "gp3-csi",
+    "all_Bound": true,
+    "metrics_retention": "24h"
+  },
+  "Kafka": {
+    "version": "4.2.0",
+    "generation": 2,
+    "observedGeneration": 2,
+    "ready_brokers": 3,
+    "three_Pod_UIDs_changed": true,
+    "spec_delta_only": "metricsConfig",
+    "full_ISR_partitions_before_and_after": 58,
+    "metadata_voters": 3,
+    "post_roll_max_follower_lag": 0,
+    "broker_resources_listener_auth_RF_minISR_retention_unchanged": true
+  },
+  "collection": {
+    "logical_targets_up": 3,
+    "required_families": 5,
+    "gauge_series": 15,
+    "scrape_interval": "30s",
+    "timeout": "10s",
+    "scrape_samples_per_target": 111,
+    "stability_seconds": 326.21,
+    "last5m_up_min": 1,
+    "last5m_sample_counts": [
+      10,
+      10,
+      11
+    ],
+    "current_fault_gauges": 0,
+    "active_controller_count": 1
+  },
+  "four_client_Jobs": "UID_SPEC_UNCHANGED_SUSPENDED_ACTIVE0",
+  "existing_tenant_Apps": "UNCHANGED_PINS_MANUAL_SYNCED_HEALTHY",
+  "existing_evidence_sink": "AVAILABLE_PVC_BOUND_UNTOUCHED",
+  "email_routing_and_KaaS_alert_rules_enabled": false,
+  "producer_consumer_tests_run": false,
+  "test_emails_sent": false,
+  "credentials_saved": false,
+  "no_application_delivery_capacity_loss_or_recovery_qualification_claim": true,
+  "full_R3_03_notification_qualification": "DEFERRED_NOT_PASSED",
+  "helper_corrections": [
+    "Initial generic session permission review timed out before execution; narrower retry succeeded",
+    "Read-only inspect stopped locally on Python import shadowing before API; fixed",
+    "Inspect receipt write guard matched empty cleared token; existing API evidence retained and receipt repaired offline",
+    "First metric probe request-log variable collision stopped before Thanos query; fixed",
+    "Initial freshness gate compared separate query evaluation times; corrected to query-local timestamp, same75second threshold; history gate then passed"
+  ],
+  "independent_reviewer": "NOT_CLAIMED"
+}

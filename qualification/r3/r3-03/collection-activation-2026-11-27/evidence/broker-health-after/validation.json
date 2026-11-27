@@ -1,0 +1,8 @@
+{
+  "status": "POST_ROLL_FULL_ISR_QUORUM_PASS",
+  "partition_count": 58,
+  "full_ISR_partitions": 58,
+  "metadata_voters": 3,
+  "max_follower_lag": 0,
+  "Admin_read_only": true
+}

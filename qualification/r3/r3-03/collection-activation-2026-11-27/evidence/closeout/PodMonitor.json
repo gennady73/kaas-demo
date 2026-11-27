@@ -1,0 +1,84 @@
+{
+  "apiVersion": "monitoring.coreos.com/v1",
+  "kind": "PodMonitor",
+  "metadata": {
+    "annotations": {
+      "argocd.argoproj.io/tracking-id": "kaas-demo-observability:monitoring.coreos.com/PodMonitor:kaas-kafka/kaas-dev-broker-metrics",
+      "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"monitoring.coreos.com/v1\",\"kind\":\"PodMonitor\",\"metadata\":{\"annotations\":{\"argocd.argoproj.io/tracking-id\":\"kaas-demo-observability:monitoring.coreos.com/PodMonitor:kaas-kafka/kaas-dev-broker-metrics\"},\"labels\":{\"kaas.example.com/monitoring\":\"r3-03\"},\"name\":\"kaas-dev-broker-metrics\",\"namespace\":\"kaas-kafka\"},\"spec\":{\"namespaceSelector\":{\"matchNames\":[\"kaas-kafka\"]},\"podMetricsEndpoints\":[{\"interval\":\"30s\",\"path\":\"/metrics\",\"port\":\"tcp-prometheus\",\"relabelings\":[{\"replacement\":\"kaas-dev\",\"targetLabel\":\"kaas_cluster\"},{\"replacement\":\"broker\",\"targetLabel\":\"kaas_component\"}],\"scrapeTimeout\":\"10s\"}],\"selector\":{\"matchLabels\":{\"strimzi.io/cluster\":\"kaas-dev\",\"strimzi.io/component-type\":\"kafka\",\"strimzi.io/name\":\"kaas-dev-kafka\"}}}}\n"
+    },
+    "creationTimestamp": "2026-11-27T06:52:52Z",
+    "generation": 1,
+    "labels": {
+      "kaas.example.com/monitoring": "r3-03"
+    },
+    "managedFields": [
+      {
+        "apiVersion": "monitoring.coreos.com/v1",
+        "fieldsType": "FieldsV1",
+        "fieldsV1": {
+          "f:metadata": {
+            "f:annotations": {
+              ".": {},
+              "f:argocd.argoproj.io/tracking-id": {},
+              "f:kubectl.kubernetes.io/last-applied-configuration": {}
+            },
+            "f:labels": {
+              ".": {},
+              "f:kaas.example.com/monitoring": {}
+            }
+          },
+          "f:spec": {
+            ".": {},
+            "f:namespaceSelector": {
+              ".": {},
+              "f:matchNames": {}
+            },
+            "f:podMetricsEndpoints": {},
+            "f:selector": {}
+          }
+        },
+        "manager": "argocd-controller",
+        "operation": "Update",
+        "time": "2026-11-27T06:52:52Z"
+      }
+    ],
+    "name": "kaas-dev-broker-metrics",
+    "namespace": "kaas-kafka",
+    "resourceVersion": "1243144",
+    "uid": "ac0ffca3-e9f1-4ed7-84ac-4dba42e9eaea"
+  },
+  "spec": {
+    "namespaceSelector": {
+      "matchNames": [
+        "kaas-kafka"
+      ]
+    },
+    "podMetricsEndpoints": [
+      {
+        "interval": "30s",
+        "path": "/metrics",
+        "port": "tcp-prometheus",
+        "relabelings": [
+          {
+            "action": "replace",
+            "replacement": "kaas-dev",
+            "targetLabel": "kaas_cluster"
+          },
+          {
+            "action": "replace",
+            "replacement": "broker",
+            "targetLabel": "kaas_component"
+          }
+        ],
+        "scrapeTimeout": "10s"
+      }
+    ],
+    "selector": {
+      "matchLabels": {
+        "strimzi.io/cluster": "kaas-dev",
+        "strimzi.io/component-type": "kafka",
+        "strimzi.io/name": "kaas-dev-kafka"
+      }
+    }
+  }
+}

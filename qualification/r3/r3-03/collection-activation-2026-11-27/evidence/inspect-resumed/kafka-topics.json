@@ -1,0 +1,914 @@
+{
+  "apiVersion": "kafka.strimzi.io/v1",
+  "items": [
+    {
+      "apiVersion": "kafka.strimzi.io/v1",
+      "kind": "KafkaTopic",
+      "metadata": {
+        "annotations": {
+          "argocd.argoproj.io/sync-wave": "2",
+          "argocd.argoproj.io/tracking-id": "kaas-demo-kafka:kafka.strimzi.io/KafkaTopic:kaas-kafka/kaas-dev-smoke-01",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"kafka.strimzi.io/v1\",\"kind\":\"KafkaTopic\",\"metadata\":{\"annotations\":{\"argocd.argoproj.io/sync-wave\":\"2\",\"argocd.argoproj.io/tracking-id\":\"kaas-demo-kafka:kafka.strimzi.io/KafkaTopic:kaas-kafka/kaas-dev-smoke-01\"},\"labels\":{\"strimzi.io/cluster\":\"kaas-dev\"},\"name\":\"kaas-dev-smoke-01\",\"namespace\":\"kaas-kafka\"},\"spec\":{\"config\":{\"cleanup.policy\":\"delete\",\"max.message.bytes\":3145728,\"min.insync.replicas\":2,\"retention.ms\":21600000},\"partitions\":1,\"replicas\":2}}\n"
+        },
+        "creationTimestamp": "2026-11-23T11:33:56Z",
+        "finalizers": [
+          "strimzi.io/topic-operator"
+        ],
+        "generation": 1,
+        "labels": {
+          "strimzi.io/cluster": "kaas-dev"
+        },
+        "managedFields": [
+          {
+            "apiVersion": "kafka.strimzi.io/v1",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:metadata": {
+                "f:annotations": {
+                  ".": {},
+                  "f:argocd.argoproj.io/sync-wave": {},
+                  "f:argocd.argoproj.io/tracking-id": {},
+                  "f:kubectl.kubernetes.io/last-applied-configuration": {}
+                },
+                "f:labels": {
+                  ".": {},
+                  "f:strimzi.io/cluster": {}
+                }
+              },
+              "f:spec": {
+                ".": {},
+                "f:config": {
+                  ".": {},
+                  "f:cleanup.policy": {},
+                  "f:max.message.bytes": {},
+                  "f:min.insync.replicas": {},
+                  "f:retention.ms": {}
+                },
+                "f:partitions": {},
+                "f:replicas": {}
+              }
+            },
+            "manager": "argocd-controller",
+            "operation": "Update",
+            "time": "2026-11-23T11:33:56Z"
+          },
+          {
+            "apiVersion": "kafka.strimzi.io/v1",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:metadata": {
+                "f:finalizers": {
+                  ".": {},
+                  "v:\"strimzi.io/topic-operator\"": {}
+                }
+              }
+            },
+            "manager": "strimzi-topic-operator",
+            "operation": "Update",
+            "time": "2026-11-23T11:33:57Z"
+          },
+          {
+            "apiVersion": "kafka.strimzi.io/v1",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:status": {
+                ".": {},
+                "f:conditions": {},
+                "f:observedGeneration": {},
+                "f:topicId": {},
+                "f:topicName": {}
+              }
+            },
+            "manager": "strimzi-topic-operator",
+            "operation": "Update",
+            "subresource": "status",
+            "time": "2026-11-23T11:33:58Z"
+          }
+        ],
+        "name": "kaas-dev-smoke-01",
+        "namespace": "kaas-kafka",
+        "resourceVersion": "422732",
+        "uid": "9fd0fb71-e8c7-4bbd-be40-f6a9d610a717"
+      },
+      "spec": {
+        "config": {
+          "cleanup.policy": "delete",
+          "max.message.bytes": 3145728,
+          "min.insync.replicas": 2,
+          "retention.ms": 21600000
+        },
+        "partitions": 1,
+        "replicas": 2
+      },
+      "status": {
+        "conditions": [
+          {
+            "lastTransitionTime": "2026-11-23T11:33:58.246388045Z",
+            "status": "True",
+            "type": "Ready"
+          }
+        ],
+        "observedGeneration": 1,
+        "topicId": "P8YTmSJwSciMPf0LvV38cQ",
+        "topicName": "kaas-dev-smoke-01"
+      }
+    },
+    {
+      "apiVersion": "kafka.strimzi.io/v1",
+      "kind": "KafkaTopic",
+      "metadata": {
+        "annotations": {
+          "argocd.argoproj.io/sync-wave": "2",
+          "argocd.argoproj.io/tracking-id": "kaas-demo-kafka:kafka.strimzi.io/KafkaTopic:kaas-kafka/kaas-dev-smoke-02",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"kafka.strimzi.io/v1\",\"kind\":\"KafkaTopic\",\"metadata\":{\"annotations\":{\"argocd.argoproj.io/sync-wave\":\"2\",\"argocd.argoproj.io/tracking-id\":\"kaas-demo-kafka:kafka.strimzi.io/KafkaTopic:kaas-kafka/kaas-dev-smoke-02\"},\"labels\":{\"strimzi.io/cluster\":\"kaas-dev\"},\"name\":\"kaas-dev-smoke-02\",\"namespace\":\"kaas-kafka\"},\"spec\":{\"config\":{\"cleanup.policy\":\"delete\",\"max.message.bytes\":3145728,\"min.insync.replicas\":2,\"retention.ms\":21600000},\"partitions\":1,\"replicas\":2}}\n"
+        },
+        "creationTimestamp": "2026-11-23T11:33:56Z",
+        "finalizers": [
+          "strimzi.io/topic-operator"
+        ],
+        "generation": 1,
+        "labels": {
+          "strimzi.io/cluster": "kaas-dev"
+        },
+        "managedFields": [
+          {
+            "apiVersion": "kafka.strimzi.io/v1",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:metadata": {
+                "f:annotations": {
+                  ".": {},
+                  "f:argocd.argoproj.io/sync-wave": {},
+                  "f:argocd.argoproj.io/tracking-id": {},
+                  "f:kubectl.kubernetes.io/last-applied-configuration": {}
+                },
+                "f:labels": {
+                  ".": {},
+                  "f:strimzi.io/cluster": {}
+                }
+              },
+              "f:spec": {
+                ".": {},
+                "f:config": {
+                  ".": {},
+                  "f:cleanup.policy": {},
+                  "f:max.message.bytes": {},
+                  "f:min.insync.replicas": {},
+                  "f:retention.ms": {}
+                },
+                "f:partitions": {},
+                "f:replicas": {}
+              }
+            },
+            "manager": "argocd-controller",
+            "operation": "Update",
+            "time": "2026-11-23T11:33:56Z"
+          },
+          {
+            "apiVersion": "kafka.strimzi.io/v1",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:metadata": {
+                "f:finalizers": {
+                  ".": {},
+                  "v:\"strimzi.io/topic-operator\"": {}
+                }
+              }
+            },
+            "manager": "strimzi-topic-operator",
+            "operation": "Update",
+            "time": "2026-11-23T11:33:57Z"
+          },
+          {
+            "apiVersion": "kafka.strimzi.io/v1",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:status": {
+                ".": {},
+                "f:conditions": {},
+                "f:observedGeneration": {},
+                "f:topicId": {},
+                "f:topicName": {}
+              }
+            },
+            "manager": "strimzi-topic-operator",
+            "operation": "Update",
+            "subresource": "status",
+            "time": "2026-11-23T11:33:58Z"
+          }
+        ],
+        "name": "kaas-dev-smoke-02",
+        "namespace": "kaas-kafka",
+        "resourceVersion": "422736",
+        "uid": "a83ce5f8-edd8-4365-bddb-7aac4904ea66"
+      },
+      "spec": {
+        "config": {
+          "cleanup.policy": "delete",
+          "max.message.bytes": 3145728,
+          "min.insync.replicas": 2,
+          "retention.ms": 21600000
+        },
+        "partitions": 1,
+        "replicas": 2
+      },
+      "status": {
+        "conditions": [
+          {
+            "lastTransitionTime": "2026-11-23T11:33:58.646457147Z",
+            "status": "True",
+            "type": "Ready"
+          }
+        ],
+        "observedGeneration": 1,
+        "topicId": "06amqvAoRsWHvomjVUHWrg",
+        "topicName": "kaas-dev-smoke-02"
+      }
+    },
+    {
+      "apiVersion": "kafka.strimzi.io/v1",
+      "kind": "KafkaTopic",
+      "metadata": {
+        "annotations": {
+          "argocd.argoproj.io/sync-wave": "2",
+          "argocd.argoproj.io/tracking-id": "kaas-demo-kafka:kafka.strimzi.io/KafkaTopic:kaas-kafka/kaas-dev-smoke-03",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"kafka.strimzi.io/v1\",\"kind\":\"KafkaTopic\",\"metadata\":{\"annotations\":{\"argocd.argoproj.io/sync-wave\":\"2\",\"argocd.argoproj.io/tracking-id\":\"kaas-demo-kafka:kafka.strimzi.io/KafkaTopic:kaas-kafka/kaas-dev-smoke-03\"},\"labels\":{\"strimzi.io/cluster\":\"kaas-dev\"},\"name\":\"kaas-dev-smoke-03\",\"namespace\":\"kaas-kafka\"},\"spec\":{\"config\":{\"cleanup.policy\":\"delete\",\"max.message.bytes\":3145728,\"min.insync.replicas\":2,\"retention.ms\":21600000},\"partitions\":1,\"replicas\":2}}\n"
+        },
+        "creationTimestamp": "2026-11-23T11:33:56Z",
+        "finalizers": [
+          "strimzi.io/topic-operator"
+        ],
+        "generation": 1,
+        "labels": {
+          "strimzi.io/cluster": "kaas-dev"
+        },
+        "managedFields": [
+          {
+            "apiVersion": "kafka.strimzi.io/v1",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:metadata": {
+                "f:annotations": {
+                  ".": {},
+                  "f:argocd.argoproj.io/sync-wave": {},
+                  "f:argocd.argoproj.io/tracking-id": {},
+                  "f:kubectl.kubernetes.io/last-applied-configuration": {}
+                },
+                "f:labels": {
+                  ".": {},
+                  "f:strimzi.io/cluster": {}
+                }
+              },
+              "f:spec": {
+                ".": {},
+                "f:config": {
+                  ".": {},
+                  "f:cleanup.policy": {},
+                  "f:max.message.bytes": {},
+                  "f:min.insync.replicas": {},
+                  "f:retention.ms": {}
+                },
+                "f:partitions": {},
+                "f:replicas": {}
+              }
+            },
+            "manager": "argocd-controller",
+            "operation": "Update",
+            "time": "2026-11-23T11:33:56Z"
+          },
+          {
+            "apiVersion": "kafka.strimzi.io/v1",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:metadata": {
+                "f:finalizers": {
+                  ".": {},
+                  "v:\"strimzi.io/topic-operator\"": {}
+                }
+              }
+            },
+            "manager": "strimzi-topic-operator",
+            "operation": "Update",
+            "time": "2026-11-23T11:33:57Z"
+          },
+          {
+            "apiVersion": "kafka.strimzi.io/v1",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:status": {
+                ".": {},
+                "f:conditions": {},
+                "f:observedGeneration": {},
+                "f:topicId": {},
+                "f:topicName": {}
+              }
+            },
+            "manager": "strimzi-topic-operator",
+            "operation": "Update",
+            "subresource": "status",
+            "time": "2026-11-23T11:33:58Z"
+          }
+        ],
+        "name": "kaas-dev-smoke-03",
+        "namespace": "kaas-kafka",
+        "resourceVersion": "422735",
+        "uid": "df73f53d-cf01-4c21-a10e-b0501fca5b31"
+      },
+      "spec": {
+        "config": {
+          "cleanup.policy": "delete",
+          "max.message.bytes": 3145728,
+          "min.insync.replicas": 2,
+          "retention.ms": 21600000
+        },
+        "partitions": 1,
+        "replicas": 2
+      },
+      "status": {
+        "conditions": [
+          {
+            "lastTransitionTime": "2026-11-23T11:33:58.449583054Z",
+            "status": "True",
+            "type": "Ready"
+          }
+        ],
+        "observedGeneration": 1,
+        "topicId": "w7Zne4FvTruDKpont__VaQ",
+        "topicName": "kaas-dev-smoke-03"
+      }
+    },
+    {
+      "apiVersion": "kafka.strimzi.io/v1",
+      "kind": "KafkaTopic",
+      "metadata": {
+        "annotations": {
+          "argocd.argoproj.io/sync-wave": "2",
+          "argocd.argoproj.io/tracking-id": "kaas-demo-kafka:kafka.strimzi.io/KafkaTopic:kaas-kafka/kaas-dev-smoke-04",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"kafka.strimzi.io/v1\",\"kind\":\"KafkaTopic\",\"metadata\":{\"annotations\":{\"argocd.argoproj.io/sync-wave\":\"2\",\"argocd.argoproj.io/tracking-id\":\"kaas-demo-kafka:kafka.strimzi.io/KafkaTopic:kaas-kafka/kaas-dev-smoke-04\"},\"labels\":{\"strimzi.io/cluster\":\"kaas-dev\"},\"name\":\"kaas-dev-smoke-04\",\"namespace\":\"kaas-kafka\"},\"spec\":{\"config\":{\"cleanup.policy\":\"delete\",\"max.message.bytes\":3145728,\"min.insync.replicas\":2,\"retention.ms\":21600000},\"partitions\":1,\"replicas\":2}}\n"
+        },
+        "creationTimestamp": "2026-11-23T11:33:56Z",
+        "finalizers": [
+          "strimzi.io/topic-operator"
+        ],
+        "generation": 1,
+        "labels": {
+          "strimzi.io/cluster": "kaas-dev"
+        },
+        "managedFields": [
+          {
+            "apiVersion": "kafka.strimzi.io/v1",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:metadata": {
+                "f:annotations": {
+                  ".": {},
+                  "f:argocd.argoproj.io/sync-wave": {},
+                  "f:argocd.argoproj.io/tracking-id": {},
+                  "f:kubectl.kubernetes.io/last-applied-configuration": {}
+                },
+                "f:labels": {
+                  ".": {},
+                  "f:strimzi.io/cluster": {}
+                }
+              },
+              "f:spec": {
+                ".": {},
+                "f:config": {
+                  ".": {},
+                  "f:cleanup.policy": {},
+                  "f:max.message.bytes": {},
+                  "f:min.insync.replicas": {},
+                  "f:retention.ms": {}
+                },
+                "f:partitions": {},
+                "f:replicas": {}
+              }
+            },
+            "manager": "argocd-controller",
+            "operation": "Update",
+            "time": "2026-11-23T11:33:56Z"
+          },
+          {
+            "apiVersion": "kafka.strimzi.io/v1",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:metadata": {
+                "f:finalizers": {
+                  ".": {},
+                  "v:\"strimzi.io/topic-operator\"": {}
+                }
+              }
+            },
+            "manager": "strimzi-topic-operator",
+            "operation": "Update",
+            "time": "2026-11-23T11:33:58Z"
+          },
+          {
+            "apiVersion": "kafka.strimzi.io/v1",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:status": {
+                ".": {},
+                "f:conditions": {},
+                "f:observedGeneration": {},
+                "f:topicId": {},
+                "f:topicName": {}
+              }
+            },
+            "manager": "strimzi-topic-operator",
+            "operation": "Update",
+            "subresource": "status",
+            "time": "2026-11-23T11:33:59Z"
+          }
+        ],
+        "name": "kaas-dev-smoke-04",
+        "namespace": "kaas-kafka",
+        "resourceVersion": "422741",
+        "uid": "307d3e16-1456-4ba3-adb4-ed7f989961bf"
+      },
+      "spec": {
+        "config": {
+          "cleanup.policy": "delete",
+          "max.message.bytes": 3145728,
+          "min.insync.replicas": 2,
+          "retention.ms": 21600000
+        },
+        "partitions": 1,
+        "replicas": 2
+      },
+      "status": {
+        "conditions": [
+          {
+            "lastTransitionTime": "2026-11-23T11:33:59.133472210Z",
+            "status": "True",
+            "type": "Ready"
+          }
+        ],
+        "observedGeneration": 1,
+        "topicId": "fPw_4DfNQrilgjjWuOkjoQ",
+        "topicName": "kaas-dev-smoke-04"
+      }
+    },
+    {
+      "apiVersion": "kafka.strimzi.io/v1",
+      "kind": "KafkaTopic",
+      "metadata": {
+        "annotations": {
+          "argocd.argoproj.io/tracking-id": "kaas-sbx-tenants-a:kafka.strimzi.io/KafkaTopic:kaas-kafka/kaas-sbx-a-audit",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"kafka.strimzi.io/v1\",\"kind\":\"KafkaTopic\",\"metadata\":{\"annotations\":{\"argocd.argoproj.io/tracking-id\":\"kaas-sbx-tenants-a:kafka.strimzi.io/KafkaTopic:kaas-kafka/kaas-sbx-a-audit\"},\"labels\":{\"kaas.example.com/tenant\":\"kaas-sbx-a\",\"strimzi.io/cluster\":\"kaas-dev\"},\"name\":\"kaas-sbx-a-audit\",\"namespace\":\"kaas-kafka\"},\"spec\":{\"config\":{\"cleanup.policy\":\"delete\",\"max.message.bytes\":3145728,\"min.insync.replicas\":2,\"retention.ms\":21600000},\"partitions\":1,\"replicas\":2,\"topicName\":\"kaas-sbx-a-audit\"}}\n"
+        },
+        "creationTimestamp": "2026-11-25T15:41:29Z",
+        "finalizers": [
+          "strimzi.io/topic-operator"
+        ],
+        "generation": 1,
+        "labels": {
+          "kaas.example.com/tenant": "kaas-sbx-a",
+          "strimzi.io/cluster": "kaas-dev"
+        },
+        "managedFields": [
+          {
+            "apiVersion": "kafka.strimzi.io/v1",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:metadata": {
+                "f:annotations": {
+                  ".": {},
+                  "f:argocd.argoproj.io/tracking-id": {},
+                  "f:kubectl.kubernetes.io/last-applied-configuration": {}
+                },
+                "f:labels": {
+                  ".": {},
+                  "f:kaas.example.com/tenant": {},
+                  "f:strimzi.io/cluster": {}
+                }
+              },
+              "f:spec": {
+                ".": {},
+                "f:config": {
+                  ".": {},
+                  "f:cleanup.policy": {},
+                  "f:max.message.bytes": {},
+                  "f:min.insync.replicas": {},
+                  "f:retention.ms": {}
+                },
+                "f:partitions": {},
+                "f:replicas": {},
+                "f:topicName": {}
+              }
+            },
+            "manager": "argocd-controller",
+            "operation": "Update",
+            "time": "2026-11-25T15:41:29Z"
+          },
+          {
+            "apiVersion": "kafka.strimzi.io/v1",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:metadata": {
+                "f:finalizers": {
+                  ".": {},
+                  "v:\"strimzi.io/topic-operator\"": {}
+                }
+              }
+            },
+            "manager": "strimzi-topic-operator",
+            "operation": "Update",
+            "time": "2026-11-25T15:41:29Z"
+          },
+          {
+            "apiVersion": "kafka.strimzi.io/v1",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:status": {
+                ".": {},
+                "f:conditions": {},
+                "f:observedGeneration": {},
+                "f:topicId": {},
+                "f:topicName": {}
+              }
+            },
+            "manager": "strimzi-topic-operator",
+            "operation": "Update",
+            "subresource": "status",
+            "time": "2026-11-25T15:41:30Z"
+          }
+        ],
+        "name": "kaas-sbx-a-audit",
+        "namespace": "kaas-kafka",
+        "resourceVersion": "984254",
+        "uid": "545f3daf-2988-427b-85c3-ab0c196dbe17"
+      },
+      "spec": {
+        "config": {
+          "cleanup.policy": "delete",
+          "max.message.bytes": 3145728,
+          "min.insync.replicas": 2,
+          "retention.ms": 21600000
+        },
+        "partitions": 1,
+        "replicas": 2,
+        "topicName": "kaas-sbx-a-audit"
+      },
+      "status": {
+        "conditions": [
+          {
+            "lastTransitionTime": "2026-11-25T15:41:30.002829507Z",
+            "status": "True",
+            "type": "Ready"
+          }
+        ],
+        "observedGeneration": 1,
+        "topicId": "mXkR3d-pR0W4DBvlAABvpw",
+        "topicName": "kaas-sbx-a-audit"
+      }
+    },
+    {
+      "apiVersion": "kafka.strimzi.io/v1",
+      "kind": "KafkaTopic",
+      "metadata": {
+        "annotations": {
+          "argocd.argoproj.io/tracking-id": "kaas-sbx-tenants-a:kafka.strimzi.io/KafkaTopic:kaas-kafka/kaas-sbx-a-events",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"kafka.strimzi.io/v1\",\"kind\":\"KafkaTopic\",\"metadata\":{\"annotations\":{\"argocd.argoproj.io/tracking-id\":\"kaas-sbx-tenants-a:kafka.strimzi.io/KafkaTopic:kaas-kafka/kaas-sbx-a-events\"},\"labels\":{\"kaas.example.com/tenant\":\"kaas-sbx-a\",\"strimzi.io/cluster\":\"kaas-dev\"},\"name\":\"kaas-sbx-a-events\",\"namespace\":\"kaas-kafka\"},\"spec\":{\"config\":{\"cleanup.policy\":\"delete\",\"max.message.bytes\":3145728,\"min.insync.replicas\":2,\"retention.ms\":21600000},\"partitions\":1,\"replicas\":2,\"topicName\":\"kaas-sbx-a-events\"}}\n"
+        },
+        "creationTimestamp": "2026-11-25T15:41:29Z",
+        "finalizers": [
+          "strimzi.io/topic-operator"
+        ],
+        "generation": 1,
+        "labels": {
+          "kaas.example.com/tenant": "kaas-sbx-a",
+          "strimzi.io/cluster": "kaas-dev"
+        },
+        "managedFields": [
+          {
+            "apiVersion": "kafka.strimzi.io/v1",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:metadata": {
+                "f:annotations": {
+                  ".": {},
+                  "f:argocd.argoproj.io/tracking-id": {},
+                  "f:kubectl.kubernetes.io/last-applied-configuration": {}
+                },
+                "f:labels": {
+                  ".": {},
+                  "f:kaas.example.com/tenant": {},
+                  "f:strimzi.io/cluster": {}
+                }
+              },
+              "f:spec": {
+                ".": {},
+                "f:config": {
+                  ".": {},
+                  "f:cleanup.policy": {},
+                  "f:max.message.bytes": {},
+                  "f:min.insync.replicas": {},
+                  "f:retention.ms": {}
+                },
+                "f:partitions": {},
+                "f:replicas": {},
+                "f:topicName": {}
+              }
+            },
+            "manager": "argocd-controller",
+            "operation": "Update",
+            "time": "2026-11-25T15:41:29Z"
+          },
+          {
+            "apiVersion": "kafka.strimzi.io/v1",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:metadata": {
+                "f:finalizers": {
+                  ".": {},
+                  "v:\"strimzi.io/topic-operator\"": {}
+                }
+              }
+            },
+            "manager": "strimzi-topic-operator",
+            "operation": "Update",
+            "time": "2026-11-25T15:41:30Z"
+          },
+          {
+            "apiVersion": "kafka.strimzi.io/v1",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:status": {
+                ".": {},
+                "f:conditions": {},
+                "f:observedGeneration": {},
+                "f:topicId": {},
+                "f:topicName": {}
+              }
+            },
+            "manager": "strimzi-topic-operator",
+            "operation": "Update",
+            "subresource": "status",
+            "time": "2026-11-25T15:41:30Z"
+          }
+        ],
+        "name": "kaas-sbx-a-events",
+        "namespace": "kaas-kafka",
+        "resourceVersion": "984263",
+        "uid": "c6adc499-8e0c-4b15-9ff8-9e3734ea40a7"
+      },
+      "spec": {
+        "config": {
+          "cleanup.policy": "delete",
+          "max.message.bytes": 3145728,
+          "min.insync.replicas": 2,
+          "retention.ms": 21600000
+        },
+        "partitions": 1,
+        "replicas": 2,
+        "topicName": "kaas-sbx-a-events"
+      },
+      "status": {
+        "conditions": [
+          {
+            "lastTransitionTime": "2026-11-25T15:41:30.246310767Z",
+            "status": "True",
+            "type": "Ready"
+          }
+        ],
+        "observedGeneration": 1,
+        "topicId": "CPJaJPdnS9itsQe7JfjdbA",
+        "topicName": "kaas-sbx-a-events"
+      }
+    },
+    {
+      "apiVersion": "kafka.strimzi.io/v1",
+      "kind": "KafkaTopic",
+      "metadata": {
+        "annotations": {
+          "argocd.argoproj.io/tracking-id": "kaas-sbx-tenants-b:kafka.strimzi.io/KafkaTopic:kaas-kafka/kaas-sbx-b-audit",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"kafka.strimzi.io/v1\",\"kind\":\"KafkaTopic\",\"metadata\":{\"annotations\":{\"argocd.argoproj.io/tracking-id\":\"kaas-sbx-tenants-b:kafka.strimzi.io/KafkaTopic:kaas-kafka/kaas-sbx-b-audit\"},\"labels\":{\"kaas.example.com/tenant\":\"kaas-sbx-b\",\"strimzi.io/cluster\":\"kaas-dev\"},\"name\":\"kaas-sbx-b-audit\",\"namespace\":\"kaas-kafka\"},\"spec\":{\"config\":{\"cleanup.policy\":\"delete\",\"max.message.bytes\":3145728,\"min.insync.replicas\":2,\"retention.ms\":21600000},\"partitions\":1,\"replicas\":2,\"topicName\":\"kaas-sbx-b-audit\"}}\n"
+        },
+        "creationTimestamp": "2026-11-25T15:42:20Z",
+        "finalizers": [
+          "strimzi.io/topic-operator"
+        ],
+        "generation": 1,
+        "labels": {
+          "kaas.example.com/tenant": "kaas-sbx-b",
+          "strimzi.io/cluster": "kaas-dev"
+        },
+        "managedFields": [
+          {
+            "apiVersion": "kafka.strimzi.io/v1",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:metadata": {
+                "f:annotations": {
+                  ".": {},
+                  "f:argocd.argoproj.io/tracking-id": {},
+                  "f:kubectl.kubernetes.io/last-applied-configuration": {}
+                },
+                "f:labels": {
+                  ".": {},
+                  "f:kaas.example.com/tenant": {},
+                  "f:strimzi.io/cluster": {}
+                }
+              },
+              "f:spec": {
+                ".": {},
+                "f:config": {
+                  ".": {},
+                  "f:cleanup.policy": {},
+                  "f:max.message.bytes": {},
+                  "f:min.insync.replicas": {},
+                  "f:retention.ms": {}
+                },
+                "f:partitions": {},
+                "f:replicas": {},
+                "f:topicName": {}
+              }
+            },
+            "manager": "argocd-controller",
+            "operation": "Update",
+            "time": "2026-11-25T15:42:20Z"
+          },
+          {
+            "apiVersion": "kafka.strimzi.io/v1",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:metadata": {
+                "f:finalizers": {
+                  ".": {},
+                  "v:\"strimzi.io/topic-operator\"": {}
+                }
+              }
+            },
+            "manager": "strimzi-topic-operator",
+            "operation": "Update",
+            "time": "2026-11-25T15:42:20Z"
+          },
+          {
+            "apiVersion": "kafka.strimzi.io/v1",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:status": {
+                ".": {},
+                "f:conditions": {},
+                "f:observedGeneration": {},
+                "f:topicId": {},
+                "f:topicName": {}
+              }
+            },
+            "manager": "strimzi-topic-operator",
+            "operation": "Update",
+            "subresource": "status",
+            "time": "2026-11-25T15:42:20Z"
+          }
+        ],
+        "name": "kaas-sbx-b-audit",
+        "namespace": "kaas-kafka",
+        "resourceVersion": "984521",
+        "uid": "64c3c280-f104-4389-be97-b6bcdbde6091"
+      },
+      "spec": {
+        "config": {
+          "cleanup.policy": "delete",
+          "max.message.bytes": 3145728,
+          "min.insync.replicas": 2,
+          "retention.ms": 21600000
+        },
+        "partitions": 1,
+        "replicas": 2,
+        "topicName": "kaas-sbx-b-audit"
+      },
+      "status": {
+        "conditions": [
+          {
+            "lastTransitionTime": "2026-11-25T15:42:20.781939724Z",
+            "status": "True",
+            "type": "Ready"
+          }
+        ],
+        "observedGeneration": 1,
+        "topicId": "6df7iTEARK6bwQfwiGZ-ig",
+        "topicName": "kaas-sbx-b-audit"
+      }
+    },
+    {
+      "apiVersion": "kafka.strimzi.io/v1",
+      "kind": "KafkaTopic",
+      "metadata": {
+        "annotations": {
+          "argocd.argoproj.io/tracking-id": "kaas-sbx-tenants-b:kafka.strimzi.io/KafkaTopic:kaas-kafka/kaas-sbx-b-events",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"kafka.strimzi.io/v1\",\"kind\":\"KafkaTopic\",\"metadata\":{\"annotations\":{\"argocd.argoproj.io/tracking-id\":\"kaas-sbx-tenants-b:kafka.strimzi.io/KafkaTopic:kaas-kafka/kaas-sbx-b-events\"},\"labels\":{\"kaas.example.com/tenant\":\"kaas-sbx-b\",\"strimzi.io/cluster\":\"kaas-dev\"},\"name\":\"kaas-sbx-b-events\",\"namespace\":\"kaas-kafka\"},\"spec\":{\"config\":{\"cleanup.policy\":\"delete\",\"max.message.bytes\":3145728,\"min.insync.replicas\":2,\"retention.ms\":21600000},\"partitions\":1,\"replicas\":2,\"topicName\":\"kaas-sbx-b-events\"}}\n"
+        },
+        "creationTimestamp": "2026-11-25T15:42:20Z",
+        "finalizers": [
+          "strimzi.io/topic-operator"
+        ],
+        "generation": 1,
+        "labels": {
+          "kaas.example.com/tenant": "kaas-sbx-b",
+          "strimzi.io/cluster": "kaas-dev"
+        },
+        "managedFields": [
+          {
+            "apiVersion": "kafka.strimzi.io/v1",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:metadata": {
+                "f:annotations": {
+                  ".": {},
+                  "f:argocd.argoproj.io/tracking-id": {},
+                  "f:kubectl.kubernetes.io/last-applied-configuration": {}
+                },
+                "f:labels": {
+                  ".": {},
+                  "f:kaas.example.com/tenant": {},
+                  "f:strimzi.io/cluster": {}
+                }
+              },
+              "f:spec": {
+                ".": {},
+                "f:config": {
+                  ".": {},
+                  "f:cleanup.policy": {},
+                  "f:max.message.bytes": {},
+                  "f:min.insync.replicas": {},
+                  "f:retention.ms": {}
+                },
+                "f:partitions": {},
+                "f:replicas": {},
+                "f:topicName": {}
+              }
+            },
+            "manager": "argocd-controller",
+            "operation": "Update",
+            "time": "2026-11-25T15:42:20Z"
+          },
+          {
+            "apiVersion": "kafka.strimzi.io/v1",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:metadata": {
+                "f:finalizers": {
+                  ".": {},
+                  "v:\"strimzi.io/topic-operator\"": {}
+                }
+              }
+            },
+            "manager": "strimzi-topic-operator",
+            "operation": "Update",
+            "time": "2026-11-25T15:42:20Z"
+          },
+          {
+            "apiVersion": "kafka.strimzi.io/v1",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:status": {
+                ".": {},
+                "f:conditions": {},
+                "f:observedGeneration": {},
+                "f:topicId": {},
+                "f:topicName": {}
+              }
+            },
+            "manager": "strimzi-topic-operator",
+            "operation": "Update",
+            "subresource": "status",
+            "time": "2026-11-25T15:42:20Z"
+          }
+        ],
+        "name": "kaas-sbx-b-events",
+        "namespace": "kaas-kafka",
+        "resourceVersion": "984528",
+        "uid": "ad446e47-7a08-4108-8dfc-bbc5bee3d6e6"
+      },
+      "spec": {
+        "config": {
+          "cleanup.policy": "delete",
+          "max.message.bytes": 3145728,
+          "min.insync.replicas": 2,
+          "retention.ms": 21600000
+        },
+        "partitions": 1,
+        "replicas": 2,
+        "topicName": "kaas-sbx-b-events"
+      },
+      "status": {
+        "conditions": [
+          {
+            "lastTransitionTime": "2026-11-25T15:42:20.949166878Z",
+            "status": "True",
+            "type": "Ready"
+          }
+        ],
+        "observedGeneration": 1,
+        "topicId": "dzwyrqQkRSmwEYXfxeeMvg",
+        "topicName": "kaas-sbx-b-events"
+      }
+    }
+  ],
+  "kind": "KafkaTopicList",
+  "metadata": {
+    "continue": "",
+    "resourceVersion": "1239426"
+  }
+}

@@ -1,0 +1,193 @@
+{
+  "stage": "bootstrap",
+  "status": "COMPLETE",
+  "reason": null,
+  "requests": [
+    {
+      "name": "identity",
+      "method": "GET",
+      "path": "/apis/user.openshift.io/v1/users/~",
+      "at_UTC": "2026-11-27T06:44:59.913875+00:00",
+      "http": 200
+    },
+    {
+      "name": "job-kaas-r2-native-client",
+      "method": "GET",
+      "path": "/apis/batch/v1/namespaces/kaas-demo/jobs/kaas-r2-native-client",
+      "at_UTC": "2026-11-27T06:45:00.417664+00:00",
+      "http": 200
+    },
+    {
+      "name": "job-kaas-r2-native-client-02e2e2f-r2",
+      "method": "GET",
+      "path": "/apis/batch/v1/namespaces/kaas-demo/jobs/kaas-r2-native-client-02e2e2f-r2",
+      "at_UTC": "2026-11-27T06:45:00.912695+00:00",
+      "http": 200
+    },
+    {
+      "name": "job-kaas-r2-native-client-351528d-r2",
+      "method": "GET",
+      "path": "/apis/batch/v1/namespaces/kaas-demo/jobs/kaas-r2-native-client-351528d-r2",
+      "at_UTC": "2026-11-27T06:45:01.409041+00:00",
+      "http": 200
+    },
+    {
+      "name": "job-kaas-r2-native-client-05a3f2d-r2",
+      "method": "GET",
+      "path": "/apis/batch/v1/namespaces/kaas-demo/jobs/kaas-r2-native-client-05a3f2d-r2",
+      "at_UTC": "2026-11-27T06:45:01.927993+00:00",
+      "http": 200
+    },
+    {
+      "name": "kafka",
+      "method": "GET",
+      "path": "/apis/kafka.strimzi.io/v1/namespaces/kaas-kafka/kafkas/kaas-dev",
+      "at_UTC": "2026-11-27T06:45:02.414970+00:00",
+      "http": 200
+    },
+    {
+      "name": "existing-0",
+      "method": "GET",
+      "path": "/apis/rbac.authorization.k8s.io/v1/namespaces/kaas-kafka/roles/kaas-r3-broker-monitor-writer",
+      "at_UTC": "2026-11-27T06:45:02.922648+00:00",
+      "http": 404
+    },
+    {
+      "name": "dryrun-0",
+      "method": "POST",
+      "path": "/apis/rbac.authorization.k8s.io/v1/namespaces/kaas-kafka/roles?dryRun=All",
+      "at_UTC": "2026-11-27T06:45:03.433247+00:00",
+      "http": 201
+    },
+    {
+      "name": "existing-1",
+      "method": "GET",
+      "path": "/apis/rbac.authorization.k8s.io/v1/namespaces/kaas-kafka/rolebindings/kaas-r3-broker-monitor-writer",
+      "at_UTC": "2026-11-27T06:45:03.943287+00:00",
+      "http": 404
+    },
+    {
+      "name": "dryrun-1",
+      "method": "POST",
+      "path": "/apis/rbac.authorization.k8s.io/v1/namespaces/kaas-kafka/rolebindings?dryRun=All",
+      "at_UTC": "2026-11-27T06:45:04.443261+00:00",
+      "http": 201
+    },
+    {
+      "name": "existing-2",
+      "method": "GET",
+      "path": "/apis/argoproj.io/v1alpha1/namespaces/openshift-gitops/appprojects/kaas-demo-monitoring-platform",
+      "at_UTC": "2026-11-27T06:45:04.942479+00:00",
+      "http": 404
+    },
+    {
+      "name": "dryrun-2",
+      "method": "POST",
+      "path": "/apis/argoproj.io/v1alpha1/namespaces/openshift-gitops/appprojects?dryRun=All",
+      "at_UTC": "2026-11-27T06:45:05.434117+00:00",
+      "http": 201
+    },
+    {
+      "name": "existing-3",
+      "method": "GET",
+      "path": "/apis/argoproj.io/v1alpha1/namespaces/openshift-gitops/appprojects/kaas-demo-observability",
+      "at_UTC": "2026-11-27T06:45:05.952546+00:00",
+      "http": 404
+    },
+    {
+      "name": "dryrun-3",
+      "method": "POST",
+      "path": "/apis/argoproj.io/v1alpha1/namespaces/openshift-gitops/appprojects?dryRun=All",
+      "at_UTC": "2026-11-27T06:45:06.447356+00:00",
+      "http": 201
+    },
+    {
+      "name": "existing-4",
+      "method": "GET",
+      "path": "/apis/argoproj.io/v1alpha1/namespaces/openshift-gitops/applications/kaas-demo-monitoring-platform",
+      "at_UTC": "2026-11-27T06:45:06.946584+00:00",
+      "http": 404
+    },
+    {
+      "name": "dryrun-4",
+      "method": "POST",
+      "path": "/apis/argoproj.io/v1alpha1/namespaces/openshift-gitops/applications?dryRun=All",
+      "at_UTC": "2026-11-27T06:45:07.443205+00:00",
+      "http": 201
+    },
+    {
+      "name": "existing-5",
+      "method": "GET",
+      "path": "/apis/argoproj.io/v1alpha1/namespaces/openshift-gitops/applications/kaas-demo-observability",
+      "at_UTC": "2026-11-27T06:45:07.956807+00:00",
+      "http": 404
+    },
+    {
+      "name": "dryrun-5",
+      "method": "POST",
+      "path": "/apis/argoproj.io/v1alpha1/namespaces/openshift-gitops/applications?dryRun=All",
+      "at_UTC": "2026-11-27T06:45:08.451019+00:00",
+      "http": 201
+    },
+    {
+      "name": "created-0",
+      "method": "POST",
+      "path": "/apis/rbac.authorization.k8s.io/v1/namespaces/kaas-kafka/roles",
+      "at_UTC": "2026-11-27T06:45:08.960688+00:00",
+      "http": 201
+    },
+    {
+      "name": "created-1",
+      "method": "POST",
+      "path": "/apis/rbac.authorization.k8s.io/v1/namespaces/kaas-kafka/rolebindings",
+      "at_UTC": "2026-11-27T06:45:09.472193+00:00",
+      "http": 201
+    },
+    {
+      "name": "created-2",
+      "method": "POST",
+      "path": "/apis/argoproj.io/v1alpha1/namespaces/openshift-gitops/appprojects",
+      "at_UTC": "2026-11-27T06:45:10.979416+00:00",
+      "http": 201
+    },
+    {
+      "name": "created-3",
+      "method": "POST",
+      "path": "/apis/argoproj.io/v1alpha1/namespaces/openshift-gitops/appprojects",
+      "at_UTC": "2026-11-27T06:45:11.490450+00:00",
+      "http": 201
+    },
+    {
+      "name": "created-4",
+      "method": "POST",
+      "path": "/apis/argoproj.io/v1alpha1/namespaces/openshift-gitops/applications",
+      "at_UTC": "2026-11-27T06:45:12.003165+00:00",
+      "http": 201
+    },
+    {
+      "name": "created-5",
+      "method": "POST",
+      "path": "/apis/argoproj.io/v1alpha1/namespaces/openshift-gitops/applications",
+      "at_UTC": "2026-11-27T06:45:12.502905+00:00",
+      "http": 201
+    },
+    {
+      "name": "permission-create",
+      "method": "POST",
+      "path": "/apis/authorization.k8s.io/v1/subjectaccessreviews",
+      "at_UTC": "2026-11-27T06:45:13.014042+00:00",
+      "http": 201
+    },
+    {
+      "name": "permission-patch",
+      "method": "POST",
+      "path": "/apis/authorization.k8s.io/v1/subjectaccessreviews",
+      "at_UTC": "2026-11-27T06:45:13.514444+00:00",
+      "http": 201
+    }
+  ],
+  "elapsed_seconds": 14.095,
+  "producer_consumer_tests_run": false,
+  "test_emails_sent": false,
+  "credentials_saved": false
+}

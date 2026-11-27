@@ -1,0 +1,26 @@
+{
+  "desired": {
+    "channels": [
+      "candidate-4.21",
+      "candidate-4.22",
+      "eus-4.22",
+      "fast-4.21",
+      "fast-4.22",
+      "stable-4.21",
+      "stable-4.22"
+    ],
+    "image": "quay.io/openshift-release-dev/ocp-release@sha256:38312c2ae5e7dbdea4407436830372558fc0ef66a933c9bf47f06dfd7b5e4680",
+    "url": "https://access.redhat.com/errata/RHSA-2026:95409",
+    "version": "4.21.42"
+  },
+  "history": [
+    {
+      "completionTime": "2026-11-17T17:47:21Z",
+      "image": "quay.io/openshift-release-dev/ocp-release@sha256:38312c2ae5e7dbdea4407436830372558fc0ef66a933c9bf47f06dfd7b5e4680",
+      "startedTime": "2026-11-17T17:16:08Z",
+      "state": "Completed",
+      "verified": false,
+      "version": "4.21.42"
+    }
+  ]
+}

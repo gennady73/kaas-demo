@@ -1,0 +1,31 @@
+{
+  "kind": "User",
+  "apiVersion": "user.openshift.io/v1",
+  "metadata": {
+    "name": "admin",
+    "uid": "2e0b5ebc-96b7-4fad-9389-7ca1b7be6d11",
+    "resourceVersion": "58316",
+    "creationTimestamp": "2026-11-18T10:30:43Z",
+    "managedFields": [
+      {
+        "manager": "oauth-server",
+        "operation": "Update",
+        "apiVersion": "user.openshift.io/v1",
+        "time": "2026-11-18T10:30:43Z",
+        "fieldsType": "FieldsV1",
+        "fieldsV1": {
+          "f:fullName": {},
+          "f:identities": {}
+        }
+      }
+    ]
+  },
+  "fullName": "Admin Demo",
+  "identities": [
+    "rhbk:2ebae35c-4eb3-428a-b4dd-6cea75391bdd"
+  ],
+  "groups": [
+    "system:authenticated",
+    "system:authenticated:oauth"
+  ]
+}

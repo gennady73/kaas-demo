@@ -1,0 +1,50 @@
+{
+  "kind": "Role",
+  "apiVersion": "rbac.authorization.k8s.io/v1",
+  "metadata": {
+    "name": "kaas-r3-broker-monitor-writer",
+    "namespace": "kaas-kafka",
+    "uid": "287bf06d-ed1e-47ce-a7b1-fba0d1b4f3ad",
+    "creationTimestamp": "2026-11-27T06:45:03Z",
+    "managedFields": [
+      {
+        "manager": "Python-urllib",
+        "operation": "Update",
+        "apiVersion": "rbac.authorization.k8s.io/v1",
+        "time": "2026-11-27T06:45:03Z",
+        "fieldsType": "FieldsV1",
+        "fieldsV1": {
+          "f:rules": {}
+        }
+      }
+    ]
+  },
+  "rules": [
+    {
+      "verbs": [
+        "create"
+      ],
+      "apiGroups": [
+        "monitoring.coreos.com"
+      ],
+      "resources": [
+        "podmonitors"
+      ]
+    },
+    {
+      "verbs": [
+        "update",
+        "patch"
+      ],
+      "apiGroups": [
+        "monitoring.coreos.com"
+      ],
+      "resources": [
+        "podmonitors"
+      ],
+      "resourceNames": [
+        "kaas-dev-broker-metrics"
+      ]
+    }
+  ]
+}

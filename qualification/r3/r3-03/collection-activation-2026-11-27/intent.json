@@ -1,0 +1,29 @@
+{
+  "authority": "User 2026-11-27: proceed collection-only activation from5610bfa, narrow PodMonitor grant and pinned registration",
+  "resource_pin": "5610bfa484b13599e3218b1bcdb366769deba13d",
+  "bootstrap_and_Kafka_metrics_pin": "38ff7de3db7094c9b9661b2683544e556dd4f5ad",
+  "manual_sync": true,
+  "prune": false,
+  "force_replace": false,
+  "email_routing_and_live_rules": false,
+  "four_client_Jobs_must_remain_suspended": true,
+  "producer_consumer_tests": false,
+  "test_email": false,
+  "executor": "admin via strictTLS/RAMcredential",
+  "accepted_budget": "1250m6656Mi steady/1750m9728Mi total window;4PVC24Gi;24hmetrics",
+  "window_minutes": 90,
+  "live_change_window_started": true,
+  "source_sha256": "963e715b1b91683870c5fcf3c029a0808357aaf9b8218410ff50597d9478b6fb",
+  "live_window_started_UTC": "2026-11-27T06:45:08.960688+00:00",
+  "live_window_deadline_UTC": "2026-11-27T08:15:08.960688+00:00",
+  "live_window_closed_UTC": "2026-11-27T07:01:02.748896+00:00",
+  "live_window_completed_within_budget": true,
+  "final_helper_source_sha256": {
+    "refresh.py": "38cfb6193a019c9110767480d14e1e6d0f66b378bf699123d4f1fd1181df036e",
+    "activate.py": "3ebf172389f4db1691a183c3b4ca12f7b0b4f4dcf5db7b5c5f1c53f83826d3bc",
+    "broker_health.py": "8a588901b7769d6a68003c32998dd4827ec950bc267ecca6687305df6f7e7b15",
+    "watch_roll.py": "a21e47dce5e0f9a2dfdb0013c581c9334395107d1548ea04212a476a2aaa9217",
+    "observe_collection.py": "52810d807121f72c70dda6b1d2b0ad12586f646630f27c22e7e1cdf873b3674c",
+    "closeout.py": "9d5ef0fc18e1dc9b71932d0d31679a08e9096bc69d4fc881dc7db06a9482a238"
+  }
+}

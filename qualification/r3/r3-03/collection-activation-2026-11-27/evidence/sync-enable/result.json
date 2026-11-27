@@ -1,0 +1,81 @@
+{
+  "stage": "sync-enable",
+  "status": "COMPLETE",
+  "reason": null,
+  "requests": [
+    {
+      "name": "identity",
+      "method": "GET",
+      "path": "/apis/user.openshift.io/v1/users/~",
+      "at_UTC": "2026-11-27T06:46:31.878777+00:00",
+      "http": 200
+    },
+    {
+      "name": "job-kaas-r2-native-client",
+      "method": "GET",
+      "path": "/apis/batch/v1/namespaces/kaas-demo/jobs/kaas-r2-native-client",
+      "at_UTC": "2026-11-27T06:46:32.403157+00:00",
+      "http": 200
+    },
+    {
+      "name": "job-kaas-r2-native-client-02e2e2f-r2",
+      "method": "GET",
+      "path": "/apis/batch/v1/namespaces/kaas-demo/jobs/kaas-r2-native-client-02e2e2f-r2",
+      "at_UTC": "2026-11-27T06:46:32.914345+00:00",
+      "http": 200
+    },
+    {
+      "name": "job-kaas-r2-native-client-351528d-r2",
+      "method": "GET",
+      "path": "/apis/batch/v1/namespaces/kaas-demo/jobs/kaas-r2-native-client-351528d-r2",
+      "at_UTC": "2026-11-27T06:46:33.410549+00:00",
+      "http": 200
+    },
+    {
+      "name": "job-kaas-r2-native-client-05a3f2d-r2",
+      "method": "GET",
+      "path": "/apis/batch/v1/namespaces/kaas-demo/jobs/kaas-r2-native-client-05a3f2d-r2",
+      "at_UTC": "2026-11-27T06:46:33.910816+00:00",
+      "http": 200
+    },
+    {
+      "name": "kafka",
+      "method": "GET",
+      "path": "/apis/kafka.strimzi.io/v1/namespaces/kaas-kafka/kafkas/kaas-dev",
+      "at_UTC": "2026-11-27T06:46:34.402335+00:00",
+      "http": 200
+    },
+    {
+      "name": "UWM-config-before-enable",
+      "method": "GET",
+      "path": "/api/v1/namespaces/openshift-user-workload-monitoring/configmaps/user-workload-monitoring-config",
+      "at_UTC": "2026-11-27T06:46:34.886612+00:00",
+      "http": 200
+    },
+    {
+      "name": "enablement-destination-before",
+      "method": "GET",
+      "path": "/api/v1/namespaces/openshift-monitoring/configmaps/cluster-monitoring-config",
+      "at_UTC": "2026-11-27T06:46:35.393726+00:00",
+      "http": 404
+    },
+    {
+      "name": "app-before",
+      "method": "GET",
+      "path": "/apis/argoproj.io/v1alpha1/namespaces/openshift-gitops/applications/kaas-demo-monitoring-platform",
+      "at_UTC": "2026-11-27T06:46:35.882055+00:00",
+      "http": 200
+    },
+    {
+      "name": "sync-request",
+      "method": "PATCH",
+      "path": "/apis/argoproj.io/v1alpha1/namespaces/openshift-gitops/applications/kaas-demo-monitoring-platform",
+      "at_UTC": "2026-11-27T06:46:36.373301+00:00",
+      "http": 200
+    }
+  ],
+  "elapsed_seconds": 5.006,
+  "producer_consumer_tests_run": false,
+  "test_emails_sent": false,
+  "credentials_saved": false
+}

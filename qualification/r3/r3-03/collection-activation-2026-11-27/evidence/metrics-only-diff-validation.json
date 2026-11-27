@@ -1,0 +1,19 @@
+{
+  "status": "EFFECTIVE_KAFKA_SPEC_CHANGED_ONLY_METRICS_CONFIG",
+  "added": {
+    "type": "jmxPrometheusExporter",
+    "valueFrom": {
+      "configMapKeyRef": {
+        "key": "metrics.yml",
+        "name": "kaas-dev-r3-jmx-metrics"
+      }
+    }
+  },
+  "generation": 2,
+  "observedGeneration": 2,
+  "listeners_authentication_authorization_configs_image_and_version_unchanged": true,
+  "all_three_broker_Pod_UIDs_changed": true,
+  "before": "inspect-resumed/kafka.json",
+  "after": "targets-initial-resumed/kafka.json",
+  "producer_consumer_tests_run": false
+}

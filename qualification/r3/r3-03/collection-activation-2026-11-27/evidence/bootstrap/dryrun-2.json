@@ -1,0 +1,53 @@
+{
+  "apiVersion": "argoproj.io/v1alpha1",
+  "kind": "AppProject",
+  "metadata": {
+    "creationTimestamp": "2026-11-27T06:45:05Z",
+    "generation": 1,
+    "managedFields": [
+      {
+        "apiVersion": "argoproj.io/v1alpha1",
+        "fieldsType": "FieldsV1",
+        "fieldsV1": {
+          "f:spec": {
+            ".": {},
+            "f:clusterResourceWhitelist": {},
+            "f:description": {},
+            "f:destinations": {},
+            "f:namespaceResourceWhitelist": {},
+            "f:sourceRepos": {}
+          }
+        },
+        "manager": "Python-urllib",
+        "operation": "Update",
+        "time": "2026-11-27T06:45:05Z"
+      }
+    ],
+    "name": "kaas-demo-monitoring-platform",
+    "namespace": "openshift-gitops",
+    "uid": "6d2c2ba1-25d2-41e5-8314-7d3dca35da1c"
+  },
+  "spec": {
+    "clusterResourceWhitelist": [],
+    "description": "Manual platform-owner UWM configuration only; no tenant or Kafka resources",
+    "destinations": [
+      {
+        "namespace": "openshift-monitoring",
+        "server": "https://kubernetes.default.svc"
+      },
+      {
+        "namespace": "openshift-user-workload-monitoring",
+        "server": "https://kubernetes.default.svc"
+      }
+    ],
+    "namespaceResourceWhitelist": [
+      {
+        "group": "",
+        "kind": "ConfigMap"
+      }
+    ],
+    "sourceRepos": [
+      "https://github.com/gennady73/kaas-demo.git"
+    ]
+  }
+}

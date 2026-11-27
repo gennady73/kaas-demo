@@ -1,0 +1,35 @@
+{
+  "at_UTC": "2026-11-27T06:51:30.171641+00:00",
+  "generation": 2,
+  "observedGeneration": 1,
+  "conditions": [
+    {
+      "lastTransitionTime": "2026-11-27T06:13:25.773048490Z",
+      "status": "True",
+      "type": "Ready"
+    }
+  ],
+  "pods": [
+    {
+      "name": "kaas-dev-dual-role-0",
+      "uid": "ee56f20f-baa1-4016-b77b-a0dc827c6034",
+      "ready": false,
+      "deleting": false,
+      "has9404": true
+    },
+    {
+      "name": "kaas-dev-dual-role-1",
+      "uid": "0a705c97-ea26-4e77-b082-3115b73c2179",
+      "ready": true,
+      "deleting": false,
+      "has9404": true
+    },
+    {
+      "name": "kaas-dev-dual-role-2",
+      "uid": "b60cd5f7-7123-4ec9-bf68-2c0acda71106",
+      "ready": true,
+      "deleting": false,
+      "has9404": true
+    }
+  ]
+}

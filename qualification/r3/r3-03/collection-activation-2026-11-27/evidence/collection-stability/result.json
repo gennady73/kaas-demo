@@ -1,0 +1,15 @@
+{
+  "status": "STOPPED",
+  "reason": "stale_target_sample",
+  "poll_count": 5,
+  "span_from_first_success_seconds": 169.222,
+  "logical_broker_targets": 3,
+  "deduplicated_Thanos_queries": true,
+  "min_over_time_5m_required": 1,
+  "minimum_observed_samples_per_target_5m": 9,
+  "samples_not_a_latency_or_capacity_SLO": true,
+  "read_only": true,
+  "producer_consumer_tests_run": false,
+  "test_emails_sent": false,
+  "credentials_saved": false
+}

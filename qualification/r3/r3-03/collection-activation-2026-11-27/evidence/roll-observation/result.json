@@ -1,0 +1,9 @@
+{
+  "status": "COMPLETE",
+  "reason": null,
+  "poll_count": 4,
+  "elapsed_seconds": 50.164,
+  "read_only": true,
+  "producer_consumer_tests_run": false,
+  "credentials_saved": false
+}

@@ -1,0 +1,102 @@
+{
+  "stage": "targets",
+  "status": "COMPLETE",
+  "reason": null,
+  "requests": [
+    {
+      "name": "identity",
+      "method": "GET",
+      "path": "/apis/user.openshift.io/v1/users/~",
+      "at_UTC": "2026-11-27T06:59:49.303592+00:00",
+      "http": 200
+    },
+    {
+      "name": "job-kaas-r2-native-client",
+      "method": "GET",
+      "path": "/apis/batch/v1/namespaces/kaas-demo/jobs/kaas-r2-native-client",
+      "at_UTC": "2026-11-27T06:59:49.897109+00:00",
+      "http": 200
+    },
+    {
+      "name": "job-kaas-r2-native-client-02e2e2f-r2",
+      "method": "GET",
+      "path": "/apis/batch/v1/namespaces/kaas-demo/jobs/kaas-r2-native-client-02e2e2f-r2",
+      "at_UTC": "2026-11-27T06:59:50.405009+00:00",
+      "http": 200
+    },
+    {
+      "name": "job-kaas-r2-native-client-351528d-r2",
+      "method": "GET",
+      "path": "/apis/batch/v1/namespaces/kaas-demo/jobs/kaas-r2-native-client-351528d-r2",
+      "at_UTC": "2026-11-27T06:59:50.911083+00:00",
+      "http": 200
+    },
+    {
+      "name": "job-kaas-r2-native-client-05a3f2d-r2",
+      "method": "GET",
+      "path": "/apis/batch/v1/namespaces/kaas-demo/jobs/kaas-r2-native-client-05a3f2d-r2",
+      "at_UTC": "2026-11-27T06:59:51.401679+00:00",
+      "http": 200
+    },
+    {
+      "name": "kafka",
+      "method": "GET",
+      "path": "/apis/kafka.strimzi.io/v1/namespaces/kaas-kafka/kafkas/kaas-dev",
+      "at_UTC": "2026-11-27T06:59:51.924694+00:00",
+      "http": 200
+    },
+    {
+      "name": "ingress-CA",
+      "method": "GET",
+      "path": "/api/v1/namespaces/openshift-config-managed/configmaps/default-ingress-cert",
+      "at_UTC": "2026-11-27T06:59:52.419991+00:00",
+      "http": 200
+    },
+    {
+      "name": "up",
+      "method": "GET",
+      "path": "/api/v1/query?query=up%7Bnamespace%3D%22kaas-kafka%22%2Ckaas_cluster%3D%22kaas-dev%22%2Ckaas_component%3D%22broker%22%7D",
+      "at_UTC": "2026-11-27T06:59:52.909477+00:00",
+      "http": 200
+    },
+    {
+      "name": "gauges",
+      "method": "GET",
+      "path": "/api/v1/query?query=%7B__name__%3D~%22kafka_server_replicamanager_%28underreplicatedpartitions%7Cunderminisrpartitioncount%7Cofflinereplicacount%29%7Ckafka_controller_kafkacontroller_%28activecontrollercount%7Cofflinepartitionscount%29%22%2Cnamespace%3D%22kaas-kafka%22%2Ckaas_cluster%3D%22kaas-dev%22%7D",
+      "at_UTC": "2026-11-27T06:59:53.430849+00:00",
+      "http": 200
+    },
+    {
+      "name": "timestamp",
+      "method": "GET",
+      "path": "/api/v1/query?query=timestamp%28up%7Bnamespace%3D%22kaas-kafka%22%2Ckaas_cluster%3D%22kaas-dev%22%2Ckaas_component%3D%22broker%22%7D%29",
+      "at_UTC": "2026-11-27T06:59:53.925489+00:00",
+      "http": 200
+    },
+    {
+      "name": "scrape-samples",
+      "method": "GET",
+      "path": "/api/v1/query?query=scrape_samples_scraped%7Bnamespace%3D%22kaas-kafka%22%2Ckaas_cluster%3D%22kaas-dev%22%2Ckaas_component%3D%22broker%22%7D",
+      "at_UTC": "2026-11-27T06:59:54.409437+00:00",
+      "http": 200
+    },
+    {
+      "name": "stability-min",
+      "method": "GET",
+      "path": "/api/v1/query?query=min_over_time%28up%7Bnamespace%3D%22kaas-kafka%22%2Ckaas_cluster%3D%22kaas-dev%22%2Ckaas_component%3D%22broker%22%7D%5B5m%5D%29",
+      "at_UTC": "2026-11-27T06:59:54.913910+00:00",
+      "http": 200
+    },
+    {
+      "name": "stability-count",
+      "method": "GET",
+      "path": "/api/v1/query?query=count_over_time%28up%7Bnamespace%3D%22kaas-kafka%22%2Ckaas_cluster%3D%22kaas-dev%22%2Ckaas_component%3D%22broker%22%7D%5B5m%5D%29",
+      "at_UTC": "2026-11-27T06:59:55.407162+00:00",
+      "http": 200
+    }
+  ],
+  "elapsed_seconds": 6.613,
+  "producer_consumer_tests_run": false,
+  "test_emails_sent": false,
+  "credentials_saved": false
+}

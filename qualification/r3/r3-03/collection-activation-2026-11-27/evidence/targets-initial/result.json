@@ -1,0 +1,17 @@
+{
+  "stage": "targets",
+  "status": "STOPPED",
+  "reason": "AttributeError",
+  "requests": {
+    "up": "up{namespace=\"kaas-kafka\",kaas_cluster=\"kaas-dev\",kaas_component=\"broker\"}",
+    "gauges": "{__name__=~\"kafka_server_replicamanager_(underreplicatedpartitions|underminisrpartitioncount|offlinereplicacount)|kafka_controller_kafkacontroller_(activecontrollercount|offlinepartitionscount)\",namespace=\"kaas-kafka\",kaas_cluster=\"kaas-dev\"}",
+    "timestamp": "timestamp(up{namespace=\"kaas-kafka\",kaas_cluster=\"kaas-dev\",kaas_component=\"broker\"})",
+    "scrape-samples": "scrape_samples_scraped{namespace=\"kaas-kafka\",kaas_cluster=\"kaas-dev\",kaas_component=\"broker\"}",
+    "stability-min": "min_over_time(up{namespace=\"kaas-kafka\",kaas_cluster=\"kaas-dev\",kaas_component=\"broker\"}[5m])",
+    "stability-count": "count_over_time(up{namespace=\"kaas-kafka\",kaas_cluster=\"kaas-dev\",kaas_component=\"broker\"}[5m])"
+  },
+  "elapsed_seconds": 3.556,
+  "producer_consumer_tests_run": false,
+  "test_emails_sent": false,
+  "credentials_saved": false
+}

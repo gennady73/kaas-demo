@@ -1,0 +1,800 @@
+{
+  "apiVersion": "monitoring.coreos.com/v1",
+  "kind": "Prometheus",
+  "metadata": {
+    "annotations": {
+      "operator.prometheus.io/controller-id": "openshift-user-workload-monitoring/prometheus-operator"
+    },
+    "creationTimestamp": "2026-11-27T06:46:42Z",
+    "generation": 1,
+    "labels": {
+      "app.kubernetes.io/component": "prometheus",
+      "app.kubernetes.io/instance": "user-workload",
+      "app.kubernetes.io/managed-by": "cluster-monitoring-operator",
+      "app.kubernetes.io/name": "prometheus",
+      "app.kubernetes.io/part-of": "openshift-monitoring",
+      "app.kubernetes.io/version": "3.7.3"
+    },
+    "managedFields": [
+      {
+        "apiVersion": "monitoring.coreos.com/v1",
+        "fieldsType": "FieldsV1",
+        "fieldsV1": {
+          "f:status": {
+            "f:availableReplicas": {},
+            "f:conditions": {
+              "k:{\"type\":\"Available\"}": {
+                ".": {},
+                "f:lastTransitionTime": {},
+                "f:message": {},
+                "f:observedGeneration": {},
+                "f:reason": {},
+                "f:status": {},
+                "f:type": {}
+              },
+              "k:{\"type\":\"Reconciled\"}": {
+                ".": {},
+                "f:lastTransitionTime": {},
+                "f:message": {},
+                "f:observedGeneration": {},
+                "f:reason": {},
+                "f:status": {},
+                "f:type": {}
+              }
+            },
+            "f:paused": {},
+            "f:replicas": {},
+            "f:selector": {},
+            "f:shardStatuses": {
+              "k:{\"shardID\":\"0\"}": {
+                ".": {},
+                "f:availableReplicas": {},
+                "f:replicas": {},
+                "f:shardID": {},
+                "f:unavailableReplicas": {},
+                "f:updatedReplicas": {}
+              }
+            },
+            "f:shards": {},
+            "f:unavailableReplicas": {},
+            "f:updatedReplicas": {}
+          }
+        },
+        "manager": "PrometheusOperator",
+        "operation": "Apply",
+        "subresource": "status",
+        "time": "2026-11-27T06:47:03Z"
+      },
+      {
+        "apiVersion": "monitoring.coreos.com/v1",
+        "fieldsType": "FieldsV1",
+        "fieldsV1": {
+          "f:metadata": {
+            "f:annotations": {
+              ".": {},
+              "f:operator.prometheus.io/controller-id": {}
+            },
+            "f:labels": {
+              ".": {},
+              "f:app.kubernetes.io/component": {},
+              "f:app.kubernetes.io/instance": {},
+              "f:app.kubernetes.io/managed-by": {},
+              "f:app.kubernetes.io/name": {},
+              "f:app.kubernetes.io/part-of": {},
+              "f:app.kubernetes.io/version": {}
+            }
+          },
+          "f:spec": {
+            ".": {},
+            "f:additionalArgs": {},
+            "f:affinity": {
+              ".": {},
+              "f:podAntiAffinity": {
+                ".": {},
+                "f:requiredDuringSchedulingIgnoredDuringExecution": {}
+              }
+            },
+            "f:alerting": {
+              ".": {},
+              "f:alertmanagers": {}
+            },
+            "f:arbitraryFSAccessThroughSMs": {
+              ".": {},
+              "f:deny": {}
+            },
+            "f:configMaps": {},
+            "f:containers": {},
+            "f:enableFeatures": {
+              ".": {},
+              "v:\"delayed-compaction\"": {},
+              "v:\"extra-scrape-metrics\"": {},
+              "v:\"use-uncached-io\"": {}
+            },
+            "f:enforcedNamespaceLabel": {},
+            "f:evaluationInterval": {},
+            "f:externalUrl": {},
+            "f:ignoreNamespaceSelectors": {},
+            "f:image": {},
+            "f:listenLocal": {},
+            "f:nodeSelector": {
+              ".": {},
+              "f:kubernetes.io/os": {}
+            },
+            "f:overrideHonorLabels": {},
+            "f:overrideHonorTimestamps": {},
+            "f:podMetadata": {
+              ".": {},
+              "f:annotations": {
+                ".": {},
+                "f:openshift.io/required-scc": {},
+                "f:target.workload.openshift.io/management": {}
+              },
+              "f:labels": {
+                ".": {},
+                "f:app.kubernetes.io/component": {},
+                "f:app.kubernetes.io/instance": {},
+                "f:app.kubernetes.io/name": {},
+                "f:app.kubernetes.io/part-of": {},
+                "f:app.kubernetes.io/version": {}
+              }
+            },
+            "f:podMonitorNamespaceSelector": {},
+            "f:podMonitorSelector": {},
+            "f:portName": {},
+            "f:priorityClassName": {},
+            "f:probeNamespaceSelector": {},
+            "f:probeSelector": {},
+            "f:replicas": {},
+            "f:resources": {
+              ".": {},
+              "f:requests": {
+                ".": {},
+                "f:cpu": {},
+                "f:memory": {}
+              }
+            },
+            "f:retention": {},
+            "f:ruleNamespaceSelector": {},
+            "f:ruleSelector": {},
+            "f:rules": {
+              ".": {},
+              "f:alert": {}
+            },
+            "f:scrapeClasses": {
+              ".": {},
+              "k:{\"name\":\"global-config\"}": {
+                ".": {},
+                "f:default": {},
+                "f:fallbackScrapeProtocol": {},
+                "f:name": {}
+              }
+            },
+            "f:scrapeInterval": {},
+            "f:secrets": {
+              ".": {},
+              "v:\"kube-rbac-proxy-federate\"": {},
+              "v:\"kube-rbac-proxy-metrics\"": {},
+              "v:\"prometheus-user-workload-thanos-sidecar-tls\"": {},
+              "v:\"prometheus-user-workload-tls\"": {}
+            },
+            "f:securityContext": {
+              ".": {},
+              "f:fsGroup": {},
+              "f:runAsNonRoot": {},
+              "f:runAsUser": {},
+              "f:seccompProfile": {
+                ".": {},
+                "f:type": {}
+              }
+            },
+            "f:serviceAccountName": {},
+            "f:serviceDiscoveryRole": {},
+            "f:serviceMonitorNamespaceSelector": {},
+            "f:serviceMonitorSelector": {},
+            "f:shards": {},
+            "f:storage": {
+              ".": {},
+              "f:volumeClaimTemplate": {
+                ".": {},
+                "f:metadata": {},
+                "f:spec": {
+                  ".": {},
+                  "f:accessModes": {},
+                  "f:resources": {
+                    ".": {},
+                    "f:requests": {
+                      ".": {},
+                      "f:storage": {}
+                    }
+                  },
+                  "f:storageClassName": {},
+                  "f:volumeMode": {}
+                },
+                "f:status": {}
+              }
+            },
+            "f:thanos": {
+              ".": {},
+              "f:blockSize": {},
+              "f:image": {},
+              "f:resources": {
+                ".": {},
+                "f:requests": {
+                  ".": {},
+                  "f:cpu": {},
+                  "f:memory": {}
+                }
+              },
+              "f:version": {}
+            },
+            "f:version": {},
+            "f:volumes": {}
+          }
+        },
+        "manager": "operator",
+        "operation": "Update",
+        "time": "2026-11-27T06:46:42Z"
+      }
+    ],
+    "name": "user-workload",
+    "namespace": "openshift-user-workload-monitoring",
+    "resourceVersion": "1240756",
+    "uid": "6aaed783-75cf-4685-aad0-683d60fc4f1f"
+  },
+  "spec": {
+    "additionalArgs": [
+      {
+        "name": "scrape.timestamp-tolerance",
+        "value": "15ms"
+      }
+    ],
+    "affinity": {
+      "podAntiAffinity": {
+        "requiredDuringSchedulingIgnoredDuringExecution": [
+          {
+            "labelSelector": {
+              "matchLabels": {
+                "app.kubernetes.io/component": "prometheus",
+                "app.kubernetes.io/instance": "user-workload",
+                "app.kubernetes.io/name": "prometheus",
+                "app.kubernetes.io/part-of": "openshift-monitoring"
+              }
+            },
+            "namespaces": [
+              "openshift-user-workload-monitoring"
+            ],
+            "topologyKey": "kubernetes.io/hostname"
+          }
+        ]
+      }
+    },
+    "alerting": {
+      "alertmanagers": [
+        {
+          "apiVersion": "v2",
+          "bearerTokenFile": "/var/run/secrets/kubernetes.io/serviceaccount/token",
+          "name": "alertmanager-main",
+          "namespace": "openshift-monitoring",
+          "port": "web",
+          "scheme": "https",
+          "tlsConfig": {
+            "ca": {},
+            "caFile": "/etc/prometheus/configmaps/serving-certs-ca-bundle/service-ca.crt",
+            "cert": {},
+            "serverName": "alertmanager-main.openshift-monitoring.svc"
+          }
+        }
+      ]
+    },
+    "arbitraryFSAccessThroughSMs": {
+      "deny": true
+    },
+    "configMaps": [
+      "serving-certs-ca-bundle",
+      "metrics-client-ca"
+    ],
+    "containers": [
+      {
+        "args": [
+          "--secure-listen-address=0.0.0.0:9092",
+          "--upstream=http://127.0.0.1:9090",
+          "--allow-paths=/federate",
+          "--config-file=/etc/kube-rbac-proxy/config.yaml",
+          "--tls-cert-file=/etc/tls/private/tls.crt",
+          "--tls-private-key-file=/etc/tls/private/tls.key",
+          "--client-ca-file=/etc/tls/client/client-ca.crt",
+          "--tls-cipher-suites=TLS_AES_128_GCM_SHA256,TLS_AES_256_GCM_SHA384,TLS_CHACHA20_POLY1305_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256",
+          "--tls-min-version=VersionTLS12"
+        ],
+        "image": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:9081bd341e8efa55d05b292caf1785a4f0d5931099ed4cc489a57840331fb869",
+        "name": "kube-rbac-proxy-federate",
+        "ports": [
+          {
+            "containerPort": 9092,
+            "name": "federate",
+            "protocol": "TCP"
+          }
+        ],
+        "resources": {
+          "requests": {
+            "cpu": "1m",
+            "memory": "10Mi"
+          }
+        },
+        "securityContext": {
+          "allowPrivilegeEscalation": false,
+          "capabilities": {
+            "drop": [
+              "ALL"
+            ]
+          }
+        },
+        "terminationMessagePolicy": "FallbackToLogsOnError",
+        "volumeMounts": [
+          {
+            "mountPath": "/etc/tls/private",
+            "name": "secret-prometheus-user-workload-tls"
+          },
+          {
+            "mountPath": "/etc/tls/client",
+            "name": "configmap-metrics-client-ca",
+            "readOnly": true
+          },
+          {
+            "mountPath": "/etc/kube-rbac-proxy",
+            "name": "secret-kube-rbac-proxy-federate"
+          }
+        ]
+      },
+      {
+        "args": [
+          "--secure-listen-address=0.0.0.0:9091",
+          "--upstream=http://127.0.0.1:9090",
+          "--allow-paths=/metrics",
+          "--config-file=/etc/kube-rbac-proxy/config.yaml",
+          "--tls-cert-file=/etc/tls/private/tls.crt",
+          "--tls-private-key-file=/etc/tls/private/tls.key",
+          "--client-ca-file=/etc/tls/client/client-ca.crt",
+          "--tls-cipher-suites=TLS_AES_128_GCM_SHA256,TLS_AES_256_GCM_SHA384,TLS_CHACHA20_POLY1305_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256",
+          "--tls-min-version=VersionTLS12"
+        ],
+        "image": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:9081bd341e8efa55d05b292caf1785a4f0d5931099ed4cc489a57840331fb869",
+        "name": "kube-rbac-proxy-metrics",
+        "ports": [
+          {
+            "containerPort": 9091,
+            "name": "metrics",
+            "protocol": "TCP"
+          }
+        ],
+        "resources": {
+          "requests": {
+            "cpu": "1m",
+            "memory": "10Mi"
+          }
+        },
+        "securityContext": {
+          "allowPrivilegeEscalation": false,
+          "capabilities": {
+            "drop": [
+              "ALL"
+            ]
+          }
+        },
+        "terminationMessagePolicy": "FallbackToLogsOnError",
+        "volumeMounts": [
+          {
+            "mountPath": "/etc/tls/private",
+            "name": "secret-prometheus-user-workload-tls"
+          },
+          {
+            "mountPath": "/etc/tls/client",
+            "name": "configmap-metrics-client-ca",
+            "readOnly": true
+          },
+          {
+            "mountPath": "/etc/kube-rbac-proxy",
+            "name": "secret-kube-rbac-proxy-metrics"
+          }
+        ]
+      },
+      {
+        "args": [
+          "--secure-listen-address=[$(POD_IP)]:10903",
+          "--upstream=http://127.0.0.1:10902",
+          "--tls-cert-file=/etc/tls/private/tls.crt",
+          "--tls-private-key-file=/etc/tls/private/tls.key",
+          "--client-ca-file=/etc/tls/client/client-ca.crt",
+          "--tls-cipher-suites=TLS_AES_128_GCM_SHA256,TLS_AES_256_GCM_SHA384,TLS_CHACHA20_POLY1305_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256",
+          "--allow-paths=/metrics",
+          "--config-file=/etc/kube-rbac-proxy/config.yaml",
+          "--tls-min-version=VersionTLS12"
+        ],
+        "env": [
+          {
+            "name": "POD_IP",
+            "valueFrom": {
+              "fieldRef": {
+                "fieldPath": "status.podIP"
+              }
+            }
+          }
+        ],
+        "image": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:9081bd341e8efa55d05b292caf1785a4f0d5931099ed4cc489a57840331fb869",
+        "name": "kube-rbac-proxy-thanos",
+        "ports": [
+          {
+            "containerPort": 10903,
+            "name": "thanos-proxy",
+            "protocol": "TCP"
+          }
+        ],
+        "resources": {
+          "requests": {
+            "cpu": "1m",
+            "memory": "10Mi"
+          }
+        },
+        "securityContext": {
+          "allowPrivilegeEscalation": false,
+          "capabilities": {
+            "drop": [
+              "ALL"
+            ]
+          }
+        },
+        "terminationMessagePolicy": "FallbackToLogsOnError",
+        "volumeMounts": [
+          {
+            "mountPath": "/etc/tls/private",
+            "name": "secret-prometheus-user-workload-thanos-sidecar-tls"
+          },
+          {
+            "mountPath": "/etc/tls/client",
+            "name": "configmap-metrics-client-ca",
+            "readOnly": true
+          },
+          {
+            "mountPath": "/etc/kube-rbac-proxy",
+            "name": "secret-kube-rbac-proxy-metrics"
+          }
+        ]
+      },
+      {
+        "args": [
+          "sidecar",
+          "--prometheus.url=http://localhost:9090/",
+          "--tsdb.path=/prometheus",
+          "--http-address=127.0.0.1:10902",
+          "--grpc-server-tls-cert=/etc/tls/grpc/server.crt",
+          "--grpc-server-tls-key=/etc/tls/grpc/server.key",
+          "--grpc-server-tls-client-ca=/etc/tls/grpc/ca.crt"
+        ],
+        "name": "thanos-sidecar",
+        "resources": {
+          "requests": {
+            "cpu": "1m",
+            "memory": "17Mi"
+          }
+        },
+        "securityContext": {
+          "allowPrivilegeEscalation": false,
+          "capabilities": {
+            "drop": [
+              "ALL"
+            ]
+          }
+        },
+        "terminationMessagePolicy": "FallbackToLogsOnError",
+        "volumeMounts": [
+          {
+            "mountPath": "/etc/tls/grpc",
+            "name": "secret-grpc-tls"
+          }
+        ]
+      },
+      {
+        "env": [
+          {
+            "name": "HTTP_PROXY"
+          },
+          {
+            "name": "HTTPS_PROXY"
+          },
+          {
+            "name": "NO_PROXY"
+          }
+        ],
+        "name": "prometheus",
+        "resources": {},
+        "startupProbe": {
+          "failureThreshold": 240,
+          "periodSeconds": 15
+        },
+        "terminationMessagePolicy": "FallbackToLogsOnError",
+        "volumeMounts": [
+          {
+            "mountPath": "/etc/pki/ca-trust/extracted/pem/",
+            "name": "prometheus-user-workload-trusted-ca-bundle"
+          }
+        ]
+      }
+    ],
+    "enableFeatures": [
+      "extra-scrape-metrics",
+      "delayed-compaction",
+      "use-uncached-io"
+    ],
+    "enforcedNamespaceLabel": "namespace",
+    "evaluationInterval": "30s",
+    "externalUrl": "https://console-openshift-console.apps.ocp.rddgh.sandbox3088.opentlc.com/monitoring",
+    "ignoreNamespaceSelectors": true,
+    "image": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:cb9e2117e3ae6731487ac096a581fa36c59b25ef85b8cb3de6ac696ec90dab67",
+    "listenLocal": true,
+    "nodeSelector": {
+      "kubernetes.io/os": "linux"
+    },
+    "overrideHonorLabels": true,
+    "overrideHonorTimestamps": true,
+    "podMetadata": {
+      "annotations": {
+        "openshift.io/required-scc": "nonroot-v2",
+        "target.workload.openshift.io/management": "{\"effect\": \"PreferredDuringScheduling\"}"
+      },
+      "labels": {
+        "app.kubernetes.io/component": "prometheus",
+        "app.kubernetes.io/instance": "user-workload",
+        "app.kubernetes.io/name": "prometheus",
+        "app.kubernetes.io/part-of": "openshift-monitoring",
+        "app.kubernetes.io/version": "3.7.3"
+      }
+    },
+    "podMonitorNamespaceSelector": {
+      "matchExpressions": [
+        {
+          "key": "openshift.io/cluster-monitoring",
+          "operator": "NotIn",
+          "values": [
+            "true"
+          ]
+        },
+        {
+          "key": "openshift.io/user-monitoring",
+          "operator": "NotIn",
+          "values": [
+            "false"
+          ]
+        }
+      ]
+    },
+    "podMonitorSelector": {
+      "matchExpressions": [
+        {
+          "key": "openshift.io/user-monitoring",
+          "operator": "NotIn",
+          "values": [
+            "false"
+          ]
+        }
+      ]
+    },
+    "portName": "web",
+    "priorityClassName": "openshift-user-critical",
+    "probeNamespaceSelector": {
+      "matchExpressions": [
+        {
+          "key": "openshift.io/cluster-monitoring",
+          "operator": "NotIn",
+          "values": [
+            "true"
+          ]
+        },
+        {
+          "key": "openshift.io/user-monitoring",
+          "operator": "NotIn",
+          "values": [
+            "false"
+          ]
+        }
+      ]
+    },
+    "probeSelector": {
+      "matchExpressions": [
+        {
+          "key": "openshift.io/user-monitoring",
+          "operator": "NotIn",
+          "values": [
+            "false"
+          ]
+        }
+      ]
+    },
+    "replicas": 2,
+    "resources": {
+      "requests": {
+        "cpu": "250m",
+        "memory": "2Gi"
+      }
+    },
+    "retention": "24h",
+    "ruleNamespaceSelector": {
+      "matchExpressions": [
+        {
+          "key": "openshift.io/cluster-monitoring",
+          "operator": "NotIn",
+          "values": [
+            "true"
+          ]
+        },
+        {
+          "key": "openshift.io/user-monitoring",
+          "operator": "NotIn",
+          "values": [
+            "false"
+          ]
+        }
+      ]
+    },
+    "ruleSelector": {
+      "matchExpressions": [
+        {
+          "key": "openshift.io/user-monitoring",
+          "operator": "NotIn",
+          "values": [
+            "false"
+          ]
+        },
+        {
+          "key": "openshift.io/prometheus-rule-evaluation-scope",
+          "operator": "In",
+          "values": [
+            "leaf-prometheus"
+          ]
+        }
+      ]
+    },
+    "rules": {
+      "alert": {}
+    },
+    "scrapeClasses": [
+      {
+        "default": true,
+        "fallbackScrapeProtocol": "PrometheusText1.0.0",
+        "name": "global-config"
+      }
+    ],
+    "scrapeInterval": "30s",
+    "secrets": [
+      "prometheus-user-workload-tls",
+      "prometheus-user-workload-thanos-sidecar-tls",
+      "kube-rbac-proxy-metrics",
+      "kube-rbac-proxy-federate"
+    ],
+    "securityContext": {
+      "fsGroup": 65534,
+      "runAsNonRoot": true,
+      "runAsUser": 65534,
+      "seccompProfile": {
+        "type": "RuntimeDefault"
+      }
+    },
+    "serviceAccountName": "prometheus-user-workload",
+    "serviceDiscoveryRole": "Endpoints",
+    "serviceMonitorNamespaceSelector": {
+      "matchExpressions": [
+        {
+          "key": "openshift.io/cluster-monitoring",
+          "operator": "NotIn",
+          "values": [
+            "true"
+          ]
+        },
+        {
+          "key": "openshift.io/user-monitoring",
+          "operator": "NotIn",
+          "values": [
+            "false"
+          ]
+        }
+      ]
+    },
+    "serviceMonitorSelector": {
+      "matchExpressions": [
+        {
+          "key": "openshift.io/user-monitoring",
+          "operator": "NotIn",
+          "values": [
+            "false"
+          ]
+        }
+      ]
+    },
+    "shards": 1,
+    "storage": {
+      "volumeClaimTemplate": {
+        "metadata": {},
+        "spec": {
+          "accessModes": [
+            "ReadWriteOnce"
+          ],
+          "resources": {
+            "requests": {
+              "storage": "10Gi"
+            }
+          },
+          "storageClassName": "gp3-csi",
+          "volumeMode": "Filesystem"
+        },
+        "status": {}
+      }
+    },
+    "thanos": {
+      "blockSize": "2h",
+      "image": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:f1ae57b261f4207628f0b29d9c48e0605ae9114e807ed52845f98297a92172f5",
+      "resources": {
+        "requests": {
+          "cpu": "1m",
+          "memory": "100Mi"
+        }
+      },
+      "version": "0.39.2"
+    },
+    "version": "3.7.3",
+    "volumes": [
+      {
+        "configMap": {
+          "items": [
+            {
+              "key": "ca-bundle.crt",
+              "path": "tls-ca-bundle.pem"
+            }
+          ],
+          "name": "prometheus-user-workload-trusted-ca-bundle"
+        },
+        "name": "prometheus-user-workload-trusted-ca-bundle"
+      },
+      {
+        "name": "secret-grpc-tls",
+        "secret": {
+          "secretName": "prometheus-user-workload-grpc-tls-9lmr8hbaikrpl"
+        }
+      }
+    ]
+  },
+  "status": {
+    "availableReplicas": 0,
+    "conditions": [
+      {
+        "lastTransitionTime": "2026-11-27T06:47:03Z",
+        "message": "shard 0: pod prometheus-user-workload-0: containers with unready status: [prometheus config-reloader thanos-sidecar kube-rbac-proxy-federate kube-rbac-proxy-metrics kube-rbac-proxy-thanos]\nshard 0: pod prometheus-user-workload-1: containers with unready status: [prometheus]",
+        "observedGeneration": 1,
+        "reason": "NoPodReady",
+        "status": "False",
+        "type": "Available"
+      },
+      {
+        "lastTransitionTime": "2026-11-27T06:47:03Z",
+        "message": "",
+        "observedGeneration": 1,
+        "reason": "",
+        "status": "True",
+        "type": "Reconciled"
+      }
+    ],
+    "paused": false,
+    "replicas": 2,
+    "selector": "app.kubernetes.io/instance=user-workload,app.kubernetes.io/managed-by=prometheus-operator,app.kubernetes.io/name=prometheus,operator.prometheus.io/name=user-workload,prometheus=user-workload",
+    "shardStatuses": [
+      {
+        "availableReplicas": 0,
+        "replicas": 2,
+        "shardID": "0",
+        "unavailableReplicas": 2,
+        "updatedReplicas": 2
+      }
+    ],
+    "shards": 1,
+    "unavailableReplicas": 2,
+    "updatedReplicas": 2
+  }
+}

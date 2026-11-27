@@ -1,0 +1,124 @@
+"""Explicit, serial collection-only activation actions; no Secret/Job writes or tests."""
+import argparse,datetime,getpass,json,ssl,time,urllib.request,urllib.error,urllib.parse
+from pathlib import Path
+import yaml
+ROOT=Path(__file__).resolve().parents[3];HERE=Path(__file__).resolve().parent;G=ROOT/'kaas-demo'
+PIN='5610bfa484b13599e3218b1bcdb366769deba13d';BASE='https://api.ocp.rddgh.sandbox3088.opentlc.com:6443'
+JOBS=['kaas-r2-native-client','kaas-r2-native-client-02e2e2f-r2','kaas-r2-native-client-351528d-r2','kaas-r2-native-client-05a3f2d-r2']
+class Stop(Exception):pass
+class NoRedirect(urllib.request.HTTPRedirectHandler):
+ def redirect_request(self,*a,**k):return None
+
+def main():
+ p=argparse.ArgumentParser();p.add_argument('stage',choices=['inspect','bootstrap','sync-uwm-config','sync-enable','uwm-status','sync-jmx','sync-podmonitor','sync-kafka','kafka-status','targets']);p.add_argument('--label',required=True);p.add_argument('--kafka-pin');a=p.parse_args()
+ out=HERE/a.label
+ if out.exists():raise SystemExit('Fresh evidence directory required')
+ out.mkdir();token=getpass.getpass('Sandbox token (RAM only): ').strip();start=time.monotonic();queries=[]
+ ctx=ssl.create_default_context(cafile=str(ROOT/'config/environments/certificates/ocp-rddgh-api-ca.crt'));op=urllib.request.build_opener(urllib.request.ProxyHandler({}),urllib.request.HTTPSHandler(context=ctx),NoRedirect())
+ def save(n,d):
+  s=json.dumps(d,indent=2)+'\n'
+  if token and token in s:raise Stop('credential_guard')
+  (out/(n+'.json')).write_text(s)
+ def req(n,path,method='GET',data=None,optional=False,host=BASE):
+  if '/secrets' in path or '/jobs' in path and method!='GET':raise Stop('Secret_Job_guard')
+  if method not in ['GET','POST','PATCH']:raise Stop('method_guard')
+  if method!='GET' and not any(x in path for x in ['/namespaces/kaas-kafka/roles','/namespaces/kaas-kafka/rolebindings','/namespaces/openshift-gitops/appprojects','/namespaces/openshift-gitops/applications','/subjectaccessreviews']):raise Stop('mutation_allowlist')
+  if len(queries)>=65 or time.monotonic()-start>300:raise Stop('budget')
+  h={'Authorization':'Bearer '+token,'Accept':'application/json'}
+  if data is not None:h['Content-Type']='application/merge-patch+json' if method=='PATCH' else 'application/json'
+  q={'name':n,'method':method,'path':path,'at_UTC':datetime.datetime.now(datetime.timezone.utc).isoformat()};queries.append(q)
+  try:
+   with op.open(urllib.request.Request(host+path,headers=h,method=method,data=json.dumps(data).encode() if data is not None else None),timeout=20) as r:b=r.read(8388609);q['http']=r.status
+   if len(b)>8388608:raise Stop('body_cap')
+   d=json.loads(b)
+   if d.get('metadata',{}).get('continue'):raise Stop('pagination')
+   save(n,d);return d
+  except urllib.error.HTTPError as e:
+   q['http']=e.code;save(n,{'http':e.code,'body':e.read(12000).decode(errors='replace')})
+   if optional and e.code==404:return None
+   raise Stop(n+'_http_'+str(e.code)) from None
+ def app(name,n='app'):
+  return req(n,'/apis/argoproj.io/v1alpha1/namespaces/openshift-gitops/applications/'+name)
+ def ensure_app(name,pin):
+  d=app(name,'app-before');s=d['spec']
+  if s['source']['targetRevision']!=pin or s.get('syncPolicy',{}).get('automated') is not None or d.get('operation'):raise Stop('Application_pin_manual_or_operation_guard')
+  return d
+ def sync(name,pin,resources):
+  d=ensure_app(name,pin)
+  return req('sync-request','/apis/argoproj.io/v1alpha1/namespaces/openshift-gitops/applications/'+name,'PATCH',{'metadata':{'resourceVersion':d['metadata']['resourceVersion']},'operation':{'initiatedBy':{'username':'admin'},'sync':{'revision':pin,'prune':False,'syncStrategy':{'apply':{'force':False}},'resources':resources}}})
+ def ready(d):return any(c.get('type')=='Ready' and c.get('status')=='True' for c in d.get('status',{}).get('conditions',[])) and d.get('status',{}).get('observedGeneration')==d['metadata'].get('generation')
+ try:
+  identity=req('identity','/apis/user.openshift.io/v1/users/~')
+  if identity['metadata']['name']!='admin':raise Stop('identity')
+  for name in JOBS:
+   d=req('job-'+name,'/apis/batch/v1/namespaces/kaas-demo/jobs/'+name)
+   if d['spec'].get('suspend') is not True or d.get('status',{}).get('active',0):raise Stop('Job_state')
+  kafka=req('kafka','/apis/kafka.strimzi.io/v1/namespaces/kaas-kafka/kafkas/kaas-dev')
+  if a.stage not in ['kafka-status','targets'] and not ready(kafka):raise Stop('Kafka_not_Ready_current_generation')
+  if a.stage=='inspect':
+   for name in ['kaas-demo-kafka','kaas-demo-monitoring-platform','kaas-demo-observability']:
+    req('app-'+name,'/apis/argoproj.io/v1alpha1/namespaces/openshift-gitops/applications/'+name,optional=True)
+   req('brokers','/api/v1/namespaces/kaas-kafka/pods?labelSelector=strimzi.io%2Fname%3Dkaas-dev-kafka&limit=20')
+   req('kafka-topics','/apis/kafka.strimzi.io/v1/namespaces/kaas-kafka/kafkatopics?limit=100')
+   req('broker-networkpolicies','/apis/networking.k8s.io/v1/namespaces/kaas-kafka/networkpolicies?limit=100')
+  elif a.stage=='bootstrap':
+   P=G/'gitops/bootstrap/r3-03-collection-only';objects=list(yaml.safe_load_all((P/'podmonitor-controller-rbac.yaml').read_text()))+list(yaml.safe_load_all((P/'registration.yaml').read_text()));fresh=[]
+   for i,d in enumerate(objects):
+    kind=d['kind'];ns=d['metadata']['namespace'];name=d['metadata']['name']
+    group,plural={'Role':('rbac.authorization.k8s.io/v1','roles'),'RoleBinding':('rbac.authorization.k8s.io/v1','rolebindings'),'AppProject':('argoproj.io/v1alpha1','appprojects'),'Application':('argoproj.io/v1alpha1','applications')}[kind];path='/apis/'+group+'/namespaces/'+ns+'/'+plural
+    existing=req('existing-'+str(i),path+'/'+name,optional=True)
+    if existing is not None:raise Stop('Unexpected_existing_bootstrap_resource_'+name)
+    req('dryrun-'+str(i),path+'?dryRun=All','POST',d);fresh.append((path,d))
+   for i,(path,d) in enumerate(fresh):req('created-'+str(i),path,'POST',d)
+   for verb in ['create','patch']:
+    x={'apiVersion':'authorization.k8s.io/v1','kind':'SubjectAccessReview','spec':{'user':'system:serviceaccount:openshift-gitops:openshift-gitops-argocd-application-controller','groups':['system:authenticated','system:serviceaccounts','system:serviceaccounts:openshift-gitops'],'resourceAttributes':{'namespace':'kaas-kafka','group':'monitoring.coreos.com','resource':'podmonitors','verb':verb,'name':'kaas-dev-broker-metrics'}}}
+    d=req('permission-'+verb,'/apis/authorization.k8s.io/v1/subjectaccessreviews','POST',x)
+    if d['status'].get('allowed') is not True:raise Stop('PodMonitor_permission_denied_after_grant')
+  elif a.stage in ['sync-uwm-config','sync-enable']:
+   name='user-workload-monitoring-config' if a.stage=='sync-uwm-config' else 'cluster-monitoring-config';ns='openshift-user-workload-monitoring' if a.stage=='sync-uwm-config' else 'openshift-monitoring'
+   if a.stage=='sync-enable':
+    actual=req('UWM-config-before-enable','/api/v1/namespaces/openshift-user-workload-monitoring/configmaps/user-workload-monitoring-config');desired=yaml.safe_load((G/'qualification/r3/r3-03/activation-execution/candidate/platform/user-workload-monitoring-config.yaml.disabled').read_text())
+    if actual['data']!=desired['data']:raise Stop('UWM_config_mismatch')
+   existing=req('enablement-destination-before','/api/v1/namespaces/'+ns+'/configmaps/'+name,optional=True)
+   if existing:raise Stop('Unexpected_existing_monitoring_config')
+   sync('kaas-demo-monitoring-platform',PIN,[{'group':'','kind':'ConfigMap','namespace':ns,'name':name}])
+  elif a.stage=='uwm-status':
+   app('kaas-demo-monitoring-platform')
+   for plural in ['pods','persistentvolumeclaims']:
+    req(plural,'/api/v1/namespaces/openshift-user-workload-monitoring/'+plural+'?limit=100')
+   for group,plural,name in [('monitoring.coreos.com/v1','prometheuses','user-workload'),('monitoring.coreos.com/v1','thanosrulers','user-workload'),('apps/v1','deployments','prometheus-operator')]:
+    req(plural,'/apis/'+group+'/namespaces/openshift-user-workload-monitoring/'+plural+'/'+name,optional=True)
+   req('monitoring-clusteroperator','/apis/config.openshift.io/v1/clusteroperators/monitoring')
+  elif a.stage in ['sync-jmx','sync-podmonitor']:
+   kind='ConfigMap' if a.stage=='sync-jmx' else 'PodMonitor';name='kaas-dev-r3-jmx-metrics' if kind=='ConfigMap' else 'kaas-dev-broker-metrics'
+   sync('kaas-demo-observability',PIN,[{'group':'' if kind=='ConfigMap' else 'monitoring.coreos.com','kind':kind,'namespace':'kaas-kafka','name':name}])
+  elif a.stage=='sync-kafka':
+   pods=req('UWM-pods-before-broker-change','/api/v1/namespaces/openshift-user-workload-monitoring/pods?limit=100')['items']
+   if len(pods)!=5 or not all(any(c.get('type')=='Ready' and c.get('status')=='True' for c in x['status'].get('conditions',[])) for x in pods):raise Stop('UWM_not_fully_ready')
+   cm=req('JMX-config-before-broker-change','/api/v1/namespaces/kaas-kafka/configmaps/kaas-dev-r3-jmx-metrics')
+   wanted=yaml.safe_load((G/'qualification/r3/r3-03/activation-execution/candidate/broker-scrape/metrics-configmap.yaml.disabled').read_text())
+   if cm['data']!=wanted['data']:raise Stop('JMX_config_mismatch')
+   health=json.loads((HERE/'broker-health-before/result.json').read_text())
+   if health['exit_code'] or (datetime.datetime.now(datetime.timezone.utc)-datetime.datetime.fromisoformat(health['at_UTC'])).total_seconds()>600:raise Stop('ISR_baseline_stale_or_failed')
+   if not a.kafka_pin or len(a.kafka_pin)!=40:raise Stop('exact_Kafka_source_pin_required')
+   d=app('kaas-demo-kafka','Kafka-App-before');old=d['spec']['source']['targetRevision']
+   if d['spec'].get('syncPolicy',{}).get('automated') or d.get('operation'):raise Stop('Kafka_App_manual_idle_guard')
+   expected=json.loads((HERE/'inspect-resumed/app-kaas-demo-kafka.json').read_text())['spec']['source']
+   if d['spec']['source']!=expected:raise Stop('Kafka_App_concurrent_source_change')
+   req('Kafka-App-source-pinned','/apis/argoproj.io/v1alpha1/namespaces/openshift-gitops/applications/kaas-demo-kafka','PATCH',{'metadata':{'resourceVersion':d['metadata']['resourceVersion']},'spec':{'source':{'targetRevision':a.kafka_pin}}})
+   sync('kaas-demo-kafka',a.kafka_pin,[{'group':'kafka.strimzi.io','kind':'Kafka','namespace':'kaas-kafka','name':'kaas-dev'}])
+  elif a.stage=='kafka-status':
+   app('kaas-demo-kafka');app('kaas-demo-observability','observability-app')
+   req('brokers','/api/v1/namespaces/kaas-kafka/pods?labelSelector=strimzi.io%2Fname%3Dkaas-dev-kafka&limit=20')
+  elif a.stage=='targets':
+   ca=req('ingress-CA','/api/v1/namespaces/openshift-config-managed/configmaps/default-ingress-cert')
+   for v in ca.get('data',{}).values():
+    if '-----BEGIN CERTIFICATE-----' in v:ctx.load_verify_locations(cadata=v)
+   metric_queries={'up':'up{namespace="kaas-kafka",kaas_cluster="kaas-dev",kaas_component="broker"}','gauges':'{__name__=~"kafka_server_replicamanager_(underreplicatedpartitions|underminisrpartitioncount|offlinereplicacount)|kafka_controller_kafkacontroller_(activecontrollercount|offlinepartitionscount)",namespace="kaas-kafka",kaas_cluster="kaas-dev"}'}
+   metric_queries.update({'timestamp':'timestamp(up{namespace="kaas-kafka",kaas_cluster="kaas-dev",kaas_component="broker"})','scrape-samples':'scrape_samples_scraped{namespace="kaas-kafka",kaas_cluster="kaas-dev",kaas_component="broker"}','stability-min':'min_over_time(up{namespace="kaas-kafka",kaas_cluster="kaas-dev",kaas_component="broker"}[5m])','stability-count':'count_over_time(up{namespace="kaas-kafka",kaas_cluster="kaas-dev",kaas_component="broker"}[5m])'})
+   for n,q in metric_queries.items():req(n,'/api/v1/query?'+urllib.parse.urlencode({'query':q}),host='https://thanos-querier-openshift-monitoring.apps.ocp.rddgh.sandbox3088.opentlc.com')
+  status='COMPLETE';reason=None
+ except Exception as e:status='STOPPED';reason=str(e) if isinstance(e,Stop) else type(e).__name__
+ finally:
+  token='';save('result',{'stage':a.stage,'status':status,'reason':reason,'requests':queries,'elapsed_seconds':round(time.monotonic()-start,3),'producer_consumer_tests_run':False,'test_emails_sent':False,'credentials_saved':False});print(json.dumps({'stage':a.stage,'status':status,'reason':reason,'requests':len(queries)}))
+if __name__=='__main__':main()

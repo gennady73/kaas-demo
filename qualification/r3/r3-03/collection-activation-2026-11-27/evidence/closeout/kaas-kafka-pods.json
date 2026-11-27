@@ -1,0 +1,3435 @@
+{
+  "kind": "PodList",
+  "apiVersion": "v1",
+  "metadata": {
+    "resourceVersion": "1244776"
+  },
+  "items": [
+    {
+      "metadata": {
+        "name": "kaas-dev-dual-role-0",
+        "namespace": "kaas-kafka",
+        "uid": "ee56f20f-baa1-4016-b77b-a0dc827c6034",
+        "resourceVersion": "1242777",
+        "generation": 1,
+        "creationTimestamp": "2026-11-27T06:50:51Z",
+        "labels": {
+          "app.kubernetes.io/instance": "kaas-dev",
+          "app.kubernetes.io/managed-by": "strimzi-cluster-operator",
+          "app.kubernetes.io/name": "kafka",
+          "app.kubernetes.io/part-of": "strimzi-kaas-dev",
+          "com.company": "Red_Hat",
+          "rht.comp": "AMQ_Streams",
+          "rht.comp_ver": "3.2.1",
+          "rht.prod_name": "Red_Hat_Application_Foundations",
+          "rht.prod_ver": "2026.Q3",
+          "rht.subcomp": "kafka-broker",
+          "rht.subcomp_t": "application",
+          "strimzi.io/broker-role": "true",
+          "strimzi.io/cluster": "kaas-dev",
+          "strimzi.io/component-type": "kafka",
+          "strimzi.io/controller": "strimzipodset",
+          "strimzi.io/controller-name": "kaas-dev-dual-role",
+          "strimzi.io/controller-role": "true",
+          "strimzi.io/kind": "Kafka",
+          "strimzi.io/name": "kaas-dev-kafka",
+          "strimzi.io/pod-name": "kaas-dev-dual-role-0",
+          "strimzi.io/pool-name": "dual-role"
+        },
+        "annotations": {
+          "k8s.ovn.org/pod-networks": "{\"default\":{\"ip_addresses\":[\"10.131.0.11/23\"],\"mac_address\":\"0a:58:0a:83:00:0b\",\"gateway_ips\":[\"10.131.0.1\"],\"routes\":[{\"dest\":\"10.128.0.0/14\",\"nextHop\":\"10.131.0.1\"},{\"dest\":\"172.30.0.0/16\",\"nextHop\":\"10.131.0.1\"},{\"dest\":\"169.254.0.5/32\",\"nextHop\":\"10.131.0.1\"},{\"dest\":\"100.64.0.0/16\",\"nextHop\":\"10.131.0.1\"}],\"ip_address\":\"10.131.0.11/23\",\"gateway_ip\":\"10.131.0.1\",\"role\":\"primary\"}}",
+          "k8s.v1.cni.cncf.io/network-status": "[{\n    \"name\": \"ovn-kubernetes\",\n    \"interface\": \"eth0\",\n    \"ips\": [\n        \"10.131.0.11\"\n    ],\n    \"mac\": \"0a:58:0a:83:00:0b\",\n    \"default\": true,\n    \"dns\": {}\n}]",
+          "openshift.io/scc": "restricted-v2",
+          "seccomp.security.alpha.kubernetes.io/pod": "runtime/default",
+          "security.openshift.io/validated-scc-subject-type": "user",
+          "strimzi.io/clients-ca-cert-generation": "0",
+          "strimzi.io/cluster-ca-cert-generation": "0",
+          "strimzi.io/cluster-ca-key-generation": "0",
+          "strimzi.io/configuration-hash": "2975ac88",
+          "strimzi.io/kafka-version": "4.2.0",
+          "strimzi.io/revision": "f7b0c6f5",
+          "strimzi.io/server-cert-hash": "1c9168a655b407055566129de7a839d84eb0dae0"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "core.strimzi.io/v1beta2",
+            "kind": "StrimziPodSet",
+            "name": "kaas-dev-dual-role",
+            "uid": "a7ddec1d-6207-43b4-8e03-dc63272798cc",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ],
+        "managedFields": [
+          {
+            "manager": "ip-10-0-29-133",
+            "operation": "Update",
+            "apiVersion": "v1",
+            "time": "2026-11-27T06:50:51Z",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:metadata": {
+                "f:annotations": {
+                  "f:k8s.ovn.org/pod-networks": {}
+                }
+              }
+            },
+            "subresource": "status"
+          },
+          {
+            "manager": "strimzi-cluster-operator",
+            "operation": "Update",
+            "apiVersion": "v1",
+            "time": "2026-11-27T06:50:51Z",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:metadata": {
+                "f:annotations": {
+                  ".": {},
+                  "f:strimzi.io/clients-ca-cert-generation": {},
+                  "f:strimzi.io/cluster-ca-cert-generation": {},
+                  "f:strimzi.io/cluster-ca-key-generation": {},
+                  "f:strimzi.io/configuration-hash": {},
+                  "f:strimzi.io/kafka-version": {},
+                  "f:strimzi.io/revision": {},
+                  "f:strimzi.io/server-cert-hash": {}
+                },
+                "f:labels": {
+                  ".": {},
+                  "f:app.kubernetes.io/instance": {},
+                  "f:app.kubernetes.io/managed-by": {},
+                  "f:app.kubernetes.io/name": {},
+                  "f:app.kubernetes.io/part-of": {},
+                  "f:com.company": {},
+                  "f:rht.comp": {},
+                  "f:rht.comp_ver": {},
+                  "f:rht.prod_name": {},
+                  "f:rht.prod_ver": {},
+                  "f:rht.subcomp": {},
+                  "f:rht.subcomp_t": {},
+                  "f:strimzi.io/broker-role": {},
+                  "f:strimzi.io/cluster": {},
+                  "f:strimzi.io/component-type": {},
+                  "f:strimzi.io/controller": {},
+                  "f:strimzi.io/controller-name": {},
+                  "f:strimzi.io/controller-role": {},
+                  "f:strimzi.io/kind": {},
+                  "f:strimzi.io/name": {},
+                  "f:strimzi.io/pod-name": {},
+                  "f:strimzi.io/pool-name": {}
+                },
+                "f:ownerReferences": {
+                  ".": {},
+                  "k:{\"uid\":\"a7ddec1d-6207-43b4-8e03-dc63272798cc\"}": {}
+                }
+              },
+              "f:spec": {
+                "f:affinity": {
+                  ".": {},
+                  "f:podAntiAffinity": {
+                    ".": {},
+                    "f:requiredDuringSchedulingIgnoredDuringExecution": {}
+                  }
+                },
+                "f:containers": {
+                  "k:{\"name\":\"kafka\"}": {
+                    ".": {},
+                    "f:args": {},
+                    "f:env": {
+                      ".": {},
+                      "k:{\"name\":\"KAFKA_CLUSTER_NAME\"}": {
+                        ".": {},
+                        "f:name": {},
+                        "f:value": {}
+                      },
+                      "k:{\"name\":\"KAFKA_HEAP_OPTS\"}": {
+                        ".": {},
+                        "f:name": {},
+                        "f:value": {}
+                      },
+                      "k:{\"name\":\"KAFKA_JMX_EXPORTER_ENABLED\"}": {
+                        ".": {},
+                        "f:name": {},
+                        "f:value": {}
+                      },
+                      "k:{\"name\":\"STRIMZI_KAFKA_GC_LOG_ENABLED\"}": {
+                        ".": {},
+                        "f:name": {},
+                        "f:value": {}
+                      }
+                    },
+                    "f:image": {},
+                    "f:imagePullPolicy": {},
+                    "f:livenessProbe": {
+                      ".": {},
+                      "f:exec": {
+                        ".": {},
+                        "f:command": {}
+                      },
+                      "f:failureThreshold": {},
+                      "f:initialDelaySeconds": {},
+                      "f:periodSeconds": {},
+                      "f:successThreshold": {},
+                      "f:timeoutSeconds": {}
+                    },
+                    "f:name": {},
+                    "f:ports": {
+                      ".": {},
+                      "k:{\"containerPort\":8443,\"protocol\":\"TCP\"}": {
+                        ".": {},
+                        "f:containerPort": {},
+                        "f:name": {},
+                        "f:protocol": {}
+                      },
+                      "k:{\"containerPort\":9090,\"protocol\":\"TCP\"}": {
+                        ".": {},
+                        "f:containerPort": {},
+                        "f:name": {},
+                        "f:protocol": {}
+                      },
+                      "k:{\"containerPort\":9091,\"protocol\":\"TCP\"}": {
+                        ".": {},
+                        "f:containerPort": {},
+                        "f:name": {},
+                        "f:protocol": {}
+                      },
+                      "k:{\"containerPort\":9093,\"protocol\":\"TCP\"}": {
+                        ".": {},
+                        "f:containerPort": {},
+                        "f:name": {},
+                        "f:protocol": {}
+                      },
+                      "k:{\"containerPort\":9404,\"protocol\":\"TCP\"}": {
+                        ".": {},
+                        "f:containerPort": {},
+                        "f:name": {},
+                        "f:protocol": {}
+                      }
+                    },
+                    "f:readinessProbe": {
+                      ".": {},
+                      "f:exec": {
+                        ".": {},
+                        "f:command": {}
+                      },
+                      "f:failureThreshold": {},
+                      "f:initialDelaySeconds": {},
+                      "f:periodSeconds": {},
+                      "f:successThreshold": {},
+                      "f:timeoutSeconds": {}
+                    },
+                    "f:resources": {
+                      ".": {},
+                      "f:limits": {
+                        ".": {},
+                        "f:cpu": {},
+                        "f:memory": {}
+                      },
+                      "f:requests": {
+                        ".": {},
+                        "f:cpu": {},
+                        "f:memory": {}
+                      }
+                    },
+                    "f:terminationMessagePath": {},
+                    "f:terminationMessagePolicy": {},
+                    "f:volumeMounts": {
+                      ".": {},
+                      "k:{\"mountPath\":\"/opt/kafka/custom-config/\"}": {
+                        ".": {},
+                        "f:mountPath": {},
+                        "f:name": {}
+                      },
+                      "k:{\"mountPath\":\"/tmp\"}": {
+                        ".": {},
+                        "f:mountPath": {},
+                        "f:name": {}
+                      },
+                      "k:{\"mountPath\":\"/var/lib/kafka/data\"}": {
+                        ".": {},
+                        "f:mountPath": {},
+                        "f:name": {}
+                      },
+                      "k:{\"mountPath\":\"/var/opt/kafka\"}": {
+                        ".": {},
+                        "f:mountPath": {},
+                        "f:name": {}
+                      }
+                    }
+                  }
+                },
+                "f:dnsPolicy": {},
+                "f:enableServiceLinks": {},
+                "f:hostname": {},
+                "f:restartPolicy": {},
+                "f:schedulerName": {},
+                "f:securityContext": {},
+                "f:serviceAccount": {},
+                "f:serviceAccountName": {},
+                "f:subdomain": {},
+                "f:terminationGracePeriodSeconds": {},
+                "f:volumes": {
+                  ".": {},
+                  "k:{\"name\":\"data\"}": {
+                    ".": {},
+                    "f:name": {},
+                    "f:persistentVolumeClaim": {
+                      ".": {},
+                      "f:claimName": {}
+                    }
+                  },
+                  "k:{\"name\":\"kafka-metrics-and-logging\"}": {
+                    ".": {},
+                    "f:configMap": {
+                      ".": {},
+                      "f:defaultMode": {},
+                      "f:name": {}
+                    },
+                    "f:name": {}
+                  },
+                  "k:{\"name\":\"ready-files\"}": {
+                    ".": {},
+                    "f:emptyDir": {
+                      ".": {},
+                      "f:medium": {},
+                      "f:sizeLimit": {}
+                    },
+                    "f:name": {}
+                  },
+                  "k:{\"name\":\"strimzi-tmp\"}": {
+                    ".": {},
+                    "f:emptyDir": {
+                      ".": {},
+                      "f:medium": {},
+                      "f:sizeLimit": {}
+                    },
+                    "f:name": {}
+                  }
+                }
+              }
+            }
+          },
+          {
+            "manager": "multus-daemon",
+            "operation": "Update",
+            "apiVersion": "v1",
+            "time": "2026-11-27T06:51:06Z",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:metadata": {
+                "f:annotations": {
+                  "f:k8s.v1.cni.cncf.io/network-status": {}
+                }
+              }
+            },
+            "subresource": "status"
+          },
+          {
+            "manager": "kubelet",
+            "operation": "Update",
+            "apiVersion": "v1",
+            "time": "2026-11-27T06:51:37Z",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:status": {
+                "f:conditions": {
+                  "k:{\"type\":\"ContainersReady\"}": {
+                    ".": {},
+                    "f:lastProbeTime": {},
+                    "f:lastTransitionTime": {},
+                    "f:observedGeneration": {},
+                    "f:status": {},
+                    "f:type": {}
+                  },
+                  "k:{\"type\":\"Initialized\"}": {
+                    ".": {},
+                    "f:lastProbeTime": {},
+                    "f:lastTransitionTime": {},
+                    "f:observedGeneration": {},
+                    "f:status": {},
+                    "f:type": {}
+                  },
+                  "k:{\"type\":\"PodReadyToStartContainers\"}": {
+                    ".": {},
+                    "f:lastProbeTime": {},
+                    "f:lastTransitionTime": {},
+                    "f:observedGeneration": {},
+                    "f:status": {},
+                    "f:type": {}
+                  },
+                  "k:{\"type\":\"PodScheduled\"}": {
+                    "f:observedGeneration": {}
+                  },
+                  "k:{\"type\":\"Ready\"}": {
+                    ".": {},
+                    "f:lastProbeTime": {},
+                    "f:lastTransitionTime": {},
+                    "f:observedGeneration": {},
+                    "f:status": {},
+                    "f:type": {}
+                  }
+                },
+                "f:containerStatuses": {},
+                "f:hostIP": {},
+                "f:hostIPs": {},
+                "f:observedGeneration": {},
+                "f:phase": {},
+                "f:podIP": {},
+                "f:podIPs": {
+                  ".": {},
+                  "k:{\"ip\":\"10.131.0.11\"}": {
+                    ".": {},
+                    "f:ip": {}
+                  }
+                },
+                "f:startTime": {}
+              }
+            },
+            "subresource": "status"
+          }
+        ]
+      },
+      "spec": {
+        "volumes": [
+          {
+            "name": "data",
+            "persistentVolumeClaim": {
+              "claimName": "data-kaas-dev-dual-role-0"
+            }
+          },
+          {
+            "name": "strimzi-tmp",
+            "emptyDir": {
+              "medium": "Memory",
+              "sizeLimit": "5Mi"
+            }
+          },
+          {
+            "name": "kafka-metrics-and-logging",
+            "configMap": {
+              "name": "kaas-dev-dual-role-0",
+              "defaultMode": 420
+            }
+          },
+          {
+            "name": "ready-files",
+            "emptyDir": {
+              "medium": "Memory",
+              "sizeLimit": "1Ki"
+            }
+          },
+          {
+            "name": "kube-api-access-wlk27",
+            "projected": {
+              "sources": [
+                {
+                  "serviceAccountToken": {
+                    "expirationSeconds": 3607,
+                    "path": "token"
+                  }
+                },
+                {
+                  "configMap": {
+                    "name": "kube-root-ca.crt",
+                    "items": [
+                      {
+                        "key": "ca.crt",
+                        "path": "ca.crt"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "downwardAPI": {
+                    "items": [
+                      {
+                        "path": "namespace",
+                        "fieldRef": {
+                          "apiVersion": "v1",
+                          "fieldPath": "metadata.namespace"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "configMap": {
+                    "name": "openshift-service-ca.crt",
+                    "items": [
+                      {
+                        "key": "service-ca.crt",
+                        "path": "service-ca.crt"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "defaultMode": 420
+            }
+          }
+        ],
+        "containers": [
+          {
+            "name": "kafka",
+            "image": "registry.redhat.io/amq-streams/kafka-42-rhel9@sha256:ce7dc91b664600c6f06e1df3d6b56a4684bb779865d9c28b4df648addd89189d",
+            "args": [
+              "/opt/kafka/kafka_run.sh"
+            ],
+            "ports": [
+              {
+                "name": "tcp-kafkaagent",
+                "containerPort": 8443,
+                "protocol": "TCP"
+              },
+              {
+                "name": "tcp-ctrlplane",
+                "containerPort": 9090,
+                "protocol": "TCP"
+              },
+              {
+                "name": "tcp-replication",
+                "containerPort": 9091,
+                "protocol": "TCP"
+              },
+              {
+                "name": "tcp-clientstls",
+                "containerPort": 9093,
+                "protocol": "TCP"
+              },
+              {
+                "name": "tcp-prometheus",
+                "containerPort": 9404,
+                "protocol": "TCP"
+              }
+            ],
+            "env": [
+              {
+                "name": "KAFKA_JMX_EXPORTER_ENABLED",
+                "value": "true"
+              },
+              {
+                "name": "STRIMZI_KAFKA_GC_LOG_ENABLED",
+                "value": "false"
+              },
+              {
+                "name": "KAFKA_CLUSTER_NAME",
+                "value": "kaas-dev"
+              },
+              {
+                "name": "KAFKA_HEAP_OPTS",
+                "value": "-Xms512m -Xmx1g"
+              }
+            ],
+            "resources": {
+              "limits": {
+                "cpu": "1",
+                "memory": "2Gi"
+              },
+              "requests": {
+                "cpu": "500m",
+                "memory": "2Gi"
+              }
+            },
+            "volumeMounts": [
+              {
+                "name": "data",
+                "mountPath": "/var/lib/kafka/data"
+              },
+              {
+                "name": "strimzi-tmp",
+                "mountPath": "/tmp"
+              },
+              {
+                "name": "kafka-metrics-and-logging",
+                "mountPath": "/opt/kafka/custom-config/"
+              },
+              {
+                "name": "ready-files",
+                "mountPath": "/var/opt/kafka"
+              },
+              {
+                "name": "kube-api-access-wlk27",
+                "readOnly": true,
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+              }
+            ],
+            "livenessProbe": {
+              "exec": {
+                "command": [
+                  "/opt/kafka/kafka_liveness.sh"
+                ]
+              },
+              "initialDelaySeconds": 15,
+              "timeoutSeconds": 5,
+              "periodSeconds": 10,
+              "successThreshold": 1,
+              "failureThreshold": 3
+            },
+            "readinessProbe": {
+              "exec": {
+                "command": [
+                  "/opt/kafka/kafka_readiness.sh"
+                ]
+              },
+              "initialDelaySeconds": 15,
+              "timeoutSeconds": 5,
+              "periodSeconds": 10,
+              "successThreshold": 1,
+              "failureThreshold": 3
+            },
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "IfNotPresent",
+            "securityContext": {
+              "capabilities": {
+                "drop": [
+                  "ALL"
+                ]
+              },
+              "runAsUser": 1000800000,
+              "runAsNonRoot": true,
+              "allowPrivilegeEscalation": false
+            }
+          }
+        ],
+        "restartPolicy": "Always",
+        "terminationGracePeriodSeconds": 30,
+        "dnsPolicy": "ClusterFirst",
+        "serviceAccountName": "kaas-dev-kafka",
+        "serviceAccount": "kaas-dev-kafka",
+        "nodeName": "ip-10-0-29-133.us-east-2.compute.internal",
+        "securityContext": {
+          "seLinuxOptions": {
+            "level": "s0:c28,c22"
+          },
+          "fsGroup": 1000800000,
+          "seccompProfile": {
+            "type": "RuntimeDefault"
+          }
+        },
+        "imagePullSecrets": [
+          {
+            "name": "kaas-dev-kafka-dockercfg-f6bz9"
+          }
+        ],
+        "hostname": "kaas-dev-dual-role-0",
+        "subdomain": "kaas-dev-kafka-brokers",
+        "affinity": {
+          "podAntiAffinity": {
+            "requiredDuringSchedulingIgnoredDuringExecution": [
+              {
+                "labelSelector": {
+                  "matchLabels": {
+                    "strimzi.io/name": "kaas-dev-kafka"
+                  }
+                },
+                "topologyKey": "kubernetes.io/hostname"
+              }
+            ]
+          }
+        },
+        "schedulerName": "default-scheduler",
+        "tolerations": [
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          },
+          {
+            "key": "node.kubernetes.io/memory-pressure",
+            "operator": "Exists",
+            "effect": "NoSchedule"
+          }
+        ],
+        "priority": 0,
+        "enableServiceLinks": true,
+        "preemptionPolicy": "PreemptLowerPriority"
+      },
+      "status": {
+        "observedGeneration": 1,
+        "phase": "Running",
+        "conditions": [
+          {
+            "type": "PodReadyToStartContainers",
+            "observedGeneration": 1,
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-27T06:51:06Z"
+          },
+          {
+            "type": "Initialized",
+            "observedGeneration": 1,
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-27T06:50:51Z"
+          },
+          {
+            "type": "Ready",
+            "observedGeneration": 1,
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-27T06:51:37Z"
+          },
+          {
+            "type": "ContainersReady",
+            "observedGeneration": 1,
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-27T06:51:37Z"
+          },
+          {
+            "type": "PodScheduled",
+            "observedGeneration": 1,
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-27T06:50:51Z"
+          }
+        ],
+        "hostIP": "10.0.29.133",
+        "hostIPs": [
+          {
+            "ip": "10.0.29.133"
+          }
+        ],
+        "podIP": "10.131.0.11",
+        "podIPs": [
+          {
+            "ip": "10.131.0.11"
+          }
+        ],
+        "startTime": "2026-11-27T06:50:51Z",
+        "containerStatuses": [
+          {
+            "name": "kafka",
+            "state": {
+              "running": {
+                "startedAt": "2026-11-27T06:51:06Z"
+              }
+            },
+            "lastState": {},
+            "ready": true,
+            "restartCount": 0,
+            "image": "registry.redhat.io/amq-streams/kafka-42-rhel9@sha256:ce7dc91b664600c6f06e1df3d6b56a4684bb779865d9c28b4df648addd89189d",
+            "imageID": "registry.redhat.io/amq-streams/kafka-42-rhel9@sha256:ccca1fa9be261fac850b918c27cecdd31bc2bbe85baf9c8a268db96ee332aa05",
+            "containerID": "cri-o://fd96f8ea2466441873311ff6864e30a1e549acc7c7a3b8c0b79557c39eda59b2",
+            "started": true,
+            "allocatedResources": {
+              "cpu": "500m",
+              "memory": "2Gi"
+            },
+            "resources": {
+              "limits": {
+                "cpu": "1",
+                "memory": "2Gi"
+              },
+              "requests": {
+                "cpu": "500m",
+                "memory": "2Gi"
+              }
+            },
+            "volumeMounts": [
+              {
+                "name": "data",
+                "mountPath": "/var/lib/kafka/data"
+              },
+              {
+                "name": "strimzi-tmp",
+                "mountPath": "/tmp"
+              },
+              {
+                "name": "kafka-metrics-and-logging",
+                "mountPath": "/opt/kafka/custom-config/"
+              },
+              {
+                "name": "ready-files",
+                "mountPath": "/var/opt/kafka"
+              },
+              {
+                "name": "kube-api-access-wlk27",
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                "readOnly": true,
+                "recursiveReadOnly": "Disabled"
+              }
+            ],
+            "user": {
+              "linux": {
+                "uid": 1000800000,
+                "gid": 0,
+                "supplementalGroups": [
+                  0,
+                  1000800000
+                ]
+              }
+            }
+          }
+        ],
+        "qosClass": "Burstable"
+      }
+    },
+    {
+      "metadata": {
+        "name": "kaas-dev-dual-role-1",
+        "namespace": "kaas-kafka",
+        "uid": "0a705c97-ea26-4e77-b082-3115b73c2179",
+        "resourceVersion": "1242284",
+        "generation": 1,
+        "creationTimestamp": "2026-11-27T06:49:47Z",
+        "labels": {
+          "app.kubernetes.io/instance": "kaas-dev",
+          "app.kubernetes.io/managed-by": "strimzi-cluster-operator",
+          "app.kubernetes.io/name": "kafka",
+          "app.kubernetes.io/part-of": "strimzi-kaas-dev",
+          "com.company": "Red_Hat",
+          "rht.comp": "AMQ_Streams",
+          "rht.comp_ver": "3.2.1",
+          "rht.prod_name": "Red_Hat_Application_Foundations",
+          "rht.prod_ver": "2026.Q3",
+          "rht.subcomp": "kafka-broker",
+          "rht.subcomp_t": "application",
+          "strimzi.io/broker-role": "true",
+          "strimzi.io/cluster": "kaas-dev",
+          "strimzi.io/component-type": "kafka",
+          "strimzi.io/controller": "strimzipodset",
+          "strimzi.io/controller-name": "kaas-dev-dual-role",
+          "strimzi.io/controller-role": "true",
+          "strimzi.io/kind": "Kafka",
+          "strimzi.io/name": "kaas-dev-kafka",
+          "strimzi.io/pod-name": "kaas-dev-dual-role-1",
+          "strimzi.io/pool-name": "dual-role"
+        },
+        "annotations": {
+          "k8s.ovn.org/pod-networks": "{\"default\":{\"ip_addresses\":[\"10.130.0.30/23\"],\"mac_address\":\"0a:58:0a:82:00:1e\",\"gateway_ips\":[\"10.130.0.1\"],\"routes\":[{\"dest\":\"10.128.0.0/14\",\"nextHop\":\"10.130.0.1\"},{\"dest\":\"172.30.0.0/16\",\"nextHop\":\"10.130.0.1\"},{\"dest\":\"169.254.0.5/32\",\"nextHop\":\"10.130.0.1\"},{\"dest\":\"100.64.0.0/16\",\"nextHop\":\"10.130.0.1\"}],\"ip_address\":\"10.130.0.30/23\",\"gateway_ip\":\"10.130.0.1\",\"role\":\"primary\"}}",
+          "k8s.v1.cni.cncf.io/network-status": "[{\n    \"name\": \"ovn-kubernetes\",\n    \"interface\": \"eth0\",\n    \"ips\": [\n        \"10.130.0.30\"\n    ],\n    \"mac\": \"0a:58:0a:82:00:1e\",\n    \"default\": true,\n    \"dns\": {}\n}]",
+          "openshift.io/scc": "restricted-v2",
+          "seccomp.security.alpha.kubernetes.io/pod": "runtime/default",
+          "security.openshift.io/validated-scc-subject-type": "user",
+          "strimzi.io/clients-ca-cert-generation": "0",
+          "strimzi.io/cluster-ca-cert-generation": "0",
+          "strimzi.io/cluster-ca-key-generation": "0",
+          "strimzi.io/configuration-hash": "22c0a676",
+          "strimzi.io/kafka-version": "4.2.0",
+          "strimzi.io/revision": "849f9db2",
+          "strimzi.io/server-cert-hash": "f1978c45f2b6af41936f4ff3e9b5353bc08bd8f6"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "core.strimzi.io/v1beta2",
+            "kind": "StrimziPodSet",
+            "name": "kaas-dev-dual-role",
+            "uid": "a7ddec1d-6207-43b4-8e03-dc63272798cc",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ],
+        "managedFields": [
+          {
+            "manager": "ip-10-0-38-189",
+            "operation": "Update",
+            "apiVersion": "v1",
+            "time": "2026-11-27T06:49:47Z",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:metadata": {
+                "f:annotations": {
+                  "f:k8s.ovn.org/pod-networks": {}
+                }
+              }
+            },
+            "subresource": "status"
+          },
+          {
+            "manager": "strimzi-cluster-operator",
+            "operation": "Update",
+            "apiVersion": "v1",
+            "time": "2026-11-27T06:49:47Z",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:metadata": {
+                "f:annotations": {
+                  ".": {},
+                  "f:strimzi.io/clients-ca-cert-generation": {},
+                  "f:strimzi.io/cluster-ca-cert-generation": {},
+                  "f:strimzi.io/cluster-ca-key-generation": {},
+                  "f:strimzi.io/configuration-hash": {},
+                  "f:strimzi.io/kafka-version": {},
+                  "f:strimzi.io/revision": {},
+                  "f:strimzi.io/server-cert-hash": {}
+                },
+                "f:labels": {
+                  ".": {},
+                  "f:app.kubernetes.io/instance": {},
+                  "f:app.kubernetes.io/managed-by": {},
+                  "f:app.kubernetes.io/name": {},
+                  "f:app.kubernetes.io/part-of": {},
+                  "f:com.company": {},
+                  "f:rht.comp": {},
+                  "f:rht.comp_ver": {},
+                  "f:rht.prod_name": {},
+                  "f:rht.prod_ver": {},
+                  "f:rht.subcomp": {},
+                  "f:rht.subcomp_t": {},
+                  "f:strimzi.io/broker-role": {},
+                  "f:strimzi.io/cluster": {},
+                  "f:strimzi.io/component-type": {},
+                  "f:strimzi.io/controller": {},
+                  "f:strimzi.io/controller-name": {},
+                  "f:strimzi.io/controller-role": {},
+                  "f:strimzi.io/kind": {},
+                  "f:strimzi.io/name": {},
+                  "f:strimzi.io/pod-name": {},
+                  "f:strimzi.io/pool-name": {}
+                },
+                "f:ownerReferences": {
+                  ".": {},
+                  "k:{\"uid\":\"a7ddec1d-6207-43b4-8e03-dc63272798cc\"}": {}
+                }
+              },
+              "f:spec": {
+                "f:affinity": {
+                  ".": {},
+                  "f:podAntiAffinity": {
+                    ".": {},
+                    "f:requiredDuringSchedulingIgnoredDuringExecution": {}
+                  }
+                },
+                "f:containers": {
+                  "k:{\"name\":\"kafka\"}": {
+                    ".": {},
+                    "f:args": {},
+                    "f:env": {
+                      ".": {},
+                      "k:{\"name\":\"KAFKA_CLUSTER_NAME\"}": {
+                        ".": {},
+                        "f:name": {},
+                        "f:value": {}
+                      },
+                      "k:{\"name\":\"KAFKA_HEAP_OPTS\"}": {
+                        ".": {},
+                        "f:name": {},
+                        "f:value": {}
+                      },
+                      "k:{\"name\":\"KAFKA_JMX_EXPORTER_ENABLED\"}": {
+                        ".": {},
+                        "f:name": {},
+                        "f:value": {}
+                      },
+                      "k:{\"name\":\"STRIMZI_KAFKA_GC_LOG_ENABLED\"}": {
+                        ".": {},
+                        "f:name": {},
+                        "f:value": {}
+                      }
+                    },
+                    "f:image": {},
+                    "f:imagePullPolicy": {},
+                    "f:livenessProbe": {
+                      ".": {},
+                      "f:exec": {
+                        ".": {},
+                        "f:command": {}
+                      },
+                      "f:failureThreshold": {},
+                      "f:initialDelaySeconds": {},
+                      "f:periodSeconds": {},
+                      "f:successThreshold": {},
+                      "f:timeoutSeconds": {}
+                    },
+                    "f:name": {},
+                    "f:ports": {
+                      ".": {},
+                      "k:{\"containerPort\":8443,\"protocol\":\"TCP\"}": {
+                        ".": {},
+                        "f:containerPort": {},
+                        "f:name": {},
+                        "f:protocol": {}
+                      },
+                      "k:{\"containerPort\":9090,\"protocol\":\"TCP\"}": {
+                        ".": {},
+                        "f:containerPort": {},
+                        "f:name": {},
+                        "f:protocol": {}
+                      },
+                      "k:{\"containerPort\":9091,\"protocol\":\"TCP\"}": {
+                        ".": {},
+                        "f:containerPort": {},
+                        "f:name": {},
+                        "f:protocol": {}
+                      },
+                      "k:{\"containerPort\":9093,\"protocol\":\"TCP\"}": {
+                        ".": {},
+                        "f:containerPort": {},
+                        "f:name": {},
+                        "f:protocol": {}
+                      },
+                      "k:{\"containerPort\":9404,\"protocol\":\"TCP\"}": {
+                        ".": {},
+                        "f:containerPort": {},
+                        "f:name": {},
+                        "f:protocol": {}
+                      }
+                    },
+                    "f:readinessProbe": {
+                      ".": {},
+                      "f:exec": {
+                        ".": {},
+                        "f:command": {}
+                      },
+                      "f:failureThreshold": {},
+                      "f:initialDelaySeconds": {},
+                      "f:periodSeconds": {},
+                      "f:successThreshold": {},
+                      "f:timeoutSeconds": {}
+                    },
+                    "f:resources": {
+                      ".": {},
+                      "f:limits": {
+                        ".": {},
+                        "f:cpu": {},
+                        "f:memory": {}
+                      },
+                      "f:requests": {
+                        ".": {},
+                        "f:cpu": {},
+                        "f:memory": {}
+                      }
+                    },
+                    "f:terminationMessagePath": {},
+                    "f:terminationMessagePolicy": {},
+                    "f:volumeMounts": {
+                      ".": {},
+                      "k:{\"mountPath\":\"/opt/kafka/custom-config/\"}": {
+                        ".": {},
+                        "f:mountPath": {},
+                        "f:name": {}
+                      },
+                      "k:{\"mountPath\":\"/tmp\"}": {
+                        ".": {},
+                        "f:mountPath": {},
+                        "f:name": {}
+                      },
+                      "k:{\"mountPath\":\"/var/lib/kafka/data\"}": {
+                        ".": {},
+                        "f:mountPath": {},
+                        "f:name": {}
+                      },
+                      "k:{\"mountPath\":\"/var/opt/kafka\"}": {
+                        ".": {},
+                        "f:mountPath": {},
+                        "f:name": {}
+                      }
+                    }
+                  }
+                },
+                "f:dnsPolicy": {},
+                "f:enableServiceLinks": {},
+                "f:hostname": {},
+                "f:restartPolicy": {},
+                "f:schedulerName": {},
+                "f:securityContext": {},
+                "f:serviceAccount": {},
+                "f:serviceAccountName": {},
+                "f:subdomain": {},
+                "f:terminationGracePeriodSeconds": {},
+                "f:volumes": {
+                  ".": {},
+                  "k:{\"name\":\"data\"}": {
+                    ".": {},
+                    "f:name": {},
+                    "f:persistentVolumeClaim": {
+                      ".": {},
+                      "f:claimName": {}
+                    }
+                  },
+                  "k:{\"name\":\"kafka-metrics-and-logging\"}": {
+                    ".": {},
+                    "f:configMap": {
+                      ".": {},
+                      "f:defaultMode": {},
+                      "f:name": {}
+                    },
+                    "f:name": {}
+                  },
+                  "k:{\"name\":\"ready-files\"}": {
+                    ".": {},
+                    "f:emptyDir": {
+                      ".": {},
+                      "f:medium": {},
+                      "f:sizeLimit": {}
+                    },
+                    "f:name": {}
+                  },
+                  "k:{\"name\":\"strimzi-tmp\"}": {
+                    ".": {},
+                    "f:emptyDir": {
+                      ".": {},
+                      "f:medium": {},
+                      "f:sizeLimit": {}
+                    },
+                    "f:name": {}
+                  }
+                }
+              }
+            }
+          },
+          {
+            "manager": "multus-daemon",
+            "operation": "Update",
+            "apiVersion": "v1",
+            "time": "2026-11-27T06:49:57Z",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:metadata": {
+                "f:annotations": {
+                  "f:k8s.v1.cni.cncf.io/network-status": {}
+                }
+              }
+            },
+            "subresource": "status"
+          },
+          {
+            "manager": "kubelet",
+            "operation": "Update",
+            "apiVersion": "v1",
+            "time": "2026-11-27T06:50:18Z",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:status": {
+                "f:conditions": {
+                  "k:{\"type\":\"ContainersReady\"}": {
+                    ".": {},
+                    "f:lastProbeTime": {},
+                    "f:lastTransitionTime": {},
+                    "f:observedGeneration": {},
+                    "f:status": {},
+                    "f:type": {}
+                  },
+                  "k:{\"type\":\"Initialized\"}": {
+                    ".": {},
+                    "f:lastProbeTime": {},
+                    "f:lastTransitionTime": {},
+                    "f:observedGeneration": {},
+                    "f:status": {},
+                    "f:type": {}
+                  },
+                  "k:{\"type\":\"PodReadyToStartContainers\"}": {
+                    ".": {},
+                    "f:lastProbeTime": {},
+                    "f:lastTransitionTime": {},
+                    "f:observedGeneration": {},
+                    "f:status": {},
+                    "f:type": {}
+                  },
+                  "k:{\"type\":\"PodScheduled\"}": {
+                    "f:observedGeneration": {}
+                  },
+                  "k:{\"type\":\"Ready\"}": {
+                    ".": {},
+                    "f:lastProbeTime": {},
+                    "f:lastTransitionTime": {},
+                    "f:observedGeneration": {},
+                    "f:status": {},
+                    "f:type": {}
+                  }
+                },
+                "f:containerStatuses": {},
+                "f:hostIP": {},
+                "f:hostIPs": {},
+                "f:observedGeneration": {},
+                "f:phase": {},
+                "f:podIP": {},
+                "f:podIPs": {
+                  ".": {},
+                  "k:{\"ip\":\"10.130.0.30\"}": {
+                    ".": {},
+                    "f:ip": {}
+                  }
+                },
+                "f:startTime": {}
+              }
+            },
+            "subresource": "status"
+          }
+        ]
+      },
+      "spec": {
+        "volumes": [
+          {
+            "name": "data",
+            "persistentVolumeClaim": {
+              "claimName": "data-kaas-dev-dual-role-1"
+            }
+          },
+          {
+            "name": "strimzi-tmp",
+            "emptyDir": {
+              "medium": "Memory",
+              "sizeLimit": "5Mi"
+            }
+          },
+          {
+            "name": "kafka-metrics-and-logging",
+            "configMap": {
+              "name": "kaas-dev-dual-role-1",
+              "defaultMode": 420
+            }
+          },
+          {
+            "name": "ready-files",
+            "emptyDir": {
+              "medium": "Memory",
+              "sizeLimit": "1Ki"
+            }
+          },
+          {
+            "name": "kube-api-access-fgdn7",
+            "projected": {
+              "sources": [
+                {
+                  "serviceAccountToken": {
+                    "expirationSeconds": 3607,
+                    "path": "token"
+                  }
+                },
+                {
+                  "configMap": {
+                    "name": "kube-root-ca.crt",
+                    "items": [
+                      {
+                        "key": "ca.crt",
+                        "path": "ca.crt"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "downwardAPI": {
+                    "items": [
+                      {
+                        "path": "namespace",
+                        "fieldRef": {
+                          "apiVersion": "v1",
+                          "fieldPath": "metadata.namespace"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "configMap": {
+                    "name": "openshift-service-ca.crt",
+                    "items": [
+                      {
+                        "key": "service-ca.crt",
+                        "path": "service-ca.crt"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "defaultMode": 420
+            }
+          }
+        ],
+        "containers": [
+          {
+            "name": "kafka",
+            "image": "registry.redhat.io/amq-streams/kafka-42-rhel9@sha256:ce7dc91b664600c6f06e1df3d6b56a4684bb779865d9c28b4df648addd89189d",
+            "args": [
+              "/opt/kafka/kafka_run.sh"
+            ],
+            "ports": [
+              {
+                "name": "tcp-kafkaagent",
+                "containerPort": 8443,
+                "protocol": "TCP"
+              },
+              {
+                "name": "tcp-ctrlplane",
+                "containerPort": 9090,
+                "protocol": "TCP"
+              },
+              {
+                "name": "tcp-replication",
+                "containerPort": 9091,
+                "protocol": "TCP"
+              },
+              {
+                "name": "tcp-clientstls",
+                "containerPort": 9093,
+                "protocol": "TCP"
+              },
+              {
+                "name": "tcp-prometheus",
+                "containerPort": 9404,
+                "protocol": "TCP"
+              }
+            ],
+            "env": [
+              {
+                "name": "KAFKA_JMX_EXPORTER_ENABLED",
+                "value": "true"
+              },
+              {
+                "name": "STRIMZI_KAFKA_GC_LOG_ENABLED",
+                "value": "false"
+              },
+              {
+                "name": "KAFKA_CLUSTER_NAME",
+                "value": "kaas-dev"
+              },
+              {
+                "name": "KAFKA_HEAP_OPTS",
+                "value": "-Xms512m -Xmx1g"
+              }
+            ],
+            "resources": {
+              "limits": {
+                "cpu": "1",
+                "memory": "2Gi"
+              },
+              "requests": {
+                "cpu": "500m",
+                "memory": "2Gi"
+              }
+            },
+            "volumeMounts": [
+              {
+                "name": "data",
+                "mountPath": "/var/lib/kafka/data"
+              },
+              {
+                "name": "strimzi-tmp",
+                "mountPath": "/tmp"
+              },
+              {
+                "name": "kafka-metrics-and-logging",
+                "mountPath": "/opt/kafka/custom-config/"
+              },
+              {
+                "name": "ready-files",
+                "mountPath": "/var/opt/kafka"
+              },
+              {
+                "name": "kube-api-access-fgdn7",
+                "readOnly": true,
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+              }
+            ],
+            "livenessProbe": {
+              "exec": {
+                "command": [
+                  "/opt/kafka/kafka_liveness.sh"
+                ]
+              },
+              "initialDelaySeconds": 15,
+              "timeoutSeconds": 5,
+              "periodSeconds": 10,
+              "successThreshold": 1,
+              "failureThreshold": 3
+            },
+            "readinessProbe": {
+              "exec": {
+                "command": [
+                  "/opt/kafka/kafka_readiness.sh"
+                ]
+              },
+              "initialDelaySeconds": 15,
+              "timeoutSeconds": 5,
+              "periodSeconds": 10,
+              "successThreshold": 1,
+              "failureThreshold": 3
+            },
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "IfNotPresent",
+            "securityContext": {
+              "capabilities": {
+                "drop": [
+                  "ALL"
+                ]
+              },
+              "runAsUser": 1000800000,
+              "runAsNonRoot": true,
+              "allowPrivilegeEscalation": false
+            }
+          }
+        ],
+        "restartPolicy": "Always",
+        "terminationGracePeriodSeconds": 30,
+        "dnsPolicy": "ClusterFirst",
+        "serviceAccountName": "kaas-dev-kafka",
+        "serviceAccount": "kaas-dev-kafka",
+        "nodeName": "ip-10-0-38-189.us-east-2.compute.internal",
+        "securityContext": {
+          "seLinuxOptions": {
+            "level": "s0:c28,c22"
+          },
+          "fsGroup": 1000800000,
+          "seccompProfile": {
+            "type": "RuntimeDefault"
+          }
+        },
+        "imagePullSecrets": [
+          {
+            "name": "kaas-dev-kafka-dockercfg-f6bz9"
+          }
+        ],
+        "hostname": "kaas-dev-dual-role-1",
+        "subdomain": "kaas-dev-kafka-brokers",
+        "affinity": {
+          "podAntiAffinity": {
+            "requiredDuringSchedulingIgnoredDuringExecution": [
+              {
+                "labelSelector": {
+                  "matchLabels": {
+                    "strimzi.io/name": "kaas-dev-kafka"
+                  }
+                },
+                "topologyKey": "kubernetes.io/hostname"
+              }
+            ]
+          }
+        },
+        "schedulerName": "default-scheduler",
+        "tolerations": [
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          },
+          {
+            "key": "node.kubernetes.io/memory-pressure",
+            "operator": "Exists",
+            "effect": "NoSchedule"
+          }
+        ],
+        "priority": 0,
+        "enableServiceLinks": true,
+        "preemptionPolicy": "PreemptLowerPriority"
+      },
+      "status": {
+        "observedGeneration": 1,
+        "phase": "Running",
+        "conditions": [
+          {
+            "type": "PodReadyToStartContainers",
+            "observedGeneration": 1,
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-27T06:49:57Z"
+          },
+          {
+            "type": "Initialized",
+            "observedGeneration": 1,
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-27T06:49:47Z"
+          },
+          {
+            "type": "Ready",
+            "observedGeneration": 1,
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-27T06:50:18Z"
+          },
+          {
+            "type": "ContainersReady",
+            "observedGeneration": 1,
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-27T06:50:18Z"
+          },
+          {
+            "type": "PodScheduled",
+            "observedGeneration": 1,
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-27T06:49:47Z"
+          }
+        ],
+        "hostIP": "10.0.38.189",
+        "hostIPs": [
+          {
+            "ip": "10.0.38.189"
+          }
+        ],
+        "podIP": "10.130.0.30",
+        "podIPs": [
+          {
+            "ip": "10.130.0.30"
+          }
+        ],
+        "startTime": "2026-11-27T06:49:47Z",
+        "containerStatuses": [
+          {
+            "name": "kafka",
+            "state": {
+              "running": {
+                "startedAt": "2026-11-27T06:49:57Z"
+              }
+            },
+            "lastState": {},
+            "ready": true,
+            "restartCount": 0,
+            "image": "registry.redhat.io/amq-streams/kafka-42-rhel9@sha256:ce7dc91b664600c6f06e1df3d6b56a4684bb779865d9c28b4df648addd89189d",
+            "imageID": "registry.redhat.io/amq-streams/kafka-42-rhel9@sha256:ccca1fa9be261fac850b918c27cecdd31bc2bbe85baf9c8a268db96ee332aa05",
+            "containerID": "cri-o://b0b5dbd8b7ff2bc7167a027db85bd7cc08dbf3f18538468c1941fbef2335c772",
+            "started": true,
+            "allocatedResources": {
+              "cpu": "500m",
+              "memory": "2Gi"
+            },
+            "resources": {
+              "limits": {
+                "cpu": "1",
+                "memory": "2Gi"
+              },
+              "requests": {
+                "cpu": "500m",
+                "memory": "2Gi"
+              }
+            },
+            "volumeMounts": [
+              {
+                "name": "data",
+                "mountPath": "/var/lib/kafka/data"
+              },
+              {
+                "name": "strimzi-tmp",
+                "mountPath": "/tmp"
+              },
+              {
+                "name": "kafka-metrics-and-logging",
+                "mountPath": "/opt/kafka/custom-config/"
+              },
+              {
+                "name": "ready-files",
+                "mountPath": "/var/opt/kafka"
+              },
+              {
+                "name": "kube-api-access-fgdn7",
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                "readOnly": true,
+                "recursiveReadOnly": "Disabled"
+              }
+            ],
+            "user": {
+              "linux": {
+                "uid": 1000800000,
+                "gid": 0,
+                "supplementalGroups": [
+                  0,
+                  1000800000
+                ]
+              }
+            }
+          }
+        ],
+        "qosClass": "Burstable"
+      }
+    },
+    {
+      "metadata": {
+        "name": "kaas-dev-dual-role-2",
+        "namespace": "kaas-kafka",
+        "uid": "b60cd5f7-7123-4ec9-bf68-2c0acda71106",
+        "resourceVersion": "1242461",
+        "generation": 1,
+        "creationTimestamp": "2026-11-27T06:50:23Z",
+        "labels": {
+          "app.kubernetes.io/instance": "kaas-dev",
+          "app.kubernetes.io/managed-by": "strimzi-cluster-operator",
+          "app.kubernetes.io/name": "kafka",
+          "app.kubernetes.io/part-of": "strimzi-kaas-dev",
+          "com.company": "Red_Hat",
+          "rht.comp": "AMQ_Streams",
+          "rht.comp_ver": "3.2.1",
+          "rht.prod_name": "Red_Hat_Application_Foundations",
+          "rht.prod_ver": "2026.Q3",
+          "rht.subcomp": "kafka-broker",
+          "rht.subcomp_t": "application",
+          "strimzi.io/broker-role": "true",
+          "strimzi.io/cluster": "kaas-dev",
+          "strimzi.io/component-type": "kafka",
+          "strimzi.io/controller": "strimzipodset",
+          "strimzi.io/controller-name": "kaas-dev-dual-role",
+          "strimzi.io/controller-role": "true",
+          "strimzi.io/kind": "Kafka",
+          "strimzi.io/name": "kaas-dev-kafka",
+          "strimzi.io/pod-name": "kaas-dev-dual-role-2",
+          "strimzi.io/pool-name": "dual-role"
+        },
+        "annotations": {
+          "k8s.ovn.org/pod-networks": "{\"default\":{\"ip_addresses\":[\"10.128.0.47/23\"],\"mac_address\":\"0a:58:0a:80:00:2f\",\"gateway_ips\":[\"10.128.0.1\"],\"routes\":[{\"dest\":\"10.128.0.0/14\",\"nextHop\":\"10.128.0.1\"},{\"dest\":\"172.30.0.0/16\",\"nextHop\":\"10.128.0.1\"},{\"dest\":\"169.254.0.5/32\",\"nextHop\":\"10.128.0.1\"},{\"dest\":\"100.64.0.0/16\",\"nextHop\":\"10.128.0.1\"}],\"ip_address\":\"10.128.0.47/23\",\"gateway_ip\":\"10.128.0.1\",\"role\":\"primary\"}}",
+          "k8s.v1.cni.cncf.io/network-status": "[{\n    \"name\": \"ovn-kubernetes\",\n    \"interface\": \"eth0\",\n    \"ips\": [\n        \"10.128.0.47\"\n    ],\n    \"mac\": \"0a:58:0a:80:00:2f\",\n    \"default\": true,\n    \"dns\": {}\n}]",
+          "openshift.io/scc": "restricted-v2",
+          "seccomp.security.alpha.kubernetes.io/pod": "runtime/default",
+          "security.openshift.io/validated-scc-subject-type": "user",
+          "strimzi.io/clients-ca-cert-generation": "0",
+          "strimzi.io/cluster-ca-cert-generation": "0",
+          "strimzi.io/cluster-ca-key-generation": "0",
+          "strimzi.io/configuration-hash": "ffd9f86a",
+          "strimzi.io/kafka-version": "4.2.0",
+          "strimzi.io/revision": "f465f8f4",
+          "strimzi.io/server-cert-hash": "0ac82799d1b803eb42b1f40ff744d6635090d153"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "core.strimzi.io/v1beta2",
+            "kind": "StrimziPodSet",
+            "name": "kaas-dev-dual-role",
+            "uid": "a7ddec1d-6207-43b4-8e03-dc63272798cc",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ],
+        "managedFields": [
+          {
+            "manager": "ip-10-0-89-147",
+            "operation": "Update",
+            "apiVersion": "v1",
+            "time": "2026-11-27T06:50:23Z",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:metadata": {
+                "f:annotations": {
+                  "f:k8s.ovn.org/pod-networks": {}
+                }
+              }
+            },
+            "subresource": "status"
+          },
+          {
+            "manager": "strimzi-cluster-operator",
+            "operation": "Update",
+            "apiVersion": "v1",
+            "time": "2026-11-27T06:50:23Z",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:metadata": {
+                "f:annotations": {
+                  ".": {},
+                  "f:strimzi.io/clients-ca-cert-generation": {},
+                  "f:strimzi.io/cluster-ca-cert-generation": {},
+                  "f:strimzi.io/cluster-ca-key-generation": {},
+                  "f:strimzi.io/configuration-hash": {},
+                  "f:strimzi.io/kafka-version": {},
+                  "f:strimzi.io/revision": {},
+                  "f:strimzi.io/server-cert-hash": {}
+                },
+                "f:labels": {
+                  ".": {},
+                  "f:app.kubernetes.io/instance": {},
+                  "f:app.kubernetes.io/managed-by": {},
+                  "f:app.kubernetes.io/name": {},
+                  "f:app.kubernetes.io/part-of": {},
+                  "f:com.company": {},
+                  "f:rht.comp": {},
+                  "f:rht.comp_ver": {},
+                  "f:rht.prod_name": {},
+                  "f:rht.prod_ver": {},
+                  "f:rht.subcomp": {},
+                  "f:rht.subcomp_t": {},
+                  "f:strimzi.io/broker-role": {},
+                  "f:strimzi.io/cluster": {},
+                  "f:strimzi.io/component-type": {},
+                  "f:strimzi.io/controller": {},
+                  "f:strimzi.io/controller-name": {},
+                  "f:strimzi.io/controller-role": {},
+                  "f:strimzi.io/kind": {},
+                  "f:strimzi.io/name": {},
+                  "f:strimzi.io/pod-name": {},
+                  "f:strimzi.io/pool-name": {}
+                },
+                "f:ownerReferences": {
+                  ".": {},
+                  "k:{\"uid\":\"a7ddec1d-6207-43b4-8e03-dc63272798cc\"}": {}
+                }
+              },
+              "f:spec": {
+                "f:affinity": {
+                  ".": {},
+                  "f:podAntiAffinity": {
+                    ".": {},
+                    "f:requiredDuringSchedulingIgnoredDuringExecution": {}
+                  }
+                },
+                "f:containers": {
+                  "k:{\"name\":\"kafka\"}": {
+                    ".": {},
+                    "f:args": {},
+                    "f:env": {
+                      ".": {},
+                      "k:{\"name\":\"KAFKA_CLUSTER_NAME\"}": {
+                        ".": {},
+                        "f:name": {},
+                        "f:value": {}
+                      },
+                      "k:{\"name\":\"KAFKA_HEAP_OPTS\"}": {
+                        ".": {},
+                        "f:name": {},
+                        "f:value": {}
+                      },
+                      "k:{\"name\":\"KAFKA_JMX_EXPORTER_ENABLED\"}": {
+                        ".": {},
+                        "f:name": {},
+                        "f:value": {}
+                      },
+                      "k:{\"name\":\"STRIMZI_KAFKA_GC_LOG_ENABLED\"}": {
+                        ".": {},
+                        "f:name": {},
+                        "f:value": {}
+                      }
+                    },
+                    "f:image": {},
+                    "f:imagePullPolicy": {},
+                    "f:livenessProbe": {
+                      ".": {},
+                      "f:exec": {
+                        ".": {},
+                        "f:command": {}
+                      },
+                      "f:failureThreshold": {},
+                      "f:initialDelaySeconds": {},
+                      "f:periodSeconds": {},
+                      "f:successThreshold": {},
+                      "f:timeoutSeconds": {}
+                    },
+                    "f:name": {},
+                    "f:ports": {
+                      ".": {},
+                      "k:{\"containerPort\":8443,\"protocol\":\"TCP\"}": {
+                        ".": {},
+                        "f:containerPort": {},
+                        "f:name": {},
+                        "f:protocol": {}
+                      },
+                      "k:{\"containerPort\":9090,\"protocol\":\"TCP\"}": {
+                        ".": {},
+                        "f:containerPort": {},
+                        "f:name": {},
+                        "f:protocol": {}
+                      },
+                      "k:{\"containerPort\":9091,\"protocol\":\"TCP\"}": {
+                        ".": {},
+                        "f:containerPort": {},
+                        "f:name": {},
+                        "f:protocol": {}
+                      },
+                      "k:{\"containerPort\":9093,\"protocol\":\"TCP\"}": {
+                        ".": {},
+                        "f:containerPort": {},
+                        "f:name": {},
+                        "f:protocol": {}
+                      },
+                      "k:{\"containerPort\":9404,\"protocol\":\"TCP\"}": {
+                        ".": {},
+                        "f:containerPort": {},
+                        "f:name": {},
+                        "f:protocol": {}
+                      }
+                    },
+                    "f:readinessProbe": {
+                      ".": {},
+                      "f:exec": {
+                        ".": {},
+                        "f:command": {}
+                      },
+                      "f:failureThreshold": {},
+                      "f:initialDelaySeconds": {},
+                      "f:periodSeconds": {},
+                      "f:successThreshold": {},
+                      "f:timeoutSeconds": {}
+                    },
+                    "f:resources": {
+                      ".": {},
+                      "f:limits": {
+                        ".": {},
+                        "f:cpu": {},
+                        "f:memory": {}
+                      },
+                      "f:requests": {
+                        ".": {},
+                        "f:cpu": {},
+                        "f:memory": {}
+                      }
+                    },
+                    "f:terminationMessagePath": {},
+                    "f:terminationMessagePolicy": {},
+                    "f:volumeMounts": {
+                      ".": {},
+                      "k:{\"mountPath\":\"/opt/kafka/custom-config/\"}": {
+                        ".": {},
+                        "f:mountPath": {},
+                        "f:name": {}
+                      },
+                      "k:{\"mountPath\":\"/tmp\"}": {
+                        ".": {},
+                        "f:mountPath": {},
+                        "f:name": {}
+                      },
+                      "k:{\"mountPath\":\"/var/lib/kafka/data\"}": {
+                        ".": {},
+                        "f:mountPath": {},
+                        "f:name": {}
+                      },
+                      "k:{\"mountPath\":\"/var/opt/kafka\"}": {
+                        ".": {},
+                        "f:mountPath": {},
+                        "f:name": {}
+                      }
+                    }
+                  }
+                },
+                "f:dnsPolicy": {},
+                "f:enableServiceLinks": {},
+                "f:hostname": {},
+                "f:restartPolicy": {},
+                "f:schedulerName": {},
+                "f:securityContext": {},
+                "f:serviceAccount": {},
+                "f:serviceAccountName": {},
+                "f:subdomain": {},
+                "f:terminationGracePeriodSeconds": {},
+                "f:volumes": {
+                  ".": {},
+                  "k:{\"name\":\"data\"}": {
+                    ".": {},
+                    "f:name": {},
+                    "f:persistentVolumeClaim": {
+                      ".": {},
+                      "f:claimName": {}
+                    }
+                  },
+                  "k:{\"name\":\"kafka-metrics-and-logging\"}": {
+                    ".": {},
+                    "f:configMap": {
+                      ".": {},
+                      "f:defaultMode": {},
+                      "f:name": {}
+                    },
+                    "f:name": {}
+                  },
+                  "k:{\"name\":\"ready-files\"}": {
+                    ".": {},
+                    "f:emptyDir": {
+                      ".": {},
+                      "f:medium": {},
+                      "f:sizeLimit": {}
+                    },
+                    "f:name": {}
+                  },
+                  "k:{\"name\":\"strimzi-tmp\"}": {
+                    ".": {},
+                    "f:emptyDir": {
+                      ".": {},
+                      "f:medium": {},
+                      "f:sizeLimit": {}
+                    },
+                    "f:name": {}
+                  }
+                }
+              }
+            }
+          },
+          {
+            "manager": "multus-daemon",
+            "operation": "Update",
+            "apiVersion": "v1",
+            "time": "2026-11-27T06:50:25Z",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:metadata": {
+                "f:annotations": {
+                  "f:k8s.v1.cni.cncf.io/network-status": {}
+                }
+              }
+            },
+            "subresource": "status"
+          },
+          {
+            "manager": "kubelet",
+            "operation": "Update",
+            "apiVersion": "v1",
+            "time": "2026-11-27T06:50:47Z",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:status": {
+                "f:conditions": {
+                  "k:{\"type\":\"ContainersReady\"}": {
+                    ".": {},
+                    "f:lastProbeTime": {},
+                    "f:lastTransitionTime": {},
+                    "f:observedGeneration": {},
+                    "f:status": {},
+                    "f:type": {}
+                  },
+                  "k:{\"type\":\"Initialized\"}": {
+                    ".": {},
+                    "f:lastProbeTime": {},
+                    "f:lastTransitionTime": {},
+                    "f:observedGeneration": {},
+                    "f:status": {},
+                    "f:type": {}
+                  },
+                  "k:{\"type\":\"PodReadyToStartContainers\"}": {
+                    ".": {},
+                    "f:lastProbeTime": {},
+                    "f:lastTransitionTime": {},
+                    "f:observedGeneration": {},
+                    "f:status": {},
+                    "f:type": {}
+                  },
+                  "k:{\"type\":\"PodScheduled\"}": {
+                    "f:observedGeneration": {}
+                  },
+                  "k:{\"type\":\"Ready\"}": {
+                    ".": {},
+                    "f:lastProbeTime": {},
+                    "f:lastTransitionTime": {},
+                    "f:observedGeneration": {},
+                    "f:status": {},
+                    "f:type": {}
+                  }
+                },
+                "f:containerStatuses": {},
+                "f:hostIP": {},
+                "f:hostIPs": {},
+                "f:observedGeneration": {},
+                "f:phase": {},
+                "f:podIP": {},
+                "f:podIPs": {
+                  ".": {},
+                  "k:{\"ip\":\"10.128.0.47\"}": {
+                    ".": {},
+                    "f:ip": {}
+                  }
+                },
+                "f:startTime": {}
+              }
+            },
+            "subresource": "status"
+          }
+        ]
+      },
+      "spec": {
+        "volumes": [
+          {
+            "name": "data",
+            "persistentVolumeClaim": {
+              "claimName": "data-kaas-dev-dual-role-2"
+            }
+          },
+          {
+            "name": "strimzi-tmp",
+            "emptyDir": {
+              "medium": "Memory",
+              "sizeLimit": "5Mi"
+            }
+          },
+          {
+            "name": "kafka-metrics-and-logging",
+            "configMap": {
+              "name": "kaas-dev-dual-role-2",
+              "defaultMode": 420
+            }
+          },
+          {
+            "name": "ready-files",
+            "emptyDir": {
+              "medium": "Memory",
+              "sizeLimit": "1Ki"
+            }
+          },
+          {
+            "name": "kube-api-access-x8zm7",
+            "projected": {
+              "sources": [
+                {
+                  "serviceAccountToken": {
+                    "expirationSeconds": 3607,
+                    "path": "token"
+                  }
+                },
+                {
+                  "configMap": {
+                    "name": "kube-root-ca.crt",
+                    "items": [
+                      {
+                        "key": "ca.crt",
+                        "path": "ca.crt"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "downwardAPI": {
+                    "items": [
+                      {
+                        "path": "namespace",
+                        "fieldRef": {
+                          "apiVersion": "v1",
+                          "fieldPath": "metadata.namespace"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "configMap": {
+                    "name": "openshift-service-ca.crt",
+                    "items": [
+                      {
+                        "key": "service-ca.crt",
+                        "path": "service-ca.crt"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "defaultMode": 420
+            }
+          }
+        ],
+        "containers": [
+          {
+            "name": "kafka",
+            "image": "registry.redhat.io/amq-streams/kafka-42-rhel9@sha256:ce7dc91b664600c6f06e1df3d6b56a4684bb779865d9c28b4df648addd89189d",
+            "args": [
+              "/opt/kafka/kafka_run.sh"
+            ],
+            "ports": [
+              {
+                "name": "tcp-kafkaagent",
+                "containerPort": 8443,
+                "protocol": "TCP"
+              },
+              {
+                "name": "tcp-ctrlplane",
+                "containerPort": 9090,
+                "protocol": "TCP"
+              },
+              {
+                "name": "tcp-replication",
+                "containerPort": 9091,
+                "protocol": "TCP"
+              },
+              {
+                "name": "tcp-clientstls",
+                "containerPort": 9093,
+                "protocol": "TCP"
+              },
+              {
+                "name": "tcp-prometheus",
+                "containerPort": 9404,
+                "protocol": "TCP"
+              }
+            ],
+            "env": [
+              {
+                "name": "KAFKA_JMX_EXPORTER_ENABLED",
+                "value": "true"
+              },
+              {
+                "name": "STRIMZI_KAFKA_GC_LOG_ENABLED",
+                "value": "false"
+              },
+              {
+                "name": "KAFKA_CLUSTER_NAME",
+                "value": "kaas-dev"
+              },
+              {
+                "name": "KAFKA_HEAP_OPTS",
+                "value": "-Xms512m -Xmx1g"
+              }
+            ],
+            "resources": {
+              "limits": {
+                "cpu": "1",
+                "memory": "2Gi"
+              },
+              "requests": {
+                "cpu": "500m",
+                "memory": "2Gi"
+              }
+            },
+            "volumeMounts": [
+              {
+                "name": "data",
+                "mountPath": "/var/lib/kafka/data"
+              },
+              {
+                "name": "strimzi-tmp",
+                "mountPath": "/tmp"
+              },
+              {
+                "name": "kafka-metrics-and-logging",
+                "mountPath": "/opt/kafka/custom-config/"
+              },
+              {
+                "name": "ready-files",
+                "mountPath": "/var/opt/kafka"
+              },
+              {
+                "name": "kube-api-access-x8zm7",
+                "readOnly": true,
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+              }
+            ],
+            "livenessProbe": {
+              "exec": {
+                "command": [
+                  "/opt/kafka/kafka_liveness.sh"
+                ]
+              },
+              "initialDelaySeconds": 15,
+              "timeoutSeconds": 5,
+              "periodSeconds": 10,
+              "successThreshold": 1,
+              "failureThreshold": 3
+            },
+            "readinessProbe": {
+              "exec": {
+                "command": [
+                  "/opt/kafka/kafka_readiness.sh"
+                ]
+              },
+              "initialDelaySeconds": 15,
+              "timeoutSeconds": 5,
+              "periodSeconds": 10,
+              "successThreshold": 1,
+              "failureThreshold": 3
+            },
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "IfNotPresent",
+            "securityContext": {
+              "capabilities": {
+                "drop": [
+                  "ALL"
+                ]
+              },
+              "runAsUser": 1000800000,
+              "runAsNonRoot": true,
+              "allowPrivilegeEscalation": false
+            }
+          }
+        ],
+        "restartPolicy": "Always",
+        "terminationGracePeriodSeconds": 30,
+        "dnsPolicy": "ClusterFirst",
+        "serviceAccountName": "kaas-dev-kafka",
+        "serviceAccount": "kaas-dev-kafka",
+        "nodeName": "ip-10-0-89-147.us-east-2.compute.internal",
+        "securityContext": {
+          "seLinuxOptions": {
+            "level": "s0:c28,c22"
+          },
+          "fsGroup": 1000800000,
+          "seccompProfile": {
+            "type": "RuntimeDefault"
+          }
+        },
+        "imagePullSecrets": [
+          {
+            "name": "kaas-dev-kafka-dockercfg-f6bz9"
+          }
+        ],
+        "hostname": "kaas-dev-dual-role-2",
+        "subdomain": "kaas-dev-kafka-brokers",
+        "affinity": {
+          "podAntiAffinity": {
+            "requiredDuringSchedulingIgnoredDuringExecution": [
+              {
+                "labelSelector": {
+                  "matchLabels": {
+                    "strimzi.io/name": "kaas-dev-kafka"
+                  }
+                },
+                "topologyKey": "kubernetes.io/hostname"
+              }
+            ]
+          }
+        },
+        "schedulerName": "default-scheduler",
+        "tolerations": [
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          },
+          {
+            "key": "node.kubernetes.io/memory-pressure",
+            "operator": "Exists",
+            "effect": "NoSchedule"
+          }
+        ],
+        "priority": 0,
+        "enableServiceLinks": true,
+        "preemptionPolicy": "PreemptLowerPriority"
+      },
+      "status": {
+        "observedGeneration": 1,
+        "phase": "Running",
+        "conditions": [
+          {
+            "type": "PodReadyToStartContainers",
+            "observedGeneration": 1,
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-27T06:50:26Z"
+          },
+          {
+            "type": "Initialized",
+            "observedGeneration": 1,
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-27T06:50:23Z"
+          },
+          {
+            "type": "Ready",
+            "observedGeneration": 1,
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-27T06:50:47Z"
+          },
+          {
+            "type": "ContainersReady",
+            "observedGeneration": 1,
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-27T06:50:47Z"
+          },
+          {
+            "type": "PodScheduled",
+            "observedGeneration": 1,
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-27T06:50:23Z"
+          }
+        ],
+        "hostIP": "10.0.89.147",
+        "hostIPs": [
+          {
+            "ip": "10.0.89.147"
+          }
+        ],
+        "podIP": "10.128.0.47",
+        "podIPs": [
+          {
+            "ip": "10.128.0.47"
+          }
+        ],
+        "startTime": "2026-11-27T06:50:23Z",
+        "containerStatuses": [
+          {
+            "name": "kafka",
+            "state": {
+              "running": {
+                "startedAt": "2026-11-27T06:50:25Z"
+              }
+            },
+            "lastState": {},
+            "ready": true,
+            "restartCount": 0,
+            "image": "registry.redhat.io/amq-streams/kafka-42-rhel9@sha256:ce7dc91b664600c6f06e1df3d6b56a4684bb779865d9c28b4df648addd89189d",
+            "imageID": "registry.redhat.io/amq-streams/kafka-42-rhel9@sha256:ccca1fa9be261fac850b918c27cecdd31bc2bbe85baf9c8a268db96ee332aa05",
+            "containerID": "cri-o://7d04050c103bd41442e59c0ae08c36a6f2997cd37c5e4569f4a083eb509d7a0d",
+            "started": true,
+            "allocatedResources": {
+              "cpu": "500m",
+              "memory": "2Gi"
+            },
+            "resources": {
+              "limits": {
+                "cpu": "1",
+                "memory": "2Gi"
+              },
+              "requests": {
+                "cpu": "500m",
+                "memory": "2Gi"
+              }
+            },
+            "volumeMounts": [
+              {
+                "name": "data",
+                "mountPath": "/var/lib/kafka/data"
+              },
+              {
+                "name": "strimzi-tmp",
+                "mountPath": "/tmp"
+              },
+              {
+                "name": "kafka-metrics-and-logging",
+                "mountPath": "/opt/kafka/custom-config/"
+              },
+              {
+                "name": "ready-files",
+                "mountPath": "/var/opt/kafka"
+              },
+              {
+                "name": "kube-api-access-x8zm7",
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                "readOnly": true,
+                "recursiveReadOnly": "Disabled"
+              }
+            ],
+            "user": {
+              "linux": {
+                "uid": 1000800000,
+                "gid": 0,
+                "supplementalGroups": [
+                  0,
+                  1000800000
+                ]
+              }
+            }
+          }
+        ],
+        "qosClass": "Burstable"
+      }
+    },
+    {
+      "metadata": {
+        "name": "kaas-dev-entity-operator-7b447f8867-fj5mn",
+        "generateName": "kaas-dev-entity-operator-7b447f8867-",
+        "namespace": "kaas-kafka",
+        "uid": "0e091c10-24f9-455b-a41c-b33e8401f8cb",
+        "resourceVersion": "1229939",
+        "generation": 1,
+        "creationTimestamp": "2026-11-26T17:13:47Z",
+        "labels": {
+          "app.kubernetes.io/instance": "kaas-dev",
+          "app.kubernetes.io/managed-by": "strimzi-cluster-operator",
+          "app.kubernetes.io/name": "entity-operator",
+          "app.kubernetes.io/part-of": "strimzi-kaas-dev",
+          "com.company": "Red_Hat",
+          "pod-template-hash": "7b447f8867",
+          "rht.comp": "AMQ_Streams",
+          "rht.comp_ver": "3.2.1",
+          "rht.prod_name": "Red_Hat_Application_Foundations",
+          "rht.prod_ver": "2026.Q3",
+          "rht.subcomp": "entity-operator",
+          "rht.subcomp_t": "infrastructure",
+          "strimzi.io/cluster": "kaas-dev",
+          "strimzi.io/component-type": "entity-operator",
+          "strimzi.io/kind": "Kafka",
+          "strimzi.io/name": "kaas-dev-entity-operator"
+        },
+        "annotations": {
+          "k8s.ovn.org/pod-networks": "{\"default\":{\"ip_addresses\":[\"10.128.2.14/23\"],\"mac_address\":\"0a:58:0a:80:02:0e\",\"gateway_ips\":[\"10.128.2.1\"],\"routes\":[{\"dest\":\"10.128.0.0/14\",\"nextHop\":\"10.128.2.1\"},{\"dest\":\"172.30.0.0/16\",\"nextHop\":\"10.128.2.1\"},{\"dest\":\"169.254.0.5/32\",\"nextHop\":\"10.128.2.1\"},{\"dest\":\"100.64.0.0/16\",\"nextHop\":\"10.128.2.1\"}],\"ip_address\":\"10.128.2.14/23\",\"gateway_ip\":\"10.128.2.1\",\"role\":\"primary\"}}",
+          "k8s.v1.cni.cncf.io/network-status": "[{\n    \"name\": \"ovn-kubernetes\",\n    \"interface\": \"eth0\",\n    \"ips\": [\n        \"10.128.2.14\"\n    ],\n    \"mac\": \"0a:58:0a:80:02:0e\",\n    \"default\": true,\n    \"dns\": {}\n}]",
+          "openshift.io/scc": "restricted-v2",
+          "seccomp.security.alpha.kubernetes.io/pod": "runtime/default",
+          "security.openshift.io/validated-scc-subject-type": "user",
+          "strimzi.io/cluster-ca-cert-generation": "0",
+          "strimzi.io/cluster-ca-key-generation": "0",
+          "strimzi.io/server-cert-hash": "50a11cc5a0aacb9d"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "kaas-dev-entity-operator-7b447f8867",
+            "uid": "fc8c1bca-c760-4d8d-9a72-438dc43d01d0",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ],
+        "managedFields": [
+          {
+            "manager": "ip-10-0-50-65",
+            "operation": "Update",
+            "apiVersion": "v1",
+            "time": "2026-11-26T17:13:47Z",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:metadata": {
+                "f:annotations": {
+                  "f:k8s.ovn.org/pod-networks": {}
+                }
+              }
+            },
+            "subresource": "status"
+          },
+          {
+            "manager": "kube-controller-manager",
+            "operation": "Update",
+            "apiVersion": "v1",
+            "time": "2026-11-26T17:13:47Z",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:metadata": {
+                "f:annotations": {
+                  ".": {},
+                  "f:strimzi.io/cluster-ca-cert-generation": {},
+                  "f:strimzi.io/cluster-ca-key-generation": {},
+                  "f:strimzi.io/server-cert-hash": {}
+                },
+                "f:generateName": {},
+                "f:labels": {
+                  ".": {},
+                  "f:app.kubernetes.io/instance": {},
+                  "f:app.kubernetes.io/managed-by": {},
+                  "f:app.kubernetes.io/name": {},
+                  "f:app.kubernetes.io/part-of": {},
+                  "f:com.company": {},
+                  "f:pod-template-hash": {},
+                  "f:rht.comp": {},
+                  "f:rht.comp_ver": {},
+                  "f:rht.prod_name": {},
+                  "f:rht.prod_ver": {},
+                  "f:rht.subcomp": {},
+                  "f:rht.subcomp_t": {},
+                  "f:strimzi.io/cluster": {},
+                  "f:strimzi.io/component-type": {},
+                  "f:strimzi.io/kind": {},
+                  "f:strimzi.io/name": {}
+                },
+                "f:ownerReferences": {
+                  ".": {},
+                  "k:{\"uid\":\"fc8c1bca-c760-4d8d-9a72-438dc43d01d0\"}": {}
+                }
+              },
+              "f:spec": {
+                "f:containers": {
+                  "k:{\"name\":\"topic-operator\"}": {
+                    ".": {},
+                    "f:args": {},
+                    "f:env": {
+                      ".": {},
+                      "k:{\"name\":\"STRIMZI_GC_LOG_ENABLED\"}": {
+                        ".": {},
+                        "f:name": {},
+                        "f:value": {}
+                      },
+                      "k:{\"name\":\"STRIMZI_JAVA_OPTS\"}": {
+                        ".": {},
+                        "f:name": {},
+                        "f:value": {}
+                      },
+                      "k:{\"name\":\"STRIMZI_KAFKA_BOOTSTRAP_SERVERS\"}": {
+                        ".": {},
+                        "f:name": {},
+                        "f:value": {}
+                      },
+                      "k:{\"name\":\"STRIMZI_NAMESPACE\"}": {
+                        ".": {},
+                        "f:name": {},
+                        "f:value": {}
+                      },
+                      "k:{\"name\":\"STRIMZI_RESOURCE_LABELS\"}": {
+                        ".": {},
+                        "f:name": {},
+                        "f:value": {}
+                      },
+                      "k:{\"name\":\"STRIMZI_SECURITY_PROTOCOL\"}": {
+                        ".": {},
+                        "f:name": {},
+                        "f:value": {}
+                      },
+                      "k:{\"name\":\"STRIMZI_TLS_ENABLED\"}": {
+                        ".": {},
+                        "f:name": {},
+                        "f:value": {}
+                      }
+                    },
+                    "f:image": {},
+                    "f:imagePullPolicy": {},
+                    "f:livenessProbe": {
+                      ".": {},
+                      "f:failureThreshold": {},
+                      "f:httpGet": {
+                        ".": {},
+                        "f:path": {},
+                        "f:port": {},
+                        "f:scheme": {}
+                      },
+                      "f:initialDelaySeconds": {},
+                      "f:periodSeconds": {},
+                      "f:successThreshold": {},
+                      "f:timeoutSeconds": {}
+                    },
+                    "f:name": {},
+                    "f:ports": {
+                      ".": {},
+                      "k:{\"containerPort\":8080,\"protocol\":\"TCP\"}": {
+                        ".": {},
+                        "f:containerPort": {},
+                        "f:name": {},
+                        "f:protocol": {}
+                      }
+                    },
+                    "f:readinessProbe": {
+                      ".": {},
+                      "f:failureThreshold": {},
+                      "f:httpGet": {
+                        ".": {},
+                        "f:path": {},
+                        "f:port": {},
+                        "f:scheme": {}
+                      },
+                      "f:initialDelaySeconds": {},
+                      "f:periodSeconds": {},
+                      "f:successThreshold": {},
+                      "f:timeoutSeconds": {}
+                    },
+                    "f:resources": {
+                      ".": {},
+                      "f:limits": {
+                        ".": {},
+                        "f:cpu": {},
+                        "f:memory": {}
+                      },
+                      "f:requests": {
+                        ".": {},
+                        "f:cpu": {},
+                        "f:memory": {}
+                      }
+                    },
+                    "f:startupProbe": {
+                      ".": {},
+                      "f:failureThreshold": {},
+                      "f:httpGet": {
+                        ".": {},
+                        "f:path": {},
+                        "f:port": {},
+                        "f:scheme": {}
+                      },
+                      "f:initialDelaySeconds": {},
+                      "f:periodSeconds": {},
+                      "f:successThreshold": {},
+                      "f:timeoutSeconds": {}
+                    },
+                    "f:terminationMessagePath": {},
+                    "f:terminationMessagePolicy": {},
+                    "f:volumeMounts": {
+                      ".": {},
+                      "k:{\"mountPath\":\"/etc/cluster-ca-certs/\"}": {
+                        ".": {},
+                        "f:mountPath": {},
+                        "f:name": {}
+                      },
+                      "k:{\"mountPath\":\"/etc/eto-certs/\"}": {
+                        ".": {},
+                        "f:mountPath": {},
+                        "f:name": {}
+                      },
+                      "k:{\"mountPath\":\"/opt/topic-operator/custom-config/\"}": {
+                        ".": {},
+                        "f:mountPath": {},
+                        "f:name": {}
+                      },
+                      "k:{\"mountPath\":\"/tmp\"}": {
+                        ".": {},
+                        "f:mountPath": {},
+                        "f:name": {}
+                      }
+                    }
+                  },
+                  "k:{\"name\":\"user-operator\"}": {
+                    ".": {},
+                    "f:args": {},
+                    "f:env": {
+                      ".": {},
+                      "k:{\"name\":\"STRIMZI_ACLS_ADMIN_API_SUPPORTED\"}": {
+                        ".": {},
+                        "f:name": {},
+                        "f:value": {}
+                      },
+                      "k:{\"name\":\"STRIMZI_CA_CERT_NAME\"}": {
+                        ".": {},
+                        "f:name": {},
+                        "f:value": {}
+                      },
+                      "k:{\"name\":\"STRIMZI_CA_KEY_NAME\"}": {
+                        ".": {},
+                        "f:name": {},
+                        "f:value": {}
+                      },
+                      "k:{\"name\":\"STRIMZI_CA_NAMESPACE\"}": {
+                        ".": {},
+                        "f:name": {},
+                        "f:value": {}
+                      },
+                      "k:{\"name\":\"STRIMZI_CA_RENEWAL\"}": {
+                        ".": {},
+                        "f:name": {},
+                        "f:value": {}
+                      },
+                      "k:{\"name\":\"STRIMZI_CA_VALIDITY\"}": {
+                        ".": {},
+                        "f:name": {},
+                        "f:value": {}
+                      },
+                      "k:{\"name\":\"STRIMZI_CLUSTER_CA_CERT_SECRET_NAME\"}": {
+                        ".": {},
+                        "f:name": {},
+                        "f:value": {}
+                      },
+                      "k:{\"name\":\"STRIMZI_EO_KEY_SECRET_NAME\"}": {
+                        ".": {},
+                        "f:name": {},
+                        "f:value": {}
+                      },
+                      "k:{\"name\":\"STRIMZI_GC_LOG_ENABLED\"}": {
+                        ".": {},
+                        "f:name": {},
+                        "f:value": {}
+                      },
+                      "k:{\"name\":\"STRIMZI_JAVA_OPTS\"}": {
+                        ".": {},
+                        "f:name": {},
+                        "f:value": {}
+                      },
+                      "k:{\"name\":\"STRIMZI_KAFKA_BOOTSTRAP_SERVERS\"}": {
+                        ".": {},
+                        "f:name": {},
+                        "f:value": {}
+                      },
+                      "k:{\"name\":\"STRIMZI_LABELS\"}": {
+                        ".": {},
+                        "f:name": {},
+                        "f:value": {}
+                      },
+                      "k:{\"name\":\"STRIMZI_NAMESPACE\"}": {
+                        ".": {},
+                        "f:name": {},
+                        "f:value": {}
+                      },
+                      "k:{\"name\":\"STRIMZI_SECRET_PREFIX\"}": {
+                        ".": {},
+                        "f:name": {}
+                      }
+                    },
+                    "f:image": {},
+                    "f:imagePullPolicy": {},
+                    "f:livenessProbe": {
+                      ".": {},
+                      "f:failureThreshold": {},
+                      "f:httpGet": {
+                        ".": {},
+                        "f:path": {},
+                        "f:port": {},
+                        "f:scheme": {}
+                      },
+                      "f:initialDelaySeconds": {},
+                      "f:periodSeconds": {},
+                      "f:successThreshold": {},
+                      "f:timeoutSeconds": {}
+                    },
+                    "f:name": {},
+                    "f:ports": {
+                      ".": {},
+                      "k:{\"containerPort\":8081,\"protocol\":\"TCP\"}": {
+                        ".": {},
+                        "f:containerPort": {},
+                        "f:name": {},
+                        "f:protocol": {}
+                      }
+                    },
+                    "f:readinessProbe": {
+                      ".": {},
+                      "f:failureThreshold": {},
+                      "f:httpGet": {
+                        ".": {},
+                        "f:path": {},
+                        "f:port": {},
+                        "f:scheme": {}
+                      },
+                      "f:initialDelaySeconds": {},
+                      "f:periodSeconds": {},
+                      "f:successThreshold": {},
+                      "f:timeoutSeconds": {}
+                    },
+                    "f:resources": {
+                      ".": {},
+                      "f:limits": {
+                        ".": {},
+                        "f:cpu": {},
+                        "f:memory": {}
+                      },
+                      "f:requests": {
+                        ".": {},
+                        "f:cpu": {},
+                        "f:memory": {}
+                      }
+                    },
+                    "f:terminationMessagePath": {},
+                    "f:terminationMessagePolicy": {},
+                    "f:volumeMounts": {
+                      ".": {},
+                      "k:{\"mountPath\":\"/opt/user-operator/custom-config/\"}": {
+                        ".": {},
+                        "f:mountPath": {},
+                        "f:name": {}
+                      },
+                      "k:{\"mountPath\":\"/tmp\"}": {
+                        ".": {},
+                        "f:mountPath": {},
+                        "f:name": {}
+                      }
+                    }
+                  }
+                },
+                "f:dnsPolicy": {},
+                "f:enableServiceLinks": {},
+                "f:restartPolicy": {},
+                "f:schedulerName": {},
+                "f:securityContext": {},
+                "f:serviceAccount": {},
+                "f:serviceAccountName": {},
+                "f:terminationGracePeriodSeconds": {},
+                "f:volumes": {
+                  ".": {},
+                  "k:{\"name\":\"cluster-ca-certs\"}": {
+                    ".": {},
+                    "f:name": {},
+                    "f:secret": {
+                      ".": {},
+                      "f:defaultMode": {},
+                      "f:secretName": {}
+                    }
+                  },
+                  "k:{\"name\":\"entity-topic-operator-metrics-and-logging\"}": {
+                    ".": {},
+                    "f:configMap": {
+                      ".": {},
+                      "f:defaultMode": {},
+                      "f:name": {}
+                    },
+                    "f:name": {}
+                  },
+                  "k:{\"name\":\"entity-user-operator-metrics-and-logging\"}": {
+                    ".": {},
+                    "f:configMap": {
+                      ".": {},
+                      "f:defaultMode": {},
+                      "f:name": {}
+                    },
+                    "f:name": {}
+                  },
+                  "k:{\"name\":\"eto-certs\"}": {
+                    ".": {},
+                    "f:name": {},
+                    "f:secret": {
+                      ".": {},
+                      "f:defaultMode": {},
+                      "f:secretName": {}
+                    }
+                  },
+                  "k:{\"name\":\"strimzi-to-tmp\"}": {
+                    ".": {},
+                    "f:emptyDir": {
+                      ".": {},
+                      "f:medium": {},
+                      "f:sizeLimit": {}
+                    },
+                    "f:name": {}
+                  },
+                  "k:{\"name\":\"strimzi-uo-tmp\"}": {
+                    ".": {},
+                    "f:emptyDir": {
+                      ".": {},
+                      "f:medium": {},
+                      "f:sizeLimit": {}
+                    },
+                    "f:name": {}
+                  }
+                }
+              }
+            }
+          },
+          {
+            "manager": "multus-daemon",
+            "operation": "Update",
+            "apiVersion": "v1",
+            "time": "2026-11-26T17:13:48Z",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:metadata": {
+                "f:annotations": {
+                  "f:k8s.v1.cni.cncf.io/network-status": {}
+                }
+              }
+            },
+            "subresource": "status"
+          },
+          {
+            "manager": "kubelet",
+            "operation": "Update",
+            "apiVersion": "v1",
+            "time": "2026-11-27T06:13:04Z",
+            "fieldsType": "FieldsV1",
+            "fieldsV1": {
+              "f:status": {
+                "f:conditions": {
+                  "k:{\"type\":\"ContainersReady\"}": {
+                    ".": {},
+                    "f:lastProbeTime": {},
+                    "f:lastTransitionTime": {},
+                    "f:observedGeneration": {},
+                    "f:status": {},
+                    "f:type": {}
+                  },
+                  "k:{\"type\":\"Initialized\"}": {
+                    ".": {},
+                    "f:lastProbeTime": {},
+                    "f:lastTransitionTime": {},
+                    "f:observedGeneration": {},
+                    "f:status": {},
+                    "f:type": {}
+                  },
+                  "k:{\"type\":\"PodReadyToStartContainers\"}": {
+                    ".": {},
+                    "f:lastProbeTime": {},
+                    "f:lastTransitionTime": {},
+                    "f:observedGeneration": {},
+                    "f:status": {},
+                    "f:type": {}
+                  },
+                  "k:{\"type\":\"PodScheduled\"}": {
+                    "f:observedGeneration": {}
+                  },
+                  "k:{\"type\":\"Ready\"}": {
+                    ".": {},
+                    "f:lastProbeTime": {},
+                    "f:lastTransitionTime": {},
+                    "f:observedGeneration": {},
+                    "f:status": {},
+                    "f:type": {}
+                  }
+                },
+                "f:containerStatuses": {},
+                "f:hostIP": {},
+                "f:hostIPs": {},
+                "f:observedGeneration": {},
+                "f:phase": {},
+                "f:podIP": {},
+                "f:podIPs": {
+                  ".": {},
+                  "k:{\"ip\":\"10.128.2.14\"}": {
+                    ".": {},
+                    "f:ip": {}
+                  }
+                },
+                "f:startTime": {}
+              }
+            },
+            "subresource": "status"
+          }
+        ]
+      },
+      "spec": {
+        "volumes": [
+          {
+            "name": "strimzi-to-tmp",
+            "emptyDir": {
+              "medium": "Memory",
+              "sizeLimit": "5Mi"
+            }
+          },
+          {
+            "name": "entity-topic-operator-metrics-and-logging",
+            "configMap": {
+              "name": "kaas-dev-entity-topic-operator-config",
+              "defaultMode": 420
+            }
+          },
+          {
+            "name": "cluster-ca-certs",
+            "secret": {
+              "secretName": "kaas-dev-cluster-ca-cert",
+              "defaultMode": 288
+            }
+          },
+          {
+            "name": "eto-certs",
+            "secret": {
+              "secretName": "kaas-dev-entity-topic-operator-certs",
+              "defaultMode": 288
+            }
+          },
+          {
+            "name": "entity-user-operator-metrics-and-logging",
+            "configMap": {
+              "name": "kaas-dev-entity-user-operator-config",
+              "defaultMode": 420
+            }
+          },
+          {
+            "name": "strimzi-uo-tmp",
+            "emptyDir": {
+              "medium": "Memory",
+              "sizeLimit": "5Mi"
+            }
+          },
+          {
+            "name": "kube-api-access-624pd",
+            "projected": {
+              "sources": [
+                {
+                  "serviceAccountToken": {
+                    "expirationSeconds": 3607,
+                    "path": "token"
+                  }
+                },
+                {
+                  "configMap": {
+                    "name": "kube-root-ca.crt",
+                    "items": [
+                      {
+                        "key": "ca.crt",
+                        "path": "ca.crt"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "downwardAPI": {
+                    "items": [
+                      {
+                        "path": "namespace",
+                        "fieldRef": {
+                          "apiVersion": "v1",
+                          "fieldPath": "metadata.namespace"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "configMap": {
+                    "name": "openshift-service-ca.crt",
+                    "items": [
+                      {
+                        "key": "service-ca.crt",
+                        "path": "service-ca.crt"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "defaultMode": 420
+            }
+          }
+        ],
+        "containers": [
+          {
+            "name": "topic-operator",
+            "image": "registry.redhat.io/amq-streams/strimzi-rhel9-operator@sha256:72da52b47b90fab432581ca8d1661e31d92fd090e883845ca5ce68fd23155589",
+            "args": [
+              "/opt/strimzi/bin/topic_operator_run.sh"
+            ],
+            "ports": [
+              {
+                "name": "healthcheck",
+                "containerPort": 8080,
+                "protocol": "TCP"
+              }
+            ],
+            "env": [
+              {
+                "name": "STRIMZI_RESOURCE_LABELS",
+                "value": "strimzi.io/cluster=kaas-dev"
+              },
+              {
+                "name": "STRIMZI_KAFKA_BOOTSTRAP_SERVERS",
+                "value": "kaas-dev-kafka-bootstrap:9091"
+              },
+              {
+                "name": "STRIMZI_NAMESPACE",
+                "value": "kaas-kafka"
+              },
+              {
+                "name": "STRIMZI_SECURITY_PROTOCOL",
+                "value": "SSL"
+              },
+              {
+                "name": "STRIMZI_TLS_ENABLED",
+                "value": "true"
+              },
+              {
+                "name": "STRIMZI_GC_LOG_ENABLED",
+                "value": "false"
+              },
+              {
+                "name": "STRIMZI_JAVA_OPTS",
+                "value": "-Xms128m -Xmx256m"
+              }
+            ],
+            "resources": {
+              "limits": {
+                "cpu": "500m",
+                "memory": "512Mi"
+              },
+              "requests": {
+                "cpu": "100m",
+                "memory": "256Mi"
+              }
+            },
+            "volumeMounts": [
+              {
+                "name": "strimzi-to-tmp",
+                "mountPath": "/tmp"
+              },
+              {
+                "name": "entity-topic-operator-metrics-and-logging",
+                "mountPath": "/opt/topic-operator/custom-config/"
+              },
+              {
+                "name": "eto-certs",
+                "mountPath": "/etc/eto-certs/"
+              },
+              {
+                "name": "cluster-ca-certs",
+                "mountPath": "/etc/cluster-ca-certs/"
+              },
+              {
+                "name": "kube-api-access-624pd",
+                "readOnly": true,
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+              }
+            ],
+            "livenessProbe": {
+              "httpGet": {
+                "path": "/healthy",
+                "port": "healthcheck",
+                "scheme": "HTTP"
+              },
+              "initialDelaySeconds": 10,
+              "timeoutSeconds": 5,
+              "periodSeconds": 10,
+              "successThreshold": 1,
+              "failureThreshold": 3
+            },
+            "readinessProbe": {
+              "httpGet": {
+                "path": "/ready",
+                "port": "healthcheck",
+                "scheme": "HTTP"
+              },
+              "initialDelaySeconds": 10,
+              "timeoutSeconds": 5,
+              "periodSeconds": 10,
+              "successThreshold": 1,
+              "failureThreshold": 3
+            },
+            "startupProbe": {
+              "httpGet": {
+                "path": "/healthy",
+                "port": "healthcheck",
+                "scheme": "HTTP"
+              },
+              "initialDelaySeconds": 15,
+              "timeoutSeconds": 5,
+              "periodSeconds": 10,
+              "successThreshold": 1,
+              "failureThreshold": 12
+            },
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "IfNotPresent",
+            "securityContext": {
+              "capabilities": {
+                "drop": [
+                  "ALL"
+                ]
+              },
+              "runAsUser": 1000800000,
+              "runAsNonRoot": true,
+              "allowPrivilegeEscalation": false
+            }
+          },
+          {
+            "name": "user-operator",
+            "image": "registry.redhat.io/amq-streams/strimzi-rhel9-operator@sha256:72da52b47b90fab432581ca8d1661e31d92fd090e883845ca5ce68fd23155589",
+            "args": [
+              "/opt/strimzi/bin/user_operator_run.sh"
+            ],
+            "ports": [
+              {
+                "name": "healthcheck",
+                "containerPort": 8081,
+                "protocol": "TCP"
+              }
+            ],
+            "env": [
+              {
+                "name": "STRIMZI_KAFKA_BOOTSTRAP_SERVERS",
+                "value": "kaas-dev-kafka-bootstrap:9091"
+              },
+              {
+                "name": "STRIMZI_NAMESPACE",
+                "value": "kaas-kafka"
+              },
+              {
+                "name": "STRIMZI_LABELS",
+                "value": "strimzi.io/cluster=kaas-dev"
+              },
+              {
+                "name": "STRIMZI_CA_KEY_NAME",
+                "value": "kaas-dev-clients-ca"
+              },
+              {
+                "name": "STRIMZI_CA_CERT_NAME",
+                "value": "kaas-dev-clients-ca-cert"
+              },
+              {
+                "name": "STRIMZI_CA_NAMESPACE",
+                "value": "kaas-kafka"
+              },
+              {
+                "name": "STRIMZI_CA_VALIDITY",
+                "value": "365"
+              },
+              {
+                "name": "STRIMZI_CA_RENEWAL",
+                "value": "30"
+              },
+              {
+                "name": "STRIMZI_CLUSTER_CA_CERT_SECRET_NAME",
+                "value": "kaas-dev-cluster-ca-cert"
+              },
+              {
+                "name": "STRIMZI_EO_KEY_SECRET_NAME",
+                "value": "kaas-dev-entity-user-operator-certs"
+              },
+              {
+                "name": "STRIMZI_GC_LOG_ENABLED",
+                "value": "false"
+              },
+              {
+                "name": "STRIMZI_SECRET_PREFIX"
+              },
+              {
+                "name": "STRIMZI_ACLS_ADMIN_API_SUPPORTED",
+                "value": "true"
+              },
+              {
+                "name": "STRIMZI_JAVA_OPTS",
+                "value": "-Xms128m -Xmx256m"
+              }
+            ],
+            "resources": {
+              "limits": {
+                "cpu": "500m",
+                "memory": "512Mi"
+              },
+              "requests": {
+                "cpu": "100m",
+                "memory": "256Mi"
+              }
+            },
+            "volumeMounts": [
+              {
+                "name": "strimzi-uo-tmp",
+                "mountPath": "/tmp"
+              },
+              {
+                "name": "entity-user-operator-metrics-and-logging",
+                "mountPath": "/opt/user-operator/custom-config/"
+              },
+              {
+                "name": "kube-api-access-624pd",
+                "readOnly": true,
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+              }
+            ],
+            "livenessProbe": {
+              "httpGet": {
+                "path": "/healthy",
+                "port": "healthcheck",
+                "scheme": "HTTP"
+              },
+              "initialDelaySeconds": 10,
+              "timeoutSeconds": 5,
+              "periodSeconds": 10,
+              "successThreshold": 1,
+              "failureThreshold": 3
+            },
+            "readinessProbe": {
+              "httpGet": {
+                "path": "/ready",
+                "port": "healthcheck",
+                "scheme": "HTTP"
+              },
+              "initialDelaySeconds": 10,
+              "timeoutSeconds": 5,
+              "periodSeconds": 10,
+              "successThreshold": 1,
+              "failureThreshold": 3
+            },
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "IfNotPresent",
+            "securityContext": {
+              "capabilities": {
+                "drop": [
+                  "ALL"
+                ]
+              },
+              "runAsUser": 1000800000,
+              "runAsNonRoot": true,
+              "allowPrivilegeEscalation": false
+            }
+          }
+        ],
+        "restartPolicy": "Always",
+        "terminationGracePeriodSeconds": 30,
+        "dnsPolicy": "ClusterFirst",
+        "serviceAccountName": "kaas-dev-entity-operator",
+        "serviceAccount": "kaas-dev-entity-operator",
+        "nodeName": "ip-10-0-50-65.us-east-2.compute.internal",
+        "securityContext": {
+          "seLinuxOptions": {
+            "level": "s0:c28,c22"
+          },
+          "fsGroup": 1000800000,
+          "seccompProfile": {
+            "type": "RuntimeDefault"
+          }
+        },
+        "imagePullSecrets": [
+          {
+            "name": "kaas-dev-entity-operator-dockercfg-4q4qm"
+          }
+        ],
+        "schedulerName": "default-scheduler",
+        "tolerations": [
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          },
+          {
+            "key": "node.kubernetes.io/memory-pressure",
+            "operator": "Exists",
+            "effect": "NoSchedule"
+          }
+        ],
+        "priority": 0,
+        "enableServiceLinks": true,
+        "preemptionPolicy": "PreemptLowerPriority"
+      },
+      "status": {
+        "observedGeneration": 1,
+        "phase": "Running",
+        "conditions": [
+          {
+            "type": "PodReadyToStartContainers",
+            "observedGeneration": 1,
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-27T06:11:28Z"
+          },
+          {
+            "type": "Initialized",
+            "observedGeneration": 1,
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-26T17:13:47Z"
+          },
+          {
+            "type": "Ready",
+            "observedGeneration": 1,
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-27T06:13:04Z"
+          },
+          {
+            "type": "ContainersReady",
+            "observedGeneration": 1,
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-27T06:13:04Z"
+          },
+          {
+            "type": "PodScheduled",
+            "observedGeneration": 1,
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-26T17:13:47Z"
+          }
+        ],
+        "hostIP": "10.0.50.65",
+        "hostIPs": [
+          {
+            "ip": "10.0.50.65"
+          }
+        ],
+        "podIP": "10.128.2.14",
+        "podIPs": [
+          {
+            "ip": "10.128.2.14"
+          }
+        ],
+        "startTime": "2026-11-26T17:13:47Z",
+        "containerStatuses": [
+          {
+            "name": "topic-operator",
+            "state": {
+              "running": {
+                "startedAt": "2026-11-27T06:12:05Z"
+              }
+            },
+            "lastState": {
+              "terminated": {
+                "exitCode": 1,
+                "reason": "Error",
+                "startedAt": "2026-11-27T06:11:42Z",
+                "finishedAt": "2026-11-27T06:11:51Z",
+                "containerID": "cri-o://f80f4e6e8ae40881147fbc89f830304c34b82831afc62a63d84fc5b27ef70332"
+              }
+            },
+            "ready": true,
+            "restartCount": 3,
+            "image": "registry.redhat.io/amq-streams/strimzi-rhel9-operator@sha256:72da52b47b90fab432581ca8d1661e31d92fd090e883845ca5ce68fd23155589",
+            "imageID": "registry.redhat.io/amq-streams/strimzi-rhel9-operator@sha256:464727b8c5a57d58f86d3f5e5c704ed283b890951a7fa0f0f45fe039afee3f6b",
+            "containerID": "cri-o://df1a9f789c27cbd514a11d692864e6a57eb54d26b24599c67456b0fbab09e12d",
+            "started": true,
+            "allocatedResources": {
+              "cpu": "100m",
+              "memory": "256Mi"
+            },
+            "resources": {
+              "limits": {
+                "cpu": "500m",
+                "memory": "512Mi"
+              },
+              "requests": {
+                "cpu": "100m",
+                "memory": "256Mi"
+              }
+            },
+            "volumeMounts": [
+              {
+                "name": "strimzi-to-tmp",
+                "mountPath": "/tmp"
+              },
+              {
+                "name": "entity-topic-operator-metrics-and-logging",
+                "mountPath": "/opt/topic-operator/custom-config/"
+              },
+              {
+                "name": "eto-certs",
+                "mountPath": "/etc/eto-certs/"
+              },
+              {
+                "name": "cluster-ca-certs",
+                "mountPath": "/etc/cluster-ca-certs/"
+              },
+              {
+                "name": "kube-api-access-624pd",
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                "readOnly": true,
+                "recursiveReadOnly": "Disabled"
+              }
+            ],
+            "user": {
+              "linux": {
+                "uid": 1000800000,
+                "gid": 0,
+                "supplementalGroups": [
+                  0,
+                  1000800000
+                ]
+              }
+            }
+          },
+          {
+            "name": "user-operator",
+            "state": {
+              "running": {
+                "startedAt": "2026-11-27T06:12:44Z"
+              }
+            },
+            "lastState": {
+              "terminated": {
+                "exitCode": 0,
+                "reason": "Completed",
+                "startedAt": "2026-11-27T06:12:26Z",
+                "finishedAt": "2026-11-27T06:12:44Z",
+                "containerID": "cri-o://e44f61efdb9c61b8bbd4c3622a9cec64d8db448880c25703007394bd7dec0895"
+              }
+            },
+            "ready": true,
+            "restartCount": 4,
+            "image": "registry.redhat.io/amq-streams/strimzi-rhel9-operator@sha256:72da52b47b90fab432581ca8d1661e31d92fd090e883845ca5ce68fd23155589",
+            "imageID": "registry.redhat.io/amq-streams/strimzi-rhel9-operator@sha256:464727b8c5a57d58f86d3f5e5c704ed283b890951a7fa0f0f45fe039afee3f6b",
+            "containerID": "cri-o://16eb67bcf212f89b654eccf915245beaf9d3515d9af3ca33e1b62ef3c5180f19",
+            "started": true,
+            "allocatedResources": {
+              "cpu": "100m",
+              "memory": "256Mi"
+            },
+            "resources": {
+              "limits": {
+                "cpu": "500m",
+                "memory": "512Mi"
+              },
+              "requests": {
+                "cpu": "100m",
+                "memory": "256Mi"
+              }
+            },
+            "volumeMounts": [
+              {
+                "name": "strimzi-uo-tmp",
+                "mountPath": "/tmp"
+              },
+              {
+                "name": "entity-user-operator-metrics-and-logging",
+                "mountPath": "/opt/user-operator/custom-config/"
+              },
+              {
+                "name": "kube-api-access-624pd",
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                "readOnly": true,
+                "recursiveReadOnly": "Disabled"
+              }
+            ],
+            "user": {
+              "linux": {
+                "uid": 1000800000,
+                "gid": 0,
+                "supplementalGroups": [
+                  0,
+                  1000800000
+                ]
+              }
+            }
+          }
+        ],
+        "qosClass": "Burstable"
+      }
+    }
+  ]
+}

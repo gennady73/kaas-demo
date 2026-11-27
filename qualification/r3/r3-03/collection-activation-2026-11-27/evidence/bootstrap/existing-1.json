@@ -1,0 +1,4 @@
+{
+  "http": 404,
+  "body": "{\"kind\":\"Status\",\"apiVersion\":\"v1\",\"metadata\":{},\"status\":\"Failure\",\"message\":\"rolebindings.rbac.authorization.k8s.io \\\"kaas-r3-broker-monitor-writer\\\" not found\",\"reason\":\"NotFound\",\"details\":{\"name\":\"kaas-r3-broker-monitor-writer\",\"group\":\"rbac.authorization.k8s.io\",\"kind\":\"rolebindings\"},\"code\":404}\n"
+}

@@ -1,0 +1,36 @@
+{
+  "classification": "OBSERVED_MANAGED_REQUESTS_CONSERVATIVE_INIT_SUM_NOT_MEASURED_USAGE",
+  "rows": [
+    {
+      "Pod": "prometheus-operator-7f8c7c8654-5c2h8",
+      "sum_regular_and_init_cpu_m": 101.0,
+      "sum_regular_and_init_MiB": 266.0
+    },
+    {
+      "Pod": "prometheus-user-workload-0",
+      "sum_regular_and_init_cpu_m": 256.0,
+      "sum_regular_and_init_MiB": 2115.0
+    },
+    {
+      "Pod": "prometheus-user-workload-1",
+      "sum_regular_and_init_cpu_m": 256.0,
+      "sum_regular_and_init_MiB": 2115.0
+    },
+    {
+      "Pod": "thanos-ruler-user-workload-0",
+      "sum_regular_and_init_cpu_m": 103.0,
+      "sum_regular_and_init_MiB": 549.0
+    },
+    {
+      "Pod": "thanos-ruler-user-workload-1",
+      "sum_regular_and_init_cpu_m": 103.0,
+      "sum_regular_and_init_MiB": 549.0
+    }
+  ],
+  "UWM_total_cpu_m": 819.0,
+  "UWM_total_MiB": 5594.0,
+  "UWM_budget_cpu_m": 1000,
+  "UWM_budget_MiB": 6144,
+  "within_budget": true,
+  "ready_snapshot": "uwm-status-02"
+}

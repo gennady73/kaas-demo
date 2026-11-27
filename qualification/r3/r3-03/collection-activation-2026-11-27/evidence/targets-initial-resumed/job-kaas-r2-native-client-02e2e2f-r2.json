@@ -1,0 +1,606 @@
+{
+  "kind": "Job",
+  "apiVersion": "batch/v1",
+  "metadata": {
+    "name": "kaas-r2-native-client-02e2e2f-r2",
+    "namespace": "kaas-demo",
+    "uid": "21fa27ff-9fa4-45f5-b157-b1bd89a394e6",
+    "resourceVersion": "1090643",
+    "generation": 3,
+    "creationTimestamp": "2026-11-26T13:49:04Z",
+    "labels": {
+      "kaas.example.com/package": "r2-native-disabled"
+    },
+    "annotations": {
+      "kaas.example.com/authorized-source": "02e2e2fed7db0c0e42072ef245e104fb6167b193",
+      "kaas.example.com/scope": "Single bounded R2 fixture; no retries"
+    },
+    "managedFields": [
+      {
+        "manager": "Python-urllib",
+        "operation": "Update",
+        "apiVersion": "batch/v1",
+        "time": "2026-11-26T13:49:04Z",
+        "fieldsType": "FieldsV1",
+        "fieldsV1": {
+          "f:metadata": {
+            "f:annotations": {
+              ".": {},
+              "f:kaas.example.com/authorized-source": {},
+              "f:kaas.example.com/scope": {}
+            },
+            "f:labels": {
+              ".": {},
+              "f:kaas.example.com/package": {}
+            }
+          },
+          "f:spec": {
+            "f:activeDeadlineSeconds": {},
+            "f:backoffLimit": {},
+            "f:completionMode": {},
+            "f:completions": {},
+            "f:manualSelector": {},
+            "f:parallelism": {},
+            "f:podReplacementPolicy": {},
+            "f:template": {
+              "f:metadata": {
+                "f:labels": {
+                  ".": {},
+                  "f:kaas.example.com/r2-component": {},
+                  "f:kaas.example.com/r2-runner": {}
+                }
+              },
+              "f:spec": {
+                "f:automountServiceAccountToken": {},
+                "f:containers": {
+                  "k:{\"name\":\"native-client\"}": {
+                    ".": {},
+                    "f:command": {},
+                    "f:env": {
+                      ".": {},
+                      "k:{\"name\":\"HOME\"}": {
+                        ".": {},
+                        "f:name": {},
+                        "f:value": {}
+                      },
+                      "k:{\"name\":\"K6_NO_USAGE_REPORT\"}": {
+                        ".": {},
+                        "f:name": {},
+                        "f:value": {}
+                      },
+                      "k:{\"name\":\"SSL_CERT_FILE\"}": {
+                        ".": {},
+                        "f:name": {},
+                        "f:value": {}
+                      }
+                    },
+                    "f:image": {},
+                    "f:imagePullPolicy": {},
+                    "f:name": {},
+                    "f:resources": {
+                      ".": {},
+                      "f:limits": {
+                        ".": {},
+                        "f:cpu": {},
+                        "f:memory": {}
+                      },
+                      "f:requests": {
+                        ".": {},
+                        "f:cpu": {},
+                        "f:memory": {}
+                      }
+                    },
+                    "f:securityContext": {
+                      ".": {},
+                      "f:allowPrivilegeEscalation": {},
+                      "f:capabilities": {
+                        ".": {},
+                        "f:drop": {}
+                      },
+                      "f:readOnlyRootFilesystem": {},
+                      "f:runAsNonRoot": {},
+                      "f:seccompProfile": {
+                        ".": {},
+                        "f:type": {}
+                      }
+                    },
+                    "f:terminationMessagePath": {},
+                    "f:terminationMessagePolicy": {},
+                    "f:volumeMounts": {
+                      ".": {},
+                      "k:{\"mountPath\":\"/arming\"}": {
+                        ".": {},
+                        "f:mountPath": {},
+                        "f:name": {},
+                        "f:readOnly": {}
+                      },
+                      "k:{\"mountPath\":\"/credentials/cluster-ca\"}": {
+                        ".": {},
+                        "f:mountPath": {},
+                        "f:name": {},
+                        "f:readOnly": {}
+                      },
+                      "k:{\"mountPath\":\"/credentials/kaas-sbx-a-consumer\"}": {
+                        ".": {},
+                        "f:mountPath": {},
+                        "f:name": {},
+                        "f:readOnly": {}
+                      },
+                      "k:{\"mountPath\":\"/credentials/kaas-sbx-a-producer\"}": {
+                        ".": {},
+                        "f:mountPath": {},
+                        "f:name": {},
+                        "f:readOnly": {}
+                      },
+                      "k:{\"mountPath\":\"/credentials/kaas-sbx-b-consumer\"}": {
+                        ".": {},
+                        "f:mountPath": {},
+                        "f:name": {},
+                        "f:readOnly": {}
+                      },
+                      "k:{\"mountPath\":\"/credentials/kaas-sbx-b-producer\"}": {
+                        ".": {},
+                        "f:mountPath": {},
+                        "f:name": {},
+                        "f:readOnly": {}
+                      },
+                      "k:{\"mountPath\":\"/evidence-auth\"}": {
+                        ".": {},
+                        "f:mountPath": {},
+                        "f:name": {},
+                        "f:readOnly": {}
+                      },
+                      "k:{\"mountPath\":\"/evidence-trust\"}": {
+                        ".": {},
+                        "f:mountPath": {},
+                        "f:name": {},
+                        "f:readOnly": {}
+                      },
+                      "k:{\"mountPath\":\"/r2/runtime.json\"}": {
+                        ".": {},
+                        "f:mountPath": {},
+                        "f:name": {},
+                        "f:readOnly": {},
+                        "f:subPath": {}
+                      },
+                      "k:{\"mountPath\":\"/tmp\"}": {
+                        ".": {},
+                        "f:mountPath": {},
+                        "f:name": {}
+                      }
+                    }
+                  }
+                },
+                "f:dnsPolicy": {},
+                "f:nodeSelector": {},
+                "f:restartPolicy": {},
+                "f:schedulerName": {},
+                "f:securityContext": {},
+                "f:serviceAccount": {},
+                "f:serviceAccountName": {},
+                "f:terminationGracePeriodSeconds": {},
+                "f:volumes": {
+                  ".": {},
+                  "k:{\"name\":\"arming\"}": {
+                    ".": {},
+                    "f:configMap": {
+                      ".": {},
+                      "f:defaultMode": {},
+                      "f:name": {}
+                    },
+                    "f:name": {}
+                  },
+                  "k:{\"name\":\"cluster-ca\"}": {
+                    ".": {},
+                    "f:configMap": {
+                      ".": {},
+                      "f:defaultMode": {},
+                      "f:items": {},
+                      "f:name": {}
+                    },
+                    "f:name": {}
+                  },
+                  "k:{\"name\":\"credential-0\"}": {
+                    ".": {},
+                    "f:name": {},
+                    "f:secret": {
+                      ".": {},
+                      "f:defaultMode": {},
+                      "f:items": {},
+                      "f:secretName": {}
+                    }
+                  },
+                  "k:{\"name\":\"credential-1\"}": {
+                    ".": {},
+                    "f:name": {},
+                    "f:secret": {
+                      ".": {},
+                      "f:defaultMode": {},
+                      "f:items": {},
+                      "f:secretName": {}
+                    }
+                  },
+                  "k:{\"name\":\"credential-2\"}": {
+                    ".": {},
+                    "f:name": {},
+                    "f:secret": {
+                      ".": {},
+                      "f:defaultMode": {},
+                      "f:items": {},
+                      "f:secretName": {}
+                    }
+                  },
+                  "k:{\"name\":\"credential-3\"}": {
+                    ".": {},
+                    "f:name": {},
+                    "f:secret": {
+                      ".": {},
+                      "f:defaultMode": {},
+                      "f:items": {},
+                      "f:secretName": {}
+                    }
+                  },
+                  "k:{\"name\":\"execution\"}": {
+                    ".": {},
+                    "f:configMap": {
+                      ".": {},
+                      "f:defaultMode": {},
+                      "f:name": {}
+                    },
+                    "f:name": {}
+                  },
+                  "k:{\"name\":\"sink-trust\"}": {
+                    ".": {},
+                    "f:configMap": {
+                      ".": {},
+                      "f:defaultMode": {},
+                      "f:items": {},
+                      "f:name": {}
+                    },
+                    "f:name": {}
+                  },
+                  "k:{\"name\":\"tmp\"}": {
+                    ".": {},
+                    "f:emptyDir": {
+                      ".": {},
+                      "f:sizeLimit": {}
+                    },
+                    "f:name": {}
+                  },
+                  "k:{\"name\":\"writer\"}": {
+                    ".": {},
+                    "f:name": {},
+                    "f:secret": {
+                      ".": {},
+                      "f:defaultMode": {},
+                      "f:items": {},
+                      "f:secretName": {}
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "manager": "kube-controller-manager",
+        "operation": "Update",
+        "apiVersion": "batch/v1",
+        "time": "2026-11-26T13:49:14Z",
+        "fieldsType": "FieldsV1",
+        "fieldsV1": {
+          "f:status": {
+            "f:conditions": {},
+            "f:failed": {},
+            "f:ready": {},
+            "f:startTime": {},
+            "f:terminating": {},
+            "f:uncountedTerminatedPods": {}
+          }
+        },
+        "subresource": "status"
+      },
+      {
+        "manager": "kubectl-patch",
+        "operation": "Update",
+        "apiVersion": "batch/v1",
+        "time": "2026-11-26T13:49:45Z",
+        "fieldsType": "FieldsV1",
+        "fieldsV1": {
+          "f:spec": {
+            "f:suspend": {}
+          }
+        }
+      }
+    ]
+  },
+  "spec": {
+    "parallelism": 1,
+    "completions": 1,
+    "activeDeadlineSeconds": 300,
+    "backoffLimit": 0,
+    "selector": {
+      "matchLabels": {
+        "batch.kubernetes.io/controller-uid": "21fa27ff-9fa4-45f5-b157-b1bd89a394e6"
+      }
+    },
+    "manualSelector": false,
+    "template": {
+      "metadata": {
+        "labels": {
+          "batch.kubernetes.io/controller-uid": "21fa27ff-9fa4-45f5-b157-b1bd89a394e6",
+          "batch.kubernetes.io/job-name": "kaas-r2-native-client-02e2e2f-r2",
+          "controller-uid": "21fa27ff-9fa4-45f5-b157-b1bd89a394e6",
+          "job-name": "kaas-r2-native-client-02e2e2f-r2",
+          "kaas.example.com/r2-component": "client",
+          "kaas.example.com/r2-runner": "trusted"
+        }
+      },
+      "spec": {
+        "volumes": [
+          {
+            "name": "cluster-ca",
+            "configMap": {
+              "name": "kaas-r2-cluster-ca",
+              "items": [
+                {
+                  "key": "ca.crt",
+                  "path": "ca.crt"
+                }
+              ],
+              "defaultMode": 292
+            }
+          },
+          {
+            "name": "credential-0",
+            "secret": {
+              "secretName": "kaas-sbx-a-producer",
+              "items": [
+                {
+                  "key": "password",
+                  "path": "password"
+                }
+              ],
+              "defaultMode": 288
+            }
+          },
+          {
+            "name": "credential-1",
+            "secret": {
+              "secretName": "kaas-sbx-a-consumer",
+              "items": [
+                {
+                  "key": "password",
+                  "path": "password"
+                }
+              ],
+              "defaultMode": 288
+            }
+          },
+          {
+            "name": "credential-2",
+            "secret": {
+              "secretName": "kaas-sbx-b-producer",
+              "items": [
+                {
+                  "key": "password",
+                  "path": "password"
+                }
+              ],
+              "defaultMode": 288
+            }
+          },
+          {
+            "name": "credential-3",
+            "secret": {
+              "secretName": "kaas-sbx-b-consumer",
+              "items": [
+                {
+                  "key": "password",
+                  "path": "password"
+                }
+              ],
+              "defaultMode": 288
+            }
+          },
+          {
+            "name": "arming",
+            "configMap": {
+              "name": "kaas-r2-client-arming-02e2e2f-r2",
+              "defaultMode": 420
+            }
+          },
+          {
+            "name": "execution",
+            "configMap": {
+              "name": "kaas-r2-execution-02e2e2f-r2",
+              "defaultMode": 420
+            }
+          },
+          {
+            "name": "writer",
+            "secret": {
+              "secretName": "kaas-r2-evidence-writer",
+              "items": [
+                {
+                  "key": "writer-token",
+                  "path": "writer-token"
+                }
+              ],
+              "defaultMode": 288
+            }
+          },
+          {
+            "name": "sink-trust",
+            "configMap": {
+              "name": "kaas-r2-sink-trust",
+              "items": [
+                {
+                  "key": "service-ca.crt",
+                  "path": "service-ca.crt"
+                }
+              ],
+              "defaultMode": 420
+            }
+          },
+          {
+            "name": "tmp",
+            "emptyDir": {
+              "sizeLimit": "16Mi"
+            }
+          }
+        ],
+        "containers": [
+          {
+            "name": "native-client",
+            "image": "image-registry.openshift-image-registry.svc:5000/kaas-demo/kaas-r2-runner-02e2e2f@sha256:d82a1444de832a824a135d66eef9c7486d8587299b54b5c490bccc194c42dabe",
+            "command": [
+              "/opt/r2/client-guard.sh"
+            ],
+            "env": [
+              {
+                "name": "K6_NO_USAGE_REPORT",
+                "value": "true"
+              },
+              {
+                "name": "SSL_CERT_FILE",
+                "value": "/evidence-trust/service-ca.crt"
+              },
+              {
+                "name": "HOME",
+                "value": "/tmp"
+              }
+            ],
+            "resources": {
+              "limits": {
+                "cpu": "500m",
+                "memory": "512Mi"
+              },
+              "requests": {
+                "cpu": "100m",
+                "memory": "128Mi"
+              }
+            },
+            "volumeMounts": [
+              {
+                "name": "cluster-ca",
+                "readOnly": true,
+                "mountPath": "/credentials/cluster-ca"
+              },
+              {
+                "name": "credential-0",
+                "readOnly": true,
+                "mountPath": "/credentials/kaas-sbx-a-producer"
+              },
+              {
+                "name": "credential-1",
+                "readOnly": true,
+                "mountPath": "/credentials/kaas-sbx-a-consumer"
+              },
+              {
+                "name": "credential-2",
+                "readOnly": true,
+                "mountPath": "/credentials/kaas-sbx-b-producer"
+              },
+              {
+                "name": "credential-3",
+                "readOnly": true,
+                "mountPath": "/credentials/kaas-sbx-b-consumer"
+              },
+              {
+                "name": "arming",
+                "readOnly": true,
+                "mountPath": "/arming"
+              },
+              {
+                "name": "execution",
+                "readOnly": true,
+                "mountPath": "/r2/runtime.json",
+                "subPath": "runtime.json"
+              },
+              {
+                "name": "writer",
+                "readOnly": true,
+                "mountPath": "/evidence-auth"
+              },
+              {
+                "name": "sink-trust",
+                "readOnly": true,
+                "mountPath": "/evidence-trust"
+              },
+              {
+                "name": "tmp",
+                "mountPath": "/tmp"
+              }
+            ],
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "IfNotPresent",
+            "securityContext": {
+              "capabilities": {
+                "drop": [
+                  "ALL"
+                ]
+              },
+              "runAsNonRoot": true,
+              "readOnlyRootFilesystem": true,
+              "allowPrivilegeEscalation": false,
+              "seccompProfile": {
+                "type": "RuntimeDefault"
+              }
+            }
+          }
+        ],
+        "restartPolicy": "Never",
+        "terminationGracePeriodSeconds": 0,
+        "dnsPolicy": "ClusterFirst",
+        "nodeSelector": {
+          "kubernetes.io/arch": "amd64",
+          "kubernetes.io/os": "linux"
+        },
+        "serviceAccountName": "kaas-r2-harness",
+        "serviceAccount": "kaas-r2-harness",
+        "automountServiceAccountToken": false,
+        "securityContext": {},
+        "schedulerName": "default-scheduler"
+      }
+    },
+    "completionMode": "NonIndexed",
+    "suspend": true,
+    "podReplacementPolicy": "TerminatingOrFailed"
+  },
+  "status": {
+    "conditions": [
+      {
+        "type": "Suspended",
+        "status": "False",
+        "lastProbeTime": "2026-11-26T13:49:04Z",
+        "lastTransitionTime": "2026-11-26T13:49:04Z",
+        "reason": "JobResumed",
+        "message": "Job resumed"
+      },
+      {
+        "type": "FailureTarget",
+        "status": "True",
+        "lastProbeTime": "2026-11-26T13:49:14Z",
+        "lastTransitionTime": "2026-11-26T13:49:14Z",
+        "reason": "BackoffLimitExceeded",
+        "message": "Job has reached the specified backoff limit"
+      },
+      {
+        "type": "Failed",
+        "status": "True",
+        "lastProbeTime": "2026-11-26T13:49:14Z",
+        "lastTransitionTime": "2026-11-26T13:49:14Z",
+        "reason": "BackoffLimitExceeded",
+        "message": "Job has reached the specified backoff limit"
+      }
+    ],
+    "startTime": "2026-11-26T13:49:04Z",
+    "failed": 1,
+    "terminating": 0,
+    "uncountedTerminatedPods": {},
+    "ready": 0
+  }
+}

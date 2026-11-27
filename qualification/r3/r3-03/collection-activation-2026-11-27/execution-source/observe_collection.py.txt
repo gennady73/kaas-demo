@@ -1,0 +1,30 @@
+"""Read-only five-minute logical-target stability gate; no test traffic or alerts."""
+import datetime,getpass,json,ssl,time,urllib.request,urllib.parse
+from pathlib import Path
+P=Path(__file__).resolve().parent;R=P.parents[2];O=P/'collection-stability-resumed';O.mkdir(exist_ok=False)
+token=getpass.getpass('Sandbox token (RAM only): ').strip();ctx=ssl.create_default_context(cafile=str(R/'config/environments/certificates/ocp-rddgh-api-ca.crt'))
+for v in json.loads((P/'targets-initial-resumed/ingress-CA.json').read_text()).get('data',{}).values():
+ if '-----BEGIN CERTIFICATE-----' in v:ctx.load_verify_locations(cadata=v)
+op=urllib.request.build_opener(urllib.request.ProxyHandler({}),urllib.request.HTTPSHandler(context=ctx));host='https://thanos-querier-openshift-monitoring.apps.ocp.rddgh.sandbox3088.opentlc.com'
+sel='{namespace="kaas-kafka",kaas_cluster="kaas-dev",kaas_component="broker"}';q={'up':'up'+sel,'timestamp':'timestamp(up'+sel+')','min':'min_over_time(up'+sel+'[5m])','count':'count_over_time(up'+sel+'[5m])'}
+initial=json.loads((P/'targets-initial-resumed/up.json').read_text());since=min(x['value'][0] for x in initial['data']['result']);snapshots=[];status='STOPPED';reason=None;start=time.monotonic()
+try:
+ for i in range(17):
+  record={'at_UTC':datetime.datetime.now(datetime.timezone.utc).isoformat(),'queries':{}}
+  for n,query in q.items():
+   with op.open(urllib.request.Request(host+'/api/v1/query?'+urllib.parse.urlencode({'query':query}),headers={'Authorization':'Bearer '+token}),timeout=15) as r:d=json.loads(r.read(1048576))
+   if d.get('status')!='success':raise RuntimeError('query_failure')
+   record['queries'][n]=d
+  up=record['queries']['up']['data']['result'];now=min(float(x['value'][0]) for x in up);timestamps=record['queries']['timestamp']['data']['result'];mins=record['queries']['min']['data']['result'];counts=record['queries']['count']['data']['result']
+  (O/('attempt-'+str(i).zfill(2)+'.json')).write_text(json.dumps(record,indent=2)+'\n')
+  if len(up)!=3 or not all(float(x['value'][1])==1 for x in up):raise RuntimeError('three_targets_not_up')
+  if len(timestamps)!=3 or not all(0<=float(x['value'][0])-float(x['value'][1])<=75 for x in timestamps):raise RuntimeError('stale_target_sample')
+  span=now-since;record['span_from_initial_seconds']=round(span,3);snapshots.append(record);(O/('poll-'+str(i).zfill(2)+'.json')).write_text(json.dumps(record,indent=2)+'\n');print(json.dumps({'at':record['at_UTC'],'targets_up':len(up),'span_seconds':round(span,1),'samples_5m':[x['value'][1] for x in counts]}),flush=True)
+  if span>=300:
+   if len(mins)==3 and all(float(x['value'][1])==1 for x in mins) and len(counts)==3 and all(float(x['value'][1])>=9 for x in counts):status='COMPLETE';break
+  if time.monotonic()-start>450:raise RuntimeError('stability_timeout')
+  time.sleep(30)
+ else:raise RuntimeError('poll_cap')
+except Exception as e:reason=str(e) if isinstance(e,RuntimeError) else type(e).__name__
+finally:
+ token='';d={'status':status,'reason':reason,'poll_count':len(snapshots),'span_from_first_success_seconds':snapshots[-1]['span_from_initial_seconds'] if snapshots else None,'logical_broker_targets':3,'deduplicated_Thanos_queries':True,'min_over_time_5m_required':1,'minimum_observed_samples_per_target_5m':9,'samples_not_a_latency_or_capacity_SLO':True,'read_only':True,'producer_consumer_tests_run':False,'test_emails_sent':False,'credentials_saved':False};(O/'result.json').write_text(json.dumps(d,indent=2)+'\n');print(json.dumps(d),flush=True)

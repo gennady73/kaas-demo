@@ -1,0 +1,492 @@
+{
+  "apiVersion": "monitoring.coreos.com/v1",
+  "kind": "ThanosRuler",
+  "metadata": {
+    "annotations": {
+      "operator.prometheus.io/controller-id": "openshift-user-workload-monitoring/prometheus-operator"
+    },
+    "creationTimestamp": "2026-11-27T06:46:42Z",
+    "generation": 1,
+    "labels": {
+      "app.kubernetes.io/managed-by": "cluster-monitoring-operator",
+      "app.kubernetes.io/part-of": "openshift-monitoring",
+      "thanosRulerName": "user-workload"
+    },
+    "managedFields": [
+      {
+        "apiVersion": "monitoring.coreos.com/v1",
+        "fieldsType": "FieldsV1",
+        "fieldsV1": {
+          "f:status": {
+            "f:availableReplicas": {},
+            "f:conditions": {
+              "k:{\"type\":\"Available\"}": {
+                ".": {},
+                "f:lastTransitionTime": {},
+                "f:message": {},
+                "f:observedGeneration": {},
+                "f:reason": {},
+                "f:status": {},
+                "f:type": {}
+              },
+              "k:{\"type\":\"Reconciled\"}": {
+                ".": {},
+                "f:lastTransitionTime": {},
+                "f:message": {},
+                "f:observedGeneration": {},
+                "f:reason": {},
+                "f:status": {},
+                "f:type": {}
+              }
+            },
+            "f:paused": {},
+            "f:replicas": {},
+            "f:unavailableReplicas": {},
+            "f:updatedReplicas": {}
+          }
+        },
+        "manager": "PrometheusOperator",
+        "operation": "Apply",
+        "subresource": "status",
+        "time": "2026-11-27T06:46:57Z"
+      },
+      {
+        "apiVersion": "monitoring.coreos.com/v1",
+        "fieldsType": "FieldsV1",
+        "fieldsV1": {
+          "f:metadata": {
+            "f:annotations": {
+              ".": {},
+              "f:operator.prometheus.io/controller-id": {}
+            },
+            "f:labels": {
+              ".": {},
+              "f:app.kubernetes.io/managed-by": {},
+              "f:app.kubernetes.io/part-of": {},
+              "f:thanosRulerName": {}
+            }
+          },
+          "f:spec": {
+            ".": {},
+            "f:affinity": {
+              ".": {},
+              "f:podAntiAffinity": {
+                ".": {},
+                "f:requiredDuringSchedulingIgnoredDuringExecution": {}
+              }
+            },
+            "f:alertQueryUrl": {},
+            "f:alertmanagersConfig": {},
+            "f:containers": {},
+            "f:enforcedNamespaceLabel": {},
+            "f:evaluationInterval": {},
+            "f:grpcServerTlsConfig": {
+              ".": {},
+              "f:ca": {},
+              "f:caFile": {},
+              "f:cert": {},
+              "f:certFile": {},
+              "f:keyFile": {}
+            },
+            "f:image": {},
+            "f:listenLocal": {},
+            "f:podMetadata": {
+              ".": {},
+              "f:annotations": {
+                ".": {},
+                "f:openshift.io/required-scc": {},
+                "f:target.workload.openshift.io/management": {}
+              },
+              "f:labels": {
+                ".": {},
+                "f:app.kubernetes.io/part-of": {}
+              }
+            },
+            "f:portName": {},
+            "f:priorityClassName": {},
+            "f:queryConfig": {},
+            "f:replicas": {},
+            "f:resources": {
+              ".": {},
+              "f:requests": {
+                ".": {},
+                "f:cpu": {},
+                "f:memory": {}
+              }
+            },
+            "f:retention": {},
+            "f:ruleNamespaceSelector": {},
+            "f:ruleSelector": {},
+            "f:securityContext": {
+              ".": {},
+              "f:fsGroup": {},
+              "f:runAsNonRoot": {},
+              "f:runAsUser": {},
+              "f:seccompProfile": {
+                ".": {},
+                "f:type": {}
+              }
+            },
+            "f:serviceAccountName": {},
+            "f:storage": {
+              ".": {},
+              "f:volumeClaimTemplate": {
+                ".": {},
+                "f:metadata": {},
+                "f:spec": {
+                  ".": {},
+                  "f:accessModes": {},
+                  "f:resources": {
+                    ".": {},
+                    "f:requests": {
+                      ".": {},
+                      "f:storage": {}
+                    }
+                  },
+                  "f:storageClassName": {},
+                  "f:volumeMode": {}
+                },
+                "f:status": {}
+              }
+            },
+            "f:version": {},
+            "f:volumes": {}
+          }
+        },
+        "manager": "operator",
+        "operation": "Update",
+        "time": "2026-11-27T06:46:42Z"
+      }
+    ],
+    "name": "user-workload",
+    "namespace": "openshift-user-workload-monitoring",
+    "resourceVersion": "1240698",
+    "uid": "e3198fc6-ca80-48ea-9e77-db93e1f710d4"
+  },
+  "spec": {
+    "affinity": {
+      "podAntiAffinity": {
+        "requiredDuringSchedulingIgnoredDuringExecution": [
+          {
+            "labelSelector": {
+              "matchLabels": {
+                "app.kubernetes.io/name": "thanos-ruler",
+                "thanos-ruler": "user-workload"
+              }
+            },
+            "namespaces": [
+              "openshift-user-workload-monitoring"
+            ],
+            "topologyKey": "kubernetes.io/hostname"
+          }
+        ]
+      }
+    },
+    "alertQueryUrl": "https://console-openshift-console.apps.ocp.rddgh.sandbox3088.opentlc.com/monitoring",
+    "alertmanagersConfig": {
+      "key": "alertmanagers.yaml",
+      "name": "thanos-ruler-alertmanagers-config"
+    },
+    "containers": [
+      {
+        "env": [
+          {
+            "name": "ALERTMANAGER_CONFIG_SECRET_VERSION",
+            "value": "83162be910c54a1087f765b4b78d6aad20b0654992b2a4370b5a85c0"
+          }
+        ],
+        "name": "thanos-ruler",
+        "resources": {},
+        "securityContext": {
+          "allowPrivilegeEscalation": false,
+          "capabilities": {
+            "drop": [
+              "ALL"
+            ]
+          }
+        },
+        "terminationMessagePolicy": "FallbackToLogsOnError",
+        "volumeMounts": [
+          {
+            "mountPath": "/etc/tls/private",
+            "name": "secret-thanos-ruler-tls"
+          },
+          {
+            "mountPath": "/etc/tls/grpc",
+            "name": "secret-grpc-tls"
+          },
+          {
+            "mountPath": "/etc/prometheus/configmaps/serving-certs-ca-bundle",
+            "name": "serving-certs-ca-bundle"
+          }
+        ]
+      },
+      {
+        "args": [
+          "--secure-listen-address=0.0.0.0:9091",
+          "--upstream=http://127.0.0.1:10902",
+          "--config-file=/etc/kube-rbac-proxy/config.yaml",
+          "--tls-cert-file=/etc/tls/private/tls.crt",
+          "--tls-private-key-file=/etc/tls/private/tls.key",
+          "--tls-cipher-suites=TLS_AES_128_GCM_SHA256,TLS_AES_256_GCM_SHA384,TLS_CHACHA20_POLY1305_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256",
+          "--tls-min-version=VersionTLS12"
+        ],
+        "image": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:9081bd341e8efa55d05b292caf1785a4f0d5931099ed4cc489a57840331fb869",
+        "name": "kube-rbac-proxy-web",
+        "ports": [
+          {
+            "containerPort": 9091,
+            "name": "web",
+            "protocol": "TCP"
+          }
+        ],
+        "resources": {
+          "requests": {
+            "cpu": "1m",
+            "memory": "12Mi"
+          }
+        },
+        "securityContext": {
+          "allowPrivilegeEscalation": false,
+          "capabilities": {
+            "drop": [
+              "ALL"
+            ]
+          }
+        },
+        "terminationMessagePolicy": "FallbackToLogsOnError",
+        "volumeMounts": [
+          {
+            "mountPath": "/etc/tls/private",
+            "name": "secret-thanos-ruler-tls",
+            "readOnly": true
+          },
+          {
+            "mountPath": "/etc/kube-rbac-proxy",
+            "name": "secret-thanos-user-workload-kube-rbac-proxy-web",
+            "readOnly": true
+          }
+        ]
+      },
+      {
+        "args": [
+          "--secure-listen-address=0.0.0.0:9092",
+          "--upstream=http://127.0.0.1:10902",
+          "--config-file=/etc/kube-rbac-proxy/config.yaml",
+          "--tls-cert-file=/etc/tls/private/tls.crt",
+          "--tls-private-key-file=/etc/tls/private/tls.key",
+          "--client-ca-file=/etc/tls/client/client-ca.crt",
+          "--allow-paths=/metrics",
+          "--tls-cipher-suites=TLS_AES_128_GCM_SHA256,TLS_AES_256_GCM_SHA384,TLS_CHACHA20_POLY1305_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256",
+          "--tls-min-version=VersionTLS12"
+        ],
+        "image": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:9081bd341e8efa55d05b292caf1785a4f0d5931099ed4cc489a57840331fb869",
+        "name": "kube-rbac-proxy-metrics",
+        "ports": [
+          {
+            "containerPort": 9092,
+            "name": "metrics",
+            "protocol": "TCP"
+          }
+        ],
+        "resources": {
+          "requests": {
+            "cpu": "1m",
+            "memory": "15Mi"
+          }
+        },
+        "securityContext": {
+          "allowPrivilegeEscalation": false,
+          "capabilities": {
+            "drop": [
+              "ALL"
+            ]
+          }
+        },
+        "terminationMessagePolicy": "FallbackToLogsOnError",
+        "volumeMounts": [
+          {
+            "mountPath": "/etc/tls/private",
+            "name": "secret-thanos-ruler-tls"
+          },
+          {
+            "mountPath": "/etc/kube-rbac-proxy",
+            "name": "secret-thanos-ruler-kube-rbac-proxy-metrics"
+          },
+          {
+            "mountPath": "/etc/tls/client",
+            "name": "metrics-client-ca",
+            "readOnly": true
+          }
+        ]
+      }
+    ],
+    "enforcedNamespaceLabel": "namespace",
+    "evaluationInterval": "15s",
+    "grpcServerTlsConfig": {
+      "ca": {},
+      "caFile": "/etc/tls/grpc/ca.crt",
+      "cert": {},
+      "certFile": "/etc/tls/grpc/server.crt",
+      "keyFile": "/etc/tls/grpc/server.key"
+    },
+    "image": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:f1ae57b261f4207628f0b29d9c48e0605ae9114e807ed52845f98297a92172f5",
+    "listenLocal": true,
+    "podMetadata": {
+      "annotations": {
+        "openshift.io/required-scc": "nonroot-v2",
+        "target.workload.openshift.io/management": "{\"effect\": \"PreferredDuringScheduling\"}"
+      },
+      "labels": {
+        "app.kubernetes.io/part-of": "openshift-monitoring"
+      }
+    },
+    "portName": "web",
+    "priorityClassName": "openshift-user-critical",
+    "queryConfig": {
+      "key": "query.yaml",
+      "name": "thanos-ruler-query-config"
+    },
+    "replicas": 2,
+    "resources": {
+      "requests": {
+        "cpu": "100m",
+        "memory": "512Mi"
+      }
+    },
+    "retention": "24h",
+    "ruleNamespaceSelector": {
+      "matchExpressions": [
+        {
+          "key": "openshift.io/cluster-monitoring",
+          "operator": "NotIn",
+          "values": [
+            "true"
+          ]
+        },
+        {
+          "key": "openshift.io/user-monitoring",
+          "operator": "NotIn",
+          "values": [
+            "false"
+          ]
+        }
+      ]
+    },
+    "ruleSelector": {
+      "matchExpressions": [
+        {
+          "key": "openshift.io/user-monitoring",
+          "operator": "NotIn",
+          "values": [
+            "false"
+          ]
+        },
+        {
+          "key": "openshift.io/prometheus-rule-evaluation-scope",
+          "operator": "NotIn",
+          "values": [
+            "leaf-prometheus"
+          ]
+        }
+      ]
+    },
+    "securityContext": {
+      "fsGroup": 65534,
+      "runAsNonRoot": true,
+      "runAsUser": 65534,
+      "seccompProfile": {
+        "type": "RuntimeDefault"
+      }
+    },
+    "serviceAccountName": "thanos-ruler",
+    "storage": {
+      "volumeClaimTemplate": {
+        "metadata": {},
+        "spec": {
+          "accessModes": [
+            "ReadWriteOnce"
+          ],
+          "resources": {
+            "requests": {
+              "storage": "2Gi"
+            }
+          },
+          "storageClassName": "gp3-csi",
+          "volumeMode": "Filesystem"
+        },
+        "status": {}
+      }
+    },
+    "version": "0.39.2",
+    "volumes": [
+      {
+        "configMap": {
+          "items": [
+            {
+              "key": "service-ca.crt",
+              "path": "service-ca.crt"
+            }
+          ],
+          "name": "serving-certs-ca-bundle"
+        },
+        "name": "serving-certs-ca-bundle"
+      },
+      {
+        "name": "secret-thanos-ruler-tls",
+        "secret": {
+          "secretName": "thanos-ruler-tls"
+        }
+      },
+      {
+        "name": "secret-thanos-ruler-kube-rbac-proxy-metrics",
+        "secret": {
+          "secretName": "thanos-ruler-kube-rbac-proxy-metrics"
+        }
+      },
+      {
+        "name": "secret-thanos-user-workload-kube-rbac-proxy-web",
+        "secret": {
+          "secretName": "thanos-user-workload-kube-rbac-proxy-web"
+        }
+      },
+      {
+        "configMap": {
+          "name": "metrics-client-ca"
+        },
+        "name": "metrics-client-ca"
+      },
+      {
+        "name": "secret-grpc-tls",
+        "secret": {
+          "secretName": "thanos-ruler-grpc-tls-9lmr8hbaikrpl"
+        }
+      }
+    ]
+  },
+  "status": {
+    "availableReplicas": 2,
+    "conditions": [
+      {
+        "lastTransitionTime": "2026-11-27T06:46:57Z",
+        "message": "",
+        "observedGeneration": 1,
+        "reason": "",
+        "status": "True",
+        "type": "Available"
+      },
+      {
+        "lastTransitionTime": "2026-11-27T06:46:43Z",
+        "message": "",
+        "observedGeneration": 1,
+        "reason": "",
+        "status": "True",
+        "type": "Reconciled"
+      }
+    ],
+    "paused": false,
+    "replicas": 2,
+    "unavailableReplicas": 0,
+    "updatedReplicas": 2
+  }
+}

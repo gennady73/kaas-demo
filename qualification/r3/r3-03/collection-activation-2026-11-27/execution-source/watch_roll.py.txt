@@ -1,0 +1,23 @@
+"""Bounded read-only serial rollout observation; records only Kafka/Pod/Job state."""
+import datetime,getpass,json,ssl,time,urllib.request
+from pathlib import Path
+P=Path(__file__).resolve().parent;R=P.parents[2];O=P/'roll-observation';O.mkdir(exist_ok=False)
+token=getpass.getpass('Sandbox token (RAM only): ').strip();ctx=ssl.create_default_context(cafile=str(R/'config/environments/certificates/ocp-rddgh-api-ca.crt'));op=urllib.request.build_opener(urllib.request.ProxyHandler({}),urllib.request.HTTPSHandler(context=ctx));base='https://api.ocp.rddgh.sandbox3088.opentlc.com:6443'
+def get(path):
+ with op.open(urllib.request.Request(base+path,headers={'Authorization':'Bearer '+token}),timeout=15) as r:return json.loads(r.read(2097152))
+start=time.monotonic();previous=None;last_progress=start;snaps=[];status='STOPPED';reason=None
+try:
+ for i in range(81):
+  k=get('/apis/kafka.strimzi.io/v1/namespaces/kaas-kafka/kafkas/kaas-dev');p=get('/api/v1/namespaces/kaas-kafka/pods?labelSelector=strimzi.io%2Fname%3Dkaas-dev-kafka&limit=20')['items']
+  pods=[{'name':x['metadata']['name'],'uid':x['metadata']['uid'],'ready':any(c['type']=='Ready' and c['status']=='True' for c in x['status'].get('conditions',[])),'deleting':bool(x['metadata'].get('deletionTimestamp')),'has9404':any(z['containerPort']==9404 for c in x['spec']['containers'] for z in c.get('ports',[]))} for x in p]
+  snap={'at_UTC':datetime.datetime.now(datetime.timezone.utc).isoformat(),'generation':k['metadata']['generation'],'observedGeneration':k.get('status',{}).get('observedGeneration'),'conditions':k.get('status',{}).get('conditions'),'pods':pods};snaps.append(snap);(O/('poll-'+str(i).zfill(3)+'.json')).write_text(json.dumps(snap,indent=2)+'\n');print(json.dumps(snap),flush=True)
+  signature=json.dumps(pods,sort_keys=True)
+  if signature!=previous:last_progress=time.monotonic();previous=signature
+  if sum(x['ready'] and not x['deleting'] for x in pods)<2:reason='LESS_THAN_TWO_READY_BROKERS_HOLD';break
+  if len(pods)==3 and all(x['ready'] and not x['deleting'] and x['has9404'] for x in pods) and snap['generation']==snap['observedGeneration'] and any(c['type']=='Ready' and c['status']=='True' for c in snap['conditions']):status='COMPLETE';break
+  if time.monotonic()-last_progress>600 or time.monotonic()-start>1800:reason='PROGRESS_OR_STAGE_TIMEOUT_HOLD';break
+  time.sleep(15)
+ else:reason='POLL_CAP_HOLD'
+except Exception as e:reason=type(e).__name__
+finally:
+ token='';(O/'result.json').write_text(json.dumps({'status':status,'reason':reason,'poll_count':len(snaps),'elapsed_seconds':round(time.monotonic()-start,3),'read_only':True,'producer_consumer_tests_run':False,'credentials_saved':False},indent=2)+'\n');print(json.dumps({'status':status,'reason':reason}),flush=True)

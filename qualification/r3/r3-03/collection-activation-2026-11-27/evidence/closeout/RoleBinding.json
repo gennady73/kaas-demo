@@ -1,0 +1,36 @@
+{
+  "kind": "RoleBinding",
+  "apiVersion": "rbac.authorization.k8s.io/v1",
+  "metadata": {
+    "name": "kaas-r3-broker-monitor-writer",
+    "namespace": "kaas-kafka",
+    "uid": "d6657318-de13-4e54-8450-27fd01e0b7ab",
+    "resourceVersion": "1239670",
+    "creationTimestamp": "2026-11-27T06:45:09Z",
+    "managedFields": [
+      {
+        "manager": "Python-urllib",
+        "operation": "Update",
+        "apiVersion": "rbac.authorization.k8s.io/v1",
+        "time": "2026-11-27T06:45:09Z",
+        "fieldsType": "FieldsV1",
+        "fieldsV1": {
+          "f:roleRef": {},
+          "f:subjects": {}
+        }
+      }
+    ]
+  },
+  "subjects": [
+    {
+      "kind": "ServiceAccount",
+      "name": "openshift-gitops-argocd-application-controller",
+      "namespace": "openshift-gitops"
+    }
+  ],
+  "roleRef": {
+    "apiGroup": "rbac.authorization.k8s.io",
+    "kind": "Role",
+    "name": "kaas-r3-broker-monitor-writer"
+  }
+}

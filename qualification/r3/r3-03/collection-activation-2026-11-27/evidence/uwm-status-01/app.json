@@ -1,0 +1,220 @@
+{
+  "apiVersion": "argoproj.io/v1alpha1",
+  "kind": "Application",
+  "metadata": {
+    "creationTimestamp": "2026-11-27T06:45:12Z",
+    "generation": 11,
+    "managedFields": [
+      {
+        "apiVersion": "argoproj.io/v1alpha1",
+        "fieldsType": "FieldsV1",
+        "fieldsV1": {
+          "f:spec": {
+            ".": {},
+            "f:destination": {
+              ".": {},
+              "f:namespace": {},
+              "f:server": {}
+            },
+            "f:project": {},
+            "f:source": {
+              ".": {},
+              "f:path": {},
+              "f:repoURL": {},
+              "f:targetRevision": {}
+            },
+            "f:syncPolicy": {
+              ".": {},
+              "f:syncOptions": {}
+            }
+          }
+        },
+        "manager": "Python-urllib",
+        "operation": "Update",
+        "time": "2026-11-27T06:46:36Z"
+      },
+      {
+        "apiVersion": "argoproj.io/v1alpha1",
+        "fieldsType": "FieldsV1",
+        "fieldsV1": {
+          "f:status": {
+            ".": {},
+            "f:controllerNamespace": {},
+            "f:health": {
+              ".": {},
+              "f:lastTransitionTime": {},
+              "f:status": {}
+            },
+            "f:operationState": {
+              ".": {},
+              "f:finishedAt": {},
+              "f:message": {},
+              "f:operation": {
+                ".": {},
+                "f:initiatedBy": {
+                  ".": {},
+                  "f:username": {}
+                },
+                "f:retry": {},
+                "f:sync": {
+                  ".": {},
+                  "f:resources": {},
+                  "f:revision": {},
+                  "f:syncStrategy": {
+                    ".": {},
+                    "f:apply": {}
+                  }
+                }
+              },
+              "f:phase": {},
+              "f:startedAt": {},
+              "f:syncResult": {
+                ".": {},
+                "f:resources": {},
+                "f:revision": {},
+                "f:source": {
+                  ".": {},
+                  "f:path": {},
+                  "f:repoURL": {},
+                  "f:targetRevision": {}
+                }
+              }
+            },
+            "f:reconciledAt": {},
+            "f:resources": {},
+            "f:sourceType": {},
+            "f:sync": {
+              ".": {},
+              "f:comparedTo": {
+                ".": {},
+                "f:destination": {
+                  ".": {},
+                  "f:namespace": {},
+                  "f:server": {}
+                },
+                "f:source": {
+                  ".": {},
+                  "f:path": {},
+                  "f:repoURL": {},
+                  "f:targetRevision": {}
+                }
+              },
+              "f:revision": {},
+              "f:status": {}
+            }
+          }
+        },
+        "manager": "argocd-application-controller",
+        "operation": "Update",
+        "time": "2026-11-27T06:46:37Z"
+      }
+    ],
+    "name": "kaas-demo-monitoring-platform",
+    "namespace": "openshift-gitops",
+    "resourceVersion": "1240117",
+    "uid": "e18685c2-3c4e-44f4-bce1-5b7791564d7d"
+  },
+  "spec": {
+    "destination": {
+      "namespace": "openshift-monitoring",
+      "server": "https://kubernetes.default.svc"
+    },
+    "project": "kaas-demo-monitoring-platform",
+    "source": {
+      "path": "qualification/r3/r3-03/activation-execution/candidate/platform",
+      "repoURL": "https://github.com/gennady73/kaas-demo.git",
+      "targetRevision": "5610bfa484b13599e3218b1bcdb366769deba13d"
+    },
+    "syncPolicy": {
+      "syncOptions": [
+        "FailOnSharedResource=true"
+      ]
+    }
+  },
+  "status": {
+    "controllerNamespace": "openshift-gitops",
+    "health": {
+      "lastTransitionTime": "2026-11-27T06:45:48Z",
+      "status": "Healthy"
+    },
+    "operationState": {
+      "finishedAt": "2026-11-27T06:46:37Z",
+      "message": "successfully synced (all tasks run)",
+      "operation": {
+        "initiatedBy": {
+          "username": "admin"
+        },
+        "retry": {},
+        "sync": {
+          "resources": [
+            {
+              "kind": "ConfigMap",
+              "name": "cluster-monitoring-config",
+              "namespace": "openshift-monitoring"
+            }
+          ],
+          "revision": "5610bfa484b13599e3218b1bcdb366769deba13d",
+          "syncStrategy": {
+            "apply": {}
+          }
+        }
+      },
+      "phase": "Succeeded",
+      "startedAt": "2026-11-27T06:46:36Z",
+      "syncResult": {
+        "resources": [
+          {
+            "group": "",
+            "hookPhase": "Running",
+            "kind": "ConfigMap",
+            "message": "configmap/cluster-monitoring-config created",
+            "name": "cluster-monitoring-config",
+            "namespace": "openshift-monitoring",
+            "status": "Synced",
+            "syncPhase": "Sync",
+            "version": "v1"
+          }
+        ],
+        "revision": "5610bfa484b13599e3218b1bcdb366769deba13d",
+        "source": {
+          "path": "qualification/r3/r3-03/activation-execution/candidate/platform",
+          "repoURL": "https://github.com/gennady73/kaas-demo.git",
+          "targetRevision": "5610bfa484b13599e3218b1bcdb366769deba13d"
+        }
+      }
+    },
+    "reconciledAt": "2026-11-27T06:46:37Z",
+    "resources": [
+      {
+        "kind": "ConfigMap",
+        "name": "cluster-monitoring-config",
+        "namespace": "openshift-monitoring",
+        "status": "Synced",
+        "version": "v1"
+      },
+      {
+        "kind": "ConfigMap",
+        "name": "user-workload-monitoring-config",
+        "namespace": "openshift-user-workload-monitoring",
+        "status": "Synced",
+        "version": "v1"
+      }
+    ],
+    "sourceType": "Kustomize",
+    "sync": {
+      "comparedTo": {
+        "destination": {
+          "namespace": "openshift-monitoring",
+          "server": "https://kubernetes.default.svc"
+        },
+        "source": {
+          "path": "qualification/r3/r3-03/activation-execution/candidate/platform",
+          "repoURL": "https://github.com/gennady73/kaas-demo.git",
+          "targetRevision": "5610bfa484b13599e3218b1bcdb366769deba13d"
+        }
+      },
+      "revision": "5610bfa484b13599e3218b1bcdb366769deba13d",
+      "status": "Synced"
+    }
+  }
+}

@@ -1,5 +1,5 @@
 {
-  "revision": "0.11",
+  "revision": "0.12",
   "date": "2026-11-26",
   "plan_commit": "0f9df49fc0dfb3632c9c7f4eb32fb7e6d3aec1e6",
   "execution_enabled": false,
@@ -39,7 +39,7 @@
     "R3-03": {
       "status": "EXISTING_COVERAGE_IDENTIFIED_MISSING_CONFIGURATION_PREPARED_OFFLINE",
       "result": "r3-03/result.json",
-      "live_acceptance": "OPEN_CONFIG_NOT_DEPLOYED_ROUTING_NOT_TESTED",
+      "live_acceptance": "COLLECTION_ONLY_PASS_NOTIFICATION_QUALIFICATION_DEFERRED",
       "execution_enabled": false,
       "workloads_enabled": false,
       "operational_inputs": "r3-03/inputs-needed.json",
@@ -96,11 +96,29 @@
           "A3",
           "A7"
         ],
-        "selection_record": "r3-03/activation-execution/selection.disabled.json"
+        "selection_record": "r3-03/activation-execution/selection.disabled.json",
+        "current_live_status": "COLLECTION_ONLY_ACTIVATED_SEE_COLLECTION_ONLY_ACTIVATION_RESULT"
+      },
+      "collection_only_activation": {
+        "status": "PASS",
+        "result": "r3-03/collection-activation-2026-11-27/result.json",
+        "date": "2026-11-27",
+        "resource_pin": "5610bfa484b13599e3218b1bcdb366769deba13d",
+        "Kafka_metrics_and_bootstrap_pin": "38ff7de3db7094c9b9661b2683544e556dd4f5ad",
+        "five_monitoring_Pods_Ready": true,
+        "four_new_PVCs_Bound_24Gi": true,
+        "three_brokers_Ready_full_ISR": true,
+        "three_targets_up_five_gauge_families": true,
+        "stable_seconds": 326.21,
+        "email_and_KaaS_live_rules_enabled": false,
+        "client_Jobs": "ALL_FOUR_UNCHANGED_SUSPENDED_ACTIVE0",
+        "producer_consumer_tests_run": false,
+        "notification_qualification": "DEFERRED_NOT_PASSED",
+        "publication": "INCLUDED_IN_OWNING_RESULT_PUBLICATION_COMMIT_NO_NEW_LIVE_EXECUTION"
       }
     }
   },
-  "remaining_cases": "R3-03 collection-only stages A0/A1/A2/A3/A7 selected; email/routing/live rules A4-A6 deferred explicitly. No pending SMTP question. Before activation: immutable source publication/pins, narrow PodMonitor permission server-check/application/effective-rights refresh, final health/compare-before-write. Actual managed resources checked at A1 exit. No test workloads or emails.",
+  "remaining_cases": "R3-03 collection-only activation passed; email/routing/live-rule delivery qualification explicitly deferred. Full service/R3qualification remains open for other applicable cases. Four clients remain suspended; no further tests, rollout or cleanup initiated. Existing disabled flags are historical input/no-autorun controls, not a denial of this recorded user-authorized execution.",
   "note": "Progress overlay supersedes pre-correction OPEN labels only for this exact offline source/result; does not arm any planned case",
   "coordination_sync": {
     "date": "2026-11-26",

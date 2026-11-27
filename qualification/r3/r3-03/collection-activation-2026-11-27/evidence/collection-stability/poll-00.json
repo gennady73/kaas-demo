@@ -1,0 +1,249 @@
+{
+  "at_UTC": "2026-11-27T06:54:51.858810+00:00",
+  "queries": {
+    "up": {
+      "status": "success",
+      "data": {
+        "resultType": "vector",
+        "result": [
+          {
+            "metric": {
+              "__name__": "up",
+              "container": "kafka",
+              "endpoint": "tcp-prometheus",
+              "instance": "10.128.0.47:9404",
+              "job": "kaas-kafka/kaas-dev-broker-metrics",
+              "kaas_cluster": "kaas-dev",
+              "kaas_component": "broker",
+              "namespace": "kaas-kafka",
+              "pod": "kaas-dev-dual-role-2",
+              "prometheus": "openshift-user-workload-monitoring/user-workload"
+            },
+            "value": [
+              1795762492.273,
+              "1"
+            ]
+          },
+          {
+            "metric": {
+              "__name__": "up",
+              "container": "kafka",
+              "endpoint": "tcp-prometheus",
+              "instance": "10.130.0.30:9404",
+              "job": "kaas-kafka/kaas-dev-broker-metrics",
+              "kaas_cluster": "kaas-dev",
+              "kaas_component": "broker",
+              "namespace": "kaas-kafka",
+              "pod": "kaas-dev-dual-role-1",
+              "prometheus": "openshift-user-workload-monitoring/user-workload"
+            },
+            "value": [
+              1795762492.273,
+              "1"
+            ]
+          },
+          {
+            "metric": {
+              "__name__": "up",
+              "container": "kafka",
+              "endpoint": "tcp-prometheus",
+              "instance": "10.131.0.11:9404",
+              "job": "kaas-kafka/kaas-dev-broker-metrics",
+              "kaas_cluster": "kaas-dev",
+              "kaas_component": "broker",
+              "namespace": "kaas-kafka",
+              "pod": "kaas-dev-dual-role-0",
+              "prometheus": "openshift-user-workload-monitoring/user-workload"
+            },
+            "value": [
+              1795762492.273,
+              "1"
+            ]
+          }
+        ],
+        "analysis": {}
+      }
+    },
+    "timestamp": {
+      "status": "success",
+      "data": {
+        "resultType": "vector",
+        "result": [
+          {
+            "metric": {
+              "container": "kafka",
+              "endpoint": "tcp-prometheus",
+              "instance": "10.128.0.47:9404",
+              "job": "kaas-kafka/kaas-dev-broker-metrics",
+              "kaas_cluster": "kaas-dev",
+              "kaas_component": "broker",
+              "namespace": "kaas-kafka",
+              "pod": "kaas-dev-dual-role-2",
+              "prometheus": "openshift-user-workload-monitoring/user-workload"
+            },
+            "value": [
+              1795762492.778,
+              "1795762473.59"
+            ]
+          },
+          {
+            "metric": {
+              "container": "kafka",
+              "endpoint": "tcp-prometheus",
+              "instance": "10.130.0.30:9404",
+              "job": "kaas-kafka/kaas-dev-broker-metrics",
+              "kaas_cluster": "kaas-dev",
+              "kaas_component": "broker",
+              "namespace": "kaas-kafka",
+              "pod": "kaas-dev-dual-role-1",
+              "prometheus": "openshift-user-workload-monitoring/user-workload"
+            },
+            "value": [
+              1795762492.778,
+              "1795762474.346"
+            ]
+          },
+          {
+            "metric": {
+              "container": "kafka",
+              "endpoint": "tcp-prometheus",
+              "instance": "10.131.0.11:9404",
+              "job": "kaas-kafka/kaas-dev-broker-metrics",
+              "kaas_cluster": "kaas-dev",
+              "kaas_component": "broker",
+              "namespace": "kaas-kafka",
+              "pod": "kaas-dev-dual-role-0",
+              "prometheus": "openshift-user-workload-monitoring/user-workload"
+            },
+            "value": [
+              1795762492.778,
+              "1795762491.665"
+            ]
+          }
+        ],
+        "analysis": {}
+      }
+    },
+    "min": {
+      "status": "success",
+      "data": {
+        "resultType": "vector",
+        "result": [
+          {
+            "metric": {
+              "container": "kafka",
+              "endpoint": "tcp-prometheus",
+              "instance": "10.128.0.47:9404",
+              "job": "kaas-kafka/kaas-dev-broker-metrics",
+              "kaas_cluster": "kaas-dev",
+              "kaas_component": "broker",
+              "namespace": "kaas-kafka",
+              "pod": "kaas-dev-dual-role-2",
+              "prometheus": "openshift-user-workload-monitoring/user-workload"
+            },
+            "value": [
+              1795762493.286,
+              "1"
+            ]
+          },
+          {
+            "metric": {
+              "container": "kafka",
+              "endpoint": "tcp-prometheus",
+              "instance": "10.130.0.30:9404",
+              "job": "kaas-kafka/kaas-dev-broker-metrics",
+              "kaas_cluster": "kaas-dev",
+              "kaas_component": "broker",
+              "namespace": "kaas-kafka",
+              "pod": "kaas-dev-dual-role-1",
+              "prometheus": "openshift-user-workload-monitoring/user-workload"
+            },
+            "value": [
+              1795762493.286,
+              "1"
+            ]
+          },
+          {
+            "metric": {
+              "container": "kafka",
+              "endpoint": "tcp-prometheus",
+              "instance": "10.131.0.11:9404",
+              "job": "kaas-kafka/kaas-dev-broker-metrics",
+              "kaas_cluster": "kaas-dev",
+              "kaas_component": "broker",
+              "namespace": "kaas-kafka",
+              "pod": "kaas-dev-dual-role-0",
+              "prometheus": "openshift-user-workload-monitoring/user-workload"
+            },
+            "value": [
+              1795762493.286,
+              "1"
+            ]
+          }
+        ],
+        "analysis": {}
+      }
+    },
+    "count": {
+      "status": "success",
+      "data": {
+        "resultType": "vector",
+        "result": [
+          {
+            "metric": {
+              "container": "kafka",
+              "endpoint": "tcp-prometheus",
+              "instance": "10.128.0.47:9404",
+              "job": "kaas-kafka/kaas-dev-broker-metrics",
+              "kaas_cluster": "kaas-dev",
+              "kaas_component": "broker",
+              "namespace": "kaas-kafka",
+              "pod": "kaas-dev-dual-role-2",
+              "prometheus": "openshift-user-workload-monitoring/user-workload"
+            },
+            "value": [
+              1795762494.339,
+              "3"
+            ]
+          },
+          {
+            "metric": {
+              "container": "kafka",
+              "endpoint": "tcp-prometheus",
+              "instance": "10.130.0.30:9404",
+              "job": "kaas-kafka/kaas-dev-broker-metrics",
+              "kaas_cluster": "kaas-dev",
+              "kaas_component": "broker",
+              "namespace": "kaas-kafka",
+              "pod": "kaas-dev-dual-role-1",
+              "prometheus": "openshift-user-workload-monitoring/user-workload"
+            },
+            "value": [
+              1795762494.339,
+              "3"
+            ]
+          },
+          {
+            "metric": {
+              "container": "kafka",
+              "endpoint": "tcp-prometheus",
+              "instance": "10.131.0.11:9404",
+              "job": "kaas-kafka/kaas-dev-broker-metrics",
+              "kaas_cluster": "kaas-dev",
+              "kaas_component": "broker",
+              "namespace": "kaas-kafka",
+              "pod": "kaas-dev-dual-role-0",
+              "prometheus": "openshift-user-workload-monitoring/user-workload"
+            },
+            "value": [
+              1795762494.339,
+              "4"
+            ]
+          }
+        ],
+        "analysis": {}
+      }
+    }
+  },
+  "span_from_initial_seconds": 40.402
+}

@@ -1,0 +1,9 @@
+{
+  "stage": "inspect",
+  "status": "COMPLETE_API_PACKET_RECEIPT_REPAIRED_OFFLINE",
+  "API_GET_evidence_files": 12,
+  "resource_changes": false,
+  "receipt_error": "Empty cleared token matched every string in final guard; fixed to check nonempty token. API observations were already saved.",
+  "credentials_saved": false,
+  "client_tests_run": false
+}

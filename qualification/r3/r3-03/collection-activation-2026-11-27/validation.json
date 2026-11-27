@@ -1,0 +1,15 @@
+{
+  "status": "LIVE_EVIDENCE_SPEC_SCOPE_METRIC_STABILITY_PRESERVATION_AND_FROZEN_HASH_CHECKS_PASS",
+  "original_artifact_hashes_verified": 156,
+  "all5Apps_manual_Synced_Healthy": true,
+  "all4Job_UIDs_specs_preserved_suspended": true,
+  "four_monitoring_PVCs_Bound_24Gi": true,
+  "all5managed_monitoring_Pods_ready_within_budget": true,
+  "no_KaaS_PrometheusRules_or_AlertmanagerConfigs": true,
+  "Kafka_delta_only_metricsConfig": true,
+  "broker_resource_requests_limits_unchanged": true,
+  "58_partition_full_ISR_afterroll": true,
+  "three_fresh_targets_15gauges": true,
+  "stable_history_gate_passed": true,
+  "independent_reviewer": "NOT_CLAIMED"
+}

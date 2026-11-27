@@ -1,0 +1,146 @@
+{
+  "kind": "PersistentVolumeClaim",
+  "apiVersion": "v1",
+  "metadata": {
+    "name": "kaas-r2-native-evidence",
+    "namespace": "kaas-demo",
+    "uid": "d2cd40eb-6e4b-48d2-a2af-d4b5d10879a2",
+    "resourceVersion": "1057001",
+    "creationTimestamp": "2026-11-26T11:42:57Z",
+    "labels": {
+      "kaas.example.com/package": "r2-native-disabled"
+    },
+    "annotations": {
+      "kaas.example.com/retention": "7days; verified shared-workspace export before approved cleanup",
+      "kaas.example.com/status": "BOUND_SINK_MOUNT_PERMISSION_VERIFIED",
+      "pv.kubernetes.io/bind-completed": "yes",
+      "pv.kubernetes.io/bound-by-controller": "yes",
+      "volume.beta.kubernetes.io/storage-provisioner": "ebs.csi.aws.com",
+      "volume.kubernetes.io/selected-node": "ip-10-0-50-65.us-east-2.compute.internal",
+      "volume.kubernetes.io/storage-provisioner": "ebs.csi.aws.com"
+    },
+    "finalizers": [
+      "kubernetes.io/pvc-protection"
+    ],
+    "managedFields": [
+      {
+        "manager": "kubectl-create",
+        "operation": "Update",
+        "apiVersion": "v1",
+        "time": "2026-11-26T11:42:57Z",
+        "fieldsType": "FieldsV1",
+        "fieldsV1": {
+          "f:metadata": {
+            "f:annotations": {
+              ".": {},
+              "f:kaas.example.com/retention": {}
+            },
+            "f:labels": {
+              ".": {},
+              "f:kaas.example.com/package": {}
+            }
+          },
+          "f:spec": {
+            "f:accessModes": {},
+            "f:resources": {
+              "f:requests": {
+                ".": {},
+                "f:storage": {}
+              }
+            },
+            "f:storageClassName": {},
+            "f:volumeMode": {}
+          }
+        }
+      },
+      {
+        "manager": "kube-scheduler",
+        "operation": "Update",
+        "apiVersion": "v1",
+        "time": "2026-11-26T11:57:43Z",
+        "fieldsType": "FieldsV1",
+        "fieldsV1": {
+          "f:metadata": {
+            "f:annotations": {
+              "f:volume.kubernetes.io/selected-node": {}
+            }
+          }
+        }
+      },
+      {
+        "manager": "kube-controller-manager",
+        "operation": "Update",
+        "apiVersion": "v1",
+        "time": "2026-11-26T11:57:46Z",
+        "fieldsType": "FieldsV1",
+        "fieldsV1": {
+          "f:metadata": {
+            "f:annotations": {
+              "f:pv.kubernetes.io/bind-completed": {},
+              "f:pv.kubernetes.io/bound-by-controller": {},
+              "f:volume.beta.kubernetes.io/storage-provisioner": {},
+              "f:volume.kubernetes.io/storage-provisioner": {}
+            }
+          },
+          "f:spec": {
+            "f:volumeName": {}
+          }
+        }
+      },
+      {
+        "manager": "kube-controller-manager",
+        "operation": "Update",
+        "apiVersion": "v1",
+        "time": "2026-11-26T11:57:46Z",
+        "fieldsType": "FieldsV1",
+        "fieldsV1": {
+          "f:status": {
+            "f:accessModes": {},
+            "f:capacity": {
+              ".": {},
+              "f:storage": {}
+            },
+            "f:phase": {}
+          }
+        },
+        "subresource": "status"
+      },
+      {
+        "manager": "kubectl-annotate",
+        "operation": "Update",
+        "apiVersion": "v1",
+        "time": "2026-11-26T12:01:10Z",
+        "fieldsType": "FieldsV1",
+        "fieldsV1": {
+          "f:metadata": {
+            "f:annotations": {
+              "f:kaas.example.com/status": {}
+            }
+          }
+        }
+      }
+    ]
+  },
+  "spec": {
+    "accessModes": [
+      "ReadWriteOnce"
+    ],
+    "resources": {
+      "requests": {
+        "storage": "1Gi"
+      }
+    },
+    "volumeName": "pvc-d2cd40eb-6e4b-48d2-a2af-d4b5d10879a2",
+    "storageClassName": "gp3-csi",
+    "volumeMode": "Filesystem"
+  },
+  "status": {
+    "phase": "Bound",
+    "accessModes": [
+      "ReadWriteOnce"
+    ],
+    "capacity": {
+      "storage": "1Gi"
+    }
+  }
+}

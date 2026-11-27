@@ -1,0 +1,26 @@
+"""Read-only broker filesystem or Kafka Admin CLI diagnostics in existing broker Pod.
+No producer/consumer runs, credential values exported or Kafka configuration changed.
+"""
+import datetime,getpass,json,os,ssl,subprocess,sys,urllib.request
+from pathlib import Path
+R=Path(__file__).resolve().parents[3];P=Path(__file__).resolve().parent;stage=sys.argv[1];label=sys.argv[2];out=P/label;out.mkdir(exist_ok=False)
+token=getpass.getpass('Sandbox token (RAM only): ').strip();ca=R/'config/environments/certificates/ocp-rddgh-api-ca.crt';ctx=ssl.create_default_context(cafile=str(ca));base='https://api.ocp.rddgh.sandbox3088.opentlc.com:6443'
+op=urllib.request.build_opener(urllib.request.ProxyHandler({}),urllib.request.HTTPSHandler(context=ctx))
+config={'apiVersion':'v1','kind':'Config','clusters':[{'name':'s','cluster':{'server':base,'certificate-authority':str(ca)}}],'users':[{'name':'m','user':{'token':token}}],'contexts':[{'name':'m','context':{'cluster':'s','user':'m'}}],'current-context':'m'}
+fd=os.memfd_create('kaas-broker-health',os.MFD_CLOEXEC);os.write(fd,json.dumps(config).encode());os.lseek(fd,0,0)
+try:
+ with op.open(urllib.request.Request(base+'/api/v1/namespaces/kaas-kafka/pods/kaas-dev-dual-role-0',headers={'Authorization':'Bearer '+token}),timeout=15) as r:d=json.loads(r.read())
+ assert all(c['ready'] for c in d['status']['containerStatuses'])
+ if stage=='paths':
+  command=['bash','-c',"grep -E '^(listeners|advertised.listeners|controller.listener.names|listener.name.*ssl.(keystore|truststore).location)=' /tmp/strimzi.properties"]
+ elif stage=='health':
+  # Reuse broker-local TLS identity without copying it outside the Pod. Generated
+  # client properties go directly to /dev/fd, never a regular file or tool output.
+  make="awk '/^listener.name.replication-9091.ssl./ {sub(/^listener.name.replication-9091./,\"\"); print} /^config.providers/ {print} END {print \"security.protocol=SSL\"}' /tmp/strimzi.properties"
+  bootstrap='kaas-dev-dual-role-0.kaas-dev-kafka-brokers.kaas-kafka.svc:9091'
+  command=['bash','-c','set -o pipefail; /opt/kafka/bin/kafka-topics.sh --bootstrap-server '+bootstrap+' --command-config <('+make+') --describe && /opt/kafka/bin/kafka-metadata-quorum.sh --bootstrap-server '+bootstrap+' --command-config <('+make+') describe --status']
+ else:raise RuntimeError('stage')
+ proc=subprocess.run(['oc','--kubeconfig=/proc/self/fd/'+str(fd),'--cache-dir=/tmp/kaas-r3-activation-oc-cache','--request-timeout=20s','exec','-n','kaas-kafka','kaas-dev-dual-role-0','-c','kafka','--']+command,stdin=subprocess.DEVNULL,stdout=subprocess.PIPE,stderr=subprocess.PIPE,pass_fds=(fd,),timeout=75)
+ text=proc.stdout.decode();assert token not in text
+ result={'stage':stage,'at_UTC':datetime.datetime.now(datetime.timezone.utc).isoformat(),'exit_code':proc.returncode,'stdout':text,'stderr_byte_count':len(proc.stderr),'stderr_redacted':True,'Pod_uid':d['metadata']['uid'],'broker_configuration_changed':False,'producer_consumer_tests_run':False,'credentials_saved':False};(out/'result.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps({k:v for k,v in result.items() if k!='stdout'}))
+finally:token='';os.close(fd)

@@ -1,0 +1,358 @@
+{
+  "apiVersion": "argoproj.io/v1alpha1",
+  "kind": "Application",
+  "metadata": {
+    "creationTimestamp": "2026-11-23T11:20:56Z",
+    "generation": 842,
+    "managedFields": [
+      {
+        "apiVersion": "argoproj.io/v1alpha1",
+        "fieldsType": "FieldsV1",
+        "fieldsV1": {
+          "f:spec": {
+            ".": {},
+            "f:destination": {
+              ".": {},
+              "f:namespace": {},
+              "f:server": {}
+            },
+            "f:project": {},
+            "f:source": {
+              ".": {},
+              "f:path": {},
+              "f:repoURL": {},
+              "f:targetRevision": {}
+            },
+            "f:syncPolicy": {
+              ".": {},
+              "f:syncOptions": {}
+            }
+          }
+        },
+        "manager": "Python-urllib",
+        "operation": "Update",
+        "time": "2026-11-23T11:32:35Z"
+      },
+      {
+        "apiVersion": "argoproj.io/v1alpha1",
+        "fieldsType": "FieldsV1",
+        "fieldsV1": {
+          "f:status": {
+            ".": {},
+            "f:controllerNamespace": {},
+            "f:health": {
+              ".": {},
+              "f:lastTransitionTime": {},
+              "f:status": {}
+            },
+            "f:history": {},
+            "f:operationState": {
+              ".": {},
+              "f:finishedAt": {},
+              "f:message": {},
+              "f:operation": {
+                ".": {},
+                "f:initiatedBy": {
+                  ".": {},
+                  "f:username": {}
+                },
+                "f:retry": {},
+                "f:sync": {
+                  ".": {},
+                  "f:revision": {},
+                  "f:syncOptions": {}
+                }
+              },
+              "f:phase": {},
+              "f:startedAt": {},
+              "f:syncResult": {
+                ".": {},
+                "f:resources": {},
+                "f:revision": {},
+                "f:source": {
+                  ".": {},
+                  "f:path": {},
+                  "f:repoURL": {},
+                  "f:targetRevision": {}
+                }
+              }
+            },
+            "f:reconciledAt": {},
+            "f:resources": {},
+            "f:sourceType": {},
+            "f:sync": {
+              ".": {},
+              "f:comparedTo": {
+                ".": {},
+                "f:destination": {
+                  ".": {},
+                  "f:namespace": {},
+                  "f:server": {}
+                },
+                "f:source": {
+                  ".": {},
+                  "f:path": {},
+                  "f:repoURL": {},
+                  "f:targetRevision": {}
+                }
+              },
+              "f:revision": {},
+              "f:status": {}
+            }
+          }
+        },
+        "manager": "argocd-application-controller",
+        "operation": "Update",
+        "time": "2026-11-27T06:48:00Z"
+      }
+    ],
+    "name": "kaas-demo-kafka",
+    "namespace": "openshift-gitops",
+    "resourceVersion": "1241098",
+    "uid": "39a56327-62fd-4830-8e79-b4d8a1abc0fa"
+  },
+  "spec": {
+    "destination": {
+      "namespace": "kaas-kafka",
+      "server": "https://kubernetes.default.svc"
+    },
+    "project": "kaas-demo-kafka",
+    "source": {
+      "path": "environments/dev/kafka",
+      "repoURL": "https://github.com/gennady73/kaas-demo.git",
+      "targetRevision": "ea80ef82c6586ca1d6deaa56e37a19e888553dc0"
+    },
+    "syncPolicy": {
+      "syncOptions": [
+        "FailOnSharedResource=true"
+      ]
+    }
+  },
+  "status": {
+    "controllerNamespace": "openshift-gitops",
+    "health": {
+      "lastTransitionTime": "2026-11-27T06:13:25Z",
+      "status": "Healthy"
+    },
+    "history": [
+      {
+        "deployStartedAt": "2026-11-23T11:32:35Z",
+        "deployedAt": "2026-11-23T11:33:56Z",
+        "id": 0,
+        "initiatedBy": {
+          "username": "admin"
+        },
+        "revision": "ea80ef82c6586ca1d6deaa56e37a19e888553dc0",
+        "source": {
+          "path": "environments/dev/kafka",
+          "repoURL": "https://github.com/gennady73/kaas-demo.git",
+          "targetRevision": "ea80ef82c6586ca1d6deaa56e37a19e888553dc0"
+        }
+      }
+    ],
+    "operationState": {
+      "finishedAt": "2026-11-23T11:33:56Z",
+      "message": "successfully synced (all tasks run)",
+      "operation": {
+        "initiatedBy": {
+          "username": "admin"
+        },
+        "retry": {},
+        "sync": {
+          "revision": "ea80ef82c6586ca1d6deaa56e37a19e888553dc0",
+          "syncOptions": [
+            "FailOnSharedResource=true"
+          ]
+        }
+      },
+      "phase": "Succeeded",
+      "startedAt": "2026-11-23T11:32:35Z",
+      "syncResult": {
+        "resources": [
+          {
+            "group": "kafka.strimzi.io",
+            "hookPhase": "Succeeded",
+            "kind": "KafkaNodePool",
+            "message": "kafkanodepool.kafka.strimzi.io/dual-role created",
+            "name": "dual-role",
+            "namespace": "kaas-kafka",
+            "status": "Synced",
+            "syncPhase": "Sync",
+            "version": "v1"
+          },
+          {
+            "group": "kafka.strimzi.io",
+            "hookPhase": "Succeeded",
+            "kind": "Kafka",
+            "message": "kafka.kafka.strimzi.io/kaas-dev created",
+            "name": "kaas-dev",
+            "namespace": "kaas-kafka",
+            "status": "Synced",
+            "syncPhase": "Sync",
+            "version": "v1"
+          },
+          {
+            "group": "kafka.strimzi.io",
+            "hookPhase": "Running",
+            "kind": "KafkaTopic",
+            "message": "kafkatopic.kafka.strimzi.io/kaas-dev-smoke-01 created",
+            "name": "kaas-dev-smoke-01",
+            "namespace": "kaas-kafka",
+            "status": "Synced",
+            "syncPhase": "Sync",
+            "version": "v1"
+          },
+          {
+            "group": "kafka.strimzi.io",
+            "hookPhase": "Running",
+            "kind": "KafkaTopic",
+            "message": "kafkatopic.kafka.strimzi.io/kaas-dev-smoke-03 created",
+            "name": "kaas-dev-smoke-03",
+            "namespace": "kaas-kafka",
+            "status": "Synced",
+            "syncPhase": "Sync",
+            "version": "v1"
+          },
+          {
+            "group": "kafka.strimzi.io",
+            "hookPhase": "Running",
+            "kind": "KafkaTopic",
+            "message": "kafkatopic.kafka.strimzi.io/kaas-dev-smoke-02 created",
+            "name": "kaas-dev-smoke-02",
+            "namespace": "kaas-kafka",
+            "status": "Synced",
+            "syncPhase": "Sync",
+            "version": "v1"
+          },
+          {
+            "group": "kafka.strimzi.io",
+            "hookPhase": "Running",
+            "kind": "KafkaTopic",
+            "message": "kafkatopic.kafka.strimzi.io/kaas-dev-smoke-04 created",
+            "name": "kaas-dev-smoke-04",
+            "namespace": "kaas-kafka",
+            "status": "Synced",
+            "syncPhase": "Sync",
+            "version": "v1"
+          },
+          {
+            "group": "kafka.strimzi.io",
+            "hookPhase": "Running",
+            "kind": "KafkaUser",
+            "message": "kafkauser.kafka.strimzi.io/kaas-smoke-client created",
+            "name": "kaas-smoke-client",
+            "namespace": "kaas-kafka",
+            "status": "Synced",
+            "syncPhase": "Sync",
+            "version": "v1"
+          }
+        ],
+        "revision": "ea80ef82c6586ca1d6deaa56e37a19e888553dc0",
+        "source": {
+          "path": "environments/dev/kafka",
+          "repoURL": "https://github.com/gennady73/kaas-demo.git",
+          "targetRevision": "ea80ef82c6586ca1d6deaa56e37a19e888553dc0"
+        }
+      }
+    },
+    "reconciledAt": "2026-11-27T06:48:00Z",
+    "resources": [
+      {
+        "group": "kafka.strimzi.io",
+        "health": {
+          "status": "Healthy"
+        },
+        "kind": "Kafka",
+        "name": "kaas-dev",
+        "namespace": "kaas-kafka",
+        "status": "Synced",
+        "syncWave": 1,
+        "version": "v1"
+      },
+      {
+        "group": "kafka.strimzi.io",
+        "kind": "KafkaNodePool",
+        "name": "dual-role",
+        "namespace": "kaas-kafka",
+        "status": "Synced",
+        "version": "v1"
+      },
+      {
+        "group": "kafka.strimzi.io",
+        "health": {
+          "status": "Healthy"
+        },
+        "kind": "KafkaTopic",
+        "name": "kaas-dev-smoke-01",
+        "namespace": "kaas-kafka",
+        "status": "Synced",
+        "syncWave": 2,
+        "version": "v1"
+      },
+      {
+        "group": "kafka.strimzi.io",
+        "health": {
+          "status": "Healthy"
+        },
+        "kind": "KafkaTopic",
+        "name": "kaas-dev-smoke-02",
+        "namespace": "kaas-kafka",
+        "status": "Synced",
+        "syncWave": 2,
+        "version": "v1"
+      },
+      {
+        "group": "kafka.strimzi.io",
+        "health": {
+          "status": "Healthy"
+        },
+        "kind": "KafkaTopic",
+        "name": "kaas-dev-smoke-03",
+        "namespace": "kaas-kafka",
+        "status": "Synced",
+        "syncWave": 2,
+        "version": "v1"
+      },
+      {
+        "group": "kafka.strimzi.io",
+        "health": {
+          "status": "Healthy"
+        },
+        "kind": "KafkaTopic",
+        "name": "kaas-dev-smoke-04",
+        "namespace": "kaas-kafka",
+        "status": "Synced",
+        "syncWave": 2,
+        "version": "v1"
+      },
+      {
+        "group": "kafka.strimzi.io",
+        "health": {
+          "status": "Healthy"
+        },
+        "kind": "KafkaUser",
+        "name": "kaas-smoke-client",
+        "namespace": "kaas-kafka",
+        "status": "Synced",
+        "syncWave": 2,
+        "version": "v1"
+      }
+    ],
+    "sourceType": "Kustomize",
+    "sync": {
+      "comparedTo": {
+        "destination": {
+          "namespace": "kaas-kafka",
+          "server": "https://kubernetes.default.svc"
+        },
+        "source": {
+          "path": "environments/dev/kafka",
+          "repoURL": "https://github.com/gennady73/kaas-demo.git",
+          "targetRevision": "ea80ef82c6586ca1d6deaa56e37a19e888553dc0"
+        }
+      },
+      "revision": "ea80ef82c6586ca1d6deaa56e37a19e888553dc0",
+      "status": "Synced"
+    }
+  }
+}

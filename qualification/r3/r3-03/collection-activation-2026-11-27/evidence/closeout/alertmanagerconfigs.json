@@ -1,0 +1,9 @@
+{
+  "apiVersion": "monitoring.coreos.com/v1alpha1",
+  "items": [],
+  "kind": "AlertmanagerConfigList",
+  "metadata": {
+    "continue": "",
+    "resourceVersion": "1244793"
+  }
+}

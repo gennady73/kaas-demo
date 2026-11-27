@@ -1,0 +1,150 @@
+{
+  "items": [
+    {
+      "name": "ip-10-0-26-44.us-east-2.compute.internal",
+      "labels": {
+        "node-role.kubernetes.io/control-plane": "",
+        "node-role.kubernetes.io/master": "",
+        "node-role.kubernetes.io/worker": "",
+        "topology.kubernetes.io/region": "us-east-2",
+        "topology.kubernetes.io/zone": "us-east-2a"
+      },
+      "taints": [],
+      "unschedulable": false,
+      "allocatable": {
+        "cpu": "15500m",
+        "ephemeral-storage": "95018478229",
+        "hugepages-1Gi": "0",
+        "hugepages-2Mi": "0",
+        "memory": "63295520Ki",
+        "pods": "250"
+      },
+      "conditions": [
+        {
+          "type": "Ready",
+          "status": "True",
+          "lastHeartbeatTime": "2026-11-27T06:41:06Z",
+          "lastTransitionTime": "2026-11-27T06:11:18Z",
+          "reason": "KubeletReady",
+          "message": "kubelet is posting ready status"
+        }
+      ]
+    },
+    {
+      "name": "ip-10-0-29-133.us-east-2.compute.internal",
+      "labels": {
+        "node-role.kubernetes.io/worker": "",
+        "topology.kubernetes.io/region": "us-east-2",
+        "topology.kubernetes.io/zone": "us-east-2a"
+      },
+      "taints": [],
+      "unschedulable": false,
+      "allocatable": {
+        "cpu": "15500m",
+        "ephemeral-storage": "95018478229",
+        "hugepages-1Gi": "0",
+        "hugepages-2Mi": "0",
+        "memory": "60383268Ki",
+        "pods": "250"
+      },
+      "conditions": [
+        {
+          "type": "Ready",
+          "status": "True",
+          "lastHeartbeatTime": "2026-11-27T06:40:06Z",
+          "lastTransitionTime": "2026-11-27T06:12:32Z",
+          "reason": "KubeletReady",
+          "message": "kubelet is posting ready status"
+        }
+      ]
+    },
+    {
+      "name": "ip-10-0-38-189.us-east-2.compute.internal",
+      "labels": {
+        "node-role.kubernetes.io/control-plane": "",
+        "node-role.kubernetes.io/master": "",
+        "node-role.kubernetes.io/worker": "",
+        "topology.kubernetes.io/region": "us-east-2",
+        "topology.kubernetes.io/zone": "us-east-2b"
+      },
+      "taints": [],
+      "unschedulable": false,
+      "allocatable": {
+        "cpu": "15500m",
+        "ephemeral-storage": "95018478229",
+        "hugepages-1Gi": "0",
+        "hugepages-2Mi": "0",
+        "memory": "63295520Ki",
+        "pods": "250"
+      },
+      "conditions": [
+        {
+          "type": "Ready",
+          "status": "True",
+          "lastHeartbeatTime": "2026-11-27T06:41:16Z",
+          "lastTransitionTime": "2026-11-27T06:11:15Z",
+          "reason": "KubeletReady",
+          "message": "kubelet is posting ready status"
+        }
+      ]
+    },
+    {
+      "name": "ip-10-0-50-65.us-east-2.compute.internal",
+      "labels": {
+        "node-role.kubernetes.io/worker": "",
+        "topology.kubernetes.io/region": "us-east-2",
+        "topology.kubernetes.io/zone": "us-east-2b"
+      },
+      "taints": [],
+      "unschedulable": false,
+      "allocatable": {
+        "cpu": "15500m",
+        "ephemeral-storage": "95018478229",
+        "hugepages-1Gi": "0",
+        "hugepages-2Mi": "0",
+        "memory": "60383268Ki",
+        "pods": "250"
+      },
+      "conditions": [
+        {
+          "type": "Ready",
+          "status": "True",
+          "lastHeartbeatTime": "2026-11-27T06:40:53Z",
+          "lastTransitionTime": "2026-11-27T06:11:11Z",
+          "reason": "KubeletReady",
+          "message": "kubelet is posting ready status"
+        }
+      ]
+    },
+    {
+      "name": "ip-10-0-89-147.us-east-2.compute.internal",
+      "labels": {
+        "node-role.kubernetes.io/control-plane": "",
+        "node-role.kubernetes.io/master": "",
+        "node-role.kubernetes.io/worker": "",
+        "topology.kubernetes.io/region": "us-east-2",
+        "topology.kubernetes.io/zone": "us-east-2c"
+      },
+      "taints": [],
+      "unschedulable": false,
+      "allocatable": {
+        "cpu": "15500m",
+        "ephemeral-storage": "95018478229",
+        "hugepages-1Gi": "0",
+        "hugepages-2Mi": "0",
+        "memory": "63295524Ki",
+        "pods": "250"
+      },
+      "conditions": [
+        {
+          "type": "Ready",
+          "status": "True",
+          "lastHeartbeatTime": "2026-11-27T06:39:41Z",
+          "lastTransitionTime": "2026-11-27T06:12:35Z",
+          "reason": "KubeletReady",
+          "message": "kubelet is posting ready status"
+        }
+      ]
+    }
+  ]
+}

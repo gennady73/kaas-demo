@@ -1,0 +1,33 @@
+"""Bounded GET-only preservation and GitOps closeout, no credentials saved."""
+import getpass,json,ssl,datetime,urllib.request,urllib.parse
+from pathlib import Path
+P=Path(__file__).resolve().parent;R=P.parents[2];O=P/'closeout';O.mkdir(exist_ok=False);token=getpass.getpass('Sandbox token (RAM only): ').strip();ctx=ssl.create_default_context(cafile=str(R/'config/environments/certificates/ocp-rddgh-api-ca.crt'));op=urllib.request.build_opener(urllib.request.ProxyHandler({}),urllib.request.HTTPSHandler(context=ctx));base='https://api.ocp.rddgh.sandbox3088.opentlc.com:6443';calls=[]
+def get(n,path):
+ if len(calls)>=35 or '/secrets' in path:raise RuntimeError('scope')
+ with op.open(urllib.request.Request(base+path,headers={'Authorization':'Bearer '+token}),timeout=15) as r:d=json.loads(r.read(4194304))
+ if d.get('metadata',{}).get('continue'):raise RuntimeError('pagination')
+ s=json.dumps(d,indent=2)+'\n'
+ if token in s:raise RuntimeError('credential_guard')
+ (O/(n+'.json')).write_text(s);calls.append({'name':n,'path':path,'at_UTC':datetime.datetime.now(datetime.timezone.utc).isoformat()});return d
+try:
+ assert get('identity','/apis/user.openshift.io/v1/users/~')['metadata']['name']=='admin'
+ for n in ['kaas-r2-native-client','kaas-r2-native-client-02e2e2f-r2','kaas-r2-native-client-351528d-r2','kaas-r2-native-client-05a3f2d-r2']:
+  d=get('job-'+n,'/apis/batch/v1/namespaces/kaas-demo/jobs/'+n);assert d['spec'].get('suspend') is True and d.get('status',{}).get('active',0)==0
+ for n in ['kaas-demo-kafka','kaas-demo-monitoring-platform','kaas-demo-observability','kaas-sbx-tenants-a','kaas-sbx-tenants-b']:
+  d=get('app-'+n,'/apis/argoproj.io/v1alpha1/namespaces/openshift-gitops/applications/'+n);assert not d['spec'].get('syncPolicy',{}).get('automated') and not d.get('operation')
+ get('kafka','/apis/kafka.strimzi.io/v1/namespaces/kaas-kafka/kafkas/kaas-dev')
+ for ns in ['kaas-kafka','openshift-user-workload-monitoring']:
+  for plural in ['pods','persistentvolumeclaims']:get(ns+'-'+plural,'/api/v1/namespaces/'+ns+'/'+plural+'?limit=100')
+ for ns in ['kaas-kafka','kaas-demo']:get(ns+'-rules','/apis/monitoring.coreos.com/v1/namespaces/'+ns+'/prometheusrules?limit=100')
+ get('alertmanagerconfigs','/apis/monitoring.coreos.com/v1alpha1/alertmanagerconfigs?limit=100')
+ get('PodMonitor','/apis/monitoring.coreos.com/v1/namespaces/kaas-kafka/podmonitors/kaas-dev-broker-metrics')
+ get('Role','/apis/rbac.authorization.k8s.io/v1/namespaces/kaas-kafka/roles/kaas-r3-broker-monitor-writer')
+ get('RoleBinding','/apis/rbac.authorization.k8s.io/v1/namespaces/kaas-kafka/rolebindings/kaas-r3-broker-monitor-writer')
+ for ns,n in [('openshift-monitoring','cluster-monitoring-config'),('openshift-user-workload-monitoring','user-workload-monitoring-config'),('kaas-kafka','kaas-dev-r3-jmx-metrics')]:get(n,'/api/v1/namespaces/'+ns+'/configmaps/'+n)
+ get('sink','/apis/apps/v1/namespaces/kaas-demo/deployments/kaas-r2-evidence')
+ get('evidence-PVC','/api/v1/namespaces/kaas-demo/persistentvolumeclaims/kaas-r2-native-evidence')
+ for plural in ['prometheuses','thanosrulers']:get(plural,'/apis/monitoring.coreos.com/v1/namespaces/openshift-user-workload-monitoring/'+plural+'/user-workload')
+ status='COMPLETE';reason=None
+except Exception as e:status='STOPPED';reason=type(e).__name__
+finally:
+ token='';d={'status':status,'reason':reason,'requests':calls,'read_only':True,'producer_consumer_tests_run':False,'test_emails_sent':False,'credentials_saved':False};(O/'result.json').write_text(json.dumps(d,indent=2)+'\n');print(json.dumps({'status':status,'reason':reason,'requests':len(calls)}))

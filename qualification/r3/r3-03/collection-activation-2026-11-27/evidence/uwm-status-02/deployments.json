@@ -1,0 +1,469 @@
+{
+  "kind": "Deployment",
+  "apiVersion": "apps/v1",
+  "metadata": {
+    "name": "prometheus-operator",
+    "namespace": "openshift-user-workload-monitoring",
+    "uid": "2544c02f-d2b7-43f0-95b8-29ef6d7b4a9c",
+    "resourceVersion": "1240350",
+    "generation": 1,
+    "creationTimestamp": "2026-11-27T06:46:40Z",
+    "labels": {
+      "app.kubernetes.io/component": "controller",
+      "app.kubernetes.io/managed-by": "cluster-monitoring-operator",
+      "app.kubernetes.io/name": "prometheus-operator",
+      "app.kubernetes.io/part-of": "openshift-monitoring",
+      "app.kubernetes.io/version": "0.87.0"
+    },
+    "annotations": {
+      "deployment.kubernetes.io/revision": "1"
+    },
+    "managedFields": [
+      {
+        "manager": "operator",
+        "operation": "Update",
+        "apiVersion": "apps/v1",
+        "time": "2026-11-27T06:46:40Z",
+        "fieldsType": "FieldsV1",
+        "fieldsV1": {
+          "f:metadata": {
+            "f:labels": {
+              ".": {},
+              "f:app.kubernetes.io/component": {},
+              "f:app.kubernetes.io/managed-by": {},
+              "f:app.kubernetes.io/name": {},
+              "f:app.kubernetes.io/part-of": {},
+              "f:app.kubernetes.io/version": {}
+            }
+          },
+          "f:spec": {
+            "f:progressDeadlineSeconds": {},
+            "f:replicas": {},
+            "f:revisionHistoryLimit": {},
+            "f:selector": {},
+            "f:strategy": {
+              "f:rollingUpdate": {
+                ".": {},
+                "f:maxSurge": {},
+                "f:maxUnavailable": {}
+              },
+              "f:type": {}
+            },
+            "f:template": {
+              "f:metadata": {
+                "f:annotations": {
+                  ".": {},
+                  "f:kubectl.kubernetes.io/default-container": {},
+                  "f:openshift.io/required-scc": {},
+                  "f:target.workload.openshift.io/management": {}
+                },
+                "f:labels": {
+                  ".": {},
+                  "f:app.kubernetes.io/component": {},
+                  "f:app.kubernetes.io/managed-by": {},
+                  "f:app.kubernetes.io/name": {},
+                  "f:app.kubernetes.io/part-of": {},
+                  "f:app.kubernetes.io/version": {}
+                }
+              },
+              "f:spec": {
+                "f:automountServiceAccountToken": {},
+                "f:containers": {
+                  "k:{\"name\":\"kube-rbac-proxy\"}": {
+                    ".": {},
+                    "f:args": {},
+                    "f:image": {},
+                    "f:imagePullPolicy": {},
+                    "f:name": {},
+                    "f:ports": {
+                      ".": {},
+                      "k:{\"containerPort\":8443,\"protocol\":\"TCP\"}": {
+                        ".": {},
+                        "f:containerPort": {},
+                        "f:name": {},
+                        "f:protocol": {}
+                      }
+                    },
+                    "f:resources": {
+                      ".": {},
+                      "f:requests": {
+                        ".": {},
+                        "f:cpu": {},
+                        "f:memory": {}
+                      }
+                    },
+                    "f:securityContext": {
+                      ".": {},
+                      "f:allowPrivilegeEscalation": {},
+                      "f:capabilities": {
+                        ".": {},
+                        "f:drop": {}
+                      }
+                    },
+                    "f:terminationMessagePath": {},
+                    "f:terminationMessagePolicy": {},
+                    "f:volumeMounts": {
+                      ".": {},
+                      "k:{\"mountPath\":\"/etc/kube-rbac-policy\"}": {
+                        ".": {},
+                        "f:mountPath": {},
+                        "f:name": {},
+                        "f:readOnly": {}
+                      },
+                      "k:{\"mountPath\":\"/etc/tls/client\"}": {
+                        ".": {},
+                        "f:mountPath": {},
+                        "f:name": {},
+                        "f:readOnly": {}
+                      },
+                      "k:{\"mountPath\":\"/etc/tls/private\"}": {
+                        ".": {},
+                        "f:mountPath": {},
+                        "f:name": {},
+                        "f:readOnly": {}
+                      }
+                    }
+                  },
+                  "k:{\"name\":\"prometheus-operator\"}": {
+                    ".": {},
+                    "f:args": {},
+                    "f:env": {
+                      ".": {},
+                      "k:{\"name\":\"GOGC\"}": {
+                        ".": {},
+                        "f:name": {},
+                        "f:value": {}
+                      }
+                    },
+                    "f:image": {},
+                    "f:imagePullPolicy": {},
+                    "f:name": {},
+                    "f:resources": {
+                      ".": {},
+                      "f:requests": {
+                        ".": {},
+                        "f:cpu": {},
+                        "f:memory": {}
+                      }
+                    },
+                    "f:securityContext": {
+                      ".": {},
+                      "f:allowPrivilegeEscalation": {},
+                      "f:capabilities": {
+                        ".": {},
+                        "f:drop": {}
+                      },
+                      "f:readOnlyRootFilesystem": {}
+                    },
+                    "f:terminationMessagePath": {},
+                    "f:terminationMessagePolicy": {}
+                  }
+                },
+                "f:dnsPolicy": {},
+                "f:nodeSelector": {},
+                "f:priorityClassName": {},
+                "f:restartPolicy": {},
+                "f:schedulerName": {},
+                "f:securityContext": {
+                  ".": {},
+                  "f:runAsNonRoot": {},
+                  "f:seccompProfile": {
+                    ".": {},
+                    "f:type": {}
+                  }
+                },
+                "f:serviceAccount": {},
+                "f:serviceAccountName": {},
+                "f:terminationGracePeriodSeconds": {},
+                "f:tolerations": {},
+                "f:volumes": {
+                  ".": {},
+                  "k:{\"name\":\"metrics-client-ca\"}": {
+                    ".": {},
+                    "f:configMap": {
+                      ".": {},
+                      "f:defaultMode": {},
+                      "f:name": {}
+                    },
+                    "f:name": {}
+                  },
+                  "k:{\"name\":\"prometheus-operator-user-workload-tls\"}": {
+                    ".": {},
+                    "f:name": {},
+                    "f:secret": {
+                      ".": {},
+                      "f:defaultMode": {},
+                      "f:secretName": {}
+                    }
+                  },
+                  "k:{\"name\":\"prometheus-operator-uwm-kube-rbac-proxy-config\"}": {
+                    ".": {},
+                    "f:name": {},
+                    "f:secret": {
+                      ".": {},
+                      "f:defaultMode": {},
+                      "f:secretName": {}
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "manager": "kube-controller-manager",
+        "operation": "Update",
+        "apiVersion": "apps/v1",
+        "time": "2026-11-27T06:46:42Z",
+        "fieldsType": "FieldsV1",
+        "fieldsV1": {
+          "f:metadata": {
+            "f:annotations": {
+              ".": {},
+              "f:deployment.kubernetes.io/revision": {}
+            }
+          },
+          "f:status": {
+            "f:availableReplicas": {},
+            "f:conditions": {
+              ".": {},
+              "k:{\"type\":\"Available\"}": {
+                ".": {},
+                "f:lastTransitionTime": {},
+                "f:lastUpdateTime": {},
+                "f:message": {},
+                "f:reason": {},
+                "f:status": {},
+                "f:type": {}
+              },
+              "k:{\"type\":\"Progressing\"}": {
+                ".": {},
+                "f:lastTransitionTime": {},
+                "f:lastUpdateTime": {},
+                "f:message": {},
+                "f:reason": {},
+                "f:status": {},
+                "f:type": {}
+              }
+            },
+            "f:observedGeneration": {},
+            "f:readyReplicas": {},
+            "f:replicas": {},
+            "f:updatedReplicas": {}
+          }
+        },
+        "subresource": "status"
+      }
+    ]
+  },
+  "spec": {
+    "replicas": 1,
+    "selector": {
+      "matchLabels": {
+        "app.kubernetes.io/component": "controller",
+        "app.kubernetes.io/name": "prometheus-operator",
+        "app.kubernetes.io/part-of": "openshift-monitoring"
+      }
+    },
+    "template": {
+      "metadata": {
+        "labels": {
+          "app.kubernetes.io/component": "controller",
+          "app.kubernetes.io/managed-by": "cluster-monitoring-operator",
+          "app.kubernetes.io/name": "prometheus-operator",
+          "app.kubernetes.io/part-of": "openshift-monitoring",
+          "app.kubernetes.io/version": "0.87.0"
+        },
+        "annotations": {
+          "kubectl.kubernetes.io/default-container": "prometheus-operator",
+          "openshift.io/required-scc": "restricted-v2",
+          "target.workload.openshift.io/management": "{\"effect\": \"PreferredDuringScheduling\"}"
+        }
+      },
+      "spec": {
+        "volumes": [
+          {
+            "name": "prometheus-operator-user-workload-tls",
+            "secret": {
+              "secretName": "prometheus-operator-user-workload-tls",
+              "defaultMode": 420
+            }
+          },
+          {
+            "name": "prometheus-operator-uwm-kube-rbac-proxy-config",
+            "secret": {
+              "secretName": "prometheus-operator-uwm-kube-rbac-proxy-config",
+              "defaultMode": 420
+            }
+          },
+          {
+            "name": "metrics-client-ca",
+            "configMap": {
+              "name": "metrics-client-ca",
+              "defaultMode": 420
+            }
+          }
+        ],
+        "containers": [
+          {
+            "name": "prometheus-operator",
+            "image": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:02aa9fd5ad7cdd1094039833d238e2e376ba2d04c366942139ca6450f06f83ed",
+            "args": [
+              "--prometheus-config-reloader=quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:efe496413e1d47b4fd7fb60992f62b2e45407209b52cdf30b7be47f4ccb80cad",
+              "--kubelet-endpoints=true",
+              "--kubelet-endpointslice=true",
+              "--prometheus-instance-namespaces=openshift-user-workload-monitoring",
+              "--alertmanager-instance-namespaces=openshift-user-workload-monitoring",
+              "--thanos-ruler-instance-namespaces=openshift-user-workload-monitoring",
+              "--config-reloader-cpu-limit=0",
+              "--config-reloader-memory-limit=0",
+              "--config-reloader-cpu-request=1m",
+              "--config-reloader-memory-request=10Mi",
+              "--web.listen-address=127.0.0.1:8080",
+              "--controller-id=openshift-user-workload-monitoring/prometheus-operator"
+            ],
+            "env": [
+              {
+                "name": "GOGC",
+                "value": "30"
+              }
+            ],
+            "resources": {
+              "requests": {
+                "cpu": "100m",
+                "memory": "256Mi"
+              }
+            },
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "FallbackToLogsOnError",
+            "imagePullPolicy": "IfNotPresent",
+            "securityContext": {
+              "capabilities": {
+                "drop": [
+                  "ALL"
+                ]
+              },
+              "readOnlyRootFilesystem": true,
+              "allowPrivilegeEscalation": false
+            }
+          },
+          {
+            "name": "kube-rbac-proxy",
+            "image": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:9081bd341e8efa55d05b292caf1785a4f0d5931099ed4cc489a57840331fb869",
+            "args": [
+              "--secure-listen-address=:8443",
+              "--tls-cipher-suites=TLS_AES_128_GCM_SHA256,TLS_AES_256_GCM_SHA384,TLS_CHACHA20_POLY1305_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256",
+              "--upstream=http://127.0.0.1:8080/",
+              "--tls-cert-file=/etc/tls/private/tls.crt",
+              "--tls-private-key-file=/etc/tls/private/tls.key",
+              "--config-file=/etc/kube-rbac-policy/config.yaml",
+              "--client-ca-file=/etc/tls/client/client-ca.crt",
+              "--tls-min-version=VersionTLS12"
+            ],
+            "ports": [
+              {
+                "name": "https",
+                "containerPort": 8443,
+                "protocol": "TCP"
+              }
+            ],
+            "resources": {
+              "requests": {
+                "cpu": "1m",
+                "memory": "10Mi"
+              }
+            },
+            "volumeMounts": [
+              {
+                "name": "prometheus-operator-user-workload-tls",
+                "readOnly": true,
+                "mountPath": "/etc/tls/private"
+              },
+              {
+                "name": "prometheus-operator-uwm-kube-rbac-proxy-config",
+                "readOnly": true,
+                "mountPath": "/etc/kube-rbac-policy"
+              },
+              {
+                "name": "metrics-client-ca",
+                "readOnly": true,
+                "mountPath": "/etc/tls/client"
+              }
+            ],
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "FallbackToLogsOnError",
+            "imagePullPolicy": "IfNotPresent",
+            "securityContext": {
+              "capabilities": {
+                "drop": [
+                  "ALL"
+                ]
+              },
+              "allowPrivilegeEscalation": false
+            }
+          }
+        ],
+        "restartPolicy": "Always",
+        "terminationGracePeriodSeconds": 30,
+        "dnsPolicy": "ClusterFirst",
+        "nodeSelector": {
+          "kubernetes.io/os": "linux",
+          "node-role.kubernetes.io/master": ""
+        },
+        "serviceAccountName": "prometheus-operator",
+        "serviceAccount": "prometheus-operator",
+        "automountServiceAccountToken": true,
+        "securityContext": {
+          "runAsNonRoot": true,
+          "seccompProfile": {
+            "type": "RuntimeDefault"
+          }
+        },
+        "schedulerName": "default-scheduler",
+        "tolerations": [
+          {
+            "key": "node-role.kubernetes.io/master",
+            "operator": "Exists",
+            "effect": "NoSchedule"
+          }
+        ],
+        "priorityClassName": "openshift-user-critical"
+      }
+    },
+    "strategy": {
+      "type": "RollingUpdate",
+      "rollingUpdate": {
+        "maxUnavailable": "25%",
+        "maxSurge": "25%"
+      }
+    },
+    "revisionHistoryLimit": 10,
+    "progressDeadlineSeconds": 600
+  },
+  "status": {
+    "observedGeneration": 1,
+    "replicas": 1,
+    "updatedReplicas": 1,
+    "readyReplicas": 1,
+    "availableReplicas": 1,
+    "conditions": [
+      {
+        "type": "Available",
+        "status": "True",
+        "lastUpdateTime": "2026-11-27T06:46:42Z",
+        "lastTransitionTime": "2026-11-27T06:46:42Z",
+        "reason": "MinimumReplicasAvailable",
+        "message": "Deployment has minimum availability."
+      },
+      {
+        "type": "Progressing",
+        "status": "True",
+        "lastUpdateTime": "2026-11-27T06:46:42Z",
+        "lastTransitionTime": "2026-11-27T06:46:40Z",
+        "reason": "NewReplicaSetAvailable",
+        "message": "ReplicaSet \"prometheus-operator-7f8c7c8654\" has successfully progressed."
+      }
+    ]
+  }
+}

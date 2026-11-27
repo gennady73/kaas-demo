@@ -1,0 +1,188 @@
+{
+  "apiVersion": "argoproj.io/v1alpha1",
+  "kind": "Application",
+  "metadata": {
+    "creationTimestamp": "2026-11-27T06:45:12Z",
+    "generation": 4,
+    "managedFields": [
+      {
+        "apiVersion": "argoproj.io/v1alpha1",
+        "fieldsType": "FieldsV1",
+        "fieldsV1": {
+          "f:status": {
+            ".": {},
+            "f:controllerNamespace": {},
+            "f:health": {
+              ".": {},
+              "f:lastTransitionTime": {},
+              "f:status": {}
+            },
+            "f:reconciledAt": {},
+            "f:resources": {},
+            "f:sourceType": {},
+            "f:sync": {
+              ".": {},
+              "f:comparedTo": {
+                ".": {},
+                "f:destination": {
+                  ".": {},
+                  "f:namespace": {},
+                  "f:server": {}
+                },
+                "f:source": {
+                  ".": {},
+                  "f:path": {},
+                  "f:repoURL": {},
+                  "f:targetRevision": {}
+                }
+              },
+              "f:revision": {},
+              "f:status": {}
+            }
+          }
+        },
+        "manager": "argocd-application-controller",
+        "operation": "Update",
+        "time": "2026-11-27T06:48:06Z"
+      },
+      {
+        "apiVersion": "argoproj.io/v1alpha1",
+        "fieldsType": "FieldsV1",
+        "fieldsV1": {
+          "f:operation": {
+            ".": {},
+            "f:initiatedBy": {
+              ".": {},
+              "f:username": {}
+            },
+            "f:sync": {
+              ".": {},
+              "f:prune": {},
+              "f:resources": {},
+              "f:revision": {},
+              "f:syncStrategy": {
+                ".": {},
+                "f:apply": {
+                  ".": {},
+                  "f:force": {}
+                }
+              }
+            }
+          },
+          "f:spec": {
+            ".": {},
+            "f:destination": {
+              ".": {},
+              "f:namespace": {},
+              "f:server": {}
+            },
+            "f:project": {},
+            "f:source": {
+              ".": {},
+              "f:path": {},
+              "f:repoURL": {},
+              "f:targetRevision": {}
+            },
+            "f:syncPolicy": {
+              ".": {},
+              "f:syncOptions": {}
+            }
+          }
+        },
+        "manager": "Python-urllib",
+        "operation": "Update",
+        "time": "2026-11-27T06:49:03Z"
+      }
+    ],
+    "name": "kaas-demo-observability",
+    "namespace": "openshift-gitops",
+    "resourceVersion": "1241856",
+    "uid": "c5f21950-e9db-493b-bf2a-4aede6fb53da"
+  },
+  "operation": {
+    "initiatedBy": {
+      "username": "admin"
+    },
+    "sync": {
+      "prune": false,
+      "resources": [
+        {
+          "group": "",
+          "kind": "ConfigMap",
+          "name": "kaas-dev-r3-jmx-metrics",
+          "namespace": "kaas-kafka"
+        }
+      ],
+      "revision": "5610bfa484b13599e3218b1bcdb366769deba13d",
+      "syncStrategy": {
+        "apply": {
+          "force": false
+        }
+      }
+    }
+  },
+  "spec": {
+    "destination": {
+      "namespace": "kaas-kafka",
+      "server": "https://kubernetes.default.svc"
+    },
+    "project": "kaas-demo-observability",
+    "source": {
+      "path": "qualification/r3/r3-03/activation-execution/candidate/broker-scrape",
+      "repoURL": "https://github.com/gennady73/kaas-demo.git",
+      "targetRevision": "5610bfa484b13599e3218b1bcdb366769deba13d"
+    },
+    "syncPolicy": {
+      "syncOptions": [
+        "FailOnSharedResource=true"
+      ]
+    }
+  },
+  "status": {
+    "controllerNamespace": "openshift-gitops",
+    "health": {
+      "lastTransitionTime": "2026-11-27T06:45:13Z",
+      "status": "Missing"
+    },
+    "reconciledAt": "2026-11-27T06:48:06Z",
+    "resources": [
+      {
+        "health": {
+          "status": "Missing"
+        },
+        "kind": "ConfigMap",
+        "name": "kaas-dev-r3-jmx-metrics",
+        "namespace": "kaas-kafka",
+        "status": "OutOfSync",
+        "version": "v1"
+      },
+      {
+        "group": "monitoring.coreos.com",
+        "health": {
+          "status": "Missing"
+        },
+        "kind": "PodMonitor",
+        "name": "kaas-dev-broker-metrics",
+        "namespace": "kaas-kafka",
+        "status": "OutOfSync",
+        "version": "v1"
+      }
+    ],
+    "sourceType": "Kustomize",
+    "sync": {
+      "comparedTo": {
+        "destination": {
+          "namespace": "kaas-kafka",
+          "server": "https://kubernetes.default.svc"
+        },
+        "source": {
+          "path": "qualification/r3/r3-03/activation-execution/candidate/broker-scrape",
+          "repoURL": "https://github.com/gennady73/kaas-demo.git",
+          "targetRevision": "5610bfa484b13599e3218b1bcdb366769deba13d"
+        }
+      },
+      "revision": "5610bfa484b13599e3218b1bcdb366769deba13d",
+      "status": "OutOfSync"
+    }
+  }
+}
